@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/AutoSuggestBox/AutoSuggestBox.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/ContentDialog/ContentDialog.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/CommandBar/AppBarButton.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/CommandBar/AppBarRepeatButton.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/CommandBar/AppBarToggleButton.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/CommandBar/AppBarSeparator.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/CommandBar/AppBarElementContainer.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/CommandBar/CommandBar.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/CommandBarFlyout/CommandBarFlyout.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/DropDownButton/DropDownButton.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/FlipView/FlipView.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/Flyout/FlyoutPresenter.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/HyperlinkButton/HyperlinkButton.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/InfoBadge/InfoBadge.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/InfoBar/InfoBar.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/ListView/ListView.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/ListView/GridView.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/MenuFlyout/MenuFlyout.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/MediaPlayerElement/MediaPlayerElement.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/MediaPlayerElement/MediaTransportControls.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/NavigationView/NavigationView.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/NumberBox/NumberBox.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/ParallaxView/ParallaxView.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/PersonPicture/PersonPicture.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/PipsPager/PipsPager.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/ProgressBar/ProgressBar.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/ProgressRing/ProgressRing.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/RatingControl/RatingControl.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/SplitButton/SplitButton.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/SplitView/SplitView.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/RadioButtons/RadioButtons.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/RadioMenuItem/RadioMenuItem.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/TeachingTip/TeachingTip.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/TimePicker/TimePicker.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/ToggleSwitch/ToggleSwitch.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/TransitioningContentControl/TransitioningContentControl.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/TwoPaneView/TwoPaneView.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

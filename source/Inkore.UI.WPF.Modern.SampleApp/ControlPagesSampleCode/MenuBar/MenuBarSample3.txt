@@ -1,0 +1,55 @@
+﻿<Menu>
+  <MenuItem Header="File">
+    <MenuItem Header="New">
+      <MenuItem.KeyboardAccelerators>
+        <KeyboardAccelerator Modifiers="Control" Key="N"/>
+      </MenuItem.KeyboardAccelerators>
+    </MenuItem>
+    <MenuItem Header="Open...">
+      <MenuItem.KeyboardAccelerators>
+        <KeyboardAccelerator Modifiers="Control" Key="O"/>
+      </MenuItem.KeyboardAccelerators>
+    </MenuItem>
+    <MenuItem Header="Save">
+      <MenuItem.KeyboardAccelerators>
+        <KeyboardAccelerator Modifiers="Control" Key="S"/>
+      </MenuItem.KeyboardAccelerators>
+    </MenuItem>
+    <MenuItem Header="Exit">
+      <MenuItem.KeyboardAccelerators>
+        <KeyboardAccelerator Modifiers="Control" Key="E"/>
+      </MenuItem.KeyboardAccelerators>
+    </MenuItem>
+  </MenuItem>
+
+  <MenuItem Header="Edit">
+    <MenuItem Header="Undo">
+      <MenuItem.KeyboardAccelerators>
+        <KeyboardAccelerator Modifiers="Control" Key="Z"/>
+      </MenuItem.KeyboardAccelerators>
+    </MenuItem>
+    <MenuItem Header="Cut">
+      <MenuItem.KeyboardAccelerators>
+        <KeyboardAccelerator Modifiers="Control" Key="X"/>
+      </MenuItem.KeyboardAccelerators>
+    </MenuItem>
+    <MenuItem Header="Copy">
+      <MenuItem.KeyboardAccelerators>
+        <KeyboardAccelerator Modifiers="Control" Key="C"/>
+      </MenuItem.KeyboardAccelerators>
+    </MenuItem>
+    <MenuItem Header="Paste">
+      <MenuItem.KeyboardAccelerators>
+        <KeyboardAccelerator Modifiers="Control" Key="V"/>
+      </MenuItem.KeyboardAccelerators>
+    </MenuItem>
+  </MenuItem>
+
+  <MenuItem Header="Help">
+    <MenuItem Header="About">
+      <MenuItem.KeyboardAccelerators>
+        <KeyboardAccelerator Modifiers="Control" Key="I"/>
+      </MenuItem.KeyboardAccelerators>
+    </MenuItem>
+  </MenuItem>
+</Menu>

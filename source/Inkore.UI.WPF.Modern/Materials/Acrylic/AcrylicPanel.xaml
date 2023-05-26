@@ -1,0 +1,109 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.Media">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
+            <local:BrushTranslationConverter x:Key="BrushTranslationConverter" />
+            <local:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="AcrylicContentControlStyle" TargetType="ContentControl">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Border
+                        x:Name="ContextMenuBorder"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <!--  Color tint overlay  -->
+                            <Rectangle
+                                x:Name="TintColorLayer"
+                                Fill="{TemplateBinding local:AcrylicElement.TintColor,
+                                                       Converter={StaticResource ColorToSolidColorBrushConverter}}"
+                                Opacity="{TemplateBinding local:AcrylicElement.TintOpacity}" />
+                            <!--  Tiled noise texture  -->
+                            <Rectangle x:Name="NoiseLayer" Opacity="{TemplateBinding local:AcrylicElement.NoiseOpacity}">
+                                <Rectangle.Fill>
+                                    <ImageBrush
+                                        ImageSource="NoiseAsset_256X256_PNG.png"
+                                        Stretch="None"
+                                        TileMode="Tile"
+                                        Viewport="0,0,128,128"
+                                        ViewportUnits="Absolute" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <ContentPresenter />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DefaultAcrylicPanelStyle" TargetType="local:AcrylicPanel">
+        <Setter Property="TintColor" Value="{DynamicResource SolidBackgroundFillColorQuarternary}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:AcrylicPanel">
+                    <Grid ClipToBounds="True">
+                        <!--  background  -->
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <PriorityBinding>
+                                    <Binding Path="Target.Background" RelativeSource="{RelativeSource Mode=TemplatedParent}" />
+                                    <Binding Path="Target.Fill" RelativeSource="{RelativeSource Mode=TemplatedParent}" />
+                                </PriorityBinding>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <!--  main  -->
+                        <Canvas>
+                            <ContentControl>
+                                <ContentControl.CacheMode>
+                                    <BitmapCache RenderAtScale="0.2" />
+                                </ContentControl.CacheMode>
+                                <Rectangle
+                                    x:Name="Rect"
+                                    Width="{Binding Target.ActualWidth, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                    Height="{Binding Target.ActualHeight, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                    ClipToBounds="False"
+                                    IsHitTestVisible="False">
+                                    <Rectangle.Fill>
+                                        <VisualBrush
+                                            AlignmentX="Left"
+                                            AlignmentY="Top"
+                                            Stretch="None"
+                                            ViewboxUnits="Absolute"
+                                            Visual="{Binding Target, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                                    </Rectangle.Fill>
+                                    <Rectangle.RenderTransform>
+                                        <MultiBinding Converter="{StaticResource BrushTranslationConverter}">
+                                            <Binding Path="Target" RelativeSource="{RelativeSource Mode=TemplatedParent}" />
+                                            <Binding Path="Source" RelativeSource="{RelativeSource Mode=TemplatedParent}" />
+                                        </MultiBinding>
+                                    </Rectangle.RenderTransform>
+                                    <Rectangle.Effect>
+                                        <BlurEffect Radius="{Binding Amount, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                            </ContentControl>
+                        </Canvas>
+
+                        <ContentControl Style="{StaticResource AcrylicContentControlStyle}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </ContentControl>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource DefaultAcrylicPanelStyle}" TargetType="local:AcrylicPanel" />
+
+</ResourceDictionary>
