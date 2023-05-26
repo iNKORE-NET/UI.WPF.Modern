@@ -21,9 +21,9 @@ Modern (Fluent 2) styles and controls for your WPF applications.
 
 3. Add XML Namespace in `App.xaml` and `MainWindow.xaml`
 
-```xaml
+    ```xaml
     xmlns:ui="https://schemas.animasterstudios.com/lib/ui/wpf/modern"
-```
+    ```
 
 4. Add theme resources in the `Application.Resources` section of `App.xaml`
 
