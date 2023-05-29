@@ -9,7 +9,7 @@ Modern (Fluent 2) styles and controls for your WPF applications.
 
 * Additional controls to help you build modern applications. Some are ported from the [Windows UI Library](https://github.com/microsoft/microsoft-ui-xaml).
 
-* Targets .NET Framework 4.5+, .NET Core 3+, and .NET 5+. Runs on Windows Vista SP2 and above.
+* Targets .NET Framework 6.0. Runs on Windows 7 above, but we recommend Windows 10.0.18362.0 and higher
 
 ![Home of the SampleApp (Light theme)](docs/images/screenshot_home.png "Home of the SampleApp (Light theme)")
 
