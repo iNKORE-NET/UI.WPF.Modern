@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System;
 using System.Collections;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using Inkore.UI.WPF.Modern.Controls.Primitives;
@@ -377,6 +379,29 @@ namespace Inkore.UI.WPF.Modern.Controls
 
         #endregion
 
+        #region IsFooterSeparatorVisible
+
+        public static readonly DependencyProperty IsFooterSeparatorVisibleProperty =
+            DependencyProperty.Register(
+                nameof(IsFooterSeparatorVisible),
+                typeof(bool?),
+                typeof(NavigationView),
+                new PropertyMetadata(null, OnIsFooterSeparatorVisiblePropertyChanged));
+
+        private static void OnIsFooterSeparatorVisiblePropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+        {
+            var owner = (NavigationView)sender;
+            owner.PropertyChanged(args);
+        }
+
+        public bool? IsFooterSeparatorVisible
+        {
+            get => GetValue(IsFooterSeparatorVisibleProperty) as bool?;
+            set => SetValue(IsFooterSeparatorVisibleProperty, value);
+        }
+
+        #endregion
+
         #region SelectedItem
 
         public static readonly DependencyProperty SelectedItemProperty =
@@ -399,6 +424,8 @@ namespace Inkore.UI.WPF.Modern.Controls
         }
 
         #endregion
+
+
 
         #region MenuItems
 

@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Markup;
 
@@ -10,6 +11,17 @@ using System.Windows.Markup;
                                               //(used if a resource is not found in the page,
                                               // app, or any theme specific resource dictionaries)
 )]
+
+
+[assembly: AssemblyTitle("Inkore.UI.WPF.Modern")]
+[assembly: AssemblyDescription("Modern (Fluent 2) styles and controls for your WPF applications")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("iNKORE! Studios")]
+[assembly: AssemblyProduct("Inkore.UI.WPF.Modern")]
+[assembly: AssemblyCopyright("Copyright © iNKORE! Studios 2023")]
+[assembly: AssemblyTrademark("iNKORE! Studios")]
+[assembly: AssemblyVersion("0.9.7.0")]
+[assembly: AssemblyCulture("")]
 
 [assembly: InternalsVisibleTo("Inkore.UI.WPF.Modern.Controls")]
 [assembly: InternalsVisibleTo("Inkore.UI.WPF.Modern.MahApps")]

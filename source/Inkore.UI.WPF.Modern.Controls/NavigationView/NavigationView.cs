@@ -1566,6 +1566,7 @@ namespace Inkore.UI.WPF.Modern.Controls
 
         void UpdatePaneLayout()
         {
+
             if (!IsTopNavigationView())
             {
                 double totalAvailableHeight;
@@ -1589,6 +1590,16 @@ namespace Inkore.UI.WPF.Modern.Controls
                     }
                 }
 
+
+                if (IsFooterSeparatorVisible == true && m_visualItemsSeparator != null)
+                {
+                    m_visualItemsSeparator.Visibility = Visibility.Visible;
+                }
+                else if(IsFooterSeparatorVisible == false && m_visualItemsSeparator != null)
+                {
+                    m_visualItemsSeparator.Visibility = Visibility.Collapsed;
+                }
+
                 // Only continue if we have a positive amount of space to manage.
                 if (totalAvailableHeight > 0)
                 {
@@ -1607,46 +1618,65 @@ namespace Inkore.UI.WPF.Modern.Controls
                                     // We know the actual height of footer items, so use that to determine how to split pane.
                                     if (m_leftNavRepeater is { } menuItems)
                                     {
+
                                         var footersActualHeight = footerItemsRepeater.ActualHeight;
                                         var menuItemsActualHeight = menuItems.ActualHeight;
-                                        if (totalAvailableHeight > menuItemsActualHeight + footersActualHeight)
+
+                                        //Decide whether the separator show show or not. This doesnt work
+                                        //if(m_visualItemsSeparator != null && IsFooterSeparatorVisible == null)
+                                        //{
+                                        //    if (totalAvailableHeight >= menuItemsActualHeight + footersActualHeight)
+                                        //    {
+                                        //        m_visualItemsSeparator.Visibility = Visibility.Collapsed;
+                                        //    }
+                                        //    else
+                                        //    {
+                                        //        m_visualItemsSeparator.Visibility = Visibility.Visible;
+                                        //    }
+                                        //}
+
+                                        if (totalAvailableHeight >= menuItemsActualHeight + footersActualHeight)
                                         {
                                             // We have enough space for two so let everyone get as much as they need.
                                             footerItemsScrollViewer.MaxHeight = footersActualHeight;
-                                            if (m_visualItemsSeparator is { } separator)
-                                            {
-                                                separator.Visibility = Visibility.Collapsed;
-                                            }
+                                            //if (m_visualItemsSeparator is { } separator)
+                                            //{
+                                            //    if (IsFooterSeparatorVisible == null)
+                                            //        separator.Visibility = Visibility.Collapsed;
+                                            //}
                                             return totalAvailableHeight - footersActualHeight;
                                         }
-                                        else if (menuItemsActualHeight <= totalAvailableHeightHalf)
+                                        else if (footersActualHeight > totalAvailableHeightHalf)
                                         {
                                             // Footer items exceed over the half, so let's limit them.
                                             footerItemsScrollViewer.MaxHeight = totalAvailableHeight - menuItemsActualHeight;
-                                            if (m_visualItemsSeparator is { } separator)
-                                            {
-                                                separator.Visibility = Visibility.Visible;
-                                            }
+                                            //if (m_visualItemsSeparator is { } separator)
+                                            //{
+                                            //    if (IsFooterSeparatorVisible == null)
+                                            //        separator.Visibility = Visibility.Visible;
+                                            //}
                                             return menuItemsActualHeight;
                                         }
                                         else if (footersActualHeight <= totalAvailableHeightHalf)
                                         {
                                             // Menu items exceed over the half, so let's limit them.
                                             footerItemsScrollViewer.MaxHeight = footersActualHeight;
-                                            if (m_visualItemsSeparator is { } separator)
-                                            {
-                                                separator.Visibility = Visibility.Visible;
-                                            }
+                                            ////if (m_visualItemsSeparator is { } separator)
+                                            ////{
+                                            ////    if (IsFooterSeparatorVisible == null)
+                                            ////        separator.Visibility = Visibility.Visible;
+                                            ////}
                                             return totalAvailableHeight - footersActualHeight;
                                         }
                                         else
                                         {
                                             // Both are more than half the height, so split evenly.
                                             footerItemsScrollViewer.MaxHeight = totalAvailableHeightHalf;
-                                            if (m_visualItemsSeparator is { } separator)
-                                            {
-                                                separator.Visibility = Visibility.Visible;
-                                            }
+                                            //if (m_visualItemsSeparator is { } separator)
+                                            //{
+                                            //    if (IsFooterSeparatorVisible == null)
+                                            //        separator.Visibility = Visibility.Visible;
+                                            //}
                                             return totalAvailableHeightHalf;
                                         }
                                     }
@@ -1672,6 +1702,19 @@ namespace Inkore.UI.WPF.Modern.Controls
                     {
                         // Update max height for menu items.
                         menuItemsScrollViewer.MaxHeight = heightForMenuItems;
+                    }
+                }
+
+                if (IsFooterSeparatorVisible == null && m_visualItemsSeparator != null)
+                {
+                    m_visualItemsSeparator.Visibility = Visibility.Collapsed;
+
+                    if (m_menuItemsScrollViewer is ScrollViewer && m_footerItemsScrollViewer is ScrollViewer)
+                    {
+                        if ((m_menuItemsScrollViewer as ScrollViewer).ComputedVerticalScrollBarVisibility == Visibility.Visible)
+                        {
+                            m_visualItemsSeparator.Visibility = Visibility.Visible;
+                        }
                     }
                 }
             }
@@ -4124,6 +4167,10 @@ namespace Inkore.UI.WPF.Modern.Controls
                 {
                     backButton.UpdateLayout();
                 }
+                UpdatePaneLayout();
+            }
+            else if(property == IsFooterSeparatorVisibleProperty)
+            {
                 UpdatePaneLayout();
             }
             else if (property == MenuItemsSourceProperty)

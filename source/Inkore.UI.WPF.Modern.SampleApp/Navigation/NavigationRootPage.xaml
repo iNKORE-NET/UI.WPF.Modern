@@ -67,7 +67,7 @@
             AlwaysShowHeader="True"
             Canvas.ZIndex="0"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
-            Header=" "
+            Header=" " IsFooterSeparatorVisible="{x:Null}"
             IsTabStop="False"
             IsTitleBarAutoPaddingEnabled="False"
             Loaded="OnNavigationViewControlLoaded"

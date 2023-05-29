@@ -5,24 +5,24 @@ VisualStudioVersion = 17.2.32314.265
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1387DCAB-42A4-4F47-9E85-16998E2D9C71}"
 	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		Directory.Build.props = Directory.Build.props
-		Directory.Build.targets = Directory.Build.targets
+		source\.editorconfig = source\.editorconfig
+		source\Directory.Build.props = source\Directory.Build.props
+		source\Directory.Build.targets = source\Directory.Build.targets
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{A96F98E9-18B5-4863-8F28-9B7BDF70A128}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamplesCommon", "samples\SamplesCommon\SamplesCommon.csproj", "{DE27C3CE-E9E9-48D2-A4A1-5846E550462E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamplesCommon", "source\samples\SamplesCommon\SamplesCommon.csproj", "{DE27C3CE-E9E9-48D2-A4A1-5846E550462E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{07337569-6CA9-4BB0-9C8F-962D981CB5F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUIResourcesConverter", "tools\WinUIResourcesConverter\WinUIResourcesConverter.csproj", "{35EF6F6B-3E8C-4A9E-BCD2-16CA5C2C2ADC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUIResourcesConverter", "source\tools\WinUIResourcesConverter\WinUIResourcesConverter.csproj", "{35EF6F6B-3E8C-4A9E-BCD2-16CA5C2C2ADC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inkore.UI.WPF.Modern", "Inkore.UI.WPF.Modern\Inkore.UI.WPF.Modern.csproj", "{789F8052-2F84-4BA0-9CD7-A3A1901A66A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inkore.UI.WPF.Modern", "source\Inkore.UI.WPF.Modern\Inkore.UI.WPF.Modern.csproj", "{789F8052-2F84-4BA0-9CD7-A3A1901A66A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inkore.UI.WPF.Modern.Controls", "Inkore.UI.WPF.Modern.Controls\Inkore.UI.WPF.Modern.Controls.csproj", "{FE80560D-40A3-4469-AC0A-C725B583CAA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inkore.UI.WPF.Modern.Controls", "source\Inkore.UI.WPF.Modern.Controls\Inkore.UI.WPF.Modern.Controls.csproj", "{FE80560D-40A3-4469-AC0A-C725B583CAA7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inkore.UI.WPF.Modern.SampleApp", "Inkore.UI.WPF.Modern.SampleApp\Inkore.UI.WPF.Modern.SampleApp.csproj", "{54049F5E-E57B-433E-B316-3C51F25B523D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inkore.UI.WPF.Modern.SampleApp", "source\Inkore.UI.WPF.Modern.SampleApp\Inkore.UI.WPF.Modern.SampleApp.csproj", "{54049F5E-E57B-433E-B316-3C51F25B523D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -145,6 +145,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{DE27C3CE-E9E9-48D2-A4A1-5846E550462E} = {A96F98E9-18B5-4863-8F28-9B7BDF70A128}
 		{35EF6F6B-3E8C-4A9E-BCD2-16CA5C2C2ADC} = {07337569-6CA9-4BB0-9C8F-962D981CB5F4}
+		{54049F5E-E57B-433E-B316-3C51F25B523D} = {A96F98E9-18B5-4863-8F28-9B7BDF70A128}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6251E140-0FAA-4DE9-B245-1C5BE188E578}
