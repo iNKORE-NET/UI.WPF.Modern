@@ -69,7 +69,6 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="{Binding ElementName=Window, Path=(ui:TitleBar.SystemOverlayRightInset), Converter={StaticResource PixelsToGridLength}}" />
             </Grid.ColumnDefinitions>
-
             <ui:TitleBarButton
                 x:Name="ForwardButton"
                 Grid.Column="1"

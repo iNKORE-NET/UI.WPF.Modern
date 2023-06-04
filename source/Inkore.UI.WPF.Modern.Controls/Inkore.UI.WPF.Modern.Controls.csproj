@@ -6,8 +6,21 @@
     <NeutralLanguage>en-US</NeutralLanguage>
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);GetDocumentationFile</TargetsForTfmSpecificBuildOutput>
     <NuspecFile>$(MSBuildThisFileDirectory)Inkore.UI.WPF.ModernUI.nuspec</NuspecFile>
-    <PackageId>Inkore.UI.WPF.ModernUI</PackageId>
+    <PackageId>$(AssemblyName)</PackageId>
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+	<Title>Inkore.UI.WPF.Modern.Controls</Title>
+	<Version>0.9.8</Version>
+	<Authors>Yimeng Wu, wherewhere, NotYoojun.!</Authors>
+	<Company>Inkore Studios</Company>
+	<Product>Inkore.UI.WPF.Modern.Controls</Product>
+	<Description>The extended controls of Inkore.UI.WPF.Modern, with Modern (Fluent 2) styles and controls for your WPF applications.</Description>
+	<PackageIcon>avater_2_trans_small.png</PackageIcon>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<RepositoryUrl>https://github.com/InkoreStudios/UI.WPF.Modern</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageTags>WPF;C#;Modern;Fluent;UI;Inkore;XAML;Metro;CSharp;dotNET;Controls;Style;UI</PackageTags>
+	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'">
@@ -16,6 +29,17 @@
 
   <ItemGroup Condition="!$(DefineConstants.Contains('NET47_OR_NEWER'))">
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\docs\images\avater_2_trans_small.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

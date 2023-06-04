@@ -4948,21 +4948,25 @@ namespace Inkore.UI.WPF.Modern.Controls
                 if (setPaneTitleHolderFrameworkElementMargin || setPaneToggleButtonMargin)
                 {
                     var thickness = ThicknessHelper.FromLengths(0, 0, 0, 0);
+                    var thicknessToggleButton = ThicknessHelper.FromLengths(4, 2, 4, 2);
 
                     if (ShouldShowBackButton())
                     {
                         if (IsOverlay())
                         {
                             thickness = ThicknessHelper.FromLengths(c_backButtonWidth, 0, 0, 0);
+                            thicknessToggleButton = thickness;
                         }
                         else
                         {
                             thickness = ThicknessHelper.FromLengths(0, c_backButtonHeight, 0, 0);
+                            thicknessToggleButton = thickness;
                         }
                     }
                     else if (ShouldShowCloseButton() && IsOverlay())
                     {
                         thickness = ThicknessHelper.FromLengths(c_backButtonWidth, 0, 0, 0);
+                        thicknessToggleButton = thickness;
                     }
 
                     if (setPaneTitleHolderFrameworkElementMargin)
@@ -4973,7 +4977,7 @@ namespace Inkore.UI.WPF.Modern.Controls
                     else
                     {
                         // The PaneHeader is hosted by PaneToggleButton
-                        paneToggleButton.Margin = thickness;
+                        paneToggleButton.Margin = thicknessToggleButton;
                     }
                 }
             }

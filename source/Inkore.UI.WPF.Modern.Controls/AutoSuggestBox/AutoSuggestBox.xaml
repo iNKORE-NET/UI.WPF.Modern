@@ -40,6 +40,7 @@
                             x:Name="TextBox"
                             Width="{TemplateBinding Width}"
                             Margin="0"
+                            ui:TextBoxHelper.IsEnabled="True"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                             ui:ControlHelper.CornerRadius="{TemplateBinding CornerRadius}"

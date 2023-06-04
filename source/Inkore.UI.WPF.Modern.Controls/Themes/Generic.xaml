@@ -38,6 +38,7 @@
         <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/ToggleSwitch/ToggleSwitch.xaml" />
         <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/TransitioningContentControl/TransitioningContentControl.xaml" />
         <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/TwoPaneView/TwoPaneView.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

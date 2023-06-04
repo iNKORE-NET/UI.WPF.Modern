@@ -244,7 +244,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
         {
             if ((sender as CheckBox).IsChecked == true)
             {
-                nvSample.IsBackButtonVisible = Inkore.UI.WPF.Modern.Controls.NavigationViewBackButtonVisible.Visible;
+                nvSample.IsBackButtonVisible = Inkore.UI.WPF.Modern.Controls.NavigationViewBackButtonVisible.Collapsed;
             }
             else
             {

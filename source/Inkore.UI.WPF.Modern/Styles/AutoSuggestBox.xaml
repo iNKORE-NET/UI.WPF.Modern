@@ -7,6 +7,7 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Inkore.UI.WPF.Modern;component/Styles/Button.xaml" />
+        <ResourceDictionary Source="/Inkore.UI.WPF.Modern;component/Styles/TextBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Thickness x:Key="AutoSuggestBoxTopHeaderMargin">0,0,0,8</Thickness>
@@ -16,7 +17,7 @@
     <sys:Double x:Key="AutoSuggestBoxLeftButtonMargin">3</sys:Double>
     <sys:Double x:Key="AutoSuggestBoxRightButtonMargin">4</sys:Double>
 
-    <Style x:Key="AutoSuggestBoxTextBoxStyle" TargetType="TextBox">
+    <Style x:Key="AutoSuggestBoxTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource DefaultTextBoxStyle}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="MinWidth" Value="{DynamicResource TextControlThemeMinWidth}" />
         <Setter Property="MinHeight" Value="{DynamicResource TextControlThemeMinHeight}" />

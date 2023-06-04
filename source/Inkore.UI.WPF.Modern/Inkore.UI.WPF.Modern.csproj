@@ -8,6 +8,21 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1701;1702;1573;1591</NoWarn>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Title>Inkore.UI.WPF.Modern</Title>
+    <Product>Inkore.UI.WPF.Modern</Product>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>avater_2_trans_small.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/InkoreStudios/UI.WPF.Modern</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/InkoreStudios/UI.WPF.Modern</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>WPF;C#;Modern;Fluent;UI;Inkore;XAML;Metro;CSharp;dotNET;Controls;Style;UI</PackageTags>
+    <Authors>Yimeng Wu, wherewhere, NotYoojun.!</Authors>
+    <Company>Inkore Studios</Company>
+    <Version>0.9.8</Version>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <Description>Modern (Fluent 2) styles and controls for your WPF applications.</Description>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'">
@@ -31,6 +46,21 @@
     <None Remove="Fonts\FluentSystemIcons-Filled.ttf" />
     <None Remove="Fonts\FluentSystemIcons-Regular.ttf" />
     <None Remove="Materials\Acrylic\NoiseAsset_256X256_PNG.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\docs\images\avater_2_trans_small.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

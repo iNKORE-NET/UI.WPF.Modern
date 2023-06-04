@@ -84,15 +84,22 @@
                 </DataTemplate>
             </ui:NavigationView.HeaderTemplate>
             <ui:NavigationView.AutoSuggestBox>
-                <ui:AutoSuggestBox
+				<ui:AutoSuggestBox
                     x:Name="controlsSearchBox"
                     MinWidth="200"
                     VerticalAlignment="Center"
                     x:FieldModifier="public"
                     PlaceholderText="Search"
-                    QueryIcon="Find"
                     QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
-                    TextChanged="OnControlsSearchBoxTextChanged" />
+                    TextChanged="OnControlsSearchBoxTextChanged" >
+					<ui:AutoSuggestBox.QueryIcon>
+						<ui:SymbolIcon Symbol="Find" FontSize="12" RenderTransformOrigin="0.5,0.5">
+							<!--<ui:SymbolIcon.RenderTransform>
+								<ScaleTransform ScaleX="-1"/>
+							</ui:SymbolIcon.RenderTransform>-->
+						</ui:SymbolIcon>
+					</ui:AutoSuggestBox.QueryIcon>
+				</ui:AutoSuggestBox>
             </ui:NavigationView.AutoSuggestBox>
 
             <ui:Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" />
