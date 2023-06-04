@@ -24,6 +24,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inkore.UI.WPF.Modern.Contro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inkore.UI.WPF.Modern.SampleApp", "Inkore.UI.WPF.Modern.SampleApp\Inkore.UI.WPF.Modern.SampleApp.csproj", "{54049F5E-E57B-433E-B316-3C51F25B523D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{38204068-E923-4A66-82B9-BD30B3B825D4}"
+	ProjectSection(SolutionItems) = preProject
+		..\libraries\Windows.Foundation.FoundationContract.winmd = ..\libraries\Windows.Foundation.FoundationContract.winmd
+		..\libraries\Windows.Foundation.UniversalApiContract.winmd = ..\libraries\Windows.Foundation.UniversalApiContract.winmd
+		..\libraries\Windows.WinMD = ..\libraries\Windows.WinMD
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
