@@ -1,8 +1,9 @@
 # Inkore.UI.WPF.Modern
 
 Modern (Fluent 2) styles and controls for your WPF applications.
+Give us a star if you like this!
 
-## Features
+##  Features
 * Modern styles and new features for the majority of the stock WPF controls.
 
 * Light and dark themes that can be easily customized. A high contrast theme is also included.
