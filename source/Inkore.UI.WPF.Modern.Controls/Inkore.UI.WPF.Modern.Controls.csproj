@@ -1,73 +1,89 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
-  <PropertyGroup>
-    <TargetFrameworks>net6.0-windows10.0.18362.0;net452</TargetFrameworks>
-    <UseWPF>true</UseWPF>
-    <NeutralLanguage>en-US</NeutralLanguage>
-    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);GetDocumentationFile</TargetsForTfmSpecificBuildOutput>
-    <NuspecFile>$(MSBuildThisFileDirectory)Inkore.UI.WPF.ModernUI.nuspec</NuspecFile>
-    <PackageId>$(AssemblyName)</PackageId>
-	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-	<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-	<Title>Inkore.UI.WPF.Modern.Controls</Title>
-	<Version>0.9.8</Version>
-	<Authors>Yimeng Wu, wherewhere, NotYoojun.!</Authors>
-	<Company>Inkore Studios</Company>
-	<Product>Inkore.UI.WPF.Modern.Controls</Product>
-	<Description>The extended controls of Inkore.UI.WPF.Modern, with Modern (Fluent 2) styles and controls for your WPF applications.</Description>
-	<PackageIcon>avater_2_trans_small.png</PackageIcon>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<RepositoryUrl>https://github.com/InkoreStudios/UI.WPF.Modern</RepositoryUrl>
-	<RepositoryType>git</RepositoryType>
-	<PackageTags>WPF;C#;Modern;Fluent;UI;Inkore;XAML;Metro;CSharp;dotNET;Controls;Style;UI</PackageTags>
-	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-windows10.0.18362.0;net452</TargetFrameworks>
+		<UseWPF>true</UseWPF>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);GetDocumentationFile</TargetsForTfmSpecificBuildOutput>
+		<NuspecFile>$(MSBuildThisFileDirectory)Inkore.UI.WPF.ModernUI.nuspec</NuspecFile>
+		<PackageId>$(AssemblyName)</PackageId>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	</PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'">
-    <PackageReference Include="Resource.Embedder" Version="2.2.0" PrivateAssets="all" />
-  </ItemGroup>
+	<PropertyGroup>
+		<CsWinRTEmbedded>true</CsWinRTEmbedded>
+		<CsWinRTWindowsMetadata>10.0.18362.0</CsWinRTWindowsMetadata>
+		<CsWinRTIncludes>
+			Windows.Foundation;
+			Windows.UI.Color;
+			Windows.UI.IColors;
+			Windows.UI.ViewManagement.HandPreference;
+			Windows.UI.ViewManagement.IUISettings;
+			Windows.UI.ViewManagement.UIColorType;
+			Windows.UI.ViewManagement.UIElementType;
+			Windows.UI.ViewManagement.UISettings;
+		</CsWinRTIncludes>
+		<CsWinRTExcludes>
+			Windows.Foundation.Diagnostics;
+			Windows.Foundation.PropertyType;
+		</CsWinRTExcludes>
+		<ApplicationIcon>..\..\docs\images\Inkore.ico</ApplicationIcon>
+		<Authors>NotYoojun.!</Authors>
+		<Company>iNKORE! Studios</Company>
+		<Product>Inkore.UI.WPF.Modern</Product>
+		<Version />
+		<Title>$(AssemblyName)</Title>
+		<PackageReadmeFile>..\..\README.md</PackageReadmeFile>
+	</PropertyGroup>
 
-  <ItemGroup Condition="!$(DefineConstants.Contains('NET47_OR_NEWER'))">
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-  </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\docs\images\avater_2_trans_small.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'">
+		<PackageReference Include="Resource.Embedder" Version="2.2.0" PrivateAssets="all" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Inkore.UI.WPF.Modern\Inkore.UI.WPF.Modern.csproj" />
-  </ItemGroup>
+	<ItemGroup Condition="!$(DefineConstants.Contains('NET47_OR_NEWER'))">
+		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="Inkore.UI.WPF.Modern.Controls.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\docs\images\avater_2_trans_small.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
-  <Target Name="GetDocumentationFile">
-    <ItemGroup>
-      <BuildOutputInPackage Include="$(OutputPath)$(AssemblyName).xml" />
-    </ItemGroup>
-  </Target>
+	<ItemGroup>
+		<ProjectReference Include="..\Inkore.UI.WPF.Modern\Inkore.UI.WPF.Modern.csproj" />
+	</ItemGroup>
 
-  <Target Name="SetNuspecProperties" BeforeTargets="GenerateNuspec">
-    <PropertyGroup>
-      <NuspecProperties>$(NuspecProperties);id=$(PackageId)</NuspecProperties>
-      <NuspecProperties>$(NuspecProperties);version=$(PackageVersion)</NuspecProperties>
-      <NuspecProperties>$(NuspecProperties);authors=$(Authors)</NuspecProperties>
-      <NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>
-      <NuspecProperties>$(NuspecProperties);license=$(PackageLicenseExpression)</NuspecProperties>
-      <NuspecProperties>$(NuspecProperties);projectUrl=$(PackageProjectUrl)</NuspecProperties>
-      <NuspecProperties>$(NuspecProperties);tags=$(PackageTags)</NuspecProperties>
-    </PropertyGroup>
-  </Target>
+	<ItemGroup>
+		<None Update="Inkore.UI.WPF.Modern.Controls.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<Target Name="GetDocumentationFile">
+		<ItemGroup>
+			<BuildOutputInPackage Include="$(OutputPath)$(AssemblyName).xml" />
+		</ItemGroup>
+	</Target>
+
+	<Target Name="SetNuspecProperties" BeforeTargets="GenerateNuspec">
+		<PropertyGroup>
+			<NuspecProperties>$(NuspecProperties);id=$(PackageId)</NuspecProperties>
+			<NuspecProperties>$(NuspecProperties);version=$(PackageVersion)</NuspecProperties>
+			<NuspecProperties>$(NuspecProperties);authors=$(Authors)</NuspecProperties>
+			<NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>
+			<NuspecProperties>$(NuspecProperties);license=$(PackageLicenseExpression)</NuspecProperties>
+			<NuspecProperties>$(NuspecProperties);projectUrl=$(PackageProjectUrl)</NuspecProperties>
+			<NuspecProperties>$(NuspecProperties);tags=$(PackageTags)</NuspecProperties>
+		</PropertyGroup>
+	</Target>
 
 </Project>

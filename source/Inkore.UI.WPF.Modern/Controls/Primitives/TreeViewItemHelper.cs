@@ -328,7 +328,7 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
             return (Thickness)treeViewItem.GetValue(IndentationProperty);
         }
 
-        private static void SetIndentation(TreeViewItem treeViewItem, Thickness value)
+        public static void SetIndentation(TreeViewItem treeViewItem, Thickness value)
         {
             treeViewItem.SetValue(IndentationPropertyKey, value);
         }
@@ -339,6 +339,28 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
         }
 
         #endregion
+
+        #region ExpandChevronPadding
+
+        public static readonly DependencyProperty ExpandChevronPaddingProperty =
+            DependencyProperty.RegisterAttached(
+                "ExpandChevronPadding",
+                typeof(Thickness),
+                typeof(TreeViewItemHelper),
+                new PropertyMetadata(new Thickness(14, 0, 14, 0)));
+
+        public static Thickness GetExpandChevronPadding(TreeViewItem treeViewItem)
+        {
+            return (Thickness)treeViewItem.GetValue(ExpandChevronPaddingProperty);
+        }
+
+        public static void SetExpandChevronPadding(TreeViewItem treeViewItem, Thickness value)
+        {
+            treeViewItem.SetValue(ExpandChevronPaddingProperty, value);
+        }
+
+        #endregion
+
 
         private static int GetDepth(TreeViewItem item)
         {

@@ -167,7 +167,19 @@ namespace Inkore.UI.WPF.Modern
         public static readonly string LayerFillColorDefaultKey = "DefaultRepeatButtonStyle";
         public static readonly string LayerFillColorAltKey = "LayerFillColorAlt";
 
+        public static readonly string SystemControlBackgroundChromeMediumLowBrushKey = "SystemControlBackgroundChromeMediumLowBrush";
+        public static readonly string SystemControlBackgroundAltHighBrushKey = "SystemControlBackgroundAltHighBrush";
+      
+        public static readonly string BaseWindowStyle = "BaseWindowStyle";
+        public static readonly string AeroWindowStyle = "AeroWindowStyle";
 
+        public static readonly string DefaultTreeViewItemStyleKey = "DefaultTreeViewItemStyle";
+        public static readonly string DefaultTreeViewStyleKey = "DefaultTreeViewStyle";
+        public static readonly string DefaultToolTipStyleKey = "DefaultToolTipStyle";
+        public static readonly string TabControlPivotStyleKey = "TabControlPivotStyle";
+
+        public static readonly string ToolBarOverflowButtonStyleKey = "ToolBarOverflowButtonStyle";
+        public static readonly string ToolBarThumbStyleKey = "ToolBarThumbStyle";
 
         #endregion
 

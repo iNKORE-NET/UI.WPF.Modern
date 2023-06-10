@@ -20,9 +20,9 @@ using System.Windows.Markup;
 [assembly: AssemblyProduct("Inkore.UI.WPF.Modern")]
 [assembly: AssemblyCopyright("Copyright © iNKORE! Studios 2023")]
 [assembly: AssemblyTrademark("iNKORE! Studios")]
-[assembly: AssemblyVersion("0.9.8.0")]
+[assembly: AssemblyVersion("0.9.9.0")]
 
-[assembly: InternalsVisibleTo("MUXControlsTestApp")]
+//[assembly: InternalsVisibleTo("MUXControlsTestApp")]
 
 [assembly: XmlnsDefinition("https://schemas.animasterstudios.com/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Controls")]
 [assembly: XmlnsDefinition("https://schemas.animasterstudios.com/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Controls.Primitives")]

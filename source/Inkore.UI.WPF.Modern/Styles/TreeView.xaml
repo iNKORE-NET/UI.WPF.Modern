@@ -123,7 +123,7 @@
                                             x:Name="ExpandCollapseChevron"
                                             Grid.Column="1"
                                             Width="Auto"
-                                            Padding="14,0"
+                                            Padding="{TemplateBinding primitives:TreeViewItemHelper.ExpandChevronPadding}"
                                             Background="Transparent"
                                             IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
                                             Opacity="{TemplateBinding primitives:TreeViewItemHelper.GlyphOpacity}"
