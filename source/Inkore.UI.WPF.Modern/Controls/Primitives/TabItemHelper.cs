@@ -245,7 +245,8 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
             var rightCorner = popupRadius.TopRight;
 
             // Assumes 4px curving-out corners, which are hardcoded in the markup
-            var data = $"F1 M0,{height - 1f / scaleFactor}  a 4,4 0 0 0 4,-4  L 4,{leftCorner}  a {leftCorner},{leftCorner} 0 0 1 {leftCorner},-{leftCorner}  l {tabItem.ActualWidth - (leftCorner + rightCorner + 1.0f / scaleFactor)},0  a {rightCorner},{rightCorner} 0 0 1 {rightCorner},{rightCorner}  l 0,{height - (4 + rightCorner + 1.0f / scaleFactor)}  a 4,4 0 0 0 4,4 Z";
+            //var data = $"F1 M0,{height - 1f / scaleFactor}  a 4,4 0 0 0 4,-4  L 4,{leftCorner}  a {leftCorner},{leftCorner} 0 0 1 {leftCorner},-{leftCorner}  l {tabItem.ActualWidth - (leftCorner + rightCorner + 1.0f / scaleFactor)},0  a {rightCorner},{rightCorner} 0 0 1 {rightCorner},{rightCorner}  l 0,{height - (4 + rightCorner + 1.0f / scaleFactor)}  a 4,4 0 0 0 4,4 Z";
+            var data = $"F1 M0,{Math.Round(height - 1f / scaleFactor)}  a 4,4 0 0 0 4,-4  L 4,{leftCorner}  a {leftCorner},{leftCorner} 0 0 1 {leftCorner},-{leftCorner}  l {Math.Round(tabItem.ActualWidth - (leftCorner + rightCorner + 1.0f / scaleFactor))},0  a {rightCorner},{rightCorner} 0 0 1 {rightCorner},{rightCorner}  l 0,{Math.Round(height - (4 + rightCorner + 1.0f / scaleFactor))}  a 4,4 0 0 0 4,4 Z";
 
             var geometry = Geometry.Parse(data);
 
