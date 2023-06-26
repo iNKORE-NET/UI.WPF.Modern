@@ -13,13 +13,17 @@ Give us a star if you like this!
 
 * Targets .NET Framework 6.0. Runs on Windows 7 above, but we recommend Windows 10.0.18362.0 and higher
 
-![Home of the SampleApp (Light theme)](docs/images/screenshot_home.png "Home of the SampleApp (Light theme)")
+   ![Home of the SampleApp (Light theme)](docs/images/screenshot_home.png "Home of the SampleApp (Light theme)")
 
 ## Quick Start
 
 1. Create a new WPF app.
 
-2. Add reference to `Inkore.UI.WPF.Modern.dll` and `Inkore.UI.WPF.Modern.Controls.dll`
+2. Add reference to `Inkore.UI.WPF.Modern.dll` and `Inkore.UI.WPF.Modern.Controls.dll` or install the NuGet package
+
+   ```
+   dotnet add package Inkore.UI.WPF.Modern --version 0.9.10
+   ```
 
 3. Add XML Namespace in `App.xaml` and `MainWindow.xaml`
 
