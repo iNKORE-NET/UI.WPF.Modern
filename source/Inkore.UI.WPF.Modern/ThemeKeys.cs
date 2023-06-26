@@ -164,7 +164,7 @@ namespace Inkore.UI.WPF.Modern
 
         public static readonly string NavigationViewContentBackgroundKey = "NavigationViewContentBackground";
         public static readonly string NavigationViewExpandedPaneBackgroundKey = "NavigationViewExpandedPaneBackground";
-        public static readonly string LayerFillColorDefaultKey = "DefaultRepeatButtonStyle";
+        public static readonly string LayerFillColorDefaultBrushKey = "LayerFillColorDefaultBrush";
         public static readonly string LayerFillColorAltKey = "LayerFillColorAlt";
 
         public static readonly string SystemControlBackgroundChromeMediumLowBrushKey = "SystemControlBackgroundChromeMediumLowBrush";
@@ -180,6 +180,7 @@ namespace Inkore.UI.WPF.Modern
 
         public static readonly string ToolBarOverflowButtonStyleKey = "ToolBarOverflowButtonStyle";
         public static readonly string ToolBarThumbStyleKey = "ToolBarThumbStyle";
+        public static readonly string SystemColorWindowColorKey = "SystemColorWindowColor";
 
         #endregion
 
