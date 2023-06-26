@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows10.0.18362.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Inkore.UI.WPF.Modern.Controls\Inkore.UI.WPF.Modern.Controls.csproj" />
+    <ProjectReference Include="..\..\Inkore.UI.WPF.Modern\Inkore.UI.WPF.Modern.csproj" />
+  </ItemGroup>
+
+</Project>
