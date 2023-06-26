@@ -344,8 +344,12 @@ namespace Inkore.UI.WPF.Modern.Controls
             new PropertyMetadata(0.0, new PropertyChangedCallback(OnVerticalScrollOffsetChanged)));
         private static void OnVerticalScrollOffsetChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            double NewValue = (double)e.NewValue;
+            if (double.IsNaN(NewValue))
+                return;
+
             var smoothScrollViewer = (ScrollInfoAdapter)d;
-            smoothScrollViewer._child.SetVerticalOffset((double)e.NewValue);
+            smoothScrollViewer._child.SetVerticalOffset(NewValue);
         }
 
         internal double HorizontalScrollOffset
