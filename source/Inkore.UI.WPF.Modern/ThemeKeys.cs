@@ -182,6 +182,12 @@ namespace Inkore.UI.WPF.Modern
         public static readonly string ToolBarThumbStyleKey = "ToolBarThumbStyle";
         public static readonly string SystemColorWindowColorKey = "SystemColorWindowColor";
 
+        public static readonly string CardStrokeColorDefaultBrushKey = "CardStrokeColorDefaultBrush";
+        public static readonly string NavigationViewContentMarginKey = "NavigationViewContentMargin";
+        public static readonly string NavigationViewContentGridCornerRadiusKey = "NavigationViewContentGridCornerRadius";
+        public static readonly string NavigationViewContentGridBorderThicknessKey = "NavigationViewContentGridBorderThickness";
+        public static readonly string NavigationViewContentGridBorderBrushKey = "NavigationViewContentGridBorderBrush";
+
         #endregion
 
     }
