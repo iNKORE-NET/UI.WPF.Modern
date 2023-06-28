@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.Controls"
-    xmlns:ui="https://schemas.animasterstudios.com/lib/ui/wpf/modern">
+    xmlns:ui="https://schemas.animasterstudios.com/lib/ui/wpf/modern" xmlns:common="clr-namespace:Inkore.UI.WPF.Modern.Controls.Common">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary>
             <ui:CornerRadiusFilterConverter x:Key="BottomCornerRadiusDoubleValueConverter" Filter="Bottom" />
@@ -73,11 +73,15 @@
                                             HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                             IsTabStop="False"
                                             VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                            <ui:ScrollViewerEx.Resources>
+                                                <common:CornerRadiusHalfConverter x:Key="CornerConverter" Mode="UpperHalf"/>
+                                            </ui:ScrollViewerEx.Resources>
                                             <Border
                                                 Padding="{DynamicResource ContentDialogPadding}"
                                                 Background="{DynamicResource ContentDialogTopOverlay}"
                                                 BorderBrush="{DynamicResource ContentDialogSeparatorBorderBrush}"
-                                                BorderThickness="{DynamicResource ContentDialogSeparatorThickness}">
+                                                BorderThickness="{DynamicResource ContentDialogSeparatorThickness}"
+                                                CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource CornerConverter}}">
                                                 <Grid>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto" />

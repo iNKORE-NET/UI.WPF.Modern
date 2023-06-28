@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inkore.UI.WPF.Modern.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,25 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private async void ComboBox_Selected(object sender, RoutedEventArgs e)
+        {
+            selec();
+        }
+
+        private async void selec()
+        {
+            ContentDialog dialog = new ContentDialog();
+            dialog.PrimaryButtonText = "OK";
+            dialog.SecondaryButtonText = "Cancel";
+            await dialog.ShowAsync();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selec();
+
         }
     }
 }

@@ -12,7 +12,7 @@
      ui:TitleBar.IsBackButtonVisible="False"
      ui:WindowHelper.UseModernWindowStyle="True">
     <Grid>
-        <ComboBox>
+        <ComboBox SelectionChanged="ComboBox_SelectionChanged">
             <ComboBoxItem Content="Item1"/>
             <ComboBoxItem Content="Item2"/>
             <ComboBoxItem Content="Item3"/>
