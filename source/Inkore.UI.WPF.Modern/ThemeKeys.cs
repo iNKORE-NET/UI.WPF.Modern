@@ -6,65 +6,20 @@ using System.Threading.Tasks;
 
 namespace Inkore.UI.WPF.Modern
 {
-    public static class ThemeKeys
+    public static partial class ThemeKeys
     {
-        #region Resources Keys
-
-        public static readonly string SystemAccentColorDark1BrushKey = "SystemAccentColorDark1Brush";
-        public static readonly string SystemAccentColorDark2BrushKey = "SystemAccentColorDark2Brush";
-        public static readonly string SystemAccentColorDark3BrushKey = "SystemAccentColorDark3Brush";
-        public static readonly string SystemAccentColorLight1BrushKey = "SystemAccentColorLight1Brush";
-        public static readonly string SystemAccentColorLight2BrushKey = "SystemAccentColorLight2Brush";
-        public static readonly string SystemAccentColorLight3BrushKey = "SystemAccentColorLight3Brush";
-        public static readonly string SystemAltHighColorKey = "SystemAltHighColor";
-        public static readonly string SystemAltLowColorKey = "SystemAltLowColor";
-        public static readonly string SystemAltMediumColorKey = "SystemAltMediumColor";
-        public static readonly string SystemAltMediumHighColorKey = "SystemAltMediumHighColor";
-        public static readonly string SystemAltMediumLowColorKey = "SystemAltMediumLowColor";
-        public static readonly string SystemBaseHighColorKey = "SystemBaseHighColor";
-        public static readonly string SystemBaseLowColorKey = "SystemBaseLowColor";
-        public static readonly string SystemBaseMediumColorKey = "SystemBaseMediumColor";
-        public static readonly string SystemBaseMediumHighColorKey = "SystemBaseMediumHighColor";
-        public static readonly string SystemBaseMediumLowColorKey = "SystemBaseMediumLowColor";
-        public static readonly string SystemChromeAltLowColorKey = "SystemChromeAltLowColor";
-        public static readonly string SystemChromeBlackHighColorKey = "SystemChromeBlackHighColor";
-        public static readonly string SystemChromeBlackLowColorKey = "SystemChromeBlackLowColor";
-        public static readonly string SystemChromeBlackMediumLowColorKey = "SystemChromeBlackMediumLowColor";
-        public static readonly string SystemChromeBlackMediumColorKey = "SystemChromeBlackMediumColor";
-        public static readonly string SystemChromeDisabledHighColorKey = "SystemChromeDisabledHighColor";
-        public static readonly string SystemErrorTextColorKey = "SystemErrorTextColor";
-
-        public static readonly string SystemControlBackgroundAccentBrushKey = "SystemControlBackgroundAccentBrush";
-        public static readonly string SystemControlDisabledAccentBrushKey = "SystemControlDisabledAccentBrush";
+        #region Manually Added
 
         public static readonly string ButtonRevealStyleKey = "ButtonRevealStyle";
         public static readonly string ButtonAccentRevealStyleKey = "ButtonAccentRevealStyle";
         public static readonly string ButtonRoundRevealStyleKey = "ButtonRoundRevealStyle";
         public static readonly string ButtonRoundAccentRevealStyleKey = "ButtonRoundAccentRevealStyle";
 
-
-        public static readonly string AcrylicBackgroundFillColorDefaultBrushKey = "AcrylicBackgroundFillColorDefaultBrush";
-        public static readonly string AcrylicInAppFillColorDefaultBrushKey = "AcrylicInAppFillColorDefaultBrush";
-        public static readonly string SystemControlAcrylicElementBrushKey = "SystemControlAcrylicElementBrush";
-        public static readonly string ApplicationPageBackgroundThemeBrushKey = "ApplicationPageBackgroundThemeBrush";
-
         public static readonly string SystemBaseHighColorBrushKey = "SystemBaseHighColorBrush";
         public static readonly string ContentControlThemeFontFamilyKey = "ContentControlThemeFontFamily";
-        public static readonly string ControlContentThemeFontSizeKey = "ControlContentThemeFontSize";
         public static readonly string SystemBaseMediumHighColorBrushKey = "SystemBaseMediumHighColorBrush";
 
-        public static readonly string ControlCornerRadiusKey = "ControlCornerRadius";
-        public static readonly string OverlayCornerRadiusKey = "OverlayCornerRadius";
         public static readonly string CheckBoxBorderThemeThicknessKey = "CheckBoxBorderThemeThickness";
-        public static readonly string RadioButtonBorderThemeThicknessKey = "RadioButtonBorderThemeThickness";
-        public static readonly string ButtonBorderThemeThicknessKey = "ButtonBorderThemeThickness";
-        public static readonly string CalendarDatePickerBorderThemeThicknessKey = "CalendarDatePickerBorderThemeThickness";
-        public static readonly string TimePickerBorderThemeThicknessKey = "TimePickerBorderThemeThickness";
-        public static readonly string ToggleSwitchOuterBorderStrokeThicknessKey = "ToggleSwitchOuterBorderStrokeThickness";
-        public static readonly string RepeatButtonBorderThemeThicknessKey = "RepeatButtonBorderThemeThickness";
-        public static readonly string ToggleButtonBorderThemeThicknessKey = "ToggleButtonBorderThemeThickness";
-        public static readonly string TextControlBorderThemeThicknessKey = "TextControlBorderThemeThickness";
-        public static readonly string PersonPictureEllipseBadgeStrokeThicknessKey = "PersonPictureEllipseBadgeStrokeThickness";
         public static readonly string ComboBoxBorderThemeThicknessKey = "ComboBoxBorderThemeThickness";
         public static readonly string NumberBoxSpinButtonBorderThicknessKey = "NumberBoxSpinButtonBorderThickness";
 
@@ -99,7 +54,6 @@ namespace Inkore.UI.WPF.Modern
         public static readonly string EllipsisButtonKey = "EllipsisButton";
         public static readonly string CommandBarFlyoutEllipsisButtonStyleKey = "CommandBarFlyoutEllipsisButtonStyle";
 
-        public static readonly string MenuFlyoutScrollerMarginKey = "MenuFlyoutScrollerMargin";
         public static readonly string ContextMenuStyleBaseKey = "ContextMenuStyleBase";
         public static readonly string DefaultContextMenuStyleKey = "DefaultContextMenuStyle";
         public static readonly string TextControlContextMenuKey = "TextControlContextMenu";
@@ -161,14 +115,6 @@ namespace Inkore.UI.WPF.Modern
 
         public static readonly string DefaultToggleButtonStyleKey = "DefaultToggleButtonStyle";
         public static readonly string DefaultRepeatButtonStyleKey = "DefaultRepeatButtonStyle";
-
-        public static readonly string NavigationViewContentBackgroundKey = "NavigationViewContentBackground";
-        public static readonly string NavigationViewExpandedPaneBackgroundKey = "NavigationViewExpandedPaneBackground";
-        public static readonly string LayerFillColorDefaultBrushKey = "LayerFillColorDefaultBrush";
-        public static readonly string LayerFillColorAltKey = "LayerFillColorAlt";
-
-        public static readonly string SystemControlBackgroundChromeMediumLowBrushKey = "SystemControlBackgroundChromeMediumLowBrush";
-        public static readonly string SystemControlBackgroundAltHighBrushKey = "SystemControlBackgroundAltHighBrush";
       
         public static readonly string BaseWindowStyle = "BaseWindowStyle";
         public static readonly string AeroWindowStyle = "AeroWindowStyle";
@@ -182,11 +128,9 @@ namespace Inkore.UI.WPF.Modern
         public static readonly string ToolBarThumbStyleKey = "ToolBarThumbStyle";
         public static readonly string SystemColorWindowColorKey = "SystemColorWindowColor";
 
-        public static readonly string CardStrokeColorDefaultBrushKey = "CardStrokeColorDefaultBrush";
         public static readonly string NavigationViewContentMarginKey = "NavigationViewContentMargin";
         public static readonly string NavigationViewContentGridCornerRadiusKey = "NavigationViewContentGridCornerRadius";
         public static readonly string NavigationViewContentGridBorderThicknessKey = "NavigationViewContentGridBorderThickness";
-        public static readonly string NavigationViewContentGridBorderBrushKey = "NavigationViewContentGridBorderBrush";
 
         #endregion
 
