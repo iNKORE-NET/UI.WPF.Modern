@@ -230,10 +230,10 @@ namespace Inkore.UI.WPF.Modern.Controls
             m_selectionModelSource.Add(null);
 
             var items = new ObservableCollection<object>();
-            SetValue(MenuItemsPropertyKey, items);
+            SetValue(MenuItemsProperty, items);
 
             var footerItems = new ObservableCollection<object>();
-            SetValue(FooterMenuItemsPropertyKey, footerItems);
+            SetValue(FooterMenuItemsProperty, footerItems);
 
             var weakThis = new WeakReference<NavigationView>(this);
             m_topDataProvider.OnRawDataChanged(

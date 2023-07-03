@@ -47,13 +47,13 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register(
                 nameof(Icon),
-                typeof(IconElement),
+                typeof(object),
                 typeof(NavigationViewItemPresenter),
                 null);
 
-        public IconElement Icon
+        public object Icon
         {
-            get => (IconElement)GetValue(IconProperty);
+            get => (object)GetValue(IconProperty);
             set => SetValue(IconProperty, value);
         }
 

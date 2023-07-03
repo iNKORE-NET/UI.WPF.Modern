@@ -14,13 +14,13 @@ namespace Inkore.UI.WPF.Modern.Controls
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register(
                 nameof(Icon),
-                typeof(IconElement),
+                typeof(object),
                 typeof(NavigationViewItem),
                 new PropertyMetadata(OnIconPropertyChanged));
 
-        public IconElement Icon
+        public object Icon
         {
-            get => (IconElement)GetValue(IconProperty);
+            get => (object)GetValue(IconProperty);
             set => SetValue(IconProperty, value);
         }
 

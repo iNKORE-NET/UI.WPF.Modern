@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -102,19 +103,16 @@ namespace Inkore.UI.WPF.Modern.Controls
 
         #region FooterMenuItems
 
-        private static readonly DependencyPropertyKey FooterMenuItemsPropertyKey =
-            DependencyProperty.RegisterReadOnly(
+        private static readonly DependencyProperty FooterMenuItemsProperty =
+            DependencyProperty.Register(
                 nameof(FooterMenuItems),
-                typeof(IList),
+                typeof(ObservableCollection<object>),
                 typeof(NavigationView),
                 new PropertyMetadata(OnFooterMenuItemsPropertyChanged));
 
-        private static readonly DependencyProperty FooterMenuItemsProperty =
-            FooterMenuItemsPropertyKey.DependencyProperty;
-
-        public IList FooterMenuItems
+        public ObservableCollection<object> FooterMenuItems
         {
-            get => (IList)GetValue(FooterMenuItemsProperty);
+            get => (ObservableCollection<object>)GetValue(FooterMenuItemsProperty);
         }
 
         private static void OnFooterMenuItemsPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
@@ -429,19 +427,17 @@ namespace Inkore.UI.WPF.Modern.Controls
 
         #region MenuItems
 
-        private static readonly DependencyPropertyKey MenuItemsPropertyKey =
-            DependencyProperty.RegisterReadOnly(
+        public static readonly DependencyProperty MenuItemsProperty =
+            DependencyProperty.Register(
                 nameof(MenuItems),
-                typeof(IList),
+                typeof(ObservableCollection<object>),
                 typeof(NavigationView),
                 new PropertyMetadata(OnMenuItemsPropertyChanged));
 
-        private static readonly DependencyProperty MenuItemsProperty =
-            MenuItemsPropertyKey.DependencyProperty;
-
-        public IList MenuItems
+        public ObservableCollection<object> MenuItems
         {
-            get => (IList)GetValue(MenuItemsProperty);
+            get => (ObservableCollection<object>)GetValue(MenuItemsProperty);
+            set { SetValue(MenuItemsProperty, value); }
         }
 
         private static void OnMenuItemsPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
