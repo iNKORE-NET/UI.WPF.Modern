@@ -94,5 +94,14 @@
             <ComboBoxItem Content="Item19"/>
             <ComboBoxItem Content="Item20"/>
         </ComboBox>
+        <ui:NavigationView>
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem x:Name="item" Content="hello">
+                    <ui:NavigationViewItem.Icon>
+                        <Rectangle Width="20" Height="20" Fill="CornflowerBlue" Stroke="#FF005A94" Margin="-5"/>
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+            </ui:NavigationView.MenuItems>
+        </ui:NavigationView>
     </Grid>
 </Window>
