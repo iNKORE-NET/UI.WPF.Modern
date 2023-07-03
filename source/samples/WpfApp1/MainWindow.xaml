@@ -103,5 +103,8 @@
                 </ui:NavigationViewItem>
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>
+        <Viewbox>
+            <ui:InfoBadge Value="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Viewbox>
     </Grid>
 </Window>
