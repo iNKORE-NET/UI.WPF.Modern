@@ -106,13 +106,13 @@ namespace Inkore.UI.WPF.Modern.Controls
         private static readonly DependencyProperty FooterMenuItemsProperty =
             DependencyProperty.Register(
                 nameof(FooterMenuItems),
-                typeof(ObservableCollection<object>),
+                typeof(IList),
                 typeof(NavigationView),
                 new PropertyMetadata(OnFooterMenuItemsPropertyChanged));
 
-        public ObservableCollection<object> FooterMenuItems
+        public IList FooterMenuItems
         {
-            get => (ObservableCollection<object>)GetValue(FooterMenuItemsProperty);
+            get => (IList)GetValue(FooterMenuItemsProperty);
         }
 
         private static void OnFooterMenuItemsPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
@@ -430,13 +430,13 @@ namespace Inkore.UI.WPF.Modern.Controls
         public static readonly DependencyProperty MenuItemsProperty =
             DependencyProperty.Register(
                 nameof(MenuItems),
-                typeof(ObservableCollection<object>),
+                typeof(IList),
                 typeof(NavigationView),
                 new PropertyMetadata(OnMenuItemsPropertyChanged));
 
-        public ObservableCollection<object> MenuItems
+        public IList MenuItems
         {
-            get => (ObservableCollection<object>)GetValue(MenuItemsProperty);
+            get => (IList)GetValue(MenuItemsProperty);
             set { SetValue(MenuItemsProperty, value); }
         }
 

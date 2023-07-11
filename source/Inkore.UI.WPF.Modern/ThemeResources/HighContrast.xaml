@@ -1318,8 +1318,8 @@
     <sys:Double x:Key="InfoBadgeIconHeight">8</sys:Double>
     <sys:Double x:Key="InfoBadgeIconWidth">12</sys:Double>
     <Thickness x:Key="InfoBadgePadding">0,0,0,0</Thickness>
-    <Thickness x:Key="IconInfoBadgeFontIconMargin">4,0,4,2</Thickness>
-    <Thickness x:Key="ValueInfoBadgeTextMargin">4,0,4,2</Thickness>
+    <Thickness x:Key="IconInfoBadgeFontIconMargin">4,2,4,2</Thickness>
+    <Thickness x:Key="ValueInfoBadgeTextMargin">4,2,4,2</Thickness>
     <Thickness x:Key="IconInfoBadgeIconMargin">4,4,4,4</Thickness>
 
     <!--  Resources for InfoBar  -->
