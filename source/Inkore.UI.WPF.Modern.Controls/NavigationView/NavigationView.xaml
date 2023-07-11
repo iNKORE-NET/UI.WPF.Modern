@@ -93,16 +93,17 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <ui:ContentPresenterEx
-                                    x:Name="IconBox"
+                                <Viewbox
                                     Height="{DynamicResource NavigationViewItemOnLeftIconBoxHeight}"
-                                    Width="{DynamicResource NavigationViewItemOnLeftIconBoxHeight}"
                                     Margin="{DynamicResource NavigationViewItemOnLeftIconBoxMargin}"
-                                    HorizontalAlignment="Center"
-                                    Content="{TemplateBinding Icon}"
-                                    Foreground="{TemplateBinding Foreground}" ClipToBounds="False">
-                                </ui:ContentPresenterEx>
-
+                                    HorizontalAlignment="Center">
+                                    <ui:ContentPresenterEx
+                                        x:Name="IconBox"
+                                        Content="{TemplateBinding Icon}"
+                                        Foreground="{TemplateBinding Foreground}" ClipToBounds="False">
+                                    </ui:ContentPresenterEx>
+                                </Viewbox>
+                               
                                 <!--  Padding="{TemplateBinding Padding}"  -->
                                 <ui:ContentPresenterEx
                                     x:Name="ContentPresenter"
