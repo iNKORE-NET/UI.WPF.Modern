@@ -4,7 +4,7 @@ Don't forget to add the theme resources to your Application resources in App.xam
 
     <Application
         ...
-        xmlns:ui="https://schemas.animasterstudios.com/lib/ui/wpf/modern">
+        xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern">
         <Application.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
@@ -21,7 +21,7 @@ To enable themed style for a window, set WindowHelper.UseModernWindowStyle to tr
 
     <Window
         ...
-        xmlns:ui="https://schemas.animasterstudios.com/lib/ui/wpf/modern"
+        xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern"
         ui:WindowHelper.UseModernWindowStyle="True">
         <!-- Window content here -->
     </Window>

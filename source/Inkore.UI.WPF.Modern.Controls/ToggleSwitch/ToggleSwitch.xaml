@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.Controls"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:ui="https://schemas.animasterstudios.com/lib/ui/wpf/modern">
+    xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern">
 
     <Thickness x:Key="ToggleSwitchTopHeaderMargin">0,0,0,4</Thickness>
     <sys:Double x:Key="ToggleSwitchPreContentMargin">10</sys:Double>

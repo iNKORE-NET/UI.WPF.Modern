@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1" xmlns:ui="https://schemas.animasterstudios.com/lib/ui/wpf/modern"
+        xmlns:local="clr-namespace:WpfApp1" xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         ui:ThemeManager.IsThemeAware="True"
