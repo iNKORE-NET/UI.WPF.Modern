@@ -1390,8 +1390,8 @@
     <sys:Double x:Key="InfoBadgeIconHeight">8</sys:Double>
     <sys:Double x:Key="InfoBadgeIconWidth">12</sys:Double>
     <Thickness x:Key="InfoBadgePadding">0,0,0,0</Thickness>
-    <Thickness x:Key="IconInfoBadgeFontIconMargin">4,0,4,2</Thickness>
-    <Thickness x:Key="ValueInfoBadgeTextMargin">4,0,4,2</Thickness>
+    <Thickness x:Key="IconInfoBadgeFontIconMargin">4,2,4,2</Thickness>
+    <Thickness x:Key="ValueInfoBadgeTextMargin">4,2,4,2</Thickness>
     <Thickness x:Key="IconInfoBadgeIconMargin">4,4,4,4</Thickness>
 
     <!--  Resources for InfoBar  -->
@@ -2353,7 +2353,7 @@
             <ScaleTransform CenterY="0.5" ScaleY="-1" />
         </LinearGradientBrush.RelativeTransform>
         <LinearGradientBrush.GradientStops>
-            <GradientStop Offset="1.0" Color="{m:ThemeResource SystemAccentColorLight2}" />
+            <GradientStop Offset="1.0" Color="{Binding Color, Source={StaticResource SystemAccentColorLight2Brush}}" />
             <GradientStop Offset="1.0" Color="{m:StaticColor ControlStrokeColorDefault}" />
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
