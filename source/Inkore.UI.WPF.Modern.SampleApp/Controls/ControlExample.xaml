@@ -5,7 +5,7 @@
     xmlns:controls="clr-namespace:Inkore.UI.WPF.Modern.SampleApp.Controls"
     xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.SampleApp"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern">
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
 
     <common:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
 

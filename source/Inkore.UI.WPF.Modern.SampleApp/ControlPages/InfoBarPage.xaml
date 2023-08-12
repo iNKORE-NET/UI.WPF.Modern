@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.SampleApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     Title="InfoBar Page"
     d:DesignHeight="450"
     d:DesignWidth="800"

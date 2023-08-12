@@ -28,7 +28,7 @@ Give us a star if you like this!
 3. Add XML Namespace in `App.xaml` and `MainWindow.xaml`
 
     ```xaml
-    xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     ```
 
 4. Add theme resources in the `Application.Resources` section of `App.xaml`
