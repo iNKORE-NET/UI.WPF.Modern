@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        ui:ThemeManager.IsThemeAware="True"
+        ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
      ui:TitleBar.ExtendViewIntoTitleBar="False"    
      ui:WindowHelper.SystemBackdropType="Mica"
      ui:TitleBar.IsBackButtonVisible="False"
