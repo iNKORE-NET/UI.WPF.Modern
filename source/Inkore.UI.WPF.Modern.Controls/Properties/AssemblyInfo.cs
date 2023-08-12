@@ -24,5 +24,5 @@ using System.Windows.Markup;
 
 //[assembly: InternalsVisibleTo("MUXControlsTestApp")]
 
-[assembly: XmlnsDefinition("https://schemas.animasterstudios.com/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Controls")]
-[assembly: XmlnsDefinition("https://schemas.animasterstudios.com/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Controls.Primitives")]
+[assembly: XmlnsDefinition("https://schemas.inkore.net/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Controls")]
+[assembly: XmlnsDefinition("https://schemas.inkore.net/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Controls.Primitives")]

@@ -7,7 +7,7 @@
     xmlns:presets="clr-namespace:Inkore.UI.WPF.Modern.SampleApp.Presets"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:ui="https://schemas.animasterstudios.com/lib/ui/wpf/modern"
+    xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern"
     StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>

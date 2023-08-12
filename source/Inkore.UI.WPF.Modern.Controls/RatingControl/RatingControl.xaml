@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.Controls"
-    xmlns:ui="https://schemas.animasterstudios.com/lib/ui/wpf/modern">
+    xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern">
 
     <Style TargetType="local:RatingControl">
         <Setter Property="Height" Value="32" />

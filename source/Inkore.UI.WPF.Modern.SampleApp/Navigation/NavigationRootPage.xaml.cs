@@ -157,7 +157,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp
             {
                 var itemGroup = new NavigationViewItem() { Content = group.Title, Tag = group.UniqueId, DataContext = group, Icon = GetIcon(group.ImageIconPath) };
 
-                var groupMenuFlyoutItem = new MenuItem() { Header = $"Copy Link to {group.Title} Samples", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = group };
+                var groupMenuFlyoutItem = new MenuItem() { Header = $"Copy Link to {group.Title} Samples", Icon = new FontIcon() { Glyph = "\uE8C8", FontSize = 16 }, Tag = group };
                 groupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
                 itemGroup.ContextMenu = new ContextMenu() { Items = { groupMenuFlyoutItem } };
 
@@ -167,7 +167,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp
                 {
                     var itemInGroup = new NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item, Icon = GetIcon(item.ImageIconPath) };
 
-                    var itemInGroupMenuFlyoutItem = new MenuItem() { Header = $"Copy Link to {item.Title} Sample", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
+                    var itemInGroupMenuFlyoutItem = new MenuItem() { Header = $"Copy Link to {item.Title} Sample", Icon = new FontIcon() { Glyph = "\uE8C8", FontSize = 16 }, Tag = item };
                     itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
                     itemInGroup.ContextMenu = new ContextMenu() { Items = { itemInGroupMenuFlyoutItem } };
 
@@ -220,7 +220,8 @@ namespace Inkore.UI.WPF.Modern.SampleApp
                         (IconElement)new FontIcon()
                         {
                             // FontFamily = new FontFamily("Segoe MDL2 Assets"),
-                            Glyph = imagePath
+                            Glyph = imagePath,
+                            FontSize = 16
                         };
         }
 

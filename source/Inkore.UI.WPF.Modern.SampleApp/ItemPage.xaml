@@ -8,7 +8,7 @@
     xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.SampleApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:str="clr-namespace:Inkore.UI.WPF.Modern.SampleApp.Properties"
-    xmlns:ui="https://schemas.animasterstudios.com/lib/ui/wpf/modern"
+    xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern"
     Title="ItemPage"
     d:DataContext="{d:DesignInstance Type=datamodel:ControlInfoDataItem}"
     d:DesignHeight="450"
