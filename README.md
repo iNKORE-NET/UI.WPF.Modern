@@ -22,7 +22,7 @@ Give us a star if you like this!
 2. Add reference to `Inkore.UI.WPF.Modern.dll` and `Inkore.UI.WPF.Modern.Controls.dll` or install the NuGet package
 
    ```
-   dotnet add package Inkore.UI.WPF.Modern --version 0.9.10
+   dotnet add package Inkore.UI.WPF.Modern --version 0.9.15
    ```
 
 3. Add XML Namespace in `App.xaml` and `MainWindow.xaml`
