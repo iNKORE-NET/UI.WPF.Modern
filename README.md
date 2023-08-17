@@ -13,7 +13,7 @@ Give us a star if you like this!
 
 * Targets .NET Framework 6.0. Runs on Windows 7 above, but we recommend Windows 10.0.18362.0 and higher
 
-   ![Home of the SampleApp (Light theme)](docs/images/screenshot_home.png "Home of the SampleApp (Light theme)")
+   ![Home of the SampleApp (Light theme)](materials/docs/images/screenshot_home.png "Home of the SampleApp (Light theme)")
 
 ## Quick Start
 
