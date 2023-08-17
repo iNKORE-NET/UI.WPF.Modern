@@ -53,8 +53,8 @@ namespace Inkore.UI.WPF.Modern.Controls
 
         public bool RaiseHyperlinkClicks
         {
-            get => (bool)GetValue(NavigateUriProperty);
-            set => SetValue(NavigateUriProperty, value);
+            get => (bool)GetValue(RaiseHyperlinkClicksProperty);
+            set => SetValue(RaiseHyperlinkClicksProperty, value);
         }
 
 
@@ -111,7 +111,10 @@ namespace Inkore.UI.WPF.Modern.Controls
                     peer.RaiseAutomationEvent(AutomationEvents.InvokePatternOnInvoked);
             }
 
-            m_hyperlink.DoClick();
+            if (RaiseHyperlinkClicks)
+            {
+                m_hyperlink.DoClick();
+            }
             base.OnClick();
         }
 
