@@ -29,7 +29,7 @@
 			Windows.Foundation.Diagnostics;
 			Windows.Foundation.PropertyType;
 		</CsWinRTExcludes>
-		<ApplicationIcon>..\..\docs\images\Inkore.ico</ApplicationIcon>
+		<ApplicationIcon>..\..\materials\images\Inkore.ico</ApplicationIcon>
 		<Authors>NotYoojun.!</Authors>
 		<Company>iNKORE! Studios</Company>
 		<Product>Inkore.UI.WPF.Modern</Product>
