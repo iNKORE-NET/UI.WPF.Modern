@@ -1,4 +1,6 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
+﻿using Inkore.UI.WPF.Modern;
+using Inkore.UI.WPF.Modern.Controls;
+using Inkore.UI.WPF.Modern.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +45,18 @@ namespace WpfApp1
         {
             selec();
 
+        }
+
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ThemeManager.Current.ApplicationTheme != ApplicationTheme.Dark)
+                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
+            else
+            {
+                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
+            }
+
+            //WindowHelper.ApplyDarkMode(this);
         }
     }
 }

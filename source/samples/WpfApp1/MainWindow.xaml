@@ -103,8 +103,6 @@
                 </ui:NavigationViewItem>
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>
-        <Viewbox>
-            <ui:InfoBadge Value="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Viewbox>
+        <ui:HyperlinkButton Content="test" Click="HyperlinkButton_Click"/>
     </Grid>
 </Window>
