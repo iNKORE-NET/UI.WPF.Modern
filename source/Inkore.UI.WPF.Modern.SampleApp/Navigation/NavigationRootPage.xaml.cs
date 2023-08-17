@@ -221,7 +221,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp
                         {
                             // FontFamily = new FontFamily("Segoe MDL2 Assets"),
                             Glyph = imagePath,
-                            //FontSize = 16
+                            FontSize = 16
                         };
         }
 
