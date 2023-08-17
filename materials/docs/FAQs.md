@@ -15,7 +15,11 @@
 
 - This is because the font `Segoe Fluent Icons` is missing. To solve this problem, just directly install this font to your computer.
 
-   这是因为系统缺少 'Segoe Fluent Icons' 字体。要解决此问题，安装该字体即可。单击上方链接下载 SegoeIcons.ttf 文件。
+   这是因为系统缺少 'Segoe Fluent Icons' 字体。要解决此问题，安装该字体即可。
+   
+1. Download [`SegoeIcons.ttf`](https://github.com/InkoreStudios/UI.WPF.Modern/raw/main/assets/fonts/SegoeIcons.ttf) to your computer.
+
+   单击上方链接下载 SegoeIcons.ttf 文件。
 
 2. Open the file and click 'Install'.
 

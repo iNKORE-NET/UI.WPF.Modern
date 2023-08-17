@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
-     ui:TitleBar.ExtendViewIntoTitleBar="False"    
+     ui:TitleBar.ExtendViewIntoTitleBar="False"   
      ui:WindowHelper.SystemBackdropType="Mica"
      ui:TitleBar.IsBackButtonVisible="False"
      ui:WindowHelper.UseModernWindowStyle="True">
@@ -96,13 +96,13 @@
         </ComboBox>
         <ui:NavigationView>
             <ui:NavigationView.MenuItems>
-                <ui:NavigationViewItem x:Name="item" Content="hello">
+                <ui:NavigationViewItem Content="Home">
                     <ui:NavigationViewItem.Icon>
-                        <Rectangle Width="20" Height="20" Fill="CornflowerBlue" Stroke="#FF005A94" Margin="-5"/>
+                        <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Home}" FontSize="16"/>
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>
-        <ui:HyperlinkButton Content="test" Click="HyperlinkButton_Click"/>
+        <ui:HyperlinkButton Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click"/>
     </Grid>
 </Window>
