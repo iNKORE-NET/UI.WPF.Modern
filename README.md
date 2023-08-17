@@ -4,7 +4,7 @@ Modern (Fluent 2) styles and controls for your WPF applications.
 
 Give us a star if you like this!
 
-##  Features
+# ✨ Features
 
 * Modern styles and new features for the majority of the stock WPF controls.
 
@@ -16,14 +16,14 @@ Give us a star if you like this!
 
    ![Home of the SampleApp (Light theme)](materials/docs/images/screenshot_home.png "Home of the SampleApp (Light theme)")
 
-## How to use
+# 🤔 How to use
 
 - [Quick Start](https://github.com/InkoreStudios/UI.WPF.Modern/blob/main/materials/docs/Quick%20Start.md): This shows you the first steps how to use this library to set up your project
 
 - [FAQs](https://github.com/InkoreStudios/UI.WPF.Modern/blob/main/materials/docs/FAQs.md): Here are some frequently asked questions and answers for you to look up for.
 
-## Contribution
+# 🙋🏻‍♂️ Contribution
 
-Want to contribute? The team encourages community feedback and contributions.
+- Want to contribute? The team encourages community feedback and contributions.
 
-If the project is not working properly, please file a report. We welcome any issues submitted on GitHub.
+- If the project is not working properly, please file a report. We welcome any issues submitted on GitHub.
