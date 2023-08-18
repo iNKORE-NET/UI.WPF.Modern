@@ -134,5 +134,16 @@ namespace Inkore.UI.WPF.Modern
 
         #endregion
 
+        #region Fonts.xaml
+
+        public static readonly string SegoeUISymbolKey = "SegoeUISymbol";
+        public static readonly string SegoeMDL2AssetsKey = "SegoeMDL2Assets";
+        public static readonly string SegoeFluentIconsKey = "SegoeFluentIcons";
+        public static readonly string FluentSystemIconsKey = "FluentSystemIcons";
+        public static readonly string FluentSystemIconsFilledKey = "FluentSystemIconsFilled";
+
+
+        #endregion
+
     }
 }
