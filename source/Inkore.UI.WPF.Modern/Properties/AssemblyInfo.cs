@@ -20,7 +20,7 @@ using System.Windows.Markup;
 [assembly: AssemblyProduct("Inkore.UI.WPF.Modern")]
 [assembly: AssemblyCopyright("Copyright © iNKORE! Studios 2023")]
 [assembly: AssemblyTrademark("iNKORE! Studios")]
-[assembly: AssemblyVersion("0.9.15.0")]
+[assembly: AssemblyVersion("0.9.16.0")]
 [assembly: AssemblyCulture("")]
 
 [assembly: InternalsVisibleTo("Inkore.UI.WPF.Modern.Controls")]
