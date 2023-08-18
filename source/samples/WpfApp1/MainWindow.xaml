@@ -104,5 +104,27 @@
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>
         <ui:HyperlinkButton Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click"/>
+        <ui:CommandBar>
+            <ui:AppBarButton Label="Aaaa" IsCompact="True">
+                <ui:AppBarButton.Icon>
+                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
+                </ui:AppBarButton.Icon>
+            </ui:AppBarButton>
+            <ui:AppBarButton Label="Accept" ChevronStyle="Down">
+                <ui:AppBarButton.Icon>
+                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
+                </ui:AppBarButton.Icon>
+                <ui:AppBarButton.Flyout>
+                    <ui:MenuFlyout>
+                        <MenuItem Header="Confirm"/>
+                    </ui:MenuFlyout>
+                </ui:AppBarButton.Flyout>
+            </ui:AppBarButton>
+            <ui:AppBarButton Label="Aaaa" LabelPosition="Collapsed" IsCompact="True">
+                <ui:AppBarButton.Icon>
+                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
+                </ui:AppBarButton.Icon>
+            </ui:AppBarButton>
+        </ui:CommandBar>
     </Grid>
 </Window>

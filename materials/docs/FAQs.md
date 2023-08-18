@@ -94,3 +94,23 @@
   ```
 
 - Turning this on will disable the snap layout menu (which displays when hovering the maximize button and shows some options for creating split). So make your own trade-offs.
+
+## ❓ AppBarButton: Customizing chevron arrow
+
+- In the new versions, if an AppBarButton has a flyout, the chevron (drop down arrow icon) will now shown by default.
+
+- If you want to make it shown, please use ChevronStyle property like this:
+
+  ```xml
+  <ui:AppBarButton Label="Accept" ChevronStyle="Down">
+      <ui:AppBarButton.Icon>
+          <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
+      </ui:AppBarButton.Icon>
+      <ui:AppBarButton.Flyout>
+         <ui:MenuFlyout>
+            <MenuItem Header="Confirm"/>
+         </ui:MenuFlyout>
+      </ui:AppBarButton.Flyout>
+   </ui:AppBarButton>
+
+  ```

@@ -155,6 +155,20 @@ namespace Inkore.UI.WPF.Modern.Controls
 
         #endregion
 
+        #region ChevronStyle
+
+        public static readonly DependencyProperty ChevronStyleProperty =
+            DependencyProperty.Register(nameof(ChevronStyle), typeof(AppBarButtonChevronStyle), typeof(AppBarButton), new PropertyMetadata(AppBarButtonChevronStyle.None));
+
+        public AppBarButtonChevronStyle ChevronStyle
+        {
+            get => (AppBarButtonChevronStyle)GetValue(ChevronStyleProperty);
+            set => SetValue(ChevronStyleProperty, value);
+        }
+
+        #endregion
+
+
         #region IsInOverflow
 
         public static readonly DependencyProperty IsInOverflowProperty =
@@ -411,5 +425,12 @@ namespace Inkore.UI.WPF.Modern.Controls
         }
 
         private AppBarElementVisualStateManager _vsm;
+    }
+
+    public enum AppBarButtonChevronStyle
+    {
+        None,
+        Right,
+        Down
     }
 }

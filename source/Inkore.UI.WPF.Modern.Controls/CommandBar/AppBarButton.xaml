@@ -303,8 +303,13 @@
                             <Setter TargetName="KeyboardAcceleratorTextLabel" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <!--  HasFlyout  -->
-                        <Trigger SourceName="FlyoutStatesListener" Property="CurrentStateName" Value="HasFlyout">
+                        <Trigger Property="ChevronStyle" Value="Down">
                             <Setter TargetName="SubItemChevronPanel" Property="Visibility" Value="{DynamicResource AppBarButtonHasFlyoutChevronVisibility}" />
+                            <Setter TargetName="SubItemChevron" Property="Glyph" Value="&#xf2a2;"/>
+                        </Trigger>
+                        <Trigger Property="ChevronStyle" Value="Right">
+                            <Setter TargetName="SubItemChevronPanel" Property="Visibility" Value="{DynamicResource AppBarButtonHasFlyoutChevronVisibility}" />
+                            <Setter TargetName="SubItemChevron" Property="Glyph" Value="{DynamicResource AppBarButtonFlyoutGlyph}"/>
                         </Trigger>
                         <!--  Overflow  -->
                         <Trigger Property="ToolBar.IsOverflowItem" Value="True">
