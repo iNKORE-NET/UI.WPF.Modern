@@ -231,26 +231,30 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
 
         private static void UpdateTabGeometry(TabItem tabItem)
         {
-            var scaleFactor = 1.5;
+            try
+            {
+                var scaleFactor = 1.5;
 #if NET462_OR_NEWER
             scaleFactor = VisualTreeHelper.GetDpi(tabItem).DpiScaleX;
 #else
-            HwndSource hwnd = (HwndSource)PresentationSource.FromVisual(tabItem);
-            Matrix transformToDevice = hwnd.CompositionTarget.TransformToDevice;
-            scaleFactor = transformToDevice.M11;
+                HwndSource hwnd = (HwndSource)PresentationSource.FromVisual(tabItem);
+                Matrix transformToDevice = hwnd.CompositionTarget.TransformToDevice;
+                scaleFactor = transformToDevice.M11;
 #endif
-            var height = tabItem.ActualHeight;
-            var popupRadius = ControlHelper.GetCornerRadius(tabItem);
-            var leftCorner = popupRadius.TopLeft;
-            var rightCorner = popupRadius.TopRight;
+                var height = tabItem.ActualHeight;
+                var popupRadius = ControlHelper.GetCornerRadius(tabItem);
+                var leftCorner = popupRadius.TopLeft;
+                var rightCorner = popupRadius.TopRight;
 
-            // Assumes 4px curving-out corners, which are hardcoded in the markup
-            //var data = $"F1 M0,{height - 1f / scaleFactor}  a 4,4 0 0 0 4,-4  L 4,{leftCorner}  a {leftCorner},{leftCorner} 0 0 1 {leftCorner},-{leftCorner}  l {tabItem.ActualWidth - (leftCorner + rightCorner + 1.0f / scaleFactor)},0  a {rightCorner},{rightCorner} 0 0 1 {rightCorner},{rightCorner}  l 0,{height - (4 + rightCorner + 1.0f / scaleFactor)}  a 4,4 0 0 0 4,4 Z";
-            var data = $"F1 M0,{Math.Round(height - 1f / scaleFactor)}  a 4,4 0 0 0 4,-4  L 4,{leftCorner}  a {leftCorner},{leftCorner} 0 0 1 {leftCorner},-{leftCorner}  l {Math.Round(tabItem.ActualWidth - (leftCorner + rightCorner + 1.0f / scaleFactor))},0  a {rightCorner},{rightCorner} 0 0 1 {rightCorner},{rightCorner}  l 0,{Math.Round(height - (4 + rightCorner + 1.0f / scaleFactor))}  a 4,4 0 0 0 4,4 Z";
+                // Assumes 4px curving-out corners, which are hardcoded in the markup
+                //var data = $"F1 M0,{height - 1f / scaleFactor}  a 4,4 0 0 0 4,-4  L 4,{leftCorner}  a {leftCorner},{leftCorner} 0 0 1 {leftCorner},-{leftCorner}  l {tabItem.ActualWidth - (leftCorner + rightCorner + 1.0f / scaleFactor)},0  a {rightCorner},{rightCorner} 0 0 1 {rightCorner},{rightCorner}  l 0,{height - (4 + rightCorner + 1.0f / scaleFactor)}  a 4,4 0 0 0 4,4 Z";
+                var data = $"F1 M0,{Math.Round(height - 1f / scaleFactor)}  a 4,4 0 0 0 4,-4  L 4,{leftCorner}  a {leftCorner},{leftCorner} 0 0 1 {leftCorner},-{leftCorner}  l {Math.Round(tabItem.ActualWidth - (leftCorner + rightCorner + 1.0f / scaleFactor))},0  a {rightCorner},{rightCorner} 0 0 1 {rightCorner},{rightCorner}  l 0,{Math.Round(height - (4 + rightCorner + 1.0f / scaleFactor))}  a 4,4 0 0 0 4,4 Z";
 
-            var geometry = Geometry.Parse(data);
+                var geometry = Geometry.Parse(data);
 
-            SetTabGeometry(tabItem, geometry);
+                SetTabGeometry(tabItem, geometry);
+            }
+            catch { }
         }
     }
 
