@@ -87,6 +87,9 @@
                             <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
                             <Setter TargetName="ChevronTextBlock" Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
                         </Trigger>
+                        <Trigger Property="ShowChevronArrow" Value="False">
+                            <Setter TargetName="ChevronTextBlock" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
