@@ -126,5 +126,11 @@
                 </ui:AppBarButton.Icon>
             </ui:AppBarButton>
         </ui:CommandBar>
+        <Image x:Name="img" Source="/image_lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg"/>
+        <ui:AcrylicPanel Target="{Binding ElementName=img}" HorizontalAlignment="Center" CornerRadius="40" VerticalAlignment="Center" Width="200" Height="200" TintOpacity="0.3" NoiseOpacity="0.01" Amount="50">
+            <Border>
+                
+            </Border>
+        </ui:AcrylicPanel>
     </Grid>
 </Window>

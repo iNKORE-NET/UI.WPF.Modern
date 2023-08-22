@@ -114,17 +114,24 @@ namespace Inkore.UI.WPF.Modern
         [MethodImpl(MethodImplOptions.NoInlining)]
         private void ListenToSystemColorChanges()
         {
-            _uiSettings = new UISettings();
-            _uiSettings.ColorValuesChanged += OnColorValuesChanged;
-
-            if (PackagedAppHelper.IsPackagedApp)
+            try
             {
-                SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
-            }
+                _uiSettings = new UISettings();
+                _uiSettings.ColorValuesChanged += OnColorValuesChanged;
 
-            _systemBackground = _uiSettings.GetColorValue(UIColorType.Background).ToColor();
-            _systemAccent = _uiSettings.GetColorValue(UIColorType.Accent).ToColor();
-            UpdateSystemAppTheme();
+                if (PackagedAppHelper.IsPackagedApp)
+                {
+                    SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
+                }
+
+                _systemBackground = _uiSettings.GetColorValue(UIColorType.Background).ToColor();
+                _systemAccent = _uiSettings.GetColorValue(UIColorType.Accent).ToColor();
+                UpdateSystemAppTheme();
+            }
+            catch
+            {
+
+            }
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -145,10 +152,10 @@ namespace Inkore.UI.WPF.Modern
         [MethodImpl(MethodImplOptions.NoInlining)]
         private void UpdateColorValues()
         {
-            var background = _uiSettings.GetColorValue(UIColorType.Background).ToColor();
-            if (_systemBackground != background)
+            var background = _uiSettings?.GetColorValue(UIColorType.Background).ToColor();
+            if (_systemBackground != background && background.HasValue)
             {
-                _systemBackground = background;
+                _systemBackground = background.Value;
                 UpdateSystemAppTheme();
                 SystemThemeChanged?.Invoke(null, EventArgs.Empty);
             }

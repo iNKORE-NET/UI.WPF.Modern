@@ -8,8 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="image_lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Inkore.UI.WPF.Modern.Controls\Inkore.UI.WPF.Modern.Controls.csproj" />
     <ProjectReference Include="..\..\Inkore.UI.WPF.Modern\Inkore.UI.WPF.Modern.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="image_lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg" />
   </ItemGroup>
 
 </Project>
