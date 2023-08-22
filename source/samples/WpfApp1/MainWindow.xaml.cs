@@ -28,7 +28,7 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private async void ComboBox_Selected(object sender, RoutedEventArgs e)
+        private void ComboBox_Selected(object sender, RoutedEventArgs e)
         {
             selec();
         }

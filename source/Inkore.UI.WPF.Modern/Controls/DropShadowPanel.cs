@@ -94,6 +94,15 @@ namespace Inkore.UI.WPF.Modern.Controls
         public static readonly DependencyProperty ShadowDepthProperty =
             DependencyProperty.Register("ShadowDepth", typeof(double), typeof(DropShadowPanel), new PropertyMetadata(0.0));
 
+        public CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(DropShadowPanel), new PropertyMetadata(new CornerRadius(0)));
+
 
 
 
@@ -199,11 +208,10 @@ namespace Inkore.UI.WPF.Modern.Controls
             };
             contentTrigger.Setters.Add(new Setter()
             {
-                Property = Shape.FillProperty,
+                Property = Border.BorderBrushProperty,
                 Value = brush
             });
             st.Triggers.Add(contentTrigger);
-
 
             // ShadowMode.Outerの場合は、影はコントロールの外側にだけ表示
             var outerTrigger = new DataTrigger()
@@ -221,13 +229,14 @@ namespace Inkore.UI.WPF.Modern.Controls
                         new Binding("ActualWidth") { Source = this },
                         new Binding("ActualHeight") { Source = this },
                         new Binding("BlurRadius") { Source = this },
+                        new Binding("CornerRadius") { Source = this }
                     },
                     Converter = new ClipInnerRectConverter()
                 }
             });
             outerTrigger.Setters.Add(new Setter()
             {
-                Property = Shape.FillProperty,
+                Property = Border.BackgroundProperty,
                 Value = Brushes.White
             });
             st.Triggers.Add(outerTrigger);
@@ -240,13 +249,13 @@ namespace Inkore.UI.WPF.Modern.Controls
             };
             innerTrigger.Setters.Add(new Setter()
             {
-                Property = Shape.StrokeProperty,
+                Property = Border.BorderBrushProperty,
                 Value = Brushes.White
             });
             innerTrigger.Setters.Add(new Setter()
             {
-                Property = Shape.StrokeThicknessProperty,
-                Value = new Binding("BlurRadius") { Source = this }
+                Property = Border.BorderThicknessProperty,
+                Value = new Binding("BlurRadius") { Source = this, Converter = new NegativeMarginConverter() { Multiple = 1 } },
             });
             innerTrigger.Setters.Add(new Setter()
             {
@@ -263,17 +272,20 @@ namespace Inkore.UI.WPF.Modern.Controls
                         new Binding("ActualWidth") { Source = this },
                         new Binding("ActualHeight") { Source = this },
                         new Binding("BlurRadius") { Source = this },
+                        new Binding("CornerRadius") { Source = this }
                     },
                     Converter = new ClipOuterRectConverter()
                 }
             });
             st.Triggers.Add(innerTrigger);
 
-            var border = new Rectangle()
+            var border = new Border()
             {
                 Effect = effect,
                 Style = st,
             };
+
+            border.SetBinding(Border.CornerRadiusProperty, new Binding("CornerRadius") { Source= this });
 
             var grid = new Grid();
             BindingOperations.SetBinding(grid, Panel.BackgroundProperty, new Binding("Background") { Source = this });
@@ -324,8 +336,12 @@ namespace Inkore.UI.WPF.Modern.Controls
             var height = (double)values[1];
             var outerMargin = (double)values[2];
 
-            var region = new RectangleGeometry(new Rect(-outerMargin, -outerMargin, width + outerMargin * 2, height + outerMargin * 2));
-            var clip = new RectangleGeometry(new Rect(0, 0, width, height));
+            var cornerRadius = new CornerRadius(0);
+            if (values.Length >= 4 && values[3] is CornerRadius)
+                cornerRadius = (CornerRadius)values[3];
+
+            var region = DrawRoundedRectangle(new Rect(-outerMargin, -outerMargin, width + outerMargin * 2, height + outerMargin * 2), cornerRadius);
+            var clip = DrawRoundedRectangle(new Rect(0, 0, width, height), cornerRadius);
 
             var group = new GeometryGroup();
             group.Children.Add(region);
@@ -336,7 +352,41 @@ namespace Inkore.UI.WPF.Modern.Controls
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return null;
+        }
+
+        /// <summary>
+        /// Draws a rounded rectangle with four individual corner radius
+        /// </summary>
+        public static StreamGeometry DrawRoundedRectangle(Rect rect, CornerRadius cornerRadius)
+        {
+            var geometry = new StreamGeometry();
+            using (var context = geometry.Open())
+            {
+                bool isStroked = false;
+                bool isSmoothJoin = true;
+
+                context.BeginFigure(rect.TopLeft + new Vector(0, cornerRadius.TopLeft), true, true);
+                context.ArcTo(new Point(rect.TopLeft.X + cornerRadius.TopLeft, rect.TopLeft.Y),
+                    new Size(cornerRadius.TopLeft, cornerRadius.TopLeft),
+                    90, false, SweepDirection.Clockwise, isStroked, isSmoothJoin);
+                context.LineTo(rect.TopRight - new Vector(cornerRadius.TopRight, 0), isStroked, isSmoothJoin);
+                context.ArcTo(new Point(rect.TopRight.X, rect.TopRight.Y + cornerRadius.TopRight),
+                    new Size(cornerRadius.TopRight, cornerRadius.TopRight),
+                    90, false, SweepDirection.Clockwise, isStroked, isSmoothJoin);
+                context.LineTo(rect.BottomRight - new Vector(0, cornerRadius.BottomRight), isStroked, isSmoothJoin);
+                context.ArcTo(new Point(rect.BottomRight.X - cornerRadius.BottomRight, rect.BottomRight.Y),
+                    new Size(cornerRadius.BottomRight, cornerRadius.BottomRight),
+                    90, false, SweepDirection.Clockwise, isStroked, isSmoothJoin);
+                context.LineTo(rect.BottomLeft + new Vector(cornerRadius.BottomLeft, 0), isStroked, isSmoothJoin);
+                context.ArcTo(new Point(rect.BottomLeft.X, rect.BottomLeft.Y - cornerRadius.BottomLeft),
+                    new Size(cornerRadius.BottomLeft, cornerRadius.BottomLeft),
+                    90, false, SweepDirection.Clockwise, isStroked, isSmoothJoin);
+
+                context.Close();
+            }
+
+            return geometry;
         }
     }
 
@@ -350,7 +400,12 @@ namespace Inkore.UI.WPF.Modern.Controls
             var height = (double)values[1];
             var margin = (double)values[2];
 
-            return new RectangleGeometry(new Rect(margin, margin, width, height));
+            var cornerRadius = new CornerRadius(0);
+            if (values.Length >= 4 && values[3] is CornerRadius)
+                cornerRadius = (CornerRadius)values[3];
+
+
+            return ClipInnerRectConverter.DrawRoundedRectangle(new Rect(margin, margin, width, height), cornerRadius);
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
@@ -361,10 +416,13 @@ namespace Inkore.UI.WPF.Modern.Controls
 
     internal class NegativeMarginConverter : IValueConverter
     {
+        public double Multiple { get; set; } = -1d;
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var margin = (double)value;
-            return new Thickness(-margin);
+
+            return new Thickness(margin * Multiple);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
