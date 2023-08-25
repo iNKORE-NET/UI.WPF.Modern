@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<UseWinRT>true</UseWinRT>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<NoWarn>1701;1702;1573;1591</NoWarn>
+		<NoWarn>1701;1702;1573;1591;CA1416</NoWarn>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 

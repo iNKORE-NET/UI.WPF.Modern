@@ -69,6 +69,7 @@ namespace Inkore.UI.WPF.Modern
         public static readonly string ExpanderLeftHeaderStyleKey = "ExpanderLeftHeaderStyle";
         public static readonly string ExpanderRightHeaderStyleKey = "ExpanderRightHeaderStyle";
         public static readonly string DefaultExpanderStyleKey = "DefaultExpanderStyle";
+        public static readonly string ExpanderCardStyleKey = "ExpanderCardStyle";
 
 
         public static readonly string CalendarDatePickerTopHeaderMarginKey = "CalendarDatePickerTopHeaderMargin";
