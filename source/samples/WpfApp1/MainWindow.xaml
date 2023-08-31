@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1" xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern"
+        xmlns:local="clr-namespace:WpfApp1" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        ui:ThemeManager.IsThemeAware="True"
-     ui:TitleBar.ExtendViewIntoTitleBar="False"    
+        ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
+     ui:TitleBar.ExtendViewIntoTitleBar="False"   
      ui:WindowHelper.SystemBackdropType="Mica"
      ui:TitleBar.IsBackButtonVisible="False"
      ui:WindowHelper.UseModernWindowStyle="True">
@@ -96,15 +96,40 @@
         </ComboBox>
         <ui:NavigationView>
             <ui:NavigationView.MenuItems>
-                <ui:NavigationViewItem x:Name="item" Content="hello">
+                <ui:NavigationViewItem Content="Home">
                     <ui:NavigationViewItem.Icon>
-                        <Rectangle Width="20" Height="20" Fill="CornflowerBlue" Stroke="#FF005A94" Margin="-5"/>
+                        <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Home}" FontSize="16"/>
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>
-        <Viewbox>
-            <ui:InfoBadge Value="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Viewbox>
+        <ui:HyperlinkButton Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click"/>
+        <ui:CommandBar>
+            <ui:AppBarButton Label="Aaaa" IsCompact="True">
+                <ui:AppBarButton.Icon>
+                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
+                </ui:AppBarButton.Icon>
+            </ui:AppBarButton>
+            <ui:AppBarButton Label="Accept" ChevronStyle="Down">
+                <ui:AppBarButton.Icon>
+                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
+                </ui:AppBarButton.Icon>
+                <ui:AppBarButton.Flyout>
+                    <ui:MenuFlyout>
+                        <MenuItem Header="Confirm"/>
+                    </ui:MenuFlyout>
+                </ui:AppBarButton.Flyout>
+            </ui:AppBarButton>
+            <ui:AppBarButton Label="Aaaa" LabelPosition="Collapsed" IsCompact="True" HorizontalAlignment="Center" Height="32">
+                <ui:AppBarButton.Icon>
+                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
+                </ui:AppBarButton.Icon>
+            </ui:AppBarButton>
+        </ui:CommandBar>
+        <Expander Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}" Header="aaa" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border Background="Black" Width="100" Height="100">
+                
+            </Border>
+        </Expander>
     </Grid>
 </Window>

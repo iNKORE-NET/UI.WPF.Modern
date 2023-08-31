@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.Controls"
-    xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern">
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
 
     <Style x:Key="DefaultDropDownButtonStyle" TargetType="local:DropDownButton">
         <Setter Property="Background" Value="{DynamicResource ButtonBackground}" />
@@ -86,6 +86,9 @@
                             <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
                             <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
                             <Setter TargetName="ChevronTextBlock" Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
+                        </Trigger>
+                        <Trigger Property="ShowChevronArrow" Value="False">
+                            <Setter TargetName="ChevronTextBlock" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

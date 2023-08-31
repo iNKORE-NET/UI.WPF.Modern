@@ -43,6 +43,27 @@ namespace Inkore.UI.WPF.Modern.Media
 
         #endregion
 
+        #region CornerRadius
+
+        /// <summary>
+        /// Identifies the <see cref="CornerRadius"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register(
+                nameof(CornerRadius),
+                typeof(CornerRadius),
+                typeof(AcrylicPanel),
+                new PropertyMetadata(new CornerRadius(0)));
+
+        public CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        #endregion
+
+
         #region Source
 
         /// <summary>
@@ -206,6 +227,7 @@ namespace Inkore.UI.WPF.Modern.Media
 
         #endregion
 
+
         static AcrylicPanel()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(AcrylicPanel), new FrameworkPropertyMetadata(typeof(AcrylicPanel)));
@@ -221,7 +243,7 @@ namespace Inkore.UI.WPF.Modern.Media
         {
             base.OnApplyTemplate();
 
-            if (GetTemplateChild("Rect") is Rectangle rect)
+            if (GetTemplateChild("Rect") is FrameworkElement rect)
             {
                 rect.LayoutUpdated += (_, __) =>
                 {

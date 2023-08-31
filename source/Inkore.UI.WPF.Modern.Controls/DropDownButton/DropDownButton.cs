@@ -34,6 +34,20 @@ namespace Inkore.UI.WPF.Modern.Controls
 
         #endregion
 
+        #region ShowChevronArrow
+
+        public static readonly DependencyProperty ShowChevronArrowProperty =
+            DependencyProperty.Register(nameof(ShowChevronArrow), typeof(bool), typeof(DropDownButton), new PropertyMetadata(true));
+
+        public bool ShowChevronArrow
+        {
+            get => (bool)GetValue(ShowChevronArrowProperty);
+            set => SetValue(ShowChevronArrowProperty, value);
+        }
+
+        #endregion
+
+
         #region UseSystemFocusVisuals
 
         public static readonly DependencyProperty UseSystemFocusVisualsProperty =

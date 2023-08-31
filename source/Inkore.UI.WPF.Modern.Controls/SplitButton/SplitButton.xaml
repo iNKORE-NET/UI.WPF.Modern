@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.Controls"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern">
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Inkore.UI.WPF.Modern;component/Styles/Button.xaml" />

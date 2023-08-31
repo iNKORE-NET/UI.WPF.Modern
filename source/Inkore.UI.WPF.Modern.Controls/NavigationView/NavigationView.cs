@@ -1649,7 +1649,7 @@ namespace Inkore.UI.WPF.Modern.Controls
                                         else if (footersActualHeight > totalAvailableHeightHalf)
                                         {
                                             // Footer items exceed over the half, so let's limit them.
-                                            footerItemsScrollViewer.MaxHeight = totalAvailableHeight - menuItemsActualHeight;
+                                            footerItemsScrollViewer.MaxHeight = Math.Max(0, totalAvailableHeight - menuItemsActualHeight);
                                             //if (m_visualItemsSeparator is { } separator)
                                             //{
                                             //    if (IsFooterSeparatorVisible == null)

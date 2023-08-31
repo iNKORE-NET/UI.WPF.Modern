@@ -69,6 +69,7 @@ namespace Inkore.UI.WPF.Modern
         public static readonly string ExpanderLeftHeaderStyleKey = "ExpanderLeftHeaderStyle";
         public static readonly string ExpanderRightHeaderStyleKey = "ExpanderRightHeaderStyle";
         public static readonly string DefaultExpanderStyleKey = "DefaultExpanderStyle";
+        public static readonly string ExpanderCardStyleKey = "ExpanderCardStyle";
 
 
         public static readonly string CalendarDatePickerTopHeaderMarginKey = "CalendarDatePickerTopHeaderMargin";
@@ -131,6 +132,17 @@ namespace Inkore.UI.WPF.Modern
         public static readonly string NavigationViewContentMarginKey = "NavigationViewContentMargin";
         public static readonly string NavigationViewContentGridCornerRadiusKey = "NavigationViewContentGridCornerRadius";
         public static readonly string NavigationViewContentGridBorderThicknessKey = "NavigationViewContentGridBorderThickness";
+
+        #endregion
+
+        #region Fonts.xaml
+
+        public static readonly string SegoeUISymbolKey = "SegoeUISymbol";
+        public static readonly string SegoeMDL2AssetsKey = "SegoeMDL2Assets";
+        public static readonly string SegoeFluentIconsKey = "SegoeFluentIcons";
+        public static readonly string FluentSystemIconsKey = "FluentSystemIcons";
+        public static readonly string FluentSystemIconsFilledKey = "FluentSystemIconsFilled";
+
 
         #endregion
 

@@ -106,7 +106,7 @@
                                 ContentTemplate="{StaticResource IconTemplate}"
                                 IsActive="{TemplateBinding IsActive}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                Style="{TemplateBinding ButtonStyle}" />
+                                Style="{TemplateBinding ButtonStyle}"/>
 
                             <primitives:TitleBarButton
                                 x:Name="CloseButton"
@@ -124,6 +124,11 @@
                         </StackPanel>
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="MaximizeButtonTouchOptimize" Value="False">
+                            <Setter TargetName="CloseButton" Property="Height" Value="{Binding ElementName=PART_RightSystemOverlay, Path=ActualHeight}"/>
+                            <Setter TargetName="MaximizeRestoreButton" Property="Height" Value="{Binding ElementName=PART_RightSystemOverlay, Path=ActualHeight}"/>
+                            <Setter TargetName="MinimizeButton" Property="Height" Value="{Binding ElementName=PART_RightSystemOverlay, Path=ActualHeight}"/>
+                        </Trigger>
                         <Trigger Property="IsActive" Value="False">
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{Binding InactiveBackground, RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="HighContrastBackground" Property="Fill" Value="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" />

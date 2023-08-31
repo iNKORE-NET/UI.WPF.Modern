@@ -2,7 +2,7 @@
     x:Class="Inkore.UI.WPF.Modern.SampleApp.ItemTemplates"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern">
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
     <DataTemplate x:Key="ControlItemTemplate">
         <UserControl>
             <Border

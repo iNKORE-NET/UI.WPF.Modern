@@ -49,6 +49,15 @@ namespace Inkore.UI.WPF.Modern.Controls
             set => SetValue(NavigateUriProperty, value);
         }
 
+        public static readonly DependencyProperty RaiseHyperlinkClicksProperty = DependencyProperty.Register(nameof(RaiseHyperlinkClicks), typeof(bool), typeof(HyperlinkButton), new PropertyMetadata(true));
+
+        public bool RaiseHyperlinkClicks
+        {
+            get => (bool)GetValue(RaiseHyperlinkClicksProperty);
+            set => SetValue(RaiseHyperlinkClicksProperty, value);
+        }
+
+
         private static void OnNavigateUriChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             ((HyperlinkButton)d).m_hyperlink.NavigateUri = (Uri)e.NewValue;
@@ -102,7 +111,10 @@ namespace Inkore.UI.WPF.Modern.Controls
                     peer.RaiseAutomationEvent(AutomationEvents.InvokePatternOnInvoked);
             }
 
-            m_hyperlink.DoClick();
+            if (RaiseHyperlinkClicks)
+            {
+                m_hyperlink.DoClick();
+            }
             base.OnClick();
         }
 

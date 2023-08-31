@@ -5,7 +5,7 @@
     xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.Controls"
     xmlns:primitives="clr-namespace:Inkore.UI.WPF.Modern.Controls.Primitives"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:ui="https://schemas.inkore.net/lib/ui/wpf/modern">
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
 
     <Style x:Key="DefaultAutoSuggestBoxStyle" TargetType="local:AutoSuggestBox">
         <Setter Property="VerticalAlignment" Value="Top" />
