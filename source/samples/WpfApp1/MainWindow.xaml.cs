@@ -58,5 +58,10 @@ namespace WpfApp1
 
             //WindowHelper.ApplyDarkMode(this);
         }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            naview.SelectedItem = sgsac;
+        }
     }
 }

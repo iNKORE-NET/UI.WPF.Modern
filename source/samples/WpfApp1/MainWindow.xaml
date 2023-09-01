@@ -94,18 +94,23 @@
             <ComboBoxItem Content="Item19"/>
             <ComboBoxItem Content="Item20"/>
         </ComboBox>
-        <ui:NavigationView>
+        <ui:NavigationView x:Name="naview" PaneDisplayMode="Top">
             <ui:NavigationView.MenuItems>
                 <ui:NavigationViewItem Content="Home">
                     <ui:NavigationViewItem.Icon>
                         <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Home}" FontSize="16"/>
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
+                <ui:NavigationViewItem x:Name="sgsac" Content="Rectangle">
+                    <ui:NavigationViewItem.Icon>
+                        <Rectangle Fill="#FF3F69A2" Margin="-4" Width="20" Height="20" Stroke="Black"/>
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>
         <ui:HyperlinkButton Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click"/>
-        <ui:CommandBar>
-            <ui:AppBarButton Label="Aaaa" IsCompact="True">
+        <ui:CommandBar VerticalAlignment="Bottom">
+            <ui:AppBarButton Label="Aaaa" IsCompact="True" Click="AppBarButton_Click">
                 <ui:AppBarButton.Icon>
                     <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
                 </ui:AppBarButton.Icon>
@@ -126,10 +131,5 @@
                 </ui:AppBarButton.Icon>
             </ui:AppBarButton>
         </ui:CommandBar>
-        <Expander Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}" Header="aaa" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Border Background="Black" Width="100" Height="100">
-                
-            </Border>
-        </Expander>
     </Grid>
 </Window>
