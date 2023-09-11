@@ -7,6 +7,8 @@
 # ✨ Features
 
 * Modern styles and new features for the majority of the stock WPF controls.
+  
+* Mica and acrylic backdrops available, windows native features supported
 
 * Light and dark themes that can be easily customized. A high contrast theme is also included.
 
