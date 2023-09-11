@@ -246,7 +246,7 @@ namespace Inkore.UI.WPF.Modern.Controls
                 nameof(IsSettingsVisible),
                 typeof(bool),
                 typeof(NavigationView),
-                new PropertyMetadata(true, OnIsSettingsVisiblePropertyChanged));
+                new PropertyMetadata(false, OnIsSettingsVisiblePropertyChanged));
 
         public bool IsSettingsVisible
         {

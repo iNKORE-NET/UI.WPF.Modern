@@ -24,7 +24,7 @@ using System.Windows.Markup;
 [assembly: AssemblyCulture("")]
 
 [assembly: InternalsVisibleTo("Inkore.UI.WPF.Modern.Controls")]
-[assembly: InternalsVisibleTo("Inkore.UI.WPF.Modern.MahApps")]
+//[assembly: InternalsVisibleTo("Inkore.UI.WPF.Modern.MahApps")]
 [assembly: InternalsVisibleTo("MUXControlsTestApp")]
 
 [assembly: XmlnsPrefix("http://schemas.inkore.net/lib/ui/wpf/modern", "modern")]
