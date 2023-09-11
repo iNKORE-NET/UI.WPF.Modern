@@ -85,16 +85,6 @@
   ui:WindowHelper.FixMaximizedWindow="False"
   ```
 
-## ❓ Window: Maximize button doesn't work with touch or stylus
-
-- With touch or stylus, after clicking the maximize button in a window, if the window jumps back immediately from maximized to normal, please consider applying this:
-
-  ```
-  ui:TitleBar.MaximizeButtonTouchOptimize="True"
-  ```
-
-- Turning this on will disable the snap layout menu (which displays when hovering the maximize button and shows some options for creating split). So make your own trade-offs.
-
 ## ❓ AppBarButton: Customizing chevron arrow
 
 - In the new versions, if an AppBarButton has a flyout, the chevron (drop down arrow icon) will now shown by default.
