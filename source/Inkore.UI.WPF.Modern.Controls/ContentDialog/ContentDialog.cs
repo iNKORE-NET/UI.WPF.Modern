@@ -100,7 +100,7 @@ namespace Inkore.UI.WPF.Modern.Controls
                 nameof(PrimaryButtonText),
                 typeof(string),
                 typeof(ContentDialog),
-                new PropertyMetadata(string.Empty, OnButtonTextChanged));
+                new PropertyMetadata(null, OnButtonTextChanged));
 
         public string PrimaryButtonText
         {
@@ -185,7 +185,7 @@ namespace Inkore.UI.WPF.Modern.Controls
                 nameof(SecondaryButtonText),
                 typeof(string),
                 typeof(ContentDialog),
-                new PropertyMetadata(string.Empty, OnButtonTextChanged));
+                new PropertyMetadata(null, OnButtonTextChanged));
 
         public string SecondaryButtonText
         {
@@ -270,7 +270,7 @@ namespace Inkore.UI.WPF.Modern.Controls
                 nameof(CloseButtonText),
                 typeof(string),
                 typeof(ContentDialog),
-                new PropertyMetadata(string.Empty, OnButtonTextChanged));
+                new PropertyMetadata(null, OnButtonTextChanged));
 
         public string CloseButtonText
         {
@@ -417,7 +417,7 @@ namespace Inkore.UI.WPF.Modern.Controls
                 typeof(ContentDialog),
                 typeof(ContentDialog));
 
-        private static ContentDialog GetOpenDialog(Window window)
+        public static ContentDialog GetOpenDialog(Window window)
         {
             return (ContentDialog)window.GetValue(OpenDialogProperty);
         }
@@ -517,6 +517,12 @@ namespace Inkore.UI.WPF.Modern.Controls
             {
                 throw new InvalidOperationException("Could not find an owner window for this ContentDialog.");
             }
+
+            return await ShowAsync(owner);
+        }
+
+        public async Task<ContentDialogResult> ShowAsync(Window owner)
+        {
 
             ThrowIfHasOpenDialog(owner);
 

@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800"
         ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
      ui:TitleBar.ExtendViewIntoTitleBar="False"   
-     ui:WindowHelper.SystemBackdropType="Acrylic"
+     ui:WindowHelper.SystemBackdropType="Mica"
      ui:TitleBar.IsBackButtonVisible="False"
      ui:WindowHelper.UseModernWindowStyle="True"
         ui:WindowHelper.CornerStyle="RoundSmall">

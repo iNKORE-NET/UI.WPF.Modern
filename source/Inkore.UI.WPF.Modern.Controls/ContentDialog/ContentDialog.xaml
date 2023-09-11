@@ -62,7 +62,7 @@
                                 <Border.RenderTransform>
                                     <ScaleTransform x:Name="ScaleTransform" />
                                 </Border.RenderTransform>
-                                <Border x:Name="DialogSpace" CornerRadius="{DynamicResource OverlayCornerRadius}">
+                                <Border x:Name="DialogSpace" CornerRadius="{TemplateBinding CornerRadius}">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -73,15 +73,18 @@
                                             HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                             IsTabStop="False"
                                             VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-                                            <ui:ScrollViewerEx.Resources>
-                                                <common:CornerRadiusHalfConverter x:Key="CornerConverter" Mode="UpperHalf"/>
-                                            </ui:ScrollViewerEx.Resources>
-                                            <Border
+                                            <Border x:Name="BaseBorder"
                                                 Padding="{DynamicResource ContentDialogPadding}"
                                                 Background="{DynamicResource ContentDialogTopOverlay}"
                                                 BorderBrush="{DynamicResource ContentDialogSeparatorBorderBrush}"
-                                                BorderThickness="{DynamicResource ContentDialogSeparatorThickness}"
-                                                CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource CornerConverter}}">
+                                                BorderThickness="{DynamicResource ContentDialogSeparatorThickness}">
+                                                <Border.CornerRadius>
+                                                    <TemplateBinding Property="CornerRadius">
+                                                        <TemplateBindingExtension.Converter>
+                                                            <common:CornerRadiusHalfConverter x:Name="CornerConverter" Mode="UpperHalf"/>
+                                                        </TemplateBindingExtension.Converter>
+                                                    </TemplateBinding>
+                                                </Border.CornerRadius>
                                                 <Grid>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto" />
@@ -389,6 +392,14 @@
                         </VisualStateManager.VisualStateGroups>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="PrimaryButtonText" Value="{x:Null}"/>
+                                <Condition Property="SecondaryButtonText" Value="{x:Null}"/>
+                                <Condition Property="CloseButtonText" Value="{x:Null}"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="BaseBorder" Property="CornerRadius" Value="{Binding CornerRadius, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ContentDialog}}"/>
+                        </MultiTrigger>
                         <Trigger Property="IsShadowEnabled" Value="False">
                             <Setter TargetName="Shdw" Property="Visibility" Value="Collapsed" />
                         </Trigger>

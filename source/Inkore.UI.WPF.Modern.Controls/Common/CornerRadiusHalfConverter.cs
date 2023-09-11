@@ -9,9 +9,14 @@ using System.Windows.Data;
 
 namespace Inkore.UI.WPF.Modern.Controls.Common
 {
-    public class CornerRadiusHalfConverter : IValueConverter
+    public class CornerRadiusHalfConverter : DependencyObject, IValueConverter
     {
-        public CornerRadiusHalfConverterMode Mode { get; set; } = CornerRadiusHalfConverterMode.UpperHalf;
+        public static DependencyProperty ModeProperty = DependencyProperty.Register("Mode", typeof(CornerRadiusHalfConverterMode), typeof(CornerRadiusHalfConverter), new PropertyMetadata(CornerRadiusHalfConverterMode.All));
+        public CornerRadiusHalfConverterMode Mode
+        {
+            get { return (CornerRadiusHalfConverterMode)GetValue(ModeProperty); }
+            set { SetValue(ModeProperty, value); }
+        }
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             try
@@ -27,6 +32,8 @@ namespace Inkore.UI.WPF.Modern.Controls.Common
                         return new CornerRadius(val.TopLeft, 0, 0, val.BottomLeft);
                     case CornerRadiusHalfConverterMode.RightHalf:
                         return new CornerRadius(0, val.TopRight, val.BottomRight, 0);
+                    case CornerRadiusHalfConverterMode.All:
+                        return val;
                     default:
                         return val;
                 }
@@ -45,6 +52,7 @@ namespace Inkore.UI.WPF.Modern.Controls.Common
         UpperHalf,
         LowerHalf,
         LeftHalf,
-        RightHalf
+        RightHalf,
+        All
     }
 }

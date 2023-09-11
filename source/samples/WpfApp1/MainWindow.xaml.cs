@@ -36,6 +36,7 @@ namespace WpfApp1
         private async void selec()
         {
             ContentDialog dialog = new ContentDialog();
+            dialog.Content = "AAAAAAAAAA";
             dialog.PrimaryButtonText = "OK";
             dialog.SecondaryButtonText = "Cancel";
             await dialog.ShowAsync();
