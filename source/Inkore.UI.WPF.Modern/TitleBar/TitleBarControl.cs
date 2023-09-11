@@ -61,22 +61,22 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
 
         #endregion
 
-        #region MaximizeButtonTouchOptimize
+        //#region MaximizeButtonTouchOptimize
 
-        public static readonly DependencyProperty MaximizeButtonTouchOptimizeProperty =
-            DependencyProperty.Register(
-                nameof(MaximizeButtonTouchOptimize),
-                typeof(bool),
-                typeof(TitleBarControl),
-                new PropertyMetadata(false));
+        //public static readonly DependencyProperty MaximizeButtonTouchOptimizeProperty =
+        //    DependencyProperty.Register(
+        //        nameof(MaximizeButtonTouchOptimize),
+        //        typeof(bool),
+        //        typeof(TitleBarControl),
+        //        new PropertyMetadata(false));
 
-        public bool MaximizeButtonTouchOptimize
-        {
-            get => (bool)GetValue(MaximizeButtonTouchOptimizeProperty);
-            set => SetValue(MaximizeButtonTouchOptimizeProperty, value);
-        }
+        //public bool MaximizeButtonTouchOptimize
+        //{
+        //    get => (bool)GetValue(MaximizeButtonTouchOptimizeProperty);
+        //    set => SetValue(MaximizeButtonTouchOptimizeProperty, value);
+        //}
 
-        #endregion
+        //#endregion
 
 
         #region InactiveBackground

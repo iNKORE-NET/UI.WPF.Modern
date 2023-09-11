@@ -48,6 +48,8 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
             SetHoverColor();
 
             if (hwnd != null) hwnd.AddHook(HwndSourceHook);
+
+            _button.IsHitTestVisible = false;
         }
 
         public static bool IsSupported => OSVersionHelper.IsWindows11OrGreater;

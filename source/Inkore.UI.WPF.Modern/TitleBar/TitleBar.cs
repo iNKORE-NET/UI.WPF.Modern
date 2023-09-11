@@ -383,27 +383,27 @@ namespace Inkore.UI.WPF.Modern.Controls
 
         #endregion
 
-        #region MaximizeButtonTouchOptimize
+        //#region MaximizeButtonTouchOptimize
 
-        public static readonly DependencyProperty MaximizeButtonTouchOptimizeProperty =
-            DependencyProperty.RegisterAttached(
-                "MaximizeButtonTouchOptimize",
-                typeof(bool),
-                typeof(TitleBar),
-                new PropertyMetadata(false));
+        //public static readonly DependencyProperty MaximizeButtonTouchOptimizeProperty =
+        //    DependencyProperty.RegisterAttached(
+        //        "MaximizeButtonTouchOptimize",
+        //        typeof(bool),
+        //        typeof(TitleBar),
+        //        new PropertyMetadata(false));
 
 
-        public static bool GetMaximizeButtonTouchOptimize(Window window)
-        {
-            return (bool)window.GetValue(MaximizeButtonTouchOptimizeProperty);
-        }
+        //public static bool GetMaximizeButtonTouchOptimize(Window window)
+        //{
+        //    return (bool)window.GetValue(MaximizeButtonTouchOptimizeProperty);
+        //}
 
-        public static void SetMaximizeButtonTouchOptimize(Window window, bool value)
-        {
-            window.SetValue(MaximizeButtonTouchOptimizeProperty, value);
-        }
+        //public static void SetMaximizeButtonTouchOptimize(Window window, bool value)
+        //{
+        //    window.SetValue(MaximizeButtonTouchOptimizeProperty, value);
+        //}
 
-        #endregion
+        //#endregion
 
 
         #region BackRequested
