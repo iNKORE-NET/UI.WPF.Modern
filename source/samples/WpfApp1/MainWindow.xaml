@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800"
         ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
      ui:TitleBar.ExtendViewIntoTitleBar="False"   
-     ui:WindowHelper.SystemBackdropType="Mica"
+     ui:WindowHelper.SystemBackdropType="Acrylic"
      ui:TitleBar.IsBackButtonVisible="False"
      ui:WindowHelper.UseModernWindowStyle="True">
     <Grid>
@@ -94,7 +94,7 @@
             <ComboBoxItem Content="Item19"/>
             <ComboBoxItem Content="Item20"/>
         </ComboBox>
-        <ui:NavigationView x:Name="naview" PaneDisplayMode="Top">
+        <!--<ui:NavigationView x:Name="naview" PaneDisplayMode="Top">
             <ui:NavigationView.MenuItems>
                 <ui:NavigationViewItem Content="Home">
                     <ui:NavigationViewItem.Icon>
@@ -107,8 +107,8 @@
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
             </ui:NavigationView.MenuItems>
-        </ui:NavigationView>
-        <ui:HyperlinkButton Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click"/>
+        </ui:NavigationView>-->
+        <ui:HyperlinkButton  Foreground="{DynamicResource {x:Static ui:ThemeKeys.SystemControlForegroundBaseHighBrushKey}}" Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click"/>
         <ui:CommandBar VerticalAlignment="Bottom">
             <ui:AppBarButton Label="Aaaa" IsCompact="True" Click="AppBarButton_Click">
                 <ui:AppBarButton.Icon>

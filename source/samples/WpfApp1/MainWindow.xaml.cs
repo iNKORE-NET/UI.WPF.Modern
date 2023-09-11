@@ -61,7 +61,7 @@ namespace WpfApp1
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            naview.SelectedItem = sgsac;
+            //naview.SelectedItem = sgsac;
         }
     }
 }

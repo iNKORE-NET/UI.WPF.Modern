@@ -16,7 +16,7 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
     /// <summary>
     /// Brings the Snap Layout functionality from Windows 11 to a custom <see cref="Controls.TitleBar"/>.
     /// </summary>
-    internal sealed class SnapLayout
+    public class SnapLayout
     {
         public SolidColorBrush DefaultButtonBackground { get; set; } = Brushes.Transparent;
 
@@ -29,6 +29,7 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
         private Button _button;
 
         private SolidColorBrush _hoverColor;
+        private SolidColorBrush _pressedColor;
 
         public void Register(Button button)
         {
@@ -72,12 +73,14 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
                     if (IsOverButton(wParam, lParam))
                     {
                         _isButtonClicked = true;
+                        RefreshButtonColor();
                         handled = true;
                     }
                     break;
 
                 case PInvoke.WM_NCMOUSELEAVE:
-                    DefocusButton();
+                    _isButtonFocused = false;
+                    RefreshButtonColor();
                     break;
 
                 case PInvoke.WM_NCLBUTTONUP:
@@ -88,18 +91,22 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
                             RaiseButtonClick();
                         }
                         _isButtonClicked = false;
+                        RefreshButtonColor();
                     }
                     break;
 
                 case PInvoke.WM_NCHITTEST:
                     if (IsOverButton(wParam, lParam))
                     {
-                        FocusButton();
+                        _isButtonFocused = true;
+                        RefreshButtonColor();
                         handled = true;
                     }
                     else
                     {
-                        DefocusButton();
+                        _isButtonFocused = false;
+                        _isButtonClicked = false;
+                        RefreshButtonColor();
                     }
                     return new IntPtr(PInvoke.HTMAXBUTTON);
 
@@ -110,21 +117,25 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
             return new IntPtr(PInvoke.HTCLIENT);
         }
 
-        private void FocusButton()
+        private void RefreshButtonColor()
         {
-            if (_isButtonFocused) return;
-
-            _button.Background = _hoverColor;
-            _isButtonFocused = true;
+            if (_isButtonClicked)
+            {
+                _button.Background = _pressedColor;
+            }
+            else
+            {
+                if (_isButtonFocused)
+                {
+                    _button.Background = _hoverColor;
+                }
+                else
+                {
+                    _button.Background = DefaultButtonBackground;
+                }
+            }
         }
 
-        private void DefocusButton()
-        {
-            if (!_isButtonFocused) return;
-
-            _button.Background = DefaultButtonBackground;
-            _isButtonFocused = false;
-        }
 
         private bool IsOverButton(IntPtr wParam, IntPtr lParam)
         {
@@ -156,6 +167,8 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
         private void SetHoverColor()
         {
             _hoverColor = (SolidColorBrush)Application.Current.Resources["SystemControlHighlightListLowBrush"] ?? new SolidColorBrush(Color.FromArgb(21, 255, 255, 255));
+            _pressedColor = (SolidColorBrush)Application.Current.Resources["SystemControlHighlightListMediumBrush"] ?? new SolidColorBrush(Color.FromArgb(50, 0, 0, 0));
         }
+
     }
 }
