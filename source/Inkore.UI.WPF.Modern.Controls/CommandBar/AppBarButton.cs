@@ -108,9 +108,9 @@ namespace Inkore.UI.WPF.Modern.Controls
         public static readonly DependencyProperty IconProperty =
             AppBarElementProperties.IconProperty.AddOwner(typeof(AppBarButton));
 
-        public IconElement Icon
+        public object Icon
         {
-            get => (IconElement)GetValue(IconProperty);
+            get => (object)GetValue(IconProperty);
             set => SetValue(IconProperty, value);
         }
 
@@ -121,9 +121,9 @@ namespace Inkore.UI.WPF.Modern.Controls
         public static readonly DependencyProperty LabelProperty =
             AppBarElementProperties.LabelProperty.AddOwner(typeof(AppBarButton));
 
-        public string Label
+        public object Label
         {
-            get => (string)GetValue(LabelProperty);
+            get => (object)GetValue(LabelProperty);
             set => SetValue(LabelProperty, value);
         }
 

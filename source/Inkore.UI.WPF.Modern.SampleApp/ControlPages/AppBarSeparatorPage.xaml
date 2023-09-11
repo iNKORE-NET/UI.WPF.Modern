@@ -17,12 +17,33 @@
                 <ui:ScrollViewerEx HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                     <ui:CommandBar x:Name="Control1">
                         <ui:CommandBar.PrimaryCommands>
-                            <ui:AppBarButton Icon="AttachCamera" Label="Attach Camera" />
+                            <ui:AppBarButton Label="Attach Camera" >
+                                <ui:AppBarButton.Icon>
+                                    <ui:SymbolIcon Symbol="AttachCamera"/>
+                                </ui:AppBarButton.Icon>
+                            </ui:AppBarButton>
+                            
                             <ui:AppBarSeparator />
-                            <ui:AppBarButton Icon="Like" Label="Like" />
-                            <ui:AppBarButton Icon="Dislike" Label="Dislike" />
+                            
+                            <ui:AppBarButton Label="Like" >
+                                <ui:AppBarButton.Icon>
+                                    <ui:SymbolIcon Symbol="Like"/>
+                                </ui:AppBarButton.Icon>
+                            </ui:AppBarButton>
+                            
+                            <ui:AppBarButton Label="Dislike" >
+                                <ui:AppBarButton.Icon>
+                                    <ui:SymbolIcon Symbol="Dislike"/>
+                                </ui:AppBarButton.Icon>
+                            </ui:AppBarButton>
+                            
                             <ui:AppBarSeparator />
-                            <ui:AppBarButton Icon="Orientation" Label="Orientation" />
+                            
+                            <ui:AppBarButton Label="Orientation" >
+                                <ui:AppBarButton.Icon>
+                                    <ui:SymbolIcon Symbol="Orientation"/>
+                                </ui:AppBarButton.Icon>
+                            </ui:AppBarButton>
                         </ui:CommandBar.PrimaryCommands>
                     </ui:CommandBar>
                 </ui:ScrollViewerEx>

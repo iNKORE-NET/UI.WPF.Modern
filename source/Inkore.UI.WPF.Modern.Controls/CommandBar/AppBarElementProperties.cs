@@ -20,7 +20,7 @@ namespace Inkore.UI.WPF.Modern.Controls
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.RegisterAttached(
                 "Icon",
-                typeof(IconElement),
+                typeof(object),
                 typeof(AppBarElementProperties),
                 new PropertyMetadata(OnIconChanged));
 
@@ -36,7 +36,7 @@ namespace Inkore.UI.WPF.Modern.Controls
         public static readonly DependencyProperty LabelProperty =
             DependencyProperty.RegisterAttached(
                 "Label",
-                typeof(string),
+                typeof(object),
                 typeof(AppBarElementProperties),
                 new PropertyMetadata(string.Empty, OnLabelChanged, CoerceLabel));
 
@@ -52,7 +52,7 @@ namespace Inkore.UI.WPF.Modern.Controls
             RoutedUICommand uiCommand;
 
             // If no label has been set, use the command's text
-            if (string.IsNullOrEmpty(value as string) && !button.HasNonDefaultValue(LabelProperty))
+            if (value == null && !button.HasNonDefaultValue(LabelProperty))
             {
                 uiCommand = button.Command as RoutedUICommand;
                 if (uiCommand != null)

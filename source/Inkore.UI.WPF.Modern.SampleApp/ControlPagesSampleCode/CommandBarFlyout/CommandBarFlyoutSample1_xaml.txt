@@ -1,8 +1,23 @@
 ﻿<Page.Resources>
     <ui:CommandBarFlyout Placement="Right" x:Key="CommandBarFlyout1">
-        <ui:AppBarButton Label="Share" Icon="Share" ToolTipService.ToolTip="Share" Click="OnElementClicked" />
-        <ui:AppBarButton Label="Save" Icon="Save" ToolTipService.ToolTip="Save" Click="OnElementClicked" />
-        <ui:AppBarButton Label="Delete" Icon="Delete" ToolTipService.ToolTip="Delete" Click="OnElementClicked" />
+        <ui:AppBarButton Label="Share"ToolTipService.ToolTip="Share" Click="OnElementClicked" >
+            <ui:AppBarButton.Icon>
+                <ui:SymbolIcon Symbol="Add"/>
+            </ui:AppBarButton.Icon>
+        </ui:AppBarButton>
+
+        <ui:AppBarButton Label="Save" ToolTipService.ToolTip="Save" Click="OnElementClicked" >
+            <ui:AppBarButton.Icon>
+                <ui:SymbolIcon Symbol="Save"/>
+            </ui:AppBarButton.Icon>
+        </ui:AppBarButton>
+
+        <ui:AppBarButton Label="Delete" ToolTipService.ToolTip="Delete" Click="OnElementClicked" >
+            <ui:AppBarButton.Icon>
+                <ui:SymbolIcon Symbol="Delete"/>
+            </ui:AppBarButton.Icon>
+        </ui:AppBarButton>
+
         <ui:CommandBarFlyout.SecondaryCommands>
             <AppBarButton x:Name="ResizeButton1" Label="Resize" Click="OnElementClicked" />
             <AppBarButton x:Name="MoveButton1" Label="Move" Click="OnElementClicked" />

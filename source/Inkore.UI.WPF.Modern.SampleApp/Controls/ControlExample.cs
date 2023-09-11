@@ -527,7 +527,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp
 
         private void Control_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (Application.Current.MainWindow.ActualWidth < 740)
+            if (Application.Current?.MainWindow != null && Application.Current.MainWindow.ActualWidth < 740)
             {
                 OptionsPresenter.HorizontalAlignment = HorizontalAlignment.Left;
                 OptionsPresenterBorder.Margin = new Thickness(0, 24, 0, 0);

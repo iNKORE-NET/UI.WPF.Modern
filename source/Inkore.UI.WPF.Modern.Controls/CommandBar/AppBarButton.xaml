@@ -51,21 +51,23 @@
                                 x:Name="ContentViewbox"
                                 Height="{DynamicResource AppBarButtonContentHeight}"
                                 Margin="{DynamicResource AppBarButtonContentViewboxCollapsedMargin}"
+                                ClipToBounds="False"
+                                Stretch="None"
                                 HorizontalAlignment="Stretch">
                                 <ui:ContentPresenterEx
                                     x:Name="Content"
                                     Content="{TemplateBinding Icon}"
+                                    ClipToBounds="False"
                                     Foreground="{TemplateBinding Foreground}" />
                             </Viewbox>
-                            <TextBlock
+                            <ui:ContentPresenterEx
                                 x:Name="TextLabel"
                                 Grid.Row="1"
                                 Margin="{DynamicResource AppBarButtonTextLabelMargin}"
                                 FontFamily="{TemplateBinding FontFamily}"
                                 FontSize="12"
                                 Foreground="{TemplateBinding Foreground}"
-                                Text="{TemplateBinding Label}"
-                                TextAlignment="Center"
+                                Content="{TemplateBinding Label}"
                                 TextWrapping="Wrap" />
                             <TextBlock
                                 x:Name="OverflowTextLabel"
@@ -171,7 +173,7 @@
                             <Setter TargetName="ContentRoot" Property="MinHeight" Value="{DynamicResource AppBarThemeCompactHeight}" />
                             <Setter TargetName="TextLabel" Property="Grid.Row" Value="0" />
                             <Setter TargetName="TextLabel" Property="Grid.Column" Value="1" />
-                            <Setter TargetName="TextLabel" Property="TextAlignment" Value="Left" />
+                            <Setter TargetName="TextLabel" Property="TextBlock.TextAlignment" Value="Left" />
                             <Setter TargetName="TextLabel" Property="Margin" Value="{DynamicResource AppBarButtonTextLabelOnRightMargin}" />
                             <Setter TargetName="SubItemChevron" Property="Margin" Value="{DynamicResource AppBarButtonSubItemChevronLabelOnRightMargin}" />
                             <Setter Property="Width" Value="NaN" />

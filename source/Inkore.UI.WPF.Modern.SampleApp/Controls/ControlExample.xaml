@@ -117,7 +117,8 @@
                                     HorizontalAlignment="Stretch"
                                     HorizontalContentAlignment="Stretch"
                                     ui:ControlHelper.CornerRadius="0,0,8,8"
-                                    Background="{DynamicResource CardBackgroundFillColorSecondaryBrush}">
+                                    Background="{DynamicResource CardBackgroundFillColorSecondaryBrush}"
+                                    Style="{DynamicResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}">
 
                                     <Expander.Header>
                                         <TextBlock Text="Source code" />

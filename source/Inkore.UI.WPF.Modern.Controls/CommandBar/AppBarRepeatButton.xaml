@@ -51,35 +51,36 @@
                                 x:Name="ContentViewbox"
                                 Height="{DynamicResource AppBarButtonContentHeight}"
                                 Margin="{DynamicResource AppBarButtonContentViewboxCollapsedMargin}"
-                                HorizontalAlignment="Stretch">
+                                HorizontalAlignment="Stretch"
+                                Stretch="None">
                                 <ui:ContentPresenterEx
                                     x:Name="Content"
                                     Content="{TemplateBinding Icon}"
                                     Foreground="{TemplateBinding Foreground}" />
                             </Viewbox>
-                            <TextBlock
+                            <ui:ContentPresenterEx
                                 x:Name="TextLabel"
                                 Grid.Row="1"
                                 Margin="{DynamicResource AppBarButtonTextLabelMargin}"
                                 FontFamily="{TemplateBinding FontFamily}"
                                 FontSize="12"
                                 Foreground="{TemplateBinding Foreground}"
-                                Text="{TemplateBinding Label}"
-                                TextAlignment="Center"
+                                Content="{TemplateBinding Label}"
+                                TextBlock.TextAlignment="Center"
                                 TextWrapping="Wrap" />
-                            <TextBlock
+                            <ui:ContentPresenterEx
                                 x:Name="OverflowTextLabel"
                                 Margin="12,0,12,0"
-                                Padding="{DynamicResource AppBarButtonOverflowTextLabelPadding}"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Center"
                                 FontFamily="{TemplateBinding FontFamily}"
                                 FontSize="{DynamicResource ControlContentThemeFontSize}"
                                 Foreground="{TemplateBinding Foreground}"
-                                Text="{TemplateBinding Label}"
-                                TextAlignment="Left"
+                                Content="{TemplateBinding Label}"
+                                TextBlock.TextAlignment="Left"
                                 TextWrapping="NoWrap"
                                 Visibility="Collapsed" />
+                                <!--Padding="{DynamicResource AppBarButtonOverflowTextLabelPadding}"-->
                             <TextBlock
                                 x:Name="KeyboardAcceleratorTextLabel"
                                 Grid.Column="1"
@@ -171,7 +172,7 @@
                             <Setter TargetName="ContentRoot" Property="MinHeight" Value="{DynamicResource AppBarThemeCompactHeight}" />
                             <Setter TargetName="TextLabel" Property="Grid.Row" Value="0" />
                             <Setter TargetName="TextLabel" Property="Grid.Column" Value="1" />
-                            <Setter TargetName="TextLabel" Property="TextAlignment" Value="Left" />
+                            <Setter TargetName="TextLabel" Property="TextBlock.TextAlignment" Value="Left" />
                             <Setter TargetName="TextLabel" Property="Margin" Value="{DynamicResource AppBarButtonTextLabelOnRightMargin}" />
                             <Setter TargetName="SubItemChevron" Property="Margin" Value="{DynamicResource AppBarButtonSubItemChevronLabelOnRightMargin}" />
                             <Setter Property="Width" Value="NaN" />

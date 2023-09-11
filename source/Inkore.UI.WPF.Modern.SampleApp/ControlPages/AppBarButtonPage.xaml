@@ -19,8 +19,11 @@
                     <ui:AppBarButton
                         x:Name="Button1"
                         Click="AppBarButton_Click"
-                        Icon="Like"
-                        Label="SymbolIcon" />
+                        Label="SymbolIcon" >
+                        <ui:AppBarButton.Icon>
+                            <ui:SymbolIcon Symbol="Like"/>
+                        </ui:AppBarButton.Icon>
+                    </ui:AppBarButton>
                     <TextBlock
                         x:Name="Control1Output"
                         Margin="8,0,0,0"
@@ -41,9 +44,9 @@
                         x:Name="Button2"
                         Click="AppBarButton_Click"
                         Label="BitmapIcon">
-                        <ui:AppBarButton.Icon>
-                            <ui:BitmapIcon UriSource="/Assets/Slices2.png" />
-                        </ui:AppBarButton.Icon>
+                        <!--<ui:AppBarButton.Icon>
+                            <ui:BitmapIcon UriSource="/Inkore.UI.WPF.Modern.SampleApp;component/Assets/Slices2.png" />
+                        </ui:AppBarButton.Icon>-->
                     </ui:AppBarButton>
                     <TextBlock
                         x:Name="Control2Output"
