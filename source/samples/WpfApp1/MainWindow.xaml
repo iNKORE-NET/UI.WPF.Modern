@@ -10,7 +10,8 @@
      ui:TitleBar.ExtendViewIntoTitleBar="False"   
      ui:WindowHelper.SystemBackdropType="Acrylic"
      ui:TitleBar.IsBackButtonVisible="False"
-     ui:WindowHelper.UseModernWindowStyle="True">
+     ui:WindowHelper.UseModernWindowStyle="True"
+        ui:WindowHelper.CornerStyle="RoundSmall">
     <Grid>
         <ComboBox SelectionChanged="ComboBox_SelectionChanged">
             <ComboBoxItem Content="Item1"/>

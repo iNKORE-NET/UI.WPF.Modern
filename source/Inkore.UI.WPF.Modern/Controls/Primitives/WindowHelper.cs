@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
+using WindowCornerTest;
 
 namespace Inkore.UI.WPF.Modern.Controls.Primitives
 {
@@ -206,6 +207,35 @@ namespace Inkore.UI.WPF.Modern.Controls.Primitives
         }
 
         #endregion
+
+        #region CornerStyle
+
+        public static readonly DependencyProperty CornerStyleProperty =
+            DependencyProperty.RegisterAttached(
+                "CornerStyle",
+                typeof(WindowCornerStyle),
+                typeof(WindowHelper),
+                new PropertyMetadata(OnCornerStyleChanged));
+
+        private static void OnCornerStyleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is Window)
+                CornerHelper.SetWindowCorners((Window)d, (WindowCornerStyle)e.NewValue);
+        }
+
+        public static WindowCornerStyle GetCornerStyle(Window window)
+        {
+            return (WindowCornerStyle)window.GetValue(CornerStyleProperty);
+        }
+
+        public static void SetCornerStyle(Window window, WindowCornerStyle value)
+        {
+            window.SetValue(CornerStyleProperty, value);
+        }
+
+
+        #endregion
+
 
         #region FixMaximizedWindow
 
