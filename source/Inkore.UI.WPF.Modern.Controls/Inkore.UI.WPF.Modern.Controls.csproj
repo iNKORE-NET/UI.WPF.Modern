@@ -64,6 +64,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Include="..\Inkore.UI.WPF.Modern\Properties\AssemblyInfoCommon.cs" Link="Properties\AssemblyInfoCommon.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Include="..\..\docs\images\avater_2_trans_small.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>

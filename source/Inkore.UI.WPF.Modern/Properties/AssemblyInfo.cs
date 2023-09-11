@@ -14,14 +14,6 @@ using System.Windows.Markup;
 
 
 [assembly: AssemblyTitle("Inkore.UI.WPF.Modern")]
-[assembly: AssemblyDescription("Modern (Fluent 2) styles and controls for your WPF applications")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("iNKORE! Studios")]
-[assembly: AssemblyProduct("Inkore.UI.WPF.Modern")]
-[assembly: AssemblyCopyright("Copyright © iNKORE! Studios 2023")]
-[assembly: AssemblyTrademark("iNKORE! Studios")]
-[assembly: AssemblyVersion("0.9.17.0")]
-[assembly: AssemblyCulture("")]
 
 [assembly: InternalsVisibleTo("Inkore.UI.WPF.Modern.Controls")]
 //[assembly: InternalsVisibleTo("Inkore.UI.WPF.Modern.MahApps")]
