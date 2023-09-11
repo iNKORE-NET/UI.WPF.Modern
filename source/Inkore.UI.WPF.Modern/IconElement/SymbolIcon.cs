@@ -72,7 +72,7 @@ namespace Inkore.UI.WPF.Modern.Controls
                 nameof(FontSize),
                 typeof(double),
                 typeof(SymbolIcon),
-                new PropertyMetadata(20.0, OnFontSizeChanged));
+                new PropertyMetadata(16d, OnFontSizeChanged));
 
         public double FontSize
         {

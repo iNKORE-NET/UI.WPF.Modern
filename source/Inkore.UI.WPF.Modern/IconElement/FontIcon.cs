@@ -58,7 +58,7 @@ namespace Inkore.UI.WPF.Modern.Controls
                 nameof(FontSize),
                 typeof(double),
                 typeof(FontIcon),
-                new FrameworkPropertyMetadata(20.0, OnFontSizeChanged));
+                new FrameworkPropertyMetadata(16d, OnFontSizeChanged));
 
         /// <summary>
         /// Gets or sets the size of the icon glyph.
