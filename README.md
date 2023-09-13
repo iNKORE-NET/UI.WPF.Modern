@@ -29,3 +29,4 @@
 - Want to contribute? The team encourages community feedback and contributions.
 
 - If the project is not working properly, please file a report. We welcome any issues submitted on GitHub.
+- Sponsor us at https://inkore.net/about/members/notyoojun#sponsor
