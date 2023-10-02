@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.SampleApp.DataModel;
+﻿using iNKORE.UI.WPF.Modern.SampleApp.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
+namespace iNKORE.UI.WPF.Modern.SampleApp.ControlPages
 {
     /// <summary>
     /// FlipViewPage.xaml 的交互逻辑

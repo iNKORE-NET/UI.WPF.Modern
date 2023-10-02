@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     public sealed class ProgressRingPresenterTemplateSettings : DependencyObject
     {

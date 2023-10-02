@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     internal class VirtualLayoutContextAdapter : NonVirtualizingLayoutContext
     {

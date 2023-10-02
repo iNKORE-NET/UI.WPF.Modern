@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.Controls"
-    xmlns:primitives="clr-namespace:Inkore.UI.WPF.Modern.Controls.Primitives"
-    xmlns:root="clr-namespace:Inkore.UI.WPF.Modern">
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
+    xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
+    xmlns:root="clr-namespace:iNKORE.UI.WPF.Modern">
 
     <Style x:Key="TitleBarBackButtonStyle" TargetType="primitives:TitleBarButton">
         <Setter Property="Background" Value="{DynamicResource AccentButtonBackground}" />
@@ -201,7 +201,7 @@
                                 <Rectangle x:Name="NoiseLayer" Opacity="0.02">
                                     <Rectangle.Fill>
                                         <ImageBrush
-                                            ImageSource="/Inkore.UI.WPF.Modern;component/Materials/Acrylic/NoiseAsset_256X256_PNG.png"
+                                            ImageSource="/iNKORE.UI.WPF.Modern;component/Materials/Acrylic/NoiseAsset_256X256_PNG.png"
                                             Stretch="None"
                                             TileMode="Tile"
                                             Viewport="0,0,128,128"

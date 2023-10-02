@@ -13,9 +13,9 @@ using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using static CppWinRTHelpers;
-using static Inkore.UI.WPF.Modern.ResourceAccessor;
+using static iNKORE.UI.WPF.Modern.ResourceAccessor;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// An <see cref="InfoBar"/> is an inline notification for essential app-wide messages. The <see cref="InfoBar"/> will take up space in a layout and will not cover up other content or float on top of it. It supports rich content (including titles, messages, icons, and buttons) and can be configured to be user-dismissable or persistent.

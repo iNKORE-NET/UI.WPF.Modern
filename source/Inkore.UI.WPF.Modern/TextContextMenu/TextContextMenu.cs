@@ -1,13 +1,13 @@
-﻿using Inkore.UI.WPF.Modern.Controls.Primitives;
+﻿using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
-using static Inkore.UI.WPF.Modern.ResourceAccessor;
+using static iNKORE.UI.WPF.Modern.ResourceAccessor;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Represents a specialized context menu that contains commands for editing text.

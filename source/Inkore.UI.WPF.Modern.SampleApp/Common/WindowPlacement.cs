@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Helpers
+namespace iNKORE.UI.WPF.Modern.SampleApp.Helpers
 {
     // RECT structure required by WINDOWPLACEMENT structure
     [Serializable]

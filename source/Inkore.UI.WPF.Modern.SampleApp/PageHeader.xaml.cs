@@ -1,5 +1,5 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
-using Inkore.UI.WPF.Modern.SampleApp;
+﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.SampleApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Inkore.UI.WPF.Modern.SampleApp
+namespace iNKORE.UI.WPF.Modern.SampleApp
 {
     /// <summary>
     /// PageHeader.xaml 的交互逻辑

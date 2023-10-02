@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     [TemplatePart(Name = nameof(Container), Type = typeof(Border))]
     [TemplatePart(Name = nameof(LayoutRoot), Type = typeof(FrameworkElement))]

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.Media.Animation
+namespace iNKORE.UI.WPF.Modern.Media.Animation
 {
     /// <summary>
     /// Represents a visual behavior that occurs for predefined actions or state changes.

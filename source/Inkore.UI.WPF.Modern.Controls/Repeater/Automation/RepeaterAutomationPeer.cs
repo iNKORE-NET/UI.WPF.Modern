@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Automation.Peers;
-using Inkore.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Controls;
 
-namespace Inkore.UI.WPF.Modern.Automation.Peers
+namespace iNKORE.UI.WPF.Modern.Automation.Peers
 {
     public class RepeaterAutomationPeer : FrameworkElementAutomationPeer
     {

@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Inkore.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern
 {
     public static class PackagedAppHelper
     {

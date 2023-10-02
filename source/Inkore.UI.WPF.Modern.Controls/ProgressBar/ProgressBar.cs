@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using Inkore.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using System;
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -10,9 +10,9 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using ProgressBarAutomationPeer = Inkore.UI.WPF.Modern.Automation.Peers.ProgressBarAutomationPeer;
+using ProgressBarAutomationPeer = iNKORE.UI.WPF.Modern.Automation.Peers.ProgressBarAutomationPeer;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Represents a control that indicates the progress of an operation, where the typical

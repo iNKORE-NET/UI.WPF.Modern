@@ -10,9 +10,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
-using Inkore.UI.WPF.Modern.Automation.Peers;
+using iNKORE.UI.WPF.Modern.Automation.Peers;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     [ContentProperty(nameof(ItemTemplate))]
     public partial class ItemsRepeater : Panel

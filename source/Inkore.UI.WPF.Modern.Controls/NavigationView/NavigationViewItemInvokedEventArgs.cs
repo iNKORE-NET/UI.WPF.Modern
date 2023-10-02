@@ -2,9 +2,9 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using System;
-using Inkore.UI.WPF.Modern.Media.Animation;
+using iNKORE.UI.WPF.Modern.Media.Animation;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     public sealed class NavigationViewItemInvokedEventArgs : EventArgs
     {

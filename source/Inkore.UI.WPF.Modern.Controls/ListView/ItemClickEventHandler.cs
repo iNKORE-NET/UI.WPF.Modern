@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     public delegate void ItemClickEventHandler(object sender, ItemClickEventArgs e);
 

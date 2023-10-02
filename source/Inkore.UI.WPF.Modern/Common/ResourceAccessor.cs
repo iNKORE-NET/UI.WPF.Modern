@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Resources;
 
-namespace Inkore.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern
 {
     internal class ResourceAccessor
     {

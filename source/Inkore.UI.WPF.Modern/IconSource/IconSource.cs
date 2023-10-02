@@ -4,7 +4,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Represents the base class for an icon source.

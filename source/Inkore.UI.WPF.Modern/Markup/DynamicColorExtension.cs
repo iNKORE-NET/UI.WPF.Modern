@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Markup
+namespace iNKORE.UI.WPF.Modern.Markup
 {
     [TypeConverter(typeof(DynamicColorExtensionConverter))]
     public class DynamicColorExtension : DynamicResourceExtension

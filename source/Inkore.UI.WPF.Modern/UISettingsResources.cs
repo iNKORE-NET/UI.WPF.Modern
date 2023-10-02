@@ -5,7 +5,7 @@ using Microsoft.Win32;
 using Windows.Foundation.Metadata;
 using Windows.UI.ViewManagement;
 
-namespace Inkore.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern
 {
     internal class UISettingsResources : ResourceDictionary
     {

@@ -4,9 +4,9 @@
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
-using Inkore.UI.WPF.Modern.Automation.Peers;
+using iNKORE.UI.WPF.Modern.Automation.Peers;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     public class ToggleSplitButton : SplitButton
     {

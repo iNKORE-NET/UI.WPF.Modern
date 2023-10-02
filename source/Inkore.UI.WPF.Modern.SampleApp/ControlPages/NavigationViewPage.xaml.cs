@@ -1,5 +1,5 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
-using Inkore.UI.WPF.Modern.SampleApp.Common;
+﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.SampleApp.Common;
 using SamplesCommon.SamplePages;
 using System;
 using System.Collections.ObjectModel;
@@ -10,10 +10,10 @@ using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using SamplesCommon;
-using Separator = Inkore.UI.WPF.Modern.SampleApp.Common.Separator;
+using Separator = iNKORE.UI.WPF.Modern.SampleApp.Common.Separator;
 using VirtualKey = System.Windows.Input.Key;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
+namespace iNKORE.UI.WPF.Modern.SampleApp.ControlPages
 {
     public sealed partial class NavigationViewPage
     {
@@ -30,11 +30,11 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             DataContext = this;
             InitializeComponent();
 
-            nvSample2.SelectedItem = nvSample2.MenuItems.OfType<Inkore.UI.WPF.Modern.Controls.NavigationViewItem>().First();
-            nvSample5.SelectedItem = nvSample5.MenuItems.OfType<Inkore.UI.WPF.Modern.Controls.NavigationViewItem>().First();
-            nvSample6.SelectedItem = nvSample6.MenuItems.OfType<Inkore.UI.WPF.Modern.Controls.NavigationViewItem>().First();
-            nvSample7.SelectedItem = nvSample7.MenuItems.OfType<Inkore.UI.WPF.Modern.Controls.NavigationViewItem>().First();
-            nvSample8.SelectedItem = nvSample8.MenuItems.OfType<Inkore.UI.WPF.Modern.Controls.NavigationViewItem>().First();
+            nvSample2.SelectedItem = nvSample2.MenuItems.OfType<iNKORE.UI.WPF.Modern.Controls.NavigationViewItem>().First();
+            nvSample5.SelectedItem = nvSample5.MenuItems.OfType<iNKORE.UI.WPF.Modern.Controls.NavigationViewItem>().First();
+            nvSample6.SelectedItem = nvSample6.MenuItems.OfType<iNKORE.UI.WPF.Modern.Controls.NavigationViewItem>().First();
+            nvSample7.SelectedItem = nvSample7.MenuItems.OfType<iNKORE.UI.WPF.Modern.Controls.NavigationViewItem>().First();
+            nvSample8.SelectedItem = nvSample8.MenuItems.OfType<iNKORE.UI.WPF.Modern.Controls.NavigationViewItem>().First();
 
             Categories = new ObservableCollection<CategoryBase>();
             Category firstCategory = new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" };
@@ -53,19 +53,19 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             nvSample2.UpdateLayout();
         }
 
-        public Inkore.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode ChoosePanePosition(bool toggleOn)
+        public iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode ChoosePanePosition(bool toggleOn)
         {
             if (toggleOn)
             {
-                return Inkore.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Left;
+                return iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Left;
             }
             else
             {
-                return Inkore.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Top;
+                return iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Top;
             }
         }
 
-        private void NavigationView_SelectionChanged(Inkore.UI.WPF.Modern.Controls.NavigationView sender, Inkore.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
             {
@@ -73,7 +73,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             }
             else
             {
-                var selectedItem = (Inkore.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
+                var selectedItem = (iNKORE.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
                 if (selectedItem != null)
                 {
                     string selectedItemTag = (string)selectedItem.Tag;
@@ -85,7 +85,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             }
         }
 
-        private void NavigationView_SelectionChanged2(Inkore.UI.WPF.Modern.Controls.NavigationView sender, Inkore.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged2(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             if (!CameFromGridChange)
             {
@@ -95,7 +95,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
                 }
                 else
                 {
-                    var selectedItem = (Inkore.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
+                    var selectedItem = (iNKORE.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
                     string selectedItemTag = (string)selectedItem.Tag;
                     string pageName = "SamplesCommon.SamplePages." + selectedItemTag;
                     Type pageType = typeof(SamplePage1).Assembly.GetType(pageName);
@@ -106,7 +106,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             CameFromGridChange = false;
         }
 
-        private void NavigationView_SelectionChanged4(Inkore.UI.WPF.Modern.Controls.NavigationView sender, Inkore.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged4(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
             {
@@ -126,7 +126,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
         }
 
 
-        private void NavigationView_SelectionChanged5(Inkore.UI.WPF.Modern.Controls.NavigationView sender, Inkore.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged5(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
             {
@@ -134,7 +134,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             }
             else
             {
-                var selectedItem = (Inkore.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
+                var selectedItem = (iNKORE.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
                 string selectedItemTag = (string)selectedItem.Tag;
                 sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
                 string pageName = "SamplesCommon.SamplePages." + selectedItemTag;
@@ -142,7 +142,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
                 contentFrame5.Navigate(pageType);
             }
         }
-        private void NavigationView_SelectionChanged6(Inkore.UI.WPF.Modern.Controls.NavigationView sender, Inkore.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged6(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
             {
@@ -150,14 +150,14 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             }
             else
             {
-                var selectedItem = (Inkore.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
+                var selectedItem = (iNKORE.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
                 string pageName = "SamplesCommon.SamplePages." + (string)selectedItem.Tag;
                 Type pageType = typeof(SamplePage1).Assembly.GetType(pageName);
                 contentFrame6.Navigate(pageType);
             }
         }
 
-        private void NavigationView_SelectionChanged7(Inkore.UI.WPF.Modern.Controls.NavigationView sender, Inkore.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged7(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
             {
@@ -165,7 +165,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             }
             else
             {
-                var selectedItem = (Inkore.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
+                var selectedItem = (iNKORE.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
                 string pageName = "SamplesCommon.SamplePages." + (string)selectedItem.Tag;
                 Type pageType = typeof(SamplePage1).Assembly.GetType(pageName);
 
@@ -173,7 +173,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             }
         }
 
-        private void NavigationView_SelectionChanged8(Inkore.UI.WPF.Modern.Controls.NavigationView sender, Inkore.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged8(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             /* NOTE: for this function to work, every NavigationView must follow the same naming convention: nvSample# (i.e. nvSample3),
             and every corresponding content frame must follow the same naming convention: contentFrame# (i.e. contentFrame3) */
@@ -188,7 +188,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             }
             else
             {
-                var selectedItem = (Inkore.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
+                var selectedItem = (iNKORE.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
                 string selectedItemTag = ((string)selectedItem.Tag);
                 sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
                 string pageName = "SamplesCommon.SamplePages." + selectedItemTag;
@@ -244,11 +244,11 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
         {
             if ((sender as CheckBox).IsChecked == true)
             {
-                nvSample.IsBackButtonVisible = Inkore.UI.WPF.Modern.Controls.NavigationViewBackButtonVisible.Collapsed;
+                nvSample.IsBackButtonVisible = iNKORE.UI.WPF.Modern.Controls.NavigationViewBackButtonVisible.Collapsed;
             }
             else
             {
-                nvSample.IsBackButtonVisible = Inkore.UI.WPF.Modern.Controls.NavigationViewBackButtonVisible.Collapsed;
+                nvSample.IsBackButtonVisible = iNKORE.UI.WPF.Modern.Controls.NavigationViewBackButtonVisible.Collapsed;
             }
         }
 
@@ -311,13 +311,13 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             {
                 if ((sender as RadioButton).Name == "nvSampleLeft" && nvSample != null)
                 {
-                    nvSample.PaneDisplayMode = Inkore.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Left;
+                    nvSample.PaneDisplayMode = iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Left;
                     nvSample.IsPaneOpen = true;
                     FooterStackPanel.Orientation = Orientation.Vertical;
                 }
                 else if ((sender as RadioButton).Name == "nvSample8Left" && nvSample8 != null)
                 {
-                    nvSample8.PaneDisplayMode = Inkore.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Left;
+                    nvSample8.PaneDisplayMode = iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Left;
                     nvSample8.IsPaneOpen = true;
                 }
             }
@@ -330,13 +330,13 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             {
                 if ((sender as RadioButton).Name == "nvSampleTop" && nvSample != null)
                 {
-                    nvSample.PaneDisplayMode = Inkore.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Top;
+                    nvSample.PaneDisplayMode = iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Top;
                     nvSample.IsPaneOpen = false;
                     FooterStackPanel.Orientation = Orientation.Horizontal;
                 }
                 else if ((sender as RadioButton).Name == "nvSample8Top" && nvSample8 != null)
                 {
-                    nvSample8.PaneDisplayMode = Inkore.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Top;
+                    nvSample8.PaneDisplayMode = iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Top;
                     nvSample8.IsPaneOpen = false;
                 }
             }
@@ -348,7 +348,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
             {
                 if ((sender as RadioButton).Name == "nvSample8LeftCompact" && nvSample8 != null)
                 {
-                    nvSample8.PaneDisplayMode = Inkore.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.LeftCompact;
+                    nvSample8.PaneDisplayMode = iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.LeftCompact;
                     nvSample8.IsPaneOpen = false;
                 }
             }
@@ -358,11 +358,11 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
         {
             if ((sender as CheckBox).IsChecked == true)
             {
-                nvSample.SelectionFollowsFocus = Inkore.UI.WPF.Modern.Controls.NavigationViewSelectionFollowsFocus.Enabled;
+                nvSample.SelectionFollowsFocus = iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionFollowsFocus.Enabled;
             }
             else
             {
-                nvSample.SelectionFollowsFocus = Inkore.UI.WPF.Modern.Controls.NavigationViewSelectionFollowsFocus.Disabled;
+                nvSample.SelectionFollowsFocus = iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionFollowsFocus.Disabled;
             }
         }
 

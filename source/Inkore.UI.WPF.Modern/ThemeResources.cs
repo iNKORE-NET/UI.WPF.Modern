@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern
 {
     public class ThemeResources : ResourceDictionaryEx, ISupportInitialize
     {

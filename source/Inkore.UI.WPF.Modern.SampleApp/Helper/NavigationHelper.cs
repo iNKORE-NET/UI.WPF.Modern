@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Navigation;
 using Windows.Foundation.Metadata;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Helper
+namespace iNKORE.UI.WPF.Modern.SampleApp.Helper
 {
     /// <summary>
     /// RootFrameNavigationHelper registers for standard mouse and keyboard

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern
 {
     /// <summary>
     /// Defines a collection of extensions methods for UI.

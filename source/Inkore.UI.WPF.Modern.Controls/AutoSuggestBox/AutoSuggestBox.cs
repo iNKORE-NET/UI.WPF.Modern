@@ -8,9 +8,9 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Threading;
-using Inkore.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     public sealed partial class AutoSuggestBox : ItemsControl
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     internal class PipsPagerAutomationPeer : FrameworkElementAutomationPeer
     {

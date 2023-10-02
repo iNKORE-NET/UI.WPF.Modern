@@ -11,9 +11,9 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
-using Inkore.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     [ContentProperty(nameof(Items))]
     [TemplatePart(Name = s_repeaterName, Type = typeof(ItemsRepeater))]

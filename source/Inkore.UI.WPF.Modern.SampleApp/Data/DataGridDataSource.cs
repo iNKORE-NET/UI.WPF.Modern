@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Data
+namespace iNKORE.UI.WPF.Modern.SampleApp.Data
 {
     public class DataGridDataSource
     {

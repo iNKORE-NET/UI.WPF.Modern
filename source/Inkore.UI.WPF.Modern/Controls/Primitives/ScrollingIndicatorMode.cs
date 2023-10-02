@@ -1,4 +1,4 @@
-﻿namespace Inkore.UI.WPF.Modern.Controls.Primitives
+﻿namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     /// <summary>
     /// Defines constants that specify input-specific transition animations that are

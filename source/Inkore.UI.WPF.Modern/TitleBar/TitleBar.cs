@@ -1,10 +1,10 @@
-﻿using Inkore.UI.WPF.Modern.Controls.Primitives;
+﻿using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     [StyleTypedProperty(Property = StylePropertyName, StyleTargetType = typeof(TitleBarControl))]
     [StyleTypedProperty(Property = ButtonStylePropertyName, StyleTargetType = typeof(TitleBarButton))]

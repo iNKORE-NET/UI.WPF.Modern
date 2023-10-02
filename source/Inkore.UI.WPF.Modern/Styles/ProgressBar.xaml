@@ -2,10 +2,10 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:animation="clr-namespace:Inkore.UI.WPF.Modern.Media.Animation"
-    xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.Controls"
-    xmlns:primitives="clr-namespace:Inkore.UI.WPF.Modern.Controls.Primitives"
-    xmlns:root="clr-namespace:Inkore.UI.WPF.Modern"
+    xmlns:animation="clr-namespace:iNKORE.UI.WPF.Modern.Media.Animation"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
+    xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
+    xmlns:root="clr-namespace:iNKORE.UI.WPF.Modern"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary>

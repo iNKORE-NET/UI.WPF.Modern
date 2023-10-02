@@ -6,10 +6,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using SplitDataSourceT = Inkore.UI.WPF.Modern.Controls.SplitDataSourceBase<object, Inkore.UI.WPF.Modern.Controls.NavigationViewSplitVectorID, double>;
-using SplitVectorT = Inkore.UI.WPF.Modern.Controls.SplitVector<object, Inkore.UI.WPF.Modern.Controls.NavigationViewSplitVectorID>;
+using SplitDataSourceT = iNKORE.UI.WPF.Modern.Controls.SplitDataSourceBase<object, iNKORE.UI.WPF.Modern.Controls.NavigationViewSplitVectorID, double>;
+using SplitVectorT = iNKORE.UI.WPF.Modern.Controls.SplitVector<object, iNKORE.UI.WPF.Modern.Controls.NavigationViewSplitVectorID>;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     enum NavigationViewSplitVectorID
     {

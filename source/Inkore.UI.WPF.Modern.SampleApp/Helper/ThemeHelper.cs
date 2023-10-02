@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.SampleApp.Common;
+﻿using iNKORE.UI.WPF.Modern.SampleApp.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Windows.Storage;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Helper
+namespace iNKORE.UI.WPF.Modern.SampleApp.Helper
 {
     /// <summary>
     /// Class providing functionality around switching and restoring theme settings

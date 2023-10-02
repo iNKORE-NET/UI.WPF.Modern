@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace Inkore.UI.WPF.Modern.Media.Animation
+namespace iNKORE.UI.WPF.Modern.Media.Animation
 {
     internal class NavigationAnimation
     {

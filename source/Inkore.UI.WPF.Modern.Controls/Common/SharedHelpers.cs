@@ -15,7 +15,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using Windows.Win32;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     internal static class SharedHelpers
     {

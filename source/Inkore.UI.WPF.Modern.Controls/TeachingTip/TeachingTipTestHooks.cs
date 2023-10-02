@@ -7,7 +7,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     internal class TeachingTipTestHooks
     {

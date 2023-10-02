@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows;
 using System.Xml.Linq;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Represents a container with two views that size and position content in the available space, either side-by-side or top-bottom.

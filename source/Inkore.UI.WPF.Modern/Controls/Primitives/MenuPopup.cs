@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     public class MenuPopup : Popup
     {

@@ -2,6 +2,6 @@
     <FontFamily x:Key="SegoeUISymbol">Segoe UI Symbol</FontFamily>
     <FontFamily x:Key="SegoeMDL2Assets">Segoe MDL2 Assets</FontFamily>
     <FontFamily x:Key="SegoeFluentIcons">Segoe Fluent Icons</FontFamily>
-    <FontFamily x:Key="FluentSystemIcons">pack://application:,,,/Inkore.UI.WPF.Modern;component/Fonts/#FluentSystemIcons-Regular</FontFamily>
-    <FontFamily x:Key="FluentSystemIconsFilled">pack://application:,,,/Inkore.UI.WPF.Modern;component/Fonts/#FluentSystemIcons-Filled</FontFamily>
+    <FontFamily x:Key="FluentSystemIcons">pack://application:,,,/iNKORE.UI.WPF.Modern;component/Fonts/#FluentSystemIcons-Regular</FontFamily>
+    <FontFamily x:Key="FluentSystemIconsFilled">pack://application:,,,/iNKORE.UI.WPF.Modern;component/Fonts/#FluentSystemIcons-Filled</FontFamily>
 </ResourceDictionary>

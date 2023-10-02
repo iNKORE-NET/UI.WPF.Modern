@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
+namespace iNKORE.UI.WPF.Modern.SampleApp.ControlPages
 {
     public partial class ItemsRepeaterPage
     {

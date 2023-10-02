@@ -5,7 +5,7 @@ using System;
 using System.Collections.Specialized;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     public class VirtualizingLayout : Layout, IVirtualizingLayoutOverrides
     {

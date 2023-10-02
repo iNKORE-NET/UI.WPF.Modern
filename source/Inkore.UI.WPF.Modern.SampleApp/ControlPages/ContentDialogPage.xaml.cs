@@ -1,9 +1,9 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Controls;
 using System.Windows;
 using System.Windows.Controls;
-using Page = Inkore.UI.WPF.Modern.Controls.Page;
+using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
+namespace iNKORE.UI.WPF.Modern.SampleApp.ControlPages
 {
     public partial class ContentDialogPage : Page
     {

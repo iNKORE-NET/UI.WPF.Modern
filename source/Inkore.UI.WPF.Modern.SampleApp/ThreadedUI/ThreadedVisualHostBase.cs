@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ThreadedUI
+namespace iNKORE.UI.WPF.Modern.SampleApp.ThreadedUI
 {
     public abstract class ThreadedVisualHostBase : FrameworkElement
     {

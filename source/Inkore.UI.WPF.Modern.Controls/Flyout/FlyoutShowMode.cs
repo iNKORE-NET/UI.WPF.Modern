@@ -1,4 +1,4 @@
-﻿namespace Inkore.UI.WPF.Modern.Controls.Primitives
+﻿namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     public enum FlyoutShowMode
     {

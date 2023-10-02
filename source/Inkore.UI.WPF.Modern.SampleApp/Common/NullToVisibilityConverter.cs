@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Common
+namespace iNKORE.UI.WPF.Modern.SampleApp.Common
 {
     public class NullToVisibilityConverter : IValueConverter
     {

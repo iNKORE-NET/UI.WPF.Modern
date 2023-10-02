@@ -4,7 +4,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Represents a shareable object used to create an icon that displays and controls a visual that can animate in response to user interaction and visual state changes.

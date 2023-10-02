@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace Inkore.UI.WPF.Modern.Media.Animation
+namespace iNKORE.UI.WPF.Modern.Media.Animation
 {
     /// <summary>
     /// Represents a collection of Transition objects. Each Transition object represents

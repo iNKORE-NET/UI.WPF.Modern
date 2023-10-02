@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);GetDocumentationFile</TargetsForTfmSpecificBuildOutput>
-		<NuspecFile>$(MSBuildThisFileDirectory)Inkore.UI.WPF.ModernUI.nuspec</NuspecFile>
+		<NuspecFile>$(MSBuildThisFileDirectory)iNKORE.UI.WPF.ModernUI.nuspec</NuspecFile>
 		<PackageId>$(AssemblyName)</PackageId>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
@@ -29,10 +29,10 @@
 			Windows.Foundation.Diagnostics;
 			Windows.Foundation.PropertyType;
 		</CsWinRTExcludes>
-		<ApplicationIcon>..\..\materials\images\Inkore.ico</ApplicationIcon>
+		<ApplicationIcon>..\..\materials\images\iNKORE.ico</ApplicationIcon>
 		<Authors>NotYoojun.!</Authors>
 		<Company>iNKORE! Studios</Company>
-		<Product>Inkore.UI.WPF.Modern</Product>
+		<Product>iNKORE.UI.WPF.Modern</Product>
 		<Version />
 		<Title>$(AssemblyName)</Title>
 		<PackageReadmeFile>..\..\README.md</PackageReadmeFile>
@@ -64,7 +64,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Include="..\Inkore.UI.WPF.Modern\Properties\AssemblyInfoCommon.cs" Link="Properties\AssemblyInfoCommon.cs" />
+	  <Compile Include="..\iNKORE.UI.WPF.Modern\Properties\AssemblyInfoCommon.cs" Link="Properties\AssemblyInfoCommon.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -79,11 +79,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Inkore.UI.WPF.Modern\Inkore.UI.WPF.Modern.csproj" />
+		<ProjectReference Include="..\Inkore.UI.WPF.Modern\iNKORE.UI.WPF.Modern.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="Inkore.UI.WPF.Modern.Controls.xml">
+		<None Update="iNKORE.UI.WPF.Modern.Controls.xml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>

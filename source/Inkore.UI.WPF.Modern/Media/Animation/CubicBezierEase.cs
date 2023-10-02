@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media.Animation;
 
-namespace Inkore.UI.WPF.Modern.Media.Animation
+namespace iNKORE.UI.WPF.Modern.Media.Animation
 {
     public class CubicBezierEase : EasingFunctionBase
     {

@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.Media;
+﻿using iNKORE.UI.WPF.Modern.Media;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,7 +10,7 @@ using System.Windows.Data;
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Markup
+namespace iNKORE.UI.WPF.Modern.Markup
 {
     public class AcrylicBrushExtension : MarkupExtension
     {

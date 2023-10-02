@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Inkore.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -12,22 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Inkore.UI.WPF.Modern.SampleApp.ControlPages;
+using iNKORE.UI.WPF.Modern.SampleApp.ControlPages;
 using Windows.Foundation.Metadata;
 using Windows.System;
-using Inkore.UI.WPF.Modern.SampleApp.DataModel;
+using iNKORE.UI.WPF.Modern.SampleApp.DataModel;
 using Windows.Gaming.Input;
 using Windows.System.Profile;
 using System.Windows.Automation;
 using System.Diagnostics;
 using Windows.Devices.Input;
-using Inkore.UI.WPF.Modern.SampleApp.Helper;
+using iNKORE.UI.WPF.Modern.SampleApp.Helper;
 using System.Windows.Controls;
-using Page = Inkore.UI.WPF.Modern.Controls.Page;
-using Frame = Inkore.UI.WPF.Modern.Controls.Frame;
-using Inkore.UI.WPF.Modern.SampleApp.Common;
+using Page = iNKORE.UI.WPF.Modern.Controls.Page;
+using Frame = iNKORE.UI.WPF.Modern.Controls.Frame;
+using iNKORE.UI.WPF.Modern.SampleApp.Common;
 
-namespace Inkore.UI.WPF.Modern.SampleApp
+namespace iNKORE.UI.WPF.Modern.SampleApp
 {
     /// <summary>
     /// NavigationRootPage.xaml 的交互逻辑

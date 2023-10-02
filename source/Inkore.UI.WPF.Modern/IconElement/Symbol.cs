@@ -1,4 +1,4 @@
-﻿namespace Inkore.UI.WPF.Modern.Controls
+﻿namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Defines constants that specify a glyph from the **Segoe MDL2 Assets** font to

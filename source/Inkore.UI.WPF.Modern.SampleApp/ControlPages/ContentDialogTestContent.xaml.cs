@@ -1,10 +1,10 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Controls;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
+namespace iNKORE.UI.WPF.Modern.SampleApp.ControlPages
 {
     public partial class ContentDialogTestContent : UserControl
     {

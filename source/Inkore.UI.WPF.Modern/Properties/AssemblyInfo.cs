@@ -13,17 +13,17 @@ using System.Windows.Markup;
 )]
 
 
-[assembly: AssemblyTitle("Inkore.UI.WPF.Modern")]
+[assembly: AssemblyTitle("iNKORE.UI.WPF.Modern")]
 
-[assembly: InternalsVisibleTo("Inkore.UI.WPF.Modern.Controls")]
-//[assembly: InternalsVisibleTo("Inkore.UI.WPF.Modern.MahApps")]
+[assembly: InternalsVisibleTo("iNKORE.UI.WPF.Modern.Controls")]
+//[assembly: InternalsVisibleTo("iNKORE.UI.WPF.Modern.MahApps")]
 [assembly: InternalsVisibleTo("MUXControlsTestApp")]
 
 [assembly: XmlnsPrefix("http://schemas.inkore.net/lib/ui/wpf/modern", "modern")]
-[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern")]
-[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Controls")]
-[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Controls.Primitives")]
-[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.DesignTime")]
-[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Markup")]
-[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Media")]
-[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Media.Animation")]
+[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern")]
+[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Controls")]
+[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Controls.Primitives")]
+[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.DesignTime")]
+[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Markup")]
+[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Media")]
+[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Media.Animation")]

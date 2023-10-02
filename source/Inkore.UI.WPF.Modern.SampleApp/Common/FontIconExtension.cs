@@ -1,8 +1,8 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Controls;
 using System;
 using System.Windows.Markup;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Common
+namespace iNKORE.UI.WPF.Modern.SampleApp.Common
 {
     [MarkupExtensionReturnType(typeof(FontIcon))]
     public class FontIconExtension : MarkupExtension

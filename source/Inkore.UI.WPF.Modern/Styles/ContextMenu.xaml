@@ -2,9 +2,9 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.Controls"
-    xmlns:m="clr-namespace:Inkore.UI.WPF.Modern.Markup"
-    xmlns:primitives="clr-namespace:Inkore.UI.WPF.Modern.Controls.Primitives">
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
+    xmlns:m="clr-namespace:iNKORE.UI.WPF.Modern.Markup"
+    xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives">
 
     <Style x:Key="ContextMenuStyleBase" TargetType="ContextMenu">
         <Setter Property="Background" Value="{DynamicResource MenuFlyoutPresenterBackground}" />

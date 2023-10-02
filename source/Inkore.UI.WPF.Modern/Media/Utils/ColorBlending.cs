@@ -3,7 +3,7 @@
 
 using System;
 
-namespace Inkore.UI.WPF.Modern.Media.Utils
+namespace iNKORE.UI.WPF.Modern.Media.Utils
 {
     internal enum ColorBlendMode { Burn, Darken, Dodge, Lighten, Multiply, Overlay, Screen };
 

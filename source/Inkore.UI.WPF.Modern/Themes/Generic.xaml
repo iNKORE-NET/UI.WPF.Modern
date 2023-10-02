@@ -1,17 +1,17 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:ui="clr-namespace:Inkore.UI.WPF.Modern.Controls" xmlns:ui1="clr-namespace:Inkore.UI.WPF.Modern.Common">
+                    xmlns:ui="clr-namespace:iNKORE.UI.WPF.Modern.Controls" xmlns:ui1="clr-namespace:iNKORE.UI.WPF.Modern.Common">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern;component/AnimatedVisuals/AnimatedVisualSource.xaml" />
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern;component/Navigation/Frame.xaml" />
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern;component/Navigation/Page.xaml" />
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern;component/Themes/FontIconFallback.xaml" />
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern;component/Themes/ListViewHeaderItem.xaml" />
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern;component/Themes/TextContextMenu.xaml" />
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern;component/TitleBar/TitleBarButton.xaml" />
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern;component/TitleBar/TitleBarControl.xaml" />
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern;component/Materials/Acrylic/AcrylicPanel.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/AnimatedVisuals/AnimatedVisualSource.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Navigation/Frame.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Navigation/Page.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/FontIconFallback.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/ListViewHeaderItem.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/TextContextMenu.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/TitleBar/TitleBarButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/TitleBar/TitleBarControl.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Materials/Acrylic/AcrylicPanel.xaml" />
     </ResourceDictionary.MergedDictionaries>
     
     <ui1:AddValueConverter x:Key="addValueConverter" />

@@ -2,7 +2,7 @@
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Markup
+namespace iNKORE.UI.WPF.Modern.Markup
 {
     public class StaticColorExtension : System.Windows.StaticResourceExtension
     {

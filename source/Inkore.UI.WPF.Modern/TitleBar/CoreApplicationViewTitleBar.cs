@@ -1,8 +1,8 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Controls;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Inkore.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern
 {
     internal sealed class CoreApplicationViewTitleBar
     {

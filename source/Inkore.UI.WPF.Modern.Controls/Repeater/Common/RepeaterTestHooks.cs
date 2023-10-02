@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using Inkore.UI.WPF.Modern;
-using Inkore.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern;
+using iNKORE.UI.WPF.Modern.Controls;
 
 namespace Microsoft.UI.Private.Controls
 {

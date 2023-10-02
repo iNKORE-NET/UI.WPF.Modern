@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Controls;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;

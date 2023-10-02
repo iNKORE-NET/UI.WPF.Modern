@@ -13,7 +13,7 @@ using Windows.Win32.Foundation;
 using Windows.Win32.Graphics.Gdi;
 using Windows.Win32.UI.WindowsAndMessaging;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     internal class MaximizedWindowFixer
     {

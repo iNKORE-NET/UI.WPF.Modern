@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Controls
+namespace iNKORE.UI.WPF.Modern.SampleApp.Controls
 {
     /// <summary>
     /// HeaderTile.xaml 的交互逻辑

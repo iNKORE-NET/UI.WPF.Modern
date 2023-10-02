@@ -2,7 +2,7 @@
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     public class AutoSuggestBoxListViewItem : System.Windows.Controls.ListViewItem
     {

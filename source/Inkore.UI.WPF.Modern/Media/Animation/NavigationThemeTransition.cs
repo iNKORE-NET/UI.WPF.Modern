@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Markup;
 
-namespace Inkore.UI.WPF.Modern.Media.Animation
+namespace iNKORE.UI.WPF.Modern.Media.Animation
 {
     /// <summary>
     /// Provides page navigation animations.

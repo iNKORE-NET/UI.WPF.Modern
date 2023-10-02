@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.DesignTime
+namespace iNKORE.UI.WPF.Modern.DesignTime
 {
     public abstract class IntellisenseResourcesBase : ResourceDictionary, ISupportInitialize
     {

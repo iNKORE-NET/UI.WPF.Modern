@@ -1,10 +1,10 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
-using Inkore.UI.WPF.Modern.Media.Animation;
-using Inkore.UI.WPF.Modern.SampleApp.SamplePages;
+﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Media.Animation;
+using iNKORE.UI.WPF.Modern.SampleApp.SamplePages;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
+namespace iNKORE.UI.WPF.Modern.SampleApp.ControlPages
 {
     public partial class CompactSizingPage : Page
     {

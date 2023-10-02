@@ -1,8 +1,8 @@
-﻿using Inkore.UI.WPF.Modern.SampleApp.DataModel;
+﻿using iNKORE.UI.WPF.Modern.SampleApp.DataModel;
 using System.Reflection;
 using System;
 
-namespace Inkore.UI.WPF.Modern.SampleApp
+namespace iNKORE.UI.WPF.Modern.SampleApp
 {
     public partial class App
     {

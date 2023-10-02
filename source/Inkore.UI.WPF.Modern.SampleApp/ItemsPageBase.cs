@@ -7,9 +7,9 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Inkore.UI.WPF.Modern.Controls;
-using Inkore.UI.WPF.Modern.Media.Animation;
-using Inkore.UI.WPF.Modern.SampleApp.DataModel;
+using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Media.Animation;
+using iNKORE.UI.WPF.Modern.SampleApp.DataModel;
 using SamplesCommon;
 using System;
 using System.Collections.Generic;
@@ -19,10 +19,10 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using GridView = Inkore.UI.WPF.Modern.Controls.GridView;
-using Page = Inkore.UI.WPF.Modern.Controls.Page;
+using GridView = iNKORE.UI.WPF.Modern.Controls.GridView;
+using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 
-namespace Inkore.UI.WPF.Modern.SampleApp
+namespace iNKORE.UI.WPF.Modern.SampleApp
 {
     public abstract class ItemsPageBase : Page, INotifyPropertyChanged
     {

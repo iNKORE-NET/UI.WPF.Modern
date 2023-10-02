@@ -7,7 +7,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     // Internal component for layout to keep track of elements and
     // help with collection changes.

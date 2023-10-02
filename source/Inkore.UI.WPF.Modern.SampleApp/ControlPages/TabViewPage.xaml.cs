@@ -1,12 +1,12 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
-using Inkore.UI.WPF.Modern.Controls.Primitives;
+﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using SamplesCommon.SamplePages;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using Frame = Inkore.UI.WPF.Modern.Controls.Frame;
+using Frame = iNKORE.UI.WPF.Modern.Controls.Frame;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
+namespace iNKORE.UI.WPF.Modern.SampleApp.ControlPages
 {
     public partial class TabViewPage
     {

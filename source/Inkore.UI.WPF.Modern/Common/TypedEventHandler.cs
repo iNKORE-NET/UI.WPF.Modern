@@ -1,4 +1,4 @@
-﻿namespace Inkore.UI.WPF.Modern
+﻿namespace iNKORE.UI.WPF.Modern
 {
     /// <summary>
     /// Represents a method that handles general events.

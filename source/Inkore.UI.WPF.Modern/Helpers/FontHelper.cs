@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Helpers
+namespace iNKORE.UI.WPF.Modern.Helpers
 {
     internal static class FontHelper
     {

@@ -1,5 +1,5 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
-using Inkore.UI.WPF.Modern.SampleApp.Common;
+﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.SampleApp.Common;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,9 +16,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Page = Inkore.UI.WPF.Modern.Controls.Page;
+using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
+namespace iNKORE.UI.WPF.Modern.SampleApp.ControlPages
 {
     /// <summary>
     /// CalendarViewPage.xaml 的交互逻辑

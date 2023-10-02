@@ -1,4 +1,4 @@
-﻿namespace Inkore.UI.WPF.Modern.Media.Animation
+﻿namespace iNKORE.UI.WPF.Modern.Media.Animation
 {
     /// <summary>
     /// Specifies that animations are suppressed during navigation.

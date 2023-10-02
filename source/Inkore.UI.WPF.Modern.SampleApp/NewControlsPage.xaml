@@ -1,10 +1,10 @@
 ﻿<local:ItemsPageBase
-    x:Class="Inkore.UI.WPF.Modern.SampleApp.NewControlsPage"
+    x:Class="iNKORE.UI.WPF.Modern.SampleApp.NewControlsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:Inkore.UI.WPF.Modern.SampleApp.Controls"
+    xmlns:controls="clr-namespace:iNKORE.UI.WPF.Modern.SampleApp.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.SampleApp"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.SampleApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     Title="New Controls"

@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Common
+namespace iNKORE.UI.WPF.Modern.SampleApp.Common
 {
 
     [ContentProperty("ItemTemplate")]

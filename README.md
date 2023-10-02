@@ -1,4 +1,4 @@
-# Inkore.UI.WPF.Modern
+# iNKORE.UI.WPF.Modern
 
 - Modern (Fluent 2) styles and controls for your WPF applications.
 
@@ -20,9 +20,9 @@
 
 # 🤔 How to use
 
-- [Quick Start](https://github.com/InkoreStudios/UI.WPF.Modern/blob/main/materials/docs/Quick%20Start.md): This shows you the first steps how to use this library to set up your project
+- [Quick Start](https://github.com/iNKOREStudios/UI.WPF.Modern/blob/main/materials/docs/Quick%20Start.md): This shows you the first steps how to use this library to set up your project
 
-- [FAQs](https://github.com/InkoreStudios/UI.WPF.Modern/blob/main/materials/docs/FAQs.md): Here are some frequently asked questions and answers for you to look up for.
+- [FAQs](https://github.com/iNKOREStudios/UI.WPF.Modern/blob/main/materials/docs/FAQs.md): Here are some frequently asked questions and answers for you to look up for.
 
 # 🙋🏻‍♂️ Contribution
 
@@ -30,4 +30,4 @@
 
 - If the project is not working properly, please file a report. We welcome any issues and pull requests submitted on GitHub.
 
-- Sponsor us at https://inkore.net/about/members/notyoojun#sponsor
+- Sponsor us at https://iNKORE.net/about/members/notyoojun#sponsor

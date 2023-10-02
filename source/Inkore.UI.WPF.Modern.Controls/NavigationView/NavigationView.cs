@@ -16,13 +16,13 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shell;
 using System.Windows.Threading;
-using Inkore.UI.WPF.Modern.Automation.Peers;
-using Inkore.UI.WPF.Modern.Input;
-using Inkore.UI.WPF.Modern.Media.Animation;
+using iNKORE.UI.WPF.Modern.Automation.Peers;
+using iNKORE.UI.WPF.Modern.Input;
+using iNKORE.UI.WPF.Modern.Media.Animation;
 using static CppWinRTHelpers;
-using static Inkore.UI.WPF.Modern.ResourceAccessor;
+using static iNKORE.UI.WPF.Modern.ResourceAccessor;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     enum TopNavigationViewLayoutState
     {

@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Documents;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     public static class RichTextBoxHelper
     {

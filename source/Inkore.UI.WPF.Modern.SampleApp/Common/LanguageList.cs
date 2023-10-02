@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Common
+namespace iNKORE.UI.WPF.Modern.SampleApp.Common
 {
     internal class LanguageList
     {

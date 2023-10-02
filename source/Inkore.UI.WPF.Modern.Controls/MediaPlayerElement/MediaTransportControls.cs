@@ -1,5 +1,5 @@
-﻿using Inkore.UI.WPF.Modern.Controls.Primitives;
-using Inkore.UI.WPF.Modern.Markup;
+﻿using iNKORE.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Markup;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Represents the playback controls for a media player element.

@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media.Animation;
 
-namespace Inkore.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern
 {
     internal static class VisualStateGroupHelper
     {

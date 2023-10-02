@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.Input
+namespace iNKORE.UI.WPF.Modern.Input
 {
     internal sealed class TappedRoutedEventArgs : RoutedEventArgs
     {

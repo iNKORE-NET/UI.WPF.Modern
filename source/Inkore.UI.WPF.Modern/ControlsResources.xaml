@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:helpers="clr-namespace:Inkore.UI.WPF.Modern.Helpers"
-    xmlns:m="clr-namespace:Inkore.UI.WPF.Modern.Markup"
-    xmlns:primitives="clr-namespace:Inkore.UI.WPF.Modern.Controls.Primitives"
+    xmlns:helpers="clr-namespace:iNKORE.UI.WPF.Modern.Helpers"
+    xmlns:m="clr-namespace:iNKORE.UI.WPF.Modern.Markup"
+    xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Fonts/Fonts.xaml" />

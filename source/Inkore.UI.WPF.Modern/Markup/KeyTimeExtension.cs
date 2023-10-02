@@ -2,7 +2,7 @@
 using System.Windows.Markup;
 using System.Windows.Media.Animation;
 
-namespace Inkore.UI.WPF.Modern.Markup
+namespace iNKORE.UI.WPF.Modern.Markup
 {
     [MarkupExtensionReturnType(typeof(KeyTime))]
     public class KeyTimeExtension : MarkupExtension

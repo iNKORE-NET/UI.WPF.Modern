@@ -8,10 +8,10 @@ using System.Windows.Threading;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Controls;
-using Inkore.UI.WPF.Modern.Controls.Primitives;
-using static Inkore.UI.WPF.Modern.ResourceAccessor;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
+using static iNKORE.UI.WPF.Modern.ResourceAccessor;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Represents a control that allows the user to select a time.

@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.Controls.Primitives;
+﻿using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.SamplePages
+namespace iNKORE.UI.WPF.Modern.SampleApp.SamplePages
 {
     /// <summary>
     /// SampleSystemBackdropsWindow.xaml 的交互逻辑

@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using static CppWinRTHelpers;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     public class NavigationViewItemSeparator : NavigationViewItemBase
     {

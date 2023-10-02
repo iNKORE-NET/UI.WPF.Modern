@@ -8,7 +8,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using WindowCornerTest;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     public static class WindowHelper
     {

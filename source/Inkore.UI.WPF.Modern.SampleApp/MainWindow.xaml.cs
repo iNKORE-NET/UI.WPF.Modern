@@ -1,10 +1,10 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
-using Inkore.UI.WPF.Modern.Controls.Primitives;
-using Inkore.UI.WPF.Modern.SampleApp.Common;
-using Inkore.UI.WPF.Modern.SampleApp.DataModel;
-using Inkore.UI.WPF.Modern.SampleApp.Helper;
-using Inkore.UI.WPF.Modern.SampleApp.Helpers;
-using Inkore.UI.WPF.Modern.SampleApp.Properties;
+﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.SampleApp.Common;
+using iNKORE.UI.WPF.Modern.SampleApp.DataModel;
+using iNKORE.UI.WPF.Modern.SampleApp.Helper;
+using iNKORE.UI.WPF.Modern.SampleApp.Helpers;
+using iNKORE.UI.WPF.Modern.SampleApp.Properties;
 using SamplesCommon;
 using System;
 using System.ComponentModel;
@@ -17,7 +17,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Interop;
 
-namespace Inkore.UI.WPF.Modern.SampleApp
+namespace iNKORE.UI.WPF.Modern.SampleApp
 {
     public partial class MainWindow
     {

@@ -1,9 +1,9 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Controls;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Common
+namespace iNKORE.UI.WPF.Modern.SampleApp.Common
 {
     class ActivityFeedLayout : VirtualizingLayout
     {

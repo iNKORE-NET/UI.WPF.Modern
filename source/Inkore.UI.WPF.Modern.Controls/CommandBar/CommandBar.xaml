@@ -1,14 +1,14 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.Controls"
-    xmlns:primitives="clr-namespace:Inkore.UI.WPF.Modern.Controls.Primitives"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
+    xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/CommandBar/AppBarButton.xaml" />
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/CommandBar/AppBarSeparator.xaml" />
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/CommandBar/AppBarRepeatButton.xaml" />
-        <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/CommandBar/AppBarToggleButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/CommandBar/AppBarButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/CommandBar/AppBarSeparator.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/CommandBar/AppBarRepeatButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/CommandBar/AppBarToggleButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="primitives:CommandBarToolBar">

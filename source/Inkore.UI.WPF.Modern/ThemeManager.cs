@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.DesignTime;
+﻿using iNKORE.UI.WPF.Modern.DesignTime;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace Inkore.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern
 {
     public class ThemeManager : DependencyObject
     {
@@ -86,7 +86,7 @@ namespace Inkore.UI.WPF.Modern
                 nameof(ActualApplicationTheme),
                 typeof(ApplicationTheme),
                 typeof(ThemeManager),
-                new PropertyMetadata(Inkore.UI.WPF.Modern.ApplicationTheme.Light, OnActualApplicationThemeChanged));
+                new PropertyMetadata(iNKORE.UI.WPF.Modern.ApplicationTheme.Light, OnActualApplicationThemeChanged));
 
         public static readonly DependencyProperty ActualApplicationThemeProperty =
             ActualApplicationThemePropertyKey.DependencyProperty;
@@ -104,10 +104,10 @@ namespace Inkore.UI.WPF.Modern
 
             switch (newValue)
             {
-                case Inkore.UI.WPF.Modern.ApplicationTheme.Light:
+                case iNKORE.UI.WPF.Modern.ApplicationTheme.Light:
                     tm._defaultActualTheme = ElementTheme.Light;
                     break;
-                case Inkore.UI.WPF.Modern.ApplicationTheme.Dark:
+                case iNKORE.UI.WPF.Modern.ApplicationTheme.Dark:
                     tm._defaultActualTheme = ElementTheme.Dark;
                     break;
             }
@@ -125,7 +125,7 @@ namespace Inkore.UI.WPF.Modern
             }
             else
             {
-                ActualApplicationTheme = ApplicationTheme ?? Inkore.UI.WPF.Modern.ApplicationTheme.Light;
+                ActualApplicationTheme = ApplicationTheme ?? iNKORE.UI.WPF.Modern.ApplicationTheme.Light;
             }
         }
 
@@ -477,7 +477,7 @@ namespace Inkore.UI.WPF.Modern
                 "InheritedApplicationTheme",
                 typeof(ApplicationTheme),
                 typeof(ThemeManager),
-                new PropertyMetadata(Inkore.UI.WPF.Modern.ApplicationTheme.Light, OnInheritedApplicationThemeChanged));
+                new PropertyMetadata(iNKORE.UI.WPF.Modern.ApplicationTheme.Light, OnInheritedApplicationThemeChanged));
 
         private static void OnInheritedApplicationThemeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -730,7 +730,7 @@ namespace Inkore.UI.WPF.Modern
 
         private static ApplicationTheme GetDefaultAppTheme()
         {
-            return ColorsHelper.Current.SystemTheme.GetValueOrDefault(Inkore.UI.WPF.Modern.ApplicationTheme.Light);
+            return ColorsHelper.Current.SystemTheme.GetValueOrDefault(iNKORE.UI.WPF.Modern.ApplicationTheme.Light);
         }
 
         private static Uri GetDefaultSource(string theme)

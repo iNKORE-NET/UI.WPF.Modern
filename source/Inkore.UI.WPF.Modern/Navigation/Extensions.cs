@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Navigation;
 
-namespace Inkore.UI.WPF.Modern.Navigation
+namespace iNKORE.UI.WPF.Modern.Navigation
 {
     public static class Extensions
     {

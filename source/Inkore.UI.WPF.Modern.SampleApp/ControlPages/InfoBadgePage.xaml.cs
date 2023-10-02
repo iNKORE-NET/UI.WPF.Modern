@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Page = Inkore.UI.WPF.Modern.Controls.Page;
+using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
+namespace iNKORE.UI.WPF.Modern.SampleApp.ControlPages
 {
     /// <summary>
     /// InfoBadgePage.xaml 的交互逻辑
@@ -71,7 +71,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
         public void InfoBadgeStyleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string infoBadgeStyle = e.AddedItems[0].ToString();
-            ResourceDictionary Resources = new ResourceDictionary { Source = new Uri("/Inkore.UI.WPF.Modern.Controls;component/InfoBadge/InfoBadge.xaml", UriKind.RelativeOrAbsolute) };
+            ResourceDictionary Resources = new ResourceDictionary { Source = new Uri("/iNKORE.UI.WPF.Modern.Controls;component/InfoBadge/InfoBadge.xaml", UriKind.RelativeOrAbsolute) };
 
             switch (infoBadgeStyle)
             {

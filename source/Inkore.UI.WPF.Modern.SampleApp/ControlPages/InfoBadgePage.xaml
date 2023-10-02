@@ -1,9 +1,9 @@
 ﻿<ui:Page
-    x:Class="Inkore.UI.WPF.Modern.SampleApp.ControlPages.InfoBadgePage"
+    x:Class="iNKORE.UI.WPF.Modern.SampleApp.ControlPages.InfoBadgePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.SampleApp"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.SampleApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=System.Runtime"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
@@ -15,7 +15,7 @@
     <ui:Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Inkore.UI.WPF.Modern.Controls;component/InfoBadge/InfoBadge.xaml" />
+                <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/InfoBadge/InfoBadge.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ui:Page.Resources>

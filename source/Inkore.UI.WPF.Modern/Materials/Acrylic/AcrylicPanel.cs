@@ -1,6 +1,6 @@
 ﻿// Ported from https://github.com/sourcechord/FluentWPF/blob/master/FluentWPF/AcrylicPanel.cs
 
-using Inkore.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Inkore.UI.WPF.Modern.Media
+namespace iNKORE.UI.WPF.Modern.Media
 {
     public class AcrylicPanel : ContentControl
     {

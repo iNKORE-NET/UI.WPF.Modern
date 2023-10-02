@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ThreadedUI
+namespace iNKORE.UI.WPF.Modern.SampleApp.ThreadedUI
 {
     public partial class ThreadedProgressRing : UserControl
     {

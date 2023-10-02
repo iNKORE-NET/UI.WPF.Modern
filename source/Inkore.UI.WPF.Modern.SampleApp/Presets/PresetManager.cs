@@ -1,7 +1,7 @@
 ﻿using SamplesCommon;
 using System;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Presets
+namespace iNKORE.UI.WPF.Modern.SampleApp.Presets
 {
     public class PresetManager : BindableBase
     {

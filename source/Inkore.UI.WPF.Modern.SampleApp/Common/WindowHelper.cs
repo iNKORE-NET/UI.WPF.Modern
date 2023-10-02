@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Common
+namespace iNKORE.UI.WPF.Modern.SampleApp.Common
 {
     // Helper class to allow the app to find the Window that contains an
     // arbitrary UIElement (GetWindowForElement).  To do this, we keep track

@@ -1,6 +1,6 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
-using Inkore.UI.WPF.Modern.SampleApp.DataModel;
-using Inkore.UI.WPF.Modern.SampleApp.Properties;
+﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.SampleApp.DataModel;
+using iNKORE.UI.WPF.Modern.SampleApp.Properties;
 using SamplesCommon;
 using System;
 using System.Collections.Generic;
@@ -20,10 +20,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Windows.System.Profile;
-using Frame = Inkore.UI.WPF.Modern.Controls.Frame;
-using Page = Inkore.UI.WPF.Modern.Controls.Page;
+using Frame = iNKORE.UI.WPF.Modern.Controls.Frame;
+using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 
-namespace Inkore.UI.WPF.Modern.SampleApp
+namespace iNKORE.UI.WPF.Modern.SampleApp
 {
     /// <summary>
     /// ItemPage.xaml 的交互逻辑

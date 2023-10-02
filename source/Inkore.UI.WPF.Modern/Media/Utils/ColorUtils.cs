@@ -4,7 +4,7 @@
 using System;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Media.Utils
+namespace iNKORE.UI.WPF.Modern.Media.Utils
 {
     internal static class ColorUtils
     {

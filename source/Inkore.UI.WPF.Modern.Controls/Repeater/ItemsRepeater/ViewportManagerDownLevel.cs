@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     // Manages virtualization windows (visible/realization). 
     // This class does the equivalent behavior as ViewportManagerWithPlatformFeatures class

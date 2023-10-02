@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Data
+namespace iNKORE.UI.WPF.Modern.SampleApp.Data
 {
     public class DataGridDataItem : INotifyDataErrorInfo, IComparable
     {

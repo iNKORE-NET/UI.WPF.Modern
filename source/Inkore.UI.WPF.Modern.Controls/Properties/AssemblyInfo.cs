@@ -13,9 +13,9 @@ using System.Windows.Markup;
 )]
 
 
-[assembly: AssemblyTitle("Inkore.UI.WPF.Modern.Controls")]
+[assembly: AssemblyTitle("iNKORE.UI.WPF.Modern.Controls")]
 
 //[assembly: InternalsVisibleTo("MUXControlsTestApp")]
 
-[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Controls")]
-[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "Inkore.UI.WPF.Modern.Controls.Primitives")]
+[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Controls")]
+[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Controls.Primitives")]

@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern;
+﻿using iNKORE.UI.WPF.Modern;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;

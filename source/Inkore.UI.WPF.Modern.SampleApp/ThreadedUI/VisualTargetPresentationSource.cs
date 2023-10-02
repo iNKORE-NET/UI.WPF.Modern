@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ThreadedUI
+namespace iNKORE.UI.WPF.Modern.SampleApp.ThreadedUI
 {
     internal class VisualTargetPresentationSource : PresentationSource, IDisposable
     {

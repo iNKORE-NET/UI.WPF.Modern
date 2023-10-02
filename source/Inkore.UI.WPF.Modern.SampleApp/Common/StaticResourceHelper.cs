@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Common
+namespace iNKORE.UI.WPF.Modern.SampleApp.Common
 {
     public static class StaticResourceHelper
     {

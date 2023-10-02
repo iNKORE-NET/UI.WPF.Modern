@@ -12,10 +12,10 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using static CppWinRTHelpers;
-using static Inkore.UI.WPF.Modern.ResourceAccessor;
-using ButtonVisibility = Inkore.UI.WPF.Modern.Controls.PipsPagerButtonVisibility;
+using static iNKORE.UI.WPF.Modern.ResourceAccessor;
+using ButtonVisibility = iNKORE.UI.WPF.Modern.Controls.PipsPagerButtonVisibility;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Represents a control that enables navigation within linearly paginated content using a configurable collection of glyphs, each of which represents a single "page" within a limitless range.

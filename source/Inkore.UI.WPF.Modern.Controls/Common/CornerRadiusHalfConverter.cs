@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Inkore.UI.WPF.Modern.Controls.Common
+namespace iNKORE.UI.WPF.Modern.Controls.Common
 {
     public class CornerRadiusHalfConverter : DependencyObject, IValueConverter
     {

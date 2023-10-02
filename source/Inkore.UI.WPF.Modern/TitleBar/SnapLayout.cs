@@ -11,7 +11,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using Windows.Win32;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     /// <summary>
     /// Brings the Snap Layout functionality from Windows 11 to a custom <see cref="Controls.TitleBar"/>.

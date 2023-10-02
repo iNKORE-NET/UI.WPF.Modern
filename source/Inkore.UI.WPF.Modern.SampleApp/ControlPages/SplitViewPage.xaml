@@ -1,8 +1,8 @@
 ﻿<ui:Page
-    x:Class="Inkore.UI.WPF.Modern.SampleApp.ControlPages.SplitViewPage"
+    x:Class="iNKORE.UI.WPF.Modern.SampleApp.ControlPages.SplitViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.SampleApp.ControlPages"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.SampleApp.ControlPages"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     DataContext="{Binding RelativeSource={RelativeSource Self}}">

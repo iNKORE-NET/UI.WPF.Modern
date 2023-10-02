@@ -1,11 +1,11 @@
-﻿using Inkore.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Controls;
 using System;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Markup;
 
-namespace Inkore.UI.WPF.Modern.Markup
+namespace iNKORE.UI.WPF.Modern.Markup
 {
     [EditorBrowsable(EditorBrowsableState.Never)]
     [MarkupExtensionReturnType(typeof(ContextMenu))]

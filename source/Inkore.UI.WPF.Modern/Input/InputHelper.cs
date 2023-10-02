@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace Inkore.UI.WPF.Modern.Input
+namespace iNKORE.UI.WPF.Modern.Input
 {
     internal static class InputHelper
     {

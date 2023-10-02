@@ -4,7 +4,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     /// <summary>
     /// Provides calculated values that can be referenced as **TemplatedParent** sources

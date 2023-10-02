@@ -6,11 +6,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using Inkore.UI.WPF.Modern.Input;
+using iNKORE.UI.WPF.Modern.Input;
 using static CppWinRTHelpers;
-using static Inkore.UI.WPF.Modern.Controls.NavigationViewItemHelper;
+using static iNKORE.UI.WPF.Modern.Controls.NavigationViewItemHelper;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     public class NavigationViewItemPresenter : ContentControl, IControlProtected
     {

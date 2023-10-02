@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using Inkore.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     public class AppBarButton : Button, ICommandBarElement, IAppBarElement
     {

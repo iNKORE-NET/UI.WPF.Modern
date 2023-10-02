@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     public sealed class AutoSuggestBoxSuggestionChosenEventArgs : EventArgs
     {

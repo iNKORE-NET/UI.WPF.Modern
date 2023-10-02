@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.SampleApp.Data;
+﻿using iNKORE.UI.WPF.Modern.SampleApp.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
@@ -7,7 +7,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
+namespace iNKORE.UI.WPF.Modern.SampleApp.ControlPages
 {
     public partial class DataGridPage
     {

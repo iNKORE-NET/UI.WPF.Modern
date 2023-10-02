@@ -3,7 +3,7 @@
 
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Represents an icon source that uses a glyph from the Segoe MDL2 Assets font as its content.

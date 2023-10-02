@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     public class DebugVisualStateManager : VisualStateManager
     {

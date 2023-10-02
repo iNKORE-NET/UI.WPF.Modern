@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.Media.Animation;
+﻿using iNKORE.UI.WPF.Modern.Media.Animation;
 using System;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -9,7 +9,7 @@ using System.Windows.Navigation;
 using System.Windows.Threading;
 using System.Xaml;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Displays Page instances, supports navigation to new pages, and maintains a navigation

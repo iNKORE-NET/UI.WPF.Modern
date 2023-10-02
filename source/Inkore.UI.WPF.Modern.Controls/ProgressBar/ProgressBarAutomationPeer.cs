@@ -3,10 +3,10 @@
 
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
-using ProgressBar = Inkore.UI.WPF.Modern.Controls.ProgressBar;
-using static Inkore.UI.WPF.Modern.ResourceAccessor;
+using ProgressBar = iNKORE.UI.WPF.Modern.Controls.ProgressBar;
+using static iNKORE.UI.WPF.Modern.ResourceAccessor;
 
-namespace Inkore.UI.WPF.Modern.Automation.Peers
+namespace iNKORE.UI.WPF.Modern.Automation.Peers
 {
     /// <summary>
     /// Exposes ProgressBar types to Microsoft UI Automation.

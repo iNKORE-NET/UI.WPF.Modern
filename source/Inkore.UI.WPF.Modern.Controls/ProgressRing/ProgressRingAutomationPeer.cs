@@ -2,10 +2,10 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using System.Windows.Automation.Peers;
-using Inkore.UI.WPF.Modern.Controls;
-using static Inkore.UI.WPF.Modern.ResourceAccessor;
+using iNKORE.UI.WPF.Modern.Controls;
+using static iNKORE.UI.WPF.Modern.ResourceAccessor;
 
-namespace Inkore.UI.WPF.Modern.Automation.Peers
+namespace iNKORE.UI.WPF.Modern.Automation.Peers
 {
     public class ProgressRingAutomationPeer : FrameworkElementAutomationPeer
     {

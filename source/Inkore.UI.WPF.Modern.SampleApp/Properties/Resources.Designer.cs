@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Properties {
+namespace iNKORE.UI.WPF.Modern.SampleApp.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Inkore.UI.WPF.Modern.SampleApp.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("iNKORE.UI.WPF.Modern.SampleApp.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -142,7 +142,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Inkore.UI.WPF.Modern.SampleApp.ControlPages. 的本地化字符串。
+        ///   查找类似 iNKORE.UI.WPF.Modern.SampleApp.ControlPages. 的本地化字符串。
         /// </summary>
         public static string PageStringRoot {
             get {

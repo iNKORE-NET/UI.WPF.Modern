@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Markup
+namespace iNKORE.UI.WPF.Modern.Markup
 {
     [TypeConverter(typeof(ThemeResouceExtensionConverter))]
     public class ThemeResourceExtension : DynamicResourceExtension

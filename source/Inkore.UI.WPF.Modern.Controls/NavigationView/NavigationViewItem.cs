@@ -9,14 +9,14 @@ using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Inkore.UI.WPF.Modern.Automation.Peers;
-using Inkore.UI.WPF.Modern.Controls.Primitives;
-using Inkore.UI.WPF.Modern.Input;
+using iNKORE.UI.WPF.Modern.Automation.Peers;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Input;
 using static CppWinRTHelpers;
-using static Inkore.UI.WPF.Modern.Controls.NavigationViewItemHelper;
+using static iNKORE.UI.WPF.Modern.Controls.NavigationViewItemHelper;
 using PointerRoutedEventArgs = System.Windows.Input.MouseEventArgs;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     public partial class NavigationViewItem : NavigationViewItemBase
     {

@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.Navigation;
+﻿using iNKORE.UI.WPF.Modern.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +16,13 @@ using Windows.Foundation;
 using Windows.Storage.Pickers;
 using Windows.Storage;
 using Windows.System;
-using Inkore.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Controls;
 using System.Windows.Controls;
-using Page = Inkore.UI.WPF.Modern.Controls.Page;
-using Inkore.UI.WPF.Modern.SampleApp.Helper;
+using Page = iNKORE.UI.WPF.Modern.Controls.Page;
+using iNKORE.UI.WPF.Modern.SampleApp.Helper;
 using System.Reflection;
 
-namespace Inkore.UI.WPF.Modern.SampleApp
+namespace iNKORE.UI.WPF.Modern.SampleApp
 {
     /// <summary>
     /// SettingsPage.xaml 的交互逻辑

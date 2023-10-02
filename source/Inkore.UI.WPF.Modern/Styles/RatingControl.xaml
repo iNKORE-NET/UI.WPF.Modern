@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Inkore.UI.WPF.Modern.Controls">
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls">
 
     <DataTemplate x:Key="BackgroundGlyphDefaultTemplate">
         <!--  -8, -8 are to compensate for the default scale down, plus factoring in margins  -->

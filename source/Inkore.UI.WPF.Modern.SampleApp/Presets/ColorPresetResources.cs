@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Presets
+namespace iNKORE.UI.WPF.Modern.SampleApp.Presets
 {
     public class ColorPresetResources : ResourceDictionary
     {

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Media.Utils
+namespace iNKORE.UI.WPF.Modern.Media.Utils
 {
     internal enum ColorScaleInterpolationMode { RGB, LAB, XYZ };
 

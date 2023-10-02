@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Interop;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Helpers
+namespace iNKORE.UI.WPF.Modern.SampleApp.Helpers
 {
     public static class WindowExtensions
     {

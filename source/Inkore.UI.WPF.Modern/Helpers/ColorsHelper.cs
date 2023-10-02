@@ -5,10 +5,10 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 using Microsoft.Win32;
-using Inkore.UI.WPF.Modern.Media.ColorPalette;
+using iNKORE.UI.WPF.Modern.Media.ColorPalette;
 using Windows.UI.ViewManagement;
 
-namespace Inkore.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern
 {
     internal class ColorsHelper : DispatcherObject
     {

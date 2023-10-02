@@ -15,12 +15,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Windows.Foundation.Metadata;
 using System.Windows.Markup;
-using Inkore.UI.WPF.Modern.SampleApp.Controls;
+using iNKORE.UI.WPF.Modern.SampleApp.Controls;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Collections;
 
-namespace Inkore.UI.WPF.Modern.SampleApp
+namespace iNKORE.UI.WPF.Modern.SampleApp
 {
     /// <summary>
     /// Describes a textual substitution in sample content.

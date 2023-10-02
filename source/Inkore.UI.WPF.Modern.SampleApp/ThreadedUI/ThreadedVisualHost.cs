@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ThreadedUI
+namespace iNKORE.UI.WPF.Modern.SampleApp.ThreadedUI
 {
     public class ThreadedVisualHost : ThreadedVisualHostBase
     {

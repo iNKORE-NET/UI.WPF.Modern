@@ -8,10 +8,10 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using Inkore.UI.WPF.Modern.Automation.Peers;
-using static Inkore.UI.WPF.Modern.ResourceAccessor;
+using iNKORE.UI.WPF.Modern.Automation.Peers;
+using static iNKORE.UI.WPF.Modern.ResourceAccessor;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     public class NumberBoxValueChangedEventArgs : EventArgs
     {

@@ -1,11 +1,11 @@
-﻿using Inkore.UI.WPF.Modern.Media.Animation;
+﻿using iNKORE.UI.WPF.Modern.Media.Animation;
 using SamplesCommon.SamplePages;
 using System.Windows;
 using System.Windows.Controls;
-using Page = Inkore.UI.WPF.Modern.Controls.Page;
+using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 using SamplePages = SamplesCommon.SamplePages;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
+namespace iNKORE.UI.WPF.Modern.SampleApp.ControlPages
 {
     public sealed partial class PageTransitionPage : Page
     {

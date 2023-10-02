@@ -4,7 +4,7 @@
 using System;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Media.Utils
+namespace iNKORE.UI.WPF.Modern.Media.Utils
 {
     // Valid values for each channel are ∈ [0.0,1.0]
     // But sometimes it is useful to allow values outside that range during calculations as long as they are clamped eventually

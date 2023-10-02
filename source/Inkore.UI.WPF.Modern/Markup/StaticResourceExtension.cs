@@ -1,4 +1,4 @@
-﻿namespace Inkore.UI.WPF.Modern.Markup
+﻿namespace iNKORE.UI.WPF.Modern.Markup
 {
     public class StaticResourceExtension : System.Windows.StaticResourceExtension
     {

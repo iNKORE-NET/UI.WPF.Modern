@@ -7,7 +7,7 @@ using System.Windows.Interop;
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     /// <summary>
     /// TabViewItem Properties

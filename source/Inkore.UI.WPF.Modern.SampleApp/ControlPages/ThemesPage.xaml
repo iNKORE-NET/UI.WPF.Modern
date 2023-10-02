@@ -1,10 +1,10 @@
 ﻿<ui:Page
-    x:Class="Inkore.UI.WPF.Modern.SampleApp.ControlPages.ThemesPage"
+    x:Class="iNKORE.UI.WPF.Modern.SampleApp.ControlPages.ThemesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:presets="clr-namespace:Inkore.UI.WPF.Modern.SampleApp.Presets"
+    xmlns:presets="clr-namespace:iNKORE.UI.WPF.Modern.SampleApp.Presets"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"

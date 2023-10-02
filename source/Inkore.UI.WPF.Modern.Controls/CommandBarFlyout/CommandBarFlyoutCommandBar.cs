@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     [TemplatePart(Name = ToolBarName, Type = typeof(CommandBarFlyoutToolBar))]
     public class CommandBarFlyoutCommandBar : CommandBar

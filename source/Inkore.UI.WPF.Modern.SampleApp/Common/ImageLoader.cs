@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.SampleApp.DataModel;
+﻿using iNKORE.UI.WPF.Modern.SampleApp.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.Common
+namespace iNKORE.UI.WPF.Modern.SampleApp.Common
 {
     public class ImageLoader
     {

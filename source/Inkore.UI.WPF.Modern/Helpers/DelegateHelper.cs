@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Inkore.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern
 {
     internal static class DelegateHelper
     {

@@ -3,7 +3,7 @@
 
 using System.Linq;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Value indicating the general character set for a given character.

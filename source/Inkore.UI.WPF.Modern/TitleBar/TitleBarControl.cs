@@ -9,7 +9,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace Inkore.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     [TemplatePart(Name = BackButtonName, Type = typeof(Button))]
     [TemplatePart(Name = MaximizeButtonName, Type = typeof(TitleBarButton))]

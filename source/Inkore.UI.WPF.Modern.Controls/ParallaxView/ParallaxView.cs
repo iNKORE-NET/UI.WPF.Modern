@@ -11,7 +11,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     public class ParallaxView : ContentControl
     {

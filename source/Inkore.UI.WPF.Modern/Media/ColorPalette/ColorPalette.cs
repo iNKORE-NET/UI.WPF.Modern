@@ -4,9 +4,9 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Media;
-using Inkore.UI.WPF.Modern.Media.Utils;
+using iNKORE.UI.WPF.Modern.Media.Utils;
 
-namespace Inkore.UI.WPF.Modern.Media.ColorPalette
+namespace iNKORE.UI.WPF.Modern.Media.ColorPalette
 {
     // These classes are not intended to be viewmodels.
     // They deal with the data about an editable palette and are passed to special purpose controls for editing

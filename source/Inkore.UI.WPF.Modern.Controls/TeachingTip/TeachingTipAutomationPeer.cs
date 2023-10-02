@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     public class TeachingTipAutomationPeer : FrameworkElementAutomationPeer
     {

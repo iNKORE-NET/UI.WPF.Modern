@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Markup;
 
-namespace Inkore.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     //[ContentProperty(nameof(Templates))]
     public class RecyclingElementFactory : ElementFactory

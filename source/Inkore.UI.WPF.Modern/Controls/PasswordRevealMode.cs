@@ -1,4 +1,4 @@
-﻿namespace Inkore.UI.WPF.Modern.Controls
+﻿namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
     /// Defines constants that specify the password reveal behavior of a PasswordBox.

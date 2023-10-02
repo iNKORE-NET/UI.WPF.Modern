@@ -1,4 +1,4 @@
-﻿using Inkore.UI.WPF.Modern.SampleApp.ThreadedUI;
+﻿using iNKORE.UI.WPF.Modern.SampleApp.ThreadedUI;
 using SamplesCommon;
 using System;
 using System.Threading;
@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.ControlPages
+namespace iNKORE.UI.WPF.Modern.SampleApp.ControlPages
 {
     public partial class ThreadedUIPage
     {

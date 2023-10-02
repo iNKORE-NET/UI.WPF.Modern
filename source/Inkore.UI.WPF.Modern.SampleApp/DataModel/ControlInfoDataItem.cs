@@ -9,7 +9,7 @@ using System.Windows;
 using Windows.Data.Json;
 using Windows.Storage;
 
-namespace Inkore.UI.WPF.Modern.SampleApp.DataModel
+namespace iNKORE.UI.WPF.Modern.SampleApp.DataModel
 {
     /// <summary>
     /// Generic item data model.
@@ -192,7 +192,7 @@ namespace Inkore.UI.WPF.Modern.SampleApp.DataModel
 
             lock (_lock)
             {
-                string pageRoot = "Inkore.UI.WPF.Modern.SampleApp.ControlPages.";
+                string pageRoot = "iNKORE.UI.WPF.Modern.SampleApp.ControlPages.";
                 foreach (JsonValue groupValue in jsonArray)
                 {
 
