@@ -1,0 +1,31 @@
+﻿<Page.Resources>
+    <ui:CommandBarFlyout Placement="Right" x:Key="CommandBarFlyout1">
+        <ui:AppBarButton Label="Share"ToolTipService.ToolTip="Share" Click="OnElementClicked" >
+            <ui:AppBarButton.Icon>
+                <ui:SymbolIcon Symbol="Add"/>
+            </ui:AppBarButton.Icon>
+        </ui:AppBarButton>
+
+        <ui:AppBarButton Label="Save" ToolTipService.ToolTip="Save" Click="OnElementClicked" >
+            <ui:AppBarButton.Icon>
+                <ui:SymbolIcon Symbol="Save"/>
+            </ui:AppBarButton.Icon>
+        </ui:AppBarButton>
+
+        <ui:AppBarButton Label="Delete" ToolTipService.ToolTip="Delete" Click="OnElementClicked" >
+            <ui:AppBarButton.Icon>
+                <ui:SymbolIcon Symbol="Delete"/>
+            </ui:AppBarButton.Icon>
+        </ui:AppBarButton>
+
+        <ui:CommandBarFlyout.SecondaryCommands>
+            <AppBarButton x:Name="ResizeButton1" Label="Resize" Click="OnElementClicked" />
+            <AppBarButton x:Name="MoveButton1" Label="Move" Click="OnElementClicked" />
+        </ui:CommandBarFlyout.SecondaryCommands>
+    </ui:CommandBarFlyout>
+</Page.Resources>
+
+<Button x:Name="myImageButton" AutomationProperties.Name="mountain" Padding="0"
+    Click="MyImageButton_Click" ContextMenuOpening="MyImageButton_ContextMenuOpening" >
+    <Image x:Name="Image1" Height="300" Source="/Assets/SampleMedia/rainier.jpg"/>
+</Button>
