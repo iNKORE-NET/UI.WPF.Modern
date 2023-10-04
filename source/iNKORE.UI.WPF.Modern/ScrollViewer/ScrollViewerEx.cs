@@ -134,6 +134,11 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             if (Direction == Orientation.Vertical)
             {
+                if(VerticalScrollBarVisibility != ScrollBarVisibility.Disabled)
+                {
+                    e.Handled = true;
+                }
+
                 double WheelChange = RewriteWheelChange ? e.Delta * (ViewportHeight / 1.5) / ActualHeight : e.Delta;
                 double newOffset = LastVerticalLocation - WheelChange;
 
@@ -149,7 +154,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
                 if (newOffset == LastVerticalLocation)
                 {
-                    e.Handled = true;
                     return;
                 }
 
@@ -162,6 +166,11 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
             else
             {
+                if (HorizontalScrollBarVisibility != ScrollBarVisibility.Disabled)
+                {
+                    e.Handled = true;
+                }
+
                 double WheelChange = RewriteWheelChange ? e.Delta * (ViewportWidth / 1.5) / ActualWidth : e.Delta;
                 double newOffset = LastHorizontalLocation - WheelChange;
 
@@ -177,7 +186,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
                 if (newOffset == LastHorizontalLocation)
                 {
-                    e.Handled = true;
                     return;
                 }
 
@@ -189,7 +197,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 LastHorizontalLocation = newOffset;
             }
 
-            e.Handled = true;
         }
 
         /// <inheritdoc/>
