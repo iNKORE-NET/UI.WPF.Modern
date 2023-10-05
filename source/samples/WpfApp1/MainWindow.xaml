@@ -13,7 +13,7 @@
      ui:WindowHelper.UseModernWindowStyle="True"
         ui:WindowHelper.CornerStyle="RoundSmall">
     <Grid>
-        <ComboBox SelectionChanged="ComboBox_SelectionChanged">
+        <ComboBox SelectionChanged="ComboBox_SelectionChanged" Height="35">
             <ComboBoxItem Content="Item1"/>
             <ComboBoxItem Content="Item2"/>
             <ComboBoxItem Content="Item3"/>
@@ -132,5 +132,8 @@
                 </ui:AppBarButton.Icon>
             </ui:AppBarButton>
         </ui:CommandBar>
+        <Button x:Name="Button" Height="318" Width="144" Margin="320,85,0,0" VerticalAlignment="Top">
+
+        </Button>
     </Grid>
 </Window>

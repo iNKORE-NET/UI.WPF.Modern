@@ -510,7 +510,9 @@
     <SolidColorBrush x:Key="GridViewItemRevealBorderBrush" Color="Transparent" />
 
     <!--  Elevation border brushes  -->
-    <LinearGradientBrush x:Key="ControlElevationBorderBrush" MappingMode="Absolute" StartPoint="0,0" EndPoint="0,3">
+    
+    <!--The commented one below has an ugly border when the control's height is too much, so we dont use this one-->
+    <!--<LinearGradientBrush x:Key="ControlElevationBorderBrush" MappingMode="Absolute" StartPoint="0,0" EndPoint="0,3">
         <LinearGradientBrush.RelativeTransform>
             <ScaleTransform CenterY="0.5" ScaleY="-1" />
         </LinearGradientBrush.RelativeTransform>
@@ -518,7 +520,15 @@
             <GradientStop Offset="0.33" Color="{m:StaticColor ControlStrokeColorSecondary}" />
             <GradientStop Offset="1.0" Color="{m:StaticColor ControlStrokeColorDefault}" />
         </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>-->
+
+    <LinearGradientBrush x:Key="ControlElevationBorderBrush" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="1" Color="{m:StaticColor ControlStrokeColorSecondary}" />
+            <GradientStop Offset="0.67" Color="{m:StaticColor ControlStrokeColorDefault}" />
+        </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
+
 
     <LinearGradientBrush x:Key="CircleElevationBorderBrush" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
         <LinearGradientBrush.GradientStops>
