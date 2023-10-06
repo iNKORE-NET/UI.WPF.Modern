@@ -239,7 +239,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         #region FixMaximizedWindow
 
-        [EditorBrowsable(EditorBrowsableState.Never)]
         public static readonly DependencyProperty FixMaximizedWindowProperty =
             DependencyProperty.RegisterAttached(
                 "FixMaximizedWindow",
@@ -247,13 +246,11 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 typeof(WindowHelper),
                 new PropertyMetadata(false, OnFixMaximizedWindowChanged));
 
-        [EditorBrowsable(EditorBrowsableState.Never)]
         public static bool GetFixMaximizedWindow(Window window)
         {
             return (bool)window.GetValue(FixMaximizedWindowProperty);
         }
 
-        [EditorBrowsable(EditorBrowsableState.Never)]
         public static void SetFixMaximizedWindow(Window window, bool value)
         {
             window.SetValue(FixMaximizedWindowProperty, value);

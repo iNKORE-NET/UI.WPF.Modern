@@ -162,7 +162,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         private void RaiseButtonClick()
         {
-            if (new ButtonAutomationPeer(_button).GetPattern(PatternInterface.Invoke) is IInvokeProvider invokeProv)
+            if (_button.IsEnabled && new ButtonAutomationPeer(_button).GetPattern(PatternInterface.Invoke) is IInvokeProvider invokeProv)
                 invokeProv?.Invoke();
         }
 

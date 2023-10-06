@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:WpfApp1" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
+        ResizeMode="CanMinimize"
         ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
      ui:TitleBar.ExtendViewIntoTitleBar="False"   
      ui:WindowHelper.SystemBackdropType="Mica"
      ui:TitleBar.IsBackButtonVisible="False"
      ui:WindowHelper.UseModernWindowStyle="True"
-        ui:WindowHelper.CornerStyle="RoundSmall">
+        ui:WindowHelper.CornerStyle="DoNotRound" Background="{x:Null}">
     <Grid>
         <ComboBox SelectionChanged="ComboBox_SelectionChanged" Height="35">
             <ComboBoxItem Content="Item1"/>
