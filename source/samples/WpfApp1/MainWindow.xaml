@@ -117,7 +117,7 @@
                     <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
                 </ui:AppBarButton.Icon>
             </ui:AppBarButton>
-            <ui:AppBarButton Label="Accept" ChevronStyle="Down">
+            <ui:AppBarButton Label="Accept" ChevronStyle="Down" FlyoutOpeningMode="RightMouseButtonUp">
                 <ui:AppBarButton.Icon>
                     <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
                 </ui:AppBarButton.Icon>
@@ -133,8 +133,12 @@
                 </ui:AppBarButton.Icon>
             </ui:AppBarButton>
         </ui:CommandBar>
-        <Button x:Name="Button" Height="318" Width="144" Margin="320,85,0,0" VerticalAlignment="Top">
-
-        </Button>
+        <ui:DropDownButton x:Name="Button" Height="70" Width="144" Margin="320,85,0,0" VerticalAlignment="Top" FlyoutOpeningMode="None">
+            <ui:DropDownButton.Flyout>
+                <ui:Flyout>
+                    <Button>AAA</Button>
+                </ui:Flyout>
+            </ui:DropDownButton.Flyout>
+        </ui:DropDownButton>
     </Grid>
 </Window>

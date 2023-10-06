@@ -101,6 +101,22 @@ namespace iNKORE.UI.WPF.Modern.Controls
             UpdateVisualState();
         }
 
+        #region FlyoutOpeningMode
+
+        public static readonly DependencyProperty FlyoutOpeningModeProperty =
+            FlyoutService.FlyoutOpeningModeProperty.AddOwner(
+                typeof(AppBarButton));
+
+        public FlyoutOpeningMode FlyoutOpeningMode
+        {
+            get => (FlyoutOpeningMode)GetValue(FlyoutOpeningModeProperty);
+            set => SetValue(FlyoutOpeningModeProperty, value);
+        }
+
+
+        #endregion
+
+
         #endregion
 
         #region Icon

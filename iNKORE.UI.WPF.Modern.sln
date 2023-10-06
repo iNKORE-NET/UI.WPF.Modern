@@ -19,9 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{07337569
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUIResourcesConverter", "source\tools\WinUIResourcesConverter\WinUIResourcesConverter.csproj", "{35EF6F6B-3E8C-4A9E-BCD2-16CA5C2C2ADC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inkore.UI.WPF.Modern", "source\Inkore.UI.WPF.Modern\Inkore.UI.WPF.Modern.csproj", "{789F8052-2F84-4BA0-9CD7-A3A1901A66A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern", "source\Inkore.UI.WPF.Modern\iNKORE.UI.WPF.Modern.csproj", "{789F8052-2F84-4BA0-9CD7-A3A1901A66A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inkore.UI.WPF.Modern.Controls", "source\Inkore.UI.WPF.Modern.Controls\Inkore.UI.WPF.Modern.Controls.csproj", "{FE80560D-40A3-4469-AC0A-C725B583CAA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern.Controls", "source\Inkore.UI.WPF.Modern.Controls\iNKORE.UI.WPF.Modern.Controls.csproj", "{FE80560D-40A3-4469-AC0A-C725B583CAA7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inkore.UI.WPF.Modern.SampleApp", "source\Inkore.UI.WPF.Modern.SampleApp\Inkore.UI.WPF.Modern.SampleApp.csproj", "{54049F5E-E57B-433E-B316-3C51F25B523D}"
 EndProject

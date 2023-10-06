@@ -63,7 +63,8 @@ namespace iNKORE.UI.WPF.Modern.SampleApp.Helper
                 }
                 else
                 {
-                    Properties.Settings.Default.SelectedAppTheme = value.ToString();
+                    //Properties.Settings.Default.SelectedAppTheme = value.ToString();
+                    Properties.Settings.Default.SelectedAppTheme = (int)value;
                     Properties.Settings.Default.Save();
                 }
 
@@ -73,12 +74,17 @@ namespace iNKORE.UI.WPF.Modern.SampleApp.Helper
 
         public static void Initialize()
         {
-            string savedTheme = PackagedAppHelper.IsPackagedApp ? ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString() : Properties.Settings.Default.SelectedAppTheme;
-
-            if (savedTheme != null)
+            try
             {
-                RootTheme = App.GetEnum<ElementTheme>(savedTheme);
+                //string savedTheme = PackagedAppHelper.IsPackagedApp ? ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString() : Properties.Settings.Default.SelectedAppTheme;
+                string savedTheme = PackagedAppHelper.IsPackagedApp ? ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString() : ((ElementTheme)Properties.Settings.Default.SelectedAppTheme).ToString();
+
+                if (savedTheme != null)
+                {
+                    RootTheme = App.GetEnum<ElementTheme>(savedTheme);
+                }
             }
+            catch { }
         }
 
         public static bool IsDarkTheme()
