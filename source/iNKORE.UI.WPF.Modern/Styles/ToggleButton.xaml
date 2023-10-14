@@ -56,7 +56,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundPointerOver}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToggleButtonForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundPointerOver}" />
                         </MultiTrigger>
                         <!--  Pressed  -->
                         <MultiTrigger>
@@ -66,7 +66,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundPressed}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToggleButtonForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundPressed}" />
                         </MultiTrigger>
                         <!--  Disabled  -->
                         <MultiTrigger>
@@ -75,7 +75,7 @@
                                 <Condition Property="IsEnabled" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToggleButtonForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundDisabled}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushDisabled}" />
                         </MultiTrigger>
                         <!--  Checked  -->
@@ -92,7 +92,7 @@
                                 <Condition Property="IsEnabled" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundChecked}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToggleButtonForegroundChecked}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundChecked}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushChecked}" />
                         </MultiTrigger>
                         <!--  CheckedPointerOver  -->
@@ -103,7 +103,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundCheckedPointerOver}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushCheckedPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToggleButtonForegroundCheckedPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundCheckedPointerOver}" />
                         </MultiTrigger>
                         <!--  CheckedPressed  -->
                         <MultiTrigger>
@@ -112,7 +112,7 @@
                                 <Condition Property="IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundCheckedPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToggleButtonForegroundCheckedPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundCheckedPressed}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushCheckedPressed}" />
                         </MultiTrigger>
                         <!--  CheckedDisabled  -->
@@ -122,7 +122,7 @@
                                 <Condition Property="IsEnabled" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundCheckedDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToggleButtonForegroundCheckedDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundCheckedDisabled}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushCheckedDisabled}" />
                         </MultiTrigger>
                         <!--  Indeterminate  -->
@@ -134,7 +134,7 @@
                                 <Condition Property="IsEnabled" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundIndeterminate}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToggleButtonForegroundIndeterminate}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundIndeterminate}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushIndeterminate}" />
                         </MultiTrigger>
                         <!--  IndeterminatePointerOver  -->
@@ -145,7 +145,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundIndeterminatePointerOver}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushIndeterminatePointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToggleButtonForegroundIndeterminatePointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundIndeterminatePointerOver}" />
                         </MultiTrigger>
                         <!--  IndeterminatePressed  -->
                         <MultiTrigger>
@@ -155,7 +155,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundIndeterminatePressed}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushIndeterminatePressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToggleButtonForegroundIndeterminatePressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundIndeterminatePressed}" />
                         </MultiTrigger>
                         <!--  IndeterminateDisabled  -->
                         <MultiTrigger>
@@ -164,7 +164,7 @@
                                 <Condition Property="IsEnabled" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundIndeterminateDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToggleButtonForegroundIndeterminateDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundIndeterminateDisabled}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushIndeterminateDisabled}" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
