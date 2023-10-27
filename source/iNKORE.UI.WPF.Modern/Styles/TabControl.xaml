@@ -55,15 +55,15 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource TabViewButtonBackgroundPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewButtonForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TabViewButtonForegroundPointerOver}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource TabViewButtonBackgroundPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewButtonForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TabViewButtonForegroundPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource TabViewButtonBackgroundDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewButtonForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TabViewButtonForegroundDisabled}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -111,12 +111,12 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource TabViewItemHeaderCloseButtonBackgroundPointerOver}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource TabViewItemHeaderCloseButtonBorderBrushPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewItemHeaderCloseButtonForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderCloseButtonForegroundPointerOver}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource TabViewItemHeaderCloseButtonBackgroundPressed}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource TabViewItemHeaderCloseButtonBorderBrushPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewItemHeaderCloseButtonForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderCloseButtonForegroundPressed}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -164,15 +164,15 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource TabViewScrollButtonBackgroundPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewScrollButtonForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TabViewScrollButtonForegroundPointerOver}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource TabViewScrollButtonBackgroundPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewScrollButtonForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TabViewScrollButtonForegroundPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource TabViewScrollButtonBackgroundDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewScrollButtonForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TabViewScrollButtonForegroundDisabled}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -301,7 +301,7 @@
             <!--  PointerOver  -->
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="TabContainer" Property="Background" Value="{DynamicResource TabViewItemHeaderBackgroundPointerOver}" />
-                <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundPointerOver}" />
+                <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundPointerOver}" />
                 <Setter TargetName="IconControl" Property="Foreground" Value="{DynamicResource TabViewItemIconForegroundPointerOver}" />
                 <Setter TargetName="CloseButton" Property="Background" Value="{DynamicResource TabViewItemHeaderPointerOverCloseButtonBackground}" />
                 <Setter TargetName="CloseButton" Property="Foreground" Value="{DynamicResource TabViewItemHeaderPointerOverCloseButtonForeground}" />
@@ -310,7 +310,7 @@
             <!--  Pressed  -->
             <Trigger SourceName="LayoutRoot" Property="primitives:PressHelper.IsPressed" Value="True">
                 <Setter TargetName="TabContainer" Property="Background" Value="{DynamicResource TabViewItemHeaderBackgroundPressed}" />
-                <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundPressed}" />
+                <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundPressed}" />
                 <Setter TargetName="IconControl" Property="Foreground" Value="{DynamicResource TabViewItemIconForegroundPressed}" />
                 <Setter TargetName="CloseButton" Property="Background" Value="{DynamicResource TabViewItemHeaderPressedCloseButtonBackground}" />
                 <Setter TargetName="CloseButton" Property="Foreground" Value="{DynamicResource TabViewItemHeaderPressedCloseButtonForeground}" />
@@ -328,7 +328,7 @@
                 <Setter TargetName="TabContainer" Property="BorderBrush" Value="{DynamicResource TabViewSelectedItemBorderBrush}" />
                 <Setter TargetName="TabContainer" Property="BorderThickness" Value="{DynamicResource TabViewSelectedItemBorderThickness}" />
                 <Setter TargetName="TabContainer" Property="Padding" Value="{DynamicResource TabViewSelectedItemHeaderPadding}" />
-                <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundSelected}" />
+                <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundSelected}" />
                 <Setter TargetName="IconControl" Property="Foreground" Value="{DynamicResource TabViewItemIconForegroundSelected}" />
                 <Setter TargetName="CloseButton" Property="Background" Value="{DynamicResource TabViewItemHeaderSelectedCloseButtonBackground}" />
                 <Setter TargetName="CloseButton" Property="Foreground" Value="{DynamicResource TabViewItemHeaderSelectedCloseButtonForeground}" />
@@ -340,7 +340,7 @@
             <Trigger Property="IsEnabled" Value="False">
                 <Setter TargetName="TabContainer" Property="Background" Value="{DynamicResource TabViewItemHeaderBackgroundDisabled}" />
                 <Setter TargetName="IconControl" Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundDisabled}" />
-                <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundDisabled}" />
+                <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundDisabled}" />
                 <Setter TargetName="IconControl" Property="Foreground" Value="{DynamicResource TabViewButtonForegroundDisabled}" />
                 <Setter TargetName="CloseButton" Property="Background" Value="{DynamicResource TabViewItemHeaderDisabledCloseButtonBackground}" />
                 <Setter TargetName="CloseButton" Property="Foreground" Value="{DynamicResource TabViewItemHeaderSelectedCloseButtonForeground}" />
@@ -470,7 +470,7 @@
             <!--  PointerOver  -->
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="TabContainer" Property="Background" Value="{DynamicResource TabViewItemHeaderBackgroundPointerOver}" />
-                <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundPointerOver}" />
+                <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundPointerOver}" />
                 <Setter TargetName="IconControl" Property="Foreground" Value="{DynamicResource TabViewItemIconForegroundPointerOver}" />
                 <Setter TargetName="CloseButton" Property="Background" Value="{DynamicResource TabViewItemHeaderPointerOverCloseButtonBackground}" />
                 <Setter TargetName="CloseButton" Property="Foreground" Value="{DynamicResource TabViewItemHeaderPointerOverCloseButtonForeground}" />
@@ -478,7 +478,7 @@
             <!--  Pressed  -->
             <Trigger SourceName="LayoutRoot" Property="primitives:PressHelper.IsPressed" Value="True">
                 <Setter TargetName="TabContainer" Property="Background" Value="{DynamicResource TabViewItemHeaderBackgroundPressed}" />
-                <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundPressed}" />
+                <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundPressed}" />
                 <Setter TargetName="IconControl" Property="Foreground" Value="{DynamicResource TabViewItemIconForegroundPressed}" />
                 <Setter TargetName="CloseButton" Property="Background" Value="{DynamicResource TabViewItemHeaderPressedCloseButtonBackground}" />
                 <Setter TargetName="CloseButton" Property="Foreground" Value="{DynamicResource TabViewItemHeaderPressedCloseButtonForeground}" />
@@ -490,7 +490,7 @@
                 <Setter TargetName="TabContainer" Property="BorderBrush" Value="{DynamicResource TabViewSelectedItemBorderBrush}" />
                 <Setter TargetName="TabContainer" Property="BorderThickness" Value="{DynamicResource TabViewSelectedItemBorderThickness}" />
                 <Setter TargetName="TabContainer" Property="Padding" Value="{DynamicResource TabViewSelectedItemHeaderPadding}" />
-                <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundSelected}" />
+                <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundSelected}" />
                 <Setter TargetName="IconControl" Property="Foreground" Value="{DynamicResource TabViewItemIconForegroundSelected}" />
                 <Setter TargetName="CloseButton" Property="Background" Value="{DynamicResource TabViewItemHeaderSelectedCloseButtonBackground}" />
                 <Setter TargetName="CloseButton" Property="Foreground" Value="{DynamicResource TabViewItemHeaderSelectedCloseButtonForeground}" />
@@ -502,7 +502,7 @@
             <Trigger Property="IsEnabled" Value="False">
                 <Setter TargetName="TabContainer" Property="Background" Value="{DynamicResource TabViewItemHeaderBackgroundDisabled}" />
                 <Setter TargetName="IconControl" Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundDisabled}" />
-                <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundDisabled}" />
+                <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundDisabled}" />
                 <Setter TargetName="IconControl" Property="Foreground" Value="{DynamicResource TabViewButtonForegroundDisabled}" />
                 <Setter TargetName="CloseButton" Property="Background" Value="{DynamicResource TabViewItemHeaderDisabledCloseButtonBackground}" />
                 <Setter TargetName="CloseButton" Property="Foreground" Value="{DynamicResource TabViewItemHeaderSelectedCloseButtonForeground}" />

@@ -102,28 +102,28 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderBrush}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronPointerOverForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPointerOverBrush}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPressedBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronPressedForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPressedBrush}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
@@ -223,28 +223,28 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderBrush}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronPointerOverForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPointerOverBrush}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPressedBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronPressedForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPressedBrush}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
@@ -354,28 +354,28 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderBrush}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronPointerOverForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPointerOverBrush}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPressedBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronPressedForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPressedBrush}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
@@ -485,28 +485,28 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderBrush}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronPointerOverForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPointerOverBrush}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPressedBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronPressedForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPressedBrush}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
                             <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
                             <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />

@@ -46,17 +46,17 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource HyperlinkButtonForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource HyperlinkButtonForegroundPointerOver}" />
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource HyperlinkButtonBackgroundPointerOver}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource HyperlinkButtonBorderBrushPointerOver}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource HyperlinkButtonForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource HyperlinkButtonForegroundPressed}" />
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource HyperlinkButtonBackgroundPressed}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource HyperlinkButtonBorderBrushPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource HyperlinkButtonForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource HyperlinkButtonForegroundDisabled}" />
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource HyperlinkButtonBackgroundDisabled}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource HyperlinkButtonBorderBrushDisabled}" />
                         </Trigger>

@@ -62,17 +62,17 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="ToolBarButtonInnerBorder" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundPointerOver}" />
                             <Setter TargetName="ToolBarButtonInnerBorder" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPointerOver}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="ToolBarButtonInnerBorder" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundPressed}" />
                             <Setter TargetName="ToolBarButtonInnerBorder" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="ToolBarButtonInnerBorder" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundDisabled}" />
                             <Setter TargetName="ToolBarButtonInnerBorder" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundDisabled}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -129,17 +129,17 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundPointerOver}" />
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPointerOver}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundPressed}" />
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundDisabled}" />
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundDisabled}" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="BorderThickness" Value="0" />
@@ -231,17 +231,17 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundPointerOver}" />
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPointerOver}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundPressed}" />
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundDisabled}" />
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundDisabled}" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="BorderThickness" Value="0" />
@@ -333,17 +333,17 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundPointerOver}" />
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPointerOver}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundPressed}" />
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundDisabled}" />
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundDisabled}" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="ToolBarToggleButtonInnerBackground" Property="BorderThickness" Value="0" />
@@ -451,17 +451,17 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPointerOver}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushPointerOver}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundPressed}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource ToolBarButtonBackgroundDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ToolBarButtonForegroundDisabled}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ToolBarButtonBorderBrushDisabled}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

@@ -46,17 +46,17 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="Background" Property="Background" Value="{DynamicResource InfoBarCloseButtonBackgroundPointerOver}" />
                                 <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource InfoBarCloseButtonBorderBrushPointerOver}" />
-                                <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource InfoBarCloseButtonForegroundPointerOver}" />
+                                <Setter Property="Foreground" Value="{DynamicResource InfoBarCloseButtonForegroundPointerOver}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="Background" Property="Background" Value="{DynamicResource InfoBarCloseButtonBackgroundPressed}" />
                                 <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource InfoBarCloseButtonBorderBrushPressed}" />
-                                <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource InfoBarCloseButtonForegroundPressed}" />
+                                <Setter Property="Foreground" Value="{DynamicResource InfoBarCloseButtonForegroundPressed}" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="Background" Property="Background" Value="{DynamicResource InfoBarCloseButtonBackgroundDisabled}" />
                                 <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource InfoBarCloseButtonBorderBrushDisabled}" />
-                                <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource InfoBarCloseButtonForegroundDisabled}" />
+                                <Setter Property="Foreground" Value="{DynamicResource InfoBarCloseButtonForegroundDisabled}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

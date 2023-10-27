@@ -55,17 +55,17 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource TeachingTipAlternateCloseButtonBackgroundPointerOver}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource TeachingTipAlternateCloseButtonBorderBrushPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TeachingTipAlternateCloseButtonForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TeachingTipAlternateCloseButtonForegroundPointerOver}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource TeachingTipAlternateCloseButtonBackgroundPressed}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource TeachingTipAlternateCloseButtonBorderBrushPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TeachingTipAlternateCloseButtonForegroundPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TeachingTipAlternateCloseButtonForegroundPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource TeachingTipAlternateCloseButtonBackgroundDisabled}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource TeachingTipAlternateCloseButtonBorderBrushDisabled}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TeachingTipAlternateCloseButtonForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TeachingTipAlternateCloseButtonForegroundDisabled}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

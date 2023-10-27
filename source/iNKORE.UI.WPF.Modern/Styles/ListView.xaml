@@ -245,7 +245,7 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ListViewItemBackgroundPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ListViewItemForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundPointerOver}" />
                             <Setter TargetName="MultiSelectSquare" Property="BorderBrush" Value="{DynamicResource ListViewItemCheckBoxPointerOverBorderBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="Background" Value="{DynamicResource ListViewItemCheckBoxPointerOverBrush}" />
                         </MultiTrigger>
@@ -255,7 +255,7 @@
                                 <Condition SourceName="LayoutRoot" Property="primitives:PressHelper.IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ListViewItemBackgroundPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ListViewItemForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundPointerOver}" />
                             <Setter TargetName="MultiSelectSquare" Property="BorderBrush" Value="{DynamicResource ListViewItemCheckBoxPressedBorderBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="Background" Value="{DynamicResource ListViewItemCheckBoxPressedBrush}" />
                         </MultiTrigger>
@@ -264,7 +264,7 @@
                             <Setter TargetName="MultiSelectCheck" Property="Opacity" Value="1" />
                             <Setter TargetName="PressedBackground" Property="Opacity" Value="1" />
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ListViewItemBackgroundSelected}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelected}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelected}" />
                             <Setter TargetName="MultiSelectSquare" Property="BorderBrush" Value="{DynamicResource ListViewItemCheckBoxSelectedBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="Background" Value="{DynamicResource ListViewItemCheckBoxSelectedBrush}" />
                             <Setter TargetName="MultiSelectCheck" Property="Foreground" Value="{DynamicResource ListViewItemCheckBrush}" />
@@ -276,7 +276,7 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ListViewItemBackgroundSelectedPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPointerOver}" />
                             <Setter TargetName="PressedBackground" Property="Fill" Value="{DynamicResource ListViewItemSelectionIndicatorPointerOverBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="BorderBrush" Value="{DynamicResource ListViewItemCheckBoxSelectedPointerOverBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="Background" Value="{DynamicResource ListViewItemCheckBoxSelectedPointerOverBrush}" />
@@ -289,7 +289,7 @@
                                 <Condition SourceName="LayoutRoot" Property="primitives:PressHelper.IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ListViewItemBackgroundSelectedPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPressed}" />
                             <Setter TargetName="PressedBackground" Property="Fill" Value="{DynamicResource ListViewItemSelectionIndicatorPressedBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="BorderBrush" Value="{DynamicResource ListViewItemCheckBoxSelectedPressedBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="Background" Value="{DynamicResource ListViewItemCheckBoxSelectedPressedBrush}" />

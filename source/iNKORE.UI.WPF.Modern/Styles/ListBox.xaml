@@ -43,15 +43,15 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ListBoxItemForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ListBoxItemForegroundDisabled}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="PressedBackground" Property="Fill" Value="{DynamicResource ListBoxItemBackgroundPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ListBoxItemForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ListBoxItemForeground}" />
                         </Trigger>
                         <Trigger SourceName="LayoutRoot" Property="primitives:PressHelper.IsPressed" Value="True">
                             <Setter TargetName="PressedBackground" Property="Fill" Value="{DynamicResource ListBoxItemBackgroundPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ListBoxItemForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ListBoxItemForeground}" />
                         </Trigger>
                         <!--  Selected  -->
                         <MultiTrigger>
@@ -61,7 +61,7 @@
                                 <Condition Property="IsMouseOver" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PressedBackground" Property="Fill" Value="{DynamicResource ListBoxItemBackgroundSelected}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ListBoxItemForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ListBoxItemForeground}" />
                         </MultiTrigger>
                         <!--  SelectedUnfocused  -->
                         <MultiTrigger>
@@ -71,7 +71,7 @@
                                 <Condition Property="IsMouseOver" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PressedBackground" Property="Fill" Value="{DynamicResource ListBoxItemBackgroundSelected}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ListBoxItemForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ListBoxItemForeground}" />
                         </MultiTrigger>
                         <!--  SelectedPointerOver  -->
                         <MultiTrigger>
@@ -80,7 +80,7 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PressedBackground" Property="Fill" Value="{DynamicResource ListBoxItemBackgroundSelectedPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ListBoxItemForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ListBoxItemForeground}" />
                         </MultiTrigger>
                         <!--  SelectedPressed  -->
                         <MultiTrigger>
@@ -89,7 +89,7 @@
                                 <Condition SourceName="LayoutRoot" Property="primitives:PressHelper.IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PressedBackground" Property="Fill" Value="{DynamicResource ListBoxItemBackgroundSelectedPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ListBoxItemForeground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ListBoxItemForeground}" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

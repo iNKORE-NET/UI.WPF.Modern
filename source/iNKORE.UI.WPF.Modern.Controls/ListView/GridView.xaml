@@ -137,7 +137,7 @@
                             <Setter TargetName="BorderRectangle" Property="Opacity" Value="1" />
                             <Setter TargetName="BorderRectangle" Property="BorderThickness" Value="1" />
                             <Setter TargetName="ContentBorder" Property="Background" Value="{DynamicResource GridViewItemBackgroundPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource GridViewItemForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource GridViewItemForegroundPointerOver}" />
                             <Setter TargetName="BorderRectangle" Property="BorderBrush" Value="{DynamicResource GridViewItemPointerOverBorderBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="BorderBrush" Value="{DynamicResource GridViewItemCheckBoxPointerOverBorderBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="Background" Value="{DynamicResource GridViewItemCheckBoxPointerOverBrush}" />
@@ -149,7 +149,7 @@
                                 <Condition SourceName="ContentBorder" Property="ui:PressHelper.IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="ContentBorder" Property="Background" Value="{DynamicResource GridViewItemBackgroundPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource GridViewItemForegroundPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource GridViewItemForegroundPointerOver}" />
                             <Setter TargetName="MultiSelectSquare" Property="BorderBrush" Value="{DynamicResource GridViewItemCheckBoxPressedBorderBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="Background" Value="{DynamicResource GridViewItemCheckBoxPressedBrush}" />
                         </MultiTrigger>
@@ -159,7 +159,7 @@
                             <Setter TargetName="BorderRectangle" Property="Opacity" Value="1" />
                             <Setter TargetName="InnerBorderRectangle" Property="Opacity" Value="1" />
                             <Setter TargetName="ContentBorder" Property="Background" Value="{DynamicResource GridViewItemBackgroundSelected}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource GridViewItemForegroundSelected}" />
+                            <Setter Property="Foreground" Value="{DynamicResource GridViewItemForegroundSelected}" />
                             <Setter TargetName="MultiSelectSquare" Property="BorderBrush" Value="{DynamicResource GridViewItemCheckBoxSelectedBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="Background" Value="{DynamicResource GridViewItemCheckBoxSelectedBrush}" />
                             <Setter TargetName="MultiSelectCheck" Property="Foreground" Value="{DynamicResource GridViewItemCheckBrush}" />
@@ -171,7 +171,7 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="ContentBorder" Property="Background" Value="{DynamicResource GridViewItemBackgroundSelectedPointerOver}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource GridViewItemForegroundSelectedPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource GridViewItemForegroundSelectedPointerOver}" />
                             <Setter TargetName="BorderRectangle" Property="BorderBrush" Value="{DynamicResource GridViewItemSelectedPointerOverBorderBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="BorderBrush" Value="{DynamicResource GridViewItemCheckBoxSelectedPointerOverBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="Background" Value="{DynamicResource GridViewItemCheckBoxSelectedPointerOverBrush}" />
@@ -184,7 +184,7 @@
                                 <Condition SourceName="ContentBorder" Property="ui:PressHelper.IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="ContentBorder" Property="Background" Value="{DynamicResource GridViewItemBackgroundSelectedPressed}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource GridViewItemForegroundSelectedPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource GridViewItemForegroundSelectedPressed}" />
                             <Setter TargetName="BorderRectangle" Property="BorderBrush" Value="{DynamicResource GridViewItemSelectedPressedBorderBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="BorderBrush" Value="{DynamicResource GridViewItemCheckBoxSelectedPressedBrush}" />
                             <Setter TargetName="MultiSelectSquare" Property="Background" Value="{DynamicResource GridViewItemCheckBoxSelectedPressedBrush}" />

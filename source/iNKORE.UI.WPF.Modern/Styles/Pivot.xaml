@@ -118,7 +118,7 @@
                                 <Condition SourceName="Border" Property="IsMouseOver" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Panel.ZIndex" Value="1" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundSelected}" />
+                            <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundSelected}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundSelected}" />
                         </MultiTrigger>
                         <!--  UnselectedPointerOver  -->
@@ -127,7 +127,7 @@
                                 <Condition Property="IsSelected" Value="False" />
                                 <Condition SourceName="Border" Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundUnselectedPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundUnselectedPointerOver}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundUnselectedPointerOver}" />
                         </MultiTrigger>
                         <!--  SelectedPointerOver  -->
@@ -137,11 +137,11 @@
                                 <Condition SourceName="Border" Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Panel.ZIndex" Value="1" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundSelectedPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundSelectedPointerOver}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundSelectedPointerOver}" />
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundDisabled}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundDisabled}" />
                             <Setter TargetName="SelectedPipe" Property="Visibility" Value="Collapsed" />
                         </Trigger>
@@ -151,7 +151,7 @@
                                 <Condition Property="IsSelected" Value="False" />
                                 <Condition SourceName="Border" Property="primitives:PressHelper.IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundUnselectedPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundUnselectedPressed}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundUnselectedPressed}" />
                         </MultiTrigger>
                         <!--  SelectedPressed  -->
@@ -160,7 +160,7 @@
                                 <Condition Property="IsSelected" Value="True" />
                                 <Condition SourceName="Border" Property="primitives:PressHelper.IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundSelectedPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundSelectedPressed}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundSelectedPressed}" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
