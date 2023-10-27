@@ -140,5 +140,7 @@
                 </ui:Flyout>
             </ui:DropDownButton.Flyout>
         </ui:DropDownButton>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="539,110,0,0" Height="86"/>
+        <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="622,127,0,0" Height="200"/>
     </Grid>
 </Window>
