@@ -1,7 +1,7 @@
 ﻿<Project>
   <PropertyGroup Condition="'$(PackageId)' != ''">
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Kinnara/Inkore.UI.WPF.Modern</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/InkoreStudios/UI.WPF.Modern</PackageProjectUrl>
     <PackageTags>WPF XAML UI Theme Controls Fluent Modern Metro WinUI</PackageTags>
     <PackageOutputPath>$(MSBuildThisFileDirectory)artifacts</PackageOutputPath>
   </PropertyGroup>
@@ -50,17 +50,17 @@
           <ItemGroup>
             <PackageReference Include="System.Runtime.WindowsRuntime" Version="4.7.0" />
             <Reference Include="Windows">
-              <HintPath>$(MSBuildThisFileDirectory)WinMD\Windows.WinMD</HintPath>
+              <HintPath>$(MSBuildThisFileDirectory)libraries\Windows.WinMD</HintPath>
               <IsWinMDFile>true</IsWinMDFile>
               <Private>false</Private>
             </Reference>
             <Reference Include="Windows.Foundation.FoundationContract">
-              <HintPath>$(MSBuildThisFileDirectory)WinMD\Windows.Foundation.FoundationContract.winmd</HintPath>
+              <HintPath>$(MSBuildThisFileDirectory)libraries\Windows.Foundation.FoundationContract.winmd</HintPath>
               <IsWinMDFile>true</IsWinMDFile>
               <Private>false</Private>
             </Reference>
             <Reference Include="Windows.Foundation.UniversalApiContract">
-              <HintPath>$(MSBuildThisFileDirectory)WinMD\Windows.Foundation.UniversalApiContract.winmd</HintPath>
+              <HintPath>$(MSBuildThisFileDirectory)libraries\Windows.Foundation.UniversalApiContract.winmd</HintPath>
               <IsWinMDFile>true</IsWinMDFile>
               <Private>false</Private>
             </Reference>

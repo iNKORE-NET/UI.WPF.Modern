@@ -1,8 +1,6 @@
 ﻿<Project>
   <PropertyGroup>
-    <Version>0.9.6</Version>
-    <Authors>Yimeng Wu</Authors>
-    <Product>Inkore.UI.WPF.Modern UI Library</Product>
+    <Product>iNKORE.UI.WPF.Modern</Product>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 </Project>
