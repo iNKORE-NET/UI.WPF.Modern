@@ -5,28 +5,29 @@
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:m="clr-namespace:iNKORE.UI.WPF.Modern.Markup"
     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
+    xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters"
     xmlns:root="clr-namespace:iNKORE.UI.WPF.Modern"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary>
-            <primitives:CornerRadiusFilterConverter
+            <converters:CornerRadiusFilterConverter
                 x:Key="TopLeftCornerRadiusDoubleValueConverter8x"
                 Filter="TopLeftValue"
                 Scale="8" />
-            <primitives:CornerRadiusFilterConverter
+            <converters:CornerRadiusFilterConverter
                 x:Key="BottomRightCornerRadiusDoubleValueConverter8x"
                 Filter="BottomRightValue"
                 Scale="8" />
-            <primitives:CornerRadiusFilterConverter
+            <converters:CornerRadiusFilterConverter
                 x:Key="TopLeftCornerRadiusDoubleValueConverter2x"
                 Filter="TopLeftValue"
                 Scale="2" />
-            <primitives:CornerRadiusFilterConverter
+            <converters:CornerRadiusFilterConverter
                 x:Key="BottomRightCornerRadiusDoubleValueConverter2x"
                 Filter="BottomRightValue"
                 Scale="2" />
-            <primitives:CornerRadiusFilterConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" Filter="TopLeftValue" />
-            <primitives:CornerRadiusFilterConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" Filter="BottomRightValue" />
+            <converters:CornerRadiusFilterConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" Filter="TopLeftValue" />
+            <converters:CornerRadiusFilterConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" Filter="BottomRightValue" />
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 

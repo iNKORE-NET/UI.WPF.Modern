@@ -508,12 +508,15 @@
     <SolidColorBrush x:Key="GridViewItemRevealBorderBrush" Color="Transparent" />
 
     <!--  Elevation border brushes  -->
-    <LinearGradientBrush x:Key="ControlElevationBorderBrush" MappingMode="Absolute" StartPoint="0,0" EndPoint="0,3">
+    <!--<LinearGradientBrush x:Key="ControlElevationBorderBrush" MappingMode="Absolute" StartPoint="0,0" EndPoint="0,3">
         <LinearGradientBrush.GradientStops>
             <GradientStop Offset="0.33" Color="{m:StaticColor ControlStrokeColorSecondary}" />
             <GradientStop Offset="1.0" Color="{m:StaticColor ControlStrokeColorDefault}" />
         </LinearGradientBrush.GradientStops>
-    </LinearGradientBrush>
+    </LinearGradientBrush>-->
+
+    <SolidColorBrush x:Key="ControlElevationBorderBrush" Color="{m:StaticColor ControlStrokeColorDefault}"/>
+    <m:StaticResource x:Key="ControlElevationBorderBrushElevationColor" ResourceKey="ControlStrokeColorSecondary"/>
 
     <LinearGradientBrush x:Key="CircleElevationBorderBrush" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
         <LinearGradientBrush.GradientStops>
@@ -522,7 +525,7 @@
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
 
-    <LinearGradientBrush x:Key="AccentControlElevationBorderBrush" MappingMode="Absolute" StartPoint="0,0" EndPoint="0,3">
+    <!--<LinearGradientBrush x:Key="AccentControlElevationBorderBrush" MappingMode="Absolute" StartPoint="0,0" EndPoint="0,3">
         <LinearGradientBrush.RelativeTransform>
             <ScaleTransform CenterY="0.5" ScaleY="-1" />
         </LinearGradientBrush.RelativeTransform>
@@ -530,7 +533,11 @@
             <GradientStop Offset="0.33" Color="{m:StaticColor ControlStrokeColorOnAccentSecondary}" />
             <GradientStop Offset="1.0" Color="{m:StaticColor ControlStrokeColorOnAccentDefault}" />
         </LinearGradientBrush.GradientStops>
-    </LinearGradientBrush>
+    </LinearGradientBrush>-->
+    
+    
+
+    <SolidColorBrush x:Key="AccentControlElevationBorderBrush" Color="{m:StaticColor ControlStrokeColorOnAccentDefault}"/>
 
     <!--  Legacy brushes  -->
     <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="{m:StaticColor SolidBackgroundFillColorBase}" />
@@ -2338,7 +2345,7 @@
     <m:StaticResource x:Key="TextControlButtonForegroundPointerOver" ResourceKey="TextFillColorSecondaryBrush" />
     <m:StaticResource x:Key="TextControlButtonForegroundPressed" ResourceKey="TextFillColorTertiaryBrush" />
 
-    <LinearGradientBrush x:Key="TextControlElevationBorderBrush" MappingMode="Absolute" StartPoint="0,0" EndPoint="0,2">
+    <!--<LinearGradientBrush x:Key="TextControlElevationBorderBrush" MappingMode="Absolute" StartPoint="0,0" EndPoint="0,2">
         <LinearGradientBrush.RelativeTransform>
             <ScaleTransform CenterY="0.5" ScaleY="-1" />
         </LinearGradientBrush.RelativeTransform>
@@ -2356,7 +2363,14 @@
             <GradientStop Offset="1.0" Color="{Binding Color, Source={StaticResource SystemAccentColorLight2Brush}}" />
             <GradientStop Offset="1.0" Color="{m:StaticColor ControlStrokeColorDefault}" />
         </LinearGradientBrush.GradientStops>
-    </LinearGradientBrush>
+    </LinearGradientBrush>-->
+
+    <SolidColorBrush x:Key="TextControlElevationBorderBrush" Color="{m:StaticColor ControlStrokeColorDefault}"/>
+    <SolidColorBrush x:Key="TextControlElevationBorderFocusedBrush" Color="{m:StaticColor ControlStrokeColorDefault}"/>
+
+    <m:StaticResource x:Key="TextControlElevationBorderBrushElevationColor" ResourceKey="ControlStrongStrokeColorDefault"/>
+    <m:StaticResource x:Key="TextControlElevationBorderFocusedBrushElevationColor" ResourceKey="SystemAccentColorLight2"/>
+
 
     <!--  Resources for Thumb  -->
     <m:StaticResource x:Key="ThumbBackground" ResourceKey="SystemControlBackgroundBaseLowBrush" />

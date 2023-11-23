@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using iNKORE.UI.WPF.Modern.Automation.Peers;
+using iNKORE.UI.WPF.Modern.Common.Converters;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using static iNKORE.UI.WPF.Modern.ResourceAccessor;
 

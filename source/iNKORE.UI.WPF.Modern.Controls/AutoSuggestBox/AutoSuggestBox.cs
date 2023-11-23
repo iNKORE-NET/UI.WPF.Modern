@@ -8,6 +8,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Threading;
+using iNKORE.UI.WPF.Modern.Common.Converters;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 
 namespace iNKORE.UI.WPF.Modern.Controls
@@ -508,13 +509,12 @@ namespace iNKORE.UI.WPF.Modern.Controls
             if (isPopupOpen)
             {
                 bool isOpenDown = IsPopupOpenDown();
-                var cornerRadiusConverter = new CornerRadiusFilterConverter();
 
                 var popupRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Bottom : CornerRadiusFilterKind.Top;
-                popupRadius = cornerRadiusConverter.Convert(popupRadius, popupRadiusFilter);
+                popupRadius = CornerRadiusFilterConverter.Convert(popupRadius, popupRadiusFilter);
 
                 var textBoxRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Top : CornerRadiusFilterKind.Bottom;
-                textBoxRadius = cornerRadiusConverter.Convert(textBoxRadius, textBoxRadiusFilter);
+                textBoxRadius = CornerRadiusFilterConverter.Convert(textBoxRadius, textBoxRadiusFilter);
             }
 
             if (GetTemplateChild(c_popupBorderName) is Border popupBorder)

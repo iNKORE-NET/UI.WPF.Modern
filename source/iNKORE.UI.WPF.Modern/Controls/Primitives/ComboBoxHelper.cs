@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using iNKORE.UI.WPF.Modern.Common.Converters;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -112,13 +113,12 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             if (isDropDownOpen)
             {
                 bool isOpenDown = IsPopupOpenDown(comboBox);
-                var cornerRadiusConverter = new CornerRadiusFilterConverter();
 
                 var popupRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Bottom : CornerRadiusFilterKind.Top;
-                popupRadius = cornerRadiusConverter.Convert(popupRadius, popupRadiusFilter);
+                popupRadius = CornerRadiusFilterConverter.Convert(popupRadius, popupRadiusFilter);
 
                 var textBoxRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Top : CornerRadiusFilterKind.Bottom;
-                textBoxRadius = cornerRadiusConverter.Convert(textBoxRadius, textBoxRadiusFilter);
+                textBoxRadius = CornerRadiusFilterConverter.Convert(textBoxRadius, textBoxRadiusFilter);
             }
 
             if (GetTemplateChild<Border>(c_popupBorderName, comboBox) is Border popupBorder)

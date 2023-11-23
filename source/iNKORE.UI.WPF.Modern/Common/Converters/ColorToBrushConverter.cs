@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace SamplesCommon
+namespace iNKORE.UI.WPF.Modern.Common.Converters
 {
     public class ColorToBrushConverter : IValueConverter
     {

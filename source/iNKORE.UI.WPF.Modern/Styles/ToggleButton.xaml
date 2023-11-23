@@ -21,13 +21,14 @@
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="primitives:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
+        <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource ControlElevationBorderBrushElevationColor}" />
         <Setter Property="primitives:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource UseSystemFocusVisuals}" />
         <Setter Property="primitives:FocusVisualHelper.FocusVisualMargin" Value="-3" />
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <Border
+                    <local:ElevationBorder
                         x:Name="Background"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -46,7 +47,7 @@
                                 RecognizesAccessKey="True"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </Border>
-                    </Border>
+                    </local:ElevationBorder>
                     <ControlTemplate.Triggers>
                         <!--  PointerOver  -->
                         <MultiTrigger>
@@ -65,6 +66,7 @@
                                 <Condition Property="IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundPressed}" />
+                            <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushPressed}" />
                             <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundPressed}" />
                         </MultiTrigger>
@@ -75,6 +77,7 @@
                                 <Condition Property="IsEnabled" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundDisabled}" />
+                            <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
                             <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundDisabled}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushDisabled}" />
                         </MultiTrigger>

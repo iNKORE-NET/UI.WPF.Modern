@@ -5,6 +5,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Common.Converters;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
@@ -124,13 +125,12 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             if (isPopupOpen)
             {
                 bool isOpenDown = IsPopupOpenDown(autoSuggestBox);
-                var cornerRadiusConverter = new CornerRadiusFilterConverter();
 
                 var popupRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Bottom : CornerRadiusFilterKind.Top;
-                popupRadius = cornerRadiusConverter.Convert(popupRadius, popupRadiusFilter);
+                popupRadius = CornerRadiusFilterConverter.Convert(popupRadius, popupRadiusFilter);
 
                 var textBoxRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Top : CornerRadiusFilterKind.Bottom;
-                textBoxRadius = cornerRadiusConverter.Convert(textBoxRadius, textBoxRadiusFilter);
+                textBoxRadius = CornerRadiusFilterConverter.Convert(textBoxRadius, textBoxRadiusFilter);
             }
 
             if (GetTemplateChild<Border>(c_popupBorderName, autoSuggestBox) is Border popupBorder)

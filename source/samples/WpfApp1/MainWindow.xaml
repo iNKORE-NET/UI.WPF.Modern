@@ -110,7 +110,7 @@
                 </ui:NavigationViewItem>
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>-->
-        <ui:HyperlinkButton  Foreground="{DynamicResource {x:Static ui:ThemeKeys.SystemControlForegroundBaseHighBrushKey}}" Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click"/>
+        <!--<ui:HyperlinkButton  Foreground="{DynamicResource {x:Static ui:ThemeKeys.SystemControlForegroundBaseHighBrushKey}}" Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click"/>
         <ui:CommandBar VerticalAlignment="Bottom">
             <ui:AppBarButton Label="Aaaa" IsCompact="True" Click="AppBarButton_Click">
                 <ui:AppBarButton.Icon>
@@ -139,8 +139,9 @@
                     <Button>AAA</Button>
                 </ui:Flyout>
             </ui:DropDownButton.Flyout>
-        </ui:DropDownButton>
+        </ui:DropDownButton>-->
         <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="539,110,0,0" Height="86"/>
         <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="622,127,0,0" Height="200"/>
+        <Button Style="{StaticResource {x:Static ui:ThemeKeys.AccentButtonStyleKey}}" Height="152" Width="277" Margin="103,115,0,0" VerticalAlignment="Top">Button</Button>
     </Grid>
 </Window>

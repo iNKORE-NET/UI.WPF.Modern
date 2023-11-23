@@ -4,10 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
+    xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary>
-            <primitives:CornerRadiusFilterConverter x:Key="RightCornerRadiusFilterConverter" Filter="Right" />
+            <converters:CornerRadiusFilterConverter x:Key="RightCornerRadiusFilterConverter" Filter="Right" />
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
@@ -37,6 +38,7 @@
         <Setter Property="ContextMenu" Value="{DynamicResource TextControlContextMenu}" />
         <Setter Property="local:TextContextMenu.UsingTextContextMenu" Value="True" />
         <Setter Property="primitives:TextBoxHelper.IsEnabled" Value="True" />
+        <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderBrushElevationColor}"/>
         <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource TextControlValidationErrorTemplate}" />
         <Setter Property="primitives:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource IsApplicationFocusVisualKindReveal}" />
         <Setter Property="Template">
@@ -136,7 +138,7 @@
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                             TextWrapping="Wrap"
                             Visibility="{TemplateBinding primitives:ControlHelper.HeaderVisibility}" />
-                        <Border
+                        <local:ElevationBorder
                             x:Name="BorderElement"
                             Grid.Row="1"
                             Grid.RowSpan="1"
@@ -225,12 +227,13 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="HeaderContentPresenter" Property="Foreground" Value="{DynamicResource TextControlHeaderForegroundDisabled}" />
                             <Setter Property="Background" Value="{DynamicResource TextControlBackgroundDisabled}" />
-                            <Setter TargetName="BorderElement" Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushDisabled}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushDisabled}" />
+                            <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
                             <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundDisabled}" />
                             <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundDisabled}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="BorderElement" Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushPointerOver}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushPointerOver}" />
                             <Setter Property="Background" Value="{DynamicResource TextControlBackgroundPointerOver}" />
                             <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundPointerOver}" />
                             <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundPointerOver}" />
@@ -238,8 +241,9 @@
                         <Trigger Property="IsSelectionActive" Value="true">
                             <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundFocused}" />
                             <Setter Property="Background" Value="{DynamicResource TextControlBackgroundFocused}" />
-                            <Setter TargetName="BorderElement" Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}" />
-                            <Setter TargetName="BorderElement" Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}" />
+                            <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderFocusedBrushElevationColor}" />
+                            <Setter Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}" />
                             <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundFocused}" />
                         </Trigger>
                         <MultiTrigger>

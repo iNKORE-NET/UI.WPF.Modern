@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace iNKORE.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Common.Converters
 {
     public class CornerRadiusFilterConverter : DependencyObject, IValueConverter
     {
@@ -11,7 +11,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         public double Scale { get; set; } = 1.0;
 
-        public CornerRadius Convert(CornerRadius radius, CornerRadiusFilterKind filterKind)
+        public static CornerRadius Convert(CornerRadius radius, CornerRadiusFilterKind filterKind)
         {
             CornerRadius result = radius;
 

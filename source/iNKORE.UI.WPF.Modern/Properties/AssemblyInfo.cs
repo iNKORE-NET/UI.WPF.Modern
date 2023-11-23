@@ -21,6 +21,8 @@ using System.Windows.Markup;
 
 [assembly: XmlnsPrefix("http://schemas.inkore.net/lib/ui/wpf/modern", "modern")]
 [assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern")]
+[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Common")]
+[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Common.Converters")]
 [assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Controls")]
 [assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Controls.Primitives")]
 [assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.DesignTime")]
