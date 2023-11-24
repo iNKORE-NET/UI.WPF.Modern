@@ -1606,11 +1606,13 @@
 
     <sys:Double x:Key="MenuFlyoutSeparatorThemeHeight">1</sys:Double>
     <sys:Double x:Key="MenuFlyoutThemeMinHeight">32</sys:Double>
-    <Thickness x:Key="MenuFlyoutPresenterThemePadding">0,0</Thickness>
+    <!--<Thickness x:Key="MenuFlyoutPresenterThemePadding">0,0</Thickness>-->
     <Thickness x:Key="MenuFlyoutItemChevronMargin">24,0,0,0</Thickness>
-    <Thickness x:Key="MenuFlyoutItemThemePadding">11,9,11,10</Thickness>
+    <!--<Thickness x:Key="MenuFlyoutItemThemePadding">11,9,11,10</Thickness>-->
     <Thickness x:Key="MenuFlyoutItemThemePaddingNarrow">11,4,11,7</Thickness>
     <Thickness x:Key="MenuFlyoutSeparatorThemePadding">12,4,12,4</Thickness>
+    <Thickness x:Key="MenuFlyoutPresenterThemePadding">0,2,0,2</Thickness>
+    <Thickness x:Key="MenuFlyoutItemThemePadding">11,6,11,7</Thickness>
 
     <!--  Resources for Windows.UI.Xaml.Controls.ToggleMenuFlyoutItem  -->
     <m:StaticResource x:Key="ToggleMenuFlyoutItemBackground" ResourceKey="SystemControlTransparentBrush" />
