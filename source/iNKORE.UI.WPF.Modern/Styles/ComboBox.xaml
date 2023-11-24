@@ -236,7 +236,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Grid SnapsToDevicePixels="True">
-                        <Border
+                        <local:ElevationBorder
                             x:Name="BorderElement"
                             primitives:FocusVisualHelper.IsTemplateFocusTarget="True"
                             Background="{TemplateBinding Background}"
@@ -292,6 +292,7 @@
                             <Setter TargetName="BorderElement" Property="Background" Value="{DynamicResource TextControlBackgroundFocused}" />
                             <Setter TargetName="BorderElement" Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}" />
                             <Setter TargetName="BorderElement" Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}" />
+                            <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderFocusedBrushElevationColor}" />
                             <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundFocused}" />
                             <Setter Property="CaretBrush" Value="{DynamicResource TextControlForegroundFocused}" />
                             <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundFocused}" />
@@ -325,6 +326,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource ControlElevationBorderBrushElevationColor}" />
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="primitives:ControlHelper.PlaceholderForeground" Value="{DynamicResource ComboBoxPlaceHolderForeground}" />
@@ -395,7 +397,7 @@
                             BorderThickness="{DynamicResource ComboBoxBackgroundBorderThicknessFocused}"
                             CornerRadius="{TemplateBinding primitives:ControlHelper.CornerRadius}"
                             Opacity="0" />
-                        <Border
+                        <local:ElevationBorder
                             x:Name="Background"
                             Grid.Row="1"
                             Grid.Column="0"
@@ -567,6 +569,7 @@
                         <Trigger SourceName="ToggleButton" Property="IsPressed" Value="True">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ComboBoxBackgroundPressed}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ComboBoxBorderBrushPressed}" />
+                            <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
                             <Setter Property="Foreground" Value="{DynamicResource ComboBoxForegroundPressed}" />
                             <Setter TargetName="PlaceholderTextBlock" Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundPressed}" />
                         </Trigger>
@@ -574,6 +577,7 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ComboBoxBackgroundDisabled}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ComboBoxBorderBrushDisabled}" />
+                            <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
                             <Setter TargetName="HeaderContentPresenter" Property="Foreground" Value="{DynamicResource ComboBoxHeaderForegroundDisabled}" />
                             <Setter Property="Foreground" Value="{DynamicResource ComboBoxForegroundDisabled}" />
                             <Setter TargetName="PlaceholderTextBlock" Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundDisabled}" />
@@ -596,6 +600,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="HighlightBackground" Property="Opacity" Value="1" />
                             <Setter TargetName="Pill" Property="Opacity" Value="1" />
+                            <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
                             <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource ComboBoxForegroundFocusedPressed}" />
                             <Setter TargetName="PlaceholderTextBlock" Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundFocusedPressed}" />
                             <Setter TargetName="DropDownGlyph" Property="Foreground" Value="{DynamicResource ComboBoxDropDownGlyphForegroundFocusedPressed}" />

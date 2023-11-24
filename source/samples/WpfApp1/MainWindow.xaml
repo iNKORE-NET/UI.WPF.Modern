@@ -10,11 +10,11 @@
         ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
      ui:TitleBar.ExtendViewIntoTitleBar="False"   
      ui:WindowHelper.SystemBackdropType="Mica"
-     ui:TitleBar.IsBackButtonVisible="False"
+     ui:TitleBar.IsBackButtonVisible="False" ui:ThemeManager.RequestedTheme="Light"
      ui:WindowHelper.UseModernWindowStyle="True"
         ui:WindowHelper.CornerStyle="DoNotRound" Background="{x:Null}">
     <Grid>
-        <ComboBox SelectionChanged="ComboBox_SelectionChanged" Height="35">
+        <ComboBox SelectionChanged="ComboBox_SelectionChanged" Height="35" IsEditable="True">
             <ComboBoxItem Content="Item1"/>
             <ComboBoxItem Content="Item2"/>
             <ComboBoxItem Content="Item3"/>
@@ -142,6 +142,13 @@
         </ui:DropDownButton>-->
         <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="539,110,0,0" Height="86"/>
         <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="622,127,0,0" Height="200"/>
-        <Button Style="{StaticResource {x:Static ui:ThemeKeys.AccentButtonStyleKey}}" Height="152" Width="277" Margin="103,115,0,0" VerticalAlignment="Top">Button</Button>
+        <ui:DropDownButton Height="152" Width="277" Margin="103,115,0,0" VerticalAlignment="Top">Button
+            <ui:DropDownButton.Flyout>
+                <ui:MenuFlyout>
+                    <MenuItem Header="menu1"/>
+                    <MenuItem Header="menu2"/>
+                </ui:MenuFlyout>
+            </ui:DropDownButton.Flyout>
+        </ui:DropDownButton>
     </Grid>
 </Window>
