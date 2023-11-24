@@ -10,5 +10,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("iNKORE! Studios")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("0.9.21.0")]
-[assembly: AssemblyFileVersion("0.9.21.0")]
+[assembly: AssemblyVersion("0.9.22.0")]
+[assembly: AssemblyFileVersion("0.9.22.0")]
