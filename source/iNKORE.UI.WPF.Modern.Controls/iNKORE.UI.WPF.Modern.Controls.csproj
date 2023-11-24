@@ -30,12 +30,8 @@
 			Windows.Foundation.PropertyType;
 		</CsWinRTExcludes>
 		<ApplicationIcon>..\..\materials\images\iNKORE.ico</ApplicationIcon>
-		<Authors>NotYoojun.!</Authors>
-		<Company>iNKORE! Studios</Company>
-		<Product>iNKORE.UI.WPF.Modern</Product>
-		<Version />
-		<Title>$(AssemblyName)</Title>
-		<PackageReadmeFile>..\..\README.md</PackageReadmeFile>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\..\assets\misc\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.18362.0|AnyCPU'">

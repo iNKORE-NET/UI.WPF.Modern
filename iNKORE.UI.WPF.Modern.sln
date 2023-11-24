@@ -27,6 +27,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern.Sample
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp1", "source\samples\WpfApp1\WpfApp1.csproj", "{DBB698F7-FB37-4514-82C2-DA3C71A4B92F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{445FD5A2-621B-450B-B0AB-4B9A070ECC1E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{A6E3D156-8F7F-4566-9931-DC76009E73FC}"
+	ProjectSection(SolutionItems) = preProject
+		assets\misc\iNKORE.Pulic.snk = assets\misc\iNKORE.Pulic.snk
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fonts", "Fonts", "{1413BB5F-D932-4C64-B7B4-2F253DDE36B2}"
+	ProjectSection(SolutionItems) = preProject
+		assets\fonts\SegoeIcons.ttf = assets\fonts\SegoeIcons.ttf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -170,6 +182,8 @@ Global
 		{35EF6F6B-3E8C-4A9E-BCD2-16CA5C2C2ADC} = {07337569-6CA9-4BB0-9C8F-962D981CB5F4}
 		{54049F5E-E57B-433E-B316-3C51F25B523D} = {A96F98E9-18B5-4863-8F28-9B7BDF70A128}
 		{DBB698F7-FB37-4514-82C2-DA3C71A4B92F} = {A96F98E9-18B5-4863-8F28-9B7BDF70A128}
+		{A6E3D156-8F7F-4566-9931-DC76009E73FC} = {445FD5A2-621B-450B-B0AB-4B9A070ECC1E}
+		{1413BB5F-D932-4C64-B7B4-2F253DDE36B2} = {445FD5A2-621B-450B-B0AB-4B9A070ECC1E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6251E140-0FAA-4DE9-B245-1C5BE188E578}
