@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Markup;
+using iNKORE.UI.WPF.Modern;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
@@ -17,5 +18,5 @@ using System.Windows.Markup;
 
 //[assembly: InternalsVisibleTo("MUXControlsTestApp")]
 
-[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Controls")]
-[assembly: XmlnsDefinition("http://schemas.inkore.net/lib/ui/wpf/modern", "iNKORE.UI.WPF.Modern.Controls.Primitives")]
+[assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Controls")]
+[assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Controls.Primitives")]

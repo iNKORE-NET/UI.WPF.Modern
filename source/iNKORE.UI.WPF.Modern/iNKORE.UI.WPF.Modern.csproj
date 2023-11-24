@@ -27,12 +27,8 @@
 			Windows.Foundation.PropertyType;
 		</CsWinRTExcludes>
 		<ApplicationIcon>..\..\materials\images\iNKORE.ico</ApplicationIcon>
-		<Authors>NotYoojun.!</Authors>
-		<Company>iNKORE! Studios</Company>
-		<Product>iNKORE.UI.WPF.Modern</Product>
-		<Version />
-		<Title>$(AssemblyName)</Title>
-		<PackageReadmeFile>..\..\README.md</PackageReadmeFile>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\..\assets\misc\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'">

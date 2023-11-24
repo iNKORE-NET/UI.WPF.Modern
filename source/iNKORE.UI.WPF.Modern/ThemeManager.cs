@@ -17,6 +17,8 @@ namespace iNKORE.UI.WPF.Modern
         internal const string DarkKey = "Dark";
         internal const string HighContrastKey = "HighContrast";
 
+        public const string XmlNamespace = "http://schemas.inkore.net/lib/ui/wpf/modern";
+
         private static readonly Binding _highContrastBinding = new Binding("(SystemParameters.HighContrast)");
         private static readonly RoutedEventArgs _actualThemeChangedEventArgs;
 
