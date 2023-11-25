@@ -133,6 +133,12 @@ namespace iNKORE.UI.WPF.Modern
         public static readonly string NavigationViewContentGridCornerRadiusKey = "NavigationViewContentGridCornerRadius";
         public static readonly string NavigationViewContentGridBorderThicknessKey = "NavigationViewContentGridBorderThickness";
 
+        public static readonly string SystemAccentColorKey = "SystemAccentColor";
+        public static readonly string SystemAccentColorDark1Key = "SystemAccentColorDark1";
+        public static readonly string SystemAccentColorDark2Key = "SystemAccentColorDark2";
+        public static readonly string SystemAccentColorDark3Key = "SystemAccentColorDark3";
+        public static readonly string SystemAccentColorLight1Key = "SystemAccentColorLight1";
+        public static readonly string SystemAccentColorLight2Key = "SystemAccentColorLight2";
         #endregion
 
         #region Fonts.xaml

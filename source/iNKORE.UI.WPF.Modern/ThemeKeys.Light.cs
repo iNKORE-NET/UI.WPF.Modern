@@ -8,6 +8,7 @@ namespace iNKORE.UI.WPF.Modern
 {
     public static partial class ThemeKeys
     {
+        #region From Resource Keys
 
         public static readonly string ControlContentThemeFontSizeKey = "ControlContentThemeFontSize";
         public static readonly string ControlCornerRadiusKey = "ControlCornerRadius";
@@ -2204,5 +2205,8 @@ namespace iNKORE.UI.WPF.Modern
         public static readonly string UseSystemFocusVisualsKey = "UseSystemFocusVisuals";
         public static readonly string IsApplicationFocusVisualKindRevealKey = "IsApplicationFocusVisualKindReveal";
         public static readonly string HighVisibilityFocusVisualKey = "HighVisibilityFocusVisual";
+
+        #endregion
+
     }
 }
