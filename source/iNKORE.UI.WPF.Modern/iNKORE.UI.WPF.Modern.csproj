@@ -63,19 +63,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="Fonts\FluentSystemIcons-Filled.ttf" />
-		<None Remove="Fonts\FluentSystemIcons-Regular.ttf" />
-		<None Remove="Materials\Acrylic\NoiseAsset_256X256_PNG.png" />
+		<None Remove="Resources\Fonts\FluentSystemIcons-Filled.ttf" />
+		<None Remove="Resources\Fonts\FluentSystemIcons-Regular.ttf" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Resource Include="Fonts\FluentSystemIcons-Filled.ttf" />
-		<Resource Include="Fonts\FluentSystemIcons-Regular.ttf" />
-		<Resource Include="Materials\Acrylic\NoiseAsset_256X256_PNG.png" />
+		<Resource Include="Resources\Fonts\FluentSystemIcons-Filled.ttf" />
+		<Resource Include="Resources\Fonts\FluentSystemIcons-Regular.ttf" />
+		<Resource Include="Resources\Images\NoiseAsset_256X256_PNG.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="Resources\Strings.Designer.cs">
+		<Compile Update="Resources\Strings\Strings.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Strings.resx</DependentUpon>
@@ -83,11 +82,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Update="Resources\Strings.resx">
+		<EmbeddedResource Update="Resources\Strings\Strings.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Strings.Designer.cs</LastGenOutput>
 			<CustomToolNamespace>iNKORE.UI.WPF.Modern</CustomToolNamespace>
 		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Common\VisualStates\" />
 	</ItemGroup>
 
 </Project>

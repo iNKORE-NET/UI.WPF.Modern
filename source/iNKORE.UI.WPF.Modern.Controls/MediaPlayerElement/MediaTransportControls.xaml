@@ -5,8 +5,8 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Styles/Slider.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Styles/TextStyles.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/Slider.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/TextStyles.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/CommandBar/AppBarButton.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/CommandBar/AppBarRepeatButton.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/CommandBar/AppBarToggleButton.xaml" />

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using iNKORE.UI.WPF.Modern.Automation.Peers;
+using iNKORE.UI.WPF.Modern.Common;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

@@ -11,8 +11,9 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using iNKORE.UI.WPF.Modern.Common;
 using static CppWinRTHelpers;
-using static iNKORE.UI.WPF.Modern.ResourceAccessor;
+using static iNKORE.UI.WPF.Modern.Common.ResourceAccessor;
 using ButtonVisibility = iNKORE.UI.WPF.Modern.Controls.PipsPagerButtonVisibility;
 
 namespace iNKORE.UI.WPF.Modern.Controls

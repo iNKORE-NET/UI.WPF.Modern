@@ -1,5 +1,5 @@
 ﻿using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Navigation;
+using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Modern.SampleApp.DataModel;
 using System;
 using System.Collections.Generic;

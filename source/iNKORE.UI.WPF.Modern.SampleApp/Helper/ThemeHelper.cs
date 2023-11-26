@@ -1,4 +1,5 @@
-﻿using iNKORE.UI.WPF.Modern.SampleApp.Common;
+﻿using iNKORE.UI.WPF.Modern.Helpers;
+using iNKORE.UI.WPF.Modern.SampleApp.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;

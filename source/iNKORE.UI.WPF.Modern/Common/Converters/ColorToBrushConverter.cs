@@ -23,7 +23,7 @@ namespace iNKORE.UI.WPF.Modern.Common.Converters
                 return brush.Color;
             }
 
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

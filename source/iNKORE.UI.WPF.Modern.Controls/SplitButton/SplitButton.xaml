@@ -7,7 +7,7 @@
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Styles/Button.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/Button.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <sys:Double x:Key="SplitButtonPrimaryButtonSize">32</sys:Double>

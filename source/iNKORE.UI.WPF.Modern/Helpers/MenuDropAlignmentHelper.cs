@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 
-namespace iNKORE.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern.Helpers
 {
     internal static class MenuDropAlignmentHelper
     {

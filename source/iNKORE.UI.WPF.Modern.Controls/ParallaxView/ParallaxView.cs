@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows;
+using iNKORE.UI.WPF.Modern.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

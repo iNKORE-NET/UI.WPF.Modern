@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using iNKORE.UI.WPF.Modern.Helpers;
+using System.Windows;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
@@ -49,7 +50,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 if (_themeResources == null)
                 {
-                    _themeResources = new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("ThemeResources/ThemeResources.xaml") };
+                    _themeResources = new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("Themes/ThemeResources.xaml") };
                 }
                 return _themeResources;
             }
@@ -61,7 +62,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 if (_controlsResources == null)
                 {
-                    _controlsResources = new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("ControlsResources.xaml") };
+                    _controlsResources = new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("Themes/ControlsResources.xaml") };
                 }
                 return _controlsResources;
             }
@@ -73,7 +74,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 if (_compactResources == null)
                 {
-                    _compactResources = new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("DensityStyles/Compact.xaml") };
+                    _compactResources = new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("Themes/DensityStyles/Compact.xaml") };
                 }
                 return _compactResources;
             }

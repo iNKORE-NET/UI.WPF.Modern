@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 
 namespace iNKORE.UI.WPF.Modern.Controls

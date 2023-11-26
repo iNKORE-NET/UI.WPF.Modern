@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Specialized;
+using iNKORE.UI.WPF.Modern.Common;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

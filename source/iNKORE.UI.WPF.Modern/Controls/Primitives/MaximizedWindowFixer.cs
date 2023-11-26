@@ -1,4 +1,4 @@
-﻿using Standard;
+﻿using iNKORE.UI.WPF.Modern.Helpers;
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;

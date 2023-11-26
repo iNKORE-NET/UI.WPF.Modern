@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using iNKORE.UI.WPF.Modern.Helpers;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 

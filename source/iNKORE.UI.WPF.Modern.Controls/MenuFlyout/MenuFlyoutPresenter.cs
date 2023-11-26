@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 
 namespace iNKORE.UI.WPF.Modern.Controls

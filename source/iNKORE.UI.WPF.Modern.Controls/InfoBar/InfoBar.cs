@@ -12,8 +12,9 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
+using iNKORE.UI.WPF.Modern.Common;
 using static CppWinRTHelpers;
-using static iNKORE.UI.WPF.Modern.ResourceAccessor;
+using static iNKORE.UI.WPF.Modern.Common.ResourceAccessor;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

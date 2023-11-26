@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 
-namespace iNKORE.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern.Helpers
 {
     internal static class AnimationHelper
     {

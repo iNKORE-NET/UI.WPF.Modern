@@ -3,6 +3,7 @@
 
 using System.Windows;
 using System.Windows.Media;
+using iNKORE.UI.WPF.Modern.Common;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

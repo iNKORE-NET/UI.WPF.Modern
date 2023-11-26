@@ -5,8 +5,9 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
+using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Controls;
-using static iNKORE.UI.WPF.Modern.ResourceAccessor;
+using static iNKORE.UI.WPF.Modern.Common.ResourceAccessor;
 
 namespace iNKORE.UI.WPF.Modern.Automation.Peers
 {

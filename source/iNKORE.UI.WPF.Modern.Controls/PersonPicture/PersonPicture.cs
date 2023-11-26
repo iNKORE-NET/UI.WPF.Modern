@@ -9,7 +9,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using iNKORE.UI.WPF.Modern.Automation.Peers;
-using static iNKORE.UI.WPF.Modern.ResourceAccessor;
+using iNKORE.UI.WPF.Modern.Common;
+using static iNKORE.UI.WPF.Modern.Common.ResourceAccessor;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

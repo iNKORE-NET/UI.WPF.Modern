@@ -12,6 +12,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using iNKORE.UI.WPF.Modern.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {

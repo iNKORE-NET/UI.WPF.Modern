@@ -6,6 +6,7 @@ using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using iNKORE.UI.WPF.Modern.Automation.Peers;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 
 namespace iNKORE.UI.WPF.Modern.Controls

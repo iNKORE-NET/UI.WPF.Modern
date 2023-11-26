@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {

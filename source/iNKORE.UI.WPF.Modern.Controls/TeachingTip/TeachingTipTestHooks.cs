@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 using System.Windows;
+using iNKORE.UI.WPF.Modern.Common;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

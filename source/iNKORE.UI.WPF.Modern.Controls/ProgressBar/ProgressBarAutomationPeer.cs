@@ -4,7 +4,8 @@
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using ProgressBar = iNKORE.UI.WPF.Modern.Controls.ProgressBar;
-using static iNKORE.UI.WPF.Modern.ResourceAccessor;
+using static iNKORE.UI.WPF.Modern.Common.ResourceAccessor;
+using iNKORE.UI.WPF.Modern.Common;
 
 namespace iNKORE.UI.WPF.Modern.Automation.Peers
 {

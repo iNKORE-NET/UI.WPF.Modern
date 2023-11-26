@@ -1,4 +1,6 @@
-﻿using System;
+﻿using iNKORE.UI.WPF.Modern.Controls.Helpers;
+using iNKORE.UI.WPF.Modern.Helpers;
+using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;

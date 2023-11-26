@@ -1,5 +1,4 @@
-﻿using iNKORE.UI.WPF.Modern.Navigation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +20,7 @@ using System.Windows.Controls;
 using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 using iNKORE.UI.WPF.Modern.SampleApp.Helper;
 using System.Reflection;
+using iNKORE.UI.WPF.Modern.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.SampleApp
 {

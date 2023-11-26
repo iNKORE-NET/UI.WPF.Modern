@@ -1,5 +1,7 @@
 ﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Helpers.Backdrop;
 using iNKORE.UI.WPF.Modern.SampleApp.SamplePages;
 using System;
 using System.Collections.Generic;

@@ -11,7 +11,7 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Page.Resources>
-        <ResourceDictionary Source="pack://application:,,,/iNKORE.UI.WPF.Modern;component/DensityStyles/Compact.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/iNKORE.UI.WPF.Modern;component/Density/iNKORE.UI.WPF.Modern;component/Themes/Styles/Compact.xaml" />
     </Page.Resources>
 
     <Grid Background="{DynamicResource ApplicationPageBackgroundThemeBrush}">

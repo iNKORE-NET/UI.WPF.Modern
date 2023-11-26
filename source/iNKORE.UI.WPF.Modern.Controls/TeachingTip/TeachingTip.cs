@@ -18,7 +18,8 @@ using System.Windows.Shapes;
 using System.Windows;
 using iNKORE.UI.WPF.Modern.Media.Animation;
 using static CppWinRTHelpers;
-using static iNKORE.UI.WPF.Modern.ResourceAccessor;
+using static iNKORE.UI.WPF.Modern.Common.ResourceAccessor;
+using iNKORE.UI.WPF.Modern.Common;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

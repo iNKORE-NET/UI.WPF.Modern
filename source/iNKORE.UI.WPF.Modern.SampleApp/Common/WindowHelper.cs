@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iNKORE.UI.WPF.Modern.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 
-namespace iNKORE.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern.Helpers
 {
     internal static class MergedDictionariesHelper
     {

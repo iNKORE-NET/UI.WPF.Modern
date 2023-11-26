@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace iNKORE.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern.Common
 {
     internal abstract class EventRevoker<TSource, TDelegate>
         where TSource : class

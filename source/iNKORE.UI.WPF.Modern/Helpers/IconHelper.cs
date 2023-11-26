@@ -6,7 +6,7 @@ using System.Text;
 using Windows.Win32;
 using Windows.Win32.UI.WindowsAndMessaging;
 
-namespace iNKORE.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern.Helpers
 {
     internal static class IconHelper
     {

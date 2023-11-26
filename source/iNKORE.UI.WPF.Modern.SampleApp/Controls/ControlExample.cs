@@ -19,6 +19,7 @@ using iNKORE.UI.WPF.Modern.SampleApp.Controls;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Collections;
+using iNKORE.UI.WPF.Modern.Common;
 
 namespace iNKORE.UI.WPF.Modern.SampleApp
 {

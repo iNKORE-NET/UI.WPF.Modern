@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 
-namespace iNKORE.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern.Helpers
 {
     /// <summary>
     /// Enables you to detect whether your app is in design mode in a visual designer.

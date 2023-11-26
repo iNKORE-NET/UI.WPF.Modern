@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace iNKORE.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern.Helpers
 {
     internal static class Helper
     {
@@ -75,7 +75,7 @@ namespace iNKORE.UI.WPF.Modern
         // return true if there is a local or style-supplied value for the dp
         public static bool HasNonDefaultValue(this DependencyObject d, DependencyProperty dp)
         {
-            return !HasDefaultValue(d, dp);
+            return !d.HasDefaultValue(dp);
         }
 
         public static bool HasLocalValue(this DependencyObject d, DependencyProperty dp)
@@ -83,7 +83,7 @@ namespace iNKORE.UI.WPF.Modern
             return d.ReadLocalValue(dp) != DependencyProperty.UnsetValue;
         }
     }
-    
+
     internal enum InterestPoint
     {
         TopLeft = 0,

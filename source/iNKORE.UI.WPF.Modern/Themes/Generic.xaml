@@ -6,18 +6,18 @@
                     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/AnimatedVisuals/AnimatedVisualSource.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Navigation/Frame.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Navigation/Page.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/AnimatedVisualSource.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/Frame.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/Page.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/FontIconFallback.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/ListViewHeaderItem.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/TextContextMenu.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/TitleBar/TitleBarButton.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/TitleBar/TitleBarControl.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Materials/Acrylic/AcrylicPanel.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/Primitives/TitleBarButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/Primitives/TitleBarControl.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/AcrylicPanel.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <common:AddValueConverter x:Key="addValueConverter" />
+    <converters:AddValueConverter x:Key="addValueConverter" />
     <converters:CornerRadiusFilterConverter x:Key="cornerRadiusFilterConverter_Bottom" Filter="Bottom"/>
     <converters:ThicknessFilterConverter x:Key="thicknessFilterConverter_ExcludeTop" Filter="ExcludeTop"/>
 

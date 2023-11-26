@@ -1,4 +1,6 @@
-﻿using iNKORE.UI.WPF.Modern.Controls.Primitives;
+﻿using iNKORE.UI.WPF.Modern.Common.Converters;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Modern.Markup;
 using System;
 using System.Collections.Generic;

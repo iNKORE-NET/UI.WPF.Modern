@@ -6,8 +6,8 @@
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Styles/RepeatButton.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Styles/TextBox.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/RepeatButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/TextBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <ui:CornerRadiusFilterConverter x:Key="LeftCornerRadiusFilterConverter" Filter="Left" />

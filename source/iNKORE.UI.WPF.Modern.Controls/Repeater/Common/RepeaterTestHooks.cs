@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using iNKORE.UI.WPF.Modern;
+using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Controls;
 
 namespace Microsoft.UI.Private.Controls

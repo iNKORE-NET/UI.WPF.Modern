@@ -1,4 +1,6 @@
-﻿using iNKORE.UI.WPF.Modern.DesignTime;
+﻿using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Helpers;
+using iNKORE.UI.WPF.Modern.Themes.DesignTime;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -737,7 +739,7 @@ namespace iNKORE.UI.WPF.Modern
 
         private static Uri GetDefaultSource(string theme)
         {
-            return PackUriHelper.GetAbsoluteUri($"ThemeResources/{theme}.xaml");
+            return PackUriHelper.GetAbsoluteUri($"Themes/Schemes/{theme}.xaml");
         }
 
         private static ResourceDictionary FindDictionary(ResourceDictionary parent, Uri source)

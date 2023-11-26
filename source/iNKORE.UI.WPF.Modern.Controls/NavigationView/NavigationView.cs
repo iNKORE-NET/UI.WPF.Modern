@@ -17,10 +17,13 @@ using System.Windows.Media.Animation;
 using System.Windows.Shell;
 using System.Windows.Threading;
 using iNKORE.UI.WPF.Modern.Automation.Peers;
+using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Modern.Input;
 using iNKORE.UI.WPF.Modern.Media.Animation;
 using static CppWinRTHelpers;
-using static iNKORE.UI.WPF.Modern.ResourceAccessor;
+using static iNKORE.UI.WPF.Modern.Common.ResourceAccessor;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

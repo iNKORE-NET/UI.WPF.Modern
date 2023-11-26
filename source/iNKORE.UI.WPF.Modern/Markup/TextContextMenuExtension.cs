@@ -1,4 +1,12 @@
-﻿using iNKORE.UI.WPF.Modern.Controls;
+﻿/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
+在此之前:
+using System;
+在此之后:
+using iNKORE.UI.WPF.Modern.Controls.TextContextMenu;
+using iNKORE.UI.WPF.Modern.Controls.TextContextMenu.TextContextMenu;
+using System;
+*/
+using iNKORE.UI.WPF.Modern.Controls;
 using System;
 using System.ComponentModel;
 using System.Threading;

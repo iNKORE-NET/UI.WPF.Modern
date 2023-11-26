@@ -1,4 +1,5 @@
 ﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Modern.SampleApp.DataModel;
 using iNKORE.UI.WPF.Modern.SampleApp.Properties;
 using SamplesCommon;

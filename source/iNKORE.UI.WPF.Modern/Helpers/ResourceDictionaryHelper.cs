@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace iNKORE.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern.Helpers
 {
     internal static class ResourceDictionaryHelper
     {
@@ -8,7 +8,7 @@ namespace iNKORE.UI.WPF.Modern
         {
             foreach (var md in dictionary.MergedDictionaries)
             {
-                SealValues(md);
+                md.SealValues();
             }
 
             foreach (var value in dictionary.Values)
@@ -46,7 +46,7 @@ namespace iNKORE.UI.WPF.Modern
             {
                 foreach (var td in rdEx.ThemeDictionaries.Values)
                 {
-                    SealValues(td);
+                    td.SealValues();
                 }
             }
         }

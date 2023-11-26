@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using iNKORE.UI.WPF.Modern.Common.Converters;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {

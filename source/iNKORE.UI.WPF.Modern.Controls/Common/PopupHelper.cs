@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Windows.Controls.Primitives;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

@@ -9,7 +9,9 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Controls;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
-using static iNKORE.UI.WPF.Modern.ResourceAccessor;
+using static iNKORE.UI.WPF.Modern.Common.ResourceAccessor;
+using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

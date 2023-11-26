@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iNKORE.UI.WPF.Modern.Helpers;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
@@ -182,7 +183,7 @@ namespace iNKORE.UI.WPF.Modern
             }
             else
             {
-                return new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("DesignTime/SystemColors.xaml") };
+                return new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("Themes/DesignTime/SystemColors.xaml") };
             }
         }
 

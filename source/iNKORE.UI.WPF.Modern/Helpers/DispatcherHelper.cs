@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace iNKORE.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern.Helpers
 {
     /// <summary>
     /// This class provides static methods helper for executing code in UI thread of the main window.
@@ -35,12 +35,12 @@ namespace iNKORE.UI.WPF.Modern
 
         public static void RunOnUIThread(this DispatcherObject d, Action action)
         {
-            _ = ExecuteOnUIThreadAsync(d, action);
+            _ = d.ExecuteOnUIThreadAsync(action);
         }
 
         public static void RunOnUIThread(this Dispatcher dispatcher, Action action)
         {
-            _ = AwaitableRunAsync(dispatcher, action);
+            _ = dispatcher.AwaitableRunAsync(action);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace iNKORE.UI.WPF.Modern
         /// <remarks>If the current thread has UI access, <paramref name="function"/> will be invoked directly.</remarks>
         public static Task ExecuteOnUIThreadAsync(Action function, DispatcherPriority priority = DispatcherPriority.Normal)
         {
-            return ExecuteOnUIThreadAsync(Application.Current, function, priority);
+            return Application.Current.ExecuteOnUIThreadAsync(function, priority);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace iNKORE.UI.WPF.Modern
         /// <remarks>If the current thread has UI access, <paramref name="function"/> will be invoked directly.</remarks>
         public static Task<T> ExecuteOnUIThreadAsync<T>(Func<T> function, DispatcherPriority priority = DispatcherPriority.Normal)
         {
-            return ExecuteOnUIThreadAsync(Application.Current, function, priority);
+            return Application.Current.ExecuteOnUIThreadAsync(function, priority);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace iNKORE.UI.WPF.Modern
         /// <returns>An awaitable <see cref="Task"/> for the operation.</returns>
         public static Task ExecuteOnUIThreadAsync(Func<Task> function, DispatcherPriority priority = DispatcherPriority.Normal)
         {
-            return ExecuteOnUIThreadAsync(Application.Current, function, priority);
+            return Application.Current.ExecuteOnUIThreadAsync(function, priority);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace iNKORE.UI.WPF.Modern
         /// <returns>An awaitable <see cref="Task{T}"/> for the operation.</returns>
         public static Task<T> ExecuteOnUIThreadAsync<T>(Func<Task<T>> function, DispatcherPriority priority = DispatcherPriority.Normal)
         {
-            return ExecuteOnUIThreadAsync(Application.Current, function, priority);
+            return Application.Current.ExecuteOnUIThreadAsync(function, priority);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace iNKORE.UI.WPF.Modern
 #if !NET452
                     return Task.CompletedTask;
 #else
-                    return new Task(() => { }, default(CancellationToken), (TaskCreationOptions)16384);
+                    return new Task(() => { }, default, (TaskCreationOptions)16384);
 #endif
                 }
                 catch (Exception e)

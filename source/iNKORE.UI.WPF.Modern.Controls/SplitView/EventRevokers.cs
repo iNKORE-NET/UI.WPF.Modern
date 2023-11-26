@@ -1,4 +1,6 @@
-﻿namespace iNKORE.UI.WPF.Modern.Controls
+﻿using iNKORE.UI.WPF.Modern.Common;
+
+namespace iNKORE.UI.WPF.Modern.Controls
 {
     internal class SplitViewIsPaneOpenChangedRevoker : EventRevoker<SplitView, DependencyPropertyChangedCallback>
     {

@@ -26,6 +26,7 @@ using System.Windows.Controls;
 using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 using Frame = iNKORE.UI.WPF.Modern.Controls.Frame;
 using iNKORE.UI.WPF.Modern.SampleApp.Common;
+using iNKORE.UI.WPF.Modern.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.SampleApp
 {

@@ -1,4 +1,6 @@
-﻿namespace iNKORE.UI.WPF.Modern.Controls.Primitives
+﻿using iNKORE.UI.WPF.Modern.Common;
+
+namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     internal class FlyoutBaseClosingRevoker : EventRevoker<FlyoutBase, TypedEventHandler<FlyoutBase, FlyoutBaseClosingEventArgs>>
     {

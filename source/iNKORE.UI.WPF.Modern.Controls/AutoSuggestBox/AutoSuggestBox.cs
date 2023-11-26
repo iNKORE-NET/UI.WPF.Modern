@@ -9,7 +9,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Threading;
 using iNKORE.UI.WPF.Modern.Common.Converters;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

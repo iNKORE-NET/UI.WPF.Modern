@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iNKORE.UI.WPF.Modern.Common;
+using System;
 using System.Windows;
 using System.Windows.Input;
 

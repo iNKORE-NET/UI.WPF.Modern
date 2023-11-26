@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iNKORE.UI.WPF.Modern.Helpers;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
 using System.Globalization;

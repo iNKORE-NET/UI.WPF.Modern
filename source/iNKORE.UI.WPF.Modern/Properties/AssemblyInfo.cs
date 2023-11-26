@@ -25,8 +25,17 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Common")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Common.Converters")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Controls")]
+[assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Controls.Helpers")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Controls.Primitives")]
-[assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.DesignTime")]
+[assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Helpers")]
+[assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Helpers.Backdrop")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Markup")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Media")]
+[assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Input")]
+[assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Native")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Media.Animation")]
+[assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Themes.DesignTime")]
+
+
+
+

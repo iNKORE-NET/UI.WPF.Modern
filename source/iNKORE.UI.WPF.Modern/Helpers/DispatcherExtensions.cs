@@ -7,8 +7,9 @@ using System.ComponentModel;                 // EditorBrowsableAttribute, Browsa
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
-namespace System.Windows.Threading
+namespace iNKORE.UI.WPF.Modern.Helpers
 {
     /// <summary>
     /// Helpers for executing code in a <see cref="Dispatcher"/>.
@@ -179,7 +180,7 @@ namespace System.Windows.Threading
 #if !NET452
                     return Task.CompletedTask;
 #else
-                    return new Task(() => { }, default(CancellationToken), (TaskCreationOptions)16384);
+                    return new Task(() => { }, default, (TaskCreationOptions)16384);
 #endif
                 }
                 catch (Exception e)

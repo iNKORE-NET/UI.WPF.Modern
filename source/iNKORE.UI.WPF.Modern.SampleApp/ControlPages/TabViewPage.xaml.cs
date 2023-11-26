@@ -1,4 +1,5 @@
 ﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using SamplesCommon.SamplePages;
 using System.Windows;

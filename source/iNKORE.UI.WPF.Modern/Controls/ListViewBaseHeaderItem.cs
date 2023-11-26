@@ -1,4 +1,4 @@
-﻿using iNKORE.UI.WPF.Modern.Controls.Primitives;
+﻿using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using System.Windows;
 using System.Windows.Controls;
 

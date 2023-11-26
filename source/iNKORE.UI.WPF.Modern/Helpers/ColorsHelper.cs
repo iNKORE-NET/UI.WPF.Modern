@@ -6,9 +6,21 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using Microsoft.Win32;
 using iNKORE.UI.WPF.Modern.Media.ColorPalette;
+
+/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
+在此之前:
+using Windows.UI.ViewManagement;
+在此之后:
+using Windows.UI.ViewManagement;
+using iNKORE;
+using iNKORE.UI;
+using iNKORE.UI.WPF;
+using iNKORE.UI.WPF.Modern;
+using iNKORE.UI.WPF.Modern.Helpers;
+*/
 using Windows.UI.ViewManagement;
 
-namespace iNKORE.UI.WPF.Modern
+namespace iNKORE.UI.WPF.Modern.Helpers
 {
     internal class ColorsHelper : DispatcherObject
     {
@@ -175,7 +187,7 @@ namespace iNKORE.UI.WPF.Modern
 
         private static bool IsDarkBackground(Color color)
         {
-            return color.R + color.G + color.B < (255 * 3 - color.R - color.G - color.B);
+            return color.R + color.G + color.B < 255 * 3 - color.R - color.G - color.B;
         }
     }
 }

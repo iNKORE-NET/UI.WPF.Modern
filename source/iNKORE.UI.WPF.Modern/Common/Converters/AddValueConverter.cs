@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace iNKORE.UI.WPF.Modern.Common
+namespace iNKORE.UI.WPF.Modern.Common.Converters
 {
     public class AddValueConverter : IMultiValueConverter
     {
