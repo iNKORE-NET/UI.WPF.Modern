@@ -652,7 +652,7 @@
     <m:StaticResource x:Key="AppBarToggleButtonForegroundChecked" ResourceKey="TextOnAccentFillColorPrimaryBrush" />
     <m:StaticResource x:Key="AppBarToggleButtonForegroundCheckedPointerOver" ResourceKey="TextOnAccentFillColorPrimaryBrush" />
     <m:StaticResource x:Key="AppBarToggleButtonForegroundCheckedPressed" ResourceKey="TextOnAccentFillColorSecondaryBrush" />
-    <m:StaticResource x:Key="AppBarToggleButtonForegroundCheckedDisabled" ResourceKey="TextOnAccentFillColorDisabled" />
+    <m:StaticResource x:Key="AppBarToggleButtonForegroundCheckedDisabled" ResourceKey="TextOnAccentFillColorDisabledBrush" />
 
     <m:StaticResource x:Key="AppBarToggleButtonBorderBrush" ResourceKey="ControlFillColorTransparentBrush" />
     <m:StaticResource x:Key="AppBarToggleButtonBorderBrushPointerOver" ResourceKey="ControlFillColorTransparentBrush" />
@@ -670,7 +670,7 @@
     <m:StaticResource x:Key="AppBarToggleButtonCheckGlyphForegroundChecked" ResourceKey="TextOnAccentFillColorPrimaryBrush" />
     <m:StaticResource x:Key="AppBarToggleButtonCheckGlyphForegroundCheckedPointerOver" ResourceKey="TextOnAccentFillColorPrimaryBrush" />
     <m:StaticResource x:Key="AppBarToggleButtonCheckGlyphForegroundCheckedPressed" ResourceKey="TextOnAccentFillColorSecondaryBrush" />
-    <m:StaticResource x:Key="AppBarToggleButtonCheckGlyphForegroundCheckedDisabled" ResourceKey="TextOnAccentFillColorDisabled" />
+    <m:StaticResource x:Key="AppBarToggleButtonCheckGlyphForegroundCheckedDisabled" ResourceKey="TextOnAccentFillColorDisabledBrush" />
 
     <m:StaticResource x:Key="AppBarToggleButtonOverflowLabelForegroundPointerOver" ResourceKey="TextFillColorPrimaryBrush" />
     <m:StaticResource x:Key="AppBarToggleButtonOverflowLabelForegroundPressed" ResourceKey="TextFillColorSecondaryBrush" />

@@ -110,7 +110,7 @@
                 </ui:NavigationViewItem>
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>-->
-        <!--<ui:HyperlinkButton  Foreground="{DynamicResource {x:Static ui:ThemeKeys.SystemControlForegroundBaseHighBrushKey}}" Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click"/>
+        <ui:HyperlinkButton  Foreground="{DynamicResource {x:Static ui:ThemeKeys.SystemControlForegroundBaseHighBrushKey}}" Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click"/>
         <ui:CommandBar VerticalAlignment="Bottom">
             <ui:AppBarButton Label="Aaaa" IsCompact="True" Click="AppBarButton_Click">
                 <ui:AppBarButton.Icon>
@@ -127,11 +127,11 @@
                     </ui:MenuFlyout>
                 </ui:AppBarButton.Flyout>
             </ui:AppBarButton>
-            <ui:AppBarButton Label="Aaaa" LabelPosition="Collapsed" IsCompact="True" HorizontalAlignment="Center" Height="32">
-                <ui:AppBarButton.Icon>
+            <ui:AppBarToggleButton x:Name="AppBarToggleButton1" Label="Aaaa" LabelPosition="Collapsed" IsCompact="True" HorizontalAlignment="Center" Height="32">
+                <ui:AppBarToggleButton.Icon>
                     <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
-                </ui:AppBarButton.Icon>
-            </ui:AppBarButton>
+                </ui:AppBarToggleButton.Icon>
+            </ui:AppBarToggleButton>
         </ui:CommandBar>
         <ui:DropDownButton x:Name="Button" Height="70" Width="144" Margin="320,85,0,0" VerticalAlignment="Top" FlyoutOpeningMode="None">
             <ui:DropDownButton.Flyout>
@@ -139,16 +139,11 @@
                     <Button>AAA</Button>
                 </ui:Flyout>
             </ui:DropDownButton.Flyout>
-        </ui:DropDownButton>-->
+        </ui:DropDownButton>
+        <ToggleButton x:Name="ToggleButton1" Click="ToggleButton_Click">
+            <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accounts}"/>
+        </ToggleButton>
         <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="539,110,0,0" Height="86"/>
         <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="622,127,0,0" Height="200"/>
-        <ui:DropDownButton Height="152" Width="277" Margin="103,115,0,0" VerticalAlignment="Top">Button
-            <ui:DropDownButton.Flyout>
-                <ui:MenuFlyout>
-                    <MenuItem Header="menu1"/>
-                    <MenuItem Header="menu2"/>
-                </ui:MenuFlyout>
-            </ui:DropDownButton.Flyout>
-        </ui:DropDownButton>
     </Grid>
 </Window>

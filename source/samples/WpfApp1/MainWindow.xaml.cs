@@ -64,5 +64,11 @@ namespace WpfApp1
         {
             //naview.SelectedItem = sgsac;
         }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            //AppBarToggleButton1.IsChecked = false;
+            AppBarToggleButton1.IsEnabled = false;
+        }
     }
 }
