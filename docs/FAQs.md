@@ -1,5 +1,5 @@
 
-# Inkore.UI.WPF.Modern FAQs
+# iNKORE.UI.WPF.Modern FAQs
 
 > 
 > This file contains some frequently asked qustions.
@@ -73,9 +73,7 @@
 
 - If an exception was thrown when a window with UseModernWindowStyle on, sth like this:
 
-   ```
-   托管调试助手 "PInvokeStackImbalance":“对 PInvoke 函数 “Inkore.UI.WPF.Modern!Inkore.UI.WPF.Modern.Controls.Primitives.MaximizedWindowFixer::GetWindowPlacement” 的调用导致堆栈不对称。原因可能是托管的 PInvoke 签名与非托管的目标签名不匹配。请检查 PInvoke 签名的调用约定和参数与非托管的目标签名是否匹配。”
-   ```
+  > 托管调试助手 "PInvokeStackImbalance":“对 PInvoke 函数 “Inkore.UI.WPF.Modern!Inkore.UI.WPF.Modern.Controls.Primitives.MaximizedWindowFixer::GetWindowPlacement” 的调用导致堆栈不对称。原因可能是托管的 PInvoke 签名与非托管的目标签名不匹配。请检查 PInvoke 签名的调用约定和参数与非托管的目标签名是否匹配。”
 
 - Theoretically, this exception can be ignored and won't terminate the application. It's caused by an internal error in Microsoft's API.
 
@@ -103,4 +101,45 @@
       </ui:AppBarButton.Flyout>
    </ui:AppBarButton>
 
+  ```
+
+## ❓ Application: Exception throws when used in a VSIX project
+
+- if you want to use this library in a vsix extension/template you will get FileNotFound exception.
+
+  > System.Windows.Markup.XamlParseException: 'Could not load file or assembly 'iNKORE.UI.WPF.Modern, PublicKeyToken=cd19e634b9706635' or one of its dependencies. The system cannot find the file specified.'
+
+- The reason for this error is the failure to load assemblies. So to fix this issue, we have 2 ways: *(Thanks @ghost1372 for this)*
+
+- One is to add this line in top of your package class
+
+   ```csharp
+   [ProvideBindingPath]
+   public sealed class YOURPROJECTPackage : AsyncPackage
+   ```
+
+- Or we can use a AssemblyResolver
+
+   ```csharp
+  AppDomain.CurrentDomain.AssemblyResolve += OnAssemblyResolve;
+
+  private Assembly OnAssemblyResolve(object sender, ResolveEventArgs args)
+  {
+       string path = Assembly.GetExecutingAssembly().Location;
+       path = Path.GetDirectoryName(path);
+
+       if (args.Name.ToLower().Contains("iNKORE.UI.WPF.Modern") && !args.Name.ToLower().Contains("iNKORE.UI.WPF.Modern.Controls"))
+       {
+           path = Path.Combine(path, "iNKORE.UI.WPF.Modern.dll");
+           Assembly ret = Assembly.LoadFrom(path);
+           return ret;
+       }
+       if (args.Name.ToLower().Contains("iNKORE.UI.WPF.Modern.Controls"))
+       {
+           path = Path.Combine(path, "iNKORE.UI.WPF.Modern.Controls.dll");
+           Assembly ret = Assembly.LoadFrom(path);
+           return ret;
+       }
+       return null;
+  }
   ```
