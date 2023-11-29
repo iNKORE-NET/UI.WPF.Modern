@@ -51,18 +51,21 @@
                             x:Name="Background"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}" />
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"/>
                         <Border
                             x:Name="BackgroundPointerOver"
                             Background="{DynamicResource ThumbBackgroundPointerOver}"
                             BorderBrush="{DynamicResource ThumbBorderBrushPointerOver}"
                             BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
                             Opacity="0" />
                         <Border
                             x:Name="BackgroundPressed"
                             Background="{DynamicResource ThumbBackgroundPressed}"
                             BorderBrush="{DynamicResource ThumbBorderBrushPressed}"
                             BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
                             Opacity="0" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
