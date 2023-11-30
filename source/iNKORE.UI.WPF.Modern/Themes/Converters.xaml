@@ -1,0 +1,40 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
+    xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives">
+    <local:BrushTranslationConverter x:Key="BrushTranslationConverter" />
+    <converters:ColorToBrushConverter x:Key="ColorToSolidColorBrushConverter" />
+    <converters:RoundMathConverter x:Key="RoundMathConverter" />
+    <converters:RoundRadiusConverter x:Key="RoundRadiusConverter" />
+    <converters:CornerRadiusFilterConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" Filter="TopLeftValue" />
+    <converters:CornerRadiusFilterConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" Filter="BottomRightValue" />
+    <primitives:BindingProxy x:Key="ComboBoxItemPillCornerRadiusProxy" Value="{DynamicResource ComboBoxItemPillCornerRadius}" />
+    <converters:CornerRadiusFilterConverter x:Key="TopCornerRadiusFilterConverter" Filter="Top" />
+    <converters:CornerRadiusFilterConverter x:Key="RightCornerRadiusFilterConverter" Filter="Right" />
+    <converters:CornerRadiusFilterConverter x:Key="BottomCornerRadiusFilterConverter" Filter="Bottom" />
+    <converters:CornerRadiusFilterConverter x:Key="LeftCornerRadiusFilterConverter" Filter="Left" />
+    <primitives:BindingProxy x:Key="ListViewItemSelectionIndicatorCornerRadiusProxy" Value="{DynamicResource ListViewItemSelectionIndicatorCornerRadius}" />
+    <converters:SharedSizeGroupConverter x:Key="SharedSizeGroupConverter" />
+    <converters:OrConverter x:Key="OrConverter" />
+    <primitives:BindingProxy x:Key="ProgressBarTrackCornerRadiusProxy" Value="{DynamicResource ProgressBarTrackCornerRadius}" />
+    <converters:CornerRadiusFilterConverter
+        x:Key="TopLeftCornerRadiusDoubleValueConverter8x"
+        Filter="TopLeftValue"
+        Scale="8" />
+    <converters:CornerRadiusFilterConverter
+        x:Key="BottomRightCornerRadiusDoubleValueConverter8x"
+        Filter="BottomRightValue"
+        Scale="8" />
+    <converters:CornerRadiusFilterConverter
+        x:Key="TopLeftCornerRadiusDoubleValueConverter2x"
+        Filter="TopLeftValue"
+        Scale="2" />
+    <converters:CornerRadiusFilterConverter
+        x:Key="BottomRightCornerRadiusDoubleValueConverter2x"
+        Filter="BottomRightValue"
+        Scale="2" />
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <converters:AddValueConverter x:Key="addValueConverter" />
+</ResourceDictionary>
