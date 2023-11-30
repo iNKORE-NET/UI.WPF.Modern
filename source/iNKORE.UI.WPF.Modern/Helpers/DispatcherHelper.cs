@@ -52,7 +52,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers
         /// <remarks>If the current thread has UI access, <paramref name="function"/> will be invoked directly.</remarks>
         public static Task ExecuteOnUIThreadAsync(Action function, DispatcherPriority priority = DispatcherPriority.Normal)
         {
-            return Application.Current.ExecuteOnUIThreadAsync(function, priority);
+            return Application.Current?.ExecuteOnUIThreadAsync(function, priority);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers
         /// <remarks>If the current thread has UI access, <paramref name="function"/> will be invoked directly.</remarks>
         public static Task<T> ExecuteOnUIThreadAsync<T>(Func<T> function, DispatcherPriority priority = DispatcherPriority.Normal)
         {
-            return Application.Current.ExecuteOnUIThreadAsync(function, priority);
+            return Application.Current?.ExecuteOnUIThreadAsync(function, priority);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers
         /// <returns>An awaitable <see cref="Task"/> for the operation.</returns>
         public static Task ExecuteOnUIThreadAsync(Func<Task> function, DispatcherPriority priority = DispatcherPriority.Normal)
         {
-            return Application.Current.ExecuteOnUIThreadAsync(function, priority);
+            return Application.Current?.ExecuteOnUIThreadAsync(function, priority);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers
         /// <returns>An awaitable <see cref="Task{T}"/> for the operation.</returns>
         public static Task<T> ExecuteOnUIThreadAsync<T>(Func<Task<T>> function, DispatcherPriority priority = DispatcherPriority.Normal)
         {
-            return Application.Current.ExecuteOnUIThreadAsync(function, priority);
+            return Application.Current?.ExecuteOnUIThreadAsync(function, priority);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers
                 throw new ArgumentNullException(nameof(viewToExecuteOn));
             }
 
-            return viewToExecuteOn.Dispatcher.AwaitableRunAsync(function, priority);
+            return GetDispatcher(viewToExecuteOn).AwaitableRunAsync(function, priority);
         }
 
         /// <summary>
@@ -127,7 +127,12 @@ namespace iNKORE.UI.WPF.Modern.Helpers
                 throw new ArgumentNullException(nameof(viewToExecuteOn));
             }
 
-            return viewToExecuteOn.Dispatcher.AwaitableRunAsync(function, priority);
+            return GetDispatcher(viewToExecuteOn).AwaitableRunAsync(function, priority);
+        }
+
+        public static Dispatcher GetDispatcher(DispatcherObject viewToExecuteOn)
+        {
+            return viewToExecuteOn?.Dispatcher ?? Dispatcher.CurrentDispatcher;
         }
 
         /// <summary>
@@ -145,7 +150,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers
                 throw new ArgumentNullException(nameof(viewToExecuteOn));
             }
 
-            return viewToExecuteOn.Dispatcher.AwaitableRunAsync(function, priority);
+            return GetDispatcher(viewToExecuteOn).AwaitableRunAsync(function, priority);
         }
 
         /// <summary>
@@ -164,7 +169,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers
                 throw new ArgumentNullException(nameof(viewToExecuteOn));
             }
 
-            return viewToExecuteOn.Dispatcher.AwaitableRunAsync(function, priority);
+            return GetDispatcher(viewToExecuteOn).AwaitableRunAsync(function, priority);
         }
 
         /// <summary>

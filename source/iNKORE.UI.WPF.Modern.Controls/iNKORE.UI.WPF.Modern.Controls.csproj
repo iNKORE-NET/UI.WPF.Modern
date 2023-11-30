@@ -29,7 +29,7 @@
 			Windows.Foundation.Diagnostics;
 			Windows.Foundation.PropertyType;
 		</CsWinRTExcludes>
-		<ApplicationIcon>..\..\materials\images\iNKORE.ico</ApplicationIcon>
+		<ApplicationIcon>..\..\assets\images\iNKORE.ico</ApplicationIcon>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\..\assets\misc\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>

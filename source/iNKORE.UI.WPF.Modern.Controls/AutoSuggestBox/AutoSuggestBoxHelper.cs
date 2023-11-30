@@ -5,6 +5,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Common.Converters;
 using iNKORE.UI.WPF.Modern.Controls.Helpers;
 
@@ -161,7 +162,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         private static object ResourceLookup(Control control, object key)
         {
-            return control.Resources.Contains(key) ? control.Resources[key] : Application.Current.TryFindResource(key);
+            return control.Resources.Contains(key) ? control.Resources[key] : UIApplication.Current.FindResource(key);
         }
 
         private static T GetTemplateChild<T>(string childName, Control control) where T : DependencyObject

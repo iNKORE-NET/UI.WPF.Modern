@@ -786,7 +786,7 @@ namespace iNKORE.UI.WPF.Modern
 
             if (Application.Current != null)
             {
-                var appResources = Application.Current.Resources;
+                var appResources = UIApplication.Current.Resources;
                 appResources.MergedDictionaries.RemoveAll<IntellisenseResourcesBase>();
 
                 ColorsHelper.Current.SystemThemeChanged += OnSystemThemeChanged;

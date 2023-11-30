@@ -26,7 +26,7 @@ namespace iNKORE.UI.WPF.Modern
             }
         }
 
-        internal static ThemeResources Current
+        public static ThemeResources Current
         {
             get => _current;
             set

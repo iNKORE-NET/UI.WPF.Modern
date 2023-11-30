@@ -7,6 +7,7 @@ using iNKORE.UI.WPF.Modern.Controls.IconElement;
 using iNKORE.UI.WPF.Modern.Controls.IconElement.IconElement;
 using System.ComponentModel;
 */
+using iNKORE.UI.WPF.Modern.Common;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -49,7 +50,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 typeof(FontFamily),
                 typeof(FontIcon),
                 new FrameworkPropertyMetadata(
-                    (FontFamily)Application.Current.Resources["SymbolThemeFontFamily"],
+                    (FontFamily)UIApplication.Current.FindResource("SymbolThemeFontFamily"),
                     OnFontFamilyChanged));
 
         /// <summary>

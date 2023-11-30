@@ -6,6 +6,7 @@ using System;
 using iNKORE.UI.WPF.Modern.Controls.TitleBar;
 using System;
 */
+using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Helpers;
 using System;
 using System.Collections.Generic;
@@ -184,8 +185,8 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Backdrop
 
         private void SetHoverColor()
         {
-            _hoverColor = (SolidColorBrush)Application.Current.Resources["SystemControlHighlightListLowBrush"] ?? new SolidColorBrush(Color.FromArgb(21, 255, 255, 255));
-            _pressedColor = (SolidColorBrush)Application.Current.Resources["SystemControlHighlightListMediumBrush"] ?? new SolidColorBrush(Color.FromArgb(50, 0, 0, 0));
+            _hoverColor = (SolidColorBrush)UIApplication.Current.FindResource("SystemControlHighlightListLowBrush") ?? new SolidColorBrush(Color.FromArgb(21, 255, 255, 255));
+            _pressedColor = (SolidColorBrush)UIApplication.Current.FindResource("SystemControlHighlightListMediumBrush") ?? new SolidColorBrush(Color.FromArgb(50, 0, 0, 0));
         }
 
     }

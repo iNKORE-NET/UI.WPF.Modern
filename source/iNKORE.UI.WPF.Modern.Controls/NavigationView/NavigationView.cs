@@ -4915,7 +4915,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 {
                     // Only add extra padding if the NavView is the "root" of the app,
                     // but not if the app is expanding into the titlebar
-                    UIElement root = (Window.GetWindow(this) ?? Application.Current.MainWindow).Content as UIElement;
+                    UIElement root = (Window.GetWindow(this) ?? Application.Current?.MainWindow)?.Content as UIElement;
                     GeneralTransform gt = this.SafeTransformToVisual(root);
                     Point pos = gt.Transform(new Point());
 

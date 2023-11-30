@@ -21,6 +21,17 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 _ = CompactResources;
             }
+
+            if(_current == null)
+            {
+                _current = this;
+            }
+        }
+
+        private static XamlControlsResources _current;
+        public static XamlControlsResources Current
+        {
+            get { return _current; }
         }
 
         public bool UseCompactResources

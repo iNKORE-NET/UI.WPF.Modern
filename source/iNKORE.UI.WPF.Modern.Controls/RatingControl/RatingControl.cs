@@ -297,7 +297,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         void PopulateStackPanelWithItems(string templateName, StackPanel stackPanel, RatingControlStates state)
         {
-            object lookup = Application.Current.FindResource(templateName);
+            object lookup = UIApplication.Current.FindResource(templateName);
             var dt = (DataTemplate)lookup;
 
             for (int i = 0; i < MaxRating; i++)
