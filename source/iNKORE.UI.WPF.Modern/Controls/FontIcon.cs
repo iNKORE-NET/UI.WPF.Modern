@@ -50,7 +50,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 typeof(FontFamily),
                 typeof(FontIcon),
                 new FrameworkPropertyMetadata(
-                    (FontFamily)UIApplication.Current.FindResource("SymbolThemeFontFamily"),
+                    new FontFamily("Segoe Fluent Icons,Segoe MDL2 Assets,Segoe UI Symbol"),
                     OnFontFamilyChanged));
 
         /// <summary>
