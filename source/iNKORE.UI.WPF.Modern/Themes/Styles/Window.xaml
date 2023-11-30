@@ -3,15 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
-    xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters"
-    xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:m="clr-namespace:iNKORE.UI.WPF.Modern.Markup"
     xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
-    xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common"
-    xmlns:icon="clr-namespace:iNKORE.UI.WPF.Modern.Controls.IconElement"
-    xmlns:vstates="clr-namespace:iNKORE.UI.WPF.Modern.Common"
-    xmlns:root="clr-namespace:iNKORE.UI.WPF.Modern"
-    xmlns:titlebar="clr-namespace:iNKORE.UI.WPF.Modern.Controls.TitleBar">
+    xmlns:root="clr-namespace:iNKORE.UI.WPF.Modern">
 
     <Style x:Key="TitleBarBackButtonStyle" TargetType="primitives:TitleBarButton">
         <Setter Property="Background" Value="{DynamicResource AccentButtonBackground}" />
