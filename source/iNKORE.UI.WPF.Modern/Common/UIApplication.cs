@@ -75,17 +75,19 @@ namespace iNKORE.UI.WPF.Modern.Common
         public object FindResource(object key)
         {
             object res = null;
-            if(_application != null)
+            try
             {
-                res = _application.FindResource(key);
-            }
+                if (_application != null)
+                {
+                    res = _application.FindResource(key);
+                }
 
-            if(res != null) return res;
-            else
-            {
-                res = Resources[key];
-                return res;
+                if (res != null) return res;
             }
+            catch { }
+
+            res = Resources[key];
+            return res;
         }
     }
 }
