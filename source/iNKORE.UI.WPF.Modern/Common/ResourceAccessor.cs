@@ -182,16 +182,23 @@ namespace iNKORE.UI.WPF.Modern.Common
 
         public string GetLocalizedStringResource(string resourceName)
         {
-            if (_resourceManager is null)
+            try
             {
-                var assembly = _controlType.Assembly;
-                var assemblyName = assembly.GetName().Name;
-                var controlName = _controlType.Name;
-                var baseName = $"{assemblyName}.{controlName}.Strings.Resources";
-                _resourceManager = new ResourceManager(baseName, assembly);
-            }
+                if (_resourceManager is null)
+                {
+                    var assembly = _controlType.Assembly;
+                    var assemblyName = assembly.GetName().Name;
+                    var controlName = _controlType.Name;
+                    var baseName = $"{assemblyName}.{controlName}.Strings.Resources";
+                    _resourceManager = new ResourceManager(baseName, assembly);
+                }
 
-            return _resourceManager.GetString(resourceName);
+                return _resourceManager.GetString(resourceName);
+            }
+            catch
+            {
+                return Strings.ResourceManager.GetString(resourceName) ?? resourceName;
+            }
         }
     }
 }

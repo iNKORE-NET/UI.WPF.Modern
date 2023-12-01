@@ -207,7 +207,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private void UpdateProofingMenuItem(Control target)
         {
-            _proofingMenuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_ProofingMenuItemLabel);
+            _proofingMenuItem.Header = Strings.ProofingMenuItemLabel; //ResourceAccessor.GetLocalizedStringResource(SR_ProofingMenuItemLabel);
             _proofingMenuItem.Items.Clear();
 
             SpellingError spellingError = null;
@@ -265,27 +265,27 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 {
                     if (command == ApplicationCommands.Cut)
                     {
-                        menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelCut);
+                        menuItem.Header = Strings.TextCommandLabelCut; //ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelCut);
                     }
                     else if (command == ApplicationCommands.Copy)
                     {
-                        menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelCopy);
+                        menuItem.Header = Strings.TextCommandLabelCopy; //ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelCopy);
                     }
                     else if (command == ApplicationCommands.Paste)
                     {
-                        menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelPaste);
+                        menuItem.Header = Strings.TextCommandLabelPaste; //ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelPaste);
                     }
                     else if (command == ApplicationCommands.Undo)
                     {
-                        menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelUndo);
+                        menuItem.Header = Strings.TextCommandLabelUndo; //ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelUndo);
                     }
                     else if (command == ApplicationCommands.Redo)
                     {
-                        menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelRedo);
+                        menuItem.Header = Strings.TextCommandLabelRedo; //ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelRedo);
                     }
                     else if (command == ApplicationCommands.SelectAll)
                     {
-                        menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelSelectAll);
+                        menuItem.Header = Strings.TextCommandLabelSelectAll; //ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelSelectAll);
                     }
 
                     menuItem.CommandTarget = target;
