@@ -43,7 +43,7 @@ namespace SamplesCommon
         {
             if (_compactResources == null)
             {
-                _compactResources = new ResourceDictionary { Source = new Uri("/iNKORE.UI.WPF.Modern;component/Density/iNKORE.UI.WPF.Modern;component/Themes/Styles/Compact.xaml", UriKind.Relative) };
+                _compactResources = new ResourceDictionary { Source = new Uri("/iNKORE.UI.WPF.Modern;component/Themes/DensityStyles/Compact.xaml", UriKind.Relative) };
                 TargetElement?.Resources.MergedDictionaries.Add(_compactResources);
             }
         }
