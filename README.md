@@ -34,7 +34,7 @@
 
 <br>
   
-  ![Home of the SampleApp (Light theme)](materials/docs/images/screenshot_home.png "Home of the SampleApp (Light theme)")
+  ![Home of the SampleApp (Light theme)](docs/images/screenshot_home.png "Home of the SampleApp (Light theme)")
 
 # ✨ Features
 
