@@ -94,7 +94,7 @@
 		<TargetFile>Themes\Generic.xaml</TargetFile>
 		<Visible>False</Visible>
 	  </XAMLCombineItems>
-		<XAMLCombineItems Include="Themes\CustomControlStuff.xaml;Themes\FontIconFallback.xaml;Themes\ListViewHeaderItem.xaml;Themes\TextContextMenu.xaml">
+		<XAMLCombineItems Include="Themes\CustomControlStuff.xaml;Themes\FontIconFallback.xaml;Themes\ListViewHeaderItem.xaml;Themes\TextContextMenu.xaml;Themes\Styles\ContextMenu.xaml">
 			<TargetFile>Themes\Generic.xaml</TargetFile>
 			<Visible>False</Visible>
 		</XAMLCombineItems>
