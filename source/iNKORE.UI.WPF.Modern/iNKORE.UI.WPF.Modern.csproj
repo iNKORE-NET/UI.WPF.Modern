@@ -63,11 +63,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="Resources\Fonts\FluentSystemIcons-Filled.ttf" />
-		<None Remove="Resources\Fonts\FluentSystemIcons-Regular.ttf" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Resource Include="Resources\Fonts\FluentSystemIcons-Filled.ttf" />
 		<Resource Include="Resources\Fonts\FluentSystemIcons-Regular.ttf" />
 		<Resource Include="Resources\Images\NoiseAsset_256X256_PNG.png" />
@@ -88,9 +83,40 @@
 			<CustomToolNamespace>iNKORE.UI.WPF.Modern</CustomToolNamespace>
 		</EmbeddedResource>
 	</ItemGroup>
-
 	<ItemGroup>
-	  <Folder Include="Common\VisualStates\" />
+	  <PackageReference Include="XAMLTools.MSBuild" Version="1.0.0-alpha0143">
+		<PrivateAssets>all</PrivateAssets>
+		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
 	</ItemGroup>
-
+	<ItemGroup>
+	  <XAMLCombineItems Include="Themes\Converters.xaml">
+		<TargetFile>Themes\Generic.xaml</TargetFile>
+		<Visible>False</Visible>
+	  </XAMLCombineItems>	
+	  <XAMLCombineItems Include="Controls\**\*.xaml">
+		<TargetFile>Themes\Generic.xaml</TargetFile>
+		<Visible>False</Visible>
+	  </XAMLCombineItems>
+		<XAMLCombineItems Include="Themes\CustomControlStuff.xaml;Themes\FontIconFallback.xaml;Themes\ListViewHeaderItem.xaml;Themes\TextContextMenu.xaml;Themes\Styles\ContextMenu.xaml">
+			<TargetFile>Themes\Generic.xaml</TargetFile>
+			<Visible>False</Visible>
+		</XAMLCombineItems>
+	  <XAMLCombineItems Include="Themes\Converters.xaml">
+		<TargetFile>Themes\CombinedResources.xaml</TargetFile>
+		<Visible>False</Visible>
+	  </XAMLCombineItems>
+	  <XAMLCombineItems Include="Themes\ThemeResources.xaml">
+		<TargetFile>Themes\CombinedResources.xaml</TargetFile>
+		<Visible>False</Visible>
+	  </XAMLCombineItems>
+	  <XAMLCombineItems Include="Resources\Fonts\Fonts.xaml">
+		<TargetFile>Themes\CombinedResources.xaml</TargetFile>
+		<Visible>False</Visible>
+	  </XAMLCombineItems>
+	  <XAMLCombineItems Include="Themes\Styles\**\*.xaml">
+		<TargetFile>Themes\CombinedResources.xaml</TargetFile>
+		<Visible>False</Visible>
+	  </XAMLCombineItems>
+	</ItemGroup>
 </Project>
