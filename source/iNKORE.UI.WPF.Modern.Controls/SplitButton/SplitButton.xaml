@@ -7,7 +7,7 @@
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/iNKORE.UI.WPF.Modern;component/Themes/CombinedResources.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <sys:Double x:Key="SplitButtonPrimaryButtonSize">32</sys:Double>
@@ -122,22 +122,22 @@
                         <Button
                             x:Name="PrimaryButton"
                             Grid.Column="0"
+                            Margin="{TemplateBinding BorderThickness}"
                             Padding="{TemplateBinding Padding}"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            ui:ElevationBorder.IsElevationEnabled="False"
                             Background="{TemplateBinding Background}"
                             BorderBrush="Transparent"
                             BorderThickness="0"
-                            Margin="{TemplateBinding BorderThickness}"
                             Command="{TemplateBinding Command}"
                             CommandParameter="{TemplateBinding CommandParameter}"
                             CommandTarget="{TemplateBinding CommandTarget}"
                             Content="{TemplateBinding Content}"
                             ContentTemplate="{TemplateBinding ContentTemplate}"
                             Focusable="False"
-                            ui:ElevationBorder.IsElevationEnabled="False"
                             FontFamily="{TemplateBinding FontFamily}"
                             FontSize="{TemplateBinding FontSize}"
                             FontWeight="{TemplateBinding FontWeight}"
@@ -146,6 +146,7 @@
                         <Button
                             x:Name="SecondaryButton"
                             Grid.Column="2"
+                            Margin="{TemplateBinding BorderThickness}"
                             Padding="0,0,9,0"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
@@ -155,7 +156,6 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="Transparent"
                             BorderThickness="0"
-                            Margin="{TemplateBinding BorderThickness}"
                             Focusable="False"
                             Foreground="{TemplateBinding Foreground}">
                             <Button.Content>

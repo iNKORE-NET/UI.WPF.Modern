@@ -6,7 +6,7 @@
     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/iNKORE.UI.WPF.Modern;component/Themes/CombinedResources.xaml" />
         <ResourceDictionary>
             <ui:BindingProxy x:Key="OverlayCornerRadiusProxy" Value="{DynamicResource OverlayCornerRadius}" />
             <ui:CornerRadiusFilterConverter x:Key="RightCornerRadiusFilterConverter" Filter="Right" />
