@@ -5,6 +5,8 @@
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives">
     <local:BrushTranslationConverter x:Key="BrushTranslationConverter" />
+    <converters:CornerRadiusFilterConverter x:Key="cornerRadiusFilterConverter_Bottom" Filter="Bottom" />
+    <converters:ThicknessFilterConverter x:Key="thicknessFilterConverter_ExcludeTop" Filter="ExcludeTop" />
     <converters:ColorToBrushConverter x:Key="ColorToSolidColorBrushConverter" />
     <converters:RoundMathConverter x:Key="RoundMathConverter" />
     <converters:RoundRadiusConverter x:Key="RoundRadiusConverter" />

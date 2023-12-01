@@ -60,6 +60,8 @@ Themes\ThemeResources.xaml
   <FontFamily x:Key="FluentSystemIcons">pack://application:,,,/iNKORE.UI.WPF.Modern;component/Resources/Fonts/#FluentSystemIcons-Regular</FontFamily>
   <FontFamily x:Key="FluentSystemIconsFilled">pack://application:,,,/iNKORE.UI.WPF.Modern;component/Resources/Fonts/#FluentSystemIcons-Filled</FontFamily>
   <local:BrushTranslationConverter x:Key="BrushTranslationConverter" />
+  <converters:CornerRadiusFilterConverter x:Key="cornerRadiusFilterConverter_Bottom" Filter="Bottom" />
+  <converters:ThicknessFilterConverter x:Key="thicknessFilterConverter_ExcludeTop" Filter="ExcludeTop" />
   <converters:ColorToBrushConverter x:Key="ColorToSolidColorBrushConverter" />
   <converters:RoundMathConverter x:Key="RoundMathConverter" />
   <converters:RoundRadiusConverter x:Key="RoundRadiusConverter" />

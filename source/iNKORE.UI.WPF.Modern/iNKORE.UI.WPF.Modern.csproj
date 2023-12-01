@@ -90,6 +90,10 @@
 	  </PackageReference>
 	</ItemGroup>
 	<ItemGroup>
+	  <XAMLCombineItems Include="Themes\Converters.xaml">
+		<TargetFile>Themes\Generic.xaml</TargetFile>
+		<Visible>False</Visible>
+	  </XAMLCombineItems>	
 	  <XAMLCombineItems Include="Controls\**\*.xaml">
 		<TargetFile>Themes\Generic.xaml</TargetFile>
 		<Visible>False</Visible>
