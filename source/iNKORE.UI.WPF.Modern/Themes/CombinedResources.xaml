@@ -679,7 +679,6 @@ Themes\ThemeResources.xaml
     <Setter Property="FontWeight" Value="Normal" />
     <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
     <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
-    <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource ControlElevationBorderBrushElevationColor}" />
     <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource UseSystemFocusVisuals}" />
     <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-3" />
     <Setter Property="chelper:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
@@ -6261,9 +6260,9 @@ Themes\ThemeResources.xaml
       <Setter.Value>
         <ControlTemplate TargetType="ToggleButton">
           <local:ElevationBorder x:Name="Background" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}" SnapsToDevicePixels="True">
-            <Border x:Name="Border" Padding="{TemplateBinding Padding}" CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
+            <local:ElevationBorder x:Name="Border" Padding="{TemplateBinding Padding}" CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
               <local:ContentPresenterEx x:Name="ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-            </Border>
+            </local:ElevationBorder>
           </local:ElevationBorder>
           <ControlTemplate.Triggers>
             <!--  PointerOver  -->
@@ -6299,7 +6298,7 @@ Themes\ThemeResources.xaml
             <!--  Checked  -->
             <Trigger Property="IsChecked" Value="True">
               <Setter TargetName="Background" Property="BorderThickness" Value="0" />
-              <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}" />
+              <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushChecked}" />
               <Setter TargetName="Border" Property="BorderThickness" Value="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
             <MultiTrigger>
@@ -6311,7 +6310,7 @@ Themes\ThemeResources.xaml
               </MultiTrigger.Conditions>
               <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundChecked}" />
               <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundChecked}" />
-              <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushChecked}" />
+              <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushChecked}" />
             </MultiTrigger>
             <!--  CheckedPointerOver  -->
             <MultiTrigger>

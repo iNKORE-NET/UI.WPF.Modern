@@ -34,7 +34,7 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
                         SnapsToDevicePixels="True">
-                        <Border
+                        <local:ElevationBorder
                             x:Name="Border"
                             Padding="{TemplateBinding Padding}"
                             CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
@@ -45,7 +45,7 @@
                                 Focusable="False"
                                 RecognizesAccessKey="True"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Border>
+                        </local:ElevationBorder>
                     </local:ElevationBorder>
                     <ControlTemplate.Triggers>
                         <!--  PointerOver  -->
@@ -81,7 +81,7 @@
                         <!--  Checked  -->
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="Background" Property="BorderThickness" Value="0" />
-                            <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushChecked}" />
                             <Setter TargetName="Border" Property="BorderThickness" Value="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
                         <MultiTrigger>
@@ -93,7 +93,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundChecked}" />
                             <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundChecked}" />
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushChecked}" />
+                            <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushChecked}" />
                         </MultiTrigger>
                         <!--  CheckedPointerOver  -->
                         <MultiTrigger>
