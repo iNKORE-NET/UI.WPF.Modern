@@ -10,19 +10,17 @@
                         <Grid x:Name="Canvas_Root">
 
                             <Border
-                                Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{TemplateBinding CornerRadius}" />
                             <Border
                                 x:Name="Border_Elevation"
                                 BorderBrush="{TemplateBinding ElevationBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness,
-                                                                  Converter={StaticResource thicknessFilterConverter_ExcludeTop}}"
-                                CornerRadius="{TemplateBinding CornerRadius,
-                                                               Converter={StaticResource cornerRadiusFilterConverter_Bottom}}" />
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}" />
 
-                            <Border Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
                                 <AdornerDecorator>
                                     <ContentPresenter />
                                 </AdornerDecorator>

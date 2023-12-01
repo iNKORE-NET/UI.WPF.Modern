@@ -21,7 +21,6 @@
         <Setter Property="TextBoxStyle" Value="{DynamicResource AutoSuggestBoxTextBoxStyle}" />
         <Setter Property="UseSystemFocusVisuals" Value="{DynamicResource IsApplicationFocusVisualKindReveal}" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
-        <Setter Property="ui:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderBrushElevationColor}"/>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="ItemContainerStyle" Value="{DynamicResource {x:Type ListViewItem}}" />
         <Setter Property="Template">

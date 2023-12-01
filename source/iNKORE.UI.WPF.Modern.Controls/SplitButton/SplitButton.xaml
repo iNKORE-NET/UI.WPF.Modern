@@ -33,7 +33,6 @@
         <Setter Property="FocusVisualMargin" Value="-3" />
         <Setter Property="IsTabStop" Value="True" />
         <Setter Property="Padding" Value="{DynamicResource ButtonPadding}" />
-        <Setter Property="ui:ElevationBorder.ElevationColor" Value="{DynamicResource ControlElevationBorderBrushElevationColor}" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
@@ -224,7 +223,6 @@
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushPressed}" />
                             <Setter TargetName="PrimaryButton" Property="Foreground" Value="{DynamicResource SplitButtonForegroundPressed}" />
                             <Setter TargetName="SecondaryButton" Property="Foreground" Value="{DynamicResource SplitButtonForegroundPressed}" />
-                            <Setter Property="ui:ElevationBorder.ElevationColor" Value="Transparent" />
                         </Trigger>
                         <!--  PrimaryPointerOver  -->
                         <Trigger SourceName="CommonStatesListener" Property="CurrentStateName" Value="PrimaryPointerOver">
@@ -239,7 +237,6 @@
                             <Setter TargetName="PrimaryButton" Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushPressed}" />
                             <Setter TargetName="PrimaryButton" Property="Foreground" Value="{DynamicResource SplitButtonForegroundPressed}" />
                             <Setter TargetName="SecondaryBackgroundGrid" Property="Background" Value="{DynamicResource SplitButtonBackground}" />
-                            <Setter Property="ui:ElevationBorder.ElevationColor" Value="Transparent" />
                         </Trigger>
                         <!--  SecondaryPointerOver  -->
                         <Trigger SourceName="CommonStatesListener" Property="CurrentStateName" Value="SecondaryPointerOver">
@@ -254,7 +251,6 @@
                             <Setter TargetName="SecondaryBackgroundGrid" Property="Background" Value="{DynamicResource SplitButtonBackgroundPressed}" />
                             <Setter TargetName="SecondaryButton" Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushPressed}" />
                             <Setter TargetName="SecondaryButton" Property="Foreground" Value="{DynamicResource SplitButtonForegroundPressed}" />
-                            <Setter Property="ui:ElevationBorder.ElevationColor" Value="Transparent" />
                         </Trigger>
                         <!--  Checked  -->
                         <Trigger SourceName="CommonStatesListener" Property="CurrentStateName" Value="Checked">
@@ -282,7 +278,6 @@
                             <Setter TargetName="PrimaryButton" Property="Foreground" Value="{DynamicResource SplitButtonForegroundCheckedPressed}" />
                             <Setter TargetName="SecondaryButton" Property="Foreground" Value="{DynamicResource SplitButtonForegroundCheckedPressed}" />
                             <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundCheckedPressed}" />
-                            <Setter Property="ui:ElevationBorder.ElevationColor" Value="Transparent" />
                         </Trigger>
                         <!--  CheckedPrimaryPointerOver  -->
                         <Trigger SourceName="CommonStatesListener" Property="CurrentStateName" Value="CheckedPrimaryPointerOver">
@@ -303,7 +298,6 @@
                             <Setter TargetName="SecondaryBackgroundGrid" Property="Background" Value="{DynamicResource SplitButtonBackgroundChecked}" />
                             <Setter TargetName="SecondaryButton" Property="Foreground" Value="{DynamicResource SplitButtonForegroundChecked}" />
                             <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundChecked}" />
-                            <Setter Property="ui:ElevationBorder.ElevationColor" Value="Transparent" />
                         </Trigger>
                         <!--  CheckedSecondaryPointerOver  -->
                         <Trigger SourceName="CommonStatesListener" Property="CurrentStateName" Value="CheckedSecondaryPointerOver">
@@ -324,7 +318,6 @@
                             <Setter TargetName="SecondaryButton" Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushCheckedPressed}" />
                             <Setter TargetName="SecondaryButton" Property="Foreground" Value="{DynamicResource SplitButtonForegroundCheckedPressed}" />
                             <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundChecked}" />
-                            <Setter Property="ui:ElevationBorder.ElevationColor" Value="Transparent" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

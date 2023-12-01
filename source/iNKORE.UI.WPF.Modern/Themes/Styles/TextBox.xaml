@@ -31,7 +31,6 @@
         <Setter Property="ContextMenu" Value="{DynamicResource TextControlContextMenu}" />
         <Setter Property="local:TextContextMenu.UsingTextContextMenu" Value="True" />
         <Setter Property="chelper:TextBoxHelper.IsEnabled" Value="True" />
-        <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderBrushElevationColor}"/>
         <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource TextControlValidationErrorTemplate}" />
         <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource IsApplicationFocusVisualKindReveal}" />
         <Setter Property="Template">
@@ -221,7 +220,6 @@
                             <Setter TargetName="HeaderContentPresenter" Property="Foreground" Value="{DynamicResource TextControlHeaderForegroundDisabled}" />
                             <Setter Property="Background" Value="{DynamicResource TextControlBackgroundDisabled}" />
                             <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushDisabled}" />
-                            <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
                             <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundDisabled}" />
                             <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundDisabled}" />
                         </Trigger>
@@ -235,7 +233,6 @@
                             <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundFocused}" />
                             <Setter Property="Background" Value="{DynamicResource TextControlBackgroundFocused}" />
                             <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}" />
-                            <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderFocusedBrushElevationColor}" />
                             <Setter Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}" />
                             <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundFocused}" />
                         </Trigger>

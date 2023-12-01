@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iNKORE.UI.WPF.Modern.Media.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,31 +16,74 @@ namespace iNKORE.UI.WPF.Modern.Controls
         static ElevationBorder()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ElevationBorder), new FrameworkPropertyMetadata(typeof(ElevationBorder)));
+            BorderBrushProperty.OverrideMetadata(typeof(ElevationBorder), new FrameworkPropertyMetadata() { PropertyChangedCallback = ElevationRelatedProperty_ValueChanged });
         }
 
-        public static readonly DependencyProperty ElevationColorProperty = DependencyProperty.RegisterAttached(nameof(ElevationColor), typeof(Color), typeof(ElevationBorder), new FrameworkPropertyMetadata(Colors.Black, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
-        public Color ElevationColor
+        public static readonly DependencyProperty ElevationColorProperty = DependencyProperty.RegisterAttached(nameof(ElevationColor), typeof(Color?), typeof(ElevationBorder), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits) { PropertyChangedCallback = ElevationRelatedProperty_ValueChanged });
+
+        private static void ElevationRelatedProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            get {  return (Color)GetValue(ElevationColorProperty); }
+            (d as ElevationBorder)?.RefreshElevationBrush();
+        }
+
+
+        public Color? ElevationColor
+        {
+            get {  return (Color?)GetValue(ElevationColorProperty); }
             set { SetValue(ElevationColorProperty, value); }
         }
 
-        public static Color GetElevationColor(DependencyObject d)
+        public static Color? GetElevationColor(DependencyObject d)
         {
-            return (Color)d.GetValue(ElevationColorProperty);
+            return (Color?)d?.GetValue(ElevationColorProperty);
         }
 
-        public static void SetElevationColor(DependencyObject d, Color value)
+        public static void SetElevationColor(DependencyObject d, Color? value)
         {
             d.SetValue(ElevationColorProperty, value);
         }
 
+        public static readonly DependencyProperty IsElevationOnTopProperty = DependencyProperty.RegisterAttached(nameof(IsElevationOnTop), typeof(bool?), typeof(ElevationBorder), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits) { PropertyChangedCallback = ElevationRelatedProperty_ValueChanged });
+        public bool? IsElevationOnTop
+        {
+            get { return (bool?)GetValue(IsElevationOnTopProperty); }
+            set { SetValue(IsElevationOnTopProperty, value); }
+        }
+
+        public static bool? GetIsElevationOnTop(DependencyObject d)
+        {
+            return (bool?)d?.GetValue(IsElevationOnTopProperty);
+        }
+
+        public static void SetIsElevationOnTop(DependencyObject d, bool? value)
+        {
+            d?.SetValue(IsElevationOnTopProperty, value);
+        }
+
+        public static readonly DependencyProperty ElevationOpacityProperty = DependencyProperty.RegisterAttached(nameof(ElevationOpacity), typeof(double?), typeof(ElevationBorder), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits) { PropertyChangedCallback = ElevationRelatedProperty_ValueChanged });
+        public double? ElevationOpacity
+        {
+            get { return (double?)GetValue(ElevationOpacityProperty); }
+            set { SetValue(ElevationOpacityProperty, value); }
+        }
+
+        public static double? GetElevationOpacity(DependencyObject d)
+        {
+            return (double?)d?.GetValue(ElevationOpacityProperty);
+        }
+
+        public static void SetElevationOpacity(DependencyObject d, double? value)
+        {
+            d?.SetValue(ElevationOpacityProperty, value);
+        }
+
+
         public ElevationBorder()
         {
             _elevationBrush_Stop1 = new GradientStop(Colors.Transparent, 0);
-            _elevationBrush_Stop2 = new GradientStop() { Offset = 1};
+            _elevationBrush_Stop2 = new GradientStop() { Offset = 1 };
 
-            BindingOperations.SetBinding(_elevationBrush_Stop2, GradientStop.ColorProperty, new Binding(nameof(ElevationColor)) { Source = this });
+            //BindingOperations.SetBinding(_elevationBrush_Stop2, GradientStop.ColorProperty, new Binding(nameof(ElevationColor)) { Source = this });
             //BindingOperations.SetBinding(_elevationBrush_Stop2, GradientStop.OffsetProperty, new Binding(nameof(ElevationTransitionLength)) { Source = this });
 
             ElevationBrush = new LinearGradientBrush(new GradientStopCollection()
@@ -84,11 +128,27 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private void RefreshElevationBrush()
         {
-            if (ElevationBrush is LinearGradientBrush lgb)
+            bool elevationOnTop = IsElevationOnTop ?? GetIsElevationOnTop(BorderBrush) ?? false;
+
+            if (elevationOnTop)
             {
-                lgb.StartPoint = new Point(0.5, Math.Max(this.ActualHeight - ElevationLength - ElevationTransitionLength, 0));
-                lgb.EndPoint = new Point(0.5, Math.Max(this.ActualHeight - ElevationLength, 0));
+                //_elevationBrush_Stop1.Offset = 0;
+                //_elevationBrush_Stop2.Offset = 1;
+
+                ElevationBrush.EndPoint = new Point(0.5, 0);
+                ElevationBrush.StartPoint = new Point(0.5, ElevationLength + ElevationTransitionLength);
             }
+            else
+            {
+                //_elevationBrush_Stop1.Offset = 1;
+                //_elevationBrush_Stop2.Offset = 0;
+
+                ElevationBrush.StartPoint = new Point(0.5, Math.Max(this.ActualHeight - ElevationLength - ElevationTransitionLength, 0));
+                ElevationBrush.EndPoint = new Point(0.5, Math.Max(this.ActualHeight - ElevationLength, 0));
+            }
+
+            ElevationBrush.Opacity = ElevationOpacity ?? GetElevationOpacity(BorderBrush) ?? 1d;
+            _elevationBrush_Stop2.Color = ElevationColor ?? GetElevationColor(BorderBrush) ?? Colors.Transparent;
         }
 
         public double ElevationLength
@@ -121,11 +181,11 @@ namespace iNKORE.UI.WPF.Modern.Controls
             d.SetValue(IsElevationEnabledProperty, value);
         }
 
-        public static readonly DependencyPropertyKey ElevationBrushPropertyKey = DependencyProperty.RegisterReadOnly(nameof(ElevationBrush), typeof(Brush), typeof(ElevationBorder), new PropertyMetadata(Brushes.Transparent));
+        public static readonly DependencyPropertyKey ElevationBrushPropertyKey = DependencyProperty.RegisterReadOnly(nameof(ElevationBrush), typeof(LinearGradientBrush), typeof(ElevationBorder), new PropertyMetadata(null));
         public static readonly DependencyProperty ElevationBrushProperty = ElevationBrushPropertyKey.DependencyProperty;
-        public Brush ElevationBrush
+        public LinearGradientBrush ElevationBrush
         {
-            get { return (Brush)GetValue(ElevationBrushProperty); }
+            get { return (LinearGradientBrush)GetValue(ElevationBrushProperty); }
             set { SetValue(ElevationBrushPropertyKey, value); }
         }
     }

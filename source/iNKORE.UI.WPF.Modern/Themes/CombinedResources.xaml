@@ -701,13 +701,11 @@ Themes\ThemeResources.xaml
             <Trigger Property="IsPressed" Value="True">
               <Setter TargetName="Background" Property="Background" Value="{DynamicResource ButtonBackgroundPressed}" />
               <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPressed}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="Background" Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
               <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
             </Trigger>
           </ControlTemplate.Triggers>
@@ -720,15 +718,15 @@ Themes\ThemeResources.xaml
     <Setter Property="Foreground" Value="{DynamicResource AccentButtonForeground}" />
     <Setter Property="Background" Value="{DynamicResource AccentButtonBackground}" />
     <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrush}" />
-    <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource ControlStrokeColorOnAccentSecondary}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="Button">
-          <local:ElevationBorder x:Name="Background" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}" SnapsToDevicePixels="True">
-            <Border x:Name="Border" Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
+          <Grid>
+            <local:ElevationBorder x:Name="Background" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}" SnapsToDevicePixels="True" />
+            <local:ElevationBorder x:Name="Border" Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
               <local:ContentPresenterEx x:Name="ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Focusable="False" Foreground="{TemplateBinding Foreground}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-            </Border>
-          </local:ElevationBorder>
+            </local:ElevationBorder>
+          </Grid>
           <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
               <Setter TargetName="Background" Property="Background" Value="{DynamicResource AccentButtonBackgroundPointerOver}" />
@@ -738,13 +736,11 @@ Themes\ThemeResources.xaml
             <Trigger Property="IsPressed" Value="True">
               <Setter TargetName="Background" Property="Background" Value="{DynamicResource AccentButtonBackgroundPressed}" />
               <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushPressed}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter Property="Foreground" Value="{DynamicResource AccentButtonForegroundPressed}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="Background" Property="Background" Value="{DynamicResource AccentButtonBackgroundDisabled}" />
               <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushDisabled}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter Property="Foreground" Value="{DynamicResource AccentButtonForegroundDisabled}" />
             </Trigger>
           </ControlTemplate.Triggers>
@@ -4839,7 +4835,6 @@ Themes\ThemeResources.xaml
     <Setter Property="chelper:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
     <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
     <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource UseSystemFocusVisuals}" />
-    <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource ControlElevationBorderBrushElevationColor}" />
     <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-3" />
     <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
     <Setter Property="Template">
@@ -4859,13 +4854,11 @@ Themes\ThemeResources.xaml
             <Trigger Property="IsPressed" Value="True">
               <Setter TargetName="Background" Property="Background" Value="{DynamicResource RepeatButtonBackgroundPressed}" />
               <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource RepeatButtonBorderBrushPressed}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource RepeatButtonForegroundPressed}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="Background" Property="Background" Value="{DynamicResource RepeatButtonBackgroundDisabled}" />
               <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource RepeatButtonBorderBrushDisabled}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource RepeatButtonForegroundDisabled}" />
             </Trigger>
           </ControlTemplate.Triggers>
@@ -6261,7 +6254,6 @@ Themes\ThemeResources.xaml
     <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
     <Setter Property="chelper:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
     <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
-    <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource ControlElevationBorderBrushElevationColor}" />
     <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource UseSystemFocusVisuals}" />
     <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-3" />
     <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
@@ -6291,7 +6283,6 @@ Themes\ThemeResources.xaml
                 <Condition Property="IsPressed" Value="True" />
               </MultiTrigger.Conditions>
               <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundPressed}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushPressed}" />
               <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundPressed}" />
             </MultiTrigger>
@@ -6302,7 +6293,6 @@ Themes\ThemeResources.xaml
                 <Condition Property="IsEnabled" Value="False" />
               </MultiTrigger.Conditions>
               <Setter TargetName="Background" Property="Background" Value="{DynamicResource ToggleButtonBackgroundDisabled}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter Property="Foreground" Value="{DynamicResource ToggleButtonForegroundDisabled}" />
               <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushDisabled}" />
             </MultiTrigger>
@@ -7602,7 +7592,6 @@ Themes\ThemeResources.xaml
     <Setter Property="chelper:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
     <Setter Property="chelper:PasswordBoxHelper.IsEnabled" Value="True" />
-    <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderBrushElevationColor}" />
     <Setter Property="ContextMenu" Value="{DynamicResource TextControlContextMenu}" />
     <Setter Property="local:TextContextMenu.UsingTextContextMenu" Value="True" />
     <Setter Property="Template">
@@ -7683,7 +7672,6 @@ Themes\ThemeResources.xaml
               <Setter Property="Background" Value="{DynamicResource TextControlBackgroundDisabled}" />
               <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushDisabled}" />
               <Setter TargetName="TextBox" Property="Background" Value="{DynamicResource TextControlBackgroundDisabled}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundDisabled}" />
               <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundDisabled}" />
             </Trigger>
@@ -7704,7 +7692,6 @@ Themes\ThemeResources.xaml
               <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundFocused}" />
               <Setter Property="Background" Value="{DynamicResource TextControlBackgroundFocused}" />
               <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderFocusedBrushElevationColor}" />
               <Setter Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}" />
               <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundFocused}" />
               <Setter Property="CaretBrush" Value="{DynamicResource TextControlForegroundFocused}" />
@@ -7749,7 +7736,6 @@ Themes\ThemeResources.xaml
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
     <Setter Property="ContextMenu" Value="{DynamicResource TextControlContextMenu}" />
     <Setter Property="local:TextContextMenu.UsingTextContextMenu" Value="True" />
-    <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderBrushElevationColor}" />
     <Setter Property="chelper:RichTextBoxHelper.IsEnabled" Value="True" />
     <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource TextControlValidationErrorTemplate}" />
     <Setter Property="Template">
@@ -7772,7 +7758,6 @@ Themes\ThemeResources.xaml
               <Setter TargetName="HeaderContentPresenter" Property="Foreground" Value="{DynamicResource TextControlHeaderForegroundDisabled}" />
               <Setter Property="Background" Value="{DynamicResource TextControlBackgroundDisabled}" />
               <Setter TargetName="BorderElement" Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushDisabled}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundDisabled}" />
               <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundDisabled}" />
             </Trigger>
@@ -7785,7 +7770,6 @@ Themes\ThemeResources.xaml
             <Trigger Property="IsSelectionActive" Value="true">
               <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundFocused}" />
               <Setter Property="Background" Value="{DynamicResource TextControlBackgroundFocused}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderFocusedBrushElevationColor}" />
               <Setter TargetName="BorderElement" Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}" />
               <Setter TargetName="BorderElement" Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}" />
               <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundFocused}" />
@@ -8018,7 +8002,6 @@ Themes\ThemeResources.xaml
     <Setter Property="ContextMenu" Value="{DynamicResource TextControlContextMenu}" />
     <Setter Property="local:TextContextMenu.UsingTextContextMenu" Value="True" />
     <Setter Property="chelper:TextBoxHelper.IsEnabled" Value="True" />
-    <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderBrushElevationColor}" />
     <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource TextControlValidationErrorTemplate}" />
     <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource IsApplicationFocusVisualKindReveal}" />
     <Setter Property="Template">
@@ -8113,7 +8096,6 @@ Themes\ThemeResources.xaml
               <Setter TargetName="HeaderContentPresenter" Property="Foreground" Value="{DynamicResource TextControlHeaderForegroundDisabled}" />
               <Setter Property="Background" Value="{DynamicResource TextControlBackgroundDisabled}" />
               <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushDisabled}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundDisabled}" />
               <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundDisabled}" />
             </Trigger>
@@ -8127,7 +8109,6 @@ Themes\ThemeResources.xaml
               <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundFocused}" />
               <Setter Property="Background" Value="{DynamicResource TextControlBackgroundFocused}" />
               <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderFocusedBrushElevationColor}" />
               <Setter Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}" />
               <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundFocused}" />
             </Trigger>
@@ -8176,7 +8157,6 @@ Themes\ThemeResources.xaml
     <Setter Property="AllowDrop" Value="true" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
     <Setter Property="ContextMenu" Value="{DynamicResource TextControlContextMenu}" />
-    <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderBrushElevationColor}" />
     <Setter Property="local:TextContextMenu.UsingTextContextMenu" Value="True" />
     <Setter Property="chelper:TextBoxHelper.IsEnabled" Value="True" />
     <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource TextControlValidationErrorTemplate}" />
@@ -8289,7 +8269,6 @@ Themes\ThemeResources.xaml
               <Setter TargetName="HeaderContentPresenter" Property="Foreground" Value="{DynamicResource TextControlHeaderForegroundDisabled}" />
               <Setter Property="Background" Value="{DynamicResource TextControlBackgroundDisabled}" />
               <Setter TargetName="BorderElement" Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushDisabled}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundDisabled}" />
               <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundDisabled}" />
             </Trigger>
@@ -8304,7 +8283,6 @@ Themes\ThemeResources.xaml
             <Trigger Property="IsSelectionActive" Value="True">
               <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundFocused}" />
               <Setter Property="Background" Value="{DynamicResource TextControlBackgroundFocused}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderFocusedBrushElevationColor}" />
               <Setter TargetName="BorderElement" Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}" />
               <Setter TargetName="BorderElement" Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}" />
               <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundFocused}" />
@@ -8368,7 +8346,6 @@ Themes\ThemeResources.xaml
               <Setter TargetName="BorderElement" Property="Background" Value="{DynamicResource TextControlBackgroundFocused}" />
               <Setter TargetName="BorderElement" Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}" />
               <Setter TargetName="BorderElement" Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource TextControlElevationBorderFocusedBrushElevationColor}" />
               <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundFocused}" />
               <Setter Property="CaretBrush" Value="{DynamicResource TextControlForegroundFocused}" />
               <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundFocused}" />
@@ -8401,7 +8378,6 @@ Themes\ThemeResources.xaml
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="HorizontalAlignment" Value="Left" />
     <Setter Property="VerticalAlignment" Value="Top" />
-    <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource ControlElevationBorderBrushElevationColor}" />
     <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
     <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
     <Setter Property="chelper:ControlHelper.PlaceholderForeground" Value="{DynamicResource ComboBoxPlaceHolderForeground}" />
@@ -8485,7 +8461,6 @@ Themes\ThemeResources.xaml
             <Trigger SourceName="ToggleButton" Property="IsPressed" Value="True">
               <Setter TargetName="Background" Property="Background" Value="{DynamicResource ComboBoxBackgroundPressed}" />
               <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ComboBoxBorderBrushPressed}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter Property="Foreground" Value="{DynamicResource ComboBoxForegroundPressed}" />
               <Setter TargetName="PlaceholderTextBlock" Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundPressed}" />
             </Trigger>
@@ -8493,7 +8468,6 @@ Themes\ThemeResources.xaml
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="Background" Property="Background" Value="{DynamicResource ComboBoxBackgroundDisabled}" />
               <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ComboBoxBorderBrushDisabled}" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter TargetName="HeaderContentPresenter" Property="Foreground" Value="{DynamicResource ComboBoxHeaderForegroundDisabled}" />
               <Setter Property="Foreground" Value="{DynamicResource ComboBoxForegroundDisabled}" />
               <Setter TargetName="PlaceholderTextBlock" Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundDisabled}" />
@@ -8515,7 +8489,6 @@ Themes\ThemeResources.xaml
               </MultiTrigger.Conditions>
               <Setter TargetName="HighlightBackground" Property="Opacity" Value="1" />
               <Setter TargetName="Pill" Property="Opacity" Value="1" />
-              <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
               <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource ComboBoxForegroundFocusedPressed}" />
               <Setter TargetName="PlaceholderTextBlock" Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundFocusedPressed}" />
               <Setter TargetName="DropDownGlyph" Property="Foreground" Value="{DynamicResource ComboBoxDropDownGlyphForegroundFocusedPressed}" />

@@ -113,7 +113,7 @@
                                     Content="{TemplateBinding Content}"
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
                                     ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                    TextElement.Foreground="{TemplateBinding Foreground}" />
+                                    TextElement.Foreground="{Binding ElementName=IconBox, Path=Foreground}" />
 
                                 <Grid
                                     x:Name="ExpandCollapseChevron"

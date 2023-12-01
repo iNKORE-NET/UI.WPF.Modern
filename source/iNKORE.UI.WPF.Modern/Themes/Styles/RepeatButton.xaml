@@ -22,7 +22,6 @@
         <Setter Property="chelper:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
         <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource UseSystemFocusVisuals}" />
-        <Setter Property="local:ElevationBorder.ElevationColor" Value="{DynamicResource ControlElevationBorderBrushElevationColor}" />
         <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-3" />
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
         <Setter Property="Template">
@@ -57,13 +56,11 @@
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource RepeatButtonBackgroundPressed}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource RepeatButtonBorderBrushPressed}" />
-                            <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
                             <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource RepeatButtonForegroundPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource RepeatButtonBackgroundDisabled}" />
                             <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource RepeatButtonBorderBrushDisabled}" />
-                            <Setter Property="local:ElevationBorder.ElevationColor" Value="Transparent" />
                             <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource RepeatButtonForegroundDisabled}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

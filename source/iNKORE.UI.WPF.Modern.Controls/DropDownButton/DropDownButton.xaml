@@ -17,7 +17,6 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="ui:ElevationBorder.ElevationColor" Value="{DynamicResource ControlElevationBorderBrushElevationColor}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="UseSystemFocusVisuals" Value="{DynamicResource UseSystemFocusVisuals}" />
         <Setter Property="FocusVisualMargin" Value="-3" />
@@ -79,13 +78,11 @@
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource ButtonBackgroundPressed}" />
                             <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPressed}" />
-                            <Setter Property="ui:ElevationBorder.ElevationColor" Value="Transparent" />
                             <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
                             <Setter TargetName="ChevronTextBlock" Property="Foreground" Value="{DynamicResource DropDownButtonForegroundSecondaryPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="RootBorder" Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
-                            <Setter Property="ui:ElevationBorder.ElevationColor" Value="Transparent" />
                             <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
                             <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
                             <Setter TargetName="ChevronTextBlock" Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
