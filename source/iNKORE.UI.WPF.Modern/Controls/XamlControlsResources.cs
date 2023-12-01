@@ -60,7 +60,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 if (_controlsResources == null)
                 {
-                    _controlsResources = new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("Themes/Theme.xaml") };
+                    _controlsResources = new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("Themes/CombinedResources.xaml") };
                 }
                 return _controlsResources;
             }

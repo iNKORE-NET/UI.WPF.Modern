@@ -99,19 +99,19 @@
 			<Visible>False</Visible>
 		</XAMLCombineItems>
 	  <XAMLCombineItems Include="Themes\Converters.xaml">
-		<TargetFile>Themes\Theme.xaml</TargetFile>
+		<TargetFile>Themes\CombinedResources.xaml</TargetFile>
 		<Visible>False</Visible>
 	  </XAMLCombineItems>
 	  <XAMLCombineItems Include="Themes\ThemeResources.xaml">
-		<TargetFile>Themes\Theme.xaml</TargetFile>
+		<TargetFile>Themes\CombinedResources.xaml</TargetFile>
 		<Visible>False</Visible>
 	  </XAMLCombineItems>
 	  <XAMLCombineItems Include="Resources\Fonts\Fonts.xaml">
-		<TargetFile>Themes\Theme.xaml</TargetFile>
+		<TargetFile>Themes\CombinedResources.xaml</TargetFile>
 		<Visible>False</Visible>
 	  </XAMLCombineItems>
 	  <XAMLCombineItems Include="Themes\Styles\**\*.xaml">
-		<TargetFile>Themes\Theme.xaml</TargetFile>
+		<TargetFile>Themes\CombinedResources.xaml</TargetFile>
 		<Visible>False</Visible>
 	  </XAMLCombineItems>
 	</ItemGroup>
