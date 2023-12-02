@@ -22,7 +22,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="DatePickerTextBox">
                     <Grid SnapsToDevicePixels="True">
-                        <Border
+                        <local:ElevationBorder
                             x:Name="BorderElement"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
@@ -147,7 +147,7 @@
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                             TextWrapping="Wrap"
                             Visibility="{TemplateBinding chelper:ControlHelper.HeaderVisibility}" />
-                        <Border
+                        <local:ElevationBorder
                             x:Name="Background"
                             Grid.Row="1"
                             Grid.Column="1"

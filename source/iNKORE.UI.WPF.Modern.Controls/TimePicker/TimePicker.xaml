@@ -154,7 +154,7 @@
                                     <Setter.Value>
                                         <ControlTemplate TargetType="Button">
                                             <Grid Background="{TemplateBinding Background}">
-                                                <Border
+                                                <ui:ElevationBorder
                                                     x:Name="Border"
                                                     Background="{DynamicResource TimePickerButtonBackground}"
                                                     BorderBrush="{DynamicResource TimePickerButtonBorderBrush}"
@@ -165,7 +165,7 @@
                                                         HorizontalAlignment="Stretch"
                                                         VerticalAlignment="Stretch"
                                                         TextElement.Foreground="{TemplateBinding Foreground}" />
-                                                </Border>
+                                                </ui:ElevationBorder>
                                             </Grid>
 
                                             <ControlTemplate.Triggers>
