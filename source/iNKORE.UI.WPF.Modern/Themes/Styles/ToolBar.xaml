@@ -4,7 +4,20 @@
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
     xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters"
-    xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers">
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
+    xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Button.xaml" />
+        <ResourceDictionary Source="TextBox.xaml" />
+        <ResourceDictionary Source="CheckBox.xaml" />
+        <ResourceDictionary Source="RadioButton.xaml" />
+        <ResourceDictionary Source="ToggleButton.xaml" />
+        <ResourceDictionary>
+            <converters:CornerRadiusFilterConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" Filter="TopLeftValue" />
+            <converters:CornerRadiusFilterConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" Filter="BottomRightValue" />
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
 
     <Style
         x:Key="{x:Static ToolBar.ButtonStyleKey}"

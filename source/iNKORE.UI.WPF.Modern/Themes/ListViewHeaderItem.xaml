@@ -3,7 +3,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
-    xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers">
+    xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
+    xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
+    xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common">
 
     <Style TargetType="local:ListViewHeaderItem">
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />

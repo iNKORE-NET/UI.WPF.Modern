@@ -2,9 +2,19 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
-    xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives">
+    xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
+    xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
+    xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common"
+    xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Button.xaml" />
+        <ResourceDictionary>
+            <converters:RoundMathConverter x:Key="RoundMathConverter" />
+            <converters:RoundRadiusConverter x:Key="RoundRadiusConverter" />
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="DefaultCalendarItemStyle" TargetType="CalendarItem">
         <Setter Property="OverridesDefaultStyle" Value="True" />

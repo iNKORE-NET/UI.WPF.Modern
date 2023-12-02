@@ -13,6 +13,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// </summary>
         public XamlControlsResources()
         {
+            MergedDictionaries.Add(ThemeResources);
             MergedDictionaries.Add(ControlsResources);
             MergedDictionaries.Add(UISettingsResources);
 
@@ -54,13 +55,25 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
         }
 
+        internal static ResourceDictionary ThemeResources
+        {
+            get
+            {
+                if (_themeResources == null)
+                {
+                    _themeResources = new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("Themes/ThemeResources.xaml") };
+                }
+                return _themeResources;
+            }
+        }
+
         internal static ResourceDictionary ControlsResources
         {
             get
             {
                 if (_controlsResources == null)
                 {
-                    _controlsResources = new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("Themes/CombinedResources.xaml") };
+                    _controlsResources = new ResourceDictionary { Source = PackUriHelper.GetAbsoluteUri("Themes/ControlsResources.xaml") };
                 }
                 return _controlsResources;
             }
@@ -86,6 +99,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
         }
 
+        private static ResourceDictionary _themeResources;
         private static ResourceDictionary _controlsResources;
         private static ResourceDictionary _compactResources;
         private static ResourceDictionary _uiSettingsResources;
