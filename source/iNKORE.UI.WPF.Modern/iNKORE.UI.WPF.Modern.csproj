@@ -7,6 +7,10 @@
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<NoWarn>1701;1702;1573;1591;CA1416</NoWarn>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<ApplicationIcon>..\..\assets\images\iNKORE.ico</ApplicationIcon>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\..\assets\misc\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -26,9 +30,6 @@
 			Windows.Foundation.Diagnostics;
 			Windows.Foundation.PropertyType;
 		</CsWinRTExcludes>
-		<ApplicationIcon>..\..\assets\images\iNKORE.ico</ApplicationIcon>
-		<SignAssembly>True</SignAssembly>
-		<AssemblyOriginatorKeyFile>..\..\assets\misc\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'">
@@ -48,7 +49,6 @@
 
 	<ItemGroup>
 		<InternalsVisibleTo Include="iNKORE.UI.WPF.Modern.Controls" />
-		<PackageReference Include="Microsoft.Windows.CsWin32" Version="0.2.188-beta" PrivateAssets="all" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework' and $([MSBuild]::VersionLessThan($(TargetFrameworkVersion), '4.6.1'))">

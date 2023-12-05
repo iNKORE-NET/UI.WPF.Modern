@@ -14,7 +14,8 @@ using System.Windows.Data;
 using System.Windows.Interop;
 using System.Windows.Media;
 using iNKORE.UI.WPF.Modern.Common;
-using Windows.Win32;
+using iNKORE.UI.WPF.Modern.Native;
+//using Windows.Win32;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
@@ -290,7 +291,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         public static Window GetActiveWindow()
         {
-            var activeWindow = PInvoke.GetActiveWindow();
+            var activeWindow = User32.GetActiveWindow();
             if (activeWindow != IntPtr.Zero)
             {
                 return HwndSource.FromHwnd(activeWindow)?.RootVisual as Window;

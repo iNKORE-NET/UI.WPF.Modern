@@ -3,7 +3,8 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Windows;
-using Windows.Win32.Foundation;
+//using Windows.Win32.Foundation;
+using iNKORE.UI.WPF.Modern.Native;
 
 namespace iNKORE.UI.WPF.Modern.Helpers
 {

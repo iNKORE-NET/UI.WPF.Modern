@@ -1,10 +1,11 @@
-﻿using System;
+﻿using iNKORE.UI.WPF.Modern.Native;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
-using Windows.Win32;
-using Windows.Win32.UI.WindowsAndMessaging;
+//using Windows.Win32;
+//using Windows.Win32.UI.WindowsAndMessaging;
 
 namespace iNKORE.UI.WPF.Modern.Helpers
 {
@@ -23,7 +24,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers
 
         public static bool DestroyIcon(IntPtr icon)
         {
-            bool result = PInvoke.DestroyIcon(new HICON(icon));
+            bool result = User32.DestroyIcon(new HICON(icon));
             int error = Marshal.GetLastWin32Error();
 
             if (!result)

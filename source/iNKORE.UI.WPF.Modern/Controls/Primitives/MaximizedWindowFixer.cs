@@ -1,4 +1,5 @@
 ﻿using iNKORE.UI.WPF.Modern.Helpers;
+using iNKORE.UI.WPF.Modern.Native;
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
@@ -8,10 +9,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
-using Windows.Win32;
-using Windows.Win32.Foundation;
-using Windows.Win32.Graphics.Gdi;
-using Windows.Win32.UI.WindowsAndMessaging;
+using static iNKORE.UI.WPF.Modern.Native.User32;
+//using Windows.Win32;
+//using Windows.Win32.Foundation;
+//using Windows.Win32.Graphics.Gdi;
+//using Windows.Win32.UI.WindowsAndMessaging;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
@@ -153,14 +155,14 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             
             switch (message)
             {
-                case PInvoke.WM_SETTINGCHANGE:
+                case (int)WM.SETTINGCHANGE:
                     InvalidateMaximizedWindowBorder();
                     UpdateWindowPadding();
                     break;
-                case PInvoke.WM_WINDOWPOSCHANGING:
+                case (int)WM.WINDOWPOSCHANGING:
                     OnWindowPosChanging(lParam);
                     break;
-                case PInvoke.WM_WINDOWPOSCHANGED:
+                case (int)WM.WINDOWPOSCHANGED:
                     if (!_maximizedWindowBorder.HasValue)
                     {
                         UpdateWindowPadding();
@@ -189,7 +191,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                             if (monitor != IntPtr.Zero)
                             {
                                 MONITORINFO info = GetMonitorInfo(monitor);
-                                bool primary = (info.dwFlags & PInvoke.MONITORINFOF_PRIMARY) != 0;
+                                bool primary = (info.dwFlags & NativeMethods.MONITORINFOF_PRIMARY) != 0;
                                 if (primary)
                                 {
                                     if (pos.x < 0 &&
@@ -234,9 +236,9 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             dpiScaleY = transformToDevice.M22;
 #endif
 
-            int frameWidth = PInvoke.GetSystemMetrics(SYSTEM_METRICS_INDEX.SM_CXSIZEFRAME);
-            int frameHeight = PInvoke.GetSystemMetrics(SYSTEM_METRICS_INDEX.SM_CYSIZEFRAME);
-            int borderPadding = PInvoke.GetSystemMetrics(SYSTEM_METRICS_INDEX.SM_CXPADDEDBORDER);
+            int frameWidth = User32.GetSystemMetrics(SYSTEM_METRICS_INDEX.SM_CXSIZEFRAME);
+            int frameHeight = User32.GetSystemMetrics(SYSTEM_METRICS_INDEX.SM_CYSIZEFRAME);
+            int borderPadding = User32.GetSystemMetrics(SYSTEM_METRICS_INDEX.SM_CXPADDEDBORDER);
             Size borderSize = new Size(frameWidth + borderPadding, frameHeight + borderPadding);
             Size borderSizeInDips = DpiHelper.DeviceSizeToLogical(borderSize, dpiScaleX, dpiScaleY);
 
@@ -267,7 +269,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         private static bool GetTaskbarAutoHide(out ABEdge edge)
         {
-            IntPtr trayWnd = PInvoke.FindWindow("Shell_TrayWnd", null);
+            IntPtr trayWnd = NativeMethods.FindWindow("Shell_TrayWnd", null);
             if (trayWnd != IntPtr.Zero)
             {
                 APPBARDATA abd = new APPBARDATA();

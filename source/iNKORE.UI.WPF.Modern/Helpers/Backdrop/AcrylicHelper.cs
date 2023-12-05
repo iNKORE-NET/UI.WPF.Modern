@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
-using Windows.System;
-using Windows.Win32;
+//using Windows.Win32;
 
 namespace iNKORE.UI.WPF.Modern.Helpers.Backdrop
 {

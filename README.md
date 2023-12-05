@@ -1,7 +1,7 @@
 
 <p align="center">
   <a target="_blank" rel="noopener noreferrer">
-    <img width="128" src="https://github.com/InkoreStudios/.github/blob/main/assets/Inkore_Badge.png?raw=true" alt="iNKORE Logo">
+    <img width="128" src="https://github.com/iNKOREStudios/.github/blob/main/assets/iNKORE_Badge.png?raw=true" alt="iNKORE Logo">
   </a>
 </p>
 
@@ -14,20 +14,20 @@
 <p align="center">Give us a star if you like this!</p>
 
 <p align="center">
-  <a href="https://github.com/InkoreStudios/UI.WPF.Modern/releases"><img src="https://img.shields.io/github/downloads/InkoreStudios/UI.WPF.Modern/total?color=%239F7AEA" alt="Release Downloads"></a>
-  <a href="#"><img src="https://img.shields.io/github/repo-size/InkoreStudios/UI.WPF.Modern?color=6882C4" alt="GitHub Repo Size"></a>
-  <a href="#"><img src="https://img.shields.io/github/last-commit/InkoreStudios/UI.WPF.Modern?color=%23638e66" alt="Last Commit"></a>
-  <a href="#"><img src="https://img.shields.io/github/issues/InkoreStudios/UI.WPF.Modern?color=f76642" alt="Issues"></a>
-  <a href="#"><img src="https://img.shields.io/github/v/release/InkoreStudios/UI.WPF.Modern?color=%4CF4A8B4" alt="Latest Version"></a>
-  <a href="#"><img src="https://img.shields.io/github/release-date/InkoreStudios/UI.WPF.Modern?color=%23b0a3e8" alt="Release Date"></a>
-  <a href="https://github.com/InkoreStudios/UI.WPF.Modern/commits/"><img src="https://img.shields.io/github/commit-activity/m/InkoreStudios/UI.WPF.Modern" alt="Commit Activity"></a>
+  <a href="https://github.com/iNKOREStudios/UI.WPF.Modern/releases"><img src="https://img.shields.io/github/downloads/iNKOREStudios/UI.WPF.Modern/total?color=%239F7AEA" alt="Release Downloads"></a>
+  <a href="#"><img src="https://img.shields.io/github/repo-size/iNKOREStudios/UI.WPF.Modern?color=6882C4" alt="GitHub Repo Size"></a>
+  <a href="#"><img src="https://img.shields.io/github/last-commit/iNKOREStudios/UI.WPF.Modern?color=%23638e66" alt="Last Commit"></a>
+  <a href="#"><img src="https://img.shields.io/github/issues/iNKOREStudios/UI.WPF.Modern?color=f76642" alt="Issues"></a>
+  <a href="#"><img src="https://img.shields.io/github/v/release/iNKOREStudios/UI.WPF.Modern?color=%4CF4A8B4" alt="Latest Version"></a>
+  <a href="#"><img src="https://img.shields.io/github/release-date/iNKOREStudios/UI.WPF.Modern?color=%23b0a3e8" alt="Release Date"></a>
+  <a href="https://github.com/iNKOREStudios/UI.WPF.Modern/commits/"><img src="https://img.shields.io/github/commit-activity/m/iNKOREStudios/UI.WPF.Modern" alt="Commit Activity"></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/InkoreStudios/UI.WPF.Modern/network/members"><img src="https://img.shields.io/github/forks/InkoreStudios/UI.WPF.Modern?style=social" alt="Forks"></a>
-  <a href="https://github.com/InkoreStudios/UI.WPF.Modern/stargazers"><img src="https://img.shields.io/github/stars/InkoreStudios/UI.WPF.Modern?style=social" alt="Stars"></a>
-  <a href="https://github.com/InkoreStudios/UI.WPF.Modern/watchers"><img src="https://img.shields.io/github/watchers/InkoreStudios/UI.WPF.Modern?style=social" alt="Watches"></a>
-  <a href="https://github.com/InkoreStudios/UI.WPF.Modern/discussions"><img src="https://img.shields.io/github/discussions/InkoreStudios/UI.WPF.Modern?style=social" alt="Discussions"></a>
+  <a href="https://github.com/iNKOREStudios/UI.WPF.Modern/network/members"><img src="https://img.shields.io/github/forks/iNKOREStudios/UI.WPF.Modern?style=social" alt="Forks"></a>
+  <a href="https://github.com/iNKOREStudios/UI.WPF.Modern/stargazers"><img src="https://img.shields.io/github/stars/iNKOREStudios/UI.WPF.Modern?style=social" alt="Stars"></a>
+  <a href="https://github.com/iNKOREStudios/UI.WPF.Modern/watchers"><img src="https://img.shields.io/github/watchers/iNKOREStudios/UI.WPF.Modern?style=social" alt="Watches"></a>
+  <a href="https://github.com/iNKOREStudios/UI.WPF.Modern/discussions"><img src="https://img.shields.io/github/discussions/iNKOREStudios/UI.WPF.Modern?style=social" alt="Discussions"></a>
   <a href="https://discord.gg/m6NPNVk4bs"><img src="https://img.shields.io/discord/1092738458805608561?style=social&label=Discord&logo=discord" alt="Discord"></a>
   <a href="https://twitter.com/NotYoojun"><img src="https://img.shields.io/twitter/follow/NotYoojun?style=social" alt="NotYoojun's Twitter"></a>
 </p>
@@ -52,9 +52,9 @@
 
 # 🤔 How to use
 
-- [Quick Start](https://github.com/InkoreStudios/UI.WPF.Modern/blob/main/materials/docs/Quick%20Start.md): This shows you the first steps how to use this library to set up your project
+- [Quick Start](https://github.com/iNKOREStudios/UI.WPF.Modern/blob/main/materials/docs/Quick%20Start.md): This shows you the first steps how to use this library to set up your project
 
-- [FAQs](https://github.com/InkoreStudios/UI.WPF.Modern/blob/main/materials/docs/FAQs.md): Here are some frequently asked questions and answers for you to look up for.
+- [FAQs](https://github.com/iNKOREStudios/UI.WPF.Modern/blob/main/materials/docs/FAQs.md): Here are some frequently asked questions and answers for you to look up for.
 
 # 🙋🏻‍♂️ Contribution
 

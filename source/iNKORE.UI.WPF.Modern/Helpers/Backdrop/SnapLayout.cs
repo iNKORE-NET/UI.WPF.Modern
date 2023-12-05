@@ -8,6 +8,7 @@ using System;
 */
 using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Helpers;
+using iNKORE.UI.WPF.Modern.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
-using Windows.Win32;
+using static iNKORE.UI.WPF.Modern.Native.User32;
+//using Windows.Win32;
 
 namespace iNKORE.UI.WPF.Modern.Helpers.Backdrop
 {
@@ -88,7 +90,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Backdrop
 
             switch (mouseNotification)
             {
-                case PInvoke.WM_NCLBUTTONDOWN:
+                case NativeMethods.WM_NCLBUTTONDOWN:
                     if (IsOverButton(wParam, lParam))
                     {
                         _isButtonClicked = true;
@@ -97,12 +99,12 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Backdrop
                     }
                     break;
 
-                case PInvoke.WM_NCMOUSELEAVE:
+                case (int)WM.NCMOUSELEAVE:
                     _isButtonFocused = false;
                     RefreshButtonColor();
                     break;
 
-                case PInvoke.WM_NCLBUTTONUP:
+                case (int)WM.NCLBUTTONUP:
                     if (_isButtonClicked)
                     {
                         if (IsOverButton(wParam, lParam))
@@ -114,7 +116,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Backdrop
                     }
                     break;
 
-                case PInvoke.WM_NCHITTEST:
+                case (int)WM.NCHITTEST:
                     if (IsOverButton(wParam, lParam))
                     {
                         _isButtonFocused = true;
@@ -127,13 +129,13 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Backdrop
                         _isButtonClicked = false;
                         RefreshButtonColor();
                     }
-                    return new IntPtr(PInvoke.HTMAXBUTTON);
+                    return new IntPtr(NativeMethods.HTMAXBUTTON);
 
                 default:
                     handled = false;
                     break;
             }
-            return new IntPtr(PInvoke.HTCLIENT);
+            return new IntPtr(NativeMethods.HTCLIENT);
         }
 
         private void RefreshButtonColor()

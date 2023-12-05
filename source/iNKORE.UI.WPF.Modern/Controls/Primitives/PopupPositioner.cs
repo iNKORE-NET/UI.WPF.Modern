@@ -7,15 +7,16 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Windows.Win32;
+//using Windows.Win32;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
-using Windows.Win32.Foundation;
-using Windows.Win32.UI.WindowsAndMessaging;
+//using Windows.Win32.Foundation;
+//using Windows.Win32.UI.WindowsAndMessaging;
 using iNKORE.UI.WPF.Modern.Helpers;
+using iNKORE.UI.WPF.Modern.Native;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
@@ -627,7 +628,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                     flags |= SET_WINDOW_POS_FLAGS.SWP_NOSIZE;
                 }
 
-                PInvoke.SetWindowPos(new HWND(Handle), new HWND(IntPtr.Zero),
+                User32.SetWindowPos(new HWND(Handle), new HWND(IntPtr.Zero),
                     x, y, width, height, flags);
             }
 

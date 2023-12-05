@@ -10,9 +10,12 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<ApplicationIcon>..\..\assets\images\iNKORE.ico</ApplicationIcon>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\..\assets\misc\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
-	<PropertyGroup>
+	<!--<PropertyGroup>
 		<CsWinRTEmbedded>true</CsWinRTEmbedded>
 		<CsWinRTWindowsMetadata>10.0.18362.0</CsWinRTWindowsMetadata>
 		<CsWinRTIncludes>
@@ -29,10 +32,7 @@
 			Windows.Foundation.Diagnostics;
 			Windows.Foundation.PropertyType;
 		</CsWinRTExcludes>
-		<ApplicationIcon>..\..\assets\images\iNKORE.ico</ApplicationIcon>
-		<SignAssembly>True</SignAssembly>
-		<AssemblyOriginatorKeyFile>..\..\assets\misc\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
-	</PropertyGroup>
+	</PropertyGroup>-->
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.18362.0|AnyCPU'">
 	  <NoWarn>1701;1702;CA1416</NoWarn>
@@ -75,7 +75,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Inkore.UI.WPF.Modern\iNKORE.UI.WPF.Modern.csproj" />
+		<ProjectReference Include="..\iNKORE.UI.WPF.Modern\iNKORE.UI.WPF.Modern.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
