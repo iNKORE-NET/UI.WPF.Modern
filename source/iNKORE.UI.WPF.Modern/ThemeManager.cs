@@ -210,7 +210,8 @@ namespace iNKORE.UI.WPF.Modern
             {
                 ActualAccentColor = ColorsHelper.Current.SystemAccentColor;
             }
-            else
+            
+            if(!UsingSystemAccentColor || ActualAccentColor.A == 0d)
             {
                 ActualAccentColor = AccentColor ?? ColorsHelper.DefaultAccentColor;
             }
@@ -218,11 +219,20 @@ namespace iNKORE.UI.WPF.Modern
 
         private void UpdateAccentColors()
         {
+            bool set = false;
             if (UsingSystemAccentColor)
             {
-                ColorsHelper.Current.FetchSystemAccentColors();
+                try
+                {
+                    ColorsHelper.Current.FetchSystemAccentColors();
+                    set = true;
+                }
+                catch
+                {
+                    set = false;
+                }
             }
-            else
+            if(!set)
             {
                 ColorsHelper.Current.SetAccent(ActualAccentColor);
             }

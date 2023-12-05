@@ -15,7 +15,11 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             MergedDictionaries.Add(ThemeResources);
             MergedDictionaries.Add(ControlsResources);
-            MergedDictionaries.Add(UISettingsResources);
+            
+            if(UISettingsResources != null)
+            {
+                MergedDictionaries.Add(UISettingsResources);
+            }
 
             if (DesignMode.DesignModeEnabled)
             {
@@ -95,7 +99,14 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             get
             {
-                return _uiSettingsResources ??= new UISettingsResources();
+                try
+                {
+                    return _uiSettingsResources ??= new UISettingsResources();
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
 
