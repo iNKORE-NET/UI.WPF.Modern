@@ -4,7 +4,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace iNKORE.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Common
 {
     internal static class VisualStateUtil
     {

@@ -3,7 +3,7 @@
 
 using System.Windows;
 
-namespace iNKORE.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Common
 {
     internal interface IControlProtected
     {

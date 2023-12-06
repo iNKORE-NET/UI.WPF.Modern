@@ -4,7 +4,7 @@ using System.Windows.Controls.Primitives;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using iNKORE.UI.WPF.Modern.Helpers;
 
-namespace iNKORE.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Common
 {
     internal static class PopupHelper
     {

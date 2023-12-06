@@ -13,6 +13,7 @@
 		<ApplicationIcon>..\..\assets\images\iNKORE.ico</ApplicationIcon>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\..\assets\misc\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
+		<RootNamespace>iNKORE.UI.WPF.Modern</RootNamespace>
 	</PropertyGroup>
 
 	<!--<PropertyGroup>

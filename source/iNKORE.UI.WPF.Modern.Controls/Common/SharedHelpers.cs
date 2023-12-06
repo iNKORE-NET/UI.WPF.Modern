@@ -14,10 +14,11 @@ using System.Windows.Data;
 using System.Windows.Interop;
 using System.Windows.Media;
 using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Controls;
 using iNKORE.UI.WPF.Modern.Native;
 //using Windows.Win32;
 
-namespace iNKORE.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Common
 {
     internal static class SharedHelpers
     {

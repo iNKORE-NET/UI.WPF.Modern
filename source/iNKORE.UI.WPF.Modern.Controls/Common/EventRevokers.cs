@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using iNKORE.UI.WPF.Modern.Common;
 
-namespace iNKORE.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Common
 {
     internal class FrameworkElementSizeChangedRevoker : EventRevoker<FrameworkElement, SizeChangedEventHandler>
     {

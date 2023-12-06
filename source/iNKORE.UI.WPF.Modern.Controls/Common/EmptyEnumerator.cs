@@ -9,7 +9,7 @@
 using System;
 using System.Collections;
 
-namespace iNKORE.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Common
 {
     /// <summary>
     /// Returns an Enumerator that enumerates over nothing.

@@ -1,4 +1,4 @@
-﻿namespace iNKORE.UI.WPF.Modern.Controls
+﻿namespace iNKORE.UI.WPF.Modern.Common
 {
     public enum LightDismissOverlayMode
     {

@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls.Primitives;
 
-namespace iNKORE.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Common
 {
     internal class PopupRepositionHelper : IDisposable
     {

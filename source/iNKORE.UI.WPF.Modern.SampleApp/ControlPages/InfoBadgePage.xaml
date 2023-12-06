@@ -15,7 +15,7 @@
     <ui:Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/InfoBadge/InfoBadge.xaml" />
+                <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/InfoBadge/InfoBadge.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ui:Page.Resources>

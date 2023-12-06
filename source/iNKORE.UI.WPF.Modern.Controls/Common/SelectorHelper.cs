@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace iNKORE.UI.WPF.Modern.Controls.Primitives
+namespace iNKORE.UI.WPF.Modern.Common
 {
     internal static class SelectorHelper
     {

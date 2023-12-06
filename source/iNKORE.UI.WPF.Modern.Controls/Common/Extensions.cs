@@ -3,8 +3,9 @@ using System;
 using System.Windows.Controls;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using iNKORE.UI.WPF.Modern.Helpers;
+using iNKORE.UI.WPF.Modern.Controls;
 
-namespace iNKORE.UI.WPF.Modern.Controls
+namespace iNKORE.UI.WPF.Modern.Common
 {
     internal static class Extensions
     {
