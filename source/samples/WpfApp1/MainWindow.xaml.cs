@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MessageBoxEx = iNKORE.UI.WPF.Modern.Controls.MessageBox;
 
 namespace WpfApp1
 {
@@ -69,6 +70,25 @@ namespace WpfApp1
         {
             //AppBarToggleButton1.IsChecked = false;
             AppBarToggleButton1.IsEnabled = false;
+        }
+
+        private void Button_MessageBox_Click(object sender, RoutedEventArgs e)
+        {
+            string title = "Some title";
+            string message = "This is a looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong test text!";
+
+            System.Windows.MessageBox.Show(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            System.Windows.MessageBox.Show("adawdawda", title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            MessageBoxEx.Show("This is a test text!", "Some title", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            MessageBoxEx.Show("aaa");
+            MessageBoxEx.Show(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, ((char)Symbol.Admin).ToString());
+            MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, SegoeIcons.Airplane);
+            MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, SegoeIcons.Airplane, MessageBoxResult.OK);
+            MessageBoxEx.ShowAsync(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question).GetAwaiter().GetResult();
+            MessageBoxEx.ShowAsync(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Hand, MessageBoxResult.Cancel).GetAwaiter().GetResult();
+            MessageBoxEx.EnableLocalization = false;
+            MessageBoxEx.ShowAsync("Press Alt and you should see underscores!", null, MessageBoxButton.YesNoCancel, MessageBoxImage.Hand).GetAwaiter().GetResult();
         }
     }
 }

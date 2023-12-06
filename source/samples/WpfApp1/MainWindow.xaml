@@ -13,7 +13,7 @@
      ui:TitleBar.IsBackButtonVisible="False" ui:ThemeManager.RequestedTheme="Light"
      ui:WindowHelper.UseModernWindowStyle="True"
         ui:WindowHelper.CornerStyle="DoNotRound" Background="{x:Null}">
-    <Grid>
+    <Canvas>
         <ComboBox SelectionChanged="ComboBox_SelectionChanged" Height="35" IsEditable="True">
             <ComboBoxItem Content="Item1"/>
             <ComboBoxItem Content="Item2"/>
@@ -145,5 +145,6 @@
         </ToggleButton>
         <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="539,110,0,0" Height="86"/>
         <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="622,127,0,0" Height="200"/>
-    </Grid>
+        <Button x:Name="Button_MessageBox" Content="MessageBox" Click="Button_MessageBox_Click" Canvas.Left="152" Canvas.Top="145" VerticalAlignment="Top"/>
+    </Canvas>
 </Window>

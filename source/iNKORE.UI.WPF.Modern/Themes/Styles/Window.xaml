@@ -36,6 +36,7 @@
         x:Key="DefaultWindowChrome"
         x:Shared="False"
         CaptionHeight="{DynamicResource {x:Static primitives:TitleBar.HeightKey}}"
+        CornerRadius="0"
         NonClientFrameEdges="None"
         ResizeBorderThickness="4"
         UseAeroCaptionButtons="False" />
@@ -46,6 +47,7 @@
         CaptionHeight="{DynamicResource {x:Static primitives:TitleBar.HeightKey}}"
         GlassFrameThickness="-1"
         NonClientFrameEdges="None"
+        CornerRadius="0"
         ResizeBorderThickness="4"
         UseAeroCaptionButtons="False" />
 
@@ -53,6 +55,7 @@
         x:Key="AcrylicWindowChrome"
         x:Shared="False"
         CaptionHeight="{DynamicResource {x:Static primitives:TitleBar.HeightKey}}"
+        CornerRadius="0"
         GlassFrameThickness="0,1,0,0"
         NonClientFrameEdges="None"
         ResizeBorderThickness="4"
