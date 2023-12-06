@@ -36,12 +36,23 @@
                         Height="300"
                         PaneDisplayMode="Left">
                         <ui:NavigationView.MenuItems>
-                            <ui:NavigationViewItem Content="Home" Icon="Home" />
-                            <ui:NavigationViewItem Content="Account" Icon="Contact" />
+                            <ui:NavigationViewItem Content="Home">
+                                <ui:NavigationViewItem.Icon>
+                                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Home}"/>
+                                </ui:NavigationViewItem.Icon>
+                            </ui:NavigationViewItem>
+                            <ui:NavigationViewItem Content="Account">
+                                <ui:NavigationViewItem.Icon>
+                                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Contact}"/>
+                                </ui:NavigationViewItem.Icon>
+
+                            </ui:NavigationViewItem>
                             <ui:NavigationViewItem
                                 x:Name="InboxPage"
-                                Content="Inbox"
-                                Icon="Mail">
+                                Content="Inbox">
+                                <ui:NavigationViewItem.Icon>
+                                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Mail}"/>
+                                </ui:NavigationViewItem.Icon>
                                 <ui:NavigationViewItem.InfoBadge>
                                     <ui:InfoBadge
                                         x:Name="infoBadge1"

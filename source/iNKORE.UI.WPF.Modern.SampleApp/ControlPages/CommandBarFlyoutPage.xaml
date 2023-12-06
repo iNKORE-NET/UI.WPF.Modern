@@ -15,9 +15,13 @@
         <ui:CommandBarFlyout x:Key="CommandBarFlyout1" Placement="RightEdgeAlignedTop">
             <ui:AppBarButton
                 Click="OnElementClicked"
-                Icon="Share"
                 Label="Share"
-                ToolTipService.ToolTip="Share" />
+                ToolTipService.ToolTip="Share">
+                <ui:AppBarButton.Icon>
+                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Save}"/>
+                </ui:AppBarButton.Icon>
+
+            </ui:AppBarButton>
             <ui:AppBarButton
                 Click="OnElementClicked"
                 Icon="Save"

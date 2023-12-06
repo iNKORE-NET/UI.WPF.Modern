@@ -8,7 +8,6 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     Title="AppBar Button"
-    d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <StackPanel>
@@ -128,11 +127,14 @@
                         x:Name="Button5"
                         Click="AppBarButton_Click"
                         Command="Save"
-                        Icon="Save"
                         Label="Save">
                         <ui:AppBarButton.CommandBindings>
                             <CommandBinding CanExecute="Save_CanExecute" Command="Save" />
                         </ui:AppBarButton.CommandBindings>
+                        <ui:AppBarButton.Icon>
+                            <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Save}"/>
+                        </ui:AppBarButton.Icon>
+
                     </ui:AppBarButton>
                     <TextBlock
                         x:Name="Control5Output"
