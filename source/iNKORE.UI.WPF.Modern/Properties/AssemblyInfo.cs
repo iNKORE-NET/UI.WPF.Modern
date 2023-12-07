@@ -28,7 +28,7 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Controls.Helpers")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Controls.Primitives")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Helpers")]
-[assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Helpers.Backdrop")]
+[assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Helpers.Styles")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Markup")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Media")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Input")]

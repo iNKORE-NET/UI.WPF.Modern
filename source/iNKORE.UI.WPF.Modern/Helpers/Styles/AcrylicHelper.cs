@@ -10,7 +10,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 //using Windows.Win32;
 
-namespace iNKORE.UI.WPF.Modern.Helpers.Backdrop
+namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 {
     public static class AcrylicHelper
     {

@@ -20,7 +20,7 @@ using iNKORE.UI.WPF.Modern.Controls.TitleBar;
 using iNKORE.UI.WPF.Modern.Helpers;
 */
 using iNKORE.UI.WPF.Modern.Helpers;
-using iNKORE.UI.WPF.Modern.Helpers.Backdrop;
+using iNKORE.UI.WPF.Modern.Helpers.Styles;
 using System;
 using System.Diagnostics;
 using System.Windows;

@@ -23,7 +23,7 @@ using System.Windows.Media;
 using static iNKORE.UI.WPF.Modern.Native.User32;
 //using Windows.Win32;
 
-namespace iNKORE.UI.WPF.Modern.Helpers.Backdrop
+namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 {
     /// <summary>
 

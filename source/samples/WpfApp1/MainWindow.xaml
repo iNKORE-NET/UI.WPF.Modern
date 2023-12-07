@@ -143,7 +143,7 @@
         <ToggleButton x:Name="ToggleButton1" Click="ToggleButton_Click">
             <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accounts}"/>
         </ToggleButton>
-        <RichTextBox HorizontalAlignment="Left" VerticalAlignment="Top" ui:TextBoxHelper.IsBorderVisible="False"  Margin="539,110,0,0" Height="86"/>
+        <RichTextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="539,110,0,0" Height="86"/>
         <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="622,127,0,0" Height="200"/>
         <Button x:Name="Button_MessageBox" Content="MessageBox" Click="Button_MessageBox_Click" Canvas.Left="152" Canvas.Top="145" VerticalAlignment="Top"/>
     </Canvas>

@@ -11,7 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace iNKORE.UI.WPF.Modern.Helpers.Backdrop
+namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 {
     public enum BackdropType
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace iNKORE.UI.WPF.Modern.Helpers.Backdrop
+namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 {
     public static class CornerHelper
     {

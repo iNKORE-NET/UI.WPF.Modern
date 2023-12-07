@@ -50,6 +50,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
             catch { }
         }
 
-        private StreamGeometry? _clipRect;
+        private StreamGeometry _clipRect;
     }
 }
