@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
@@ -139,6 +140,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         }
 
         #endregion
+
 
         private static void OnLoaded(object sender, RoutedEventArgs e)
         {

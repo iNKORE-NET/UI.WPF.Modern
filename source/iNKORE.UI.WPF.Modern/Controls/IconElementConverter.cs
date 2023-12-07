@@ -22,9 +22,22 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
-            if (value is string s && Enum.TryParse(s, true, out Symbol symbol))
+            if (value is string s)
             {
-                return new SymbolIcon(symbol);
+                try
+                {
+                    var fields = typeof(SegoeIcons).GetField(s);
+                    if (fields != null)
+                    {
+                        return fields.GetValue(null);
+                    }
+                }
+                catch { }
+
+                if (Enum.TryParse(s, true, out Symbol symbol))
+                {
+                    return new SymbolIcon(symbol);
+                }
             }
 
             throw GetConvertFromException(value);

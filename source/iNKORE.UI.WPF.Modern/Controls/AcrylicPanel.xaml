@@ -9,7 +9,7 @@
     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary>
-            <local:BrushTranslationConverter x:Key="BrushTranslationConverter" />
+            <converters:BrushTranslationConverter x:Key="BrushTranslationConverter" />
             <converters:ColorToBrushConverter x:Key="ColorToSolidColorBrushConverter" />
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
