@@ -52,9 +52,9 @@
 
 # 🤔 How to use
 
-- [Quick Start](https://github.com/iNKOREStudios/UI.WPF.Modern/blob/main/materials/docs/Quick%20Start.md): This shows you the first steps how to use this library to set up your project
+- [Quick Start](https://github.com/InkoreStudios/UI.WPF.Modern/blob/main/docs/Quick%20Start.md): This shows you the first steps how to use this library to set up your project
 
-- [FAQs](https://github.com/iNKOREStudios/UI.WPF.Modern/blob/main/materials/docs/FAQs.md): Here are some frequently asked questions and answers for you to look up for.
+- [FAQs](https://github.com/InkoreStudios/UI.WPF.Modern/blob/main/docs/FAQs.md): Here are some frequently asked questions and answers for you to look up for.
 
 # 🙋🏻‍♂️ Contribution
 
