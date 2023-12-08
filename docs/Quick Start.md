@@ -3,10 +3,10 @@
 
 1. Create a new WPF app.
 
-2. Add reference to `Inkore.UI.WPF.Modern.dll` and `Inkore.UI.WPF.Modern.Controls.dll` or install the NuGet package
+2. Add reference to `iNKORE.UI.WPF.Modern.dll` and `iNKORE.UI.WPF.Modern.Controls.dll` or install the NuGet package
 
    ```
-   dotnet add package Inkore.UI.WPF.Modern --version 0.9.15
+   dotnet add package iNKORE.UI.WPF.Modern
    ```
 
 3. Add XML Namespace in `App.xaml` and `MainWindow.xaml`
