@@ -186,5 +186,11 @@ namespace iNKORE.UI.WPF.Modern.Helpers
         {
             return color.R + color.G + color.B < 255 * 3 - color.R - color.G - color.B;
         }
+
+        //This is from here: https://learn.microsoft.com/zh-cn/windows/apps/desktop/modernize/apply-windows-themes
+        public static bool IsLightColor(Color color)
+        {
+            return (((5 * color.G) + (2 * color.R) + color.B) > (8 * 128));
+        }
     }
 }

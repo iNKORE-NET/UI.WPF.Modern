@@ -1,6 +1,7 @@
 ﻿using iNKORE.UI.WPF.Modern;
 using iNKORE.UI.WPF.Modern.Controls;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Helpers.Styles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,7 @@ namespace WpfApp1
         {
             //AppBarToggleButton1.IsChecked = false;
             AppBarToggleButton1.IsEnabled = false;
+            MicaHelper.RemoveTitleBar(this);
         }
 
         private void Button_MessageBox_Click(object sender, RoutedEventArgs e)
