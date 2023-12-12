@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="Transparent"
+        Title="MainWindow" Height="450" Width="800"
         ResizeMode="CanMinimize" ui:WindowHelper.SystemBackdropType="Mica"
         ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
      ui:TitleBar.ExtendViewIntoTitleBar="False"   
-     
+     ui:WindowHelper.UseModernWindowStyle="True"
      ui:TitleBar.IsBackButtonVisible="False" ui:ThemeManager.RequestedTheme="Light"
         ui:WindowHelper.CornerStyle="DoNotRound">
     <Canvas>

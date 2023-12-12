@@ -56,7 +56,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 
             if (windowHandle == IntPtr.Zero) { return false; }
 
-            Apply(windowHandle, type);
+            Apply(windowHandle, type, force);
 
             return true;
         }

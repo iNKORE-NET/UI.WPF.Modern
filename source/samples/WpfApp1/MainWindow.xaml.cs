@@ -71,7 +71,8 @@ namespace WpfApp1
         {
             //AppBarToggleButton1.IsChecked = false;
             AppBarToggleButton1.IsEnabled = false;
-            MicaHelper.RemoveTitleBar(this);
+            //MicaHelper.RemoveTitleBar(this);
+            MicaHelper.Apply(this, BackdropType.Mica, false);
         }
 
         private void Button_MessageBox_Click(object sender, RoutedEventArgs e)
@@ -83,7 +84,7 @@ namespace WpfApp1
             System.Windows.MessageBox.Show("adawdawda", title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             MessageBoxEx.Show("This is a test text!", "Some title", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             MessageBoxEx.Show("aaa");
-            MessageBoxEx.Show(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            MessageBoxEx.Show(message, title, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
             MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, ((char)Symbol.Admin).ToString());
             MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, SegoeIcons.Airplane);
             MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, SegoeIcons.Airplane, MessageBoxResult.OK);

@@ -216,6 +216,9 @@
                                 </VisualState>
                                 <VisualState x:Name="YesNoVisible">
                                     <Storyboard>
+                                        <Int32AnimationUsingKeyFrames Storyboard.TargetName="NoButton" Storyboard.TargetProperty="(Grid.Column)">
+                                            <DiscreteInt32KeyFrame KeyTime="0:0:0" Value="4" />
+                                        </Int32AnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OKButton" Storyboard.TargetProperty="Visibility">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}" />
                                         </ObjectAnimationUsingKeyFrames>
@@ -231,6 +234,9 @@
                                 </ui:VisualStateGroupListener.Listener>
                                 <VisualState x:Name="OKAsDefaultButton" />
                                 <VisualState x:Name="YesAsDefaultButton" />
+                                <VisualState x:Name="NoAsDefaultButton" />
+                                <VisualState x:Name="CancelAsDefaultButton" />
+                                <VisualState x:Name="NoneAsDefaultButton" />
                             </VisualStateGroup>
                             <VisualStateGroup x:Name="TitleVisibleStates">
                                 <VisualState x:Name="TitleVisible">
@@ -268,6 +274,14 @@
                         <!--  YesAsDefaultButton  -->
                         <Trigger SourceName="DefaultButtonStatesListener" Property="CurrentStateName" Value="YesAsDefaultButton">
                             <Setter TargetName="YesButton" Property="Style" Value="{DynamicResource AccentButtonStyle}" />
+                        </Trigger>
+                        <!--  YesAsDefaultButton  -->
+                        <Trigger SourceName="DefaultButtonStatesListener" Property="CurrentStateName" Value="NoAsDefaultButton">
+                            <Setter TargetName="NoButton" Property="Style" Value="{DynamicResource AccentButtonStyle}" />
+                        </Trigger>
+                        <!--  YesAsDefaultButton  -->
+                        <Trigger SourceName="DefaultButtonStatesListener" Property="CurrentStateName" Value="CancelAsDefaultButton">
+                            <Setter TargetName="CancelButton" Property="Style" Value="{DynamicResource AccentButtonStyle}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -18,7 +18,13 @@ namespace iNKORE.UI.WPF.Modern.Controls
 {
     public partial class MessageBox : Window
     {
-        public MessageBoxResult Result;
+        private MessageBoxResult? _result;
+        public MessageBoxResult Result
+        {
+            get { return _result ?? MessageBoxResult.None; }
+        }
+
+
 
         private Button OKButton { get; set; }
         private Button YesButton { get; set; }
@@ -404,16 +410,16 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         #region DefaultResult
 
-        public MessageBoxResult DefaultResult
+        public MessageBoxResult? DefaultResult
         {
-            get => (MessageBoxResult)GetValue(DefaultResultProperty);
+            get => (MessageBoxResult?)GetValue(DefaultResultProperty);
             set => SetValue(DefaultResultProperty, value);
         }
 
         public static readonly DependencyProperty DefaultResultProperty =
             DependencyProperty.Register(
                 nameof(DefaultResult),
-                typeof(MessageBoxResult),
+                typeof(MessageBoxResult?),
                 typeof(MessageBox));
 
         #endregion
@@ -653,23 +659,47 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             VisualStateManager.GoToState(this, stateName, true);
 
-            switch (button)
+            if(_result == null)
             {
-                case MessageBoxButton.OK:
-                    stateName = OKAsDefaultButtonState;
-                    break;
-                case MessageBoxButton.OKCancel:
-                    stateName = OKAsDefaultButtonState;
-                    break;
-                case MessageBoxButton.YesNoCancel:
-                    stateName = YesAsDefaultButtonState;
-                    break;
-                case MessageBoxButton.YesNo:
-                    stateName = YesAsDefaultButtonState;
-                    break;
-                default:
-                    stateName = OKAsDefaultButtonState;
-                    break;
+                switch (button)
+                {
+                    case MessageBoxButton.OK:
+                        stateName = OKAsDefaultButtonState;
+                        break;
+                    case MessageBoxButton.OKCancel:
+                        stateName = OKAsDefaultButtonState;
+                        break;
+                    case MessageBoxButton.YesNoCancel:
+                        stateName = YesAsDefaultButtonState;
+                        break;
+                    case MessageBoxButton.YesNo:
+                        stateName = YesAsDefaultButtonState;
+                        break;
+                    default:
+                        stateName = OKAsDefaultButtonState;
+                        break;
+                }
+            }
+            else
+            {
+                switch (_result.Value)
+                {
+                    case MessageBoxResult.OK:
+                        stateName = OKAsDefaultButtonState;
+                        break;
+                    case MessageBoxResult.Cancel:
+                        stateName = CancelAsDefaultButtonState;
+                        break;
+                    case MessageBoxResult.Yes:
+                        stateName = YesAsDefaultButtonState;
+                        break;
+                    case MessageBoxResult.No:
+                        stateName = NoAsDefaultButtonState;
+                        break;
+                    default:
+                        stateName = NoneAsDefaultButtonState;
+                        break;
+                }
             }
 
             VisualStateManager.GoToState(this, stateName, true);
@@ -696,7 +726,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 {
                     if (!args.Cancel)
                     {
-                        Result = result;
+                        _result = result;
                         Close();
                         Closed?.Invoke(this, new MessageBoxClosedEventArgs(result));
                     }
@@ -710,7 +740,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
             else
             {
-                Result = result;
+                _result = result;
                 Close();
                 Closed?.Invoke(this, new MessageBoxClosedEventArgs(result));
             }
@@ -759,6 +789,9 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private const string OKAsDefaultButtonState = "OKAsDefaultButton";
         private const string YesAsDefaultButtonState = "YesAsDefaultButton";
+        private const string CancelAsDefaultButtonState = "CancelAsDefaultButton";
+        private const string NoAsDefaultButtonState = "NoAsDefaultButton";
+        private const string NoneAsDefaultButtonState = "NoneAsDefaultButton";
 
         private const string IconVisibleState = "IconVisible";
         private const string IconCollapsedState = "IconCollapsed";

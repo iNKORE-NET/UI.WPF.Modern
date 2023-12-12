@@ -28,7 +28,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers
                         }
                     }
 
-                    if (!freezable.IsFrozen)
+                    if (!freezable.IsFrozen && freezable.CanFreeze)
                     {
                         freezable.Freeze();
                     }
