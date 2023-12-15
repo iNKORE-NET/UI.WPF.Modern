@@ -1,7 +1,7 @@
 
 <p align="center">
   <a target="_blank" rel="noopener noreferrer">
-    <img width="128" src="https://github.com/iNKOREStudios/.github/blob/main/assets/iNKORE_Badge.png?raw=true" alt="iNKORE Logo">
+    <img width="128" src="[https://raw.githubusercontent.com/InkoreStudios/.github/main/assets/Inkore_Badge.png]()" alt="iNKORE Logo">
   </a>
 </p>
 
