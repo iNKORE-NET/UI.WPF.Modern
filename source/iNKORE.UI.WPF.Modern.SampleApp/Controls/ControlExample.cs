@@ -167,9 +167,9 @@ namespace iNKORE.UI.WPF.Modern.SampleApp
         }
 
         public static readonly DependencyProperty XamlSourceProperty = DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
-        public Uri XamlSource
+        public object XamlSource
         {
-            get { return (Uri)GetValue(XamlSourceProperty); }
+            get { return (object)GetValue(XamlSourceProperty); }
             set { SetValue(XamlSourceProperty, value); }
         }
 
@@ -181,9 +181,9 @@ namespace iNKORE.UI.WPF.Modern.SampleApp
         }
 
         public static readonly DependencyProperty CSharpSourceProperty = DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
-        public Uri CSharpSource
+        public string CSharpSource
         {
-            get { return (Uri)GetValue(CSharpSourceProperty); }
+            get { return GetValue(CSharpSourceProperty) as string; }
             set { SetValue(CSharpSourceProperty, value); }
         }
 
@@ -446,7 +446,7 @@ namespace iNKORE.UI.WPF.Modern.SampleApp
             if (XamlSource != null)
             {
                 // Most of them don't have this, but the xaml source name is a really good file name
-                string xamlSource = XamlSource.LocalPath;
+                string xamlSource = XamlSource.ToString();
                 string fileName = Path.GetFileNameWithoutExtension(xamlSource);
                 if (!String.IsNullOrWhiteSpace(fileName))
                 {

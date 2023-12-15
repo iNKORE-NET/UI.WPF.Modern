@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800"
         ResizeMode="CanMinimize"
         ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
-     ui:TitleBar.ExtendViewIntoTitleBar="False"   
+     ui:TitleBar.ExtendViewIntoTitleBar="False" ui:WindowHelper.SystemBackdropType="Acrylic"
      ui:WindowHelper.UseModernWindowStyle="True"
      ui:TitleBar.IsBackButtonVisible="False" ui:ThemeManager.RequestedTheme="Light"
         ui:WindowHelper.CornerStyle="DoNotRound" Background="{x:Null}" Loaded="Window_Loaded">

@@ -81,15 +81,26 @@ namespace WpfApp1
             string title = "Some title";
             string message = "This is a looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong test text!";
 
-            System.Windows.MessageBox.Show(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-            System.Windows.MessageBox.Show("adawdawda", title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            //System.Windows.MessageBox.Show(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            //System.Windows.MessageBox.Show("adawdawda", title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             MessageBoxEx.Show("This is a test text!", "Some title", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             MessageBoxEx.Show("aaa");
+
+            MessageBoxEx.DefaultBackdropType = BackdropType.Acrylic;
+
             MessageBoxEx.Show(message, title, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
             MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, ((char)Symbol.Admin).ToString());
             MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, SegoeIcons.Airplane);
+
+            MessageBoxEx.DefaultBackdropType = BackdropType.Mica;
+
+
             MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, SegoeIcons.Airplane, MessageBoxResult.OK);
             MessageBoxEx.ShowAsync(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question).GetAwaiter().GetResult();
+
+            MessageBoxEx.DefaultBackdropType = BackdropType.Tabbed;
+
+
             MessageBoxEx.ShowAsync(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Hand, MessageBoxResult.Cancel).GetAwaiter().GetResult();
             MessageBoxEx.EnableLocalization = false;
             MessageBoxEx.ShowAsync("Press Alt and you should see underscores!", null, MessageBoxButton.YesNoCancel, MessageBoxImage.Hand).GetAwaiter().GetResult();
@@ -97,17 +108,17 @@ namespace WpfApp1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            WindowChrome.SetWindowChrome(this, new WindowChrome()
-            {
-                GlassFrameThickness = new Thickness(0, 1, 0, 0),
-                UseAeroCaptionButtons = false,
-                CornerRadius = new CornerRadius(0),
-                ResizeBorderThickness = new Thickness(4),
-                NonClientFrameEdges = NonClientFrameEdges.None,
-                CaptionHeight = 36d,
-            });
-             bool b = AcrylicHelper.Apply(this, true);
-            System.Windows.MessageBox.Show(b.ToString());
+            //WindowChrome.SetWindowChrome(this, new WindowChrome()
+            //{
+            //    GlassFrameThickness = new Thickness(0, 1, 0, 0),
+            //    UseAeroCaptionButtons = false,
+            //    CornerRadius = new CornerRadius(0),
+            //    ResizeBorderThickness = new Thickness(4),
+            //    NonClientFrameEdges = NonClientFrameEdges.None,
+            //    CaptionHeight = 36d,
+            //});
+            // bool b = AcrylicHelper.Apply(this, true);
+            //System.Windows.MessageBox.Show(b.ToString());
         }
     }
 }

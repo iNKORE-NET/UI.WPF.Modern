@@ -11,7 +11,7 @@
 
     <Style TargetType="local:MessageBox">
         <Setter Property="Foreground" Value="{DynamicResource ContentDialogForeground}" />
-        <Setter Property="Background" Value="{DynamicResource ContentDialogBackground}" />
+        <!--<Setter Property="Background" Value="{DynamicResource ContentDialogBackground}" />-->
         <Setter Property="BorderThickness" Value="{DynamicResource ContentDialogBorderWidth}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ContentDialogBorderBrush}" />
         <!--<Setter Property="BorderBrush" Value="Transparent" />-->
@@ -63,9 +63,9 @@
                                             HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                             IsTabStop="False"
                                             VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-                                            <Border
+                                            <Border x:Name="Border_UpperBackground"
                                                 Padding="{DynamicResource ContentDialogPadding}"
-                                                Background="{DynamicResource ContentDialogTopOverlay}"
+                                                Background="{DynamicResource LayerOnAcrylicFillColorDefaultBrush}"
                                                 BorderBrush="{DynamicResource ContentDialogSeparatorBorderBrush}"
                                                 BorderThickness="{DynamicResource ContentDialogSeparatorThickness}">
                                                 <Grid>
@@ -283,10 +283,23 @@
                         <Trigger SourceName="DefaultButtonStatesListener" Property="CurrentStateName" Value="CancelAsDefaultButton">
                             <Setter TargetName="CancelButton" Property="Style" Value="{DynamicResource AccentButtonStyle}" />
                         </Trigger>
+
+                        <Trigger Property="ui:WindowHelper.SystemBackdropType" Value="None">
+                            <Setter TargetName="Border_UpperBackground" Property="Background" Value="{DynamicResource ContentDialogTopOverlay}"/>
+                        </Trigger>
+                        
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <!--<Trigger Property="ui:WindowHelper.SystemBackdropType" Value="Acrylic">
+                <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource AcrylicWindowChrome}"/>
+            </Trigger>-->
+            <Trigger Property="ui:WindowHelper.SystemBackdropType" Value="None">
+                <Setter Property="Background" Value="{DynamicResource ContentDialogBackground}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>
