@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Shell;
 using MessageBoxEx = iNKORE.UI.WPF.Modern.Controls.MessageBox;
 
 namespace WpfApp1
@@ -92,6 +93,21 @@ namespace WpfApp1
             MessageBoxEx.ShowAsync(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Hand, MessageBoxResult.Cancel).GetAwaiter().GetResult();
             MessageBoxEx.EnableLocalization = false;
             MessageBoxEx.ShowAsync("Press Alt and you should see underscores!", null, MessageBoxButton.YesNoCancel, MessageBoxImage.Hand).GetAwaiter().GetResult();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            WindowChrome.SetWindowChrome(this, new WindowChrome()
+            {
+                GlassFrameThickness = new Thickness(0, 1, 0, 0),
+                UseAeroCaptionButtons = false,
+                CornerRadius = new CornerRadius(0),
+                ResizeBorderThickness = new Thickness(4),
+                NonClientFrameEdges = NonClientFrameEdges.None,
+                CaptionHeight = 36d,
+            });
+             bool b = AcrylicHelper.Apply(this, true);
+            System.Windows.MessageBox.Show(b.ToString());
         }
     }
 }

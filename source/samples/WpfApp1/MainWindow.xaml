@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:WpfApp1" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        ResizeMode="CanMinimize" ui:WindowHelper.SystemBackdropType="Mica"
+        ResizeMode="CanMinimize"
         ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
      ui:TitleBar.ExtendViewIntoTitleBar="False"   
      ui:WindowHelper.UseModernWindowStyle="True"
      ui:TitleBar.IsBackButtonVisible="False" ui:ThemeManager.RequestedTheme="Light"
-        ui:WindowHelper.CornerStyle="DoNotRound">
+        ui:WindowHelper.CornerStyle="DoNotRound" Background="{x:Null}" Loaded="Window_Loaded">
     <Canvas>
         <ComboBox SelectionChanged="ComboBox_SelectionChanged" Height="35" IsEditable="True">
             <ComboBoxItem Content="Item1"/>
@@ -145,5 +145,7 @@
         <RichTextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="539,110,0,0" Height="86"/>
         <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="622,127,0,0" Height="200"/>
         <Button x:Name="Button_MessageBox" Content="MessageBox" Click="Button_MessageBox_Click" Canvas.Left="152" Canvas.Top="145" VerticalAlignment="Top"/>
+
+        <TextBox Width="200" Canvas.Left="89" Canvas.Top="300" ui:TextBoxHelper.IsDeleteButtonVisible="False"/>
     </Canvas>
 </Window>
