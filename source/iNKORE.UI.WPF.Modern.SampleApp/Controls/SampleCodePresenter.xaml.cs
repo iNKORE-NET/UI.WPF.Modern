@@ -33,9 +33,21 @@ namespace iNKORE.UI.WPF.Modern.SampleApp.Controls
         }
 
         public static readonly DependencyProperty CodeSourceFileProperty = DependencyProperty.Register("CodeSourceFile", typeof(object), typeof(SampleCodePresenter), new PropertyMetadata(null, OnCodeSourceFilePropertyChanged));
-        public Uri CodeSourceFile
+        public string CodeSourceFile
         {
-            get { return (Uri)GetValue(CodeSourceFileProperty); }
+            get 
+            {
+                var value = GetValue(CodeSourceFileProperty);
+
+                if(value is Uri uri)
+                {
+                    return uri.OriginalString;
+                }
+                else
+                {
+                    return value?.ToString();
+                }
+            }
             set { SetValue(CodeSourceFileProperty, value); }
         }
 
@@ -134,11 +146,11 @@ namespace iNKORE.UI.WPF.Modern.SampleApp.Controls
             GenerateSyntaxHighlightedContent();
         }
 
-        private Uri GetDerivedSource(Uri rawSource)
+        private Uri GetDerivedSource(string rawSource)
         {
             Uri derivedSource;
             // Get the full path of the source string
-            string concatString = rawSource.OriginalString;
+            string concatString = rawSource;
 
             if (concatString.StartsWith("/"))
             {
@@ -164,9 +176,9 @@ namespace iNKORE.UI.WPF.Modern.SampleApp.Controls
             }
         }
 
-        private async void FormatAndRenderSampleFromFile(Uri source, ContentPresenter presenter, ILanguage highlightLanguage)
+        private async void FormatAndRenderSampleFromFile(string source, ContentPresenter presenter, ILanguage highlightLanguage)
         {
-            if (source != null && source.OriginalString.EndsWith("txt"))
+            if (source != null && source.EndsWith("txt"))
             {
                 Uri derivedSource = GetDerivedSource(source);
                 var file = Application.GetResourceStream(derivedSource);

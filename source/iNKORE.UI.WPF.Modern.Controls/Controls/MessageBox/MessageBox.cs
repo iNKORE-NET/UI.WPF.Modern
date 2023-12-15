@@ -1,4 +1,5 @@
 ﻿using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using iNKORE.UI.WPF.Modern.Helpers.Styles;
 using System;
@@ -31,6 +32,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
         private Button NoButton { get; set; }
         private Button CancelButton { get; set; }
 
+        public static BackdropType DefaultBackdropType { get; set; } = BackdropType.None;
+
         static MessageBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MessageBox), new FrameworkPropertyMetadata(typeof(MessageBox)));
@@ -41,6 +44,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             SetValue(TemplateSettingsPropertyKey, new MessageBoxTemplateSettings());
             var handler = new RoutedEventHandler((sender, e) => ApplyDarkMode());
             ThemeManager.AddActualThemeChangedHandler(this, handler);
+            WindowHelper.SetSystemBackdropType(this, DefaultBackdropType);
             Loaded += On_Loaded;
         }
 

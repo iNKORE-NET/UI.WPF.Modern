@@ -55,11 +55,11 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 
             if (window.Background is SolidColorBrush brush)
             {
-                Apply(windowHandle, brush.Color);
+                Apply(windowHandle, brush.Color, force);
             }
             else
             {
-                Apply(windowHandle, Colors.Transparent);
+                Apply(windowHandle, Colors.Transparent, force);
             }
 
             return true;
@@ -73,11 +73,25 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
         /// <param name="force">Skip the compatibility check.</param>
         public static bool Apply(IntPtr handle, Color color, bool force = false)
         {
-            if (!force && !IsSupported()) { return false; }
+            if (!force && !IsSupported()) 
+            { 
+                return false; 
+            }
 
-            if (handle == IntPtr.Zero) { return false; }
+            if (handle == IntPtr.Zero) 
+            { 
+                return false; 
+            }
 
-            return IsAcrylicSupported() ? TryApplyAcrylic(handle, color) : TryApplyAero(handle);
+            if (IsAcrylicSupported())
+            {
+                return TryApplyAcrylic(handle, color);
+            }
+            else
+            {
+                return TryApplyAero(handle);
+            }
+
         }
 
         /// <summary>
@@ -123,7 +137,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
             Marshal.FreeHGlobal(accentPtr);
         }
 
-        private static bool TryApplyAero(IntPtr handle)
+        public static bool TryApplyAero(IntPtr handle)
         {
             ACCENT_POLICY accentPolicy = new ACCENT_POLICY
             {
@@ -149,7 +163,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
             return true;
         }
 
-        private static bool TryApplyAcrylic(IntPtr handle, Color backcolor)
+        public static bool TryApplyAcrylic(IntPtr handle, Color backcolor)
         {
             ACCENT_POLICY accentPolicy = new ACCENT_POLICY
             {
