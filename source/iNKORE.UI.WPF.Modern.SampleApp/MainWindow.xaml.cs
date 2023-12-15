@@ -1,6 +1,7 @@
 ﻿using iNKORE.UI.WPF.Modern.Controls;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
-using iNKORE.UI.WPF.Modern.Helpers.Backdrop;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
+using iNKORE.UI.WPF.Modern.Helpers.Styles;
 using iNKORE.UI.WPF.Modern.SampleApp.Common;
 using iNKORE.UI.WPF.Modern.SampleApp.DataModel;
 using iNKORE.UI.WPF.Modern.SampleApp.Helper;
