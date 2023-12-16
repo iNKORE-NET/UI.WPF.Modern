@@ -83,6 +83,10 @@ namespace WpfApp1
 
             //System.Windows.MessageBox.Show(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             //System.Windows.MessageBox.Show("adawdawda", title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+
+
+            MessageBoxEx.DefaultBackdropType = BackdropType.None;
+
             MessageBoxEx.Show("This is a test text!", "Some title", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             MessageBoxEx.Show("aaa");
 

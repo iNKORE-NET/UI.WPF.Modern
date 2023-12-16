@@ -44,7 +44,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             SetValue(TemplateSettingsPropertyKey, new MessageBoxTemplateSettings());
             var handler = new RoutedEventHandler((sender, e) => ApplyDarkMode());
             ThemeManager.AddActualThemeChangedHandler(this, handler);
-            WindowHelper.SetSystemBackdropType(this, DefaultBackdropType);
+
             Loaded += On_Loaded;
         }
 
@@ -755,6 +755,11 @@ namespace iNKORE.UI.WPF.Modern.Controls
             ApplyDarkMode();
             this.RemoveTitleBar();
             Opened?.Invoke(this, new MessageBoxOpenedEventArgs());
+
+            if (DefaultBackdropType == BackdropType.None || MicaHelper.IsSupported(DefaultBackdropType))
+            {
+                WindowHelper.SetSystemBackdropType(this, DefaultBackdropType);
+            }
         }
 
         private static void TryExecuteCommand(ICommand command, object parameter)

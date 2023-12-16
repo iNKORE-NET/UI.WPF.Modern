@@ -12,7 +12,7 @@ namespace iNKORE.UI.WPF.Modern.Extensions
                 MessageBoxImage.Error => SegoeIcons.Error,
                 MessageBoxImage.Information => SegoeIcons.Info,
                 MessageBoxImage.Warning => SegoeIcons.Warning,
-                MessageBoxImage.Question => SegoeIcons.StatusCircleQuestionMark,
+                MessageBoxImage.Question => SegoeIcons.Unknown,
                 MessageBoxImage.None => char.Parse("0x2007").ToString(),
                 _ => throw new NotSupportedException(),
             };
