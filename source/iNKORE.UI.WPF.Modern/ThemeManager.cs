@@ -21,6 +21,15 @@ namespace iNKORE.UI.WPF.Modern
 
         public const string XmlNamespace = "http://schemas.inkore.net/lib/ui/wpf/modern";
 
+        public static string AssemblyVersion
+        {
+            get
+            {
+                Version version = System.Reflection.Assembly.GetAssembly(typeof(ThemeManager)).GetName().Version;
+                return string.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build);
+            }
+        }
+
         private static readonly Binding _highContrastBinding = new Binding("(SystemParameters.HighContrast)");
         private static readonly RoutedEventArgs _actualThemeChangedEventArgs;
 

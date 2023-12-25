@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern", "sou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern.Controls", "source\Inkore.UI.WPF.Modern.Controls\iNKORE.UI.WPF.Modern.Controls.csproj", "{FE80560D-40A3-4469-AC0A-C725B583CAA7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern.SampleApp", "source\Inkore.UI.WPF.Modern.SampleApp\iNKORE.UI.WPF.Modern.SampleApp.csproj", "{54049F5E-E57B-433E-B316-3C51F25B523D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern.Gallery", "source\Inkore.UI.WPF.Modern.Gallery\iNKORE.UI.WPF.Modern.Gallery.csproj", "{54049F5E-E57B-433E-B316-3C51F25B523D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp1", "source\samples\WpfApp1\WpfApp1.csproj", "{DBB698F7-FB37-4514-82C2-DA3C71A4B92F}"
 EndProject

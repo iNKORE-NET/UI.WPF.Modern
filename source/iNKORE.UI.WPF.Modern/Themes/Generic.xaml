@@ -9,6 +9,7 @@
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/AnimatedVisualSource.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/Frame.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/Page.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/ThumbEx.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/FontIconFallback.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/ListViewHeaderItem.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/TextContextMenu.xaml" />

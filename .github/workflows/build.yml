@@ -24,7 +24,7 @@ jobs:
         continue-on-error: true
         run: |
           dotnet build .\source\iNKORE.UI.WPF.Modern
-          dotnet build .\source\iNKORE.UI.WPF.Modern.SampleApp
+          dotnet build .\source\iNKORE.UI.WPF.Modern.Gallery
         # dotnet pack .\source\iNKORE.UI.WPF.Modern.Controls --configuration Release -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
 
       - name: Upload binary libraries of iNKORE.UI.WPF.Modern.Controls
@@ -36,5 +36,5 @@ jobs:
       - name: Upload sample apps
         uses: actions/upload-artifact@v3
         with:
-          name: iNKORE.UI.WPF.Modern.SampleApp files
-          path: .\source\iNKORE.UI.WPF.Modern.SampleApp\bin\Debug
+          name: iNKORE.UI.WPF.Modern.Gallery files
+          path: .\source\iNKORE.UI.WPF.Modern.Gallery\bin\Debug

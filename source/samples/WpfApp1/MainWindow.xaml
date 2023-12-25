@@ -147,5 +147,9 @@
         <Button x:Name="Button_MessageBox" Content="MessageBox" Click="Button_MessageBox_Click" Canvas.Left="152" Canvas.Top="145" VerticalAlignment="Top"/>
 
         <TextBox Width="200" Canvas.Left="89" Canvas.Top="300" ui:TextBoxHelper.IsDeleteButtonVisible="False"/>
+
+        <ui:ThumbEx Canvas.Left="390" Canvas.Top="256" Height="43" Width="67" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <TextBlock Text="Hello"/>
+        </ui:ThumbEx>
     </Canvas>
 </Window>
