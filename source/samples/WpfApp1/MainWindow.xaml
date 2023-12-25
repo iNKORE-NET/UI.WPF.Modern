@@ -11,7 +11,7 @@
      ui:TitleBar.ExtendViewIntoTitleBar="False" ui:WindowHelper.SystemBackdropType="Acrylic"
      ui:WindowHelper.UseModernWindowStyle="True"
      ui:TitleBar.IsBackButtonVisible="False" ui:ThemeManager.RequestedTheme="Light"
-        ui:WindowHelper.CornerStyle="DoNotRound" Background="{x:Null}" Loaded="Window_Loaded">
+        ui:WindowHelper.CornerStyle="DoNotRound" Background="Red" Loaded="Window_Loaded">
     <Canvas>
         <ComboBox SelectionChanged="ComboBox_SelectionChanged" Height="35" IsEditable="True">
             <ComboBoxItem Content="Item1"/>

@@ -22,7 +22,7 @@ using Windows.UI.ViewManagement;
 
 namespace iNKORE.UI.WPF.Modern.Helpers
 {
-    internal class ColorsHelper : DispatcherObject
+    public class ColorsHelper : DispatcherObject
     {
         private const string AccentKey = "SystemAccentColor";
         private const string AccentDark1Key = "SystemAccentColorDark1";

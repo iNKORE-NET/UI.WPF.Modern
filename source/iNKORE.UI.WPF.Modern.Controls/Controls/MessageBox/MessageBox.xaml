@@ -284,9 +284,9 @@
                             <Setter TargetName="CancelButton" Property="Style" Value="{DynamicResource AccentButtonStyle}" />
                         </Trigger>
 
-                        <Trigger Property="ui:WindowHelper.SystemBackdropType" Value="None">
+                        <!--<Trigger Property="ui:WindowHelper.SystemBackdropType" Value="None">
                             <Setter TargetName="Border_UpperBackground" Property="Background" Value="{DynamicResource ContentDialogTopOverlay}"/>
-                        </Trigger>
+                        </Trigger>-->
                         
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -296,9 +296,9 @@
             <!--<Trigger Property="ui:WindowHelper.SystemBackdropType" Value="Acrylic">
                 <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource AcrylicWindowChrome}"/>
             </Trigger>-->
-            <Trigger Property="ui:WindowHelper.SystemBackdropType" Value="None">
+            <!--<Trigger Property="ui:WindowHelper.SystemBackdropType" Value="None">
                 <Setter Property="Background" Value="{DynamicResource ContentDialogBackground}"/>
-            </Trigger>
+            </Trigger>-->
         </Style.Triggers>
     </Style>
 

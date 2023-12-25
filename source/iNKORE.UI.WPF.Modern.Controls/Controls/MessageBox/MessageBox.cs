@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Media;
 using static iNKORE.UI.WPF.Modern.Controls.LocalizedDialogCommands;
 
 namespace iNKORE.UI.WPF.Modern.Controls
@@ -27,10 +28,11 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
 
 
-        private Button OKButton { get; set; }
-        private Button YesButton { get; set; }
-        private Button NoButton { get; set; }
-        private Button CancelButton { get; set; }
+        public Button OKButton { get; private set; }
+        public Button YesButton { get; private set; }
+        public Button NoButton { get; private set; }
+        public Button CancelButton { get; private set; }
+        public Border Border_UpperBackground { get; private set; }
 
         public static BackdropType DefaultBackdropType { get; set; } = BackdropType.None;
 
@@ -39,6 +41,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MessageBox), new FrameworkPropertyMetadata(typeof(MessageBox)));
         }
 
+        public static readonly DependencyPropertyDescriptor SystemBackdropTypeProperty_Descriptor = DependencyPropertyDescriptor.FromProperty(WindowHelper.SystemBackdropTypeProperty, typeof(MessageBox));
+
         public MessageBox()
         {
             SetValue(TemplateSettingsPropertyKey, new MessageBoxTemplateSettings());
@@ -46,6 +50,27 @@ namespace iNKORE.UI.WPF.Modern.Controls
             ThemeManager.AddActualThemeChangedHandler(this, handler);
 
             Loaded += On_Loaded;
+
+            SystemBackdropTypeProperty_Descriptor.AddValueChanged(this, SystemBackdropTypeProperty_ValueChanged);
+        }
+
+        private void SystemBackdropTypeProperty_ValueChanged(object sender, EventArgs e)
+        {
+            var backdrop = WindowHelper.GetSystemBackdropType(this);
+
+            if(this.ReadLocalValue(BackgroundProperty) == DependencyProperty.UnsetValue)
+            {
+                if (backdrop == BackdropType.None || !backdrop.IsSupported())
+                {
+                    this.SetResourceReference(BackgroundProperty, ThemeKeys.ContentDialogBackgroundKey);
+                    Border_UpperBackground?.SetResourceReference(BackgroundProperty, ThemeKeys.ContentDialogTopOverlayKey);
+                }
+                else
+                {
+                    this.Background = Brushes.Transparent;
+                    Border_UpperBackground?.SetResourceReference(BackgroundProperty, ThemeKeys.LayerOnAcrylicFillColorDefaultBrushKey);
+                }
+            }
         }
 
         #region Caption
@@ -449,9 +474,9 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         public event TypedEventHandler<MessageBox, MessageBoxOpenedEventArgs> Opened;
 
-        public event TypedEventHandler<MessageBox, MessageBoxClosingEventArgs> Closing;
+        public new event TypedEventHandler<MessageBox, MessageBoxClosingEventArgs> Closing;
 
-        public event TypedEventHandler<MessageBox, MessageBoxClosedEventArgs> Closed;
+        public new event TypedEventHandler<MessageBox, MessageBoxClosedEventArgs> Closed;
 
         public event TypedEventHandler<MessageBox, MessageBoxButtonClickEventArgs> OKButtonClick;
 
@@ -507,6 +532,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             YesButton = GetTemplateChild(nameof(YesButton)) as Button;
             NoButton = GetTemplateChild(nameof(NoButton)) as Button;
             CancelButton = GetTemplateChild(nameof(CancelButton)) as Button;
+            Border_UpperBackground = GetTemplateChild(nameof(Border_UpperBackground)) as Border;
 
             if (OKButton != null)
             {
@@ -760,6 +786,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 WindowHelper.SetSystemBackdropType(this, DefaultBackdropType);
             }
+
+            SystemBackdropTypeProperty_ValueChanged(sender, e);
         }
 
         private static void TryExecuteCommand(ICommand command, object parameter)
