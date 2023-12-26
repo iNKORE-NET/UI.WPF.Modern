@@ -10,7 +10,7 @@
         ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
      ui:TitleBar.ExtendViewIntoTitleBar="False" ui:WindowHelper.SystemBackdropType="Acrylic"
      ui:WindowHelper.UseModernWindowStyle="True"
-     ui:TitleBar.IsBackButtonVisible="False" ui:ThemeManager.RequestedTheme="Light"
+     ui:TitleBar.IsBackButtonVisible="False"
         ui:WindowHelper.CornerStyle="DoNotRound" Background="Red" Loaded="Window_Loaded">
     <Canvas>
         <ComboBox SelectionChanged="ComboBox_SelectionChanged" Height="35" IsEditable="True">

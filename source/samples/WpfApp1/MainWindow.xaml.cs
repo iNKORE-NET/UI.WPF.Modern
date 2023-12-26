@@ -81,8 +81,8 @@ namespace WpfApp1
             string title = "Some title";
             string message = "This is a looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong test text!";
 
-            //System.Windows.MessageBox.Show(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-            //System.Windows.MessageBox.Show("adawdawda", title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            System.Windows.MessageBox.Show(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            System.Windows.MessageBox.Show("adawdawda", title, MessageBoxButton.YesNoCancel, MessageBoxImage.Error);
 
 
             MessageBoxEx.DefaultBackdropType = BackdropType.None;
@@ -99,7 +99,7 @@ namespace WpfApp1
             MessageBoxEx.DefaultBackdropType = BackdropType.Mica;
 
 
-            MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, SegoeIcons.Airplane, MessageBoxResult.OK);
+            MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.OK);
             MessageBoxEx.ShowAsync(message, title, MessageBoxButton.YesNoCancel, MessageBoxImage.Question).GetAwaiter().GetResult();
 
             MessageBoxEx.DefaultBackdropType = BackdropType.Tabbed;

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Media;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         public static BackdropType DefaultBackdropType { get; set; } = BackdropType.None;
 
+        public static bool MakeSound { get; set; } = true;
+
         static MessageBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MessageBox), new FrameworkPropertyMetadata(typeof(MessageBox)));
@@ -52,6 +55,22 @@ namespace iNKORE.UI.WPF.Modern.Controls
             Loaded += On_Loaded;
 
             SystemBackdropTypeProperty_Descriptor.AddValueChanged(this, SystemBackdropTypeProperty_ValueChanged);
+            ThemeManager.AddActualThemeChangedHandler(this, ThemeManager_AddActualThemeChanged);
+        }
+
+        private void ThemeManager_AddActualThemeChanged(object sender, RoutedEventArgs e)
+        {
+            if(WindowHelper.GetSystemBackdropType(this) != BackdropType.None)
+            {
+                if(ThemeManager.GetActualTheme(this) == ElementTheme.Dark)
+                {
+                    MicaHelper.ApplyDarkMode(this);
+                }
+                else
+                {
+                    MicaHelper.RemoveDarkMode(this);
+                }
+            }
         }
 
         private void SystemBackdropTypeProperty_ValueChanged(object sender, EventArgs e)
@@ -72,6 +91,23 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 }
             }
         }
+
+        #region SystemSoundOnLoaded
+
+        public static readonly DependencyProperty SystemSoundOnLoadedProperty =
+            DependencyProperty.Register(
+                nameof(SystemSoundOnLoaded),
+                typeof(SystemSound),
+                typeof(MessageBox));
+
+        public SystemSound SystemSoundOnLoaded
+        {
+            get => (SystemSound)GetValue(SystemSoundOnLoadedProperty);
+            set => SetValue(SystemSoundOnLoadedProperty, value);
+        }
+
+        #endregion
+
 
         #region Caption
 
@@ -787,7 +823,10 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 WindowHelper.SetSystemBackdropType(this, DefaultBackdropType);
             }
 
+            ThemeManager_AddActualThemeChanged(sender, e);
             SystemBackdropTypeProperty_ValueChanged(sender, e);
+
+            SystemSoundOnLoaded?.Play();
         }
 
         private static void TryExecuteCommand(ICommand command, object parameter)
