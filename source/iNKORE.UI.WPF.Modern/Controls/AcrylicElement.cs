@@ -6,20 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
-
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using System.Windows.Media;
-在此之后:
-using System.Windows.Media;
-using iNKORE;
-using iNKORE.UI;
-using iNKORE.UI.WPF;
-using iNKORE.UI.WPF.Modern;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls.Acrylic;
-*/
 using System.Windows.Media;
 
 namespace iNKORE.UI.WPF.Modern.Controls

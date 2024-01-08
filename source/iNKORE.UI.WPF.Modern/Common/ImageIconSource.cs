@@ -1,13 +1,4 @@
-﻿
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using System;
-在此之后:
-using iNKORE.UI.WPF.Modern.Controls.IconElement;
-using iNKORE.UI.WPF.Modern.Controls.IconElement.IconElement;
-using System;
-*/
-using iNKORE.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Controls;
 using System;
 using System.Windows;
 using System.Windows.Controls;

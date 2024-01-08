@@ -1,12 +1,5 @@
-﻿
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using System;
-在此之后:
-using iNKORE.UI.WPF.Modern.Controls.TitleBar;
-using System;
-*/
-using iNKORE.UI.WPF.Modern.Common;
+﻿using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Modern.Native;
 using System;
@@ -21,19 +14,11 @@ using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 using static iNKORE.UI.WPF.Modern.Native.User32;
-//using Windows.Win32;
 
 namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 {
     /// <summary>
-
-    /* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-    在此之前:
-        /// Brings the Snap Layout functionality from Windows 11 to a custom <see cref="Controls.TitleBar"/>.
-    在此之后:
-        /// Brings the Snap Layout functionality from Windows 11 to a custom <see cref="TitleBar.TitleBar"/>.
-    */
-    /// Brings the Snap Layout functionality from Windows 11 to a custom <see cref="TitleBar.TitleBar.TitleBar"/>.
+    /// Brings the Snap Layout functionality from Windows 11 to a custom <see cref="TitleBar"/>.
     /// </summary>
     public class SnapLayout
     {

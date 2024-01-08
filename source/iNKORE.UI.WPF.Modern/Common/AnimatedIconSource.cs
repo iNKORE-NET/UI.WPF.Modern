@@ -1,18 +1,8 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using System.Windows;
-在此之后:
-using iNKORE.UI.WPF.Modern.Controls.IconElement;
-using iNKORE.UI.WPF.Modern.Controls.IconElement.IconElement;
-using System.Windows;
-*/
 using iNKORE.UI.WPF.Modern.Controls;
 using System.Windows;
-using System.Windows.Media;
 
 namespace iNKORE.UI.WPF.Modern.Common
 {

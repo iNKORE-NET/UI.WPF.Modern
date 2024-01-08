@@ -1,20 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media;
-
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using System.Windows.Navigation;
-在此之后:
-using System.Windows.Navigation;
-using iNKORE;
-using iNKORE.UI;
-using iNKORE.UI.WPF;
-using iNKORE.UI.WPF.Modern;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls.Navigation;
-*/
 using System.Windows.Navigation;
 
 namespace iNKORE.UI.WPF.Modern.Controls

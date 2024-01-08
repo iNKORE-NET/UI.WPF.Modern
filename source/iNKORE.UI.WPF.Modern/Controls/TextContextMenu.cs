@@ -1,19 +1,4 @@
-﻿
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using iNKORE.UI.WPF.Modern.Controls.Primitives;
-using System.Linq;
-在此之后:
-using iNKORE;
-using iNKORE.UI;
-using iNKORE.UI.WPF;
-using iNKORE.UI.WPF.Modern;
-using iNKORE.UI.WPF.Modern.Controls.Primitives;
-using iNKORE.UI.WPF.Modern.Controls.TextContextMenu;
-using iNKORE.UI.WPF.Modern.Controls.TextContextMenu.TextContextMenu;
-using System.Linq;
-*/
-using iNKORE.UI.WPF.Modern.Common;
+﻿using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using System.Linq;
 using System.Windows;

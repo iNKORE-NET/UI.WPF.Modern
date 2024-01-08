@@ -5,20 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
-
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using System.Windows.Media.Animation;
-在此之后:
-using System.Windows.Media.Animation;
-using iNKORE;
-using iNKORE.UI;
-using iNKORE.UI.WPF;
-using iNKORE.UI.WPF.Modern;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls.ScrollViewer;
-*/
 using System.Windows.Media.Animation;
 
 namespace iNKORE.UI.WPF.Modern.Controls

@@ -1,17 +1,5 @@
 ﻿// Ported from https://github.com/sourcechord/FluentWPF/blob/master/FluentWPF/AcrylicPanel.cs
 
-
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using iNKORE.UI.WPF.Modern.Controls.Primitives;
-在此之后:
-using iNKORE;
-using iNKORE.UI;
-using iNKORE.UI.WPF;
-using iNKORE.UI.WPF.Modern.Controls.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls.Acrylic;
-using iNKORE.UI.WPF.Modern.Controls.Primitives;
-*/
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using System;
 using System.Collections.Generic;
