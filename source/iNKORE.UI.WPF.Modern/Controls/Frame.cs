@@ -1,17 +1,4 @@
-﻿
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using iNKORE.UI.WPF.Modern.Helpers;
-在此之后:
-using iNKORE;
-using iNKORE.UI;
-using iNKORE.UI.WPF;
-using iNKORE.UI.WPF.Modern.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls.Navigation;
-using iNKORE.UI.WPF.Modern.Helpers;
-*/
-using iNKORE.UI.WPF.Modern.Helpers;
+﻿using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Modern.Media.Animation;
 using System;
 using System.Collections.Specialized;
@@ -276,6 +263,32 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             _transitionInfoOverride = infoOverride;
             return Navigate(Activator.CreateInstance(sourcePageType), parameter);
+        }
+
+        /// <summary>
+        /// Navigates asynchronously to content that is contained by an object.
+        /// </summary>
+        /// <param name="content">An System.Object that contains the content to navigate to.</param>
+        /// <param name="infoOverride">Info about the animated transition.</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool Navigate(object content, NavigationTransitionInfo infoOverride)
+        {
+            _transitionInfoOverride = infoOverride;
+            return Navigate(content);
+        }
+
+        /// <summary>
+        /// Navigates asynchronously to content that is contained by an object, and passes
+        /// an object that contains data to be used for processing during navigation.
+        /// </summary>
+        /// <param name="content">An System.Object that contains the content to navigate to.</param>
+        /// <param name="extraData">A System.Object that contains data to be used for processing during navigation.</param>
+        /// <param name="infoOverride">Info about the animated transition.</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool Navigate(object content, object extraData, NavigationTransitionInfo infoOverride)
+        {
+            _transitionInfoOverride = infoOverride;
+            return Navigate(content, extraData);
         }
 
         /// <summary>

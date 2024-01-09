@@ -1,19 +1,4 @@
-﻿
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using iNKORE.UI.WPF.Modern.Common;
-using System;
-在此之后:
-using iNKORE;
-using iNKORE.UI;
-using iNKORE.UI.WPF;
-using iNKORE.UI.WPF.Modern.Common;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls.AnimatedVisuals;
-using System;
-*/
-using iNKORE.UI.WPF.Modern.Common;
+﻿using iNKORE.UI.WPF.Modern.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

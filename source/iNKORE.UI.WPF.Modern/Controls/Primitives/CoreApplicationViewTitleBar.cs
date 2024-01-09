@@ -1,52 +1,7 @@
-﻿
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using System.Windows;
-在此之后:
-using iNKORE.UI.WPF.Modern.Controls.TitleBar;
-using System.Windows;
-*/
-
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using iNKORE.UI.WPF.Modern.Common;
-using iNKORE.UI.WPF.Modern.Controls.TitleBar.TitleBar;
-在此之后:
-using iNKORE;
-using iNKORE.UI;
-using iNKORE.UI.WPF;
-using iNKORE.UI.WPF.Modern;
-using iNKORE.UI.WPF.Modern.Common;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.TitleBar;
-using iNKORE.UI.TitleBar.TitleBar;
-*/
-
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using iNKORE.UI.WPF.Modern.Common;
-using iNKORE.UI.WPF.Modern.Controls.TitleBar;
-在此之后:
-using iNKORE;
-using iNKORE.UI;
-using iNKORE.UI.WPF;
-using iNKORE.UI.WPF.Modern;
-using iNKORE.UI.WPF.Modern.Common;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.TitleBar;
-*/
-using iNKORE.UI.WPF.Modern.Common;
+﻿using iNKORE.UI.WPF.Modern.Common;
 using System.Windows;
 using System.Windows.Data;
 
-
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-namespace iNKORE.UI.WPF.Modern.Controls.TitleBar
-在此之后:
-namespace iNKORE.UI.WPF.Modern.Controls.TitleBar.TitleBar
-*/
 namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     internal sealed class CoreApplicationViewTitleBar

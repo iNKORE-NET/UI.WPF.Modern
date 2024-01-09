@@ -1,31 +1,8 @@
-﻿
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using System;
-在此之后:
-using iNKORE.UI.WPF.Modern.Controls.IconElement;
-using iNKORE.UI.WPF.Modern.Controls.IconElement.IconElement;
-using System;
-*/
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
-/* 项目“iNKORE.UI.WPF.Modern (net452)”的未合并的更改
-在此之前:
-using System.Windows.Shapes;
-在此之后:
-using System.Windows.Shapes;
-using iNKORE;
-using iNKORE.UI;
-using iNKORE.UI.WPF;
-using iNKORE.UI.WPF.Modern;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Controls.IconElement;
-*/
 using System.Windows.Shapes;
 
 namespace iNKORE.UI.WPF.Modern.Controls

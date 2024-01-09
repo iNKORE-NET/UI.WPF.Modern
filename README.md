@@ -21,6 +21,8 @@
   <a href="#"><img src="https://img.shields.io/github/v/release/iNKOREStudios/UI.WPF.Modern?color=%4CF4A8B4" alt="Latest Version"></a>
   <a href="#"><img src="https://img.shields.io/github/release-date/iNKOREStudios/UI.WPF.Modern?color=%23b0a3e8" alt="Release Date"></a>
   <a href="https://github.com/iNKOREStudios/UI.WPF.Modern/commits/"><img src="https://img.shields.io/github/commit-activity/m/iNKOREStudios/UI.WPF.Modern" alt="Commit Activity"></a>
+  <a href="https://www.nuget.org/packages/iNKORE.UI.WPF.Modern"><img src="https://img.shields.io/nuget/v/iNKORE.UI.WPF.Modern?color=blue&logo=nuget" alt="Nuget latest version"></a>
+  <a href="https://www.nuget.org/packages/iNKORE.UI.WPF.Modern"><img src="https://img.shields.io/nuget/dt/iNKORE.UI.WPF.Modern?color=blue&logo=nuget" alt="Nuget download conut"></a>
 </p>
 
 <p align="center">

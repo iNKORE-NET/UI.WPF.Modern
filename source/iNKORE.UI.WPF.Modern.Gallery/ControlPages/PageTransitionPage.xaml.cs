@@ -26,12 +26,12 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             if (_transitionInfo == null)
             {
                 // Default behavior, no transition set or used.
-                ContentFrame.Navigate(pageToNavigateTo, null);
+                ContentFrame.Navigate(sourcePageType: pageToNavigateTo, null);
             }
             else
             {
                 // Explicit transition info used.
-                ContentFrame.Navigate(pageToNavigateTo, null, _transitionInfo);
+                ContentFrame.Navigate(sourcePageType: pageToNavigateTo, null, _transitionInfo);
             }
         }
 
