@@ -27,6 +27,7 @@ using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 using Frame = iNKORE.UI.WPF.Modern.Controls.Frame;
 using iNKORE.UI.WPF.Modern.Gallery.Common;
 using iNKORE.UI.WPF.Modern.Helpers;
+using iNKORE.UI.WPF.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Gallery
 {

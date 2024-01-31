@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-windows10.0.18362.0;net452</TargetFrameworks>
+		<TargetFrameworks>net6.0-windows10.0.18362.0;net462</TargetFrameworks>
 		<UseWPF>true</UseWPF>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);GetDocumentationFile</TargetsForTfmSpecificBuildOutput>
@@ -75,6 +75,10 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="iNKORE.UI.WPF" Version="1.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>

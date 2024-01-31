@@ -21,6 +21,7 @@ using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 using iNKORE.UI.WPF.Modern.Gallery.Helper;
 using System.Reflection;
 using iNKORE.UI.WPF.Modern.Helpers;
+using iNKORE.UI.WPF.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Gallery
 {

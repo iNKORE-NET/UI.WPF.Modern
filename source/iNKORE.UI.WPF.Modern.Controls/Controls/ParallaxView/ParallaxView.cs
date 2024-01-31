@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows;
 using iNKORE.UI.WPF.Modern.Helpers;
+using iNKORE.UI.WPF.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

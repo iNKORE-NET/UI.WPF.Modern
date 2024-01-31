@@ -7,6 +7,7 @@ using System.Windows.Threading;
 using Microsoft.Win32;
 using iNKORE.UI.WPF.Modern.Media.ColorPalette;
 using Windows.UI.ViewManagement;
+using iNKORE.UI.WPF.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Helpers
 {

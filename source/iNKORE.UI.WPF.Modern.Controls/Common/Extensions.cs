@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Common
 {

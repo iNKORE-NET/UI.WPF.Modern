@@ -13,6 +13,8 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
+using iNKORE.UI.WPF.Helpers;
+
 //using Windows.Win32.Foundation;
 //using Windows.Win32.UI.WindowsAndMessaging;
 using iNKORE.UI.WPF.Modern.Helpers;

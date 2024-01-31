@@ -23,6 +23,7 @@ using System.Windows.Shapes;
 using Windows.System.Profile;
 using Frame = iNKORE.UI.WPF.Modern.Controls.Frame;
 using Page = iNKORE.UI.WPF.Modern.Controls.Page;
+using iNKORE.UI.WPF.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Gallery
 {

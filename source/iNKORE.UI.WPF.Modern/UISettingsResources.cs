@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Threading;
+using iNKORE.UI.WPF.Helpers;
 using iNKORE.UI.WPF.Modern.Helpers;
 using Microsoft.Win32;
 using Windows.Foundation.Metadata;
