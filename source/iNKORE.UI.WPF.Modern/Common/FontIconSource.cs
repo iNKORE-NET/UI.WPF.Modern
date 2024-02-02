@@ -12,7 +12,7 @@ namespace iNKORE.UI.WPF.Modern.Common
     /// </summary>
     public class FontIconSource : IconSource
     {
-        const string c_fontIconSourceDefaultFontFamily = "Segoe MDL2 Assets";
+        const string c_fontIconSourceDefaultFontFamily = "Segoe Fluent Icons,Segoe MDL2 Assets,Segoe UI Symbol";//"Segoe MDL2 Assets";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FontIconSource"/> class.
@@ -51,7 +51,7 @@ namespace iNKORE.UI.WPF.Modern.Common
                 nameof(FontSize),
                 typeof(double),
                 typeof(FontIconSource),
-                new PropertyMetadata(20.0));
+                new PropertyMetadata(16d));
 
         /// <summary>
         /// Gets or sets the size of the icon glyph.
