@@ -3,10 +3,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Common">
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" 
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary>
-            <ui:CornerRadiusFilterConverter x:Key="BottomCornerRadiusDoubleValueConverter" Filter="Bottom" />
+            <ikw:CornerRadiusFilterConverter x:Key="BottomCornerRadiusDoubleValueConverter" Filter="Bottom" />
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
@@ -81,7 +82,7 @@
                                                 <Border.CornerRadius>
                                                     <TemplateBinding Property="CornerRadius">
                                                         <TemplateBindingExtension.Converter>
-                                                            <ui:CornerRadiusFilterConverter x:Name="CornerConverter" Filter="Top"/>
+                                                            <ikw:CornerRadiusFilterConverter x:Name="CornerConverter" Filter="Top"/>
                                                         </TemplateBindingExtension.Converter>
                                                     </TemplateBinding>
                                                 </Border.CornerRadius>

@@ -7,6 +7,7 @@
     xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common">
 
     <Style x:Key="DefaultDatePickerTextBoxStyle" TargetType="DatePickerTextBox">
@@ -195,7 +196,7 @@
                             <Popup.PlacementRectangle>
                                 <MultiBinding>
                                     <MultiBinding.Converter>
-                                        <converters:PlacementRectangleConverter Margin="0,-4" />
+                                        <ikw:PlacementRectangleConverter Margin="0,-4" />
                                     </MultiBinding.Converter>
                                     <Binding ElementName="PART_Root" Path="ActualWidth" />
                                     <Binding ElementName="PART_Root" Path="ActualHeight" />

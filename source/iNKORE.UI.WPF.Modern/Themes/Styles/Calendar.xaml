@@ -5,14 +5,15 @@
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
     xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common"
     xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Button.xaml" />
         <ResourceDictionary>
-            <converters:RoundMathConverter x:Key="RoundMathConverter" />
-            <converters:RoundRadiusConverter x:Key="RoundRadiusConverter" />
+            <ikw:RoundMathConverter x:Key="RoundMathConverter" />
+            <ikw:RoundRadiusConverter x:Key="RoundRadiusConverter" />
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 

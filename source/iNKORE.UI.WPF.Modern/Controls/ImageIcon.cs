@@ -78,7 +78,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private Image _image;
 
-        public override IconSource CreateIconSourceCore()
+        protected override IconSource CreateIconSourceCore()
         {
             var iconSource = new ImageIconSource();
 

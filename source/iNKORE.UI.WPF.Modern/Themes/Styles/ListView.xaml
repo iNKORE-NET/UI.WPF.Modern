@@ -7,11 +7,12 @@
     xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary>
-            <converters:CornerRadiusFilterConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" Filter="TopLeftValue" />
-            <converters:CornerRadiusFilterConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" Filter="BottomRightValue" />
+            <ikw:CornerRadiusFilterConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" Filter="TopLeftValue" />
+            <ikw:CornerRadiusFilterConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" Filter="BottomRightValue" />
             <primitives:BindingProxy x:Key="ListViewItemSelectionIndicatorCornerRadiusProxy" Value="{DynamicResource ListViewItemSelectionIndicatorCornerRadius}" />
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
@@ -429,7 +430,7 @@
         BasedOn="{StaticResource BaseListViewStyle}"
         TargetType="ListView">
         <Style.Resources>
-            <converters:IsGridViewConverter x:Key="IsGridViewConverter" />
+            <ikw:IsGridViewConverter x:Key="IsGridViewConverter" />
         </Style.Resources>
         <Style.Triggers>
             <DataTrigger Binding="{Binding View, RelativeSource={RelativeSource Self}, Converter={StaticResource IsGridViewConverter}}" Value="True">

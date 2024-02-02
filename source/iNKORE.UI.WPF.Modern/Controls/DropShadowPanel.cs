@@ -1,4 +1,5 @@
-﻿using iNKORE.UI.WPF.Modern.Common.Converters;
+﻿using iNKORE.UI.WPF.Converters;
+using iNKORE.UI.WPF.Modern.Common.Converters;
 using System;
 using System.Collections;
 using System.Collections.Generic;

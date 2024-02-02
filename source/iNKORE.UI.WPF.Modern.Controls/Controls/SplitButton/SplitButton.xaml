@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
 
     <ResourceDictionary.MergedDictionaries>
@@ -13,8 +14,8 @@
     <sys:Double x:Key="SplitButtonPrimaryButtonSize">32</sys:Double>
     <sys:Double x:Key="SplitButtonSecondaryButtonSize">32</sys:Double>
 
-    <ui:CornerRadiusFilterConverter x:Key="LeftCornerRadiusFilterConverter" Filter="Left" />
-    <ui:CornerRadiusFilterConverter x:Key="RightCornerRadiusFilterConverter" Filter="Right" />
+    <ikw:CornerRadiusFilterConverter x:Key="LeftCornerRadiusFilterConverter" Filter="Left" />
+    <ikw:CornerRadiusFilterConverter x:Key="RightCornerRadiusFilterConverter" Filter="Right" />
 
     <Style x:Key="SplitButtonStyle" TargetType="local:SplitButton">
         <Setter Property="Background" Value="{DynamicResource SplitButtonBackground}" />

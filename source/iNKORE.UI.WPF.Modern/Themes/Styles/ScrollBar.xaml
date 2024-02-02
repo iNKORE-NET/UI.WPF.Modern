@@ -10,28 +10,29 @@
     xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common"
     xmlns:vstates="clr-namespace:iNKORE.UI.WPF.Modern.Common"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:root="clr-namespace:iNKORE.UI.WPF.Modern">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary>
-            <converters:CornerRadiusFilterConverter
+            <ikw:CornerRadiusFilterConverter
                 x:Key="TopLeftCornerRadiusDoubleValueConverter8x"
                 Filter="TopLeftValue"
                 Scale="8" />
-            <converters:CornerRadiusFilterConverter
+            <ikw:CornerRadiusFilterConverter
                 x:Key="BottomRightCornerRadiusDoubleValueConverter8x"
                 Filter="BottomRightValue"
                 Scale="8" />
-            <converters:CornerRadiusFilterConverter
+            <ikw:CornerRadiusFilterConverter
                 x:Key="TopLeftCornerRadiusDoubleValueConverter2x"
                 Filter="TopLeftValue"
                 Scale="2" />
-            <converters:CornerRadiusFilterConverter
+            <ikw:CornerRadiusFilterConverter
                 x:Key="BottomRightCornerRadiusDoubleValueConverter2x"
                 Filter="BottomRightValue"
                 Scale="2" />
-            <converters:CornerRadiusFilterConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" Filter="TopLeftValue" />
-            <converters:CornerRadiusFilterConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" Filter="BottomRightValue" />
+            <ikw:CornerRadiusFilterConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" Filter="TopLeftValue" />
+            <ikw:CornerRadiusFilterConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" Filter="BottomRightValue" />
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 

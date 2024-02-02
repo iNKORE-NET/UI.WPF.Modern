@@ -3,6 +3,7 @@
                     xmlns:ui="clr-namespace:iNKORE.UI.WPF.Modern.Controls" 
                     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common"
                     xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters"
+                    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
                     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives">
 
     <ResourceDictionary.MergedDictionaries>
@@ -18,9 +19,9 @@
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/AcrylicPanel.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <converters:AddValueConverter x:Key="addValueConverter" />
-    <converters:CornerRadiusFilterConverter x:Key="cornerRadiusFilterConverter_Bottom" Filter="Bottom"/>
-    <converters:ThicknessFilterConverter x:Key="thicknessFilterConverter_ExcludeTop" Filter="ExcludeTop"/>
+    <ikw:AddValueConverter x:Key="addValueConverter" />
+    <ikw:CornerRadiusFilterConverter x:Key="cornerRadiusFilterConverter_Bottom" Filter="Bottom"/>
+    <ikw:ThicknessFilterConverter x:Key="thicknessFilterConverter_ExcludeTop" Filter="ExcludeTop"/>
 
     <Style TargetType="ui:ElevationBorder">
         <Style.Setters>

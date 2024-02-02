@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows;
 using iNKORE.UI.WPF.Modern.Common.Converters;
+using iNKORE.UI.WPF.Converters;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
