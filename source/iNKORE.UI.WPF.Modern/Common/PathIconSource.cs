@@ -41,7 +41,7 @@ namespace iNKORE.UI.WPF.Modern.Common
         }
 
         /// <inheritdoc/>
-        public override IconElement CreateIconElementCore()
+        protected override IconElement CreateIconElementCore()
         {
             PathIcon pathIcon = new PathIcon();
 

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using iNKORE.UI.WPF.Modern.Common;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -98,5 +99,24 @@ namespace iNKORE.UI.WPF.Modern.Controls
         }
 
         private Path _path;
+
+        protected override IconSource CreateIconSourceCore()
+        {
+            var iconSource = new PathIconSource();
+
+            var data = Data;
+            if (data != null)
+            {
+                iconSource.Data = data;
+            }
+
+            var newForeground = Foreground;
+            if (newForeground != null)
+            {
+                iconSource.Foreground = newForeground;
+            }
+
+            return iconSource;
+        }
     }
 }

@@ -308,5 +308,21 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
         }
 
+        protected override IconSource CreateIconSourceCore()
+        {
+            var iconSource = new AnimatedIconSource();
+
+            iconSource.Source = Source;
+            iconSource.FallbackIconSource = FallbackIconSource;
+            iconSource.MirroredWhenRightToLeft = MirroredWhenRightToLeft;
+            iconSource.FontSize = FontSize;
+            var newForeground = Foreground;
+            if (newForeground != null)
+            {
+                iconSource.Foreground = newForeground;
+            }
+
+            return iconSource;
+        }
     }
 }

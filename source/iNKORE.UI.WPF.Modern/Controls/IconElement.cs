@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iNKORE.UI.WPF.Modern.Common;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -186,5 +187,22 @@ namespace iNKORE.UI.WPF.Modern.Controls
         private Grid _layoutRoot;
         private bool _isForegroundDefaultOrInherited = true;
         private bool _shouldInheritForegroundFromVisualParent;
+
+        /// <summary>
+        /// Creates an icon source.
+        /// </summary>
+        /// <returns>An icon source.</returns>
+        public IconSource CreateIconSource()
+        {
+            var element = CreateIconSourceCore();
+            return element;
+        }
+
+        /// <summary>
+        /// Creates an icon source.
+        /// </summary>
+        /// <returns>An icon source.</returns>
+        protected virtual IconSource CreateIconSourceCore() => null;
+
     }
 }

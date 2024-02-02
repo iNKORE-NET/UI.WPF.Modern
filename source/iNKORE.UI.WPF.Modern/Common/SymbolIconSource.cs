@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using iNKORE.UI.WPF.Modern.Controls;
+using System;
 using System.Windows;
 
 namespace iNKORE.UI.WPF.Modern.Common
@@ -9,6 +10,7 @@ namespace iNKORE.UI.WPF.Modern.Common
     /// <summary>
     /// Represents an icon source that uses a glyph from the Segoe MDL2 Assets font as its content.
     /// </summary>
+    [Obsolete("We recommend you use 'FontIconSource' instead of this.")]
     public class SymbolIconSource : IconSource
     {
         /// <summary>
@@ -41,7 +43,7 @@ namespace iNKORE.UI.WPF.Modern.Common
         }
 
         /// <inheritdoc/>
-        public override IconElement CreateIconElementCore()
+        protected override IconElement CreateIconElementCore()
         {
             SymbolIcon symbolIcon = new SymbolIcon();
             symbolIcon.Symbol = Symbol;

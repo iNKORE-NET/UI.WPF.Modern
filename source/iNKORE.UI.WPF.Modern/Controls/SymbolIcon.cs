@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using iNKORE.UI.WPF.Modern.Common;
+using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -7,6 +9,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
     /// <summary>
     /// Represents an icon that uses a glyph from the Segoe MDL2 Assets font as its content.
     /// </summary>
+    [Obsolete("We don't recommend you use this, instead, please use 'FontIcon'. Also this class will be no longer maintained\r\nExample: <ui:FontIcon Glyph=\"{x:Static ui:SegoeIcons.Save}\"/>")]
     public sealed class SymbolIcon : IconElement
     {
         /// <summary>
@@ -148,5 +151,17 @@ namespace iNKORE.UI.WPF.Modern.Controls
         }
 
         private TextBlock _textBlock;
+
+        protected override IconSource CreateIconSourceCore()
+        {
+            var iconSource = new SymbolIconSource();
+            iconSource.Symbol = Symbol;
+            var newForeground = Foreground;
+            if (newForeground != null)
+            {
+                iconSource.Foreground = newForeground;
+            }
+            return iconSource;
+        }
     }
 }

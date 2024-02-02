@@ -11,6 +11,9 @@ namespace iNKORE.UI.WPF.Modern.Controls
     /// </summary>
     public class FontIcon : IconElement
     {
+        public const string DefaultIconFontFamily = "Segoe Fluent Icons,Segoe MDL2 Assets,Segoe UI Symbol";
+
+
         /// <summary>
         /// Initializes a new instance of the FontIcon class.
         /// </summary>
@@ -27,7 +30,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 typeof(FontFamily),
                 typeof(FontIcon),
                 new FrameworkPropertyMetadata(
-                    new FontFamily("Segoe Fluent Icons,Segoe MDL2 Assets,Segoe UI Symbol"),
+                    new FontFamily(DefaultIconFontFamily),
                     OnFontFamilyChanged));
 
         /// <summary>
@@ -224,5 +227,31 @@ namespace iNKORE.UI.WPF.Modern.Controls
         }
 
         private TextBlock _textBlock;
+
+
+        protected override IconSource CreateIconSourceCore()
+        {
+            var iconSource = new FontIconSource();
+
+            iconSource.Glyph = Glyph;
+            iconSource.FontSize = FontSize;
+            var newForeground = Foreground;
+            if (newForeground != null)
+            {
+                iconSource.Foreground = newForeground;
+            }
+
+            if (FontFamily == null)
+            {
+                FontFamily = new FontFamily(DefaultIconFontFamily);
+            }
+            iconSource.FontFamily = FontFamily;
+
+            iconSource.FontWeight = FontWeight;
+            iconSource.FontStyle = FontStyle;
+
+            return iconSource;
+
+        }
     }
 }

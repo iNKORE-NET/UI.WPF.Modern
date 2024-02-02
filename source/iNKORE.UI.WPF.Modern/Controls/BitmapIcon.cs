@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iNKORE.UI.WPF.Modern.Common;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -175,5 +176,25 @@ namespace iNKORE.UI.WPF.Modern.Controls
         private Image _image;
         private Rectangle _foreground;
         private ImageBrush _opacityMask;
+
+
+        protected override IconSource CreateIconSourceCore()
+        {
+            var iconSource = new BitmapIconSource();
+
+            if (UriSource != null)
+            {
+                iconSource.UriSource = UriSource;
+            }
+
+            iconSource.ShowAsMonochrome = ShowAsMonochrome;
+
+            var newForeground = Foreground;
+            if (newForeground != null)
+            {
+                iconSource.Foreground = newForeground;
+            }
+            return iconSource;
+        }
     }
 }

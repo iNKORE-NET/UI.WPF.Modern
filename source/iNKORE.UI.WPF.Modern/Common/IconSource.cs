@@ -49,6 +49,6 @@ namespace iNKORE.UI.WPF.Modern.Common
         /// Creates an icon UI element.
         /// </summary>
         /// <returns>An icon UI element.</returns>
-        public virtual IconElement CreateIconElementCore() => null;
+        protected virtual IconElement CreateIconElementCore() => null;
     }
 }

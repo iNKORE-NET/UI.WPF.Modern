@@ -119,7 +119,7 @@ namespace iNKORE.UI.WPF.Modern.Common
         }
 
         /// <inheritdoc/>
-        public override IconElement CreateIconElementCore()
+        protected override IconElement CreateIconElementCore()
         {
             AnimatedIcon animatedIcon = new AnimatedIcon();
 
