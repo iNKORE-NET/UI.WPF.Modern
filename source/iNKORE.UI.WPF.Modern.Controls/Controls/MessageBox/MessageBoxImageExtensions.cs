@@ -14,8 +14,8 @@ namespace iNKORE.UI.WPF.Modern.Extensions
                 MessageBoxImage.Information => SegoeIcons.Info,
                 MessageBoxImage.Warning => SegoeIcons.Warning,
                 MessageBoxImage.Question => SegoeIcons.Unknown,
-                MessageBoxImage.None => char.Parse("0x2007").ToString(),
-                _ => char.Parse("0x2007").ToString(),
+                MessageBoxImage.None => char.ConvertFromUtf32(0x2007),
+                _ => char.ConvertFromUtf32(0x2007),
             };
         }
 
