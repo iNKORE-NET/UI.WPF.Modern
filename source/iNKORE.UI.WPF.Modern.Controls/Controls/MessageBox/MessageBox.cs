@@ -8,6 +8,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -48,6 +50,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         public MessageBox()
         {
+            CommandBindings.Add(new CommandBinding(ApplicationCommands.Copy, new ExecutedRoutedEventHandler(ExecuteCopy)));
+
             SetValue(TemplateSettingsPropertyKey, new MessageBoxTemplateSettings());
             var handler = new RoutedEventHandler((sender, e) => ApplyDarkMode());
             ThemeManager.AddActualThemeChangedHandler(this, handler);
@@ -56,6 +60,48 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             SystemBackdropTypeProperty_Descriptor.AddValueChanged(this, SystemBackdropTypeProperty_ValueChanged);
             ThemeManager.AddActualThemeChangedHandler(this, ThemeManager_AddActualThemeChanged);
+        }
+
+        private void ExecuteCopy(object sender, ExecutedRoutedEventArgs e)
+        {
+            StringBuilder sb = new();
+            sb.Append("---------------------------");
+            sb.AppendLine();
+            sb.Append(Caption);
+            sb.AppendLine();
+            sb.Append("---------------------------");
+            sb.AppendLine();
+            sb.Append(Content);
+            sb.AppendLine();
+            sb.Append("---------------------------");
+            sb.AppendLine();
+            switch (MessageBoxButtons)
+            {
+                case MessageBoxButton.OK:
+                    sb.Append(OKButtonText);
+                    break;
+                case MessageBoxButton.OKCancel:
+                    sb.Append(OKButtonText + "     " + CancelButtonText);
+                    break;
+                case MessageBoxButton.YesNo:
+                    sb.Append(YesButtonText + "     " + NoButtonText);
+                    break;
+                case MessageBoxButton.YesNoCancel:
+                    sb.Append(YesButtonText + "     " + NoButtonText + "     " + CancelButtonText);
+                    break;
+            }
+            sb.AppendLine();
+            sb.Append("---------------------------");
+
+            try
+            {
+                new UIPermission(UIPermissionClipboard.AllClipboard).Demand();
+                Clipboard.SetText(sb.ToString());
+            }
+            catch (SecurityException)
+            {
+                throw new SecurityException();
+            }
         }
 
         private void ThemeManager_AddActualThemeChanged(object sender, RoutedEventArgs e)
