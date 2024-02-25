@@ -6,7 +6,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 {
     public static class InputBox
     {
-        public static async Task<string> ShowAsync(string title, string prompt, string defaultResponse = "")
+        public static async Task<string> ShowAsync(object title, object prompt, string defaultResponse = "")
         {
             ContentDialog dialog = BuildDialog(title, prompt, defaultResponse);
             ContentDialogResult result = await dialog.ShowAsync();
@@ -21,7 +21,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             return response;
         }
 
-        public static async Task<string> ShowAsync(Window owner, string title, string prompt, string defaultResponse = "")
+        public static async Task<string> ShowAsync(Window owner, object title, object prompt, string defaultResponse = "")
         {
             ContentDialog dialog = BuildDialog(title, prompt, defaultResponse);
             ContentDialogResult result = await dialog.ShowAsync(owner);
@@ -36,7 +36,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             return response;
         }
 
-        public static async Task<string> ShowAsync(ContentDialogPlacement placement, string title, string prompt, string defaultResponse = "")
+        public static async Task<string> ShowAsync(ContentDialogPlacement placement, object title, object prompt, string defaultResponse = "")
         {
             ContentDialog dialog = BuildDialog(title, prompt, defaultResponse);
             ContentDialogResult result = await dialog.ShowAsync(placement);
@@ -51,7 +51,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             return response;
         }
 
-        private static ContentDialog BuildDialog(string title, string prompt, string defaultResponse)
+        private static ContentDialog BuildDialog(object title, object prompt, string defaultResponse)
         {
             ContentDialog dialog = new()
             {
@@ -64,7 +64,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             dialog.Content = content;
 
             dialog.Title = title;
-            content.promptTextControl.Text = prompt;
+            content.promptTextControl.Content = prompt;
             content.responseTextControl.Text = defaultResponse;
 
             return dialog;

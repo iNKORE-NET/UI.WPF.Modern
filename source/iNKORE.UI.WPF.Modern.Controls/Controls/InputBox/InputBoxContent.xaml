@@ -4,17 +4,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
+             xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
              mc:Ignorable="d"
              d:DesignHeight="200"
              d:DesignWidth="400">
-    <UniformGrid Columns="1"
+    <ui:SimpleStackPanel Spacing="16"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch">
-        <TextBlock x:Name="promptTextControl"
-                   Text=""
-                   TextWrapping="Wrap" />
+        <ui:ContentPresenterEx x:Name="promptTextControl" TextWrapping="Wrap"/>
         <TextBox x:Name="responseTextControl"
                  Text="" />
-    </UniformGrid>
+    </ui:SimpleStackPanel>
 </UserControl>
