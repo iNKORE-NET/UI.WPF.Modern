@@ -18,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using static iNKORE.UI.WPF.Modern.Controls.LocalizedDialogCommands;
+using System.Diagnostics;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
@@ -64,34 +65,59 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private void ExecuteCopy(object sender, ExecutedRoutedEventArgs e)
         {
+            const string longlines = "---------------------------";
             StringBuilder sb = new();
-            sb.Append("---------------------------");
+            sb.Append(longlines);
             sb.AppendLine();
             sb.Append(Caption);
             sb.AppendLine();
-            sb.Append("---------------------------");
+            sb.Append(longlines);
             sb.AppendLine();
             sb.Append(Content);
             sb.AppendLine();
-            sb.Append("---------------------------");
+            sb.Append(longlines);
             sb.AppendLine();
-            switch (MessageBoxButtons)
+            //switch (MessageBoxButtons)
+            //{
+            //    case MessageBoxButton.OK:
+            //        sb.Append(OKButtonText);
+            //        break;
+            //    case MessageBoxButton.OKCancel:
+            //        sb.Append(OKButtonText + "     " + CancelButtonText);
+            //        break;
+            //    case MessageBoxButton.YesNo:
+            //        sb.Append(YesButtonText + "     " + NoButtonText);
+            //        break;
+            //    case MessageBoxButton.YesNoCancel:
+            //        sb.Append(YesButtonText + "     " + NoButtonText + "     " + CancelButtonText);
+            //        break;
+            //}
+
+            bool isFirstButtonLoaded = true;
+            var buttons = new Button[]
             {
-                case MessageBoxButton.OK:
-                    sb.Append(OKButtonText);
-                    break;
-                case MessageBoxButton.OKCancel:
-                    sb.Append(OKButtonText + "     " + CancelButtonText);
-                    break;
-                case MessageBoxButton.YesNo:
-                    sb.Append(YesButtonText + "     " + NoButtonText);
-                    break;
-                case MessageBoxButton.YesNoCancel:
-                    sb.Append(YesButtonText + "     " + NoButtonText + "     " + CancelButtonText);
-                    break;
+                OKButton,
+                YesButton,
+                NoButton,
+                CancelButton,
+            };
+
+            foreach(var button in buttons)
+            {
+                if(button.Visibility == Visibility.Visible)
+                {
+                    if (!isFirstButtonLoaded)
+                    {
+                        sb.Append("     ");
+                    }
+
+                    sb.Append(button.Content.ToString());
+                    isFirstButtonLoaded = false;
+                }
             }
+
             sb.AppendLine();
-            sb.Append("---------------------------");
+            sb.Append(longlines);
 
             try
             {
@@ -100,7 +126,10 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
             catch (SecurityException)
             {
-                throw new SecurityException();
+                if (Debugger.IsAttached)
+                {
+                    throw;
+                }
             }
         }
 
