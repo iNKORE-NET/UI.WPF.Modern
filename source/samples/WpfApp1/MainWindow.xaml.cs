@@ -68,12 +68,13 @@ namespace WpfApp1
             //naview.SelectedItem = sgsac;
         }
 
-        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        private async void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
             //AppBarToggleButton1.IsChecked = false;
-            AppBarToggleButton1.IsEnabled = false;
+            //AppBarToggleButton1.IsEnabled = false;
             //MicaHelper.RemoveTitleBar(this);
             MicaHelper.Apply(this, BackdropType.Mica, false);
+            await InputBox.ShowAsync("promptssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssok", "promptssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssok", "test");
         }
 
         private void Button_MessageBox_Click(object sender, RoutedEventArgs e)
