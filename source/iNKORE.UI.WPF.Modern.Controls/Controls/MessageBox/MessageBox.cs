@@ -8,6 +8,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using static iNKORE.UI.WPF.Modern.Controls.LocalizedDialogCommands;
+using System.Diagnostics;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
@@ -48,6 +51,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         public MessageBox()
         {
+            CommandBindings.Add(new CommandBinding(ApplicationCommands.Copy, new ExecutedRoutedEventHandler(ExecuteCopy)));
+
             SetValue(TemplateSettingsPropertyKey, new MessageBoxTemplateSettings());
             var handler = new RoutedEventHandler((sender, e) => ApplyDarkMode());
             ThemeManager.AddActualThemeChangedHandler(this, handler);
@@ -56,6 +61,76 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             SystemBackdropTypeProperty_Descriptor.AddValueChanged(this, SystemBackdropTypeProperty_ValueChanged);
             ThemeManager.AddActualThemeChangedHandler(this, ThemeManager_AddActualThemeChanged);
+        }
+
+        private void ExecuteCopy(object sender, ExecutedRoutedEventArgs e)
+        {
+            const string longlines = "---------------------------";
+            StringBuilder sb = new();
+            sb.Append(longlines);
+            sb.AppendLine();
+            sb.Append(Caption);
+            sb.AppendLine();
+            sb.Append(longlines);
+            sb.AppendLine();
+            sb.Append(Content);
+            sb.AppendLine();
+            sb.Append(longlines);
+            sb.AppendLine();
+            //switch (MessageBoxButtons)
+            //{
+            //    case MessageBoxButton.OK:
+            //        sb.Append(OKButtonText);
+            //        break;
+            //    case MessageBoxButton.OKCancel:
+            //        sb.Append(OKButtonText + "     " + CancelButtonText);
+            //        break;
+            //    case MessageBoxButton.YesNo:
+            //        sb.Append(YesButtonText + "     " + NoButtonText);
+            //        break;
+            //    case MessageBoxButton.YesNoCancel:
+            //        sb.Append(YesButtonText + "     " + NoButtonText + "     " + CancelButtonText);
+            //        break;
+            //}
+
+            bool isFirstButtonLoaded = true;
+            var buttons = new Button[]
+            {
+                OKButton,
+                YesButton,
+                NoButton,
+                CancelButton,
+            };
+
+            foreach(var button in buttons)
+            {
+                if(button.Visibility == Visibility.Visible)
+                {
+                    if (!isFirstButtonLoaded)
+                    {
+                        sb.Append("     ");
+                    }
+
+                    sb.Append(button.Content.ToString());
+                    isFirstButtonLoaded = false;
+                }
+            }
+
+            sb.AppendLine();
+            sb.Append(longlines);
+
+            try
+            {
+                new UIPermission(UIPermissionClipboard.AllClipboard).Demand();
+                Clipboard.SetText(sb.ToString());
+            }
+            catch (SecurityException)
+            {
+                if (Debugger.IsAttached)
+                {
+                    throw;
+                }
+            }
         }
 
         private void ThemeManager_AddActualThemeChanged(object sender, RoutedEventArgs e)
