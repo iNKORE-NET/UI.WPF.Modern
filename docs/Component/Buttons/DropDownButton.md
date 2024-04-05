@@ -2,6 +2,8 @@
 
 类型: INKORE.UI.WPF.Modern.Controls.DropDownButton
 
+继承: System.Windows.Controls.Button
+
 ## 属性
 
 ### CornerRadius
