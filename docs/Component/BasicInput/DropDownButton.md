@@ -50,7 +50,7 @@
 
 - **类型**: `DependencyProperty`
 - **默认值**: `OnClick`
-- **描述**: 定义飞出菜单的打开模式。可选值包括 `OnClick`（单击按钮时打开）和 `Hover`（悬停在按钮上时打开）。
+- **描述**: 定义飞出菜单的打开模式。
 
 ---
 
@@ -111,23 +111,23 @@ DropDownButton dropDownButton = new DropDownButton { Content = "Email", Flyout =
 ```xaml
 <ui:DropDownButton AutomationProperties.Name="Email">
     <ui:DropDownButton.Content>
-        <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE715;"/>
+        <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="{x:Static ui:SegoeIcons.Mail}"/>
     </ui:DropDownButton.Content>
     <ui:DropDownButton.Flyout>
         <ui:MenuFlyout Placement="Bottom">
             <MenuItem Header="Send">
                 <MenuItem.Icon>
-                    <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE725;"/>
+                    <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="{x:Static ui:SegoeIcons.Send}"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Reply">
                 <MenuItem.Icon>
-                    <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8CA;"/>
+                    <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="{x:Static ui:SegoeIcons.MailReply}"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Reply All">
                 <MenuItem.Icon>
-                    <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8C2;"/>
+                    <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="{x:Static ui:SegoeIcons.MailReplyAll}"/>
                 </MenuItem.Icon>
             </MenuItem>
         </ui:MenuFlyout>
@@ -141,35 +141,40 @@ DropDownButton dropDownButton = new DropDownButton { Content = "Email", Flyout =
 DropDownButton dropDownButton = new DropDownButton();
 dropDownButton.AutomationProperties.Name = "Email";
 
-FontIcon fontIcon = new FontIcon();
-fontIcon.FontFamily = new FontFamily("Segoe MDL2 Assets");
-fontIcon.Glyph = "\xE715";
-dropDownButton.Content = fontIcon;
+FontIcon contentFontIcon = new FontIcon();
+contentFontIcon.FontFamily = new FontFamily("Segoe MDL2 Assets");
+contentFontIcon.Glyph = SegoeIcons.Mail;
+dropDownButton.Content = contentFontIcon;
 
 MenuFlyout menuFlyout = new MenuFlyout();
 menuFlyout.Placement = FlyoutPlacementMode.Bottom;
 
-string[] menuItems = { "Send", "Reply", "Reply All" };
-string[] menuIcons = { "\xE725", "\xE8CA", "\xE8C2" };
+(string Header, SegoeIcons Glyph)[] menuItems = {
+    ("Send", SegoeIcons.Send),
+    ("Reply", SegoeIcons.MailReply),
+    ("Reply All", SegoeIcons.MailReplyAll)
+};
 
-for (int i = 0; i < menuItems.Length; i++)
+foreach (var item in menuItems)
 {
     MenuItem menuItem = new MenuItem();
-    menuItem.Header = menuItems[i];
+    menuItem.Header = item.Header;
 
     FontIcon icon = new FontIcon();
     icon.FontFamily = new FontFamily("Segoe MDL2 Assets");
-    icon.Glyph = menuIcons[i];
+    icon.Glyph = item.Glyph;
     menuItem.Icon = icon;
 
     menuFlyout.Items.Add(menuItem);
 }
 
 dropDownButton.Flyout = menuFlyout;
-
 ```
 
 效果：
 
 ![](./../../images/DropDownButton/2.gif)
 
+## 参考
+
+[System.Windows.Controls.Button](Button.md)

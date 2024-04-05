@@ -94,3 +94,7 @@ HyperlinkButton hyperlinkButton = new HyperlinkButton() { Content = "Microsoft h
 效果：
 
 ![HyperlinkButton](./../../images/HyperlinkButton/1.gif)
+
+## 参考
+
+System.Windows.Controls.Primitives.ButtonBase
