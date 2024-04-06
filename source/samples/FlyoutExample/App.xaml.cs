@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace FlyoutTest
+namespace FlyoutExample
 {
     /// <summary>
     /// Interaction logic for App.xaml
