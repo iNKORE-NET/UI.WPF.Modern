@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace CardStyleExample
+namespace SettingsPageExample
 {
     /// <summary>
     /// Interaction logic for App.xaml
