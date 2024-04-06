@@ -12,7 +12,7 @@
 		<AssemblyOriginatorKeyFile>..\..\assets\misc\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<NoWarn>$(NoWarn);1591</NoWarn>
+		<NoWarn>$(NoWarn);CS1591;1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup>
