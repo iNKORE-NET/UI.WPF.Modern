@@ -11,7 +11,7 @@
      ui:TitleBar.ExtendViewIntoTitleBar="False" ui:WindowHelper.SystemBackdropType="Acrylic"
      ui:WindowHelper.UseModernWindowStyle="True"
      ui:TitleBar.IsBackButtonVisible="False"
-        ui:WindowHelper.CornerStyle="DoNotRound" Background="Red" Loaded="Window_Loaded">
+        ui:WindowHelper.CornerStyle="DoNotRound" Loaded="Window_Loaded">
     <Canvas>
         <ComboBox SelectionChanged="ComboBox_SelectionChanged" Height="35" IsEditable="True">
             <ComboBoxItem Content="Item1"/>
@@ -151,5 +151,6 @@
         <ui:ThumbEx Canvas.Left="390" Canvas.Top="256" Height="43" Width="67" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
             <TextBlock Text="Hello"/>
         </ui:ThumbEx>
+        <Slider Canvas.Left="112" Canvas.Top="234" HorizontalAlignment="Left" VerticalAlignment="Top" Width="213"/>
     </Canvas>
 </Window>

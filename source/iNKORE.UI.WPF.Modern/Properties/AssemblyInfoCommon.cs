@@ -4,10 +4,10 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyDescription("Modern (Fluent 2) styles and controls for your WPF applications")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("iNKORE! Studios")]
+[assembly: AssemblyCompany("iNKORE Studios")]
 [assembly: AssemblyProduct("iNKORE.UI.WPF.Modern")]
 [assembly: AssemblyCopyright("Copyright © iNKORE! Studios 2023")]
-[assembly: AssemblyTrademark("iNKORE! Studios")]
+[assembly: AssemblyTrademark("iNKORE!")]
 [assembly: AssemblyCulture("")]
 
 [assembly: AssemblyVersion("0.9.26.0")]
