@@ -96,7 +96,6 @@
                 <ui:Flyout x:Name="Flyout_Test" Placement="Bottom">
                     <TextBlock Text="Hi there, I'm a flyout!"/>
                 </ui:Flyout>
-                <Button/>
             </ikw:XamlCachedElements>
 
         </ui:SimpleStackPanel>
