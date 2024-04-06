@@ -41,7 +41,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fonts", "Fonts", "{1413BB5F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoAppXamlTest", "source\samples\NoAppXamlTest\NoAppXamlTest.csproj", "{7C68372B-A2EE-43DB-A6B1-EC0CA6471BA3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyoutTest", "source\samples\FlyoutTest\FlyoutTest.csproj", "{3614991C-ECC0-474A-BC8E-1D0A56FD0BDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyoutExample", "source\samples\FlyoutTest\FlyoutExample.csproj", "{3614991C-ECC0-474A-BC8E-1D0A56FD0BDE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterKit", "source\samples\StarterKit\StarterKit.csproj", "{B13E16CB-55E0-42CB-B761-216D82273473}"
 EndProject
