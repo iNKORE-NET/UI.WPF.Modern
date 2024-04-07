@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUIResourcesConverter", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern", "source\Inkore.UI.WPF.Modern\iNKORE.UI.WPF.Modern.csproj", "{789F8052-2F84-4BA0-9CD7-A3A1901A66A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern.Controls", "source\Inkore.UI.WPF.Modern.Controls\iNKORE.UI.WPF.Modern.Controls.csproj", "{FE80560D-40A3-4469-AC0A-C725B583CAA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern.Controls", "source\iNKORE.UI.WPF.Modern.Controls\iNKORE.UI.WPF.Modern.Controls.csproj", "{FE80560D-40A3-4469-AC0A-C725B583CAA7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern.Gallery", "source\Inkore.UI.WPF.Modern.Gallery\iNKORE.UI.WPF.Modern.Gallery.csproj", "{54049F5E-E57B-433E-B316-3C51F25B523D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern.Gallery", "source\iNKORE.UI.WPF.Modern.Gallery\iNKORE.UI.WPF.Modern.Gallery.csproj", "{54049F5E-E57B-433E-B316-3C51F25B523D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp1", "source\samples\WpfApp1\WpfApp1.csproj", "{DBB698F7-FB37-4514-82C2-DA3C71A4B92F}"
 EndProject
@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterKit", "source\sample
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SettingsPageExample", "source\samples\SettingsPageExample\SettingsPageExample.csproj", "{677DAAFA-C061-4C79-BAAE-5639BCD80448}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowExample", "WindowExample\WindowExample.csproj", "{936F7656-B5E8-44A8-8560-D954E1E68383}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowExample", "source\samples\WindowExample\WindowExample.csproj", "{936F7656-B5E8-44A8-8560-D954E1E68383}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
