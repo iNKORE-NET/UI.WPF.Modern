@@ -35,6 +35,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="WindowStyle" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
@@ -54,20 +55,29 @@
             </ui:SimpleStackPanel>
             
             <TextBlock Text="(ui) BackdropType" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-            <ui:SimpleStackPanel Grid.Row="2" Grid.Column="1" Spacing="8" Orientation="Horizontal">
+            <ui:SimpleStackPanel Grid.Row="2" Grid.Column="1" Spacing="25" Orientation="Horizontal">
                 <RadioButton x:Name="RadioButton_SystemBackdropType_Acrylic" Content="Acrylic" MinWidth="0" Click="RadioButton_SystemBackdropType_Click"/>
                 <RadioButton x:Name="RadioButton_SystemBackdropType_Mica" Content="Mica" MinWidth="0" Click="RadioButton_SystemBackdropType_Click"/>
                 <RadioButton x:Name="RadioButton_SystemBackdropType_None" Content="None" MinWidth="0" IsChecked="True" Click="RadioButton_SystemBackdropType_Click"/>
                 <RadioButton x:Name="RadioButton_SystemBackdropType_Tabbed" Content="Tabbed" MinWidth="0" Click="RadioButton_SystemBackdropType_Click"/>
             </ui:SimpleStackPanel>
 
-            <ui:SimpleStackPanel Grid.Row="3" Grid.ColumnSpan="2" Spacing="10" Orientation="Horizontal" Margin="10">
+            <TextBlock Text="(ui) CornerStyle" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+            <ui:SimpleStackPanel Grid.Row="3" Grid.Column="1" Spacing="8" Orientation="Horizontal">
+                <RadioButton x:Name="RadioButton_CornerStyle_Default" Content="Default" MinWidth="0" IsChecked="True" Click="RadioButton_CornerStyle_Click"/>
+                <RadioButton x:Name="RadioButton_CornerStyle_DoNotRound" Content="DoNotRound" MinWidth="0" Click="RadioButton_CornerStyle_Click"/>
+                <RadioButton x:Name="RadioButton_CornerStyle_Round" Content="Round" MinWidth="0" Click="RadioButton_CornerStyle_Click"/>
+                <RadioButton x:Name="RadioButton_CornerStyle_RoundSmall" Content="RoundSmall" MinWidth="0" Click="RadioButton_CornerStyle_Click"/>
+            </ui:SimpleStackPanel>
+
+
+            <ui:SimpleStackPanel Grid.Row="4" Grid.ColumnSpan="2" Spacing="10" Orientation="Horizontal" Margin="10">
                 <CheckBox x:Name="CheckBox_UseModernWindowStyle" Content="(ui) ModernStyle" IsChecked="True" IsEnabled="False" Click="CheckBox_UseModernWindowStyle_Click"/>
                 <CheckBox x:Name="CheckBox_ApplyBackground" Content="(ui) ApplyBackground" IsChecked="False" Click="CheckBox_ApplyBackground_Click"/>
                 <CheckBox x:Name="CheckBox_ApplyNoise" Content="(ui) ApplyNoise" IsChecked="False" Click="CheckBox_ApplyNoise_Click"/>
             </ui:SimpleStackPanel>
 
-            <Grid Grid.Row="4" Grid.ColumnSpan="2" Margin="6">
+            <Grid Grid.Row="5" Grid.ColumnSpan="2" Margin="6">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>

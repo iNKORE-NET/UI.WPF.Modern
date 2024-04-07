@@ -9,7 +9,8 @@
         ResizeMode="CanMinimize"
         ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
         ui:TitleBar.ExtendViewIntoTitleBar="False" ui:WindowHelper.SystemBackdropType="Acrylic"
-        ui:TitleBar.ButtonCloseAvailability="Collapsed"
+        ui:TitleBar.ButtonCloseAvailability="Enabled"
+        ui:TitleBar.ButtonMaximizeAvailability="Collapsed"
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:TitleBar.IsBackButtonVisible="False"
         ui:WindowHelper.CornerStyle="DoNotRound" Loaded="Window_Loaded">
@@ -157,6 +158,6 @@
         <ui:ThumbEx Canvas.Left="390" Canvas.Top="256" Height="43" Width="67" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
             <TextBlock Text="Hello"/>
         </ui:ThumbEx>
-        <Slider Canvas.Left="112" Canvas.Top="234" HorizontalAlignment="Left" VerticalAlignment="Top" Width="213"/>
+        <Slider Canvas.Left="120" TickPlacement="BottomRight" Canvas.Top="199" HorizontalAlignment="Left" VerticalAlignment="Top" Width="389"/>
     </Canvas>
 </Window>
