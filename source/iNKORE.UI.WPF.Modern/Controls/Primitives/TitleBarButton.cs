@@ -126,5 +126,22 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             null);
 
         #endregion
+
+        #region Availability
+
+        public TitleBarButtonAvailability Availability
+        {
+            get => (TitleBarButtonAvailability)GetValue(AvailabilityProperty);
+            set => SetValue(AvailabilityProperty, value);
+        }
+
+        public static readonly DependencyProperty AvailabilityProperty = DependencyProperty.Register(
+            nameof(Availability),
+            typeof(TitleBarButtonAvailability),
+            typeof(TitleBarButton),
+            new PropertyMetadata(TitleBarButtonAvailability.Enabled));
+
+        #endregion
+
     }
 }

@@ -57,6 +57,14 @@
                             <Setter TargetName="RootGrid" Property="Background" Value="{DynamicResource SystemControlDisabledTransparentBrush}" />
                             <Setter TargetName="Content" Property="TextElement.Foreground" Value="{DynamicResource SystemControlDisabledBaseMediumLowBrush}" />
                         </Trigger>
+                        
+                        <Trigger Property="Availability" Value="Collapsed">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="Availability" Value="Disabled">
+                            <Setter Property="IsEnabled" Value="false"/>
+                        </Trigger>
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

@@ -239,6 +239,50 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         #endregion
 
+        #region ApplyBackground
+
+        public static readonly DependencyProperty ApplyBackgroundProperty =
+            DependencyProperty.RegisterAttached(
+                "ApplyBackground",
+                typeof(bool),
+                typeof(WindowHelper),
+                new PropertyMetadata(true));
+
+        public static bool GetApplyBackground(Window window)
+        {
+            return (bool)window.GetValue(ApplyBackgroundProperty);
+        }
+
+        public static void SetApplyBackground(Window window, bool value)
+        {
+            window.SetValue(ApplyBackgroundProperty, value);
+        }
+
+
+        #endregion
+
+        #region ApplyNoise
+
+        public static readonly DependencyProperty ApplyNoiseProperty =
+            DependencyProperty.RegisterAttached(
+                "ApplyNoise",
+                typeof(bool),
+                typeof(WindowHelper),
+                new PropertyMetadata(false));
+
+        public static bool GetApplyNoise(Window window)
+        {
+            return (bool)window.GetValue(ApplyNoiseProperty);
+        }
+
+        public static void SetApplyNoise(Window window, bool value)
+        {
+            window.SetValue(ApplyNoiseProperty, value);
+        }
+
+
+        #endregion
+
 
         #region FixMaximizedWindow
 

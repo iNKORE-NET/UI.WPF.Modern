@@ -8,9 +8,10 @@
         Title="MainWindow" Height="450" Width="800"
         ResizeMode="CanMinimize"
         ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
-     ui:TitleBar.ExtendViewIntoTitleBar="False" ui:WindowHelper.SystemBackdropType="Acrylic"
-     ui:WindowHelper.UseModernWindowStyle="True"
-     ui:TitleBar.IsBackButtonVisible="False"
+        ui:TitleBar.ExtendViewIntoTitleBar="False" ui:WindowHelper.SystemBackdropType="Acrylic"
+        ui:TitleBar.ButtonCloseAvailability="Collapsed"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:TitleBar.IsBackButtonVisible="False"
         ui:WindowHelper.CornerStyle="DoNotRound" Loaded="Window_Loaded">
     <Canvas>
         <ComboBox SelectionChanged="ComboBox_SelectionChanged" Height="35" IsEditable="True">

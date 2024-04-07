@@ -1,6 +1,7 @@
 ﻿using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Modern.Helpers.Styles;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -29,6 +30,10 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         private Window _parentWindow;
         private SnapLayout _snapLayout;
         private KeyBinding _altLeftBinding;
+
+
+        private static readonly DependencyPropertyDescriptor descriptor_WindowStyle = DependencyPropertyDescriptor.FromProperty(Window.WindowStyleProperty, typeof(Window));
+        private static readonly DependencyPropertyDescriptor descriptor_ResizeMode = DependencyPropertyDescriptor.FromProperty(Window.ResizeModeProperty, typeof(Window));
 
         static TitleBarControl()
         {
@@ -340,6 +345,70 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         #endregion
 
+        #region Button Availability
+
+        private static void ButtonAvailabilityProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as TitleBarControl)?.RefreshButtonActualAvailabilities();
+        }
+
+        public static readonly DependencyProperty ButtonCloseAvailabilityProperty =
+            TitleBar.ButtonCloseAvailabilityProperty.AddOwner(typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Auto, ButtonAvailabilityProperty_ValueChanged));
+
+        public TitleBarButtonAvailability ButtonCloseAvailability
+        {
+            get => (TitleBarButtonAvailability)GetValue(ButtonCloseAvailabilityProperty);
+            set => SetValue(ButtonCloseAvailabilityProperty, value);
+        }
+
+        // User-customized values
+
+        public static readonly DependencyProperty ButtonMinimizeAvailabilityProperty =
+            TitleBar.ButtonMinimizeAvailabilityProperty.AddOwner(typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Auto, ButtonAvailabilityProperty_ValueChanged));
+
+        public TitleBarButtonAvailability ButtonMinimizeAvailability
+        {
+            get => (TitleBarButtonAvailability)GetValue(ButtonMinimizeAvailabilityProperty);
+            set => SetValue(ButtonMinimizeAvailabilityProperty, value);
+        }
+
+        public static readonly DependencyProperty ButtonMaximizeAvailabilityProperty =
+            TitleBar.ButtonMaximizeAvailabilityProperty.AddOwner(typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Auto, ButtonAvailabilityProperty_ValueChanged));
+
+        public TitleBarButtonAvailability ButtonMaximizeAvailability
+        {
+            get => (TitleBarButtonAvailability)GetValue(ButtonMaximizeAvailabilityProperty);
+            set => SetValue(ButtonMaximizeAvailabilityProperty, value);
+        }
+
+        // Actual values
+
+        public static readonly DependencyPropertyKey ButtonCloseActualAvailabilityPropertyKey = DependencyProperty.RegisterReadOnly(nameof(ButtonCloseActualAvailability), typeof(TitleBarButtonAvailability), typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Enabled));
+        public static readonly DependencyProperty ButtonCloseActualAvailabilityProperty = ButtonCloseActualAvailabilityPropertyKey.DependencyProperty;
+        public TitleBarButtonAvailability ButtonCloseActualAvailability
+        {
+            get => (TitleBarButtonAvailability)GetValue(ButtonCloseActualAvailabilityProperty);
+            private set => SetValue(ButtonCloseActualAvailabilityPropertyKey, value);
+        }
+
+        public static readonly DependencyPropertyKey ButtonMaximizeActualAvailabilityPropertyKey = DependencyProperty.RegisterReadOnly(nameof(ButtonMaximizeActualAvailability), typeof(TitleBarButtonAvailability), typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Enabled));
+        public static readonly DependencyProperty ButtonMaximizeActualAvailabilityProperty = ButtonMaximizeActualAvailabilityPropertyKey.DependencyProperty;
+        public TitleBarButtonAvailability ButtonMaximizeActualAvailability
+        {
+            get => (TitleBarButtonAvailability)GetValue(ButtonMaximizeActualAvailabilityProperty);
+            private set => SetValue(ButtonMaximizeActualAvailabilityPropertyKey, value);
+        }
+
+        public static readonly DependencyPropertyKey ButtonMinimizeActualAvailabilityPropertyKey = DependencyProperty.RegisterReadOnly(nameof(ButtonMinimizeActualAvailability), typeof(TitleBarButtonAvailability), typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Enabled));
+        public static readonly DependencyProperty ButtonMinimizeActualAvailabilityProperty = ButtonMinimizeActualAvailabilityPropertyKey.DependencyProperty;
+        public TitleBarButtonAvailability ButtonMinimizeActualAvailability
+        {
+            get => (TitleBarButtonAvailability)GetValue(ButtonMinimizeActualAvailabilityProperty);
+            private set => SetValue(ButtonMinimizeActualAvailabilityPropertyKey, value);
+        }
+
+        #endregion
+
         private Button BackButton { get; set; }
 
         private TitleBarButton MaximizeRestoreButton { get; set; }
@@ -410,6 +479,9 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         {
             if (_parentWindow != null)
             {
+                descriptor_ResizeMode.RemoveValueChanged(_parentWindow, _window_ButtonAvailabilityShouldRefresh);
+                descriptor_WindowStyle.RemoveValueChanged(_parentWindow, _window_ButtonAvailabilityShouldRefresh);
+
                 if (_altLeftBinding != null)
                 {
                     _parentWindow.InputBindings.Remove(_altLeftBinding);
@@ -425,6 +497,18 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             {
                 _altLeftBinding = new KeyBinding(new GoBackCommand(this), Key.Left, ModifierKeys.Alt);
                 _parentWindow.InputBindings.Add(_altLeftBinding);
+                descriptor_ResizeMode.AddValueChanged(_parentWindow, _window_ButtonAvailabilityShouldRefresh);
+                descriptor_WindowStyle.AddValueChanged(_parentWindow, _window_ButtonAvailabilityShouldRefresh);
+
+                RefreshButtonActualAvailabilities();
+            }
+        }
+
+        private void _window_ButtonAvailabilityShouldRefresh(object sender, EventArgs e)
+        {
+            if(sender == _parentWindow)
+            {
+                RefreshButtonActualAvailabilities();
             }
         }
 
@@ -446,6 +530,94 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 TitleBar.RaiseBackRequested(window);
             }
         }
+
+        public void RefreshButtonActualAvailabilities()
+        {
+
+            // Close button
+            if (ButtonCloseAvailability != TitleBarButtonAvailability.Auto)
+            {
+                ButtonCloseActualAvailability = ButtonCloseAvailability;
+            }
+            else
+            {
+                if (_parentWindow.WindowStyle == WindowStyle.None)
+                {
+                    ButtonCloseActualAvailability = TitleBarButtonAvailability.Collapsed;
+                }
+                else
+                {
+                    ButtonCloseActualAvailability = TitleBarButtonAvailability.Enabled;
+                }
+            }
+
+            // Maximize button
+            if (ButtonMaximizeAvailability != TitleBarButtonAvailability.Auto)
+            {
+                ButtonMaximizeActualAvailability = ButtonMaximizeAvailability;
+            }
+            else
+            {
+                if(_parentWindow.WindowStyle == WindowStyle.ToolWindow)
+                {
+                    ButtonMaximizeActualAvailability = TitleBarButtonAvailability.Collapsed;
+                }
+                else if (_parentWindow.WindowStyle == WindowStyle.None)
+                {
+                    ButtonMaximizeActualAvailability = TitleBarButtonAvailability.Collapsed;
+                }
+                else
+                {
+                    switch (_parentWindow.ResizeMode)
+                    {
+                        case ResizeMode.CanMinimize:
+                            ButtonMaximizeActualAvailability = TitleBarButtonAvailability.Disabled;
+                            break;
+                        case ResizeMode.CanResizeWithGrip:
+                        case ResizeMode.CanResize:
+                            ButtonMaximizeActualAvailability = TitleBarButtonAvailability.Enabled;
+                            break;
+                        case ResizeMode.NoResize:
+                            ButtonMaximizeActualAvailability = TitleBarButtonAvailability.Collapsed;
+                            break;
+                    }
+                }
+            }
+
+            // Minimize button
+            if (ButtonMinimizeAvailability != TitleBarButtonAvailability.Auto)
+            {
+                ButtonMinimizeActualAvailability = ButtonMinimizeAvailability;
+            }
+            else
+            {
+                if (_parentWindow.WindowStyle == WindowStyle.ToolWindow)
+                {
+                    ButtonMinimizeActualAvailability = TitleBarButtonAvailability.Collapsed;
+                }
+                else if (_parentWindow.WindowStyle == WindowStyle.None)
+                {
+                    ButtonMinimizeActualAvailability = TitleBarButtonAvailability.Collapsed;
+                }
+                else
+                {
+                    switch (_parentWindow.ResizeMode)
+                    {
+                        case ResizeMode.CanMinimize:
+                        case ResizeMode.CanResizeWithGrip:
+                        case ResizeMode.CanResize:
+                            ButtonMinimizeActualAvailability = TitleBarButtonAvailability.Enabled;
+                            break;
+                        case ResizeMode.NoResize:
+                            ButtonMinimizeActualAvailability = TitleBarButtonAvailability.Collapsed;
+                            break;
+                    }
+                }
+            }
+
+
+        }
+
 
         private void OnLeftSystemOverlaySizeChanged(object sender, SizeChangedEventArgs e)
         {

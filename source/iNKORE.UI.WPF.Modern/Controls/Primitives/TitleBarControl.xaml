@@ -99,6 +99,7 @@
                                 ContentTemplate="{StaticResource IconTemplate}"
                                 IsActive="{TemplateBinding IsActive}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                Availability="{TemplateBinding ButtonMinimizeActualAvailability}"
                                 Style="{TemplateBinding ButtonStyle}" />
 
                             <primitives:TitleBarButton
@@ -110,6 +111,7 @@
                                 IsActive="{TemplateBinding IsActive}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                 Style="{TemplateBinding ButtonStyle}"
+                                Availability="{TemplateBinding ButtonMaximizeActualAvailability}"
                                 Height="{Binding ElementName=PART_RightSystemOverlay, Path=ActualHeight}"/>
 
                             <primitives:TitleBarButton
@@ -124,6 +126,7 @@
                                 PressedBackground="#F1707A"
                                 PressedForeground="{DynamicResource SystemControlBackgroundChromeWhiteBrush}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                Availability="{TemplateBinding ButtonCloseActualAvailability}"
                                 Style="{TemplateBinding ButtonStyle}" />
                         </StackPanel>
                     </Grid>
@@ -149,7 +152,7 @@
                             <Setter TargetName="Icon" Property="Visibility" Value="Visible" />
                             <Setter TargetName="Title" Property="Margin" Value="5,0,12,0" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding WindowStyle, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Value="ToolWindow">
+                        <!--<DataTrigger Binding="{Binding WindowStyle, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Value="ToolWindow">
                             <Setter TargetName="MinimizeButton" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="MaximizeRestoreButton" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
@@ -164,7 +167,7 @@
                             <Setter TargetName="MaximizeRestoreButton" Property="Content" Value="{StaticResource ChromeRestore}" />
                             <Setter TargetName="MaximizeRestoreButton" Property="Command" Value="{x:Static SystemCommands.RestoreWindowCommand}" />
                             <Setter TargetName="MaximizeRestoreButton" Property="AutomationProperties.Name" Value="Restore" />
-                        </DataTrigger>
+                        </DataTrigger>-->
                         <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
                             <Setter TargetName="PART_BackButton" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
                             <Setter TargetName="Title" Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" />
