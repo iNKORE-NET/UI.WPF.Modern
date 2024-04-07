@@ -615,7 +615,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 }
             }
 
-
+            InitializeSnapLayout();
         }
 
 
@@ -631,7 +631,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         private void OnMaximizeRestoreButtonLoaded(object sender, RoutedEventArgs e)
         {
-            InitializeSnapLayout(MaximizeRestoreButton);
+            InitializeSnapLayout();
         }
 
         private void UpdateSystemOverlayLeftInset(double value)
@@ -652,12 +652,31 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             }
         }
 
+        private void InitializeSnapLayout()
+        {
+            if(MaximizeRestoreButton != null)
+            {
+                InitializeSnapLayout(MaximizeRestoreButton);
+            }
+        }
+
         private void InitializeSnapLayout(TitleBarButton maximizeButton)
         {
             if (!SnapLayout.IsSupported) return;
 
-            _snapLayout = new SnapLayout();
-            _snapLayout.Register(maximizeButton);
+            if (maximizeButton.IsEnabled && maximizeButton.Visibility == Visibility.Visible)
+            {
+                _snapLayout = new SnapLayout();
+                _snapLayout.Register(maximizeButton);
+            }
+            else
+            {
+                if(_snapLayout != null)
+                {
+                    _snapLayout.Unregister();
+                    _snapLayout = null;
+                }
+            }
         }
 
         private void MinimizeWindow(object sender, ExecutedRoutedEventArgs e)

@@ -36,6 +36,8 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
         private SolidColorBrush _hoverColor;
         private SolidColorBrush _pressedColor;
 
+        public Button Target { get { return _button; } }
+
         public void Register(Button button)
         {
             _isButtonFocused = false;
@@ -55,6 +57,22 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
             if (hwnd != null) hwnd.AddHook(HwndSourceHook);
 
             _button.IsHitTestVisible = false;
+        }
+
+        public void Unregister()
+        {
+            if(_button != null)
+            {
+                _isButtonFocused = false;
+
+                HwndSource hwnd = (HwndSource)PresentationSource.FromVisual(_button);
+
+                if (hwnd != null) hwnd.RemoveHook(HwndSourceHook);
+
+                _button.IsHitTestVisible = true;
+                _button = null;
+            }
+
         }
 
         public static bool IsSupported => OSVersionHelper.IsWindows11OrGreater;
@@ -160,6 +178,10 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
             catch (OverflowException)
             {
                 return true; // or not to true, that is the question
+            }
+            catch
+            {
+
             }
 
             return false;
