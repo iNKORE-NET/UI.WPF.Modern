@@ -123,5 +123,21 @@ namespace WindowExample
                 }
             }
         }
+
+        private void RadioButton_CornerStyle_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton btn && btn.Content is string val)
+            {
+                try
+                {
+                    WindowHelper.SetCornerStyle(this, (WindowCornerStyle)Enum.Parse(typeof(WindowCornerStyle), val));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+        }
     }
 }
