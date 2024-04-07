@@ -666,8 +666,11 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
             if (maximizeButton.IsEnabled && maximizeButton.Visibility == Visibility.Visible)
             {
-                _snapLayout = new SnapLayout();
-                _snapLayout.Register(maximizeButton);
+                if(_snapLayout == null)
+                {
+                    _snapLayout = new SnapLayout();
+                    _snapLayout.Register(maximizeButton);
+                }
             }
             else
             {
