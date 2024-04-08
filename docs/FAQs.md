@@ -1,11 +1,16 @@
 
 # iNKORE.UI.WPF.Modern FAQs
 
-> 
+>
 > This file contains some frequently asked qustions.
 >
 > If you have a problem, please report an issue or contact us (yoojun@inkore.net)
-> 
+
+## ❓Error CS0104: "Page" is an ambiguous reference between 'System.Windows.Controls.Page' and 'iNKORE.UI.WPF.Modern.Controls.'
+
+```c#
+using Page = System.Windows.Controls.Page;
+```
 
 ## ❓ IconElement: Display as rectangle or question mark under Windows 7
 
@@ -42,7 +47,7 @@
           <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Home}" FontSize="16"/>
       </ui:NavigationViewItem.Icon>
   </ui:NavigationViewItem>
-   ```
+  ```
 
 ## ❓ FontIcon: How to add icons from segoe icons library elegantly
 
@@ -100,7 +105,7 @@
          </ui:MenuFlyout>
       </ui:AppBarButton.Flyout>
    </ui:AppBarButton>
-
+  
   ```
 
 ## ❓ Application: Exception throws when used in a VSIX project
@@ -122,12 +127,12 @@
 
    ```csharp
   AppDomain.CurrentDomain.AssemblyResolve += OnAssemblyResolve;
-
+  
   private Assembly OnAssemblyResolve(object sender, ResolveEventArgs args)
   {
        string path = Assembly.GetExecutingAssembly().Location;
        path = Path.GetDirectoryName(path);
-
+  
        if (args.Name.ToLower().Contains("iNKORE.UI.WPF.Modern") && !args.Name.ToLower().Contains("iNKORE.UI.WPF.Modern.Controls"))
        {
            path = Path.Combine(path, "iNKORE.UI.WPF.Modern.dll");
