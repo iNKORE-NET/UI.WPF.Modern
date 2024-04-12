@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern.Contro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNKORE.UI.WPF.Modern.Gallery", "source\iNKORE.UI.WPF.Modern.Gallery\iNKORE.UI.WPF.Modern.Gallery.csproj", "{54049F5E-E57B-433E-B316-3C51F25B523D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp1", "source\samples\WpfApp1\WpfApp1.csproj", "{DBB698F7-FB37-4514-82C2-DA3C71A4B92F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp1", "samples\WpfApp1\WpfApp1.csproj", "{DBB698F7-FB37-4514-82C2-DA3C71A4B92F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{445FD5A2-621B-450B-B0AB-4B9A070ECC1E}"
 EndProject
@@ -39,15 +39,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fonts", "Fonts", "{1413BB5F
 		assets\fonts\SegoeIcons.ttf = assets\fonts\SegoeIcons.ttf
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoAppXamlTest", "source\samples\NoAppXamlTest\NoAppXamlTest.csproj", "{7C68372B-A2EE-43DB-A6B1-EC0CA6471BA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoAppXamlTest", "samples\NoAppXamlTest\NoAppXamlTest.csproj", "{7C68372B-A2EE-43DB-A6B1-EC0CA6471BA3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyoutExample", "source\samples\FlyoutExample\FlyoutExample.csproj", "{3614991C-ECC0-474A-BC8E-1D0A56FD0BDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyoutExample", "samples\FlyoutExample\FlyoutExample.csproj", "{3614991C-ECC0-474A-BC8E-1D0A56FD0BDE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterKit", "source\samples\StarterKit\StarterKit.csproj", "{B13E16CB-55E0-42CB-B761-216D82273473}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterKit", "samples\StarterKit\StarterKit.csproj", "{B13E16CB-55E0-42CB-B761-216D82273473}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SettingsPageExample", "source\samples\SettingsPageExample\SettingsPageExample.csproj", "{677DAAFA-C061-4C79-BAAE-5639BCD80448}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SettingsPageExample", "samples\SettingsPageExample\SettingsPageExample.csproj", "{677DAAFA-C061-4C79-BAAE-5639BCD80448}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowExample", "source\samples\WindowExample\WindowExample.csproj", "{936F7656-B5E8-44A8-8560-D954E1E68383}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowExample", "samples\WindowExample\WindowExample.csproj", "{936F7656-B5E8-44A8-8560-D954E1E68383}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
