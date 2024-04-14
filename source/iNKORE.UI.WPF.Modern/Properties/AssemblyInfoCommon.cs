@@ -10,5 +10,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("iNKORE!")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("0.9.26.0")]
-[assembly: AssemblyFileVersion("0.9.26.0")]
+[assembly: AssemblyVersion("0.9.27.0")]
+[assembly: AssemblyFileVersion("0.9.27.0")]
