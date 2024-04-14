@@ -1,8 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using iNKORE.UI.WPF.Modern.Common.IconKeys;
 using iNKORE.UI.WPF.Modern.Controls;
+using System;
 using System.Windows;
+using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace iNKORE.UI.WPF.Modern.Common
@@ -10,7 +13,7 @@ namespace iNKORE.UI.WPF.Modern.Common
     /// <summary>
     /// Represents an icon source that uses a glyph from the specified font.
     /// </summary>
-    public class FontIconSource : IconSource
+    public class FontIconSource : IconSource, IFontIconClass
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FontIconSource"/> class.
@@ -27,7 +30,15 @@ namespace iNKORE.UI.WPF.Modern.Common
                 nameof(FontFamily),
                 typeof(FontFamily),
                 typeof(FontIconSource),
-                new PropertyMetadata(new FontFamily(FontIcon.DefaultIconFontFamily)));
+                new PropertyMetadata(new FontFamily(FontIcon.SegoeIconsFontFamilyName), FontFamilyProperty_ValueChanged));
+
+        private static void FontFamilyProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is IFontIconClass cls)
+            {
+                UpdateIconData(cls, false);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the font used to display the icon glyph.
@@ -117,7 +128,15 @@ namespace iNKORE.UI.WPF.Modern.Common
                 nameof(Glyph),
                 typeof(string),
                 typeof(FontIconSource),
-                new PropertyMetadata(string.Empty));
+                new PropertyMetadata(string.Empty, GlyphProperty_ValueChanged));
+
+        private static void GlyphProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if(d is IFontIconClass cls)
+            {
+                UpdateIconData(cls, false);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the character code that identifies the icon glyph.
@@ -130,6 +149,65 @@ namespace iNKORE.UI.WPF.Modern.Common
             get => (string)GetValue(GlyphProperty);
             set => SetValue(GlyphProperty, value);
         }
+
+        /// <summary>
+        /// Identifies the <see cref="Icon"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register(
+                nameof(Icon),
+                typeof(FontIconData?),
+                typeof(FontIconSource),
+                new PropertyMetadata(null, (d, e) => UpdateIconData(d as IFontIconClass, true)));
+
+        /// <summary>
+        /// Gets or sets the wrapped icon, which includes <see cref="Glyph"/> and <see cref="FontFamily"/>. You can get these instances from <see cref="iNKORE.UI.WPF.Modern.Common.IconKeys"/> namespace.
+        /// If you are using Glyph and FontFamily property, this can be ignored.
+        /// </summary>
+        public FontIconData? Icon
+        {
+            get => (FontIconData?)GetValue(IconProperty);
+            set => SetValue(IconProperty, value);
+        }
+
+
+        public static bool UpdateIconData(IFontIconClass instance, bool preserveData)
+        {
+            bool isChanged = false;
+
+            if (instance.Icon.HasValue)
+            {
+                var icon = instance.Icon.Value;
+
+                if (instance.Glyph != icon.Glyph)
+                {
+                    if (preserveData)
+                        instance.Glyph = icon.Glyph;
+                    else
+                    {
+                        instance.Icon = null;
+                        return true;
+                    }
+                    isChanged = true;
+                }
+                if (icon.FontFamily != null && icon.FontFamily != instance.FontFamily)
+                {
+                    if (preserveData)
+                        instance.FontFamily = icon.FontFamily;
+                    else
+                    {
+                        instance.Icon = null;
+                        return true;
+                    }
+
+                    isChanged = true;
+                }
+            }
+
+            return isChanged;
+        }
+
+
 
         /// <inheritdoc/>
         protected override IconElement CreateIconElementCore()
@@ -146,7 +224,7 @@ namespace iNKORE.UI.WPF.Modern.Common
 
             if (FontFamily == null)
             {
-                FontFamily = new FontFamily(FontIcon.DefaultIconFontFamily);
+                FontFamily = new FontFamily(FontIcon.SegoeIconsFontFamilyName);
             }
             fontIcon.FontFamily = FontFamily;
 
@@ -155,5 +233,18 @@ namespace iNKORE.UI.WPF.Modern.Common
 
             return fontIcon;
         }
+    }
+
+    public interface IFontIconClass
+    {
+        FontFamily FontFamily { get; set; }
+
+        string Glyph { get; set; }
+
+        double FontSize { get; set; }
+
+        Brush Foreground { get; set; }
+
+        FontIconData? Icon { get; set; }
     }
 }

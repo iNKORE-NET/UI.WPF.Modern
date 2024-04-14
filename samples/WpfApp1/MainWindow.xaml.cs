@@ -1,4 +1,5 @@
 ﻿using iNKORE.UI.WPF.Modern;
+using iNKORE.UI.WPF.Modern.Common.IconKeys;
 using iNKORE.UI.WPF.Modern.Controls;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using iNKORE.UI.WPF.Modern.Helpers.Styles;
@@ -94,8 +95,8 @@ namespace WpfApp1
             MessageBoxEx.DefaultBackdropType = BackdropType.Acrylic;
 
             MessageBoxEx.Show(message, title, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
-            MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, ((char)Symbol.Admin).ToString());
-            MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, SegoeIcons.Airplane);
+            MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, FluentSystemIcons.HomeAdd_20_Regular);
+            MessageBoxEx.Show("redadwada", null, MessageBoxButton.OK, SegoeFluentIcons.Airplane);
 
             MessageBoxEx.DefaultBackdropType = BackdropType.Mica;
 

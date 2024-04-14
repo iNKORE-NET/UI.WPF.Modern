@@ -56,7 +56,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition Width="200"/>
                         </Grid.ColumnDefinitions>
-                        <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.LocaleLanguage}" Grid.RowSpan="2" Margin="5,15,20,15"/>
+                        <ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.LocaleLanguage}" Grid.RowSpan="2" Margin="5,15,20,15"/>
                         <TextBlock x:Name="TextBlock_Language" Text="Language" Grid.Column="1" VerticalAlignment="Bottom" Margin="0,0,0,2"/>
                         <TextBlock x:Name="TextBlock_Language_Description" Text="The primary language that displays on the UI" Grid.Column="1" VerticalAlignment="Top" Grid.Row="1" Margin="0,2,20,5" Opacity="0.615" FontSize="12" TextTrimming="CharacterEllipsis" TextWrapping="WrapWithOverflow"/>
 
@@ -94,7 +94,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="200"/>
                     </Grid.ColumnDefinitions>
-                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Light}" Grid.RowSpan="2" Margin="5,15,20,15"/>
+                    <ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.Light}" Grid.RowSpan="2" Margin="5,15,20,15"/>
                     <TextBlock x:Name="TextBlock_ThemeMode" Text="Theme mode" Grid.Column="1" VerticalAlignment="Bottom" Margin="0,0,0,2"/>
                     <TextBlock x:Name="TextBlock_ThemeMode_Description" Text="Lorem ipsum dolor sit amet." Grid.Column="1" VerticalAlignment="Top" Grid.Row="1" Margin="0,2,20,5" Opacity="0.615" FontSize="12" TextTrimming="CharacterEllipsis" TextWrapping="WrapWithOverflow"/>
 
@@ -118,7 +118,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Draw}" Grid.RowSpan="2" Margin="5,15,20,15"/>
+                    <ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.Draw}" Grid.RowSpan="2" Margin="5,15,20,15"/>
                     <TextBlock x:Name="TextBlock_StylusToDraw" Text="Draw with stylus" Grid.Column="1" VerticalAlignment="Bottom" Margin="0,0,0,2"/>
                     <TextBlock x:Name="TextBlock_StylusToDraw_Description" Text="Draw with your stylus while using your fingers to move the viewport" Grid.Column="1" VerticalAlignment="Top" Grid.Row="1" Margin="0,2,20,5" Opacity="0.615" FontSize="12" TextTrimming="CharacterEllipsis" TextWrapping="WrapWithOverflow"/>
 

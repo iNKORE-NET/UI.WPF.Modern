@@ -38,12 +38,12 @@
                         <ui:NavigationView.MenuItems>
                             <ui:NavigationViewItem Content="Home">
                                 <ui:NavigationViewItem.Icon>
-                                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Home}"/>
+                                    <ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.Home}"/>
                                 </ui:NavigationViewItem.Icon>
                             </ui:NavigationViewItem>
                             <ui:NavigationViewItem Content="Account">
                                 <ui:NavigationViewItem.Icon>
-                                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Contact}"/>
+                                    <ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.Contact}"/>
                                 </ui:NavigationViewItem.Icon>
 
                             </ui:NavigationViewItem>
@@ -51,7 +51,7 @@
                                 x:Name="InboxPage"
                                 Content="Inbox">
                                 <ui:NavigationViewItem.Icon>
-                                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Mail}"/>
+                                    <ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.Mail}"/>
                                 </ui:NavigationViewItem.Icon>
                                 <ui:NavigationViewItem.InfoBadge>
                                     <ui:InfoBadge

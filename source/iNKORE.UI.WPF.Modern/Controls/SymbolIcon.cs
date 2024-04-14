@@ -9,7 +9,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
     /// <summary>
     /// Represents an icon that uses a glyph from the Segoe MDL2 Assets font as its content.
     /// </summary>
-    [Obsolete("We don't recommend you use this, instead, please use 'FontIcon'. Also this class will be no longer maintained\r\nExample: <ui:FontIcon Glyph=\"{x:Static ui:SegoeIcons.Save}\"/>")]
+    [Obsolete("We don't recommend you use this, instead, please use 'FontIcon'. Also this class will be no longer maintained\r\nExample: <ui:FontIcon Glyph=\"{x:Static ui:SegoeFluentIcons.Save}\"/>")]
     public sealed class SymbolIcon : IconElement
     {
         /// <summary>

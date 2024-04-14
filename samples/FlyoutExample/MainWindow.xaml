@@ -48,7 +48,7 @@
                 <ui:CommandBar HorizontalAlignment="Center">
                     <ui:AppBarButton Label="Click me!" ChevronStyle="Down">
                         <ui:AppBarButton.Icon>
-                            <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.GiftboxOpen}"/>
+                            <ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.GiftboxOpen}"/>
                         </ui:AppBarButton.Icon>
                         <ui:AppBarButton.Flyout>
                             <ui:Flyout Placement="Bottom">
@@ -59,7 +59,7 @@
                     </ui:AppBarButton>
                     <ui:AppBarButton Label="Arrowless!">
                         <ui:AppBarButton.Icon>
-                            <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Hide}"/>
+                            <ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.Hide}"/>
                         </ui:AppBarButton.Icon>
                         <ui:AppBarButton.Flyout>
                             <ui:Flyout Placement="Bottom">
@@ -71,7 +71,7 @@
 
                     <ui:AppBarButton Label="Right click" Click="DropDownButton_3_Click" ChevronStyle="Right" FlyoutOpeningMode="RightMouseButtonUp">
                         <ui:AppBarButton.Icon>
-                            <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Forward}"/>
+                            <ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.Forward}"/>
                         </ui:AppBarButton.Icon>
                         <ui:AppBarButton.Flyout>
                             <ui:Flyout Placement="Bottom">

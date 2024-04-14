@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Media;
 using System.Windows;
+using iNKORE.UI.WPF.Modern.Common.IconKeys;
 
 namespace iNKORE.UI.WPF.Modern.Extensions
 {
     internal static class MessageBoxImageExtensions
     {
-        public static string ToSymbol(this MessageBoxImage image)
+        public static FontIconData ToSymbol(this MessageBoxImage image)
         {
             return image switch
             {
-                MessageBoxImage.Error => SegoeIcons.ErrorBadge,
-                MessageBoxImage.Information => SegoeIcons.Info,
-                MessageBoxImage.Warning => SegoeIcons.Warning,
-                MessageBoxImage.Question => SegoeIcons.Unknown,
-                MessageBoxImage.None => char.ConvertFromUtf32(0x2007),
-                _ => char.ConvertFromUtf32(0x2007),
+                MessageBoxImage.Error => SegoeFluentIcons.ErrorBadge,
+                MessageBoxImage.Information => SegoeFluentIcons.Info,
+                MessageBoxImage.Warning => SegoeFluentIcons.Warning,
+                MessageBoxImage.Question => SegoeFluentIcons.Unknown,
+                MessageBoxImage.None => new FontIconData(char.ConvertFromUtf32(0x2007)),
+                _ => new FontIconData(char.ConvertFromUtf32(0x2007)),
             };
         }
 

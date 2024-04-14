@@ -97,11 +97,13 @@
             <ComboBoxItem Content="Item19"/>
             <ComboBoxItem Content="Item20"/>
         </ComboBox>
+
+        <ui:FontIcon FontFamily="{StaticResource {x:Static ui:ThemeKeys.FluentSystemIconsKey}}" Glyph="d"/>
         <!--<ui:NavigationView x:Name="naview" PaneDisplayMode="Top">
             <ui:NavigationView.MenuItems>
                 <ui:NavigationViewItem Content="Home">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Home}" FontSize="16"/>
+                        <ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.Home}" FontSize="16"/>
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
                 <ui:NavigationViewItem x:Name="sgsac" Content="Rectangle">
@@ -115,12 +117,12 @@
         <ui:CommandBar VerticalAlignment="Bottom">
             <ui:AppBarButton Label="Aaaa" IsCompact="True" Click="AppBarButton_Click">
                 <ui:AppBarButton.Icon>
-                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
+                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Settings}" FontSize="16"/>
                 </ui:AppBarButton.Icon>
             </ui:AppBarButton>
             <ui:AppBarButton Label="Accept" ChevronStyle="Down" FlyoutOpeningMode="RightMouseButtonUp">
                 <ui:AppBarButton.Icon>
-                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
+                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Accept}" FontSize="16"/>
                 </ui:AppBarButton.Icon>
                 <ui:AppBarButton.Flyout>
                     <ui:MenuFlyout>
@@ -130,7 +132,7 @@
             </ui:AppBarButton>
             <ui:AppBarToggleButton x:Name="AppBarToggleButton1" Label="Aaaa" LabelPosition="Collapsed" IsCompact="True" HorizontalAlignment="Center" Height="32">
                 <ui:AppBarToggleButton.Icon>
-                    <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accept}" FontSize="16"/>
+                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Accident}" FontSize="16"/>
                 </ui:AppBarToggleButton.Icon>
             </ui:AppBarToggleButton>
         </ui:CommandBar>
@@ -142,13 +144,13 @@
             </ui:DropDownButton.Flyout>
         </ui:DropDownButton>
         <ToggleButton x:Name="ToggleButton1" Click="ToggleButton_Click">
-            <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Accounts}"/>
+            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Accept}"/>
         </ToggleButton>
         <RichTextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="539,110,0,0" Height="86"/>
         <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="622,127,0,0" Height="200"/>
         <Button x:Name="Button_MessageBox" Click="Button_MessageBox_Click" Canvas.Left="152" Canvas.Top="145" VerticalAlignment="Top">
             <ui:SimpleStackPanel Spacing="5" Orientation="Horizontal">
-                <ui:FontIcon Glyph="{x:Static ui:SegoeIcons.Message}"/>
+                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.WindowSettings_20_Regular}"/>
                 <TextBlock Text="MessageBox"/>
             </ui:SimpleStackPanel>
         </Button>

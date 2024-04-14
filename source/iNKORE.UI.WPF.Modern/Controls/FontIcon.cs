@@ -1,4 +1,5 @@
 ﻿using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Common.IconKeys;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,13 +10,13 @@ namespace iNKORE.UI.WPF.Modern.Controls
     /// <summary>
     /// Represents an icon that uses a glyph from the specified font.
     /// </summary>
-    public class FontIcon : IconElement
+    public class FontIcon : IconElement, IFontIconClass
     {
-        public const string DefaultIconFontFamily = "Segoe Fluent Icons,Segoe MDL2 Assets,Segoe UI Symbol";
+        public const string SegoeIconsFontFamilyName = "Segoe Fluent Icons,Segoe MDL2 Assets,Segoe UI Symbol";
 
 
         /// <summary>
-        /// Initializes a new instance of the FontIcon class.
+        /// Initializes a new instance of the FontIcon class.F
         /// </summary>
         public FontIcon()
         {
@@ -30,7 +31,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 typeof(FontFamily),
                 typeof(FontIcon),
                 new FrameworkPropertyMetadata(
-                    new FontFamily(DefaultIconFontFamily),
+                    new FontFamily(SegoeIconsFontFamilyName),
                     OnFontFamilyChanged));
 
         /// <summary>
@@ -52,6 +53,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 fontIcon._textBlock.FontFamily = (FontFamily)e.NewValue;
             }
+
+            FontIconSource.UpdateIconData(fontIcon, false);
         }
 
         /// <summary>
@@ -171,6 +174,27 @@ namespace iNKORE.UI.WPF.Modern.Controls
             set => SetValue(GlyphProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="Icon"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register(
+                nameof(Icon),
+                typeof(FontIconData?),
+                typeof(FontIcon),
+                new PropertyMetadata(null, (d, e) => FontIconSource.UpdateIconData(d as IFontIconClass, true)));
+
+        /// <summary>
+        /// Gets or sets the wrapped icon, which includes <see cref="Glyph"/> and <see cref="FontFamily"/>. You can get these instances from <see cref="iNKORE.UI.WPF.Modern.Common.IconKeys"/> namespace.
+        /// If you are using Glyph and FontFamily property, this can be ignored.
+        /// </summary>
+        public FontIconData? Icon
+        {
+            get => (FontIconData?)GetValue(IconProperty);
+            set => SetValue(IconProperty, value);
+        }
+
+
         private static void OnGlyphChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var fontIcon = (FontIcon)d;
@@ -178,6 +202,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 fontIcon._textBlock.Text = (string)e.NewValue;
             }
+
+            FontIconSource.UpdateIconData(fontIcon, false);
         }
 
         private protected override void InitializeChildren()
@@ -243,7 +269,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             if (FontFamily == null)
             {
-                FontFamily = new FontFamily(DefaultIconFontFamily);
+                FontFamily = new FontFamily(SegoeIconsFontFamilyName);
             }
             iconSource.FontFamily = FontFamily;
 

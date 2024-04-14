@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Globalization;
+using iNKORE.UI.WPF.Modern.Common.IconKeys;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
@@ -26,7 +27,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 try
                 {
-                    var fields = typeof(SegoeIcons).GetField(s);
+                    var fields = typeof(SegoeFluentIcons).GetField(s);
                     if (fields != null)
                     {
                         return fields.GetValue(null);

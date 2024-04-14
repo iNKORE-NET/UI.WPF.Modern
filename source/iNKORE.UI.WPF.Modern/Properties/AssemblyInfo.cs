@@ -23,6 +23,7 @@ using System.Windows.Markup;
 [assembly: XmlnsPrefix(ThemeManager.XmlNamespace, "modern")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Common")]
+[assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Common.IconKeys")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Common.Converters")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Controls")]
 [assembly: XmlnsDefinition(ThemeManager.XmlNamespace, "iNKORE.UI.WPF.Modern.Controls.Helpers")]
