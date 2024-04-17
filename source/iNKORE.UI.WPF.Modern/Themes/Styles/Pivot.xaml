@@ -20,6 +20,7 @@
         <Setter Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundUnselected}" />
         <Setter Property="Padding" Value="{DynamicResource PivotHeaderItemMargin}" />
         <Setter Property="Height" Value="48" />
+        <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundUnselected}"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
@@ -44,7 +45,6 @@
                                 FontFamily="{DynamicResource PivotHeaderItemFontFamily}"
                                 FontSize="{DynamicResource PivotHeaderItemFontSize}"
                                 FontWeight="{DynamicResource PivotHeaderItemThemeFontWeight}"
-                                Foreground="{DynamicResource PivotHeaderItemForegroundUnselected}"
                                 RecognizesAccessKey="True"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             <Rectangle

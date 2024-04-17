@@ -1,7 +1,7 @@
-﻿<Application x:Class="FlyoutExample.App"
+﻿<Application x:Class="ExamplePhotoTaker.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:FlyoutExample"
+             xmlns:local="clr-namespace:ExamplePhotoTaker"
              xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
@@ -11,6 +11,6 @@
                 <ui:XamlControlsResources/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-         
+
     </Application.Resources>
 </Application>
