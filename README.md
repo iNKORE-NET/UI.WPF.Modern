@@ -53,9 +53,16 @@
 
 # 🤔 How to use
 
-- [Quick Start](https://github.com/iNKORE-Public/UI.WPF.Modern/blob/main/docs/Quick%20Start.md): This shows you the first steps how to use this library to set up your project
+- [Quick Start](https://github.com/iNKORE-NET/Documentation/blob/main/data/docs/ui.wpf.modern/02.%23%20onboarding/index.en-US.mdx): This shows you the first steps how to use this library to set up your project
 
 - [FAQs](https://github.com/iNKORE-Public/UI.WPF.Modern/blob/main/docs/FAQs.md): Here are some frequently asked questions and answers for you to look up for.
+
+> # About our docs
+> We're currently working on a documentation site that simplifies your learning curve. However this can be a huge process.
+>
+> Before everything is done, you can view our unfinished works [here](https://github.com/iNKORE-NET/Documentation). PRs are also welcomed.
+>
+> When we finish everything, the docs will be available on `docs.inkore.net`
 
 # 🙋🏻‍♂️ Contribution
 
