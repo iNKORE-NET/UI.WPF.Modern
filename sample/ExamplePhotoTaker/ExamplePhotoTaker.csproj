@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="iNKORE.UI.WPF.Modern" Version="0.9.27" />
+    <ProjectReference Include="..\..\source\iNKORE.UI.WPF.Modern.Controls\iNKORE.UI.WPF.Modern.Controls.csproj" />
+    <ProjectReference Include="..\..\source\Inkore.UI.WPF.Modern\iNKORE.UI.WPF.Modern.csproj" />
   </ItemGroup>
 
 </Project>

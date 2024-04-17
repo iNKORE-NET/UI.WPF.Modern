@@ -20,7 +20,6 @@
         <Setter Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundUnselected}" />
         <Setter Property="Padding" Value="{DynamicResource PivotHeaderItemMargin}" />
         <Setter Property="Height" Value="48" />
-        <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundUnselected}"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
@@ -31,22 +30,37 @@
                 <ControlTemplate TargetType="TabItem">
                     <Border
                         x:Name="Border"
+                        TextElement.Foreground="{DynamicResource PivotHeaderItemForegroundUnselected}"
                         Padding="{TemplateBinding Padding}"
                         chelper:PressHelper.IsEnabled="True"
                         Background="{TemplateBinding Background}"
                         SnapsToDevicePixels="True">
                         <Grid>
-                            <local:ContentPresenterEx
-                                x:Name="ContentPresenter"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Center"
-                                ContentSource="Header"
-                                Focusable="False"
-                                FontFamily="{DynamicResource PivotHeaderItemFontFamily}"
-                                FontSize="{DynamicResource PivotHeaderItemFontSize}"
-                                FontWeight="{DynamicResource PivotHeaderItemThemeFontWeight}"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            <local:SimpleStackPanel x:Name="SimpleStackPanel_Header" Orientation="Horizontal" Spacing="8">
+
+                                <local:ContentPresenterEx
+                                    x:Name="ContentPresenter_Icon"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="{TemplateBinding chelper:TabItemHelper.Icon}"
+                                    Focusable="False"
+                                    FontFamily="{DynamicResource PivotHeaderItemFontFamily}"
+                                    FontSize="{DynamicResource PivotHeaderItemFontSize}"
+                                    FontWeight="{DynamicResource PivotHeaderItemThemeFontWeight}"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <local:ContentPresenterEx
+                                    x:Name="ContentPresenter"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center"
+                                    ContentSource="Header"
+                                    Focusable="False"
+                                    FontFamily="{DynamicResource PivotHeaderItemFontFamily}"
+                                    FontSize="{DynamicResource PivotHeaderItemFontSize}"
+                                    FontWeight="{DynamicResource PivotHeaderItemThemeFontWeight}"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </local:SimpleStackPanel>
                             <Rectangle
                                 x:Name="SelectedPipe"
                                 Height="3"
@@ -121,7 +135,7 @@
                                 <Condition SourceName="Border" Property="IsMouseOver" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Panel.ZIndex" Value="1" />
-                            <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundSelected}" />
+                            <Setter TargetName="Border" Property="TextElement.Foreground" Value="{DynamicResource PivotHeaderItemForegroundSelected}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundSelected}" />
                         </MultiTrigger>
                         <!--  UnselectedPointerOver  -->
@@ -130,7 +144,7 @@
                                 <Condition Property="IsSelected" Value="False" />
                                 <Condition SourceName="Border" Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundUnselectedPointerOver}" />
+                            <Setter TargetName="Border" Property="TextElement.Foreground" Value="{DynamicResource PivotHeaderItemForegroundUnselectedPointerOver}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundUnselectedPointerOver}" />
                         </MultiTrigger>
                         <!--  SelectedPointerOver  -->
@@ -140,11 +154,11 @@
                                 <Condition SourceName="Border" Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Panel.ZIndex" Value="1" />
-                            <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundSelectedPointerOver}" />
+                            <Setter TargetName="Border" Property="TextElement.Foreground" Value="{DynamicResource PivotHeaderItemForegroundSelectedPointerOver}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundSelectedPointerOver}" />
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundDisabled}" />
+                            <Setter TargetName="Border" Property="TextElement.Foreground" Value="{DynamicResource PivotHeaderItemForegroundDisabled}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundDisabled}" />
                             <Setter TargetName="SelectedPipe" Property="Visibility" Value="Collapsed" />
                         </Trigger>
@@ -154,7 +168,7 @@
                                 <Condition Property="IsSelected" Value="False" />
                                 <Condition SourceName="Border" Property="chelper:PressHelper.IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundUnselectedPressed}" />
+                            <Setter TargetName="Border" Property="TextElement.Foreground" Value="{DynamicResource PivotHeaderItemForegroundUnselectedPressed}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundUnselectedPressed}" />
                         </MultiTrigger>
                         <!--  SelectedPressed  -->
@@ -163,9 +177,13 @@
                                 <Condition Property="IsSelected" Value="True" />
                                 <Condition SourceName="Border" Property="chelper:PressHelper.IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Foreground" Value="{DynamicResource PivotHeaderItemForegroundSelectedPressed}" />
+                            <Setter TargetName="Border" Property="TextElement.Foreground" Value="{DynamicResource PivotHeaderItemForegroundSelectedPressed}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PivotHeaderItemBackgroundSelectedPressed}" />
                         </MultiTrigger>
+
+                        <Trigger Property="chelper:TabItemHelper.Icon" Value="{x:Null}">
+                            <Setter TargetName="SimpleStackPanel_Header" Property="Spacing" Value="0"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
