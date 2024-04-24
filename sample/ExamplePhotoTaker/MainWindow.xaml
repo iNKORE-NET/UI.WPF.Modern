@@ -18,27 +18,11 @@
             <Viewbox>
                 <Viewbox x:Name="Viewbox_Viewport" Width="960">
                     <Border Background="White" Padding="10" Width="640" Height="320">
-                        <TabControl Style="{StaticResource {x:Static ui:ThemeKeys.TabControlPivotStyleKey}}" >
-
-                            <TabItem Header="TabItem 1">
-                                <ui:TabItemHelper.Icon>
-                                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Shop}" FontSize="20"/>
-                                </ui:TabItemHelper.Icon>
-                                <TextBlock Text="Content 1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </TabItem>
-
-                            <TabItem Header="TabItem 2">
-                                <ui:TabItemHelper.Icon>
-                                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Settings}" FontSize="20"/>
-                                </ui:TabItemHelper.Icon>
-                                <TextBlock Text="Content 2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </TabItem>
-
-                            <TabItem Header="TabItem 3">
-                                <TextBlock Text="Content 3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </TabItem>
-
-                        </TabControl>
+                        <ui:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Button>
+                                <ui:IconAndText Icon="{x:Static ui:SegoeFluentIcons.Save}" Content="Save"/>
+                            </Button>
+                        </ui:SimpleStackPanel>
                     </Border>
                 </Viewbox>
             </Viewbox>
