@@ -19,6 +19,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using static iNKORE.UI.WPF.Modern.Controls.LocalizedDialogCommands;
 using System.Diagnostics;
+using iNKORE.UI.WPF.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
@@ -122,7 +123,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
             try
             {
                 new UIPermission(UIPermissionClipboard.AllClipboard).Demand();
-                Clipboard.SetText(sb.ToString());
+                //Clipboard.SetText(sb.ToString());
+                ClipboardEx.SetText(sb.ToString());
             }
             catch (SecurityException)
             {
