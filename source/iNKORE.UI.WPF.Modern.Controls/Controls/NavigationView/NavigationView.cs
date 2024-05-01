@@ -1888,17 +1888,17 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     m_initialListSizeStateSet = true;
                     VisualStateManager.GoToState(this, m_isClosedCompact ? "ListSizeCompact" : "ListSizeFull", true /*useTransitions*/);
                 }
-                else if (false /*!SharedHelpers.IsRS3OrHigher()*/) // Do any changes that would otherwise happen on opening/closing for RS2 and earlier:
-                {
-                    // RS3+ animation timing enhancement:
-                    // Pre-RS3, we didn't have the full suite of Closed, Closing, Opened,
-                    // Opening events on SplitView. So when doing open/closed operations,
-                    // we have to do them immediately. Just one example: on RS2 when you
-                    // close the pane, the PaneTitle will disappear *immediately* which
-                    // looks janky. But on RS4, it'll have its visibility set after the
-                    // closed event fires.
-                    VisualStateManager.GoToState(this, m_isClosedCompact ? "ListSizeCompact" : "ListSizeFull", true /*useTransitions*/);
-                }
+                //else if (!SharedHelpers.IsRS3OrHigher()) // Do any changes that would otherwise happen on opening/closing for RS2 and earlier:
+                //{
+                //    // RS3+ animation timing enhancement:
+                //    // Pre-RS3, we didn't have the full suite of Closed, Closing, Opened,
+                //    // Opening events on SplitView. So when doing open/closed operations,
+                //    // we have to do them immediately. Just one example: on RS2 when you
+                //    // close the pane, the PaneTitle will disappear *immediately* which
+                //    // looks janky. But on RS4, it'll have its visibility set after the
+                //    // closed event fires.
+                //    VisualStateManager.GoToState(this, m_isClosedCompact ? "ListSizeCompact" : "ListSizeFull", true /*useTransitions*/);
+                //}
 
                 UpdateTitleBarPadding();
                 UpdateBackAndCloseButtonsVisibility();

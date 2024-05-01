@@ -38,7 +38,7 @@ namespace iNKORE.UI.WPF.Modern.Automation.Peers
                 double ratingValue = GetRatingControl().Value;
                 string valueString;
 
-                string ratingString;
+                // string ratingString;
 
                 if (ratingValue == -1)
                 {

@@ -232,7 +232,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// <param name="defaultResult">A <see cref="MessageBoxResult"/> value that specifies the default result of the message box.</param>
         /// <returns>A <see cref="MessageBoxResult"/> value that specifies which message box button is clicked by the user.</returns>
         /// <remarks>By default, the message box appears in front of the window that is currently active.</remarks>
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, IconSource icon, MessageBoxResult? defaultResult, SystemSound? sound = null)
+        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, IconSource icon, MessageBoxResult? defaultResult, SystemSound sound = null)
         {
             if (owner is null)
             {
