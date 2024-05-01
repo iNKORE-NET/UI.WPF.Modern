@@ -37,7 +37,7 @@ namespace WpfApp1
             selec();
         }
 
-        private async void selec()
+        private void selec()
         {
             //ContentDialog dialog = new ContentDialog();
             //dialog.Content = "AAAAAAAAAA";

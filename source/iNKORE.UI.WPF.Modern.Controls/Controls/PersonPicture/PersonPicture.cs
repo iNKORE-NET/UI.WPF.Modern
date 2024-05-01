@@ -505,10 +505,10 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// </summary>
         Ellipse m_badgingBackgroundEllipse;
 
-        /// <summary>
-        /// The async operation object representing the loading and assignment of the Thumbnail.
-        /// </summary>
-        //tracker_ref<winrt::IAsyncOperation<winrt::IRandomAccessStreamWithContentType>> m_profilePictureReadAsync;
+        // /// <summary>
+        // /// The async operation object representing the loading and assignment of the Thumbnail.
+        // /// </summary>
+        // tracker_ref<winrt::IAsyncOperation<winrt::IRandomAccessStreamWithContentType>> m_profilePictureReadAsync;
 
         /// <summary>
         /// The initials from the DisplayName property.

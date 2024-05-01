@@ -369,7 +369,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// <param name="caption">A <see cref="string"/> that specifies the title bar caption to display.</param>
         /// <param name="button">A <see cref="MessageBoxButton"/> value that specifies which button or buttons to display.</param>
         /// <param name="icon">A <see cref="string"/> value that specifies the icon to display.</param>
-        /// <param name="defaultResult">A <see cref="MessageBoxResult?"/> value that specifies the default result of the message box.</param>
+        /// <param name="defaultResult">A <see cref="MessageBoxResult"/> value that specifies the default result of the message box.</param>
         /// <returns>An asynchronous operation showing the message box. When complete, returns a <see cref="MessageBoxResult"/>.</returns>
         /// <remarks>Use an overload of the ShowAsync method, which enables you to specify an owner window. Otherwise, the message box is owned by the window that is currently active.</remarks>
         public static Task<MessageBoxResult> ShowAsync(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, MessageBoxResult? defaultResult) =>
@@ -383,7 +383,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// <param name="caption">A <see cref="string"/> that specifies the title bar caption to display.</param>
         /// <param name="button">A <see cref="MessageBoxButton"/> value that specifies which button or buttons to display.</param>
         /// <param name="icon">A <see cref="string"/> value that specifies the icon to display.</param>
-        /// <param name="defaultResult">A <see cref="MessageBoxResult?"/> value that specifies the default result of the message box.</param>
+        /// <param name="defaultResult">A <see cref="MessageBoxResult"/> value that specifies the default result of the message box.</param>
         /// <returns>An asynchronous operation showing the message box. When complete, returns a <see cref="MessageBoxResult"/>.</returns>
         /// <remarks>Use an overload of the ShowAsync method, which enables you to specify an owner window. Otherwise, the message box is owned by the window that is currently active.</remarks>
         public static Task<MessageBoxResult> ShowAsync(string messageBoxText, string caption, MessageBoxButton button, FontIconData icon, MessageBoxResult? defaultResult) =>

@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WinUIResourcesConverter"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="https://github.com/animasterStudios/Inkore.UI.WPF.Modern"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     Title="WinUI Resources Converter"
     Width="800"
     Height="450"

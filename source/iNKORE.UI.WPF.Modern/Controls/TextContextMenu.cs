@@ -1,4 +1,5 @@
 ﻿using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Common.IconKeys;
 using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using System.Linq;
 using System.Windows;
@@ -47,27 +48,27 @@ namespace iNKORE.UI.WPF.Modern.Controls
             Items.Add(new MenuItem
             {
                 Command = ApplicationCommands.Cut,
-                Icon = new SymbolIcon(Symbol.Cut)
+                Icon = new FontIcon(FluentSystemIcons.Cut_16_Regular)
             });
             Items.Add(new MenuItem
             {
                 Command = ApplicationCommands.Copy,
-                Icon = new SymbolIcon(Symbol.Copy)
+                Icon = new FontIcon(FluentSystemIcons.Copy_16_Regular)
             });
             Items.Add(new MenuItem
             {
                 Command = ApplicationCommands.Paste,
-                Icon = new SymbolIcon(Symbol.Paste)
+                Icon = new FontIcon(FluentSystemIcons.ClipboardPaste_16_Regular)
             });
             Items.Add(new MenuItem
             {
                 Command = ApplicationCommands.Undo,
-                Icon = new SymbolIcon(Symbol.Undo)
+                Icon = new FontIcon(FluentSystemIcons.ArrowUndo_16_Regular)
             });
             Items.Add(new MenuItem
             {
                 Command = ApplicationCommands.Redo,
-                Icon = new SymbolIcon(Symbol.Redo)
+                Icon = new FontIcon(FluentSystemIcons.ArrowRedo_16_Regular)
             });
             Items.Add(new MenuItem
             {

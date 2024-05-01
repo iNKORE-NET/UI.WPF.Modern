@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("iNKORE Studios")]
 [assembly: AssemblyProduct("iNKORE.UI.WPF.Modern")]
-[assembly: AssemblyCopyright("Copyright © iNKORE! Studios 2023")]
+[assembly: AssemblyCopyright("Copyright © iNKORE! Studios 2024")]
 [assembly: AssemblyTrademark("iNKORE!")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("0.9.27.0")]
-[assembly: AssemblyFileVersion("0.9.27.0")]
+[assembly: AssemblyVersion("0.9.28.0")]
+[assembly: AssemblyFileVersion("0.9.28.0")]

@@ -14,10 +14,10 @@ namespace iNKORE.UI.WPF.Modern.Common
     /// <summary>
     /// Returns an Enumerator that enumerates over nothing.
     /// </summary>
-    internal class EmptyEnumerator : IEnumerator
+    internal class EmptyEnumeratorA : IEnumerator
     {
         // singleton class, private ctor
-        private EmptyEnumerator()
+        private EmptyEnumeratorA()
         {
         }
 
@@ -30,7 +30,7 @@ namespace iNKORE.UI.WPF.Modern.Common
             {
                 if (_instance == null)
                 {
-                    _instance = new EmptyEnumerator();
+                    _instance = new EmptyEnumeratorA();
                 }
                 return _instance;
             }

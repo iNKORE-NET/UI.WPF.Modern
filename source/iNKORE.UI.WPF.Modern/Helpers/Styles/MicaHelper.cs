@@ -25,10 +25,10 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
     public static class MicaHelper
     {
         /// <summary>
-        /// Checks if the current <see cref="Windows"/> supports selected <see cref="BackgroundType"/>.
+        /// Checks if the current <see cref="Windows"/> supports selected <see cref="BackdropType"/>.
         /// </summary>
         /// <param name="type">Background type to check.</param>
-        /// <returns><see langword="true"/> if <see cref="BackgroundType"/> is supported.</returns>
+        /// <returns><see langword="true"/> if <see cref="BackdropType"/> is supported.</returns>
         public static bool IsSupported(this BackdropType type)
         {
             if (!OSVersionHelper.IsWindowsNT) { return false; }

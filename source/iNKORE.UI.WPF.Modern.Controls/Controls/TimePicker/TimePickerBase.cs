@@ -517,7 +517,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         #region Do not change order of fields inside this region
 
         /// <summary>
-        /// This readonly dependency property is to control whether to show the date-picker (in case of <see cref="DateTimePicker"/>) or hide it (in case of <see cref="TimePicker"/>.
+        /// This readonly dependency property is to control whether to show the date-picker (in case of <see cref="DatePicker"/>) or hide it (in case of <see cref="TimePicker"/>.
         /// </summary>
         private static readonly DependencyPropertyKey IsDatePickerVisiblePropertyKey
             = DependencyProperty.RegisterReadOnly(nameof(IsDatePickerVisible),

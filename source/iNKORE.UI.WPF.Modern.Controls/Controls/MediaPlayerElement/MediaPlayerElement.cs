@@ -32,7 +32,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// <summary>
         /// Gets or sets a value that indicates whether media will begin playback automatically when the <see cref="Source"/> property is set.
         /// </summary>
-        /// <value><paramref name="true"/> if playback is automatic; otherwise, <paramref name="false"/>. The default is <paramref name="false"/>.</value>
+        /// <value>true if playback is automatic; otherwise, false. The default is false.</value>
         public bool AutoPlay
         {
             get => (bool)GetValue(AutoPlayProperty);
@@ -56,7 +56,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// <summary>
         /// Gets or sets a value that determines whether the standard transport controls are enabled.
         /// </summary>
-        /// <value><paramref name="true"/> if the standard transport controls are enabled; otherwise, <paramref name="false"/>. The default is <paramref name="false"/>.</value>
+        /// <value>trrue if the standard transport controls are enabled; otherwise, false. The default is false.</value>
         public bool AreTransportControlsEnabled
         {
             get => (bool)GetValue(AreTransportControlsEnabledProperty);

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
     /// <summary>
-    /// Defines the visibility for time-parts that are visible for the <see cref="DateTimePicker"/>. 
+    /// Defines the visibility for time-parts that are visible for the <see cref="DatePicker"/>. 
     /// </summary>
     [Flags]
     public enum TimePartVisibility

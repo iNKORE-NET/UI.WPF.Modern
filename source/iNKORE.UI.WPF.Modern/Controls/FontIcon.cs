@@ -22,6 +22,21 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
         }
 
+        public FontIcon(FontIconData icon) : this()
+        {
+            Icon = icon;
+        }
+
+        public FontIcon(string glyph, FontFamily fontFamily) : this()
+        {
+            Glyph = glyph;
+            if(fontFamily != null)
+            {
+                FontFamily = fontFamily;
+            }
+        }
+
+
         /// <summary>
         /// The identifier for the FontFamily dependency property.
         /// </summary>

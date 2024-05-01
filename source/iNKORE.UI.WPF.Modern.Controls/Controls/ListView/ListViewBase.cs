@@ -196,7 +196,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// <summary>
         /// Gets or sets the content for the list footer.
         /// </summary>
-        /// <param name="listbox">The element from which to read the property value.</param>
+        /// <param>The element from which to read the property value.</param>
         /// <returns>The content of the list footer. The default value is null.</returns>
         public object Footer
         {

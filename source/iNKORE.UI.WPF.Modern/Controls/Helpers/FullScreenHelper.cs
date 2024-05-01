@@ -175,7 +175,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         /// 确保窗口全屏的Hook
         /// 使用HandleProcessCorruptedStateExceptions，防止访问内存过程中因为一些致命异常导致程序崩溃
         /// </summary>
-        [HandleProcessCorruptedStateExceptions]
+        // [HandleProcessCorruptedStateExceptions]
         private static IntPtr KeepFullScreenHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             //处理WM_WINDOWPOSCHANGING消息
