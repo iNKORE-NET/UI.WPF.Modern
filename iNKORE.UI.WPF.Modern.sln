@@ -51,7 +51,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowExample", "samples\Wi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IconKeyFileMaker", "tools\IconKeyFileMaker\IconKeyFileMaker.csproj", "{6561632F-0B5A-4869-8C82-E05238326B32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplePhotoTaker", "sample\ExamplePhotoTaker\ExamplePhotoTaker.csproj", "{194059C8-5CBF-4548-8216-3D251CE43236}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplePhotoTaker", "samples\ExamplePhotoTaker\ExamplePhotoTaker.csproj", "{194059C8-5CBF-4548-8216-3D251CE43236}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
