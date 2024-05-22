@@ -166,8 +166,13 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
         {
             try
             {
-                int positionX = lParam.ToInt32() & 0xffff;
-                int positionY = lParam.ToInt32() >> 16;
+                // int positionX = lParam.ToInt32() & 0xffff;
+                // int positionY = lParam.ToInt32() >> 16;
+
+                // https://github.com/iNKORE-NET/UI.WPF.Modern/issues/60#issuecomment-2121990538
+                uint lparam32 = (uint)lParam.ToInt64(); short positionX = (short)(lparam32 & 0xffff); 
+                short positionY = (short)((lparam32 >> 16) & 0xffff);
+
 
                 Rect rect = new Rect(_button.PointToScreen(new Point()),
                     new Size(_button.Width * _dpiScale, _button.Height * _dpiScale));
