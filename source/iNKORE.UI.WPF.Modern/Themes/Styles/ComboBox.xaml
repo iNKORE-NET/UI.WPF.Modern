@@ -545,7 +545,7 @@
                                             Foreground="{DynamicResource ComboBoxDropDownForeground}"
                                             HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                             IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
-                                            RewriteWheelChange="True"
+                                            RewriteWheelChange="True" ForceUseSmoothScroll="False"
                                             VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                                             <ItemsPresenter
                                                 Margin="{DynamicResource ComboBoxDropdownContentMargin}"
