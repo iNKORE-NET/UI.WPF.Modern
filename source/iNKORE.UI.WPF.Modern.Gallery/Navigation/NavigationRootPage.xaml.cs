@@ -508,6 +508,23 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 XboxContentSafeRect.Visibility = Visibility.Visible;
             }
         }
+
+        private void rootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+
+        }
+
+        private void OnRootFrameNavigating(object sender, NavigatingCancelEventArgs e)
+        {
+            if (e.Uri != null)
+            {
+               if(e.Uri.Scheme.ToLower().StartsWith("http"))
+                {
+                    e.Cancel = true;
+                    App.BrowseWeb(e.Uri.OriginalString);
+                }
+            }
+        }
     }
 
     public enum DeviceType

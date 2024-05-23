@@ -32,7 +32,7 @@
             Grid.Column="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            Source="pack://Application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/AppIcon.ico" />
+            Source="/Assets/Gallery_256.png" />
         <ui:ProgressRing
             Name="splashProgressRing"
             Grid.Row="2"

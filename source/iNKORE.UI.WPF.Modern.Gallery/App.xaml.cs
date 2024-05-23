@@ -1,6 +1,8 @@
 ﻿using iNKORE.UI.WPF.Modern.Gallery.DataModel;
 using System.Reflection;
 using System;
+using System.Diagnostics;
+using System.Windows;
 
 namespace iNKORE.UI.WPF.Modern.Gallery
 {
@@ -15,6 +17,19 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 throw new InvalidOperationException("Generic parameter 'TEnum' must be an enum.");
             }
             return (TEnum)Enum.Parse(typeof(TEnum), text);
+        }
+
+        public static Process BrowseWeb(string path)
+        {
+            try
+            {
+                return Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
         }
     }
 }

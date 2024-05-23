@@ -6,9 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:uc="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls"
     Title="New Controls"
-    d:DesignWidth="800"
+    d:DesignWidth="800" FontSize="14"
     mc:Ignorable="d">
     <local:ItemsPageBase.Resources>
         <ResourceDictionary>
@@ -71,29 +71,34 @@
                             Text="{x:Static ui:ThemeManager.AssemblyVersion}"
                             Visibility="Visible" />
                     </StackPanel>
-                    <StackPanel x:Name="HeaderTileOuterGrid" Orientation="Horizontal">
-                        <WrapPanel
-                            x:Name="HeaderTileGrid"
-                            Margin="0,287,0,0"
-                            Orientation="Horizontal">
-                            <controls:HeaderTile
-                                Title="Getting Started"
-                                Link="https://docs.microsoft.com/windows/apps/get-started/"
-                                Source="/Assets/gettingStarted.png" />
-                            <controls:HeaderTile
-                                Title="Windows Design"
-                                Link="https://docs.microsoft.com/windows/apps/design/"
-                                Source="/Assets/style-1x.png" />
-                            <controls:HeaderTile
-                                Title="GitHub Repo"
-                                Link="https://github.com/microsoft/microsoft-ui-xaml"
-                                Source="/Assets/githubTile.png" />
-                            <controls:HeaderTile
-                                Title="Template Studio"
-                                Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"
-                                Source="/Assets/template_studio.png" />
-                        </WrapPanel>
-                    </StackPanel>
+                    
+                    <ui:SimpleStackPanel x:Name="HeaderTileOuterGrid" Margin="0,287,0,0" Orientation="Vertical" Spacing="10">
+
+                        <uc:DocumentationPromotion/>
+                        <StackPanel Orientation="Horizontal">
+                            <WrapPanel
+                                x:Name="HeaderTileGrid"
+  
+                                Orientation="Horizontal">
+                                                            <controls:HeaderTile
+                                    Title="Getting Started"
+                                    Link="https://docs.microsoft.com/windows/apps/get-started/"
+                                    Source="/Assets/gettingStarted.png" />
+                                                            <controls:HeaderTile
+                                    Title="Windows Design"
+                                    Link="https://docs.microsoft.com/windows/apps/design/"
+                                    Source="/Assets/style-1x.png" />
+                                                            <controls:HeaderTile
+                                    Title="GitHub Repo"
+                                    Link="https://github.com/microsoft/microsoft-ui-xaml"
+                                    Source="/Assets/githubTile.png" />
+                                                            <controls:HeaderTile
+                                    Title="Template Studio"
+                                    Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"
+                                    Source="/Assets/template_studio.png" />
+                            </WrapPanel>
+                        </StackPanel>
+                    </ui:SimpleStackPanel>
                 </Grid>
             </ui:ListViewHelper.Header>
 

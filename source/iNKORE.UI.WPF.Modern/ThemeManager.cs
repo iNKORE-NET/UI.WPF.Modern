@@ -22,6 +22,12 @@ namespace iNKORE.UI.WPF.Modern
 
         public const string XmlNamespace = "http://schemas.inkore.net/lib/ui/wpf/modern";
 
+        public const string Link_GithubRepo = "https://github.com/iNKORE-NET/UI.WPF.Modern";
+        public const string Link_NugetPackage = "https://www.nuget.org/packages/iNKORE.UI.WPF.Modern";
+        public const string Link_DiscordServer = "https://discord.gg/m6NPNVk4bs";
+        public const string Link_TelegramGroup = "http://t.me/iNKORE";
+        public const string Link_FacebookPage = "https://facebook.com/iNKORE.NET";
+
         public static string AssemblyVersion
         {
             get
