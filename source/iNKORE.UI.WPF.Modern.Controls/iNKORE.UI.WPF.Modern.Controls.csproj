@@ -10,9 +10,9 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<ApplicationIcon>..\..\assets\images\iNKORE.ico</ApplicationIcon>
+		<ApplicationIcon>..\..\assets\icons\WpfLibrary.ico</ApplicationIcon>
 		<SignAssembly>True</SignAssembly>
-		<AssemblyOriginatorKeyFile>..\..\assets\misc\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
+		<AssemblyOriginatorKeyFile>..\..\assets\others\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
 		<RootNamespace>iNKORE.UI.WPF.Modern</RootNamespace>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);CS1591;1701;1702;CA1416;CS1573</NoWarn>

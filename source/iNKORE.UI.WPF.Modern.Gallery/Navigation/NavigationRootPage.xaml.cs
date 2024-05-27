@@ -120,7 +120,14 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 }
                 else
                 {
-                    return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString();
+                    if (Application.Current.MainWindow != null)
+                    {
+                        return Application.Current.MainWindow.Title;
+                    }
+                    else
+                    {
+                        return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString();
+                    }
                 }
             }
         }
