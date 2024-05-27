@@ -103,7 +103,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             this.CopyLinkAction?.Invoke();
 
             this.CopyLinkButton.Label = "Copied to Clipboard";
-            this.CopyLinkButtonIcon.Symbol = Symbol.Accept;
+            this.CopyLinkButtonIcon.Icon = SegoeFluentIcons.Accept;
         }
 
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)
@@ -114,7 +114,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         public void ResetCopyLinkButton()
         {
             this.CopyLinkButton.Label = "Generate Link to Page";
-            this.CopyLinkButtonIcon.Symbol = Symbol.Link;
+            this.CopyLinkButtonIcon.Icon = SegoeFluentIcons.Link;
         }
 
         private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)

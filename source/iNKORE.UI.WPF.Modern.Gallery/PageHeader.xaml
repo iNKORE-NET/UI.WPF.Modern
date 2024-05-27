@@ -57,10 +57,10 @@
                         Visibility="Collapsed">
                         <ui:AppBarButton x:Name="CopyLinkButton" Click="OnCopyLinkButtonClick">
                             <ui:AppBarButton.Icon>
-                                <ui:SymbolIcon
+                                <ui:FontIcon
                                     x:Name="CopyLinkButtonIcon"
                                     Margin="0,-2,0,0"
-                                    Symbol="Link" />
+                                    Icon="{x:Static ui:SegoeFluentIcons.Link}" />
                             </ui:AppBarButton.Icon>
                         </ui:AppBarButton>
                         <ui:AppBarButton

@@ -14,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Windows.Foundation.Metadata;
-using System.Windows.Markup;
 using iNKORE.UI.WPF.Modern.Gallery.Controls;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;

@@ -1,4 +1,5 @@
-﻿using iNKORE.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Common.IconKeys;
+using iNKORE.UI.WPF.Modern.Controls;
 using SamplesCommon;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -62,7 +63,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             {
                 var newButton = new AppBarButton
                 {
-                    Icon = new SymbolIcon(Symbol.Add),
+                    Icon = new FontIcon(SegoeFluentIcons.Add),
                     Label = "Button 1"
                 };
                 newButton.AddKeyboardAccelerator(Key.N, ModifierKeys.Control);
@@ -70,7 +71,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
                 newButton = new AppBarButton
                 {
-                    Icon = new SymbolIcon(Symbol.Delete),
+                    Icon = new FontIcon(SegoeFluentIcons.Delete),
                     Label = "Button 2"
                 };
                 PrimaryCommandBar.SecondaryCommands.Add(newButton);
@@ -79,7 +80,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
                 newButton = new AppBarButton
                 {
-                    Icon = new SymbolIcon(Symbol.FontDecrease),
+                    Icon = new FontIcon(SegoeFluentIcons.FontDecrease),
                     Label = "Button 3"
                 };
                 newButton.AddKeyboardAccelerator(Key.Subtract, ModifierKeys.Control);
@@ -87,7 +88,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
                 newButton = new AppBarButton
                 {
-                    Icon = new SymbolIcon(Symbol.FontIncrease),
+                    Icon = new FontIcon(SegoeFluentIcons.FontIncrease),
                     Label = "Button 4"
                 };
                 newButton.AddKeyboardAccelerator(Key.Add, ModifierKeys.Control);

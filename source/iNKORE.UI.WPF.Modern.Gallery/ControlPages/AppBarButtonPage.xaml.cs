@@ -1,4 +1,5 @@
-﻿using iNKORE.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Common.IconKeys;
+using iNKORE.UI.WPF.Modern.Controls;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -38,7 +39,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
             compactButton = new AppBarToggleButton
             {
-                Icon = new SymbolIcon(Symbol.FontSize),
+                Icon = new FontIcon(SegoeFluentIcons.FontSize),
                 Label = "IsCompact"
             };
             compactButton.Click += CompactButton_Click;

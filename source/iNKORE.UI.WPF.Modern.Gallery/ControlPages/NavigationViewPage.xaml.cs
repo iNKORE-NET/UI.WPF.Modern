@@ -12,6 +12,7 @@ using System.Windows.Threading;
 using SamplesCommon;
 using Separator = iNKORE.UI.WPF.Modern.Gallery.Common.Separator;
 using VirtualKey = System.Windows.Input.Key;
+using iNKORE.UI.WPF.Modern.Common.IconKeys;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 {
@@ -261,7 +262,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             if ((sender as CheckBox).IsChecked == true)
             {
-                AutoSuggestBox asb = new AutoSuggestBox() { QueryIcon = new SymbolIcon(Symbol.Find) };
+                AutoSuggestBox asb = new AutoSuggestBox() { QueryIcon = new FontIcon(SegoeFluentIcons.Search) };
                 asb.SetValue(AutomationProperties.NameProperty, "search");
                 nvSample.AutoSuggestBox = asb;
 

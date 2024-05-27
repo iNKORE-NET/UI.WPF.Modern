@@ -188,17 +188,17 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 oldQueryIcon.ClearValue(IconElement.ForegroundProperty);
 
-                if (newQueryIcon is SymbolIcon)
+                if (newQueryIcon is FontIcon)
                 {
-                    oldQueryIcon.ClearValue(SymbolIcon.FontSizeProperty);
+                    oldQueryIcon.ClearValue(FontIcon.FontSizeProperty);
                 }
             }
 
             if (newQueryIcon != null && m_queryButton != null)
             {
-                if (newQueryIcon is SymbolIcon)
+                if (newQueryIcon is FontIcon)
                 {
-                    newQueryIcon.SetBinding(SymbolIcon.FontSizeProperty,
+                    newQueryIcon.SetBinding(FontIcon.FontSizeProperty,
                         new Binding
                         {
                             Path = new PropertyPath(TextElement.FontSizeProperty),

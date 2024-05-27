@@ -148,7 +148,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             m_isTemplateApplied = true;
         }
 
-        private void OnPropertyChanged(DependencyPropertyChangedEventArgs args)
+        private new void OnPropertyChanged(DependencyPropertyChangedEventArgs args)
         {
             DependencyProperty property = args.Property;
 

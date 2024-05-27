@@ -21,7 +21,7 @@
                 VerticalAlignment="Top"
                 AutomationProperties.Name="Bullets"
                 IsCheckedChanged="MyListButton_IsCheckedChanged">
-                <ui:SymbolIcon x:Name="mySymbolIcon" Symbol="List" />
+                <ui:FontIcon x:Name="mySymbolIcon" Icon="{x:Static ui:SegoeFluentIcons.List}"/>
                 <ui:ToggleSplitButton.Flyout>
                     <ui:Flyout Placement="Bottom">
                         <StackPanel Orientation="Horizontal">
@@ -35,10 +35,10 @@
                                 </Style>
                             </StackPanel.Resources>
                             <Button AutomationProperties.Name="Bulleted list" Click="BulletButton_Click">
-                                <ui:SymbolIcon Symbol="List" />
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.List}" />
                             </Button>
                             <Button AutomationProperties.Name="Roman numerals list" Click="BulletButton_Click">
-                                <ui:SymbolIcon Symbol="Bullets" />
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.BulletedList}" />
                             </Button>
                         </StackPanel>
                     </ui:Flyout>

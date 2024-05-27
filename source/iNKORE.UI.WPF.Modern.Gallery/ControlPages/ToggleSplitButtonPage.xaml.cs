@@ -1,4 +1,5 @@
-﻿using iNKORE.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Common.IconKeys;
+using iNKORE.UI.WPF.Modern.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,18 +33,18 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         private void BulletButton_Click(object sender, RoutedEventArgs e)
         {
             Button clickedBullet = (Button)sender;
-            SymbolIcon symbol = (SymbolIcon)clickedBullet.Content;
+            var symbol = (FontIcon)clickedBullet.Content;
 
-            if (symbol.Symbol == Symbol.List)
+            if (symbol.Glyph == SegoeFluentIcons.List.Glyph)
             {
                 _type = "•";
-                mySymbolIcon.Symbol = Symbol.List;
+                mySymbolIcon.Icon = SegoeFluentIcons.List;
                 myListButton.SetValue(AutomationProperties.NameProperty, "Bullets");
             }
-            else if (symbol.Symbol == Symbol.Bullets)
+            else if (symbol.Glyph == SegoeFluentIcons.BulletedList.Glyph)
             {
                 _type = "I)";
-                mySymbolIcon.Symbol = Symbol.Bullets;
+                mySymbolIcon.Icon = SegoeFluentIcons.BulletedList;
                 myListButton.SetValue(AutomationProperties.NameProperty, "Roman Numerals");
             }
             myRichEditBox.Selection.Text = _type;

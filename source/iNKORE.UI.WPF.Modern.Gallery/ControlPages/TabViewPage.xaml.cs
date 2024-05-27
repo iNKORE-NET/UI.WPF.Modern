@@ -1,4 +1,5 @@
-﻿using iNKORE.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Common.IconKeys;
+using iNKORE.UI.WPF.Modern.Controls;
 using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using SamplesCommon.SamplePages;
@@ -36,7 +37,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             TabItem newItem = new TabItem();
 
             newItem.Header = $"Document {index}";
-            TabItemHelper.SetIcon(newItem, new SymbolIcon(Symbol.Document));
+            TabItemHelper.SetIcon(newItem, new FontIcon(SegoeFluentIcons.Document));
 
             // The content of the tab is often a frame that contains a page, though it could be any UIElement.
             Frame frame = new Frame();

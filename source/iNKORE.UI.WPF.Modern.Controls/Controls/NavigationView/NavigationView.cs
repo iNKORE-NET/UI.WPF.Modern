@@ -19,6 +19,7 @@ using System.Windows.Threading;
 using iNKORE.UI.WPF.Helpers;
 using iNKORE.UI.WPF.Modern.Automation.Peers;
 using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Common.IconKeys;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Modern.Input;
@@ -1384,7 +1385,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
 
             var settingsItem = m_settingsItem;
-            var settingsIcon = new SymbolIcon(Symbol.Setting);
+            var settingsIcon = new FontIcon(SegoeFluentIcons.Settings); //SymbolIcon(Symbol.Setting);
             settingsItem.Icon = settingsIcon;
 
             // Do localization for settings item label and Automation Name
