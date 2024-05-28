@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Shell;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
@@ -424,6 +425,13 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                         window.SetResourceReference(FrameworkElement.StyleProperty, DefaultWindowStyleKey);
                     }
                 }
+
+                if (window.ResizeMode == ResizeMode.NoResize)
+                {
+					var chrome = WindowChrome.GetWindowChrome(window); 
+                    chrome.ResizeBorderThickness = new Thickness(0); 
+                    WindowChrome.SetWindowChrome(window, chrome);
+				}
             }
             else
             {
