@@ -74,7 +74,12 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 
             if (handle == IntPtr.Zero) { return false; }
 
-            return type switch
+			var captionColor = -2; //DWMWA_COLOR_NONE - 0xFFFFFFFE
+			DWMAPI.DwmSetWindowAttribute(handle, DWMAPI.DWMWINDOWATTRIBUTE.DWMWA_CAPTION_COLOR,
+				ref captionColor,
+				Marshal.SizeOf(typeof(int)));
+
+			return type switch
             {
                 BackdropType.None => TryApplyNone(handle),
                 BackdropType.Mica => TryApplyMica(handle),
@@ -116,7 +121,12 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
             DWMAPI.DwmSetWindowAttribute(handle, DWMAPI.DWMWINDOWATTRIBUTE.DWMWA_SYSTEMBACKDROP_TYPE,
                 ref backdropPvAttribute,
                 Marshal.SizeOf(typeof(int)));
-        }
+
+			var captionColor = -1; //DWMWA_COLOR_DEFAULT - 0xFFFFFFFF
+			DWMAPI.DwmSetWindowAttribute(handle, DWMAPI.DWMWINDOWATTRIBUTE.DWMWA_CAPTION_COLOR,
+				ref captionColor,
+				Marshal.SizeOf(typeof(int)));
+		}
 
         /// <summary>
         /// Tries to inform the operating system that this window uses dark mode.
