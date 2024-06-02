@@ -7,7 +7,9 @@
         xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
         mc:Ignorable="d"
         ui:WindowHelper.UseModernWindowStyle="True" ui:WindowHelper.SystemBackdropType="Mica"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    
     <ui:NavigationView x:Name="NavigationView_Root" IsPaneOpen="False"
                        SelectionChanged="NavigationView_SelectionChanged">
         

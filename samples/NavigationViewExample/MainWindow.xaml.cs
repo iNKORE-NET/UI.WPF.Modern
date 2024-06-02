@@ -51,5 +51,10 @@ namespace NavigationViewExample
                 Frame_Main.Navigate(page);
             }
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            NavigationView_Root.SelectedItem = NavigationViewItem_Home;
+        }
     }
 }
