@@ -107,43 +107,43 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 NavigationRootPage.GetForElement(this).PageHeader.Focus();
             }
         }
-        private void spatialSoundBox_Checked(object sender, RoutedEventArgs e)
-        {
-            if (soundToggle.IsOn == true)
-            {
-                //ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
-            }
-        }
+        //private void spatialSoundBox_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    if (soundToggle.IsOn == true)
+        //    {
+        //        //ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
+        //    }
+        //}
 
-        private void soundToggle_Toggled(object sender, RoutedEventArgs e)
-        {
-            if (soundToggle.IsOn == true)
-            {
-                spatialSoundBox.IsEnabled = true;
-                //ElementSoundPlayer.State = ElementSoundPlayerState.On;
-            }
-            else
-            {
-                spatialSoundBox.IsEnabled = false;
-                spatialSoundBox.IsChecked = false;
+        //private void soundToggle_Toggled(object sender, RoutedEventArgs e)
+        //{
+        //    if (soundToggle.IsOn == true)
+        //    {
+        //        spatialSoundBox.IsEnabled = true;
+        //        //ElementSoundPlayer.State = ElementSoundPlayerState.On;
+        //    }
+        //    else
+        //    {
+        //        spatialSoundBox.IsEnabled = false;
+        //        spatialSoundBox.IsChecked = false;
 
-                //ElementSoundPlayer.State = ElementSoundPlayerState.Off;
-                //ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
-            }
-        }
+        //        //ElementSoundPlayer.State = ElementSoundPlayerState.Off;
+        //        //ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
+        //    }
+        //}
 
         private void screenshotModeToggle_Toggled(object sender, RoutedEventArgs e)
         {
             //UIHelper.IsScreenshotMode = screenshotModeToggle.IsOn;
         }
 
-        private void spatialSoundBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            if (soundToggle.IsOn == true)
-            {
-                //ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
-            }
-        }
+        //private void spatialSoundBox_Unchecked(object sender, RoutedEventArgs e)
+        //{
+        //    if (soundToggle.IsOn == true)
+        //    {
+        //        //ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
+        //    }
+        //}
 
         private void navigationLocation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

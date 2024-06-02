@@ -7,9 +7,9 @@
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<NoWarn>1701;1702;1573;1591;CA1416</NoWarn>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<ApplicationIcon>..\..\assets\images\iNKORE.ico</ApplicationIcon>
+		<ApplicationIcon>..\..\assets\icons\WpfLibrary.ico</ApplicationIcon>
 		<SignAssembly>True</SignAssembly>
-		<AssemblyOriginatorKeyFile>..\..\assets\misc\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
+		<AssemblyOriginatorKeyFile>..\..\assets\others\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);CS1591;1701;1702;CA1416</NoWarn>

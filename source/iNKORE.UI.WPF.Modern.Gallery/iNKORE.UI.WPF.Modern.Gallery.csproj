@@ -4,7 +4,9 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows10.0.18362.0</TargetFramework>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
+	  <ApplicationIcon>..\..\assets\icons\WpfLibrary.ico</ApplicationIcon>
+	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
   </PropertyGroup>
     
   <PropertyGroup>
@@ -155,6 +157,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="..\..\assets\icons\WpfLibrary_256w.png" Link="Assets\WpfLibrary_256w.png" />
     <Content Include="Assets\AppIcon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

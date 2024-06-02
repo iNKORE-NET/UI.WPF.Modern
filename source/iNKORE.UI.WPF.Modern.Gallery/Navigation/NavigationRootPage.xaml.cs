@@ -120,7 +120,14 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 }
                 else
                 {
-                    return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString();
+                    if (Application.Current.MainWindow != null)
+                    {
+                        return Application.Current.MainWindow.Title;
+                    }
+                    else
+                    {
+                        return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString();
+                    }
                 }
             }
         }
@@ -506,6 +513,23 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Xbox")
             {
                 XboxContentSafeRect.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void rootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+
+        }
+
+        private void OnRootFrameNavigating(object sender, NavigatingCancelEventArgs e)
+        {
+            if (e.Uri != null)
+            {
+               if(e.Uri.Scheme.ToLower().StartsWith("http"))
+                {
+                    e.Cancel = true;
+                    App.BrowseWeb(e.Uri.OriginalString);
+                }
             }
         }
     }

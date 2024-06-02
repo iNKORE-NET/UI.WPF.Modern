@@ -18,6 +18,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Interop;
+using System.Threading;
 
 namespace iNKORE.UI.WPF.Modern.Gallery
 {
@@ -39,9 +40,17 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             ThemeHelper.Initialize();
             await ControlInfoDataSource.Instance.GetGroupsAsync();
             SubscribeToResourcesChanged();
-            NavigationRootPage NavigationRootPage = new NavigationRootPage();
-            Content = NavigationRootPage;
-            MicaHelper.Apply(this, BackdropType.Mica, true);
+
+            new Thread(() =>
+            {
+                Thread.Sleep(2000);
+                DispatcherHelper.RunOnMainThread(() =>
+                {
+                    NavigationRootPage NavigationRootPage = new NavigationRootPage();
+                    Content = NavigationRootPage;
+                    MicaHelper.Apply(this, BackdropType.Mica, true);
+                });
+            }).Start();
         }
 
         protected override void OnSourceInitialized(EventArgs e)

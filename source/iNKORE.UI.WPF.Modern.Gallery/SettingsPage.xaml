@@ -5,9 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:uc="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls"
     Title="Settings Page"
-    d:DesignHeight="450"
     d:DesignWidth="800"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     mc:Ignorable="d">
@@ -40,7 +39,7 @@
                         Tag="Default" />
                 </StackPanel>
 
-                <TextBlock
+                <!--<TextBlock
                     Margin="0,40,0,0"
                     Style="{DynamicResource SubtitleTextBlockStyle}"
                     Text="Sound" />
@@ -64,7 +63,7 @@
                         Style="{DynamicResource CaptionTextBlockStyle}">
                         See the<Hyperlink x:Name="soundPageHyperlink" Click="soundPageHyperlink_Click">Sound page</Hyperlink>
                         for how to enable sound in your app!</TextBlock>
-                </StackPanel>
+                </StackPanel>-->
 
                 <TextBlock
                     Margin="0,40,0,0"
@@ -121,20 +120,21 @@
                     Margin="0,40,0,0"
                     Style="{DynamicResource SubtitleTextBlockStyle}"
                     Text="About" />
-                <FlowDocumentScrollViewer MaxWidth="840" Margin="0,10,0,0">
+                <FlowDocumentScrollViewer MaxWidth="840" Margin="0,10,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     <FlowDocument FontFamily="{DynamicResource ContentControlThemeFontFamily}" FontSize="{DynamicResource ContentControlFontSize}">
                         <Paragraph>
                             <Run Text="This app is the interactive companion to the " />
-                            <Hyperlink NavigateUri="https://developer.microsoft.com/windows/apps/design">Fluent Design System web site</Hyperlink>
+                            <Run FontWeight="SemiBold">iNKORE.UI.WPF.Modern</Run>
                             <Run Text="." />
                         </Paragraph>
                         <Paragraph Margin="0,10,0,0">
                             <Run Text="Source code: " />
-                            <Hyperlink NavigateUri="https://github.com/microsoft/WinUI-Gallery">GitHub</Hyperlink>
+                            <Hyperlink x:Name="Hyperlink_github">GitHub</Hyperlink>
                         </Paragraph>
                         <Paragraph Margin="0,10,0,0">
                             <Run Text="To clone the source repository: " />
-                            <Run FontStyle="Italic">git clone https://github.com/microsoft/WinUI-Gallery</Run>
+                            <Run FontStyle="Italic">git clone</Run>
+                            <Run Text="{x:Static ui:ThemeManager.Link_GithubRepo}"/>
                         </Paragraph>
                     </FlowDocument>
                 </FlowDocumentScrollViewer>
@@ -142,7 +142,7 @@
                     Version:<Run FontWeight="Bold" Text="{Binding Version, Mode=OneWay}" />
                 </TextBlock>
 
-                <TextBlock
+                <!--<TextBlock
                     Margin="0,40,0,0"
                     Style="{DynamicResource SubtitleTextBlockStyle}"
                     Text="Found a bug? Want a new sample?" />
@@ -227,7 +227,10 @@
                             <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?LinkId=521839">Microsoft Privacy Statement</Hyperlink>
                         </Paragraph>
                     </FlowDocument>
-                </FlowDocumentScrollViewer>
+                </FlowDocumentScrollViewer>-->
+
+                <uc:DocumentationPromotion Margin="0,20,60,60"/>
+
             </StackPanel>
         </ScrollViewer>
     </Grid>
