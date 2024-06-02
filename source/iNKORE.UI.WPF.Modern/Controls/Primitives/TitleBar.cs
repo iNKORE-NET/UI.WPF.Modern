@@ -367,7 +367,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 "Height",
                 typeof(double),
                 typeof(TitleBar),
-                new PropertyMetadata(32d));
+                new PropertyMetadata(36d));
 
 
         public static double GetHeight(Window window)
