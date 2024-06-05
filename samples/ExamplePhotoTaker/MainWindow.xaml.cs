@@ -60,14 +60,6 @@ namespace ExamplePhotoTaker
                 }
             }
         }
-
-        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo("https://inkore.net/")
-            {
-                UseShellExecute = true
-            });
-        }
     }
 
     class VacationSpots : ObservableCollection<string>

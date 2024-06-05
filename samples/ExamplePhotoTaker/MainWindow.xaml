@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExamplePhotoTaker" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" ui:WindowHelper.UseModernWindowStyle="True"
+        Title="MainWindow" Height="450" Width="800" Language="en-US">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -17,12 +17,35 @@
         <Border Grid.Row="1" Margin="10,0,10,10" Background="LightGray" BorderBrush="DimGray" Padding="10" BorderThickness="1">
             <Viewbox>
                 <Viewbox x:Name="Viewbox_Viewport" Width="960">
-                    <Border Background="White" Padding="10" Width="640" Height="320">
-                        <ui:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Button>
-                                <ui:IconAndText Icon="{x:Static ui:SegoeFluentIcons.Save}" Content="Save"/>
-                            </Button>
-                        </ui:SimpleStackPanel>
+                    <Border Background="White" Padding="10" Width="680" Height="320">
+                        <ui:NavigationView>
+                            <ui:NavigationView.MenuItems>
+                                <ui:NavigationViewItem Content="Home">
+                                    <ui:NavigationViewItem.Icon>
+                                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Home}"/>
+                                    </ui:NavigationViewItem.Icon>
+                                </ui:NavigationViewItem>
+                                
+                                <ui:NavigationViewItem Content="Library">
+                                    <ui:NavigationViewItem.Icon>
+                                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.OEM}"/>
+                                    </ui:NavigationViewItem.Icon>
+                                </ui:NavigationViewItem>
+
+                                <ui:NavigationViewItem Content="Games">
+                                    <ui:NavigationViewItem.Icon>
+                                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Game}"/>
+                                    </ui:NavigationViewItem.Icon>
+                                </ui:NavigationViewItem>
+
+
+                            </ui:NavigationView.MenuItems>
+
+                            <Border>
+                                <TextBlock Text="Content Ae"/>
+                            </Border>
+
+                        </ui:NavigationView>
                     </Border>
                 </Viewbox>
             </Viewbox>
