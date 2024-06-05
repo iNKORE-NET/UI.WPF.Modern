@@ -282,7 +282,7 @@
                     <Grid ui:ThemeManager.HasThemeResources="True">
                         <Grid.Resources>
                             <ui:ResourceDictionaryEx>
-                                <ui:ResourceDictionaryEx.ThemeDictionaries>
+                                <!--<ui:ResourceDictionaryEx.ThemeDictionaries>
                                     <ResourceDictionary x:Key="Light" ui:ThemeDictionary.Key="Light">
                                         <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="TextControlBorderBrush" />
                                         <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="TextControlBorderBrush" />
@@ -297,7 +297,11 @@
                                         <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="SystemControlHighlightBaseMediumLowBrush" />
                                         <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="SystemControlHighlightTransparentBrush" />
                                     </ResourceDictionary>
-                                </ui:ResourceDictionaryEx.ThemeDictionaries>
+                                </ui:ResourceDictionaryEx.ThemeDictionaries>-->
+                                <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="TextControlBorderBrush" />
+                                <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="TextControlBorderBrush" />
+
+                                
                             </ui:ResourceDictionaryEx>
                         </Grid.Resources>
 
