@@ -16,7 +16,7 @@
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 
                             <local:FontIcon x:Name="Icon" Icon="{TemplateBinding Icon}"
-                                FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" FontStyle="{TemplateBinding FontStyle}"
+                                FontSize="{TemplateBinding IconSize}" FontWeight="{TemplateBinding FontWeight}" FontStyle="{TemplateBinding FontStyle}"
                                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <local:ContentPresenterEx x:Name="ContentPresenter" Content="{TemplateBinding Content}"
                                 HorizontalAlignment="Center" VerticalAlignment="Center"/>

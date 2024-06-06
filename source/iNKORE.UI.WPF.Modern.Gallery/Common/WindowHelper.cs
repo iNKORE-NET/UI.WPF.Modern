@@ -35,11 +35,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Common
         {
             var window = element.FindAscendant<Window>();
             return window;
-            if (_activeWindows.Contains(window))
-            {
-                return window;
-            }
-            return null;
+            //if (_activeWindows.Contains(window))
+            //{
+            //    return window;
+            //}
+            //return null;
         }
 
         static public List<Window> ActiveWindows { get { return _activeWindows; } }
