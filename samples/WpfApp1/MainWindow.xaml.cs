@@ -30,6 +30,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
         }
 
         private void ComboBox_Selected(object sender, RoutedEventArgs e)

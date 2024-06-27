@@ -218,8 +218,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             {
                 SetWindowStyle(window);
                 UpdateWindowChrome(window);
-                BackdropHelper.Apply(window, (BackdropType)e.NewValue);
-
+                BackdropHelper.Apply(window, GetSystemBackdropType(window));
             }
         }
 
@@ -234,7 +233,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 typeof(WindowHelper),
                 new PropertyMetadata(Colors.Transparent, OnAcrylic10ColorChanged));
 
-        public static Color GetAcrylic10Color(Window window)
+        public static Color? GetAcrylic10Color(Window window)
         {
             return (Color)window.GetValue(Acrylic10ColorProperty);
         }
