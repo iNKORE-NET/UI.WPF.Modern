@@ -257,7 +257,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 "CornerStyle",
                 typeof(WindowCornerStyle),
                 typeof(WindowHelper),
-                new PropertyMetadata(WindowCornerStyle.Round, OnCornerStyleChanged));
+                new PropertyMetadata(WindowCornerStyle.Default, OnCornerStyleChanged));
 
         private static void OnCornerStyleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -558,11 +558,11 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 // Glass frame thickness
                 // -----------------------------
 
-                var glassFrameThickness = new Thickness(0);
+                var glassFrameThickness = new Thickness(-1);
                 switch (GetSystemBackdropType(window))
                 {
                     case BackdropType.None:
-                        glassFrameThickness = new Thickness(0);
+                        glassFrameThickness = new Thickness(-1);
                         break;
                     case BackdropType.Acrylic10:
                         glassFrameThickness = new Thickness(0, 1, 0, 0);
