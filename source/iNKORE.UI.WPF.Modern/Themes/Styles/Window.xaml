@@ -250,11 +250,11 @@
         <Style.Triggers>
             <Trigger Property="chelper:WindowHelper.SystemBackdropType" Value="Acrylic10">
                 <Setter Property="chelper:WindowHelper.ApplyBackground" Value="False"/>
-                <Setter Property="chelper:WindowHelper.ApplyNoise" Value="True"/>
+                <!--<Setter Property="chelper:WindowHelper.ApplyNoise" Value="True"/>-->
             </Trigger>
             <Trigger Property="chelper:WindowHelper.SystemBackdropType" Value="Acrylic11">
                 <Setter Property="chelper:WindowHelper.ApplyBackground" Value="False"/>
-                <Setter Property="chelper:WindowHelper.ApplyNoise" Value="True"/>
+                <!--<Setter Property="chelper:WindowHelper.ApplyNoise" Value="True"/>-->
             </Trigger>
             <Trigger Property="chelper:WindowHelper.SystemBackdropType" Value="Mica">
                 <Setter Property="chelper:WindowHelper.ApplyBackground" Value="False"/>
