@@ -257,7 +257,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 "CornerStyle",
                 typeof(WindowCornerStyle),
                 typeof(WindowHelper),
-                new PropertyMetadata(OnCornerStyleChanged));
+                new PropertyMetadata(WindowCornerStyle.Round, OnCornerStyleChanged));
 
         private static void OnCornerStyleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -570,7 +570,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                     case BackdropType.Mica:
                     case BackdropType.Tabbed:
                     case BackdropType.Acrylic11:
-                        glassFrameThickness = new Thickness(0, 0, 0, 0);
+                        glassFrameThickness = new Thickness(-1);
                         break;
                 }
 
