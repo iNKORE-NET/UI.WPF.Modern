@@ -417,6 +417,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private void OnNavigating(object sender, NavigatingCancelEventArgs e)
         {
+            
             if (Content is Page newPage)
             {
                 newPage.InternalOnNavigatingFrom(e);

@@ -13,13 +13,13 @@ using System.Windows.Media;
 
 namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 {
-    public static class AcrylicHelper
+    public static class Acrylic10Helper
     {
         /// <summary>
         /// Checks if the current <see cref="Windows"/> supports Aero.
         /// </summary>
         /// <returns><see langword="true"/> if Aero is supported.</returns>
-        public static bool IsSupported()
+        public static bool IsAeroSupported()
         {
             if (!OSVersionHelper.IsWindowsNT) { return false; }
 
@@ -36,7 +36,8 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
         {
             if (!OSVersionHelper.IsWindowsNT) { return false; }
 
-            if (new Version(10, 0, 17063) <= OSVersionHelper.OSVersion && OSVersionHelper.OSVersion < new Version(10, 0, 22523)) { return true; }
+            //if (new Version(10, 0, 17063) <= OSVersionHelper.OSVersion && OSVersionHelper.OSVersion < new Version(10, 0, 22523)) { return true; }
+            if (new Version(10, 0, 17063) <= OSVersionHelper.OSVersion) { return true; }
 
             return false;
         }
@@ -48,7 +49,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
         /// <param name="force">Skip the compatibility check.</param>
         public static bool Apply(Window window, bool force = false)
         {
-            if (!force && !IsSupported()) { return false; }
+            //if (!force && !IsSupported()) { return false; }
 
             var windowHandle = new WindowInteropHelper(window).EnsureHandle();
 
@@ -74,10 +75,10 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
         /// <param name="force">Skip the compatibility check.</param>
         public static bool Apply(IntPtr handle, Color color, bool force = false)
         {
-            if (!force && !IsSupported()) 
-            { 
-                return false; 
-            }
+            //if (!force && !IsSupported()) 
+            //{ 
+            //    return false; 
+            //}
 
             if (handle == IntPtr.Zero) 
             { 

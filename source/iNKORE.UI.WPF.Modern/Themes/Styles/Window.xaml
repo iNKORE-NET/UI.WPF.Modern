@@ -66,7 +66,7 @@
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="UseLayoutRounding" Value="True" />
-        <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource DefaultWindowChrome}" />
+        <!--<Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource DefaultWindowChrome}" />-->
         <Setter Property="root:ThemeManager.IsThemeAware" Value="True" />
         <Setter Property="primitives:TitleBar.Background" Value="{DynamicResource ControlFillColorTransparentBrush}" />
         <Setter Property="primitives:TitleBar.Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
@@ -214,7 +214,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style
+    <!--<Style
         x:Key="DefaultWindowStyle"
         BasedOn="{StaticResource BaseWindowStyle}"
         TargetType="Window">
@@ -237,18 +237,23 @@
         TargetType="Window">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="chelper:WindowHelper.ApplyBackground" Value="False"/>
-        <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource AcrylicWindowChrome}" />
-    </Style>
+        <Setter Property="WindowChrome.WindowChrome" Value="{Dynami cResource AcrylicWindowChrome}" />
+    </Style>-->
 
     <Style
-        x:Key="MicaWindowStyle"
+        x:Key="TheWindowStyle"
         BasedOn="{StaticResource BaseWindowStyle}"
         TargetType="Window">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource AeroWindowChrome}" />
         <Style.Triggers>
-            <Trigger Property="chelper:WindowHelper.SystemBackdropType" Value="Acrylic">
+            <Trigger Property="chelper:WindowHelper.SystemBackdropType" Value="Acrylic10">
                 <Setter Property="chelper:WindowHelper.ApplyBackground" Value="False"/>
+                <Setter Property="chelper:WindowHelper.ApplyNoise" Value="True"/>
+            </Trigger>
+            <Trigger Property="chelper:WindowHelper.SystemBackdropType" Value="Acrylic11">
+                <Setter Property="chelper:WindowHelper.ApplyBackground" Value="False"/>
+                <Setter Property="chelper:WindowHelper.ApplyNoise" Value="True"/>
             </Trigger>
             <Trigger Property="chelper:WindowHelper.SystemBackdropType" Value="Mica">
                 <Setter Property="chelper:WindowHelper.ApplyBackground" Value="False"/>
@@ -259,14 +264,16 @@
         </Style.Triggers>
     </Style>
 
-    <Style
+    <!--<Style
         x:Key="SnapWindowStyle"
         BasedOn="{StaticResource BaseWindowStyle}"
         TargetType="Window">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource AeroWindowChrome}" />
-    </Style>
+    </Style>-->
 
-    <Style BasedOn="{StaticResource DefaultWindowStyle}" TargetType="Window" />
+    <Style BasedOn="{StaticResource TheWindowStyle}" TargetType="Window">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+    </Style>
 
 </ResourceDictionary>

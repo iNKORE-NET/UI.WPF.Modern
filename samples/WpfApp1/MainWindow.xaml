@@ -7,13 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         ResizeMode="CanMinimize"
-        ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="40"
-        ui:TitleBar.ExtendViewIntoTitleBar="False" ui:WindowHelper.SystemBackdropType="Acrylic"
-        ui:TitleBar.ButtonCloseAvailability="Enabled"
-        ui:TitleBar.ButtonMaximizeAvailability="Collapsed"
+        ui:ThemeManager.IsThemeAware="True" ui:TitleBar.Height="36"
+        ui:TitleBar.ExtendViewIntoTitleBar="False" ui:WindowHelper.SystemBackdropType="Acrylic10"
         ui:WindowHelper.UseModernWindowStyle="True"
-        ui:TitleBar.IsBackButtonVisible="False"
-        ui:WindowHelper.CornerStyle="DoNotRound" Loaded="Window_Loaded">
+        Loaded="Window_Loaded" Background="{x:Null}">
     <Canvas>
         <ComboBox SelectionChanged="ComboBox_SelectionChanged" Height="35" IsEditable="True">
             <ComboBoxItem Content="Item1"/>
@@ -113,7 +110,7 @@
                 </ui:NavigationViewItem>
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>-->
-        <ui:HyperlinkButton  Foreground="{DynamicResource {x:Static ui:ThemeKeys.SystemControlForegroundBaseHighBrushKey}}" Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click"/>
+        <ui:HyperlinkButton  Foreground="{DynamicResource {x:Static ui:ThemeKeys.SystemControlForegroundBaseHighBrushKey}}" Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click" Canvas.Left="47" Canvas.Top="81" VerticalAlignment="Top"/>
         <ui:CommandBar VerticalAlignment="Bottom">
             <ui:AppBarButton Label="Aaaa" IsCompact="True" Click="AppBarButton_Click">
                 <ui:AppBarButton.Icon>
@@ -143,7 +140,7 @@
                 </ui:Flyout>
             </ui:DropDownButton.Flyout>
         </ui:DropDownButton>
-        <ToggleButton x:Name="ToggleButton1" Click="ToggleButton_Click">
+        <ToggleButton x:Name="ToggleButton1" Click="ToggleButton_Click" Canvas.Left="373" Canvas.Top="24" VerticalAlignment="Top">
             <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Accept}"/>
         </ToggleButton>
         <RichTextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="539,110,0,0" Height="86"/>
@@ -157,9 +154,11 @@
 
         <TextBox Width="200" Canvas.Left="89" Canvas.Top="300" ui:TextBoxHelper.IsDeleteButtonVisible="False"/>
 
-        <ui:ThumbEx Canvas.Left="390" Canvas.Top="256" Height="43" Width="67" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+        <ui:ThumbEx Canvas.Left="390" ui:ThemeManager.RequestedTheme="Dark" Canvas.Top="256" Height="43" Width="67" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
             <TextBlock Text="Hello"/>
         </ui:ThumbEx>
         <Slider Canvas.Left="120" TickPlacement="BottomRight" Canvas.Top="199" HorizontalAlignment="Left" VerticalAlignment="Top" Width="389"/>
+        <Button x:Name="Button_ToggleTheme" Content="Toggle Theme" Click="Button_ToggleTheme_Click" Canvas.Left="28" Canvas.Top="116" VerticalAlignment="Top"/>
+
     </Canvas>
 </Window>

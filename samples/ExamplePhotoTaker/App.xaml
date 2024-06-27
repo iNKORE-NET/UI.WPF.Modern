@@ -7,7 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ui:ThemeResources/>
+                <ui:ThemeResources AccentColor="Green"/>
                 <ui:XamlControlsResources/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

@@ -21,4 +21,16 @@
     <Resource Include="david-van-dijk-3LTht2nxd34-unsplash.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Pages\Page2.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Pages\Page2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

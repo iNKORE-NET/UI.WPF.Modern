@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iNKORE.UI.WPF.Modern.Controls.Helpers;
+using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -367,8 +368,15 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 "Height",
                 typeof(double),
                 typeof(TitleBar),
-                new PropertyMetadata(36d));
+                new PropertyMetadata(36d, HeightProperty_ValueChanged));
 
+        private static void HeightProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is Window win)
+            {
+                WindowHelper.UpdateWindowChrome(win);
+            }
+        }
 
         public static double GetHeight(Window window)
         {

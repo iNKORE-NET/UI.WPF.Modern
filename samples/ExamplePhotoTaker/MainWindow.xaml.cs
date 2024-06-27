@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using ExamplePhotoTaker.Pages;
+using iNKORE.UI.WPF.Modern.Media.Animation;
+using Microsoft.Win32;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
@@ -59,6 +61,34 @@ namespace ExamplePhotoTaker
                     encoder.Save(fs);
                 }
             }
+        }
+
+        Page1 Page_1 = new Page1();
+        Page2 Page_2 = new Page2();
+
+        private void Button_NavigateToPage1_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateTo(Page_1);
+        }
+
+        private void Button_NavigateToPage2_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateTo(Page_2);
+        }
+
+        WeakReference __Frame_Main_NavigatingTarget = new WeakReference(null);
+        private void Frame_Main_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            if (e.Content != __Frame_Main_NavigatingTarget.Target)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        public void NavigateTo(object content, object? extraData = null, NavigationTransitionInfo? infoOverride = null)
+        {
+            __Frame_Main_NavigatingTarget.Target = content;
+            Frame_Main.Navigate(content, extraData, infoOverride);
         }
     }
 

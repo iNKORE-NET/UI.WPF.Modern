@@ -16,12 +16,22 @@
 
         <Border Grid.Row="1" Margin="10,0,10,10" Background="LightGray" BorderBrush="DimGray" Padding="10" BorderThickness="1">
             <Viewbox>
-                <Viewbox x:Name="Viewbox_Viewport" Width="960">
-                    <Border Background="White" Padding="10" Width="160" Height="90">
-                        <ui:SimpleStackPanel Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Viewbox x:Name="Viewbox_Viewport" Width="1024">
+                    <Border Background="White" Padding="10" Width="640" Height="270">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
-                            <ui:IconAndText Icon="{x:Static ui:FluentSystemIcons.Home_16_Regular}" Content="Back to home"/>
-                        </ui:SimpleStackPanel>
+                            <ui:SimpleStackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                                <Button x:Name="Button_NavigateToPage1" Content="To Page 1" Click="Button_NavigateToPage1_Click"/>
+                                <Button x:Name="Button_NavigateToPage2" Content="To Page 2" Click="Button_NavigateToPage2_Click"/>
+                            </ui:SimpleStackPanel>
+
+                            <ui:Frame x:Name="Frame_Main" Navigating="Frame_Main_Navigating" Margin="10" Grid.Row="1" 
+                                      BorderBrush="Gray" BorderThickness="2,2,2,2"/>
+                        </Grid>
                     </Border>
                 </Viewbox>
             </Viewbox>

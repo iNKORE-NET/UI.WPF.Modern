@@ -10,16 +10,19 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Shell;
+using System.Linq;
+using System.Windows.Media;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
     public static class WindowHelper
     {
-        private const string DefaultWindowStyleKey = "DefaultWindowStyle";
-        private const string AeroWindowStyleKey = "AeroWindowStyle";
-        private const string AcrylicWindowStyleKey = "AcrylicWindowStyle";
-        private const string MicaWindowStyleKey = "MicaWindowStyle";
-        private const string SnapWindowStyleKey = "SnapWindowStyle";
+        //private const string DefaultWindowStyleKey = "DefaultWindowStyle";
+        private const string TheWindowStyleKey = "TheWindowStyle";
+        //private const string AcrylicWindowStyleKey = "AcrylicWindowStyle";
+        //private const string MicaWindowStyleKey = "MicaWindowStyle";
+        //private const string SnapWindowStyleKey = "SnapWindowStyle";
 
         #region UseModernWindowStyle
 
@@ -50,7 +53,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 {
                     if (newValue)
                     {
-                        if (control.TryFindResource(DefaultWindowStyleKey) is Style style)
+                        if (control.TryFindResource(TheWindowStyleKey) is Style style)
                         {
                             var dStyle = new Style();
 
@@ -77,12 +80,14 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 var window = (Window)d;
                 SetWindowStyle(window);
             }
+
         }
 
         #endregion
 
         #region UseAeroBackdrop
 
+        [Obsolete("This property is no longer maintained, please use SystemBackdropType property")]
         public static readonly DependencyProperty UseAeroBackdropProperty =
             DependencyProperty.RegisterAttached(
                 "UseAeroBackdrop",
@@ -90,16 +95,19 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 typeof(WindowHelper),
                 new PropertyMetadata(OnUseAeroBackdropChanged));
 
+        [Obsolete("This property is no longer maintained, please use SystemBackdropType property")]
         public static bool GetUseAeroBackdrop(Window window)
         {
             return (bool)window.GetValue(UseAeroBackdropProperty);
         }
 
+        [Obsolete("This property is no longer maintained, please use SystemBackdropType property")]
         public static void SetUseAeroBackdrop(Window window, bool value)
         {
             window.SetValue(UseAeroBackdropProperty, value);
         }
 
+        [Obsolete("This property is no longer maintained, please use SystemBackdropType property")]
         private static void OnUseAeroBackdropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (OSVersionHelper.OSVersion < new Version(6, 0) || new Version(6, 2, 8824) < OSVersionHelper.OSVersion)
@@ -117,6 +125,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         #region UseAcrylicBackdrop
 
+        [Obsolete("This property is no longer maintained, please use SystemBackdropType property")]
         public static readonly DependencyProperty UseAcrylicBackdropProperty =
             DependencyProperty.RegisterAttached(
                 "UseAcrylicBackdrop",
@@ -124,54 +133,57 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 typeof(WindowHelper),
                 new PropertyMetadata(OnUseAcrylicBackdropChanged));
 
+        [Obsolete("This property is no longer maintained, please use SystemBackdropType property")]
         public static bool GetUseAcrylicBackdrop(Window window)
         {
             return (bool)window.GetValue(UseAcrylicBackdropProperty);
         }
 
+        [Obsolete("This property is no longer maintained, please use SystemBackdropType property")]
         public static void SetUseAcrylicBackdrop(Window window, bool value)
         {
             window.SetValue(UseAcrylicBackdropProperty, value);
         }
 
+        [Obsolete("This property is no longer maintained, please use SystemBackdropType property")]
         private static void OnUseAcrylicBackdropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!AcrylicHelper.IsSupported())
-            {
-                return;
-            }
+            //if (!AcrylicHelper.IsSupported())
+            //{
+            //    return;
+            //}
 
-            if (d is Window window)
-            {
-                var handler = new RoutedEventHandler(async (sender, e) =>
-                {
-                    await Task.Delay(1);
-                    AcrylicHelper.Apply(window);
-                });
+            //if (d is Window window)
+            //{
+            //    var handler = new RoutedEventHandler(async (sender, e) =>
+            //    {
+            //        await Task.Delay(1);
+            //        AcrylicHelper.Apply(window);
+            //    });
 
-                SetWindowStyle(window);
+            //    SetWindowStyle(window);
 
-                if ((bool)e.NewValue)
-                {
-                    AcrylicHelper.Apply(window);
+            //    if ((bool)e.NewValue)
+            //    {
+            //        AcrylicHelper.Apply(window);
 
-                    if (!window.IsLoaded)
-                    {
-                        window.Loaded += (sender, e) => AcrylicHelper.Apply(window);
-                    }
+            //        if (!window.IsLoaded)
+            //        {
+            //            window.Loaded += (sender, e) => AcrylicHelper.Apply(window);
+            //        }
 
-                    if (AcrylicHelper.IsAcrylicSupported())
-                    {
-                        ThemeManager.RemoveActualThemeChangedHandler(window, handler);
-                        ThemeManager.AddActualThemeChangedHandler(window, handler);
-                    }
-                }
-                else
-                {
-                    AcrylicHelper.Remove(window);
-                    ThemeManager.RemoveActualThemeChangedHandler(window, handler);
-                }
-            }
+            //        if (AcrylicHelper.IsAcrylicSupported())
+            //        {
+            //            ThemeManager.RemoveActualThemeChangedHandler(window, handler);
+            //            ThemeManager.AddActualThemeChangedHandler(window, handler);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        AcrylicHelper.Remove(window);
+            //        ThemeManager.RemoveActualThemeChangedHandler(window, handler);
+            //    }
+            //}
         }
 
         #endregion
@@ -197,16 +209,44 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         private static void OnSystemBackdropTypeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!((BackdropType)e.NewValue).IsSupported())
-            {
-                return;
-            }
+            //if (!((BackdropType)e.NewValue).IsSupported())
+            //{
+            //    return;
+            //}
 
             if (d is Window window)
             {
                 SetWindowStyle(window);
-                MicaHelper.Apply(window, (BackdropType)e.NewValue);
+                UpdateWindowChrome(window);
+                BackdropHelper.Apply(window, (BackdropType)e.NewValue);
+
             }
+        }
+
+        #endregion
+
+        #region Acrylic10Color
+
+        public static readonly DependencyProperty Acrylic10ColorProperty =
+            DependencyProperty.RegisterAttached(
+                "Acrylic10Color",
+                typeof(Color),
+                typeof(WindowHelper),
+                new PropertyMetadata(Colors.Transparent, OnAcrylic10ColorChanged));
+
+        public static Color GetAcrylic10Color(Window window)
+        {
+            return (Color)window.GetValue(Acrylic10ColorProperty);
+        }
+
+        public static void SetAcrylic10Color(Window window, Color value)
+        {
+            window.SetValue(Acrylic10ColorProperty, value);
+        }
+
+        private static void OnAcrylic10ColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            OnSystemBackdropTypeChanged(d, e);
         }
 
         #endregion
@@ -323,13 +363,16 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         public static void SetWindowStyle(Window window)
         {
             bool isModern = DependencyPropertyHelper.GetValueSource(window, UseModernWindowStyleProperty).BaseValueSource != BaseValueSource.Default && GetUseModernWindowStyle(window);
-            bool isUseMica = DependencyPropertyHelper.GetValueSource(window, SystemBackdropTypeProperty).BaseValueSource != BaseValueSource.Default;
-            bool isUseAcrylic = DependencyPropertyHelper.GetValueSource(window, UseAcrylicBackdropProperty).BaseValueSource != BaseValueSource.Default && GetUseAcrylicBackdrop(window);
-            bool isUseAero = DependencyPropertyHelper.GetValueSource(window, UseAeroBackdropProperty).BaseValueSource != BaseValueSource.Default && GetUseAeroBackdrop(window);
+       
+            //var backdrop = GetSystemBackdropType(window);
 
-            bool isSetMica = false;
-            bool isSetAcrylic = false;
-            bool isSetAero = false;
+            //bool isUseMica = new BackdropType[] { BackdropType.Mica, BackdropType.Tabbed, BackdropType.Acrylic11 }.Contains(backdrop); //DependencyPropertyHelper.GetValueSource(window, SystemBackdropTypeProperty).BaseValueSource != BaseValueSource.Default;
+            //bool isUseAcrylic10 = backdrop == BackdropType.Acrylic10; // DependencyPropertyHelper.GetValueSource(window, UseAcrylicBackdropProperty).BaseValueSource != BaseValueSource.Default && GetUseAcrylicBackdrop(window);
+            // bool isUseAero = DependencyPropertyHelper.GetValueSource(window, UseAeroBackdropProperty).BaseValueSource != BaseValueSource.Default && GetUseAeroBackdrop(window);
+
+            //bool isSetMica = false;
+            //bool isSetAcrylic10 = false;
+            //bool isSetAero = false;
 
             void ApplyDarkMode()
             {
@@ -358,79 +401,193 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
             var handler = new RoutedEventHandler((sender, e) => ApplyDarkMode());
 
+            WindowResizeModeDescriptor.RemoveValueChanged(window, OnWindowResizeModeDescriptorValueChanged);
+            ThemeManager.RemoveActualThemeChangedHandler(window, handler);
+
             if (isModern)
             {
                 ApplyDarkMode();
 
+                void onLoaded(object sender, RoutedEventArgs e)
+                {
+                    // This is needed to fix the issue with the window not being loaded correctly
+                    WindowChrome.SetWindowChrome(window, (WindowChrome.GetWindowChrome(window)?.Clone() as WindowChrome) ?? WindowChrome.GetWindowChrome(window));
+                    
+                    window.RemoveTitleBar();
+                }
+
+
                 if (window.IsLoaded)
                 {
-                    window.RemoveTitleBar();
+                    onLoaded(null, null);
                 }
                 else
                 {
-                    void RemoveTitleBar(object sender, RoutedEventArgs e)
-                    {
-                        window.RemoveTitleBar();
-                    }
-
-                    window.Loaded -= RemoveTitleBar;
-                    window.Loaded += RemoveTitleBar;
+                    
+                    window.Loaded -= onLoaded;
+                    window.Loaded += onLoaded;
                 }
 
-                ThemeManager.RemoveActualThemeChangedHandler(window, handler);
                 ThemeManager.AddActualThemeChangedHandler(window, handler);
 
-                if (isUseMica)
-                {
-                    var type = GetSystemBackdropType(window);
-                    if (type.IsSupported())
-                    {
-                        isSetMica = true;
-                        window.SetResourceReference(FrameworkElement.StyleProperty, MicaWindowStyleKey);
-                    }
-                }
+                WindowResizeModeDescriptor.AddValueChanged(window, OnWindowResizeModeDescriptorValueChanged);
 
-                if (!isSetMica && isUseAcrylic)
-                {
-                    if (AcrylicHelper.IsAcrylicSupported())
-                    {
-                        isSetAcrylic = true;
-                        window.SetResourceReference(FrameworkElement.StyleProperty, AcrylicWindowStyleKey);
-                    }
-                    else if (AcrylicHelper.IsSupported())
-                    {
-                        isSetAcrylic = true;
-                        window.SetResourceReference(FrameworkElement.StyleProperty, AeroWindowStyleKey);
-                    }
-                }
+                window.SetResourceReference(FrameworkElement.StyleProperty, TheWindowStyleKey);
 
-                if (!isSetMica && !isSetAcrylic && isUseAero)
-                {
-                    if (new Version(6, 0) <= OSVersionHelper.OSVersion && OSVersionHelper.OSVersion < new Version(6, 2, 8824))
-                    {
-                        isSetAero = true;
-                        window.SetResourceReference(FrameworkElement.StyleProperty, AeroWindowStyleKey);
-                    }
-                }
+                //if (isUseMica)
+                //{
+                //    if (type.IsSupported())
+                //    {
+                //        isSetMica = true;
+                //        //window.SetResourceReference(FrameworkElement.StyleProperty, MicaWindowStyleKey);
+                //    }
+                //}
 
-                if (!isSetMica && !isSetAcrylic && !isSetAero)
-                {
-                    if (OSVersionHelper.IsWindows11OrGreater)
-                    {
-                        window.SetResourceReference(FrameworkElement.StyleProperty, SnapWindowStyleKey);
-                    }
-                    else
-                    {
-                        window.SetResourceReference(FrameworkElement.StyleProperty, DefaultWindowStyleKey);
-                    }
-                }
+                //if (!isSetMica && isUseAcrylic10)
+                //{
+                //    if (AcrylicHelper.IsAcrylicSupported())
+                //    {
+                //        //isSetAcrylic10 = true;
+                //        //window.SetResourceReference(FrameworkElement.StyleProperty, AcrylicWindowStyleKey);
+                //    }
+                //    else if (AcrylicHelper.IsSupported())
+                //    {
+                //        //isSetAcrylic10 = true;
+                //        //window.SetResourceReference(FrameworkElement.StyleProperty, AeroWindowStyleKey);
+                //    }
+                //}
+
+                //if (!isSetMica && !isSetAcrylic10 && isUseAero)
+                //{
+                //    if (new Version(6, 0) <= OSVersionHelper.OSVersion && OSVersionHelper.OSVersion < new Version(6, 2, 8824))
+                //    {
+                //        isSetAero = true;
+                //        window.SetResourceReference(FrameworkElement.StyleProperty, AeroWindowStyleKey);
+                //    }
+                //}
+
+                //if (!isSetMica && !isSetAcrylic && !isSetAero)
+                //{
+                //    if (OSVersionHelper.IsWindows11OrGreater)
+                //    {
+                //        window.SetResourceReference(FrameworkElement.StyleProperty, SnapWindowStyleKey);
+                //    }
+                //    else
+                //    {
+                //        window.SetResourceReference(FrameworkElement.StyleProperty, DefaultWindowStyleKey);
+                //    }
+                //}
             }
             else
             {
                 window.ClearValue(FrameworkElement.StyleProperty);
                 window.RemoveDarkMode();
-                ThemeManager.RemoveActualThemeChangedHandler(window, handler);
+            }
+
+            UpdateWindowChrome(window);
+        }
+
+
+        #region Chrome Management
+
+        static DependencyPropertyDescriptor WindowResizeModeDescriptor = DependencyPropertyDescriptor.FromProperty(Window.ResizeModeProperty, typeof(Window));
+
+        private static void OnWindowResizeModeDescriptorValueChanged(object sender, EventArgs e)
+        {
+            if (sender is Window win)
+            {
+                UpdateWindowChrome(win);
             }
         }
+
+
+        public static WindowChrome UpdateWindowChrome(this Window window)
+        {
+            if (window == null)
+            {
+                return null;
+            }
+
+            var chrome = WindowChrome.GetWindowChrome(window);
+
+            if (GetUseModernWindowStyle(window))
+            {
+                bool isNewChrome = false;
+                if (chrome == null)
+                {
+                    chrome = new WindowChrome() 
+                    {
+                        CornerRadius = new CornerRadius(0),
+                        NonClientFrameEdges = NonClientFrameEdges.None,
+                        UseAeroCaptionButtons = false
+                    };
+                    isNewChrome = true;
+                }
+                // -----------------------------
+                // Resize border thickness
+                // -----------------------------
+                
+                var isResizable = true;
+                switch (window.ResizeMode)
+                {
+                    case ResizeMode.NoResize:
+                    case ResizeMode.CanMinimize:
+                        isResizable = false;
+                        break;
+                    case ResizeMode.CanResize:
+                    case ResizeMode.CanResizeWithGrip:
+                        isResizable = true;
+                        break;
+                }
+
+                var resizeBorderThickness = isResizable ? new Thickness(4) : new Thickness(0);
+
+                if (chrome.ResizeBorderThickness != resizeBorderThickness)
+                    chrome.ResizeBorderThickness = resizeBorderThickness;
+
+                // -----------------------------
+                // Caption height
+                // -----------------------------
+
+                var captionHeight = TitleBar.GetHeight(window);
+
+                if (chrome.CaptionHeight != captionHeight)
+                    chrome.CaptionHeight = captionHeight;
+
+
+                // -----------------------------
+                // Glass frame thickness
+                // -----------------------------
+
+                var glassFrameThickness = new Thickness(0);
+                switch (GetSystemBackdropType(window))
+                {
+                    case BackdropType.None:
+                        glassFrameThickness = new Thickness(0);
+                        break;
+                    case BackdropType.Acrylic10:
+                        glassFrameThickness = new Thickness(0, 1, 0, 0);
+                        break;
+                    case BackdropType.Mica:
+                    case BackdropType.Tabbed:
+                    case BackdropType.Acrylic11:
+                        glassFrameThickness = new Thickness(0, 0, 0, 0);
+                        break;
+                }
+
+                if (chrome.GlassFrameThickness != glassFrameThickness)
+                    chrome.GlassFrameThickness = glassFrameThickness;
+
+
+                // Final
+
+                WindowChrome.SetWindowChrome(window, chrome);
+            }
+
+            return chrome;
+        }
+
+
+        #endregion
     }
 }

@@ -32,6 +32,7 @@
 			Windows.Foundation.Diagnostics;
 			Windows.Foundation.PropertyType;
 		</CsWinRTExcludes>
+		<Nullable>disable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'">

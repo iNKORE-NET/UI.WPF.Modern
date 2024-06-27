@@ -5,16 +5,16 @@
 		<UseWPF>true</UseWPF>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);GetDocumentationFile</TargetsForTfmSpecificBuildOutput>
-		<NuspecFile>$(MSBuildThisFileDirectory)iNKORE.UI.WPF.ModernUI.nuspec</NuspecFile>
-		<PackageId>$(AssemblyName)</PackageId>
+		<!--<NuspecFile>$(MSBuildThisFileDirectory)iNKORE.UI.WPF.ModernUI.nuspec</NuspecFile>-->
+		<!--<PackageId>$(AssemblyName)</PackageId>-->
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<!--<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>-->
 		<ApplicationIcon>..\..\assets\icons\WpfLibrary.ico</ApplicationIcon>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\..\assets\others\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
 		<RootNamespace>iNKORE.UI.WPF.Modern</RootNamespace>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <!--<GenerateDocumentationFile>true</GenerateDocumentationFile>-->
 		<NoWarn>$(NoWarn);CS1591;1701;1702;CA1416;CS1573</NoWarn>
 	</PropertyGroup>
 
@@ -74,13 +74,13 @@
 		</None>
 	</ItemGroup>
 
-	<Target Name="GetDocumentationFile">
+	<!--<Target Name="GetDocumentationFile">
 		<ItemGroup>
 			<BuildOutputInPackage Include="$(OutputPath)$(AssemblyName).xml" />
 		</ItemGroup>
-	</Target>
+	</Target>-->
 
-	<Target Name="SetNuspecProperties" BeforeTargets="GenerateNuspec">
+	<!--<Target Name="SetNuspecProperties" BeforeTargets="GenerateNuspec">
 		<PropertyGroup>
 			<NuspecProperties>$(NuspecProperties);id=$(PackageId)</NuspecProperties>
 			<NuspecProperties>$(NuspecProperties);version=$(PackageVersion)</NuspecProperties>
@@ -90,6 +90,6 @@
 			<NuspecProperties>$(NuspecProperties);projectUrl=$(PackageProjectUrl)</NuspecProperties>
 			<NuspecProperties>$(NuspecProperties);tags=$(PackageTags)</NuspecProperties>
 		</PropertyGroup>
-	</Target>
+	</Target>-->
 
 </Project>

@@ -141,11 +141,11 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 if(ThemeManager.GetActualTheme(this) == ElementTheme.Dark)
                 {
-                    MicaHelper.ApplyDarkMode(this);
+                    BackdropHelper.ApplyDarkMode(this);
                 }
                 else
                 {
-                    MicaHelper.RemoveDarkMode(this);
+                    BackdropHelper.RemoveDarkMode(this);
                 }
             }
         }
@@ -895,7 +895,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             this.RemoveTitleBar();
             Opened?.Invoke(this, new MessageBoxOpenedEventArgs());
 
-            if (DefaultBackdropType == BackdropType.None || MicaHelper.IsSupported(DefaultBackdropType))
+            if (DefaultBackdropType == BackdropType.None || BackdropHelper.IsSupported(DefaultBackdropType))
             {
                 WindowHelper.SetSystemBackdropType(this, DefaultBackdropType);
             }
@@ -927,7 +927,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             if (IsDark(theme))
             {
-                MicaHelper.ApplyDarkMode(this);
+                BackdropHelper.ApplyDarkMode(this);
             }
             else
             {
