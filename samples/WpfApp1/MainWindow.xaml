@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800"
         ResizeMode="CanMinimize"
         ui:ThemeManager.IsThemeAware="True"
-        ui:TitleBar.ExtendViewIntoTitleBar="False" ui:WindowHelper.SystemBackdropType="Acrylic11"
+        ui:TitleBar.ExtendViewIntoTitleBar="False" ui:WindowHelper.SystemBackdropType="Acrylic"
         ui:WindowHelper.ApplyNoise="False"
         ui:WindowHelper.UseModernWindowStyle="True"
         Loaded="Window_Loaded" Background="{x:Null}">

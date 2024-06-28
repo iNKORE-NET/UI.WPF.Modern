@@ -19,12 +19,11 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
     {
         None = 1,
         Mica = 2,
-        Acrylic11 = 3,
+        Acrylic = 3,
         Tabbed = 4,
-        Acrylic10,
 
-        [Obsolete("Use Acrylic11 or Acrylic10 instead.")]
-        Acrylic = 3
+        Acrylic10,
+        Acrylic11,
     }
 
     public static class BackdropHelper
@@ -45,6 +44,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
                 BackdropType.Mica => OSVersionHelper.OSVersion >= new Version(10, 0, 21996),
                 BackdropType.Acrylic11 => OSVersionHelper.OSVersion >= new Version(10, 0, 22523),
                 BackdropType.Acrylic10 => true,
+                BackdropType.Acrylic => IsSupported(BackdropType.Acrylic10) || IsSupported(BackdropType.Acrylic11),
                 _ => false
             };
         }
@@ -86,6 +86,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
                 BackdropType.Mica => TryApplyMica(handle),
                 BackdropType.Acrylic11 => TryApplyAcrylic(handle),
                 BackdropType.Acrylic10 => Acrylic10Helper.TryApplyAcrylic(handle, acrylic10Color ?? Colors.Transparent),
+                BackdropType.Acrylic => IsSupported(BackdropType.Acrylic11) ? Apply(handle, BackdropType.Acrylic11, force, acrylic10Color) : Apply(handle, BackdropType.Acrylic10, force, acrylic10Color),
                 BackdropType.Tabbed => TryApplyTabbed(handle),
                 _ => false
             };

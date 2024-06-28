@@ -559,7 +559,11 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 // -----------------------------
 
                 var glassFrameThickness = new Thickness(-1);
-                switch (GetSystemBackdropType(window))
+                var actualBackdrop = GetSystemBackdropType(window);
+
+                if (actualBackdrop == BackdropType.Acrylic) actualBackdrop = BackdropHelper.IsSupported(BackdropType.Acrylic11) ? BackdropType.Acrylic11 : BackdropType.Acrylic10;
+
+                switch (actualBackdrop)
                 {
                     case BackdropType.None:
                         glassFrameThickness = new Thickness(-1);
