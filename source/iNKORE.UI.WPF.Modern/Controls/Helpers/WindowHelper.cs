@@ -511,7 +511,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
             if (GetUseModernWindowStyle(window))
             {
-                bool isNewChrome = false;
                 if (chrome == null)
                 {
                     chrome = new WindowChrome() 
@@ -520,7 +519,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                         NonClientFrameEdges = NonClientFrameEdges.None,
                         UseAeroCaptionButtons = false
                     };
-                    isNewChrome = true;
                 }
                 // -----------------------------
                 // Resize border thickness

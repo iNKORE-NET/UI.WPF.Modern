@@ -36,7 +36,7 @@
                         Background="{TemplateBinding Background}"
                         SnapsToDevicePixels="True">
                         <Grid>
-                            <local:SimpleStackPanel x:Name="SimpleStackPanel_Header" Orientation="Horizontal" Spacing="8">
+                            <ikw:SimpleStackPanel x:Name="SimpleStackPanel_Header" Orientation="Horizontal" Spacing="8">
 
                                 <local:ContentPresenterEx
                                     x:Name="ContentPresenter_Icon"
@@ -60,7 +60,7 @@
                                     FontWeight="{DynamicResource PivotHeaderItemThemeFontWeight}"
                                     RecognizesAccessKey="True"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                            </local:SimpleStackPanel>
+                            </ikw:SimpleStackPanel>
                             <Rectangle
                                 x:Name="SelectedPipe"
                                 Height="3"

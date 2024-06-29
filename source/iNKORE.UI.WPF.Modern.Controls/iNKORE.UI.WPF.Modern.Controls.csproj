@@ -61,7 +61,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="iNKORE.UI.WPF" Version="1.2.4" />
+	  <PackageReference Include="iNKORE.UI.WPF" Version="1.2.7.1" />
 	</ItemGroup>
 
 	<ItemGroup>

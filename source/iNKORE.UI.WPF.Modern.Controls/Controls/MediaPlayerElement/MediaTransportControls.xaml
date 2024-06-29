@@ -236,7 +236,7 @@
                                                                              Converter={StaticResource BooleanToVisibilityConverter}}">
                                                 <local:AppBarButton.Flyout>
                                                     <local:Flyout x:Name="VolumeFlyout" FlyoutPresenterStyle="{StaticResource FlyoutStyle}">
-                                                        <ui:SimpleStackPanel Margin="3,11" Orientation="Horizontal">
+                                                        <ikw:SimpleStackPanel Margin="3,11" Orientation="Horizontal">
                                                             <local:AppBarButton
                                                                 x:Name="AudioMuteButton"
                                                                 HorizontalAlignment="Center"
@@ -272,7 +272,7 @@
                                                                 VerticalAlignment="Center"
                                                                 Style="{StaticResource MediaTextBlockStyle}"
                                                                 TextAlignment="Right" />
-                                                        </ui:SimpleStackPanel>
+                                                        </ikw:SimpleStackPanel>
                                                     </local:Flyout>
                                                 </local:AppBarButton.Flyout>
                                                 <local:AppBarButton.Icon>

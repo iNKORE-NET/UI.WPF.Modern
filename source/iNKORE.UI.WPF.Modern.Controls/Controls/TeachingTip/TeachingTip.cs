@@ -20,6 +20,7 @@ using iNKORE.UI.WPF.Modern.Media.Animation;
 using static CppWinRTHelpers;
 using static iNKORE.UI.WPF.Modern.Common.ResourceAccessor;
 using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Common;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {

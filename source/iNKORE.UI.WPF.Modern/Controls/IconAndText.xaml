@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
                     xmlns:ch="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf">
 
     <Style TargetType="local:IconAndText">
         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -12,7 +13,7 @@
                     <Border x:Name="Root" Background="{TemplateBinding Background}"
                             BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"
                             CornerRadius="{TemplateBinding ch:ControlHelper.CornerRadius}">
-                        <local:SimpleStackPanel x:Name="RootLayout" Orientation="{TemplateBinding Orientation}" Spacing="{TemplateBinding Spacing}"
+                        <ikw:SimpleStackPanel x:Name="RootLayout" Orientation="{TemplateBinding Orientation}" Spacing="{TemplateBinding Spacing}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 
                             <local:FontIcon x:Name="Icon" Icon="{TemplateBinding Icon}"
@@ -21,7 +22,7 @@
                             <local:ContentPresenterEx x:Name="ContentPresenter" Content="{TemplateBinding Content}"
                                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
                       
-                        </local:SimpleStackPanel>
+                        </ikw:SimpleStackPanel>
                     </Border>
 
                     <ControlTemplate.Triggers>
