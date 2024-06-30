@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ExamplePhotoTaker" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+        xmlns:local="clr-namespace:ExamplePhotoTaker" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
         mc:Ignorable="d" ui:WindowHelper.UseModernWindowStyle="True"
         Title="MainWindow" Height="450" Width="800" Language="en-US">
     <Grid>
@@ -24,10 +24,10 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <ui:SimpleStackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                            <ikw:SimpleStackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
                                 <Button x:Name="Button_NavigateToPage1" Content="To Page 1" Click="Button_NavigateToPage1_Click"/>
                                 <Button x:Name="Button_NavigateToPage2" Content="To Page 2" Click="Button_NavigateToPage2_Click"/>
-                            </ui:SimpleStackPanel>
+                            </ikw:SimpleStackPanel>
 
                             <ui:Frame x:Name="Frame_Main" Navigating="Frame_Main_Navigating" Margin="10" Grid.Row="1" 
                                       BorderBrush="Gray" BorderThickness="2,2,2,2"/>
