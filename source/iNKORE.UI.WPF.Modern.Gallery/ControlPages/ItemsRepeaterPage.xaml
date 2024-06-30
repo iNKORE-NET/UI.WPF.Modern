@@ -5,6 +5,7 @@
     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:l="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.ControlPages"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
@@ -201,7 +202,7 @@
         </TabControl.Resources>
 
         <TabItem Header="Overview">
-            <ui:SimpleStackPanel Spacing="16">
+            <ikw:SimpleStackPanel Spacing="16">
                 <local:ControlExample HeaderText="Basic, non-interactive items laid out by ItemsRepeater">
                     <ui:ItemsRepeaterScrollHost MaxHeight="500">
                         <ui:ScrollViewerEx HorizontalScrollBarVisibility="Auto">
@@ -212,7 +213,7 @@
                         </ui:ScrollViewerEx>
                     </ui:ItemsRepeaterScrollHost>
                     <local:ControlExample.Options>
-                        <ui:SimpleStackPanel Spacing="12">
+                        <ikw:SimpleStackPanel Spacing="12">
                             <Button
                                 x:Name="AddBtn"
                                 MinWidth="150"
@@ -244,7 +245,7 @@
                                 Content="UniformGridLayout"
                                 GroupName="Sample1Layouts"
                                 Tag="UniformGridLayout" />
-                        </ui:SimpleStackPanel>
+                        </ikw:SimpleStackPanel>
                     </local:ControlExample.Options>
                 </local:ControlExample>
 
@@ -271,7 +272,7 @@
                     </ui:ItemsRepeaterScrollHost>
 
                     <local:ControlExample.Options>
-                        <ui:SimpleStackPanel Spacing="12">
+                        <ikw:SimpleStackPanel Spacing="12">
                             <RadioButton
                                 Click="LayoutBtn_Click"
                                 Content="Uniform grid"
@@ -283,7 +284,7 @@
                                 GroupName="Sample2Layouts"
                                 IsChecked="True"
                                 Tag="MyFeedLayout" />
-                        </ui:SimpleStackPanel>
+                        </ikw:SimpleStackPanel>
                     </local:ControlExample.Options>
                 </local:ControlExample>
 
@@ -316,7 +317,7 @@
                     </ui:ItemsRepeater>
                 </local:ControlExample>
 
-            </ui:SimpleStackPanel>
+            </ikw:SimpleStackPanel>
         </TabItem>
 
         <TabItem Header="StackLayout">
@@ -336,7 +337,7 @@
                 </ui:ItemsRepeaterScrollHost>
 
                 <local:ControlExample.Options>
-                    <ui:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                    <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                         <ui:NumberBox Header="Spacing" Value="{Binding Source={StaticResource stackLayout}, Path=Spacing, Converter={StaticResource SpacingConverter}}" />
                         <Button
                             x:Name="changeFirstItemButton"
@@ -346,7 +347,7 @@
                             x:Name="modifyFirstItemButton"
                             Click="ModifyFirstItemButton_Click"
                             Content="Modify first item" />
-                    </ui:SimpleStackPanel>
+                    </ikw:SimpleStackPanel>
                 </local:ControlExample.Options>
             </local:ControlExample>
         </TabItem>
@@ -384,7 +385,7 @@
 
                 <local:ControlExample.Options>
                     <ui:ScrollViewerEx Margin="-16">
-                        <ui:SimpleStackPanel Margin="16" Style="{StaticResource OptionsPanelStyle}">
+                        <ikw:SimpleStackPanel Margin="16" Style="{StaticResource OptionsPanelStyle}">
                             <ui:NumberBox Header="MinItemWidth" Value="{Binding Source={StaticResource uniformGridLayout}, Path=MinItemWidth}" />
                             <ui:NumberBox Header="MinItemHeight" Value="{Binding Source={StaticResource uniformGridLayout}, Path=MinItemHeight}" />
                             <ui:NumberBox Header="MinRowSpacing" Value="{Binding Source={StaticResource uniformGridLayout}, Path=MinRowSpacing}" />
@@ -405,7 +406,7 @@
                                 Header="Orientation"
                                 ItemsSource="{Binding Source={x:Type Orientation}, Converter={StaticResource EnumValuesConverter}}"
                                 SelectedItem="{Binding Source={StaticResource uniformGridLayout}, Path=Orientation}" />
-                        </ui:SimpleStackPanel>
+                        </ikw:SimpleStackPanel>
                     </ui:ScrollViewerEx>
                 </local:ControlExample.Options>
             </local:ControlExample>
@@ -440,7 +441,7 @@
 
                 <local:ControlExample.Options>
                     <ui:ScrollViewerEx Margin="-16">
-                        <ui:SimpleStackPanel Margin="16" Style="{StaticResource OptionsPanelStyle}">
+                        <ikw:SimpleStackPanel Margin="16" Style="{StaticResource OptionsPanelStyle}">
                             <ui:RadioButtons
                                 Header="Orientation"
                                 ItemsSource="{Binding Source={x:Type Orientation}, Converter={StaticResource EnumValuesConverter}}"
@@ -451,7 +452,7 @@
                                 Header="LineAlignment"
                                 ItemsSource="{Binding Source={x:Type ui:FlowLayoutLineAlignment}, Converter={StaticResource EnumValuesConverter}}"
                                 SelectedItem="{Binding Source={StaticResource flowLayout}, Path=LineAlignment}" />
-                        </ui:SimpleStackPanel>
+                        </ikw:SimpleStackPanel>
                     </ui:ScrollViewerEx>
                 </local:ControlExample.Options>
             </local:ControlExample>

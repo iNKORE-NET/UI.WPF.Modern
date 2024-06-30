@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:presets="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Presets"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
@@ -16,7 +17,7 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <ui:SimpleStackPanel Margin="{StaticResource ControlPageContentMargin}" Spacing="24">
+        <ikw:SimpleStackPanel Margin="{StaticResource ControlPageContentMargin}" Spacing="24">
 
             <ui:RadioButtons Header="Theme Mode" SelectedItem="{Binding Source={x:Static sc:ThemeManagerProxy.Current}, Path=ApplicationTheme, Converter={StaticResource AppThemeConverter}}">
                 <ui:RadioButtons.ItemsSource>
@@ -96,7 +97,7 @@
                 <GroupBox.Resources>
                     <Thickness x:Key="GroupBoxHeaderMargin">24,4,24,20</Thickness>
                 </GroupBox.Resources>
-                <ui:SimpleStackPanel Spacing="24">
+                <ikw:SimpleStackPanel Spacing="24">
                     <TextBox
                         Width="{StaticResource ItemWidth}"
                         HorizontalAlignment="Left"
@@ -130,8 +131,8 @@
                         Header="High contrast"
                         IsEnabled="False"
                         IsOn="{Binding Path=(SystemParameters.HighContrast), Mode=OneWay}" />
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
             </GroupBox>
-        </ui:SimpleStackPanel>
+        </ikw:SimpleStackPanel>
     </ScrollViewer>
 </ui:Page>

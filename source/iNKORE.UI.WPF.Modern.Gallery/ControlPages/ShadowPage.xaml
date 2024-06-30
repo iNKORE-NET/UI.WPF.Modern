@@ -4,11 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     mc:Ignorable="d">
 
-    <ui:SimpleStackPanel Margin="{StaticResource ControlPageContentMargin}">
+    <ikw:SimpleStackPanel Margin="{StaticResource ControlPageContentMargin}">
         <sc:ControlExample
             HorizontalContentAlignment="Stretch"
             VerticalContentAlignment="Stretch"
@@ -30,7 +31,7 @@
             </Border>
 
             <sc:ControlExample.Options>
-                <ui:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                     <Slider
                         x:Name="DepthSlider"
                         ui:ControlHelper.Header="Depth"
@@ -40,8 +41,8 @@
                         Minimum="1"
                         Ticks="1,2,3,4,6,8,9,12,16,24,32,40,48,64,80,96"
                         Value="32" />
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
             </sc:ControlExample.Options>
         </sc:ControlExample>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </ui:Page>

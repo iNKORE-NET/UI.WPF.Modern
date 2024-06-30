@@ -6,7 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:uc="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" 
+    xmlns:uc="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     Title="New Controls"
     d:DesignWidth="800" FontSize="14"
     mc:Ignorable="d">
@@ -72,7 +74,7 @@
                             Visibility="Visible" />
                     </StackPanel>
                     
-                    <ui:SimpleStackPanel x:Name="HeaderTileOuterGrid" Margin="0,287,0,0" Orientation="Vertical" Spacing="10">
+                    <ikw:SimpleStackPanel x:Name="HeaderTileOuterGrid" Margin="0,287,0,0" Orientation="Vertical" Spacing="10">
 
                         <uc:DocumentationPromotion/>
                         <StackPanel Orientation="Horizontal">
@@ -98,7 +100,7 @@
                                     Source="/Assets/template_studio.png" />
                             </WrapPanel>
                         </StackPanel>
-                    </ui:SimpleStackPanel>
+                    </ikw:SimpleStackPanel>
                 </Grid>
             </ui:ListViewHelper.Header>
 

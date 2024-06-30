@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     mc:Ignorable="d">
@@ -18,7 +19,7 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <ui:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
+        <ikw:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
             <sc:ControlExample x:Name="Example1" HeaderText="A simple Slider.">
                 <StackPanel Orientation="Horizontal">
                     <Slider
@@ -98,7 +99,7 @@
                 </Grid>
 
                 <sc:ControlExample.Options>
-                    <ui:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                    <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                         <CheckBox Content="IsSnapToTickEnabled" IsChecked="{Binding ElementName=slider, Path=IsSnapToTickEnabled}" />
                         <CheckBox
                             Content="IsSelectionRangeEnabled"
@@ -118,9 +119,9 @@
                             Header="Orientation"
                             ItemsSource="{Binding Source={x:Type Orientation}, Converter={StaticResource EnumValuesConverter}}"
                             SelectedItem="{Binding ElementName=slider, Path=Orientation}" />
-                    </ui:SimpleStackPanel>
+                    </ikw:SimpleStackPanel>
                 </sc:ControlExample.Options>
             </sc:ControlExample>
-        </ui:SimpleStackPanel>
+        </ikw:SimpleStackPanel>
     </ScrollViewer>
 </ui:Page>

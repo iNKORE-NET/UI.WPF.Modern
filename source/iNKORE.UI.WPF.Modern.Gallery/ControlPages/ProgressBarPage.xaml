@@ -7,8 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     mc:Ignorable="d">
-    <ui:SimpleStackPanel>
+    <ikw:SimpleStackPanel>
         <local:ControlExample HeaderText="An indeterminate progress bar.">
             <ui:ProgressBar
                 Width="130"
@@ -78,5 +79,5 @@
                     OnContent="Working" />
             </local:ControlExample.Options>
         </local:ControlExample>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </ui:Page>

@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     x:Name="dialog"
@@ -20,7 +21,7 @@
     SecondaryButtonText="No"
     Style="{StaticResource ScrollableContentDialogStyle}"
     mc:Ignorable="d">
-    <ui:SimpleStackPanel Spacing="12">
+    <ikw:SimpleStackPanel Spacing="12">
         <TextBox
             ui:ControlHelper.Header="Title"
             AcceptsReturn="True"
@@ -43,5 +44,5 @@
                 Style="{StaticResource BodyTextBlockStyle}"
                 Visibility="Collapsed" />
         </StackPanel>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </ui:ContentDialog>

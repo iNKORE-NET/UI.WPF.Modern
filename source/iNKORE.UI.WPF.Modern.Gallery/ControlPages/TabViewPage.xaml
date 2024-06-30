@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -15,7 +16,7 @@
         </Style>
     </Page.Resources>
 
-    <ui:SimpleStackPanel>
+    <ikw:SimpleStackPanel>
         <local:ControlExample HeaderText="A basic TabControl">
             <TabControl x:Name="tabControl">
                 <ui:TabControlHelper.TabStripHeader>
@@ -37,13 +38,13 @@
             </TabControl>
 
             <local:ControlExample.Options>
-                <ui:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                     <ui:RadioButtons
                         Header="TabStripPlacement"
                         ItemsSource="{Binding Source={x:Type Dock}, Converter={StaticResource EnumValuesConverter}}"
                         SelectedItem="{Binding ElementName=tabControl, Path=TabStripPlacement}" />
                     <CheckBox x:Name="ShowHeaderAndFooterCheckBox" Content="Show header and footer" />
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
 
@@ -145,5 +146,5 @@
                 </TabControl.ItemContainerStyle>
             </TabControl>
         </local:ControlExample>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </ui:Page>

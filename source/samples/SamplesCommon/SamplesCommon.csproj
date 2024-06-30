@@ -21,5 +21,9 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
   </ItemGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="iNKORE.UI.WPF" Version="1.2.7.1" />
+  </ItemGroup>
 
 </Project>

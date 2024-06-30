@@ -5,6 +5,7 @@
     xmlns:controls="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
 
     <common:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
@@ -145,7 +146,7 @@
                                     </StackPanel>
                                 </Expander>
 
-                                <ui:SimpleStackPanel
+                                <ikw:SimpleStackPanel
                                     x:Name="ScreenshotControls"
                                     Grid.Row="2"
                                     Margin="0,6,0,0"
@@ -176,7 +177,7 @@
                                         x:Name="ControlPaddingBox"
                                         Width="150"
                                         AutomationProperties.LabeledBy="{Binding ElementName=PaddingLabel}" />
-                                </ui:SimpleStackPanel>
+                                </ikw:SimpleStackPanel>
                             </Grid>
                         </Border>
                         <VisualStateManager.VisualStateGroups>

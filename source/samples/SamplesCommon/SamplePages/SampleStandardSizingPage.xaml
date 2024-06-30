@@ -15,17 +15,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     mc:Ignorable="d">
 
     <Grid Background="{DynamicResource ApplicationPageBackgroundThemeBrush}">
-        <ui:SimpleStackPanel x:Name="CompactPanel" Spacing="16">
+        <ikw:SimpleStackPanel x:Name="CompactPanel" Spacing="16">
             <TextBlock x:Name="HeaderBlock" Text="Standard Size" FontSize="18"/>
             <TextBox ui:ControlHelper.Header="First Name:" x:Name="txtfirstName" />
             <TextBox ui:ControlHelper.Header="Last Name:" x:Name="txtLastName"  />
             <PasswordBox ui:ControlHelper.Header="Password:" />
             <PasswordBox ui:ControlHelper.Header="Confirm Password:" />
             <DatePicker ui:ControlHelper.Header="Pick a date" HorizontalAlignment="Stretch" />
-        </ui:SimpleStackPanel>
+        </ikw:SimpleStackPanel>
     </Grid>
 </ui:Page>

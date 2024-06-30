@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+             xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls" 
+             xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+             xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
              d:DesignWidth="640"
              mc:Ignorable="d" >
     <Grid>
@@ -18,13 +20,13 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <ui:SimpleStackPanel Orientation="Horizontal" Spacing="8" TextElement.Foreground="{DynamicResource {x:Static ui:ThemeKeys.AccentTextFillColorPrimaryBrushKey}}"
+                <ikw:SimpleStackPanel Orientation="Horizontal" Spacing="8" TextElement.Foreground="{DynamicResource {x:Static ui:ThemeKeys.AccentTextFillColorPrimaryBrushKey}}"
                                                      Margin="0,3,0,0">
                     <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.TextBulletListSquareEdit_24_Regular}" FontSize="24"/>
                     <TextBlock FontSize="16" VerticalAlignment="Center" FontWeight="SemiBold">It's time for a brand-new docmentation set!</TextBlock>
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
 
-                <ui:SimpleStackPanel Orientation="Vertical" Spacing="12" Grid.Row="1" Margin="5,10">
+                <ikw:SimpleStackPanel Orientation="Vertical" Spacing="12" Grid.Row="1" Margin="5,10">
                     <FrameworkElement.Resources>
                         <Style TargetType="TextBlock">
                             <Setter Property="LineHeight" Value="21"/>
@@ -50,9 +52,9 @@
                                         <Run>to hang out with us.</Run>
                     </TextBlock>
                     <Separator Opacity="0.2"/>
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
 
-                <ui:SimpleStackPanel Grid.Row="3" Orientation="Horizontal" Spacing="10">
+                <ikw:SimpleStackPanel Grid.Row="3" Orientation="Horizontal" Spacing="10">
 
                     <ui:HyperlinkButton x:Name="HyperlinkButton_Repository" Content="Repository" Click="HyperlinkButton_Repository_Click"/>
                     <ui:HyperlinkButton x:Name="HyperlinkButton_Package" Content="Package" Click="HyperlinkButton_Package_Click"/>
@@ -60,7 +62,7 @@
                     <ui:HyperlinkButton x:Name="HyperlinkButton_DocRepository" Content="Docs Repository" Click="Hyperlink_DoucmentationRepo_Click"/>
                     <ui:HyperlinkButton x:Name="HyperlinkButton_Facebook" Content="Follow us on Facebook!" Click="HyperlinkButton_Facebook_Click"/>
 
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
             </Grid>
         </Border>
 

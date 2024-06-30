@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     x:Name="Root"
     Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}"
     mc:Ignorable="d">
@@ -26,7 +27,7 @@
             </Setter>
         </Style>
 
-        <Style TargetType="ui:SimpleStackPanel">
+        <Style TargetType="ikw:SimpleStackPanel">
             <Setter Property="Spacing" Value="12" />
         </Style>
     </UserControl.Resources>
@@ -43,7 +44,7 @@
         </Border>
 
         <HeaderedContentControl Header="Buttons">
-            <ui:SimpleStackPanel>
+            <ikw:SimpleStackPanel>
                 <Button x:Name="Button" Content="Enabled button" />
                 <Button Content="Disabled button" IsEnabled="False" />
                 <ToggleButton Content="Toggle button" />
@@ -53,11 +54,11 @@
                     Content="Disabled accent button"
                     IsEnabled="False"
                     Style="{DynamicResource AccentButtonStyle}" />
-            </ui:SimpleStackPanel>
+            </ikw:SimpleStackPanel>
         </HeaderedContentControl>
 
         <HeaderedContentControl Header="Checkbox">
-            <ui:SimpleStackPanel>
+            <ikw:SimpleStackPanel>
                 <CheckBox Content="Unchecked" />
                 <CheckBox Content="Checked" IsChecked="True" />
                 <CheckBox
@@ -68,11 +69,11 @@
                     Content="Disabled"
                     IsChecked="True"
                     IsEnabled="False" />
-            </ui:SimpleStackPanel>
+            </ikw:SimpleStackPanel>
         </HeaderedContentControl>
 
         <HeaderedContentControl Header="Radio button">
-            <ui:SimpleStackPanel>
+            <ikw:SimpleStackPanel>
                 <RadioButton
                     Content="Unchecked"
                     GroupName="Test1"
@@ -88,11 +89,11 @@
                     Initialized="RadioButton_Initialized"
                     IsChecked="True"
                     IsEnabled="False" />
-            </ui:SimpleStackPanel>
+            </ikw:SimpleStackPanel>
         </HeaderedContentControl>
 
         <HeaderedContentControl Header="Combo box">
-            <ui:SimpleStackPanel>
+            <ikw:SimpleStackPanel>
                 <ComboBox Width="200">
                     <ComboBoxItem Content="Item 1" IsSelected="True" />
                     <ComboBoxItem Content="Item 2" />
@@ -103,7 +104,7 @@
                     <ComboBoxItem Content="Editable item 2" />
                     <ComboBoxItem Content="Editable item 3" />
                 </ComboBox>
-            </ui:SimpleStackPanel>
+            </ikw:SimpleStackPanel>
         </HeaderedContentControl>
 
         <HeaderedContentControl Header="Textbox">
@@ -114,10 +115,10 @@
         </HeaderedContentControl>
 
         <HeaderedContentControl Header="Toggle switch">
-            <ui:SimpleStackPanel>
+            <ikw:SimpleStackPanel>
                 <ui:ToggleSwitch IsOn="False" />
                 <ui:ToggleSwitch IsOn="True" />
-            </ui:SimpleStackPanel>
+            </ikw:SimpleStackPanel>
         </HeaderedContentControl>
 
         <HeaderedContentControl Header="Slider">

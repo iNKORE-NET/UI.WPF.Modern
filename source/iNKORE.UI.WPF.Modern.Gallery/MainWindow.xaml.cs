@@ -48,7 +48,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 {
                     NavigationRootPage NavigationRootPage = new NavigationRootPage();
                     Content = NavigationRootPage;
-                    MicaHelper.Apply(this, BackdropType.Mica, true);
+                    BackdropHelper.Apply(this, BackdropType.Mica, true);
                 });
             }).Start();
         }

@@ -5,13 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.SamplePages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     Title="SampleStandardSizingPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid Background="{DynamicResource ApplicationPageBackgroundThemeBrush}">
-        <ui:SimpleStackPanel x:Name="CompactPanel" Spacing="16">
+        <ikw:SimpleStackPanel x:Name="CompactPanel" Spacing="16">
             <TextBlock
                 x:Name="HeaderBlock"
                 FontSize="18"
@@ -21,6 +21,6 @@
             <PasswordBox x:Name="password" ui:ControlHelper.Header="Password:" />
             <PasswordBox x:Name="confirmPassword" ui:ControlHelper.Header="Confirm Password:" />
             <DatePicker x:Name="chosenDate" ui:ControlHelper.Header="Pick a date" />
-        </ui:SimpleStackPanel>
+        </ikw:SimpleStackPanel>
     </Grid>
 </ui:Page>

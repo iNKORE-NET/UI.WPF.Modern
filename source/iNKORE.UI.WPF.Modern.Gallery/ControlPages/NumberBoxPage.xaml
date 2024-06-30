@@ -4,10 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     mc:Ignorable="d">
-    <ui:SimpleStackPanel>
+    <ikw:SimpleStackPanel>
         <local:ControlExample HeaderText="A NumberBox that evaluates expressions.">
             <ui:NumberBox
                 AcceptsExpression="True"
@@ -26,12 +27,12 @@
                 Value="10" />
 
             <local:ControlExample.Options>
-                <ui:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                     <ui:RadioButtons Header="SpinButton Placement" SelectedItem="{Binding ElementName=NumberBoxSpinButtonPlacementExample, Path=SpinButtonPlacementMode}">
                         <ui:NumberBoxSpinButtonPlacementMode>Inline</ui:NumberBoxSpinButtonPlacementMode>
                         <ui:NumberBoxSpinButtonPlacementMode>Compact</ui:NumberBoxSpinButtonPlacementMode>
                     </ui:RadioButtons>
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
 
@@ -54,7 +55,7 @@
                 SpinButtonPlacementMode="Compact" />
 
             <local:ControlExample.Options>
-                <ui:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                     <ui:NumberBox Header="Minimum" Value="{Binding ElementName=NumberBox1, Path=Minimum}" />
                     <ui:NumberBox Header="Maximum" Value="{Binding ElementName=NumberBox1, Path=Maximum}" />
                     <ui:NumberBox
@@ -100,8 +101,8 @@
                         SpinButtonPlacementMode="Inline"
                         ValueChanged="PopupVerticalOffset_ValueChanged"
                         Value="{DynamicResource NumberBoxPopupVerticalOffset}" />
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </ui:Page>

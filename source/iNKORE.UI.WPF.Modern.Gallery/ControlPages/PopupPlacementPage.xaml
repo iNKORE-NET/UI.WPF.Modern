@@ -4,10 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     mc:Ignorable="d">
-    <ui:SimpleStackPanel>
+    <ikw:SimpleStackPanel>
         <local:ControlExample HeaderText="Popup placement">
             <Grid>
                 <ToggleButton
@@ -34,13 +35,13 @@
                 </Popup>
             </Grid>
             <local:ControlExample.Options>
-                <ui:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                     <ui:RadioButtons
                         Header="Placement"
                         ItemsSource="{Binding Source={x:Type PlacementMode}, Converter={StaticResource EnumValuesConverter}}"
                         SelectedItem="{Binding ElementName=Popup1, Path=Placement}" />
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </ui:Page>

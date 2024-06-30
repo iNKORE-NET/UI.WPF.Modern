@@ -5,11 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
     mc:Ignorable="d">
 
     <ScrollViewer>
-        <ui:SimpleStackPanel Margin="{StaticResource ControlPageContentMargin}" Spacing="24">
+        <ikw:SimpleStackPanel Margin="{StaticResource ControlPageContentMargin}" Spacing="24">
 
             <CheckBox Content="Use modern window style" IsChecked="{Binding Path=(ui:WindowHelper.UseModernWindowStyle)}" />
 
@@ -35,11 +36,11 @@
             </ui:DropDownButton>
 
             <GroupBox Header="Title Bar">
-                <ui:SimpleStackPanel Spacing="12">
+                <ikw:SimpleStackPanel Spacing="12">
                     <Button Click="OpenWindow" Content="Open window with custom title bar" />
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
             </GroupBox>
 
-        </ui:SimpleStackPanel>
+        </ikw:SimpleStackPanel>
     </ScrollViewer>
 </ui:Page>

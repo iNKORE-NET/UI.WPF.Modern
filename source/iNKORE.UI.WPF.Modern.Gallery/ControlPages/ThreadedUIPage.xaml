@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.ControlPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
@@ -11,7 +12,7 @@
     mc:Ignorable="d">
 
     <ScrollViewer>
-        <ui:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
+        <ikw:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
             <sc:ControlExample
                 x:Name="ProgressBarExample"
                 VerticalContentAlignment="Center"
@@ -23,15 +24,15 @@
                     Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
                 <sc:ControlExample.Options>
-                    <ui:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                    <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                         <CheckBox Content="IsBusy" IsChecked="{Binding IsBusy}" />
                         <CheckBox Content="IsVisible" IsChecked="{Binding IsVisible}" />
                         <Button Click="LoadOrUnload" Content="Unload" />
                         <Button Click="ToggleChildType" Content="Toggle ChildType" />
                         <Button Click="BlockMainThread" Content="Block main thread" />
-                    </ui:SimpleStackPanel>
+                    </ikw:SimpleStackPanel>
                 </sc:ControlExample.Options>
             </sc:ControlExample>
-        </ui:SimpleStackPanel>
+        </ikw:SimpleStackPanel>
     </ScrollViewer>
 </ui:Page>

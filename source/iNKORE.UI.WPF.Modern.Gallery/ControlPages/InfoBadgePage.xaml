@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     Title="InfoBadge Page"
     d:DesignHeight="450"
@@ -101,7 +102,7 @@
             HorizontalContentAlignment="Stretch"
             HeaderText="Different InfoBadge Styles">
             <local:ControlExample.Example>
-                <ui:SimpleStackPanel
+                <ikw:SimpleStackPanel
                     HorizontalAlignment="Center"
                     Orientation="Horizontal"
                     Spacing="20">
@@ -118,7 +119,7 @@
                         x:Name="infoBadge4"
                         VerticalAlignment="Center"
                         Style="{DynamicResource AttentionDotInfoBadgeStyle}" />
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
 
             </local:ControlExample.Example>
             <local:ControlExample.Options>

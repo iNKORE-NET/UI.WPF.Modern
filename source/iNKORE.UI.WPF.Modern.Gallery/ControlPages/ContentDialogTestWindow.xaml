@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     Title="Content Dialog Test Window"
     Width="800"
     Height="640"
@@ -12,12 +13,12 @@
     Background="{DynamicResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
     <Grid>
-        <ui:SimpleStackPanel
+        <ikw:SimpleStackPanel
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Spacing="12">
             <Button Click="ShowDialogInThisWindow" Content="Show content dialog in this window" />
             <Button Click="ShowDialogInMainWindow" Content="Show content dialog in main window" />
-        </ui:SimpleStackPanel>
+        </ikw:SimpleStackPanel>
     </Grid>
 </Window>

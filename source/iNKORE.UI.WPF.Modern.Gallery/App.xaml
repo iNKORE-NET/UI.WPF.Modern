@@ -5,6 +5,7 @@
     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Common"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:presets="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Presets"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
@@ -81,7 +82,7 @@
                 <Setter Property="sc:AutoPanningMode.IsEnabled" Value="True" />
             </Style>
 
-            <Style x:Key="OptionsPanelStyle" TargetType="ui:SimpleStackPanel">
+            <Style x:Key="OptionsPanelStyle" TargetType="ikw:SimpleStackPanel">
                 <Setter Property="Spacing" Value="12" />
                 <Style.Resources>
                     <Style BasedOn="{StaticResource {x:Type ComboBox}}" TargetType="ComboBox">
@@ -98,7 +99,7 @@
 
             <Thickness x:Key="ControlPageContentMargin">24,0,24,20</Thickness>
 
-            <Style x:Key="ControlPageContentPanelStyle" TargetType="ui:SimpleStackPanel">
+            <Style x:Key="ControlPageContentPanelStyle" TargetType="ikw:SimpleStackPanel">
                 <Setter Property="Margin" Value="{StaticResource ControlPageContentMargin}" />
                 <Setter Property="Spacing" Value="16" />
             </Style>

@@ -2,6 +2,7 @@
     x:Class="iNKORE.UI.WPF.Modern.Gallery.ControlPages.SplitViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.ControlPages"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
@@ -22,7 +23,7 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <ui:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
+        <ikw:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
             <sc:ControlExample HeaderText="A basic SplitView.">
 
                 <Grid Height="300" VerticalAlignment="Top">
@@ -154,7 +155,7 @@
                     </StackPanel>
                 </sc:ControlExample.Options>
             </sc:ControlExample>
-        </ui:SimpleStackPanel>
+        </ikw:SimpleStackPanel>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="SystemControlBackgroundChromeMediumLowBrush" />

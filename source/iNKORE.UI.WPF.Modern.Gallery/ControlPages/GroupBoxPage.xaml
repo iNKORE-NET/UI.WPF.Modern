@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.ControlPages"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     mc:Ignorable="d">
@@ -21,7 +22,7 @@
         </Style>
     </Page.Resources>
 
-    <ui:SimpleStackPanel
+    <ikw:SimpleStackPanel
         Width="404"
         HorizontalAlignment="Left"
         Spacing="0">
@@ -64,5 +65,5 @@
                 </ComboBox>
             </StackPanel>
         </GroupBox>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </ui:Page>

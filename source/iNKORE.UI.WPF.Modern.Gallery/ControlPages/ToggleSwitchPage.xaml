@@ -5,9 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     mc:Ignorable="d">
-    <ui:SimpleStackPanel>
+    <ikw:SimpleStackPanel>
         <local:ControlExample HeaderText="A simple ToggleSwitch.">
             <ui:ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" />
         </local:ControlExample>
@@ -24,13 +25,13 @@
             </StackPanel>
 
             <local:ControlExample.Options>
-                <ui:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                     <CheckBox Content="IsOn" IsChecked="{Binding ElementName=toggleSwitch, Path=IsOn}" />
                     <TextBox ui:ControlHelper.Header="Header" Text="{Binding ElementName=toggleSwitch, Path=Header, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox ui:ControlHelper.Header="OnContent" Text="{Binding ElementName=toggleSwitch, Path=OnContent, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox ui:ControlHelper.Header="OffContent" Text="{Binding ElementName=toggleSwitch, Path=OffContent, UpdateSourceTrigger=PropertyChanged}" />
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </ui:Page>

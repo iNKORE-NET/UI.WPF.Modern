@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="iNKORE.UI.WPF.Modern" Version="0.9.26.3" />
+    <PackageReference Include="iNKORE.UI.WPF.Modern" Version="0.9.29" />
   </ItemGroup>
 
 </Project>

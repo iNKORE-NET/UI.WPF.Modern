@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     mc:Ignorable="d">
 
@@ -141,7 +142,7 @@
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <ui:ScrollViewerEx Width="300" Margin="-16">
-                    <ui:SimpleStackPanel Margin="16" Style="{StaticResource OptionsPanelStyle}">
+                    <ikw:SimpleStackPanel Margin="16" Style="{StaticResource OptionsPanelStyle}">
                         <TextBlock
                             x:Name="LoadTimeTextBlock"
                             MouseLeftButtonUp="LoadTimeTextBlock_MouseLeftButtonUp"
@@ -204,7 +205,7 @@
                             ui:ControlHelper.Header="SelectionMode"
                             ItemsSource="{Binding Source={x:Type DataGridSelectionMode}, Converter={StaticResource EnumValuesConverter}}"
                             SelectedItem="{Binding ElementName=dataGrid, Path=SelectionMode}" />
-                    </ui:SimpleStackPanel>
+                    </ikw:SimpleStackPanel>
                 </ui:ScrollViewerEx>
             </local:ControlExample.Options>
         </local:ControlExample>

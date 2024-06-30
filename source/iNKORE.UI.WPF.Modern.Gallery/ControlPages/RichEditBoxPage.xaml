@@ -4,13 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     mc:Ignorable="d">
 
     <ScrollViewer>
-        <ui:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
+        <ikw:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
             <sc:ControlExample HeaderText="A simple text editor using RichTextBox.">
                 <RichTextBox
                     x:Name="richTextBox"
@@ -26,7 +27,7 @@
                     Height="105"
                     ui:ControlHelper.Header="Control header" />
                 <sc:ControlExample.Options>
-                    <ui:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                    <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                         <CheckBox Content="AcceptsReturn" IsChecked="{Binding ElementName=textBox, Path=AcceptsReturn}" />
                         <CheckBox Content="IsReadOnly" IsChecked="{Binding ElementName=textBox, Path=IsReadOnly}" />
                         <CheckBox Content="IsReadOnlyCaretVisible" IsChecked="{Binding ElementName=textBox, Path=IsReadOnlyCaretVisible}" />
@@ -51,9 +52,9 @@
                             <sys:Double>0.4</sys:Double>
                             <sys:Double>1</sys:Double>
                         </ComboBox>
-                    </ui:SimpleStackPanel>
+                    </ikw:SimpleStackPanel>
                 </sc:ControlExample.Options>
             </sc:ControlExample>
-        </ui:SimpleStackPanel>
+        </ikw:SimpleStackPanel>
     </ScrollViewer>
 </ui:Page>

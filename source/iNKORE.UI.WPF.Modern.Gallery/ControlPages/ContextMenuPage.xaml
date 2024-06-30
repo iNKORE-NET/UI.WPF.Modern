@@ -6,10 +6,11 @@
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     mc:Ignorable="d">
 
-    <ui:SimpleStackPanel>
+    <ikw:SimpleStackPanel>
         <local:ControlExample HeaderText="A ContextMenu with checkable MenuItems and Separator.">
             <Button Content="Options">
                 <Button.ContextMenu>
@@ -132,5 +133,5 @@
         <local:ControlExample HeaderText="Text control ContextMenu.">
             <TextBox MinWidth="150" Text="Some text" />
         </local:ControlExample>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </ui:Page>

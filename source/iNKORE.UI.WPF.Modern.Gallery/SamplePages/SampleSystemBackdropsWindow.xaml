@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.SamplePages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     Title="System Backdrops Window"
     Width="800"
     Height="450"
@@ -16,7 +16,7 @@
     mc:Ignorable="d">
     <Grid>
         <StackPanel>
-            <ui:SimpleStackPanel Margin="20" Spacing="10">
+            <ikw:SimpleStackPanel Margin="20" Spacing="10">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Current backdrop: " />
                     <TextBlock x:Name="tbCurrentBackdrop" />
@@ -27,7 +27,7 @@
                     Click="ChangeBackdropButton_Click"
                     Content="Change Backdrop" />
                 <TextBlock x:Name="tbChangeStatus" />
-            </ui:SimpleStackPanel>
+            </ikw:SimpleStackPanel>
         </StackPanel>
     </Grid>
 </Window>

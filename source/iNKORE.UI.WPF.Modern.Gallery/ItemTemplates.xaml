@@ -2,6 +2,7 @@
     x:Class="iNKORE.UI.WPF.Modern.Gallery.ItemTemplates"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
     <DataTemplate x:Key="ControlItemTemplate">
         <UserControl>
@@ -35,7 +36,7 @@
                     </Border>
 
 
-                    <ui:SimpleStackPanel
+                    <ikw:SimpleStackPanel
                         Grid.Column="1"
                         Grid.ColumnSpan="2"
                         Margin="16,6,0,0">
@@ -50,7 +51,7 @@
                             Style="{StaticResource CaptionTextBlockStyle}"
                             Text="{Binding Subtitle}"
                             TextTrimming="CharacterEllipsis" />
-                    </ui:SimpleStackPanel>
+                    </ikw:SimpleStackPanel>
 
                     <Border
                         Grid.Column="2"

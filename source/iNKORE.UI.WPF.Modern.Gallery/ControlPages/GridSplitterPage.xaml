@@ -5,10 +5,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     mc:Ignorable="d">
 
-    <ui:SimpleStackPanel>
+    <ikw:SimpleStackPanel>
         <local:ControlExample HorizontalContentAlignment="Stretch" HeaderText="A simple GridSplitter.">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -34,10 +35,10 @@
                     Text="Column 2" />
             </Grid>
             <local:ControlExample.Options>
-                <ui:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                     <CheckBox Content="ShowsPreview" IsChecked="{Binding ElementName=ColumnGridSplitter, Path=ShowsPreview}" />
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </ui:Page>

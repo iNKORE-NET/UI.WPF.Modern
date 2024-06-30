@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     Title="Flyout"
@@ -32,12 +33,12 @@
                 </ui:FlyoutService.Flyout>
             </Button>
             <local:ControlExample.Options>
-                <ui:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                     <ui:RadioButtons
                         Header="Placement"
                         ItemsSource="{Binding Source={x:Type ui:FlyoutPlacementMode}, Converter={StaticResource EnumValuesConverter}}"
                         SelectedItem="{Binding ElementName=Flyout1, Path=Placement}" />
-                </ui:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <sys:String xml:space="preserve">

@@ -4,11 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     mc:Ignorable="d">
 
-    <ui:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
+    <ikw:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
         <sc:ControlExample HeaderText="A StatusBar.">
             <StatusBar x:Name="statusBar" VerticalAlignment="Bottom">
                 <StatusBarItem>
@@ -51,5 +52,5 @@
                 <CheckBox Content="IsEnabled" IsChecked="{Binding ElementName=statusBar, Path=IsEnabled}" />
             </sc:ControlExample.Options>
         </sc:ControlExample>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </ui:Page>
