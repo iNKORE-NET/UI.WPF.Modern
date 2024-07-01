@@ -448,29 +448,26 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         #endregion
 
+        #region ButtonGlyphStyle
 
+        public static readonly DependencyProperty ButtonGlyphStyleProperty =
+            DependencyProperty.RegisterAttached(
+                "ButtonGlyphStyle",
+                typeof(TitleBarButtonGlyphStyle?),
+                typeof(TitleBar),
+                new PropertyMetadata(null));
 
-        //#region MaximizeButtonTouchOptimize
+        public static TitleBarButtonGlyphStyle? GetButtonGlyphStyle(Window window)
+        {
+            return (TitleBarButtonGlyphStyle?)window.GetValue(ButtonGlyphStyleProperty);
+        }
 
-        //public static readonly DependencyProperty MaximizeButtonTouchOptimizeProperty =
-        //    DependencyProperty.RegisterAttached(
-        //        "MaximizeButtonTouchOptimize",
-        //        typeof(bool),
-        //        typeof(TitleBar),
-        //        new PropertyMetadata(false));
+        public static void SetButtonGlyphStyle(Window window, TitleBarButtonGlyphStyle? value)
+        {
+            window.SetValue(ButtonGlyphStyleProperty, value);
+        }
 
-
-        //public static bool GetMaximizeButtonTouchOptimize(Window window)
-        //{
-        //    return (bool)window.GetValue(MaximizeButtonTouchOptimizeProperty);
-        //}
-
-        //public static void SetMaximizeButtonTouchOptimize(Window window, bool value)
-        //{
-        //    window.SetValue(MaximizeButtonTouchOptimizeProperty, value);
-        //}
-
-        //#endregion
+        #endregion
 
 
         #region BackRequested
@@ -510,5 +507,11 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         Collapsed,
         Disabled,
         Enabled
+    }
+
+    public enum TitleBarButtonGlyphStyle
+    {
+        MDL2,
+        Fluent,
     }
 }

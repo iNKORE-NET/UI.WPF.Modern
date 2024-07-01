@@ -31,14 +31,14 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 
         private double _dpiScale;
 
-        private Button _button;
+        private TitleBarButton _button;
 
         private string _hoverColorKey;
         private string _pressedColorKey;
 
         public Button Target { get { return _button; } }
 
-        public void Register(Button button)
+        public void Register(TitleBarButton button)
         {
             _isButtonFocused = false;
             _button = button;
@@ -147,18 +147,23 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
             if (_isButtonClicked)
             {
                 //_button.Background = _pressedColor;
-                _button.SetResourceReference(Button.BackgroundProperty, _pressedColorKey);
+                //button.SetResourceReference(Button.BackgroundProperty, _pressedColorKey);
+                _button.Background = _button.PressedBackground;
             }
             else
             {
                 if (_isButtonFocused)
                 {
                     //_button.Background = _hoverColor;
-                    _button.SetResourceReference(Button.BackgroundProperty, _hoverColorKey);
+                    //_button.SetResourceReference(Button.BackgroundProperty, _hoverColorKey);
+                    _button.Background = _button.HoverBackground;
+
                 }
                 else
                 {
-                    _button.Background = DefaultButtonBackground;
+                    //_button.Background = DefaultButtonBackground;
+                    _button.ClearValue(TitleBarButton.BackgroundProperty);
+
                 }
             }
         }

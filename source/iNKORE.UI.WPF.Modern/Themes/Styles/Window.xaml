@@ -134,6 +134,7 @@
                                     MaximizeButtonAvailability="{TemplateBinding primitives:TitleBar.MaximizeButtonAvailability}"
                                     MinimizeButtonAvailability="{TemplateBinding primitives:TitleBar.MinimizeButtonAvailability}"
                                     CloseButtonAvailability="{TemplateBinding primitives:TitleBar.CloseButtonAvailability}"
+                                    ButtonGlyphStyle="{TemplateBinding primitives:TitleBar.ButtonGlyphStyle}"
                                     Style="{TemplateBinding primitives:TitleBar.Style}" />
 
                                 <AdornerDecorator x:Name="AdornerDecorator" Grid.Row="1">

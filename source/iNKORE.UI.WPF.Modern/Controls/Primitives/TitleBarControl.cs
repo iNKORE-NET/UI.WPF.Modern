@@ -1,4 +1,5 @@
-﻿using iNKORE.UI.WPF.Modern.Helpers;
+﻿using iNKORE.UI.WPF.Helpers;
+using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Modern.Helpers.Styles;
 using System;
 using System.ComponentModel;
@@ -49,6 +50,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, CloseWindow));
 
             SetInsideTitleBar(this, true);
+            UpdateActualButtonGlyphStyle();
         }
 
         #region IsActive
@@ -349,7 +351,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         private static void ButtonAvailabilityProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as TitleBarControl)?.RefreshButtonActualAvailabilities();
+            (d as TitleBarControl)?.UpdateButtonActualAvailabilities();
         }
 
         public static readonly DependencyProperty CloseButtonAvailabilityProperty =
@@ -406,6 +408,34 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             get => (TitleBarButtonAvailability)GetValue(MinimizeButtonActualAvailabilityProperty);
             private set => SetValue(MinimizeButtonActualAvailabilityPropertyKey, value);
         }
+
+        #endregion
+
+        #region ButtonGlyphStyle
+
+        public static readonly DependencyProperty ButtonGlyphStyleProperty =
+            TitleBar.ButtonGlyphStyleProperty.AddOwner(typeof(TitleBarControl), new PropertyMetadata(null, ButtonGlyphStyleProperty_ValueChanged));
+
+        private static void ButtonGlyphStyleProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as TitleBarControl)?.UpdateActualButtonGlyphStyle();
+        }
+
+        public TitleBarButtonGlyphStyle? ButtonGlyphStyle
+        {
+            get { return (TitleBarButtonGlyphStyle?)GetValue(ButtonGlyphStyleProperty); }
+            set { SetValue(ButtonGlyphStyleProperty, value); }
+        }
+
+        public static readonly DependencyPropertyKey ActualButtonGlyphStylePropertyKey = DependencyProperty.RegisterReadOnly(nameof(ActualButtonGlyphStyle), typeof(TitleBarButtonGlyphStyle), typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonGlyphStyle.MDL2));
+        public static readonly DependencyProperty ActualButtonGlyphStyleProperty = ActualButtonGlyphStylePropertyKey.DependencyProperty;
+
+        public TitleBarButtonGlyphStyle ActualButtonGlyphStyle
+        {
+            get => (TitleBarButtonGlyphStyle)GetValue(ActualButtonGlyphStyleProperty);
+            private set => SetValue(ActualButtonGlyphStylePropertyKey, value);
+        }
+
 
         #endregion
 
@@ -479,8 +509,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         {
             if (_parentWindow != null)
             {
-                descriptor_ResizeMode.RemoveValueChanged(_parentWindow, _window_ButtonAvailabilityShouldRefresh);
-                descriptor_WindowStyle.RemoveValueChanged(_parentWindow, _window_ButtonAvailabilityShouldRefresh);
+                descriptor_ResizeMode.RemoveValueChanged(_parentWindow, _window_ButtonAvailabilityShouldUpdate);
+                descriptor_WindowStyle.RemoveValueChanged(_parentWindow, _window_ButtonAvailabilityShouldUpdate);
 
                 if (_altLeftBinding != null)
                 {
@@ -497,18 +527,18 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             {
                 _altLeftBinding = new KeyBinding(new GoBackCommand(this), Key.Left, ModifierKeys.Alt);
                 _parentWindow.InputBindings.Add(_altLeftBinding);
-                descriptor_ResizeMode.AddValueChanged(_parentWindow, _window_ButtonAvailabilityShouldRefresh);
-                descriptor_WindowStyle.AddValueChanged(_parentWindow, _window_ButtonAvailabilityShouldRefresh);
+                descriptor_ResizeMode.AddValueChanged(_parentWindow, _window_ButtonAvailabilityShouldUpdate);
+                descriptor_WindowStyle.AddValueChanged(_parentWindow, _window_ButtonAvailabilityShouldUpdate);
 
-                RefreshButtonActualAvailabilities();
+                UpdateButtonActualAvailabilities();
             }
         }
 
-        private void _window_ButtonAvailabilityShouldRefresh(object sender, EventArgs e)
+        private void _window_ButtonAvailabilityShouldUpdate(object sender, EventArgs e)
         {
             if(sender == _parentWindow)
             {
-                RefreshButtonActualAvailabilities();
+                UpdateButtonActualAvailabilities();
             }
         }
 
@@ -531,7 +561,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             }
         }
 
-        public void RefreshButtonActualAvailabilities()
+        public void UpdateButtonActualAvailabilities()
         {
 
             // Close button
@@ -618,6 +648,10 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             InitializeSnapLayout();
         }
 
+        public void UpdateActualButtonGlyphStyle()
+        {
+            ActualButtonGlyphStyle = ButtonGlyphStyle ?? (OSVersionHelper.OSVersion > new Version(10, 0, 22000) ? TitleBarButtonGlyphStyle.Fluent : TitleBarButtonGlyphStyle.MDL2);
+        }
 
         private void OnLeftSystemOverlaySizeChanged(object sender, SizeChangedEventArgs e)
         {
