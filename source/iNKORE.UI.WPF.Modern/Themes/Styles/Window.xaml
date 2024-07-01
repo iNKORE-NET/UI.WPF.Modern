@@ -68,7 +68,7 @@
         <Setter Property="UseLayoutRounding" Value="True" />
         <!--<Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource DefaultWindowChrome}" />-->
         <Setter Property="root:ThemeManager.IsThemeAware" Value="True" />
-        <Setter Property="chelper:WindowHelper.Acrylic10Color" Value="#F9F9F9"/>
+        <Setter Property="chelper:WindowHelper.Acrylic10Color" Value="{DynamicResource {x:Static root:ThemeKeys.LayerOnAcrylicFillColorDefaultKey}}"/>
         <Setter Property="primitives:TitleBar.Background" Value="{DynamicResource ControlFillColorTransparentBrush}" />
         <Setter Property="primitives:TitleBar.Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
         <Setter Property="primitives:TitleBar.InactiveBackground" Value="{DynamicResource ControlFillColorTransparentBrush}" />
