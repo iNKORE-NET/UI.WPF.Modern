@@ -89,13 +89,13 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Minimize button" Grid.Column="0" Margin="4"/>
-                <ComboBox x:Name="ComboBox_TitleBarButtonMinimizeAvailability_Minimize" Grid.Column="0" Tag="{x:Static ui:TitleBar.ButtonMinimizeAvailabilityProperty}" Style="{StaticResource TitleBarButtonAvailabilitySelector}"/>
+                <ComboBox x:Name="ComboBox_TitleBarMinimizeButtonAvailability_Minimize" Grid.Column="0" Tag="{x:Static ui:TitleBar.MinimizeButtonAvailabilityProperty}" Style="{StaticResource TitleBarButtonAvailabilitySelector}"/>
 
                 <TextBlock Text="Maximize button" Grid.Column="1" Margin="4"/>
-                <ComboBox x:Name="ComboBox_TitleBarButtonMaximizeAvailability_Minimize" Grid.Column="1" Tag="{x:Static ui:TitleBar.ButtonMaximizeAvailabilityProperty}" Style="{StaticResource TitleBarButtonAvailabilitySelector}"/>
+                <ComboBox x:Name="ComboBox_TitleBarMaximizeButtonAvailability_Minimize" Grid.Column="1" Tag="{x:Static ui:TitleBar.MaximizeButtonAvailabilityProperty}" Style="{StaticResource TitleBarButtonAvailabilitySelector}"/>
 
                 <TextBlock Text="Close button" Grid.Column="2" Margin="4"/>
-                <ComboBox x:Name="ComboBox_TitleBarButtonCloseAvailability_Minimize" Grid.Column="2" Tag="{x:Static ui:TitleBar.ButtonCloseAvailabilityProperty}" Style="{StaticResource TitleBarButtonAvailabilitySelector}"/>
+                <ComboBox x:Name="ComboBox_TitleBarCloseButtonAvailability_Minimize" Grid.Column="2" Tag="{x:Static ui:TitleBar.CloseButtonAvailabilityProperty}" Style="{StaticResource TitleBarButtonAvailabilitySelector}"/>
 
 
             </Grid>

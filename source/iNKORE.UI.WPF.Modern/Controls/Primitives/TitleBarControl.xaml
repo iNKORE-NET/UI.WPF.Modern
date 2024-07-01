@@ -106,7 +106,7 @@
                                 ContentTemplate="{StaticResource IconTemplate}"
                                 IsActive="{TemplateBinding IsActive}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                Availability="{TemplateBinding ButtonMinimizeActualAvailability}"
+                                Availability="{TemplateBinding MinimizeButtonActualAvailability}"
                                 Style="{TemplateBinding ButtonStyle}" />
 
                             <primitives:TitleBarButton
@@ -118,7 +118,7 @@
                                 IsActive="{TemplateBinding IsActive}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                 Style="{TemplateBinding ButtonStyle}"
-                                Availability="{TemplateBinding ButtonMaximizeActualAvailability}"
+                                Availability="{TemplateBinding MaximizeButtonActualAvailability}"
                                 Height="{Binding ElementName=PART_RightSystemOverlay, Path=ActualHeight}"/>
 
                             <primitives:TitleBarButton
@@ -133,7 +133,7 @@
                                 PressedBackground="#F1707A"
                                 PressedForeground="{DynamicResource SystemControlBackgroundChromeWhiteBrush}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                Availability="{TemplateBinding ButtonCloseActualAvailability}"
+                                Availability="{TemplateBinding CloseButtonActualAvailability}"
                                 Style="{TemplateBinding ButtonStyle}" />
                         </StackPanel>
                     </Grid>

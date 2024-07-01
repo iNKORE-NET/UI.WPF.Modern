@@ -390,60 +390,60 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         #endregion
 
-        #region ButtonCloseAvailability
+        #region CloseButtonAvailability
 
-        public static readonly DependencyProperty ButtonCloseAvailabilityProperty =
+        public static readonly DependencyProperty CloseButtonAvailabilityProperty =
             DependencyProperty.RegisterAttached(
-                "ButtonCloseAvailability",
+                "CloseButtonAvailability",
                 typeof(TitleBarButtonAvailability),
                 typeof(TitleBar),
                 new PropertyMetadata(TitleBarButtonAvailability.Auto));
 
 
-        public static TitleBarButtonAvailability GetButtonCloseAvailability(Window window)
+        public static TitleBarButtonAvailability GetCloseButtonAvailability(Window window)
         {
-            return (TitleBarButtonAvailability)window.GetValue(ButtonCloseAvailabilityProperty);
+            return (TitleBarButtonAvailability)window.GetValue(CloseButtonAvailabilityProperty);
         }
 
-        public static void SetButtonCloseAvailability(Window window, TitleBarButtonAvailability value)
+        public static void SetCloseButtonAvailability(Window window, TitleBarButtonAvailability value)
         {
-            window.SetValue(ButtonCloseAvailabilityProperty, value);
+            window.SetValue(CloseButtonAvailabilityProperty, value);
         }
 
-        public static readonly DependencyProperty ButtonMaximizeAvailabilityProperty =
+        public static readonly DependencyProperty MaximizeButtonAvailabilityProperty =
             DependencyProperty.RegisterAttached(
-                "ButtonMaximizeAvailability",
+                "MaximizeButtonAvailability",
                 typeof(TitleBarButtonAvailability),
                 typeof(TitleBar),
                 new PropertyMetadata(TitleBarButtonAvailability.Auto));
 
 
-        public static TitleBarButtonAvailability GetButtonMaximizeAvailability(Window window)
+        public static TitleBarButtonAvailability GetMaximizeButtonAvailability(Window window)
         {
-            return (TitleBarButtonAvailability)window.GetValue(ButtonMaximizeAvailabilityProperty);
+            return (TitleBarButtonAvailability)window.GetValue(MaximizeButtonAvailabilityProperty);
         }
 
-        public static void SetButtonMaximizeAvailability(Window window, TitleBarButtonAvailability value)
+        public static void SetMaximizeButtonAvailability(Window window, TitleBarButtonAvailability value)
         {
-            window.SetValue(ButtonMaximizeAvailabilityProperty, value);
+            window.SetValue(MaximizeButtonAvailabilityProperty, value);
         }
 
-        public static readonly DependencyProperty ButtonMinimizeAvailabilityProperty =
+        public static readonly DependencyProperty MinimizeButtonAvailabilityProperty =
             DependencyProperty.RegisterAttached(
-                "ButtonMinimizeAvailability",
+                "MinimizeButtonAvailability",
                 typeof(TitleBarButtonAvailability),
                 typeof(TitleBar),
                 new PropertyMetadata(TitleBarButtonAvailability.Auto));
 
 
-        public static TitleBarButtonAvailability GetButtonMinimizeAvailability(Window window)
+        public static TitleBarButtonAvailability GetMinimizeButtonAvailability(Window window)
         {
-            return (TitleBarButtonAvailability)window.GetValue(ButtonMinimizeAvailabilityProperty);
+            return (TitleBarButtonAvailability)window.GetValue(MinimizeButtonAvailabilityProperty);
         }
 
-        public static void SetButtonMinimizeAvailability(Window window, TitleBarButtonAvailability value)
+        public static void SetMinimizeButtonAvailability(Window window, TitleBarButtonAvailability value)
         {
-            window.SetValue(ButtonMinimizeAvailabilityProperty, value);
+            window.SetValue(MinimizeButtonAvailabilityProperty, value);
         }
 
         #endregion

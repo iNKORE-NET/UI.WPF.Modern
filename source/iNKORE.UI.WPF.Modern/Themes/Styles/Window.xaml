@@ -131,9 +131,9 @@
                                     IsBackEnabled="{TemplateBinding primitives:TitleBar.IsBackEnabled}"
                                     IsIconVisible="{TemplateBinding primitives:TitleBar.IsIconVisible}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                    ButtonMaximizeAvailability="{TemplateBinding primitives:TitleBar.ButtonMaximizeAvailability}"
-                                    ButtonMinimizeAvailability="{TemplateBinding primitives:TitleBar.ButtonMinimizeAvailability}"
-                                    ButtonCloseAvailability="{TemplateBinding primitives:TitleBar.ButtonCloseAvailability}"
+                                    MaximizeButtonAvailability="{TemplateBinding primitives:TitleBar.MaximizeButtonAvailability}"
+                                    MinimizeButtonAvailability="{TemplateBinding primitives:TitleBar.MinimizeButtonAvailability}"
+                                    CloseButtonAvailability="{TemplateBinding primitives:TitleBar.CloseButtonAvailability}"
                                     Style="{TemplateBinding primitives:TitleBar.Style}" />
 
                                 <AdornerDecorator x:Name="AdornerDecorator" Grid.Row="1">

@@ -352,59 +352,59 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             (d as TitleBarControl)?.RefreshButtonActualAvailabilities();
         }
 
-        public static readonly DependencyProperty ButtonCloseAvailabilityProperty =
-            TitleBar.ButtonCloseAvailabilityProperty.AddOwner(typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Auto, ButtonAvailabilityProperty_ValueChanged));
+        public static readonly DependencyProperty CloseButtonAvailabilityProperty =
+            TitleBar.CloseButtonAvailabilityProperty.AddOwner(typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Auto, ButtonAvailabilityProperty_ValueChanged));
 
-        public TitleBarButtonAvailability ButtonCloseAvailability
+        public TitleBarButtonAvailability CloseButtonAvailability
         {
-            get => (TitleBarButtonAvailability)GetValue(ButtonCloseAvailabilityProperty);
-            set => SetValue(ButtonCloseAvailabilityProperty, value);
+            get => (TitleBarButtonAvailability)GetValue(CloseButtonAvailabilityProperty);
+            set => SetValue(CloseButtonAvailabilityProperty, value);
         }
 
         // User-customized values
 
-        public static readonly DependencyProperty ButtonMinimizeAvailabilityProperty =
-            TitleBar.ButtonMinimizeAvailabilityProperty.AddOwner(typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Auto, ButtonAvailabilityProperty_ValueChanged));
+        public static readonly DependencyProperty MinimizeButtonAvailabilityProperty =
+            TitleBar.MinimizeButtonAvailabilityProperty.AddOwner(typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Auto, ButtonAvailabilityProperty_ValueChanged));
 
-        public TitleBarButtonAvailability ButtonMinimizeAvailability
+        public TitleBarButtonAvailability MinimizeButtonAvailability
         {
-            get => (TitleBarButtonAvailability)GetValue(ButtonMinimizeAvailabilityProperty);
-            set => SetValue(ButtonMinimizeAvailabilityProperty, value);
+            get => (TitleBarButtonAvailability)GetValue(MinimizeButtonAvailabilityProperty);
+            set => SetValue(MinimizeButtonAvailabilityProperty, value);
         }
 
-        public static readonly DependencyProperty ButtonMaximizeAvailabilityProperty =
-            TitleBar.ButtonMaximizeAvailabilityProperty.AddOwner(typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Auto, ButtonAvailabilityProperty_ValueChanged));
+        public static readonly DependencyProperty MaximizeButtonAvailabilityProperty =
+            TitleBar.MaximizeButtonAvailabilityProperty.AddOwner(typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Auto, ButtonAvailabilityProperty_ValueChanged));
 
-        public TitleBarButtonAvailability ButtonMaximizeAvailability
+        public TitleBarButtonAvailability MaximizeButtonAvailability
         {
-            get => (TitleBarButtonAvailability)GetValue(ButtonMaximizeAvailabilityProperty);
-            set => SetValue(ButtonMaximizeAvailabilityProperty, value);
+            get => (TitleBarButtonAvailability)GetValue(MaximizeButtonAvailabilityProperty);
+            set => SetValue(MaximizeButtonAvailabilityProperty, value);
         }
 
         // Actual values
 
-        public static readonly DependencyPropertyKey ButtonCloseActualAvailabilityPropertyKey = DependencyProperty.RegisterReadOnly(nameof(ButtonCloseActualAvailability), typeof(TitleBarButtonAvailability), typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Enabled));
-        public static readonly DependencyProperty ButtonCloseActualAvailabilityProperty = ButtonCloseActualAvailabilityPropertyKey.DependencyProperty;
-        public TitleBarButtonAvailability ButtonCloseActualAvailability
+        public static readonly DependencyPropertyKey CloseButtonActualAvailabilityPropertyKey = DependencyProperty.RegisterReadOnly(nameof(CloseButtonActualAvailability), typeof(TitleBarButtonAvailability), typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Enabled));
+        public static readonly DependencyProperty CloseButtonActualAvailabilityProperty = CloseButtonActualAvailabilityPropertyKey.DependencyProperty;
+        public TitleBarButtonAvailability CloseButtonActualAvailability
         {
-            get => (TitleBarButtonAvailability)GetValue(ButtonCloseActualAvailabilityProperty);
-            private set => SetValue(ButtonCloseActualAvailabilityPropertyKey, value);
+            get => (TitleBarButtonAvailability)GetValue(CloseButtonActualAvailabilityProperty);
+            private set => SetValue(CloseButtonActualAvailabilityPropertyKey, value);
         }
 
-        public static readonly DependencyPropertyKey ButtonMaximizeActualAvailabilityPropertyKey = DependencyProperty.RegisterReadOnly(nameof(ButtonMaximizeActualAvailability), typeof(TitleBarButtonAvailability), typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Enabled));
-        public static readonly DependencyProperty ButtonMaximizeActualAvailabilityProperty = ButtonMaximizeActualAvailabilityPropertyKey.DependencyProperty;
-        public TitleBarButtonAvailability ButtonMaximizeActualAvailability
+        public static readonly DependencyPropertyKey MaximizeButtonActualAvailabilityPropertyKey = DependencyProperty.RegisterReadOnly(nameof(MaximizeButtonActualAvailability), typeof(TitleBarButtonAvailability), typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Enabled));
+        public static readonly DependencyProperty MaximizeButtonActualAvailabilityProperty = MaximizeButtonActualAvailabilityPropertyKey.DependencyProperty;
+        public TitleBarButtonAvailability MaximizeButtonActualAvailability
         {
-            get => (TitleBarButtonAvailability)GetValue(ButtonMaximizeActualAvailabilityProperty);
-            private set => SetValue(ButtonMaximizeActualAvailabilityPropertyKey, value);
+            get => (TitleBarButtonAvailability)GetValue(MaximizeButtonActualAvailabilityProperty);
+            private set => SetValue(MaximizeButtonActualAvailabilityPropertyKey, value);
         }
 
-        public static readonly DependencyPropertyKey ButtonMinimizeActualAvailabilityPropertyKey = DependencyProperty.RegisterReadOnly(nameof(ButtonMinimizeActualAvailability), typeof(TitleBarButtonAvailability), typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Enabled));
-        public static readonly DependencyProperty ButtonMinimizeActualAvailabilityProperty = ButtonMinimizeActualAvailabilityPropertyKey.DependencyProperty;
-        public TitleBarButtonAvailability ButtonMinimizeActualAvailability
+        public static readonly DependencyPropertyKey MinimizeButtonActualAvailabilityPropertyKey = DependencyProperty.RegisterReadOnly(nameof(MinimizeButtonActualAvailability), typeof(TitleBarButtonAvailability), typeof(TitleBarControl), new PropertyMetadata(TitleBarButtonAvailability.Enabled));
+        public static readonly DependencyProperty MinimizeButtonActualAvailabilityProperty = MinimizeButtonActualAvailabilityPropertyKey.DependencyProperty;
+        public TitleBarButtonAvailability MinimizeButtonActualAvailability
         {
-            get => (TitleBarButtonAvailability)GetValue(ButtonMinimizeActualAvailabilityProperty);
-            private set => SetValue(ButtonMinimizeActualAvailabilityPropertyKey, value);
+            get => (TitleBarButtonAvailability)GetValue(MinimizeButtonActualAvailabilityProperty);
+            private set => SetValue(MinimizeButtonActualAvailabilityPropertyKey, value);
         }
 
         #endregion
@@ -535,69 +535,69 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         {
 
             // Close button
-            if (ButtonCloseAvailability != TitleBarButtonAvailability.Auto)
+            if (CloseButtonAvailability != TitleBarButtonAvailability.Auto)
             {
-                ButtonCloseActualAvailability = ButtonCloseAvailability;
+                CloseButtonActualAvailability = CloseButtonAvailability;
             }
             else
             {
                 if (_parentWindow.WindowStyle == WindowStyle.None)
                 {
-                    ButtonCloseActualAvailability = TitleBarButtonAvailability.Collapsed;
+                    CloseButtonActualAvailability = TitleBarButtonAvailability.Collapsed;
                 }
                 else
                 {
-                    ButtonCloseActualAvailability = TitleBarButtonAvailability.Enabled;
+                    CloseButtonActualAvailability = TitleBarButtonAvailability.Enabled;
                 }
             }
 
             // Maximize button
-            if (ButtonMaximizeAvailability != TitleBarButtonAvailability.Auto)
+            if (MaximizeButtonAvailability != TitleBarButtonAvailability.Auto)
             {
-                ButtonMaximizeActualAvailability = ButtonMaximizeAvailability;
+                MaximizeButtonActualAvailability = MaximizeButtonAvailability;
             }
             else
             {
                 if(_parentWindow.WindowStyle == WindowStyle.ToolWindow)
                 {
-                    ButtonMaximizeActualAvailability = TitleBarButtonAvailability.Collapsed;
+                    MaximizeButtonActualAvailability = TitleBarButtonAvailability.Collapsed;
                 }
                 else if (_parentWindow.WindowStyle == WindowStyle.None)
                 {
-                    ButtonMaximizeActualAvailability = TitleBarButtonAvailability.Collapsed;
+                    MaximizeButtonActualAvailability = TitleBarButtonAvailability.Collapsed;
                 }
                 else
                 {
                     switch (_parentWindow.ResizeMode)
                     {
                         case ResizeMode.CanMinimize:
-                            ButtonMaximizeActualAvailability = TitleBarButtonAvailability.Disabled;
+                            MaximizeButtonActualAvailability = TitleBarButtonAvailability.Disabled;
                             break;
                         case ResizeMode.CanResizeWithGrip:
                         case ResizeMode.CanResize:
-                            ButtonMaximizeActualAvailability = TitleBarButtonAvailability.Enabled;
+                            MaximizeButtonActualAvailability = TitleBarButtonAvailability.Enabled;
                             break;
                         case ResizeMode.NoResize:
-                            ButtonMaximizeActualAvailability = TitleBarButtonAvailability.Collapsed;
+                            MaximizeButtonActualAvailability = TitleBarButtonAvailability.Collapsed;
                             break;
                     }
                 }
             }
 
             // Minimize button
-            if (ButtonMinimizeAvailability != TitleBarButtonAvailability.Auto)
+            if (MinimizeButtonAvailability != TitleBarButtonAvailability.Auto)
             {
-                ButtonMinimizeActualAvailability = ButtonMinimizeAvailability;
+                MinimizeButtonActualAvailability = MinimizeButtonAvailability;
             }
             else
             {
                 if (_parentWindow.WindowStyle == WindowStyle.ToolWindow)
                 {
-                    ButtonMinimizeActualAvailability = TitleBarButtonAvailability.Collapsed;
+                    MinimizeButtonActualAvailability = TitleBarButtonAvailability.Collapsed;
                 }
                 else if (_parentWindow.WindowStyle == WindowStyle.None)
                 {
-                    ButtonMinimizeActualAvailability = TitleBarButtonAvailability.Collapsed;
+                    MinimizeButtonActualAvailability = TitleBarButtonAvailability.Collapsed;
                 }
                 else
                 {
@@ -606,10 +606,10 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                         case ResizeMode.CanMinimize:
                         case ResizeMode.CanResizeWithGrip:
                         case ResizeMode.CanResize:
-                            ButtonMinimizeActualAvailability = TitleBarButtonAvailability.Enabled;
+                            MinimizeButtonActualAvailability = TitleBarButtonAvailability.Enabled;
                             break;
                         case ResizeMode.NoResize:
-                            ButtonMinimizeActualAvailability = TitleBarButtonAvailability.Collapsed;
+                            MinimizeButtonActualAvailability = TitleBarButtonAvailability.Collapsed;
                             break;
                     }
                 }
