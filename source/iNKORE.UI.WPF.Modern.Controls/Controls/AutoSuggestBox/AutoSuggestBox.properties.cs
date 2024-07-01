@@ -155,13 +155,13 @@ namespace iNKORE.UI.WPF.Modern.Controls
         public static readonly DependencyProperty QueryIconProperty =
             DependencyProperty.Register(
                 nameof(QueryIcon),
-                typeof(IconElement),
+                typeof(object),
                 typeof(AutoSuggestBox),
                 new PropertyMetadata(null, OnQueryIconPropertyChanged));
 
-        public IconElement QueryIcon
+        public object QueryIcon
         {
-            get => (IconElement)GetValue(QueryIconProperty);
+            get => (object)GetValue(QueryIconProperty);
             set => SetValue(QueryIconProperty, value);
         }
 

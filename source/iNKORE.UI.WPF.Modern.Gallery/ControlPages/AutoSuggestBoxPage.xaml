@@ -93,10 +93,13 @@ private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestB
                         Width="300"
                         HorizontalAlignment="Left"
                         PlaceholderText="Type a control name"
-                        QueryIcon="Find"
                         QuerySubmitted="Control2_QuerySubmitted"
                         SuggestionChosen="Control2_SuggestionChosen"
-                        TextChanged="Control2_TextChanged" />
+                        TextChanged="Control2_TextChanged">
+                        <ui:AutoSuggestBox.QueryIcon>
+                            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Search}"/>
+                        </ui:AutoSuggestBox.QueryIcon>
+                    </ui:AutoSuggestBox>
                     <StackPanel
                         x:Name="ControlDetails"
                         Grid.Row="1"

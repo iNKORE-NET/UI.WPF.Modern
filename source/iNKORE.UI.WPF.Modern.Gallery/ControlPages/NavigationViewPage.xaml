@@ -18,7 +18,7 @@
                 <DataTemplate>
                     <ui:NavigationViewItem Content="{Binding Name, Mode=OneTime}" ToolTipService.ToolTip="{Binding Tooltip, Mode=OneTime}">
                         <ui:NavigationViewItem.Icon>
-                            <ui:SymbolIcon Symbol="{Binding Glyph, Mode=OneTime}" />
+                            <ui:FontIcon Icon="{Binding Icon, Mode=OneTime}" />
                         </ui:NavigationViewItem.Icon>
                     </ui:NavigationViewItem>
                 </DataTemplate>
@@ -97,20 +97,32 @@
                     <muxc:NavigationView.MenuItems>
                         <muxc:NavigationViewItem
                             Content="Menu Item1"
-                            Icon="Play"
-                            Tag="SamplePage1" />
+                            Tag="SamplePage1">
+                            <muxc:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Play}"/>
+                            </muxc:NavigationViewItem.Icon>
+                        </muxc:NavigationViewItem>
                         <muxc:NavigationViewItem
                             Content="Menu Item2"
-                            Icon="Save"
-                            Tag="SamplePage2" />
+                            Tag="SamplePage2">
+                            <muxc:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Save}"/>
+                            </muxc:NavigationViewItem.Icon>
+                        </muxc:NavigationViewItem>
                         <muxc:NavigationViewItem
                             Content="Menu Item3"
-                            Icon="Refresh"
-                            Tag="SamplePage3" />
+                            Tag="SamplePage3">
+                            <muxc:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Refresh}"/>
+                            </muxc:NavigationViewItem.Icon>
+                        </muxc:NavigationViewItem>
                         <muxc:NavigationViewItem
                             Content="Menu Item4"
-                            Icon="Download"
-                            Tag="SamplePage4" />
+                            Tag="SamplePage4">
+                            <muxc:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Download}"/>
+                            </muxc:NavigationViewItem.Icon>
+                        </muxc:NavigationViewItem>
                     </muxc:NavigationView.MenuItems>
                     <ui:Frame x:Name="contentFrame5" Margin="0,0,0,0" />
                 </muxc:NavigationView>
@@ -253,6 +265,7 @@
                     Grid.Row="2"
                     Height="460"
                     IsTabStop="False"
+                    IsPaneOpen="False"
                     MenuItemTemplateSelector="{StaticResource selector}"
                     MenuItemsSource="{Binding Categories, Mode=OneWay}"
                     SelectionChanged="NavigationView_SelectionChanged4">
@@ -325,43 +338,62 @@
                     <muxc:NavigationView.MenuItems>
                         <muxc:NavigationViewItem
                             Content="Home"
-                            Icon="Home"
                             Tag="SamplePage1"
-                            ToolTipService.ToolTip="Home" />
+                            ToolTipService.ToolTip="Home">
+                            <muxc:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Home}"/>
+                            </muxc:NavigationViewItem.Icon>
+                        </muxc:NavigationViewItem>
                         <muxc:NavigationViewItem
                             Content="Account"
-                            Icon="Contact"
                             Tag="SamplePage2"
                             ToolTipService.ToolTip="Account">
+                            <muxc:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Contact}"/>
+                            </muxc:NavigationViewItem.Icon>
                             <muxc:NavigationViewItem.MenuItems>
                                 <muxc:NavigationViewItem
                                     Content="Mail"
-                                    Icon="Mail"
                                     Tag="SamplePage3"
-                                    ToolTipService.ToolTip="Mail" />
+                                    ToolTipService.ToolTip="Mail">
+                                    <muxc:NavigationViewItem.Icon>
+                                        <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Mail}"/>
+                                    </muxc:NavigationViewItem.Icon>
+                                </muxc:NavigationViewItem>
                                 <muxc:NavigationViewItem
                                     Content="Calendar"
-                                    Icon="Calendar"
                                     Tag="SamplePage4"
-                                    ToolTipService.ToolTip="Calendar" />
+                                    ToolTipService.ToolTip="Calendar">
+                                    <muxc:NavigationViewItem.Icon>
+                                        <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Calendar}"/>
+                                    </muxc:NavigationViewItem.Icon>
+                                </muxc:NavigationViewItem>
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>
                         <muxc:NavigationViewItem
                             Content="Document options"
-                            Icon="Page2"
                             SelectsOnInvoked="False"
                             ToolTipService.ToolTip="Document options">
+                            <muxc:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Page}"/>
+                            </muxc:NavigationViewItem.Icon>
                             <muxc:NavigationViewItem.MenuItems>
                                 <muxc:NavigationViewItem
                                     Content="Create new"
-                                    Icon="NewFolder"
                                     Tag="SamplePage5"
-                                    ToolTipService.ToolTip="Create new" />
+                                    ToolTipService.ToolTip="Create new">
+                                    <muxc:NavigationViewItem.Icon>
+                                        <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.NewFolder}"/>
+                                    </muxc:NavigationViewItem.Icon>
+                                </muxc:NavigationViewItem>
                                 <muxc:NavigationViewItem
                                     Content="Upload file"
-                                    Icon="OpenLocal"
                                     Tag="SamplePage6"
-                                    ToolTipService.ToolTip="Upload file" />
+                                    ToolTipService.ToolTip="Upload file">
+                                    <muxc:NavigationViewItem.Icon>
+                                        <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.OpenLocal}"/>
+                                    </muxc:NavigationViewItem.Icon>
+                                </muxc:NavigationViewItem>
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>
                     </muxc:NavigationView.MenuItems>
@@ -498,7 +530,11 @@
                 </muxc:NavigationView.PaneCustomContent>
 
                 <muxc:NavigationView.AutoSuggestBox>
-                    <ui:AutoSuggestBox AutomationProperties.Name="Search" QueryIcon="Find" />
+                    <ui:AutoSuggestBox AutomationProperties.Name="Search">
+                        <ui:AutoSuggestBox.QueryIcon>
+                            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Search}"/>
+                        </ui:AutoSuggestBox.QueryIcon>
+                    </ui:AutoSuggestBox>
                 </muxc:NavigationView.AutoSuggestBox>
 
                 <muxc:NavigationView.PaneFooter>
@@ -506,8 +542,16 @@
                         x:Name="FooterStackPanel"
                         Orientation="Vertical"
                         Visibility="Collapsed">
-                        <muxc:NavigationViewItem AutomationProperties.Name="download" Icon="Download" />
-                        <muxc:NavigationViewItem AutomationProperties.Name="favorite" Icon="Favorite" />
+                        <muxc:NavigationViewItem AutomationProperties.Name="download">
+                            <muxc:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Download}"/>
+                            </muxc:NavigationViewItem.Icon>
+                        </muxc:NavigationViewItem>
+                        <muxc:NavigationViewItem AutomationProperties.Name="favorite">
+                            <muxc:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.FavoriteStar}"/>
+                            </muxc:NavigationViewItem.Icon>
+                        </muxc:NavigationViewItem>
                     </StackPanel>
                 </muxc:NavigationView.PaneFooter>
 

@@ -38,11 +38,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             nvSample8.SelectedItem = nvSample8.MenuItems.OfType<iNKORE.UI.WPF.Modern.Controls.NavigationViewItem>().First();
 
             Categories = new ObservableCollection<CategoryBase>();
-            Category firstCategory = new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" };
+            Category firstCategory = new Category { Name = "Category 1", Icon = SegoeFluentIcons.Home, Tooltip = "This is category 1" };
             Categories.Add(firstCategory);
-            Categories.Add(new Category { Name = "Category 2", Glyph = Symbol.Keyboard, Tooltip = "This is category 2" });
-            Categories.Add(new Category { Name = "Category 3", Glyph = Symbol.Library, Tooltip = "This is category 3" });
-            Categories.Add(new Category { Name = "Category 4", Glyph = Symbol.Mail, Tooltip = "This is category 4" });
+            Categories.Add(new Category { Name = "Category 2", Icon = SegoeFluentIcons.KeyboardFull, Tooltip = "This is category 2" });
+            Categories.Add(new Category { Name = "Category 3", Icon = SegoeFluentIcons.Library, Tooltip = "This is category 3" });
+            Categories.Add(new Category { Name = "Category 4", Icon = SegoeFluentIcons.Mail, Tooltip = "This is category 4" });
             Loaded += delegate
             {
                 nvSample4.SelectedItem ??= firstCategory;
@@ -203,12 +203,12 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             Categories = new ObservableCollection<CategoryBase>()
             {
                 new Header { Name = "Header1 "},
-                new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" },
-                new Category { Name = "Category 2", Glyph = Symbol.Keyboard, Tooltip = "This is category 2" },
+                new Category { Name = "Category 1", Icon = SegoeFluentIcons.Home, Tooltip = "This is category 1" },
+                new Category { Name = "Category 2", Icon = SegoeFluentIcons.KeyboardFull, Tooltip = "This is category 2" },
                 new Separator(),
                 new Header { Name = "Header2 "},
-                new Category {Name = "Category 3", Glyph = Symbol.Library, Tooltip = "This is category 3" },
-                new Category {Name = "Category 4", Glyph = Symbol.Mail, Tooltip = "This is category 3" }
+                new Category {Name = "Category 3", Icon = SegoeFluentIcons.Library, Tooltip = "This is category 3" },
+                new Category {Name = "Category 4", Icon = SegoeFluentIcons.Mail, Tooltip = "This is category 3" }
             };
         }
 
@@ -216,10 +216,10 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             Categories = new ObservableCollection<CategoryBase>()
             {
-                new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" },
-                new Category { Name = "Category 2", Glyph = Symbol.Keyboard, Tooltip = "This is category 2" },
-                new Category {Name = "Category 3", Glyph = Symbol.Library, Tooltip = "This is category 3" },
-                new Category {Name = "Category 4", Glyph = Symbol.Mail, Tooltip = "This is category 3" }
+                new Category { Name = "Category 1", Icon = SegoeFluentIcons.Home, Tooltip = "This is category 1" },
+                new Category { Name = "Category 2", Icon = SegoeFluentIcons.KeyboardFull, Tooltip = "This is category 2" },
+                new Category {Name = "Category 3", Icon = SegoeFluentIcons.Library, Tooltip = "This is category 3" },
+                new Category {Name = "Category 4", Icon = SegoeFluentIcons.Mail, Tooltip = "This is category 3" }
             };
         }
 

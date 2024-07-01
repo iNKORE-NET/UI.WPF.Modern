@@ -1,4 +1,5 @@
-﻿using iNKORE.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Modern.Common.IconKeys;
+using iNKORE.UI.WPF.Modern.Controls;
 using System;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.Common
@@ -10,7 +11,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Common
     {
         public string Name { get; set; }
         public string Tooltip { get; set; }
-        public Symbol Glyph { get; set; }
+        public FontIconData Icon { get; set; }
         //public Type TargetType { get; set; }
     }
 

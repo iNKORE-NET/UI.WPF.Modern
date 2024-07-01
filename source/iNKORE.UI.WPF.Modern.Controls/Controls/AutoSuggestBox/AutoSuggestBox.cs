@@ -179,26 +179,29 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private void OnQueryIconChanged(DependencyPropertyChangedEventArgs args)
         {
-            OnQueryIconChanged(args.OldValue as IconElement, args.NewValue as IconElement);
+            OnQueryIconChanged(args.OldValue, args.NewValue);
         }
 
-        private void OnQueryIconChanged(IconElement oldQueryIcon, IconElement newQueryIcon)
+        private void OnQueryIconChanged(object oldQueryIcon, object newQueryIcon)
         {
             if (oldQueryIcon != null)
             {
-                oldQueryIcon.ClearValue(IconElement.ForegroundProperty);
-
-                if (newQueryIcon is FontIcon)
+                if (oldQueryIcon is IconElement oldQueryIconElement)
                 {
-                    oldQueryIcon.ClearValue(FontIcon.FontSizeProperty);
+                    oldQueryIconElement.ClearValue(IconElement.ForegroundProperty);
+
+                    if (oldQueryIconElement is FontIcon)
+                    {
+                        oldQueryIconElement.ClearValue(FontIcon.FontSizeProperty);
+                    }
                 }
             }
 
             if (newQueryIcon != null && m_queryButton != null)
             {
-                if (newQueryIcon is FontIcon)
+                if (newQueryIcon is FontIcon newQueryIconFontIcon)
                 {
-                    newQueryIcon.SetBinding(FontIcon.FontSizeProperty,
+                    newQueryIconFontIcon.SetBinding(FontIcon.FontSizeProperty,
                         new Binding
                         {
                             Path = new PropertyPath(TextElement.FontSizeProperty),
