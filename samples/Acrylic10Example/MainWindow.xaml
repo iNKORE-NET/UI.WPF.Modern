@@ -10,10 +10,10 @@
         mc:Ignorable="d"
         Title="Welcome!" Height="450" Width="800"
         Loaded="Window_Loaded">
-    <ui:SimpleStackPanel VerticalAlignment="Center" Spacing="5">
+    <ikw:SimpleStackPanel VerticalAlignment="Center" Spacing="5">
         <TextBlock Text="Legacy Acrylic API" FontSize="24" FontWeight="Bold" TextAlignment="Center"/>
         <TextBlock Text="This method will enable Acrylic in Windows 10 as well." FontSize="20" TextAlignment="Center"/>
 
         <Button Content="Hello world!" HorizontalAlignment="Center" Margin="0,20,0,0"/>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </Window>

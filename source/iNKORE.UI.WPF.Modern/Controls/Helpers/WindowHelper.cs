@@ -216,9 +216,18 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
             if (d is Window window)
             {
+                var newBackdrop = GetSystemBackdropType(window);
+
+                if (e.OldValue is BackdropType oldBackdrop &&
+                    (oldBackdrop.GetActualBackdropType() == BackdropType.Acrylic10 || newBackdrop.GetActualBackdropType() == BackdropType.Acrylic10
+                        && oldBackdrop.GetActualBackdropType() != newBackdrop.GetActualBackdropType()))
+                {
+                    BackdropHelper.Remove(window);
+                }
+
                 SetWindowStyle(window);
-                UpdateWindowChrome(window);
                 BackdropHelper.Apply(window, GetSystemBackdropType(window));
+                UpdateWindowChrome(window);
             }
         }
 
@@ -557,11 +566,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 // -----------------------------
 
                 var glassFrameThickness = new Thickness(-1);
-                var actualBackdrop = GetSystemBackdropType(window);
-
-                if (actualBackdrop == BackdropType.Acrylic) actualBackdrop = BackdropHelper.IsSupported(BackdropType.Acrylic11) ? BackdropType.Acrylic11 : BackdropType.Acrylic10;
-
-                switch (actualBackdrop)
+                switch (GetSystemBackdropType(window).GetActualBackdropType())
                 {
                     case BackdropType.None:
                         glassFrameThickness = new Thickness(-1);

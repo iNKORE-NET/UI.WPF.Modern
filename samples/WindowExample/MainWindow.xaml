@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-        xmlns:local="clr-namespace:WindowExample" xmlns:sys="clr-namespace:System;assembly=netstandard"
+        xmlns:local="clr-namespace:WindowExample" xmlns:sys="clr-namespace:System;assembly=netstandard" xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
         mc:Ignorable="d"
         ui:WindowHelper.UseModernWindowStyle="True" ui:TitleBar.Height="36"
         FontSize="14"
@@ -22,7 +22,7 @@
             
         </ResourceDictionary>
     </FrameworkElement.Resources>
-    <ui:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
+    <ikw:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
         <TextBlock Text="Window Example" FontWeight="Bold" FontSize="24" TextAlignment="Center"/>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -39,43 +39,45 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="WindowStyle" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-            <ui:SimpleStackPanel Grid.Row="0" Grid.Column="1" Spacing="8" Orientation="Horizontal">
+            <ikw:SimpleStackPanel Grid.Row="0" Grid.Column="1" Spacing="8" Orientation="Horizontal">
                 <RadioButton x:Name="RadioButton_WindowStyle_None" Content="None" MinWidth="0" Click="RadioButton_WindowStyle_Click"/>
                 <RadioButton x:Name="RadioButton_WindowStyle_SingleBorder" Content="SingleBorder" MinWidth="0" IsChecked="True" Click="RadioButton_WindowStyle_Click"/>
                 <RadioButton x:Name="RadioButton_WindowStyle_ThreeDBorder" Content="ThreeDBorder" MinWidth="0" Click="RadioButton_WindowStyle_Click"/>
                 <RadioButton x:Name="RadioButton_WindowStyle_Tool" Content="Tool" MinWidth="0" Click="RadioButton_WindowStyle_Click"/>
-            </ui:SimpleStackPanel>
+            </ikw:SimpleStackPanel>
 
             <TextBlock Text="ResizeMode" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-            <ui:SimpleStackPanel Grid.Row="1" Grid.Column="1" Spacing="4" Orientation="Horizontal">
+            <ikw:SimpleStackPanel Grid.Row="1" Grid.Column="1" Spacing="4" Orientation="Horizontal">
                 <RadioButton x:Name="RadioButton_ResizeMode_NoResize" Content="NoResize" MinWidth="0" Click="RadioButton_ResizeMode_Click"/>
                 <RadioButton x:Name="RadioButton_ResizeMode_CanMinimize" Content="CanMinimize" MinWidth="0" Click="RadioButton_ResizeMode_Click"/>
                 <RadioButton x:Name="RadioButton_ResizeMode_CanResize" Content="CanResize" MinWidth="0" IsChecked="True" Click="RadioButton_ResizeMode_Click"/>
                 <RadioButton x:Name="RadioButton_ResizeMode_CanResizeWithGrip" Content="CanResizeWithGrip" MinWidth="0" Click="RadioButton_ResizeMode_Click"/>
-            </ui:SimpleStackPanel>
+            </ikw:SimpleStackPanel>
             
             <TextBlock Text="(ui) BackdropType" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-            <ui:SimpleStackPanel Grid.Row="2" Grid.Column="1" Spacing="25" Orientation="Horizontal">
+            <ikw:SimpleStackPanel Grid.Row="2" Grid.Column="1" Spacing="5" Orientation="Horizontal">
                 <RadioButton x:Name="RadioButton_SystemBackdropType_Acrylic" Content="Acrylic" MinWidth="0" Click="RadioButton_SystemBackdropType_Click"/>
+                <RadioButton x:Name="RadioButton_SystemBackdropType_Acrylic11" Content="Acrylic11" MinWidth="0" Click="RadioButton_SystemBackdropType_Click"/>
+                <RadioButton x:Name="RadioButton_SystemBackdropType_Acrylic10" Content="Acrylic10" MinWidth="0" Click="RadioButton_SystemBackdropType_Click"/>
                 <RadioButton x:Name="RadioButton_SystemBackdropType_Mica" Content="Mica" MinWidth="0" Click="RadioButton_SystemBackdropType_Click"/>
                 <RadioButton x:Name="RadioButton_SystemBackdropType_None" Content="None" MinWidth="0" IsChecked="True" Click="RadioButton_SystemBackdropType_Click"/>
                 <RadioButton x:Name="RadioButton_SystemBackdropType_Tabbed" Content="Tabbed" MinWidth="0" Click="RadioButton_SystemBackdropType_Click"/>
-            </ui:SimpleStackPanel>
+            </ikw:SimpleStackPanel>
 
             <TextBlock Text="(ui) CornerStyle" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-            <ui:SimpleStackPanel Grid.Row="3" Grid.Column="1" Spacing="8" Orientation="Horizontal">
+            <ikw:SimpleStackPanel Grid.Row="3" Grid.Column="1" Spacing="8" Orientation="Horizontal">
                 <RadioButton x:Name="RadioButton_CornerStyle_Default" Content="Default" MinWidth="0" IsChecked="True" Click="RadioButton_CornerStyle_Click"/>
                 <RadioButton x:Name="RadioButton_CornerStyle_DoNotRound" Content="DoNotRound" MinWidth="0" Click="RadioButton_CornerStyle_Click"/>
                 <RadioButton x:Name="RadioButton_CornerStyle_Round" Content="Round" MinWidth="0" Click="RadioButton_CornerStyle_Click"/>
                 <RadioButton x:Name="RadioButton_CornerStyle_RoundSmall" Content="RoundSmall" MinWidth="0" Click="RadioButton_CornerStyle_Click"/>
-            </ui:SimpleStackPanel>
+            </ikw:SimpleStackPanel>
 
 
-            <ui:SimpleStackPanel Grid.Row="4" Grid.ColumnSpan="2" Spacing="10" Orientation="Horizontal" Margin="10">
+            <ikw:SimpleStackPanel Grid.Row="4" Grid.ColumnSpan="2" Spacing="10" Orientation="Horizontal" Margin="10">
                 <CheckBox x:Name="CheckBox_UseModernWindowStyle" Content="(ui) ModernStyle" IsChecked="True" IsEnabled="False" Click="CheckBox_UseModernWindowStyle_Click"/>
                 <CheckBox x:Name="CheckBox_ApplyBackground" Content="(ui) ApplyBackground" IsChecked="False" Click="CheckBox_ApplyBackground_Click"/>
                 <CheckBox x:Name="CheckBox_ApplyNoise" Content="(ui) ApplyNoise" IsChecked="False" Click="CheckBox_ApplyNoise_Click"/>
-            </ui:SimpleStackPanel>
+            </ikw:SimpleStackPanel>
 
             <Grid Grid.Row="5" Grid.ColumnSpan="2" Margin="6">
                 <Grid.ColumnDefinitions>
@@ -101,5 +103,5 @@
             </Grid>
 
         </Grid>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </Window>

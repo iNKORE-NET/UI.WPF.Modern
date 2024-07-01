@@ -39,7 +39,7 @@
         </ResourceDictionary>
     </FrameworkElement.Resources>
     <ui:ScrollViewerEx>
-        <ui:SimpleStackPanel Spacing="10" MaxWidth="960" Margin="40" VerticalAlignment="Center">
+        <ikw:SimpleStackPanel Spacing="10" MaxWidth="960" Margin="40" VerticalAlignment="Center">
 
             <TextBlock Text="Settings" FontSize="24" FontWeight="Bold"/>
 
@@ -125,6 +125,6 @@
                     <ui:ToggleSwitch x:Name="ToggleSwitch_StylusToDraw_Enabled" Grid.Column="2" Grid.RowSpan="2"/>
                 </Grid>
             </Border>
-        </ui:SimpleStackPanel>
+        </ikw:SimpleStackPanel>
     </ui:ScrollViewerEx>
 </Window>

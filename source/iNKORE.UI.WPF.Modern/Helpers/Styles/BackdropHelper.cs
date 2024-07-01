@@ -39,11 +39,11 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 
             return type switch
             {
-                BackdropType.None => OSVersionHelper.OSVersion >= new Version(10, 0, 21996), // Insider with new API                
+                BackdropType.None => true, // OSVersionHelper.OSVersion >= new Version(10, 0, 21996), // Insider with new API                
                 BackdropType.Tabbed => OSVersionHelper.OSVersion >= new Version(10, 0, 22523),
                 BackdropType.Mica => OSVersionHelper.OSVersion >= new Version(10, 0, 21996),
                 BackdropType.Acrylic11 => OSVersionHelper.OSVersion >= new Version(10, 0, 22523),
-                BackdropType.Acrylic10 => true,
+                BackdropType.Acrylic10 => Acrylic10Helper.IsAcrylicSupported(),
                 BackdropType.Acrylic => IsSupported(BackdropType.Acrylic10) || IsSupported(BackdropType.Acrylic11),
                 _ => false
             };
@@ -80,13 +80,19 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 
             if (handle == IntPtr.Zero) { return false; }
 
+            // Fixes from: https://github.com/iNKORE-NET/UI.WPF.Modern/pull/63
+            //var captionColor = -2; //DWMWA_COLOR_NONE - 0xFFFFFFFE
+            //DWMAPI.DwmSetWindowAttribute(handle, DWMAPI.DWMWINDOWATTRIBUTE.DWMWA_CAPTION_COLOR,
+            //    ref captionColor,
+            //    Marshal.SizeOf(typeof(int)));
+
             return type switch
             {
                 BackdropType.None => TryApplyNone(handle),
                 BackdropType.Mica => TryApplyMica(handle),
                 BackdropType.Acrylic11 => TryApplyAcrylic(handle),
                 BackdropType.Acrylic10 => Acrylic10Helper.TryApplyAcrylic(handle, acrylic10Color ?? Colors.Transparent),
-                BackdropType.Acrylic => IsSupported(BackdropType.Acrylic11) ? Apply(handle, BackdropType.Acrylic11, force, acrylic10Color) : Apply(handle, BackdropType.Acrylic10, force, acrylic10Color),
+                BackdropType.Acrylic => Apply(handle, GetActualBackdropType(type), force, acrylic10Color),
                 BackdropType.Tabbed => TryApplyTabbed(handle),
                 _ => false
             };
@@ -105,6 +111,16 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
             Remove(windowHandle);
         }
 
+        public static BackdropType GetActualBackdropType(this BackdropType type)
+        {
+            if (type == BackdropType.Acrylic)
+            {
+                return IsSupported(BackdropType.Acrylic11) ? BackdropType.Acrylic11 : BackdropType.Acrylic10;
+            }
+
+            return type;
+        }
+
         /// <summary>
         /// Tries to remove all effects if they have been applied to the <c>hWnd</c>.
         /// </summary>
@@ -112,6 +128,9 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
         public static void Remove(IntPtr handle)
         {
             if (handle == IntPtr.Zero) return;
+
+            Acrylic10Helper.Remove(handle);
+
 
             int pvAttribute = (int)DWMAPI.PvAttribute.Disable;
             int backdropPvAttribute = (int)DWMAPI.DWMSBT.DWMSBT_DISABLE;
@@ -125,7 +144,11 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
                 ref backdropPvAttribute,
                 Marshal.SizeOf(typeof(int)));
 
-            Acrylic10Helper.Remove(handle);
+            // Fixes from: https://github.com/iNKORE-NET/UI.WPF.Modern/pull/63
+            //var captionColor = -1; //DWMWA_COLOR_DEFAULT - 0xFFFFFFFF
+            //DWMAPI.DwmSetWindowAttribute(handle, DWMAPI.DWMWINDOWATTRIBUTE.DWMWA_CAPTION_COLOR,
+            //    ref captionColor,
+            //    Marshal.SizeOf(typeof(int)));
         }
 
         /// <summary>

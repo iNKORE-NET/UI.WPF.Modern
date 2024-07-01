@@ -10,10 +10,10 @@
         ui:TitleBar.Height="36"
         mc:Ignorable="d"
         Title="Welcome!" Height="450" Width="800">
-    <ui:SimpleStackPanel VerticalAlignment="Center" Spacing="5">
+    <ikw:SimpleStackPanel VerticalAlignment="Center" Spacing="5">
         <TextBlock Text="Fluent Design is beautiful." FontSize="24" FontWeight="Bold" TextAlignment="Center"/>
         <TextBlock Text="But hey, we deserve it :-)" FontSize="20" TextAlignment="Center"/>
 
         <Button Content="Hello world!" HorizontalAlignment="Center" Margin="0,20,0,0"/>
-    </ui:SimpleStackPanel>
+    </ikw:SimpleStackPanel>
 </Window>

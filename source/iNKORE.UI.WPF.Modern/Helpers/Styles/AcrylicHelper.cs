@@ -91,7 +91,7 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
             }
             else
             {
-                return TryApplyAero(handle);
+                return false; // TryApplyAero(handle);
             }
 
         }

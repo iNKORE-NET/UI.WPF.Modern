@@ -73,7 +73,8 @@ namespace WindowExample
             {
                 try
                 {
-                    WindowHelper.SetSystemBackdropType(this, (BackdropType)Enum.Parse(typeof(BackdropType), val));
+                    var backdrop = (BackdropType)Enum.Parse(typeof(BackdropType), val);
+                    WindowHelper.SetSystemBackdropType(this, backdrop);
                 }
                 catch (Exception ex)
                 {
