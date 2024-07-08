@@ -33,8 +33,8 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
 
         private TitleBarButton _button;
 
-        private string _hoverColorKey;
-        private string _pressedColorKey;
+        //private string _hoverColorKey;
+        //private string _pressedColorKey;
 
         public Button Target { get { return _button; } }
 
@@ -210,8 +210,8 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
             //_hoverColor = (SolidColorBrush)UIApplication.Current.FindResource("SystemControlHighlightListLowBrush") ?? new SolidColorBrush(Color.FromArgb(21, 255, 255, 255));
             //_pressedColor = (SolidColorBrush)UIApplication.Current.FindResource("SystemControlHighlightListMediumBrush") ?? new SolidColorBrush(Color.FromArgb(50, 0, 0, 0));
 
-            _hoverColorKey = "SystemControlHighlightListLowBrush";
-            _pressedColorKey = "SystemControlHighlightListMediumBrush";
+            ////_hoverColorKey = "SystemControlHighlightListLowBrush";
+            ////_pressedColorKey = "SystemControlHighlightListMediumBrush";
         }
 
     }

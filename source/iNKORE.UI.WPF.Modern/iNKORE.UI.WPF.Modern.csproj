@@ -51,6 +51,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Controls\SimpleStackPanel.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<InternalsVisibleTo Include="iNKORE.UI.WPF.Modern.Controls" />
 	</ItemGroup>
 
