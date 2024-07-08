@@ -21,6 +21,7 @@ namespace iNKORE.UI.WPF.Modern
         internal const string HighContrastKey = "HighContrast";
 
         public const string XmlNamespace = "http://schemas.inkore.net/lib/ui/wpf/modern";
+        public const string DocsSiteRoot = "https://docs.inkore.net/ui-wpf-modern";
 
         public const string Link_GithubRepo = "https://github.com/iNKORE-NET/UI.WPF.Modern";
         public const string Link_NugetPackage = "https://www.nuget.org/packages/iNKORE.UI.WPF.Modern";
