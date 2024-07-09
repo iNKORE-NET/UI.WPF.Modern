@@ -34,7 +34,11 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             RenderOptions.BitmapScalingMode="HighQuality"
-            Source="/iNKORE.UI.WPF.Modern.Gallery;component/Assets/WpfLibrary_256w.png"/>
+            Source="/iNKORE.UI.WPF.Modern.Gallery;component/Assets/WpfLibrary_256w.png">
+            <FrameworkElement.RenderTransform>
+                <TranslateTransform X="-10"/>
+            </FrameworkElement.RenderTransform>
+        </Image>
         <ui:ProgressRing
             Name="splashProgressRing"
             Grid.Row="2"
