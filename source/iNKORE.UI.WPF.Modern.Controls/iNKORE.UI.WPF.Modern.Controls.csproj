@@ -50,17 +50,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\..\docs\images\avater_2_trans_small.png">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		<None Include="..\..\README.md">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <PackageReference Include="iNKORE.UI.WPF" Version="1.2.7.1" />
 	</ItemGroup>
 
