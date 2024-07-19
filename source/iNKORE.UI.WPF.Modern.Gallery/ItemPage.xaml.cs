@@ -253,7 +253,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Xbox")
+            if (WinRTHelper.GetCurrentDeviceFamilyType() == DeviceFamilyType.Xbox)
             {
                 svPanel.Margin = new Thickness(0, 0, 48, 27);
             }

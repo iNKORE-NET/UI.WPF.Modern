@@ -896,7 +896,7 @@ namespace iNKORE.UI.WPF.Modern
                     RaisePropertyChanged(propertyName);
                 }
             }
-
+           
             private ApplicationTheme _actualApplicationTheme;
         }
     }

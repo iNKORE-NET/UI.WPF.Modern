@@ -65,13 +65,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         public Action NavigationViewLoaded { get; set; }
 
-        public DeviceType DeviceFamily { get; set; }
+        public DeviceFamilyType DeviceFamily { get; set; }
 
         public bool IsFocusSupported
         {
             get
             {
-                return DeviceFamily == DeviceType.Xbox || _isGamePadConnected || _isKeyboardConnected;
+                return DeviceFamily == DeviceFamilyType.Xbox || _isGamePadConnected || _isKeyboardConnected;
             }
         }
 
@@ -92,17 +92,20 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
             _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
 
-            SetDeviceFamily();
+            DeviceFamily = WinRTHelper.GetCurrentDeviceFamilyType() ?? DeviceFamilyType.Other;
             AddNavigationMenuItems();
             Current = this;
             RootFrame = rootFrame;
 
             try
             {
-                Gamepad.GamepadAdded += OnGamepadAdded;
-                Gamepad.GamepadRemoved += OnGamepadRemoved;
+               if (WinRTHelper.IsSupported)
+               {
+                   Gamepad.GamepadAdded += OnGamepadAdded;
+                   Gamepad.GamepadRemoved += OnGamepadRemoved;
 
-                _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
+                   _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
+               }
             }
             catch { _isKeyboardConnected = true; }
 
@@ -120,18 +123,20 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             {
                 if (PackagedAppHelper.IsPackagedApp)
                 {
-                    return Windows.ApplicationModel.Package.Current.DisplayName;
+                    try
+                    {
+                        return Windows.ApplicationModel.Package.Current.DisplayName;
+                    }
+                    catch { }
+                }
+
+                if (Application.Current.MainWindow != null)
+                {
+                    return Application.Current.MainWindow.Title;
                 }
                 else
                 {
-                    if (Application.Current.MainWindow != null)
-                    {
-                        return Application.Current.MainWindow.Title;
-                    }
-                    else
-                    {
-                        return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString();
-                    }
+                    return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString();
                 }
             }
         }
@@ -236,25 +241,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                             Glyph = imagePath,
                             FontSize = 16
                         };
-        }
-
-        private void SetDeviceFamily()
-        {
-            try
-            {
-                var familyName = AnalyticsInfo.VersionInfo.DeviceFamily;
-
-                if (!Enum.TryParse(familyName.Replace("Windows.", string.Empty), out DeviceType parsedDeviceType))
-                {
-                    parsedDeviceType = DeviceType.Other;
-                }
-
-                DeviceFamily = parsedDeviceType;
-            }
-            catch
-            {
-                DeviceFamily = DeviceType.Other;
-            }
         }
 
         private void OnNewControlsMenuItemLoaded(object sender, RoutedEventArgs e)
@@ -521,14 +507,10 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            try
+            if (WinRTHelper.GetCurrentDeviceFamilyType() == DeviceFamilyType.Xbox)
             {
-                if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Xbox")
-                {
-                    XboxContentSafeRect.Visibility = Visibility.Visible;
-                }
+                XboxContentSafeRect.Visibility = Visibility.Visible;
             }
-            catch { }
         }
 
         private void rootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
@@ -547,13 +529,5 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 }
             }
         }
-    }
-
-    public enum DeviceType
-    {
-        Desktop,
-        Mobile,
-        Other,
-        Xbox
     }
 }
