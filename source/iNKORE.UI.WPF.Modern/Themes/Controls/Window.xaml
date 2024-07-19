@@ -62,7 +62,7 @@
         <Setter Property="Foreground" Value="{DynamicResource SystemControlPageTextBaseHighBrush}" />
         <Setter Property="Background" Value="{DynamicResource ApplicationPageBackgroundThemeBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WindowBorder}" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="UseLayoutRounding" Value="True" />
@@ -165,10 +165,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Background" Value="Transparent">
-                            <Setter TargetName="LayoutRoot" Property="BorderThickness" Value="0" />
+                            <!--<Setter TargetName="LayoutRoot" Property="BorderThickness" Value="0" />-->
                         </Trigger>
                         <Trigger Property="IsActive" Value="False">
-                            <Setter TargetName="LayoutRoot" Property="BorderBrush" Value="{DynamicResource WindowBorderInactive}" />
+                            <Setter TargetName="WindowBorder" Property="BorderBrush" Value="{DynamicResource WindowBorderInactive}" />
                             <Setter TargetName="HighContrastBorder" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" />
                         </Trigger>
                         <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="true">
@@ -176,7 +176,7 @@
                             <Setter TargetName="HighContrastBorder" Property="Visibility" Value="Visible" />
                         </DataTrigger>
                         <Trigger Property="WindowState" Value="Maximized">
-                            <Setter TargetName="LayoutRoot" Property="BorderThickness" Value="0" />
+                            <Setter TargetName="WindowBorder" Property="BorderThickness" Value="0" />
                             <Setter TargetName="ContentGrid" Property="Margin" Value="0" />
                             <Setter TargetName="HighContrastBorder" Property="Visibility" Value="Collapsed" />
                         </Trigger>
@@ -216,6 +216,9 @@
         <Style.Triggers>
             <Trigger Property="WindowChrome.WindowChrome" Value="{x:Null}">
                 <Setter Property="chelper:WindowHelper.FixMaximizedWindow" Value="False" />
+            </Trigger>
+            <Trigger Property="chelper:WindowHelper.ShouldDisplayManualBorder" Value="True">
+                <Setter Property="BorderThickness" Value="1" />
             </Trigger>
         </Style.Triggers>
     </Style>

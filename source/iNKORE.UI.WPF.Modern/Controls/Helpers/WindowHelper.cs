@@ -270,8 +270,12 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         private static void OnCornerStyleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d is Window)
-                CornerHelper.SetWindowCorners((Window)d, (WindowCornerStyle)e.NewValue);
+            if (d is Window window)
+            {
+                CornerHelper.SetWindowCorners(window, (WindowCornerStyle)e.NewValue);
+                UpdateShouldDisplayManualBorder(window);
+
+            }
         }
 
         public static WindowCornerStyle GetCornerStyle(Window window)
@@ -328,6 +332,42 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             window.SetValue(ApplyNoiseProperty, value);
         }
 
+
+        #endregion
+
+        #region ShouldDisplayManualBorder
+
+        public static readonly DependencyPropertyKey ShouldDisplayManualBorderPropertyKey =
+            DependencyProperty.RegisterAttachedReadOnly(
+                "ShouldDisplayManualBorder",
+                typeof(bool),
+                typeof(WindowHelper),
+                new PropertyMetadata(false));
+
+        public static readonly DependencyProperty ShouldDisplayManualBorderProperty = ShouldDisplayManualBorderPropertyKey.DependencyProperty;
+
+        public static bool GetShouldDisplayManualBorder(Window window)
+        {
+            return (bool)window.GetValue(ShouldDisplayManualBorderProperty);
+        }
+
+        private static void SetShouldDisplayManualBorder(Window window, bool value)
+        {
+            window.SetValue(ShouldDisplayManualBorderPropertyKey, value);
+        }
+
+        public static void UpdateShouldDisplayManualBorder(Window window)
+        {
+            if (window == null)
+            {
+                return;
+            }
+
+            var isOsBorderPresent = OSVersionHelper.IsWindows11OrGreater;
+
+            var newValue = !isOsBorderPresent;
+            SetShouldDisplayManualBorder(window, newValue);
+        }
 
         #endregion
 
@@ -493,6 +533,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             }
 
             UpdateWindowChrome(window);
+            UpdateShouldDisplayManualBorder(window);
         }
 
 
