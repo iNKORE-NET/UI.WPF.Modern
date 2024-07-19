@@ -6,8 +6,8 @@
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/Slider.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/TextStyles.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/Slider.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/TextStyles.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/CommandBar/AppBarButton.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/CommandBar/AppBarRepeatButton.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/CommandBar/AppBarToggleButton.xaml" />

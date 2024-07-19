@@ -39,11 +39,11 @@
             <local:ControlExample.Xaml>
                 <sys:String xml:space="preserve">
 &lt;Page.Resources&gt;
-    &lt;ResourceDictionary Source=&quot;pack://application:,,,/iNKORE.UI.WPF.Modern;component/Density/iNKORE.UI.WPF.Modern;component/Themes/Styles/Compact.xaml&quot; /&gt;
+    &lt;ResourceDictionary Source=&quot;pack://application:,,,/iNKORE.UI.WPF.Modern;component/Density/iNKORE.UI.WPF.Modern;component/Themes/Controls/Compact.xaml&quot; /&gt;
 &lt;/Page.Resources&gt;
                     
 &lt;Grid.Resources&gt;
-    &lt;ResourceDictionary Source=&quot;pack://application:,,,/iNKORE.UI.WPF.Modern;component/Density/iNKORE.UI.WPF.Modern;component/Themes/Styles/Compact.xaml&quot; /&gt;
+    &lt;ResourceDictionary Source=&quot;pack://application:,,,/iNKORE.UI.WPF.Modern;component/Density/iNKORE.UI.WPF.Modern;component/Themes/Controls/Compact.xaml&quot; /&gt;
 &lt;/Grid.Resources&gt;
                 </sys:String>
             </local:ControlExample.Xaml>

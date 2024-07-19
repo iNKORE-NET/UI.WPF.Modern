@@ -10,8 +10,8 @@
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/Button.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/TextBox.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/Button.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/TextBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Thickness x:Key="AutoSuggestBoxTopHeaderMargin">0,0,0,8</Thickness>

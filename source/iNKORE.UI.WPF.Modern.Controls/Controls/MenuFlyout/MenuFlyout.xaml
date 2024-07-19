@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/ContextMenu.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/ContextMenu.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style BasedOn="{StaticResource ContextMenuStyleBase}" TargetType="local:MenuFlyoutPresenter">
