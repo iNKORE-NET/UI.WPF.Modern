@@ -4,10 +4,9 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
-using Windows.Data.Json;
-using Windows.Storage;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
 {
@@ -187,87 +186,137 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
                 await Task.Run(() => jsonText = reader.ReadToEnd());
             }
 
-            JsonObject jsonObject = JsonObject.Parse(jsonText);
-            JsonArray jsonArray = jsonObject["Groups"].GetArray();
+            JsonDocument jsonDocument = JsonDocument.Parse(jsonText);
+            JsonElement jsonArray = jsonDocument.RootElement.GetProperty("Groups");
 
             lock (_lock)
             {
                 string pageRoot = "iNKORE.UI.WPF.Modern.Gallery.ControlPages.";
-                foreach (JsonValue groupValue in jsonArray)
+                foreach (JsonElement groupValue in jsonArray.EnumerateArray())
                 {
-
-                    JsonObject groupObject = groupValue.GetObject();
-
-                    ControlInfoDataGroup group = new ControlInfoDataGroup(groupObject["UniqueId"].GetString(),
-                                                                          groupObject["Title"].GetString(),
-                                                                          groupObject["Subtitle"].GetString(),
-                                                                          groupObject["ImagePath"].GetString(),
-                                                                          groupObject["ImageIconPath"].GetString(),
-                                                                          groupObject["Description"].GetString());
-
-                    foreach (JsonValue itemValue in groupObject["Items"].GetArray())
+                    if (groupValue.ValueKind != JsonValueKind.Object)
                     {
-                        JsonObject itemObject = itemValue.GetObject();
-
-                        string badgeString = null;
-
-                        bool isNew = itemObject.ContainsKey("IsNew") ? itemObject["IsNew"].GetBoolean() : false;
-                        bool isUpdated = itemObject.ContainsKey("IsUpdated") ? itemObject["IsUpdated"].GetBoolean() : false;
-                        bool isPreview = itemObject.ContainsKey("IsPreview") ? itemObject["IsPreview"].GetBoolean() : false;
-
-                        if (isNew)
-                        {
-                            badgeString = "New";
-                        }
-                        else if (isUpdated)
-                        {
-                            badgeString = "Updated";
-                        }
-                        else if (isPreview)
-                        {
-                            badgeString = "Preview";
-                        }
-
-                        var item = new ControlInfoDataItem(itemObject["UniqueId"].GetString(),
-                                                                itemObject["Title"].GetString(),
-                                                                itemObject["Subtitle"].GetString(),
-                                                                itemObject["ImagePath"].GetString(),
-                                                                itemObject["ImageIconPath"].GetString(),
-                                                                badgeString,
-                                                                itemObject["Description"].GetString(),
-                                                                itemObject["Content"].GetString(),
-                                                                isNew,
-                                                                isUpdated,
-                                                                isPreview);
-
-                        {
-                            string pageString = pageRoot + item.UniqueId + "Page";
-                            Type pageType = Type.GetType(pageString);
-                            item.IncludedInBuild = pageType != null;
-                        }
-
-                        if (itemObject.ContainsKey("Docs"))
-                        {
-                            foreach (JsonValue docValue in itemObject["Docs"].GetArray())
-                            {
-                                JsonObject docObject = docValue.GetObject();
-                                item.Docs.Add(new ControlInfoDocLink(docObject["Title"].GetString(), docObject["Uri"].GetString()));
-                            }
-                        }
-
-                        if (itemObject.ContainsKey("RelatedControls"))
-                        {
-                            foreach (JsonValue relatedControlValue in itemObject["RelatedControls"].GetArray())
-                            {
-                                item.RelatedControls.Add(relatedControlValue.GetString());
-                            }
-                        }
-
-                        group.Items.Add(item);
+                        continue;
                     }
-                    if (!Groups.Any(g => g.Title == group.Title))
+
+                    JsonElement groupObject;
+                    if (groupValue.TryGetProperty("UniqueId", out JsonElement uniqueIdElement) &&
+                        groupValue.TryGetProperty("Title", out JsonElement titleElement) &&
+                        groupValue.TryGetProperty("Subtitle", out JsonElement subtitleElement) &&
+                        groupValue.TryGetProperty("ImagePath", out JsonElement imagePathElement) &&
+                        groupValue.TryGetProperty("ImageIconPath", out JsonElement imageIconPathElement) &&
+                        groupValue.TryGetProperty("Description", out JsonElement descriptionElement))
                     {
-                        Groups.Add(group);
+                        groupObject = groupValue;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    ControlInfoDataGroup group = new ControlInfoDataGroup(uniqueIdElement.GetString(),
+                                                                          titleElement.GetString(),
+                                                                          subtitleElement.GetString(),
+                                                                          imagePathElement.GetString(),
+                                                                          imageIconPathElement.GetString(),
+                                                                          descriptionElement.GetString());
+
+                    if (groupObject.TryGetProperty("Items", out JsonElement itemsElement) && itemsElement.ValueKind == JsonValueKind.Array)
+                    {
+                        foreach (JsonElement itemValue in itemsElement.EnumerateArray())
+                        {
+                            if (itemValue.ValueKind != JsonValueKind.Object)
+                            {
+                                continue;
+                            }
+
+                            JsonElement itemObject;
+                            if (itemValue.TryGetProperty("UniqueId", out JsonElement itemUniqueIdElement) &&
+                                itemValue.TryGetProperty("Title", out JsonElement itemTitleElement) &&
+                                itemValue.TryGetProperty("Subtitle", out JsonElement itemSubtitleElement) &&
+                                itemValue.TryGetProperty("ImagePath", out JsonElement itemImagePathElement) &&
+                                itemValue.TryGetProperty("ImageIconPath", out JsonElement itemImageIconPathElement) &&
+                                itemValue.TryGetProperty("Description", out JsonElement itemDescriptionElement) &&
+                                itemValue.TryGetProperty("Content", out JsonElement itemContentElement))
+                            {
+                                itemObject = itemValue;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+
+                            string badgeString = null;
+
+                            bool isNew = itemObject.TryGetProperty("IsNew", out JsonElement isNewElement) && isNewElement.GetBoolean();
+                            bool isUpdated = itemObject.TryGetProperty("IsUpdated", out JsonElement isUpdatedElement) && isUpdatedElement.GetBoolean();
+                            bool isPreview = itemObject.TryGetProperty("IsPreview", out JsonElement isPreviewElement) && isPreviewElement.GetBoolean();
+
+                            if (isNew)
+                            {
+                                badgeString = "New";
+                            }
+                            else if (isUpdated)
+                            {
+                                badgeString = "Updated";
+                            }
+                            else if (isPreview)
+                            {
+                                badgeString = "Preview";
+                            }
+
+                            var item = new ControlInfoDataItem(itemUniqueIdElement.GetString(),
+                                                                    itemTitleElement.GetString(),
+                                                                    itemSubtitleElement.GetString(),
+                                                                    itemImagePathElement.GetString(),
+                                                                    itemImageIconPathElement.GetString(),
+                                                                    badgeString,
+                                                                    itemDescriptionElement.GetString(),
+                                                                    itemContentElement.GetString(),
+                                                                    isNew,
+                                                                    isUpdated,
+                                                                    isPreview);
+
+                            {
+                                string pageString = pageRoot + item.UniqueId + "Page";
+                                Type pageType = Type.GetType(pageString);
+                                item.IncludedInBuild = pageType != null;
+                            }
+
+                            if (itemObject.TryGetProperty("Docs", out JsonElement docsElement) && docsElement.ValueKind == JsonValueKind.Array)
+                            {
+                                foreach (JsonElement docValue in docsElement.EnumerateArray())
+                                {
+                                    if (docValue.ValueKind != JsonValueKind.Object)
+                                    {
+                                        continue;
+                                    }
+
+                                    if (docValue.TryGetProperty("Title", out JsonElement docTitleElement) &&
+                                        docValue.TryGetProperty("Uri", out JsonElement docUriElement))
+                                    {
+                                        item.Docs.Add(new ControlInfoDocLink(docTitleElement.GetString(), docUriElement.GetString()));
+                                    }
+                                }
+                            }
+
+                            if (itemObject.TryGetProperty("RelatedControls", out JsonElement relatedControlsElement) && relatedControlsElement.ValueKind == JsonValueKind.Array)
+                            {
+                                foreach (JsonElement relatedControlValue in relatedControlsElement.EnumerateArray())
+                                {
+                                    if (relatedControlValue.ValueKind == JsonValueKind.String)
+                                    {
+                                        item.RelatedControls.Add(relatedControlValue.GetString());
+                                    }
+                                }
+                            }
+
+                            group.Items.Add(item);
+                        }
+                        if (!Groups.Any(g => g.Title == group.Title))
+                        {
+                            Groups.Add(group);
+                        }
                     }
                 }
             }

@@ -9,7 +9,7 @@
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    StartupUri="MainWindow.xaml">
+    StartupUri="MainWindow.xaml" DispatcherUnhandledException="Application_DispatcherUnhandledException">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
