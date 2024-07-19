@@ -44,6 +44,9 @@
             SizeChanged="OnItemGridViewSizeChanged"
             VirtualizingPanel.IsVirtualizingWhenGrouping="True"
             VirtualizingPanel.VirtualizationMode="Recycling">
+            <FrameworkElement.Resources>
+                <SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ListViewHeaderItemDividerStrokeKey}" Color="Transparent"/>
+            </FrameworkElement.Resources>
             <ui:ListViewHelper.Header>
                 <Grid x:Name="HeaderGrid" Margin="12,39,43,0">
                     <Border
