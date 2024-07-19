@@ -62,7 +62,7 @@
         <Setter Property="Foreground" Value="{DynamicResource SystemControlPageTextBaseHighBrush}" />
         <Setter Property="Background" Value="{DynamicResource ApplicationPageBackgroundThemeBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WindowBorder}" />
-        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="UseLayoutRounding" Value="True" />
@@ -81,8 +81,6 @@
                         x:Name="LayoutRoot"
                         Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
                         SnapsToDevicePixels="True">
                         <Grid>
@@ -104,13 +102,18 @@
                                     </Rectangle.Fill>-->
                                 </Rectangle>
                             </Grid>
-                            <Grid x:Name="ContentGrid">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
 
-                                <primitives:TitleBarControl
+                            <Border x:Name="WindowBorder"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
+                                <Grid x:Name="ContentGrid">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+
+                                    <primitives:TitleBarControl
                                     Title="{TemplateBinding Title}"
                                     Panel.ZIndex="1"
                                     Height="{TemplateBinding primitives:TitleBar.Height}"
@@ -136,11 +139,11 @@
                                     ButtonGlyphStyle="{TemplateBinding primitives:TitleBar.ButtonGlyphStyle}"
                                     Style="{TemplateBinding primitives:TitleBar.Style}" />
 
-                                <AdornerDecorator x:Name="AdornerDecorator" Grid.Row="1">
-                                    <local:ContentPresenterEx Foreground="{TemplateBinding Foreground}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                </AdornerDecorator>
+                                    <AdornerDecorator x:Name="AdornerDecorator" Grid.Row="1">
+                                        <local:ContentPresenterEx Foreground="{TemplateBinding Foreground}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    </AdornerDecorator>
 
-                                <ResizeGrip
+                                    <ResizeGrip
                                     x:Name="WindowResizeGrip"
                                     Grid.Row="1"
                                     HorizontalAlignment="Right"
@@ -148,7 +151,9 @@
                                     IsTabStop="false"
                                     Visibility="Collapsed"
                                     WindowChrome.ResizeGripDirection="BottomRight" />
-                            </Grid>
+                                </Grid>
+
+                            </Border>
 
                             <Border
                                 x:Name="HighContrastBorder"
