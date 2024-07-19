@@ -97,10 +97,14 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             Current = this;
             RootFrame = rootFrame;
 
-            Gamepad.GamepadAdded += OnGamepadAdded;
-            Gamepad.GamepadRemoved += OnGamepadRemoved;
+            try
+            {
+                Gamepad.GamepadAdded += OnGamepadAdded;
+                Gamepad.GamepadRemoved += OnGamepadRemoved;
 
-            _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
+                _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
+            }
+            catch { _isKeyboardConnected = true; }
 
             // remove the solid-colored backgrounds behind the caption controls and system back button if we are in left mode
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
@@ -236,14 +240,21 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         private void SetDeviceFamily()
         {
-            var familyName = AnalyticsInfo.VersionInfo.DeviceFamily;
-
-            if (!Enum.TryParse(familyName.Replace("Windows.", string.Empty), out DeviceType parsedDeviceType))
+            try
             {
-                parsedDeviceType = DeviceType.Other;
-            }
+                var familyName = AnalyticsInfo.VersionInfo.DeviceFamily;
 
-            DeviceFamily = parsedDeviceType;
+                if (!Enum.TryParse(familyName.Replace("Windows.", string.Empty), out DeviceType parsedDeviceType))
+                {
+                    parsedDeviceType = DeviceType.Other;
+                }
+
+                DeviceFamily = parsedDeviceType;
+            }
+            catch
+            {
+                DeviceFamily = DeviceType.Other;
+            }
         }
 
         private void OnNewControlsMenuItemLoaded(object sender, RoutedEventArgs e)
@@ -510,10 +521,14 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Xbox")
+            try
             {
-                XboxContentSafeRect.Visibility = Visibility.Visible;
+                if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Xbox")
+                {
+                    XboxContentSafeRect.Visibility = Visibility.Visible;
+                }
             }
+            catch { }
         }
 
         private void rootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
