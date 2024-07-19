@@ -9,7 +9,7 @@ using System.Windows;
 using Windows.Storage;
 using iNKORE.UI.WPF.Helpers;
 
-namespace iNKORE.UI.WPF.Modern.Gallery.Helper
+namespace iNKORE.UI.WPF.Modern.Gallery.Helpers
 {
     /// <summary>
     /// Class providing functionality around switching and restoring theme settings

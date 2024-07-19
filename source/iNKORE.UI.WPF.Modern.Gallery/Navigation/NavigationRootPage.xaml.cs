@@ -21,7 +21,7 @@ using Windows.System.Profile;
 using System.Windows.Automation;
 using System.Diagnostics;
 using Windows.Devices.Input;
-using iNKORE.UI.WPF.Modern.Gallery.Helper;
+using iNKORE.UI.WPF.Modern.Gallery.Helpers;
 using System.Windows.Controls;
 using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 using Frame = iNKORE.UI.WPF.Modern.Controls.Frame;

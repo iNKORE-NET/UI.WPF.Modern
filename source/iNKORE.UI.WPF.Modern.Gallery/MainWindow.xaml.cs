@@ -4,7 +4,6 @@ using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Helpers.Styles;
 using iNKORE.UI.WPF.Modern.Gallery.Common;
 using iNKORE.UI.WPF.Modern.Gallery.DataModel;
-using iNKORE.UI.WPF.Modern.Gallery.Helper;
 using iNKORE.UI.WPF.Modern.Gallery.Helpers;
 using iNKORE.UI.WPF.Modern.Gallery.Properties;
 using SamplesCommon;
@@ -22,7 +21,7 @@ using System.Threading;
 
 namespace iNKORE.UI.WPF.Modern.Gallery
 {
-    public partial class MainWindow
+    public partial class MainWindow : Window
     {
         public static MainWindow Current;
 

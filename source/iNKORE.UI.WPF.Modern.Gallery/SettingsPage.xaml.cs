@@ -18,7 +18,7 @@ using Windows.System;
 using iNKORE.UI.WPF.Modern.Controls;
 using System.Windows.Controls;
 using Page = iNKORE.UI.WPF.Modern.Controls.Page;
-using iNKORE.UI.WPF.Modern.Gallery.Helper;
+using iNKORE.UI.WPF.Modern.Gallery.Helpers;
 using System.Reflection;
 using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Helpers;

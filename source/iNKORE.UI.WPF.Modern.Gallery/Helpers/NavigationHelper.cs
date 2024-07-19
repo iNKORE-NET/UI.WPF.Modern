@@ -9,7 +9,7 @@ using System.Windows;
 using System.Windows.Navigation;
 using Windows.Foundation.Metadata;
 
-namespace iNKORE.UI.WPF.Modern.Gallery.Helper
+namespace iNKORE.UI.WPF.Modern.Gallery.Helpers
 {
     /// <summary>
     /// RootFrameNavigationHelper registers for standard mouse and keyboard

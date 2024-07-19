@@ -49,6 +49,19 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
             };
         }
 
+        public static bool IsManualBackgroundNeeded(this BackdropType type)
+        {
+            return GetActualBackdropType(type) switch
+            {
+                BackdropType.None => true, // OSVersionHelper.OSVersion >= new Version(10, 0, 21996), // Insider with new API                
+                BackdropType.Tabbed => false,
+                BackdropType.Mica => false,
+                BackdropType.Acrylic11 => false,
+                BackdropType.Acrylic10 => false,
+                _ => true
+            };
+        }
+
         /// <summary>
         /// Applies selected background effect to <see cref="Window"/> when is rendered.
         /// </summary>

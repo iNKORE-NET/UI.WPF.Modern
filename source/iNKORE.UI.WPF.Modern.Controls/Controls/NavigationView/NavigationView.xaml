@@ -876,7 +876,7 @@
                                     <TextBlock
                                         x:Name="PaneTitleTextBlock"
                                         Grid.Column="0"
-                                        Margin="0,-2,0,0"
+                                        Margin="0,0,0,0"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         Style="{DynamicResource NavigationViewItemHeaderTextStyle}"
