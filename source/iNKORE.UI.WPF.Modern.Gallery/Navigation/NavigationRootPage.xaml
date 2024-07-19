@@ -54,11 +54,18 @@
             Background="Transparent"
             Canvas.ZIndex="1"
             IsHitTestVisible="True">
-            <TextBlock
-                x:Name="AppTitle"
-                VerticalAlignment="Center"
-                Style="{DynamicResource CaptionTextBlockStyle}"
-                Text="{x:Static local:NavigationRootPage.GetAppTitleFromSystem}" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="137"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    x:Name="AppTitle" Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Style="{DynamicResource CaptionTextBlockStyle}"
+                    Text="{x:Static local:NavigationRootPage.GetAppTitleFromSystem}" Margin="0,1,20,0" TextWrapping="NoWrap"/>
+            </Grid>
         </Border>
 
         <ui:NavigationView
@@ -68,6 +75,7 @@
             Canvas.ZIndex="0"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             Header=" " IsFooterSeparatorVisible="{x:Null}"
+            PaneTitle="App Gallery"
             IsTabStop="False"
             IsTitleBarAutoPaddingEnabled="False"
             Loaded="OnNavigationViewControlLoaded"

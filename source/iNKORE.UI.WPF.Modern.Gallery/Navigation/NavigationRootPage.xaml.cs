@@ -121,23 +121,24 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         {
             get
             {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    try
-                    {
-                        return Windows.ApplicationModel.Package.Current.DisplayName;
-                    }
-                    catch { }
-                }
+                return "iNKORE.UI.WPF.Modern - Modern styles for your WPF applications by iNKORE Studios";
+                //if (PackagedAppHelper.IsPackagedApp)
+                //{
+                //    try
+                //    {
+                //        return Windows.ApplicationModel.Package.Current.DisplayName;
+                //    }
+                //    catch { }
+                //}
 
-                if (Application.Current.MainWindow != null)
-                {
-                    return Application.Current.MainWindow.Title;
-                }
-                else
-                {
-                    return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString();
-                }
+                //if (Application.Current.MainWindow != null)
+                //{
+                //    return Application.Current.MainWindow.Title;
+                //}
+                //else
+                //{
+                //    return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString();
+                //}
             }
         }
 
@@ -474,20 +475,21 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         private void UpdateAppTitleMargin(NavigationView sender)
         {
-            const int smallLeftIndent = 4, largeLeftIndent = 24;
+            const int smallLeftIndent = 2; //, largeLeftIndent = 24;
 
 
             Thickness currMargin = AppTitle.Margin;
+            AppTitle.Margin = new Thickness(smallLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
 
-            if ((sender.DisplayMode == NavigationViewDisplayMode.Expanded && sender.IsPaneOpen) ||
-                     sender.DisplayMode == NavigationViewDisplayMode.Minimal)
-            {
-                AppTitle.Margin = new Thickness(smallLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
-            }
-            else
-            {
-                AppTitle.Margin = new Thickness(largeLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
-            }
+            //if ((sender.DisplayMode == NavigationViewDisplayMode.Expanded && sender.IsPaneOpen) ||
+            //         sender.DisplayMode == NavigationViewDisplayMode.Minimal)
+            //{
+            //    AppTitle.Margin = new Thickness(smallLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
+            //}
+            //else
+            //{
+            //    AppTitle.Margin = new Thickness(largeLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
+            //}
         }
 
         private void UpdateHeaderMargin(NavigationView sender)
