@@ -132,7 +132,7 @@
                             <CommandBinding CanExecute="Save_CanExecute" Command="Save" />
                         </ui:AppBarButton.CommandBindings>
                         <ui:AppBarButton.Icon>
-                            <ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.Save}"/>
+                            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Save}"/>
                         </ui:AppBarButton.Icon>
 
                     </ui:AppBarButton>
