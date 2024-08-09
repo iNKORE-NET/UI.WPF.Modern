@@ -25,35 +25,34 @@
     <ikw:ThicknessFilterConverter x:Key="thicknessFilterConverter_ExcludeTop" Filter="ExcludeTop"/>
 
     <Style TargetType="ui:ElevationBorder">
-        <Style.Setters>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ui:ElevationBorder">
-                        <Grid x:Name="Canvas_Root">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ui:ElevationBorder">
+                    <Grid x:Name="Canvas_Root">
                             
-                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
-                            </Border>
-                            <Border x:Name="Border_Elevation" BorderBrush="{TemplateBinding ElevationBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource thicknessFilterConverter_ExcludeTop}}" CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource cornerRadiusFilterConverter_Bottom}}">
-                            </Border>
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
+                        </Border>
+                        <Border x:Name="Border_Elevation" BorderBrush="{TemplateBinding ElevationBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource thicknessFilterConverter_ExcludeTop}}" CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource cornerRadiusFilterConverter_Bottom}}">
+                        </Border>
 
-                            <Border BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
-                                <AdornerDecorator>
-                                    <ContentPresenter/>
-                                </AdornerDecorator>
-                            </Border>
+                        <Border BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                            <AdornerDecorator>
+                                <ContentPresenter/>
+                            </AdornerDecorator>
+                        </Border>
 
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsElevationEnabled" Value="False">
-                                <Setter TargetName="Border_Elevation" Property="Visibility" Value="Collapsed"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style.Setters>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsElevationEnabled" Value="False">
+                            <Setter TargetName="Border_Elevation" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
     
     <!--<Style TargetType="{x:Type ui:ParallaxView}">
