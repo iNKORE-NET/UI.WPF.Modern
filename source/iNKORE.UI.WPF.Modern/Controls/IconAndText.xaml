@@ -6,6 +6,7 @@
 
     <Style TargetType="local:IconAndText">
         <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Focusable" Value="False"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>

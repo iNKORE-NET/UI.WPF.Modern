@@ -10,6 +10,7 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
@@ -301,6 +302,24 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             return false;
         }
-    }
 
+
+        public static readonly DependencyProperty UseSystemFocusVisualsProperty =
+            FocusVisualHelper.UseSystemFocusVisualsProperty.AddOwner(typeof(SettingsCard));
+
+        public bool UseSystemFocusVisuals
+        {
+            get => (bool)GetValue(UseSystemFocusVisualsProperty);
+            set => SetValue(UseSystemFocusVisualsProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusVisualMarginProperty =
+            FocusVisualHelper.FocusVisualMarginProperty.AddOwner(typeof(SettingsCard));
+
+        public Thickness FocusVisualMargin
+        {
+            get => (Thickness)GetValue(FocusVisualMarginProperty);
+            set => SetValue(FocusVisualMarginProperty, value);
+        }
+    }
 }

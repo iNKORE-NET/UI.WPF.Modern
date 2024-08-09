@@ -12,15 +12,12 @@
         Loaded="Window_Loaded" Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
     <Canvas>
         <Button x:Name="Button_MessageBox" Click="Button_MessageBox_Click" Canvas.Left="152" Canvas.Top="145" VerticalAlignment="Top">
-            <ikw:SimpleStackPanel Spacing="5" Orientation="Horizontal">
-                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.WindowSettings_20_Regular}"/>
-                <TextBlock Text="MessageBox"/>
-            </ikw:SimpleStackPanel>
+            <ui:IconAndText Icon="{x:Static ui:SegoeFluentIcons.Message}" Content="MessageBox Test"/>
         </Button>
 
         <ui:SettingsCard Description="You can use a FontIcon, SymbolIcon or BitmapIcon to set the cards HeaderIcon."
                                Header="Icon options" IsClickEnabled="True" Click="SettingsCard_Click"
-                               IsEnabled="true">
+                               IsEnabled="true" Canvas.Left="31" Canvas.Top="49" VerticalAlignment="Top">
             <ui:SettingsCard.HeaderIcon>
                 <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Home}"/>
             </ui:SettingsCard.HeaderIcon>
