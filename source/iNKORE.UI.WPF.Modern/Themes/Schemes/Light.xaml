@@ -2669,6 +2669,35 @@
     <m:StaticResource x:Key="TextControlHeaderForegroundDisabled" ResourceKey="SystemControlDisabledBaseMediumLowBrush" />
     <m:StaticResource x:Key="TextControlButtonBackground" ResourceKey="SystemControlTransparentBrush" />
 
+    <!--Resources for SettingsCard-->
+    <m:StaticResource x:Key="SettingsCardBackground"
+                            ResourceKey="CardBackgroundFillColorDefaultBrush" />
+    <m:StaticResource x:Key="SettingsCardBackgroundPointerOver"
+                            ResourceKey="ControlFillColorSecondaryBrush" />
+    <m:StaticResource x:Key="SettingsCardBackgroundPressed"
+                            ResourceKey="ControlFillColorTertiaryBrush" />
+    <m:StaticResource x:Key="SettingsCardBackgroundDisabled"
+                            ResourceKey="ControlFillColorDisabledBrush" />
+
+    <m:StaticResource x:Key="SettingsCardForeground"
+                            ResourceKey="TextFillColorPrimaryBrush" />
+    <m:StaticResource x:Key="SettingsCardForegroundPointerOver"
+                            ResourceKey="TextFillColorPrimaryBrush" />
+    <m:StaticResource x:Key="SettingsCardForegroundPressed"
+                            ResourceKey="TextFillColorSecondaryBrush" />
+    <m:StaticResource x:Key="SettingsCardForegroundDisabled"
+                            ResourceKey="TextFillColorDisabledBrush" />
+
+    <m:StaticResource x:Key="SettingsCardBorderBrush"
+                            ResourceKey="CardStrokeColorDefaultBrush" />
+    <m:StaticResource x:Key="SettingsCardBorderBrushPointerOver"
+                            ResourceKey="ControlElevationBorderBrush" />
+    <m:StaticResource x:Key="SettingsCardBorderBrushPressed"
+                            ResourceKey="ControlStrokeColorDefaultBrush" />
+    <m:StaticResource x:Key="SettingsCardBorderBrushDisabled"
+                            ResourceKey="ControlStrokeColorDefaultBrush" />
+
+
     <!--  Resources for Window  -->
     <SolidColorBrush x:Key="WindowBorder" Color="{DynamicResource SystemAccentColor}" />
     <SolidColorBrush x:Key="WindowBorderInactive" Color="{DynamicResource AccentFillColorDisabled}" />

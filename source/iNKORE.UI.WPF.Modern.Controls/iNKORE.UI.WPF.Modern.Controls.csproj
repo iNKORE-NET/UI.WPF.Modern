@@ -63,6 +63,10 @@
 		</None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Controls\SettingsControls\" />
+	</ItemGroup>
+
 	<!--<Target Name="GetDocumentationFile">
 		<ItemGroup>
 			<BuildOutputInPackage Include="$(OutputPath)$(AssemblyName).xml" />
