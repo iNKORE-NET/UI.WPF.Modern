@@ -22,7 +22,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
     {
         internal const string CommonStates = "CommonStates";
         internal const string NormalState = "Normal";
-        internal const string MouseOverState = "MouseOver";
+        internal const string MouseOverState = "PointerOver";
         internal const string PressedState = "Pressed";
         internal const string DisabledState = "Disabled";
 
@@ -45,7 +45,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         static SettingsCard()
         {
-            ContentProperty.OverrideMetadata(typeof(SettingsCard), new PropertyMetadata(ContentProperty_ValueChanged));
+            ContentProperty.OverrideMetadata(typeof(SettingsCard), new FrameworkPropertyMetadata(null, ContentProperty_ValueChanged));
 
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SettingsCard), new FrameworkPropertyMetadata(typeof(SettingsCard)));
         }
@@ -78,7 +78,10 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private static void ContentProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (d is SettingsCard control)
+            {
+                control.OnContentChanged(e.OldValue, e.NewValue);
+            }
         }
 
         private void CheckInitialVisualState()

@@ -3,148 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
+        xmlns:local="clr-namespace:WpfApp1" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" 
+        xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         ui:ThemeManager.IsThemeAware="True"
-        ui:TitleBar.ExtendViewIntoTitleBar="False" ui:WindowHelper.SystemBackdropType="Acrylic"
-        ui:WindowHelper.ApplyNoise="False"
         ui:WindowHelper.UseModernWindowStyle="True"
-        Loaded="Window_Loaded" Background="{x:Null}">
+        Loaded="Window_Loaded" Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
     <Canvas>
-        <ComboBox SelectionChanged="ComboBox_SelectionChanged" Height="35" IsEditable="True">
-            <ComboBoxItem Content="Item1"/>
-            <ComboBoxItem Content="Item2"/>
-            <ComboBoxItem Content="Item3"/>
-            <ComboBoxItem Content="Item4"/>
-            <ComboBoxItem Content="Item5"/>
-            <ComboBoxItem Content="Item6"/>
-            <ComboBoxItem Content="Item7"/>
-            <ComboBoxItem Content="Item8"/>
-            <ComboBoxItem Content="Item9"/>
-            <ComboBoxItem Content="Item10"/>
-            <ComboBoxItem Content="Item11"/>
-            <ComboBoxItem Content="Item12"/>
-            <ComboBoxItem Content="Item13"/>
-            <ComboBoxItem Content="Item14"/>
-            <ComboBoxItem Content="Item15"/>
-            <ComboBoxItem Content="Item16"/>
-            <ComboBoxItem Content="Item17"/>
-            <ComboBoxItem Content="Item18"/>
-            <ComboBoxItem Content="Item19"/>
-            <ComboBoxItem Content="Item20"/>
-            <ComboBoxItem Content="Item1"/>
-            <ComboBoxItem Content="Item2"/>
-            <ComboBoxItem Content="Item3"/>
-            <ComboBoxItem Content="Item4"/>
-            <ComboBoxItem Content="Item5"/>
-            <ComboBoxItem Content="Item6"/>
-            <ComboBoxItem Content="Item7"/>
-            <ComboBoxItem Content="Item8"/>
-            <ComboBoxItem Content="Item9"/>
-            <ComboBoxItem Content="Item10"/>
-            <ComboBoxItem Content="Item11"/>
-            <ComboBoxItem Content="Item12"/>
-            <ComboBoxItem Content="Item13"/>
-            <ComboBoxItem Content="Item14"/>
-            <ComboBoxItem Content="Item15"/>
-            <ComboBoxItem Content="Item16"/>
-            <ComboBoxItem Content="Item17"/>
-            <ComboBoxItem Content="Item18"/>
-            <ComboBoxItem Content="Item19"/>
-            <ComboBoxItem Content="Item20"/>
-            <ComboBoxItem Content="Item1"/>
-            <ComboBoxItem Content="Item2"/>
-            <ComboBoxItem Content="Item3"/>
-            <ComboBoxItem Content="Item4"/>
-            <ComboBoxItem Content="Item5"/>
-            <ComboBoxItem Content="Item6"/>
-            <ComboBoxItem Content="Item7"/>
-            <ComboBoxItem Content="Item8"/>
-            <ComboBoxItem Content="Item9"/>
-            <ComboBoxItem Content="Item10"/>
-            <ComboBoxItem Content="Item11"/>
-            <ComboBoxItem Content="Item12"/>
-            <ComboBoxItem Content="Item13"/>
-            <ComboBoxItem Content="Item14"/>
-            <ComboBoxItem Content="Item15"/>
-            <ComboBoxItem Content="Item16"/>
-            <ComboBoxItem Content="Item17"/>
-            <ComboBoxItem Content="Item18"/>
-            <ComboBoxItem Content="Item19"/>
-            <ComboBoxItem Content="Item20"/>
-            <ComboBoxItem Content="Item1"/>
-            <ComboBoxItem Content="Item2"/>
-            <ComboBoxItem Content="Item3"/>
-            <ComboBoxItem Content="Item4"/>
-            <ComboBoxItem Content="Item5"/>
-            <ComboBoxItem Content="Item6"/>
-            <ComboBoxItem Content="Item7"/>
-            <ComboBoxItem Content="Item8"/>
-            <ComboBoxItem Content="Item9"/>
-            <ComboBoxItem Content="Item10"/>
-            <ComboBoxItem Content="Item11"/>
-            <ComboBoxItem Content="Item12"/>
-            <ComboBoxItem Content="Item13"/>
-            <ComboBoxItem Content="Item14"/>
-            <ComboBoxItem Content="Item15"/>
-            <ComboBoxItem Content="Item16"/>
-            <ComboBoxItem Content="Item17"/>
-            <ComboBoxItem Content="Item18"/>
-            <ComboBoxItem Content="Item19"/>
-            <ComboBoxItem Content="Item20"/>
-        </ComboBox>
-
-        <ui:FontIcon FontFamily="{StaticResource {x:Static ui:ThemeKeys.FluentSystemIconsKey}}" Glyph="d"/>
-        <!--<ui:NavigationView x:Name="naview" PaneDisplayMode="Top">
-            <ui:NavigationView.MenuItems>
-                <ui:NavigationViewItem Content="Home">
-                    <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.Home}" FontSize="16"/>
-                    </ui:NavigationViewItem.Icon>
-                </ui:NavigationViewItem>
-                <ui:NavigationViewItem x:Name="sgsac" Content="Rectangle">
-                    <ui:NavigationViewItem.Icon>
-                        <Rectangle Fill="#FF3F69A2" Margin="-4" Width="20" Height="20" Stroke="Black"/>
-                    </ui:NavigationViewItem.Icon>
-                </ui:NavigationViewItem>
-            </ui:NavigationView.MenuItems>
-        </ui:NavigationView>-->
-        <ui:HyperlinkButton  Foreground="{DynamicResource {x:Static ui:ThemeKeys.SystemControlForegroundBaseHighBrushKey}}" Content="Sample link" RaiseHyperlinkClicks="False" Click="HyperlinkButton_Click" Canvas.Left="47" Canvas.Top="81" VerticalAlignment="Top"/>
-        <ui:CommandBar VerticalAlignment="Bottom">
-            <ui:AppBarButton Label="Aaaa" IsCompact="True" Click="AppBarButton_Click">
-                <ui:AppBarButton.Icon>
-                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Settings}" FontSize="16"/>
-                </ui:AppBarButton.Icon>
-            </ui:AppBarButton>
-            <ui:AppBarButton Label="Accept" ChevronStyle="Down" FlyoutOpeningMode="RightMouseButtonUp">
-                <ui:AppBarButton.Icon>
-                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Accept}" FontSize="16"/>
-                </ui:AppBarButton.Icon>
-                <ui:AppBarButton.Flyout>
-                    <ui:MenuFlyout>
-                        <MenuItem Header="Confirm"/>
-                    </ui:MenuFlyout>
-                </ui:AppBarButton.Flyout>
-            </ui:AppBarButton>
-            <ui:AppBarToggleButton x:Name="AppBarToggleButton1" Label="Aaaa" LabelPosition="Collapsed" IsCompact="True" HorizontalAlignment="Center" Height="32">
-                <ui:AppBarToggleButton.Icon>
-                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Accident}" FontSize="16"/>
-                </ui:AppBarToggleButton.Icon>
-            </ui:AppBarToggleButton>
-        </ui:CommandBar>
-        <ui:DropDownButton x:Name="Button" Height="70" Width="144" Margin="320,85,0,0" VerticalAlignment="Top" FlyoutOpeningMode="None">
-            <ui:DropDownButton.Flyout>
-                <ui:Flyout>
-                    <Button>AAA</Button>
-                </ui:Flyout>
-            </ui:DropDownButton.Flyout>
-        </ui:DropDownButton>
-        <ToggleButton x:Name="ToggleButton1" Click="ToggleButton_Click" Canvas.Left="373" Canvas.Top="24" VerticalAlignment="Top">
-            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Accept}"/>
-        </ToggleButton>
-        <RichTextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="539,110,0,0" Height="86"/>
-        <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="622,127,0,0" Height="200"/>
         <Button x:Name="Button_MessageBox" Click="Button_MessageBox_Click" Canvas.Left="152" Canvas.Top="145" VerticalAlignment="Top">
             <ikw:SimpleStackPanel Spacing="5" Orientation="Horizontal">
                 <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.WindowSettings_20_Regular}"/>
@@ -152,13 +18,14 @@
             </ikw:SimpleStackPanel>
         </Button>
 
-        <TextBox Width="200" Canvas.Left="89" Canvas.Top="300" ui:TextBoxHelper.IsDeleteButtonVisible="False"/>
-
-        <ui:ThumbEx Canvas.Left="390" ui:ThemeManager.RequestedTheme="Dark" Canvas.Top="256" Height="43" Width="67" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-            <TextBlock Text="Hello"/>
-        </ui:ThumbEx>
-        <Slider Canvas.Left="120" TickPlacement="BottomRight" Canvas.Top="199" HorizontalAlignment="Left" VerticalAlignment="Top" Width="389"/>
-        <Button x:Name="Button_ToggleTheme" Content="Toggle Theme" Click="Button_ToggleTheme_Click" Canvas.Left="28" Canvas.Top="116" VerticalAlignment="Top"/>
+        <ui:SettingsCard Description="You can use a FontIcon, SymbolIcon or BitmapIcon to set the cards HeaderIcon."
+                               Header="Icon options" IsClickEnabled="True" Click="SettingsCard_Click"
+                               IsEnabled="true">
+            <ui:SettingsCard.HeaderIcon>
+                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Home}"/>
+            </ui:SettingsCard.HeaderIcon>
+            <ui:ToggleSwitch />
+        </ui:SettingsCard>
 
     </Canvas>
 </Window>

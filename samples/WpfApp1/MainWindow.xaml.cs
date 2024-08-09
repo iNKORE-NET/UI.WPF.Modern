@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
+using MessageBox = iNKORE.UI.WPF.Modern.Controls.MessageBox;
 using MessageBoxEx = iNKORE.UI.WPF.Modern.Controls.MessageBox;
 
 namespace WpfApp1
@@ -30,7 +31,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
+            // ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
         }
 
         private void ComboBox_Selected(object sender, RoutedEventArgs e)
@@ -141,6 +142,11 @@ namespace WpfApp1
             {
                 ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
             }
+        }
+
+        private void SettingsCard_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("clicked");
         }
     }
 }

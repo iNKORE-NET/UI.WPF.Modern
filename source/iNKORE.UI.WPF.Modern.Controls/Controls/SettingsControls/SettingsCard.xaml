@@ -5,23 +5,12 @@
                     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls" 
                     xmlns:sys="clr-namespace:System;assembly=System.Runtime">
 
-    <Thickness x:Key="SettingsCardBorderThickness">1</Thickness>
-    <Thickness x:Key="SettingsCardPadding">16,16,16,16</Thickness>
-    <sys:Double x:Key="SettingsCardMinWidth">148</sys:Double>
-    <sys:Double x:Key="SettingsCardMinHeight">68</sys:Double>
-    <sys:Double x:Key="SettingsCardDescriptionFontSize">12</sys:Double>
-    <sys:Double x:Key="SettingsCardHeaderIconMaxSize">20</sys:Double>
-    <sys:Double x:Key="SettingsCardLeftIndention">0</sys:Double>
-    <sys:Double x:Key="SettingsCardContentMinWidth">120</sys:Double>
-    <Thickness x:Key="SettingsCardHeaderIconMargin">2,0,20,0</Thickness>
-    <Thickness x:Key="SettingsCardActionIconMargin">14,0,0,0</Thickness>
-    <sys:Double x:Key="SettingsCardActionIconMaxSize">13</sys:Double>
-    <sys:Double x:Key="SettingsCardVerticalHeaderContentSpacing">8</sys:Double>
-    <sys:Double x:Key="SettingsCardWrapThreshold">476</sys:Double>
-    <sys:Double x:Key="SettingsCardWrapNoIconThreshold">286</sys:Double>
-
-    <Style BasedOn="{StaticResource DefaultSettingsCardStyle}"
-           TargetType="local:SettingsCard" />
+    <ui:ResourceDictionaryEx.MergedDictionaries>
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/Slider.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/ComboBox.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/TextBox.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/TextStyles.xaml" />
+    </ui:ResourceDictionaryEx.MergedDictionaries>
 
     <Style x:Key="DefaultSettingsCardStyle"
            TargetType="local:SettingsCard">
@@ -49,10 +38,12 @@
                     <ControlTemplate TargetType="local:SettingsCard">
                         <ControlTemplate.Resources>
                             <ResourceDictionary>
-                                <!--  Making sure ToggleSwitches are right-aligned by default  -->
-                                <Style BasedOn="{StaticResource RightAlignedCompactToggleSwitchStyle}"
-                               TargetType="local:ToggleSwitch" />
-                                <!--  Overriding the MinWidth of various types of controls so they neatly align  -->
+                                  <!--Making sure ToggleSwitches are right-aligned by default-->  
+                                <!--<Style BasedOn="{StaticResource RightAlignedCompactToggleSwitchStyle}"
+                                        TargetType="local:ToggleSwitch" />-->
+                                
+                                
+                                  <!--Overriding the MinWidth of various types of controls so they neatly align-->  
                                 <Style BasedOn="{StaticResource DefaultSliderStyle}"
                                TargetType="Slider">
                                     <Style.Setters>
@@ -72,17 +63,17 @@
                                     </Style.Setters>
                                 </Style>
 
-                                <!--  NumberBox is not recognized?  -->
-                                <!--<Style
-                            TargetType="NumberBox">
+                                  <!--NumberBox is not recognized?-->  
+                                <Style
+                             TargetType="local:NumberBox">
                             <Style.Setters>
                                 <Setter Property="MinWidth" Value="{StaticResource SettingsCardContentMinWidth}" />
                             </Style.Setters>
-                        </Style>-->
+                        </Style>
                             </ResourceDictionary>
 
                         </ControlTemplate.Resources>
-                        <Border x:Name="PART_RootBorder"
+                        <ui:ElevationBorder x:Name="PART_RootBorder"
                                MinWidth="{TemplateBinding MinWidth}"
                                MinHeight="{TemplateBinding MinHeight}"
                                MaxWidth="{TemplateBinding MaxWidth}"
@@ -93,6 +84,216 @@
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_RootBorder"
+                                                   Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardBackgroundPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_RootBorder"
+                                                   Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardBorderBrushPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderPresenter"
+                                                   Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardForegroundPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenter"
+                                                   Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardForegroundPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                        <!--<VisualState.Setters>
+                                                <Setter Target="PART_RootGrid.(muxc:AnimatedIcon.State)" Value="PointerOver" />
+                                            </VisualState.Setters>-->
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_RootBorder"
+                                                   Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardBackgroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_RootBorder"
+                                                   Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardBorderBrushPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenter"
+                                                   Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardForegroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderPresenter"
+                                                   Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardForegroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_DescriptionPresenter"
+                                                   Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardForegroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                        <!--<VisualState.Setters>
+                                                <Setter Target="PART_RootGrid.(muxc:AnimatedIcon.State)" Value="Pressed" />
+                                            </VisualState.Setters>-->
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ActionIconPresenter"
+                                                   Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardForegroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenter"
+                                                   Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardForegroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderPresenter"
+                                                   Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardForegroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_DescriptionPresenter"
+                                                   Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource SettingsCardForegroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                        <!--<VisualState.Setters>
+                                                -->
+                                        <!--  DisabledVisual Should be handled by the control, not the animated icon.  -->
+                                        <!--
+                                                <Setter Target="PART_RootGrid.(muxc:AnimatedIcon.State)" Value="Normal" />
+                                            </VisualState.Setters>-->
+                                    </VisualState>
+                                </VisualStateGroup>
+
+                                <VisualStateGroup x:Name="ContentAlignmentStates">
+                                    <!--  Default  -->
+                                    <VisualState x:Name="Right" />
+
+                                    <!--  Whenever the control width is less than SettingsCardWrapThreshold, the Content is below the Header/Description  -->
+                                    <VisualState x:Name="RightWrapped">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Row">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Column">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalAlignment">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Stretch" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalContentAlignment">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Left" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HeaderPanel" Storyboard.TargetProperty="Margin">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <!--  For even smaller widths: the HeaderIcon is collapsed.  -->
+                                    <VisualState x:Name="RightWrappedNoIcon">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenterHolder" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Row">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Column">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalAlignment">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Stretch" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalContentAlignment">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Left" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HeaderPanel" Storyboard.TargetProperty="Margin">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <!--  Header/Description/Icon collapsed, content is to the left. Great for e.g. Checkboxes  -->
+                                    <VisualState x:Name="Left">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenterHolder" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderPresenter" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_DescriptionPresenter" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Row">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Column">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalAlignment">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Stretch" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <!--  Similiar to Left, but the HeaderIcon/Header/Description is visible  -->
+                                    <VisualState x:Name="Vertical">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Row">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Column">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalAlignment">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Stretch" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalContentAlignment">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}}" />
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                        </Storyboard>
+
+                                    </VisualState>
+                                </VisualStateGroup>
+
+                                <!--  Collapsing the Content presenter whenever it's empty  -->
+                                <VisualStateGroup x:Name="ContentVisibilityStates">
+                                    <VisualState x:Name="Visible" />
+                                    <VisualState x:Name="Collapsed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+
+                                <!--<VisualStateGroup x:Name="ContentSpacingStates">
+                                        <VisualState x:Name="NoContentSpacing" />
+                                        <VisualState x:Name="ContentSpacing">
+                                            <VisualState.Setters>
+                                                <Setter Target="PART_RootGrid.RowSpacing" Value="{DynamicResource SettingsCardVerticalHeaderContentSpacing}" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>-->
+                            </VisualStateManager.VisualStateGroups>
+
                             <Grid x:Name="PART_RootGrid">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*" />
@@ -105,220 +306,12 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup x:Name="CommonStates">
-                                        <VisualState x:Name="Normal" />
-                                        <VisualState x:Name="PointerOver">
-                                            <Storyboard>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_RootGrid"
-                                                   Storyboard.TargetProperty="Background">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardBackgroundPointerOver}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_RootGrid"
-                                                   Storyboard.TargetProperty="BorderBrush">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardBorderBrushPointerOver}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardForegroundPointerOver}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardForegroundPointerOver}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                            <!--<VisualState.Setters>
-                                                <Setter Target="PART_RootGrid.(muxc:AnimatedIcon.State)" Value="PointerOver" />
-                                            </VisualState.Setters>-->
-                                        </VisualState>
-                                        <VisualState x:Name="Pressed">
-                                            <Storyboard>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_RootGrid"
-                                                   Storyboard.TargetProperty="Background">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardBackgroundPressed}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_RootGrid"
-                                                   Storyboard.TargetProperty="BorderBrush">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardBorderBrushPressed}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardForegroundPressed}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardForegroundPressed}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_DescriptionPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardForegroundPressed}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                            <!--<VisualState.Setters>
-                                                <Setter Target="PART_RootGrid.(muxc:AnimatedIcon.State)" Value="Pressed" />
-                                            </VisualState.Setters>-->
-                                        </VisualState>
-                                        <VisualState x:Name="Disabled">
-                                            <Storyboard>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ActionIconPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardForegroundDisabled}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardForegroundDisabled}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardForegroundDisabled}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_DescriptionPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardForegroundDisabled}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                            <!--<VisualState.Setters>
-                                                --><!--  DisabledVisual Should be handled by the control, not the animated icon.  --><!--
-                                                <Setter Target="PART_RootGrid.(muxc:AnimatedIcon.State)" Value="Normal" />
-                                            </VisualState.Setters>-->
-                                        </VisualState>
-                                    </VisualStateGroup>
-
-                                    <VisualStateGroup x:Name="ContentAlignmentStates">
-                                        <!--  Default  -->
-                                        <VisualState x:Name="Right" />
-
-                                        <!--  Whenever the control width is less than SettingsCardWrapThreshold, the Content is below the Header/Description  -->
-                                        <VisualState x:Name="RightWrapped">
-                                            <Storyboard>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Row">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Column">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalAlignment">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Stretch" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalContentAlignment">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Left" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HeaderPanel" Storyboard.TargetProperty="Margin">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="0" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </VisualState>
-
-                                        <!--  For even smaller widths: the HeaderIcon is collapsed.  -->
-                                        <VisualState x:Name="RightWrappedNoIcon">
-                                            <Storyboard>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenterHolder" Storyboard.TargetProperty="Visibility">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Row">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Column">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalAlignment">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Stretch" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalContentAlignment">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Left" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HeaderPanel" Storyboard.TargetProperty="Margin">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="0" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </VisualState>
-
-                                        <!--  Header/Description/Icon collapsed, content is to the left. Great for e.g. Checkboxes  -->
-                                        <VisualState x:Name="Left">
-                                            <Storyboard>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenterHolder" Storyboard.TargetProperty="Visibility">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderPresenter" Storyboard.TargetProperty="Visibility">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_DescriptionPresenter" Storyboard.TargetProperty="Visibility">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Row">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Column">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalAlignment">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Stretch" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </VisualState>
-
-                                        <!--  Similiar to Left, but the HeaderIcon/Header/Description is visible  -->
-                                        <VisualState x:Name="Vertical">
-                                            <Storyboard>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Row">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Grid.Column">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalAlignment">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Stretch" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="HorizontalContentAlignment">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}}" />
-                                                </ObjectAnimationUsingKeyFrames>
-
-                                            </Storyboard>
-
-                                        </VisualState>
-                                    </VisualStateGroup>
-
-                                    <!--  Collapsing the Content presenter whenever it's empty  -->
-                                    <VisualStateGroup x:Name="ContentVisibilityStates">
-                                        <VisualState x:Name="Visible" />
-                                        <VisualState x:Name="Collapsed">
-                                            <Storyboard>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="Visibility">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </VisualState>
-                                    </VisualStateGroup>
-
-                                    <!--<VisualStateGroup x:Name="ContentSpacingStates">
-                                        <VisualState x:Name="NoContentSpacing" />
-                                        <VisualState x:Name="ContentSpacing">
-                                            <VisualState.Setters>
-                                                <Setter Target="PART_RootGrid.RowSpacing" Value="{DynamicResource SettingsCardVerticalHeaderContentSpacing}" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>-->
-                                </VisualStateManager.VisualStateGroups>
-
                                 <Viewbox x:Name="PART_HeaderIconPresenterHolder"
                                      Grid.RowSpan="1"
                                      MaxWidth="{DynamicResource SettingsCardHeaderIconMaxSize}"
                                      MaxHeight="{DynamicResource SettingsCardHeaderIconMaxSize}"
                                      Margin="{DynamicResource SettingsCardHeaderIconMargin}">
-                                    <ContentPresenter x:Name="PART_HeaderIconPresenter"
+                                    <ui:ContentPresenterEx x:Name="PART_HeaderIconPresenter"
                                                       Content="{TemplateBinding HeaderIcon}" />
                                 </Viewbox>
 
@@ -345,7 +338,7 @@
                                                     <Setter Property="TextWrapping" Value="Wrap" />
                                                 </Style.Setters>
                                             </Style>
-                                            <Style BasedOn="{StaticResource DefaultHyperlinkButtonStyle}"
+                                            <Style
                                                 TargetType="local:HyperlinkButton">
                                                 <Style.Setters>
                                                     <Setter Property="FontSize" Value="{DynamicResource SettingsCardDescriptionFontSize}" />
@@ -385,11 +378,14 @@
                                           ToolTipService.ToolTip="{TemplateBinding ActionIconToolTip}" />
                                 </Viewbox>
                             </Grid>
-                        </Border>
+                        </ui:ElevationBorder>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style.Setters>
     </Style>
+    
+    <Style BasedOn="{StaticResource DefaultSettingsCardStyle}"
+           TargetType="local:SettingsCard" />
 
 </ui:ResourceDictionaryEx>
