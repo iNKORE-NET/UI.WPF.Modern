@@ -74,6 +74,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         #region Header
 
+        
         public object Header
         {
             get => GetValue(HeaderProperty);

@@ -125,7 +125,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         #region UseAcrylicBackdrop
 
-        [Obsolete("This property is no longer maintained, please use SystemBackdropType property")]
+        [Obsolete("This property is no longer maintained, please use SystemBackdropType property", true)]
         public static readonly DependencyProperty UseAcrylicBackdropProperty =
             DependencyProperty.RegisterAttached(
                 "UseAcrylicBackdrop",
@@ -133,19 +133,19 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 typeof(WindowHelper),
                 new PropertyMetadata(OnUseAcrylicBackdropChanged));
 
-        [Obsolete("This property is no longer maintained, please use SystemBackdropType property")]
+        [Obsolete("This property is no longer maintained, please use SystemBackdropType property", true)]
         public static bool GetUseAcrylicBackdrop(Window window)
         {
             return (bool)window.GetValue(UseAcrylicBackdropProperty);
         }
 
-        [Obsolete("This property is no longer maintained, please use SystemBackdropType property")]
+        [Obsolete("This property is no longer maintained, please use SystemBackdropType property", true)]
         public static void SetUseAcrylicBackdrop(Window window, bool value)
         {
             window.SetValue(UseAcrylicBackdropProperty, value);
         }
 
-        [Obsolete("This property is no longer maintained, please use SystemBackdropType property")]
+        [Obsolete("This property is no longer maintained, please use SystemBackdropType property", true)]
         private static void OnUseAcrylicBackdropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             //if (!AcrylicHelper.IsSupported())
