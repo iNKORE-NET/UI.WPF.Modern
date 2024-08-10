@@ -43,8 +43,11 @@
                                   <!--Making sure ToggleSwitches are right-aligned by default-->  
                                 <!--<Style BasedOn="{StaticResource RightAlignedCompactToggleSwitchStyle}"
                                         TargetType="local:ToggleSwitch" />-->
-                                
-                                
+
+                                <Style TargetType="local:ToggleSwitch">
+                                    <Setter Property="IsRightAlignedCompact" Value="True"/>
+                                    <Setter Property="MinWidth" Value="0"/>
+                                </Style>
                                   <!--Overriding the MinWidth of various types of controls so they neatly align-->  
                                 <Style BasedOn="{StaticResource DefaultSliderStyle}"
                                TargetType="Slider">

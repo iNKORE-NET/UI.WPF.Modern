@@ -34,9 +34,9 @@
             <ui:SettingsCard.HeaderIcon>
                 <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.ActionCenter}"/>
             </ui:SettingsCard.HeaderIcon>
-            <ui:ToggleSwitch HorizontalContentAlignment="Right"/>
+            <ui:ToggleSwitch HorizontalContentAlignment="Right" IsRightAlignedCompact="True"/>
         </ui:SettingsCard>
-        <ui:SettingsCard Header="Check Update"
+        <ui:SettingsCard Header="Check Update" IsClickEnabled="True"
                          Description="Current Version: 1.0.0">
             <ui:SettingsCard.HeaderIcon>
                 <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Processing}"/>

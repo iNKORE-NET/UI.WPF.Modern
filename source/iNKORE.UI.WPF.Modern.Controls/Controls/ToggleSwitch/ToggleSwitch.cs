@@ -270,6 +270,20 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         #endregion
 
+        #region IsRightAlignedCompact
+
+        public static readonly DependencyProperty IsRightAlignedCompactProperty =
+            DependencyProperty.Register(nameof(IsRightAlignedCompact), typeof(bool), typeof(ToggleSwitch), new PropertyMetadata(false));
+
+        public bool IsRightAlignedCompact
+        {
+            get => (bool)GetValue(IsRightAlignedCompactProperty);
+            set => SetValue(IsRightAlignedCompactProperty, value);
+        }
+
+        #endregion
+
+
         private ContentPresenter HeaderContentPresenter { get; set; }
 
         private FrameworkElement SwitchKnobBounds { get; set; }

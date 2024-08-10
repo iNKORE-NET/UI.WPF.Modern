@@ -10,6 +10,10 @@
     <sys:Double x:Key="ToggleSwitchPreContentMargin">10</sys:Double>
     <sys:Double x:Key="ToggleSwitchPostContentMargin">10</sys:Double>
 
+    <sys:Double x:Key="ToggleSwitchLabelGap">12</sys:Double>
+    <GridLength x:Key="ToggleSwitchLabelGapGL">12</GridLength>
+
+
     <sys:Double x:Key="ToggleSwitchThemeMinWidth">154</sys:Double>
 
     <sys:TimeSpan x:Key="RepositionDelay">0:0:0.033</sys:TimeSpan>
@@ -130,13 +134,15 @@
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="12" MaxWidth="12" />
+                                    <ColumnDefinition x:Name="ColumnDefinition_LeftGap" Width="0" MaxWidth="{StaticResource ToggleSwitchLabelGap}" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition x:Name="ColumnDefinition_RightGap" Width="{StaticResource ToggleSwitchLabelGapGL}" MaxWidth="{StaticResource ToggleSwitchLabelGap}" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Border
                                     x:Name="SwitchAreaGrid"
                                     Grid.RowSpan="3"
-                                    Grid.ColumnSpan="3"
+                                    Grid.ColumnSpan="5"
                                     Margin="0,5"
                                     ui:FocusVisualHelper.IsTemplateFocusTarget="True"
                                     Background="{DynamicResource ToggleSwitchContainerBackground}"
@@ -144,7 +150,7 @@
                                 <ui:ContentPresenterEx
                                     x:Name="OffContentPresenter"
                                     Grid.RowSpan="3"
-                                    Grid.Column="2"
+                                    Grid.Column="4"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     Content="{TemplateBinding OffContent}"
@@ -156,7 +162,7 @@
                                 <ui:ContentPresenterEx
                                     x:Name="OnContentPresenter"
                                     Grid.RowSpan="3"
-                                    Grid.Column="2"
+                                    Grid.Column="4"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     Content="{TemplateBinding OnContent}"
@@ -168,6 +174,7 @@
                                 <Rectangle
                                     x:Name="OuterBorder"
                                     Grid.Row="1"
+                                    Grid.Column="2"
                                     Width="40"
                                     Height="20"
                                     Fill="{DynamicResource ToggleSwitchFillOff}"
@@ -178,6 +185,7 @@
                                 <Rectangle
                                     x:Name="SwitchKnobBounds"
                                     Grid.Row="1"
+                                    Grid.Column="2"
                                     Width="40"
                                     Height="20"
                                     Fill="{DynamicResource ToggleSwitchFillOn}"
@@ -188,6 +196,7 @@
                                     StrokeThickness="{DynamicResource ToggleSwitchOnStrokeThickness}" />
                                 <Grid
                                     x:Name="SwitchKnob"
+                                    Grid.Column="2"
                                     Grid.Row="1"
                                     Width="20"
                                     Height="20"
@@ -224,7 +233,8 @@
                                 <Thumb
                                     x:Name="SwitchThumb"
                                     Grid.RowSpan="3"
-                                    Grid.ColumnSpan="3">
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5">
                                     <Thumb.Template>
                                         <ControlTemplate TargetType="Thumb">
                                             <Rectangle Fill="Transparent" />
@@ -547,6 +557,12 @@
                             <Setter TargetName="SwitchKnobBounds" Property="Fill" Value="{DynamicResource ToggleSwitchFillOnDisabled}" />
                             <Setter TargetName="SwitchKnobBounds" Property="Stroke" Value="{DynamicResource ToggleSwitchStrokeOnDisabled}" />
                             <Setter TargetName="SwitchAreaGrid" Property="Background" Value="{DynamicResource ToggleSwitchContainerBackgroundDisabled}" />
+                        </Trigger>
+                        <Trigger Property="IsRightAlignedCompact" Value="True">
+                            <Setter TargetName="OffContentPresenter" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="OnContentPresenter" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="ColumnDefinition_LeftGap" Property="Width" Value="{StaticResource ToggleSwitchLabelGapGL}"/>
+                            <Setter TargetName="ColumnDefinition_RightGap" Property="Width" Value="0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
