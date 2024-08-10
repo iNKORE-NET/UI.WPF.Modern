@@ -1,0 +1,47 @@
+﻿<Page x:Class="SettingsNavigationTest.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+      xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <ikw:SimpleStackPanel Spacing="10">
+        <ui:SettingsCard Header="App Appearance"
+                         Description="Set the appearance of this app."
+                         IsClickEnabled="True"
+                         Click="ToAppearancePage">
+            <ui:SettingsCard.HeaderIcon>
+                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Apps}"/>
+            </ui:SettingsCard.HeaderIcon>
+        </ui:SettingsCard>
+        <ui:SettingsCard Header="Browser Search Engine"
+                         Description="Choose the search engine you like.">
+            <ui:SettingsCard.HeaderIcon>
+                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.CloudSearch}"/>
+            </ui:SettingsCard.HeaderIcon>
+            <ComboBox SelectedIndex="2">
+                <ComboBoxItem Content="Baidu"/>
+                <ComboBoxItem Content="Google"/>
+                <ComboBoxItem Content="Bing"/>
+            </ComboBox>
+        </ui:SettingsCard>
+        <ui:SettingsCard Header="Sidebar"
+                         Description="Provides many useful tools.">
+            <ui:SettingsCard.HeaderIcon>
+                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.ActionCenter}"/>
+            </ui:SettingsCard.HeaderIcon>
+            <ui:ToggleSwitch HorizontalContentAlignment="Right"/>
+        </ui:SettingsCard>
+        <ui:SettingsCard Header="Check Update"
+                         Description="Current Version: 1.0.0">
+            <ui:SettingsCard.HeaderIcon>
+                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Processing}"/>
+            </ui:SettingsCard.HeaderIcon>
+            <ui:ToggleSwitch HorizontalContentAlignment="Right"/>
+        </ui:SettingsCard>
+    </ikw:SimpleStackPanel>
+</Page>
