@@ -24,9 +24,12 @@
                 <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.CloudSearch}"/>
             </ui:SettingsCard.HeaderIcon>
             <ComboBox SelectedIndex="2">
-                <ComboBoxItem Content="Baidu"/>
                 <ComboBoxItem Content="Google"/>
                 <ComboBoxItem Content="Bing"/>
+                <ComboBoxItem Content="Yahoo"/>
+                <ComboBoxItem Content="DuckDuckGo"/>
+                <ComboBoxItem Content="Ask.com"/>
+                <ComboBoxItem Content="Yandex"/>
             </ComboBox>
         </ui:SettingsCard>
         <ui:SettingsCard Header="Sidebar"
