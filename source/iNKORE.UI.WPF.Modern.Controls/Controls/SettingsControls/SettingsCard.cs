@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
+using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Windows;
 using System.Windows.Automation;
@@ -47,16 +48,25 @@ namespace iNKORE.UI.WPF.Modern.Controls
         static SettingsCard()
         {
             ContentProperty.OverrideMetadata(typeof(SettingsCard), new FrameworkPropertyMetadata(null, ContentProperty_ValueChanged));
-
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SettingsCard), new FrameworkPropertyMetadata(typeof(SettingsCard)));
         }
+
+        internal static readonly DependencyPropertyDescriptor IsPressedPropertyDescriptior = DependencyPropertyDescriptor.FromProperty(IsPressedProperty, typeof(SettingsCard));
+        internal static readonly DependencyPropertyDescriptor IsMouseOverPropertyDescriptior = DependencyPropertyDescriptor.FromProperty(IsMouseOverProperty, typeof(SettingsCard));
+
 
         /// <summary>
         /// Creates a new instance of the <see cref="SettingsCard"/> class.
         /// </summary>
         public SettingsCard()
         {
+            IsPressedPropertyDescriptior.AddValueChanged(this, PointerStateProperties_ValueChanged);
+            IsMouseOverPropertyDescriptior.AddValueChanged(this, PointerStateProperties_ValueChanged);
+        }
 
+        private void PointerStateProperties_ValueChanged(object sender, EventArgs e)
+        {
+            this.UpdatePointerState();
         }
 
         /// <inheritdoc />
@@ -115,71 +125,108 @@ namespace iNKORE.UI.WPF.Modern.Controls
             DisableButtonInteraction();
 
             IsTabStop = true;
-            PreviewKeyDown += Control_PreviewKeyDown;
-            PreviewKeyUp += Control_PreviewKeyUp;
+            //PreviewKeyDown += Control_PreviewKeyDown;
+            //PreviewKeyUp += Control_PreviewKeyUp;
         }
 
         private void DisableButtonInteraction()
         {
             IsTabStop = false;
-            PreviewKeyDown -= Control_PreviewKeyDown;
-            PreviewKeyUp -= Control_PreviewKeyUp;
+            //PreviewKeyDown -= Control_PreviewKeyDown;
+            //PreviewKeyUp -= Control_PreviewKeyUp;
         }
 
-        private void Control_PreviewKeyUp(object sender, KeyEventArgs e)
+        //private void Control_PreviewKeyUp(object sender, KeyEventArgs e)
+        //{
+        //    if (e.Key == Key.Enter || e.Key == Key.Space) //  || e.Key == Key.GamepadA
+        //    {
+        //        if (IsClickEnabled && IsEnabled)
+        //            VisualStateManager.GoToState(this, NormalState, true);
+        //    }
+        //}
+
+        //private void Control_PreviewKeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.Key == Key.Enter || e.Key == Key.Space) //  || e.Key == Key.GamepadA
+        //    {
+        //        // Check if the active focus is on the card itself - only then we show the pressed state.
+        //        if (this.IsFocused && IsClickEnabled && IsEnabled) // if (GetFocusedElement() is SettingsCard)
+        //        {
+        //            VisualStateManager.GoToState(this, PressedState, true);
+        //        }
+        //    }
+        //}
+
+        //protected override void OnLostMouseCapture(MouseEventArgs e)
+        //{
+        //    base.OnLostMouseCapture(e);
+
+        //    if (IsClickEnabled && IsEnabled)
+        //        VisualStateManager.GoToState(this, NormalState, true);
+        //}
+
+        //protected override void OnMouseDown(MouseButtonEventArgs e)
+        //{
+        //    base.OnMouseDown(e);
+            
+        //    if (IsClickEnabled && IsEnabled)
+        //    {
+        //        this.IsPressed = true;
+        //        VisualStateManager.GoToState(this, PressedState, true);
+        //    }
+        //}
+
+        //protected override void OnMouseUp(MouseButtonEventArgs e)
+        //{
+        //    if (IsClickEnabled)
+        //    {
+        //        base.OnMouseUp(e);
+        //        VisualStateManager.GoToState(this, NormalState, true);
+        //    }
+        //}
+
+        //protected override void OnMouseEnter(MouseEventArgs e)
+        //{
+        //    base.OnMouseEnter(e);
+
+        //    if (IsClickEnabled && IsEnabled)
+        //        VisualStateManager.GoToState(this, MouseOverState, true);
+        //}
+
+        //protected override void OnMouseLeave(MouseEventArgs e)
+        //{
+        //    base.OnMouseLeave(e);
+            
+        //    if (IsClickEnabled && IsEnabled)
+        //        VisualStateManager.GoToState(this, NormalState, true);
+        //}
+
+        private void UpdatePointerState()
         {
-            if (e.Key == Key.Enter || e.Key == Key.Space) //  || e.Key == Key.GamepadA
+            var state = NormalState;
+
+            if (this.IsEnabled == false)
             {
-                VisualStateManager.GoToState(this, NormalState, true);
+                state = DisabledState;
             }
-        }
-
-        private void Control_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter || e.Key == Key.Space) //  || e.Key == Key.GamepadA
+            else if (this.IsClickEnabled == false)
             {
-                // Check if the active focus is on the card itself - only then we show the pressed state.
-                if (this.IsFocused) // if (GetFocusedElement() is SettingsCard)
+                state = NormalState;
+            }    
+            else
+            {
+                if (this.IsPressed)
                 {
-                    VisualStateManager.GoToState(this, PressedState, true);
+                    state = PressedState;
+                }
+                else if (this.IsMouseOver)
+                {
+                    state = MouseOverState;
                 }
             }
+
+            VisualStateManager.GoToState(this, state, true);
         }
-
-        protected override void OnLostMouseCapture(MouseEventArgs e)
-        {
-            base.OnLostMouseCapture(e);
-            VisualStateManager.GoToState(this, NormalState, true);
-        }
-
-        protected override void OnMouseDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseDown(e);
-            VisualStateManager.GoToState(this, PressedState, true);
-        }
-
-        protected override void OnMouseUp(MouseButtonEventArgs e)
-        {
-            if (IsClickEnabled)
-            {
-                base.OnMouseUp(e);
-                VisualStateManager.GoToState(this, NormalState, true);
-            }
-        }
-
-        protected override void OnMouseEnter(MouseEventArgs e)
-        {
-            base.OnMouseEnter(e);
-            VisualStateManager.GoToState(this, MouseOverState, true);
-        }
-
-        protected override void OnMouseLeave(MouseEventArgs e)
-        {
-            base.OnMouseLeave(e);
-            VisualStateManager.GoToState(this, NormalState, true);
-        }
-
-
 
         /// <summary>
         /// Creates AutomationPeer
@@ -274,19 +321,19 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
         }
 
-        private FrameworkElement? GetFocusedElement()
-        {
-            //if (ControlHelpers.IsXamlRootAvailable && XamlRoot != null)
-            //{
-            //    return FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement;
-            //}
-            //else
-            //{
-            //    return FocusManager.GetFocusedElement() as FrameworkElement;
-            //}
+        //private FrameworkElement? GetFocusedElement()
+        //{
+        //    //if (ControlHelpers.IsXamlRootAvailable && XamlRoot != null)
+        //    //{
+        //    //    return FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement;
+        //    //}
+        //    //else
+        //    //{
+        //    //    return FocusManager.GetFocusedElement() as FrameworkElement;
+        //    //}
 
-            return FocusManager.GetFocusedElement(this) as FrameworkElement;
-        }
+        //    return FocusManager.GetFocusedElement(this) as FrameworkElement;
+        //}
 
         private static bool IsNullOrEmptyString(object obj)
         {
