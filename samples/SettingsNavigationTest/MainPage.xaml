@@ -39,12 +39,12 @@
             </ui:SettingsCard.HeaderIcon>
             <ui:ToggleSwitch HorizontalContentAlignment="Right" IsRightAlignedCompact="True"/>
         </ui:SettingsCard>
-        <ui:SettingsCard Header="Check Update" IsClickEnabled="True"
+        <ui:SettingsCard Header="Check Update"
                          Description="Current Version: 1.0.0">
             <ui:SettingsCard.HeaderIcon>
                 <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Processing}"/>
             </ui:SettingsCard.HeaderIcon>
-            <ui:ToggleSwitch HorizontalContentAlignment="Right"/>
+            <Button Content="Check" Style="{StaticResource AccentButtonStyle}"/>
         </ui:SettingsCard>
     </ikw:SimpleStackPanel>
 </Page>
