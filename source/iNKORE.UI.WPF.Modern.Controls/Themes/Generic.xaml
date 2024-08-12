@@ -29,7 +29,8 @@
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/ProgressBar/ProgressBar.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/ProgressRing/ProgressRing.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/RatingControl/RatingControl.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/SettingsControls/SettingsCard.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/SettingsControls/SettingsCard/SettingsCard.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/SettingsControls/SettingsExpander/SettingsExpander.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/SplitButton/SplitButton.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/SplitView/SplitView.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/RadioButtons/RadioButtons.xaml" />
