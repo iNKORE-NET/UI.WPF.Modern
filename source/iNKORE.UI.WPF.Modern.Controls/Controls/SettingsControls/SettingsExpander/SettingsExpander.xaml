@@ -350,6 +350,7 @@
                                     FontFamily="{TemplateBinding FontFamily}"
                                     Header="{TemplateBinding Header}"
                                     HeaderIcon="{TemplateBinding HeaderIcon}"
+                                    IsHitTestVisible="False"
                                     IsClickEnabled="False" />
                             </Expander.Header>
                             <Expander.Content>

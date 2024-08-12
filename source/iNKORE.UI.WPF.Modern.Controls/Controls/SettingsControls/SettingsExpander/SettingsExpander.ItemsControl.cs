@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
+using System.Windows.Markup;
+using System.Collections;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
@@ -12,14 +14,14 @@ namespace iNKORE.UI.WPF.Modern.Controls
     //// Implement properties for ItemsControl like behavior.
     public partial class SettingsExpander
     {
-        public IList<object> Items
+        public IList Items
         {
-            get { return (IList<object>)GetValue(ItemsProperty); }
+            get { return (IList)GetValue(ItemsProperty); }
             set { SetValue(ItemsProperty, value); }
         }
 
         public static readonly DependencyProperty ItemsProperty =
-            DependencyProperty.Register(nameof(Items), typeof(IList<object>), typeof(SettingsExpander), new PropertyMetadata(null, OnItemsConnectedPropertyChanged));
+            DependencyProperty.Register(nameof(Items), typeof(IList), typeof(SettingsExpander), new PropertyMetadata(null, OnItemsConnectedPropertyChanged));
 
         public object ItemsSource
         {
