@@ -545,4 +545,29 @@
     <sys:Double x:Key="TreeViewItemPillMinScale">0.625</sys:Double>
     <KeyTime x:Key="TreeViewItemScaleAnimationDuration">00:00:00.167</KeyTime>
 
+    <sys:String x:Key="SettingsExpanderChevronToolTip">Show all settings</sys:String>
+    <Thickness x:Key="SettingsExpanderHeaderPadding">16,16,4,16</Thickness>
+    <Thickness x:Key="SettingsExpanderItemPadding">58,8,44,8</Thickness>
+    <Thickness x:Key="SettingsExpanderItemBorderThickness">0,1,0,0</Thickness>
+    <Thickness x:Key="ClickableSettingsExpanderItemPadding">58,8,16,8</Thickness>
+    <sys:Double x:Key="SettingsExpanderContentMinHeight">16</sys:Double>
+    <sys:Double x:Key="SettingsExpanderChevronButtonWidth">32</sys:Double>
+    <sys:Double x:Key="SettingsExpanderChevronButtonHeight">32</sys:Double>
+
+    <Thickness x:Key="SettingsCardBorderThickness">1</Thickness>
+    <Thickness x:Key="SettingsCardPadding">16,16,16,16</Thickness>
+    <sys:Double x:Key="SettingsCardMinWidth">148</sys:Double>
+    <sys:Double x:Key="SettingsCardMinHeight">68</sys:Double>
+    <sys:Double x:Key="SettingsCardDescriptionFontSize">12</sys:Double>
+    <sys:Double x:Key="SettingsCardHeaderIconMaxSize">20</sys:Double>
+    <sys:Double x:Key="SettingsCardLeftIndention">0</sys:Double>
+    <sys:Double x:Key="SettingsCardContentMinWidth">120</sys:Double>
+    <Thickness x:Key="SettingsCardHeaderIconMargin">2,0,20,0</Thickness>
+    <Thickness x:Key="SettingsCardActionIconMargin">14,0,0,0</Thickness>
+    <sys:Double x:Key="SettingsCardActionIconMaxSize">13</sys:Double>
+    <sys:Double x:Key="SettingsCardVerticalHeaderContentSpacing">8</sys:Double>
+    <sys:Double x:Key="SettingsCardWrapThreshold">476</sys:Double>
+    <sys:Double x:Key="SettingsCardWrapNoIconThreshold">286</sys:Double>
+
+
 </ResourceDictionary>

@@ -87,18 +87,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
          typeof(SettingsExpander),
          new PropertyMetadata(defaultValue: false, (d, e) => ((SettingsExpander)d).OnIsExpandedPropertyChanged((bool)e.OldValue, (bool)e.NewValue)));
 
-
-        /// <summary>
-        /// 
-        /// <summary>
-        /// Gets or sets the CornerRadius.
-        /// </summary>
-        public CornerRadius CornerRadius
-        {
-            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
-        }
-
         /// <summary>
         /// 
         /// <summary>

@@ -136,6 +136,22 @@ namespace iNKORE.UI.WPF.Modern.Controls
             //PreviewKeyUp -= Control_PreviewKeyUp;
         }
 
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            if (!this.IsClickEnabled)
+                e.Handled = false;
+        }
+        protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonUp(e);
+
+            if (!this.IsClickEnabled)
+                e.Handled = false;
+        }
+
+
         //private void Control_PreviewKeyUp(object sender, KeyEventArgs e)
         //{
         //    if (e.Key == Key.Enter || e.Key == Key.Space) //  || e.Key == Key.GamepadA
@@ -168,7 +184,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         //protected override void OnMouseDown(MouseButtonEventArgs e)
         //{
         //    base.OnMouseDown(e);
-            
+
         //    if (IsClickEnabled && IsEnabled)
         //    {
         //        this.IsPressed = true;
@@ -196,7 +212,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         //protected override void OnMouseLeave(MouseEventArgs e)
         //{
         //    base.OnMouseLeave(e);
-            
+
         //    if (IsClickEnabled && IsEnabled)
         //        VisualStateManager.GoToState(this, NormalState, true);
         //}
