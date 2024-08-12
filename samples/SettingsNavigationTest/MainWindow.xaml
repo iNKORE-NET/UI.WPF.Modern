@@ -9,13 +9,13 @@
         ui:ThemeManager.IsThemeAware="True"
         ui:WindowHelper.SystemBackdropType="Mica"
         ui:WindowHelper.UseModernWindowStyle="True"
-        Title="SettingsNavigationTest" Height="450" Width="800">
+        Title="SettingsNavigationTest" Height="756" Width="800">
     <Grid Margin="25,15,15,15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Settings" FontSize="28" Grid.Row="0"/>
-        <ui:Frame x:Name="SettingsFrame" Grid.Row="1" Margin="0,20,0,0"/>
+        <ui:Frame x:Name="SettingsFrame" Grid.Row="1" Margin="0,20,0,0" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
     </Grid>
 </Window>
