@@ -83,8 +83,14 @@ namespace iNKORE.UI.WPF.Modern.Controls
             SetAccessibleContentName();
 
             IsEnabledChanged += OnIsEnabledChanged;
+            SizeChanged += SettingsCard_SizeChanged;
 
             // RegisterPropertyChangedCallback(ContentProperty, OnContentChanged);
+        }
+
+        private void SettingsCard_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            this.UpdateContentAlignmentState();
         }
 
         private static void ContentProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -150,6 +156,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             if (!this.IsClickEnabled)
                 e.Handled = false;
         }
+
 
 
         //private void Control_PreviewKeyUp(object sender, KeyEventArgs e)
@@ -242,6 +249,46 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
 
             VisualStateManager.GoToState(this, state, true);
+        }
+
+        private void UpdateContentAlignmentState()
+        {
+            string state = null;
+
+            if (this.ContentAlignment == ContentAlignment.Left)
+            {
+                state = LeftState;
+            }
+            else if (this.ContentAlignment == ContentAlignment.Vertical)
+            {
+                state = VerticalState;
+            }
+            else
+            {
+                var SettingsCardWrapNoIconThreshold = this.FindResource("SettingsCardWrapNoIconThreshold") as double?;
+                var SettingsCardWrapThreshold = this.FindResource("SettingsCardWrapThreshold") as double?;
+
+                if (SettingsCardWrapThreshold != null && SettingsCardWrapThreshold != null)
+                {
+                    if (this.ActualWidth < SettingsCardWrapNoIconThreshold)
+                    {
+                        state = RightWrappedNoIconState;
+                    }
+                    else if (this.ActualWidth < SettingsCardWrapThreshold)
+                    {
+                        state = RightWrappedState;
+                    }
+                    else
+                    {
+                        state = RightState;
+                    }
+                }
+            }
+
+            if (state != null)
+            {
+                VisualStateManager.GoToState(this, state, true);
+            }
         }
 
         /// <summary>

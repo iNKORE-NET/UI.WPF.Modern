@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using System.Windows;
 
 namespace iNKORE.UI.WPF.Modern.Controls
@@ -69,7 +70,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             nameof(ContentAlignment),
             typeof(ContentAlignment),
             typeof(SettingsCard),
-            new PropertyMetadata(defaultValue: ContentAlignment.Right));
+            new PropertyMetadata(defaultValue: ContentAlignment.Right, (d, e) => ((SettingsCard)d).OnContentAlignmentPropertyChanged((ContentAlignment)e.OldValue, (ContentAlignment)e.NewValue)));
 
         /// <summary>
         /// The backing <see cref="DependencyProperty"/> for the <see cref="IsActionIconVisible"/> property.
@@ -177,6 +178,12 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             OnActionIconChanged();
         }
+
+        protected virtual void OnContentAlignmentPropertyChanged(ContentAlignment oldValue, ContentAlignment newValue)
+        {
+            this.UpdateContentAlignmentState();
+        }
+        
     }
 
     public enum ContentAlignment
@@ -194,5 +201,4 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// </summary>
         Vertical
     }
-
 }
