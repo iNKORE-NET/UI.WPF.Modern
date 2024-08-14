@@ -54,7 +54,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
         internal static readonly DependencyPropertyDescriptor IsPressedPropertyDescriptior = DependencyPropertyDescriptor.FromProperty(IsPressedProperty, typeof(SettingsCard));
         internal static readonly DependencyPropertyDescriptor IsMouseOverPropertyDescriptior = DependencyPropertyDescriptor.FromProperty(IsMouseOverProperty, typeof(SettingsCard));
 
-
         /// <summary>
         /// Creates a new instance of the <see cref="SettingsCard"/> class.
         /// </summary>
@@ -98,6 +97,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             if (d is SettingsCard control)
             {
                 control.OnContentChanged(e.OldValue, e.NewValue);
+                control.UpdateContentVisibilityStates();
             }
         }
 
@@ -253,6 +253,9 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private void UpdateContentAlignmentState()
         {
+            // Manually go to states, adapted from:
+            // https://github.com/CommunityToolkit/Windows/blob/main/components/SettingsControls/src/SettingsCard/SettingsCard.xaml#L304-353
+
             string state = null;
 
             if (this.ContentAlignment == ContentAlignment.Left)
@@ -289,6 +292,18 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 VisualStateManager.GoToState(this, state, true);
             }
+        }
+
+        public void UpdateContentVisibilityStates()
+        {
+            // Manually go to states, adapted from:
+            // https://github.com/CommunityToolkit/Windows/blob/main/components/SettingsControls/src/SettingsCard/SettingsCard.xaml#L369
+            
+            var state = this.Content == null || this.Content as string == ""
+                ? nameof(Visibility.Collapsed)
+                : nameof(Visibility.Visible);
+
+            VisualStateManager.GoToState(this, state, true);
         }
 
         /// <summary>
