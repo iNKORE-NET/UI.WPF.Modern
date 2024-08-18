@@ -1,0 +1,386 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers;assembly=iNKORE.UI.WPF.Modern"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/SettingsControls/SettingsCard/SettingsCard.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/Expander.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/ThemeResources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <CornerRadiusConverter x:Key="CornerRadiusConverter" />
+
+    <Style
+        x:Key="DefaultSettingsExpanderItemStyle"
+        BasedOn="{StaticResource DefaultSettingsCardStyle}"
+        TargetType="local:SettingsCard">
+        <Style.Setters>
+            <Setter Property="BorderThickness" Value="{DynamicResource SettingsExpanderItemBorderThickness}" />
+            <Setter Property="MinHeight" Value="52" />
+            <Setter Property="Padding" Value="{DynamicResource SettingsExpanderItemPadding}" />
+            <Setter Property="ui:ControlHelper.CornerRadius" Value="0" />
+
+        </Style.Setters>
+    </Style>
+
+    <Style
+        x:Key="ClickableSettingsExpanderItemStyle"
+        BasedOn="{StaticResource DefaultSettingsExpanderItemStyle}"
+        TargetType="local:SettingsCard">
+        <Style.Setters>
+            <Setter Property="Padding" Value="{DynamicResource ClickableSettingsExpanderItemPadding}" />
+        </Style.Setters>
+    </Style>
+
+    <local:SettingsExpanderItemStyleSelector
+        x:Key="SettingsExpanderItemStyleSelector"
+        ClickableStyle="{StaticResource ClickableSettingsExpanderItemStyle}"
+        DefaultStyle="{StaticResource DefaultSettingsExpanderItemStyle}" />
+
+    <Style x:Key="SettingsExpanderHeaderDownStyle" TargetType="ToggleButton">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <!--<Setter Property="BackgroundSizing" Value="InnerBorderEdge" />-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border
+                        x:Name="ToggleButtonGrid"
+                        Width="{TemplateBinding Width}"
+                        MinWidth="{TemplateBinding MinWidth}"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        MaxWidth="{TemplateBinding MaxWidth}"
+                        Padding="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}">
+                        <Grid SnapsToDevicePixels="False">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <ui:ContentPresenterEx
+                                x:Name="ContentPresenter"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Foreground="{TemplateBinding Foreground}"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="True" />
+                            <Border
+                                x:Name="ExpandCollapseChevronBorder"
+                                Grid.Column="1"
+                                Width="{DynamicResource ExpanderChevronButtonSize}"
+                                Height="{DynamicResource ExpanderChevronButtonSize}"
+                                Margin="{DynamicResource ExpanderChevronHorizontalMargin}"
+                                Background="{DynamicResource ExpanderChevronBackground}"
+                                BorderBrush="{DynamicResource ExpanderChevronBorderBrush}"
+                                BorderThickness="{DynamicResource ExpanderChevronBorderThickness}"
+                                CornerRadius="{DynamicResource ControlCornerRadius}">
+                                <ui:FontIcon
+                                    x:Name="ExpandCollapseChevron"
+                                    Width="{DynamicResource ExpanderChevronGlyphSize}"
+                                    Height="{DynamicResource ExpanderChevronGlyphSize}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="{DynamicResource FluentSystemIcons}"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource ExpanderChevronForeground}"
+                                    Glyph="{DynamicResource ExpanderChevronDownGlyph}"
+                                    RenderTransformOrigin="0.5, 0.5"
+                                    SnapsToDevicePixels="false">
+                                    <ui:FontIcon.RenderTransform>
+                                        <RotateTransform x:Name="ExpandCollapseChevronRotateTransform" Angle="0" />
+                                    </ui:FontIcon.RenderTransform>
+                                </ui:FontIcon>
+                            </Border>
+                        </Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ExpandCollapseChevronRotateTransform"
+                                            Storyboard.TargetProperty="Angle"
+                                            To="180.0"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ExpandCollapseChevronRotateTransform"
+                                            Storyboard.TargetProperty="Angle"
+                                            To="0.0"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Indeterminate" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
+                            <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderBrush}" />
+                            <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronForeground}" />
+                            <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderBrush}" />
+                            <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
+                            <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
+                            <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronPointerOverForeground}" />
+                            <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPointerOverBrush}" />
+                            <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
+                            <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPressedBrush}" />
+                            <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronPressedForeground}" />
+                            <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPressedBrush}" />
+                            <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
+                            <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
+                            <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
+                            <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
+                            <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ikw:CornerRadiusFilterConverter x:Key="TopCornerRadiusFilterConverter" Filter="Top" />
+    <ikw:CornerRadiusFilterConverter x:Key="RightCornerRadiusFilterConverter" Filter="Right" />
+    <ikw:CornerRadiusFilterConverter x:Key="BottomCornerRadiusFilterConverter" Filter="Bottom" />
+    <ikw:CornerRadiusFilterConverter x:Key="LeftCornerRadiusFilterConverter" Filter="Left" />
+
+
+    <Style x:Key="SettingsExpanderExpanderStyle" TargetType="Expander">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Background" Value="{DynamicResource ExpanderContentBackground}" />
+        <Setter Property="MinWidth" Value="{DynamicResource FlyoutThemeMinWidth}" />
+        <Setter Property="MinHeight" Value="{DynamicResource ExpanderMinHeight}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ExpanderContentDownBorderThickness}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ExpanderContentBorderBrush}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="ui:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Expander">
+                    <Grid MinWidth="{TemplateBinding MinWidth}" MaxWidth="{TemplateBinding MaxWidth}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Name="Row0" Height="Auto" />
+                            <RowDefinition x:Name="Row1" Height="*" />
+                        </Grid.RowDefinitions>
+                        <ToggleButton
+                            x:Name="ExpanderHeader"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="{DynamicResource ExpanderHeaderHorizontalContentAlignment}"
+                            VerticalContentAlignment="{DynamicResource ExpanderHeaderVerticalContentAlignment}"
+                            ui:ControlHelper.CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
+                            Background="{DynamicResource ExpanderHeaderBackground}"
+                            BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
+                            BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}"
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                            IsChecked="{Binding Path=IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            IsEnabled="{TemplateBinding IsEnabled}"
+                            IsTabStop="True"
+                            Style="{StaticResource SettingsExpanderHeaderDownStyle}"
+                            Tag="{TemplateBinding chelper:ControlHelper.CornerRadius}" />
+                        <!--  The clip is a composition clip applied in code  -->
+                        <Border x:Name="ExpanderContentClip" Grid.Row="1">
+                            <Border
+                                x:Name="ExpanderContent"
+                                MinHeight="{DynamicResource SettingsExpanderContentMinHeight}"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{DynamicResource ExpanderContentDownBorderThickness}"
+                                CornerRadius="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource BottomCornerRadiusFilterConverter}}"
+                                Visibility="Collapsed">
+                                <ContentPresenter
+                                    Margin="0,-2,0,0"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
+                                <Border.RenderTransform>
+                                    <TranslateTransform />
+                                </Border.RenderTransform>
+                            </Border>
+                        </Border>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsExpanded" Value="true">
+                            <Setter TargetName="ExpanderContent" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="ExpandDirection" Value="Right">
+                            <Setter TargetName="ExpanderHeader" Property="Style" Value="{DynamicResource ExpanderCardRightHeaderRightStyle}" />
+                            <Setter TargetName="ExpanderHeader" Property="Padding" Value="{DynamicResource ExpanderHeaderVerticalPadding}" />
+                            <Setter TargetName="ExpanderHeader" Property="VerticalContentAlignment" Value="Stretch" />
+                            <Setter TargetName="ExpanderHeader" Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter TargetName="ExpanderContent" Property="BorderThickness" Value="{DynamicResource ExpanderContentRightBorderThickness}" />
+                            <Setter TargetName="ExpanderContent" Property="CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource RightCornerRadiusFilterConverter}}" />
+                            <Setter TargetName="ExpanderContentClip" Property="DockPanel.Dock" Value="Right" />
+                            <Setter TargetName="ExpanderHeader" Property="DockPanel.Dock" Value="Left" />
+                        </Trigger>
+                        <Trigger Property="ExpandDirection" Value="Up">
+                            <Setter TargetName="ExpanderHeader" Property="Style" Value="{DynamicResource ExpanderCardHeaderUpStyle}" />
+                            <Setter TargetName="ExpanderContent" Property="BorderThickness" Value="{DynamicResource ExpanderContentUpBorderThickness}" />
+                            <Setter TargetName="ExpanderContent" Property="CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
+                            <Setter TargetName="ExpanderContentClip" Property="DockPanel.Dock" Value="Top" />
+                            <Setter TargetName="ExpanderHeader" Property="DockPanel.Dock" Value="Bottom" />
+                        </Trigger>
+                        <Trigger Property="ExpandDirection" Value="Left">
+                            <Setter TargetName="ExpanderHeader" Property="Style" Value="{DynamicResource ExpanderCardHeaderLeftStyle}" />
+                            <Setter TargetName="ExpanderHeader" Property="Padding" Value="{DynamicResource ExpanderHeaderVerticalPadding}" />
+                            <Setter TargetName="ExpanderHeader" Property="VerticalContentAlignment" Value="Stretch" />
+                            <Setter TargetName="ExpanderHeader" Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter TargetName="ExpanderContent" Property="BorderThickness" Value="{DynamicResource ExpanderContentLeftBorderThickness}" />
+                            <Setter TargetName="ExpanderContent" Property="CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />
+                            <Setter TargetName="ExpanderContentClip" Property="DockPanel.Dock" Value="Left" />
+                            <Setter TargetName="ExpanderHeader" Property="DockPanel.Dock" Value="Right" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource SystemControlDisabledBaseMediumLowBrush}" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="true" />
+                                <Condition Property="ExpandDirection" Value="Down" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="ExpanderHeader" Property="ui:ControlHelper.CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="true" />
+                                <Condition Property="ExpandDirection" Value="Right" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="ExpanderHeader" Property="ui:ControlHelper.CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="true" />
+                                <Condition Property="ExpandDirection" Value="Up" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="ExpanderHeader" Property="ui:ControlHelper.CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="true" />
+                                <Condition Property="ExpandDirection" Value="Left" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="ExpanderHeader" Property="ui:ControlHelper.CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource RightCornerRadiusFilterConverter}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DefaultSettingsExpanderStyle" TargetType="local:SettingsExpander">
+        <Style.Setters>
+            <Setter Property="Background" Value="{DynamicResource SettingsCardBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource SettingsCardForeground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SettingsCardBorderBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource SettingsCardBorderThickness}" />
+            <Setter Property="ui:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+            <Setter Property="MinHeight" Value="{DynamicResource SettingsCardMinHeight}" />
+            <Setter Property="MinWidth" Value="{DynamicResource SettingsCardMinWidth}" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <!--<Setter Property="BackgroundSizing" Value="InnerBorderEdge" />-->
+            <Setter Property="Padding" Value="{DynamicResource SettingsExpanderHeaderPadding}" />
+            <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+            <!--<Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />-->
+            <Setter Property="ItemContainerStyleSelector" Value="{StaticResource SettingsExpanderItemStyleSelector}" />
+            <!--<Setter Property="FocusVisualMargin" Value="-3" />-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="local:SettingsExpander">
+                        <Expander
+                            MinWidth="{TemplateBinding MinWidth}"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            IsExpanded="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            Style="{StaticResource SettingsExpanderExpanderStyle}">
+                            <Expander.Header>
+                                <local:SettingsCard
+                                    Padding="{StaticResource SettingsExpanderHeaderPadding}"
+                                    VerticalAlignment="Center"
+                                    Background="{x:Null}"
+                                    BorderThickness="0"
+                                    Content="{TemplateBinding Content}"
+                                    Description="{TemplateBinding Description}"
+                                    FontFamily="{TemplateBinding FontFamily}"
+                                    Header="{TemplateBinding Header}"
+                                    HeaderIcon="{TemplateBinding HeaderIcon}"
+                                    IsClickEnabled="False" />
+                            </Expander.Header>
+                            <Expander.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <ContentPresenter Content="{TemplateBinding ItemsHeader}" />
+                                    <local:ItemsRepeater
+                                        x:Name="PART_ItemsRepeater"
+                                        Grid.Row="1"
+                                        ItemTemplate="{Binding ItemTemplate, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                        <local:ItemsRepeater.Layout>
+                                            <local:StackLayout Orientation="Vertical" />
+                                        </local:ItemsRepeater.Layout>
+                                    </local:ItemsRepeater>
+                                    <!--<ItemsPresenter Grid.Row="1" />-->
+
+                                    <ContentPresenter Grid.Row="2" Content="{TemplateBinding ItemsFooter}" />
+                                </Grid>
+                            </Expander.Content>
+                        </Expander>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+
+    <!--  Implicitly applied default style  -->
+    <Style BasedOn="{StaticResource DefaultSettingsExpanderStyle}" TargetType="local:SettingsExpander" />
+</ResourceDictionary>

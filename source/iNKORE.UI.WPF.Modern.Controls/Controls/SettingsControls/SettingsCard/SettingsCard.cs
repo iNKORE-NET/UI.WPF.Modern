@@ -54,7 +54,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
         internal static readonly DependencyPropertyDescriptor IsPressedPropertyDescriptior = DependencyPropertyDescriptor.FromProperty(IsPressedProperty, typeof(SettingsCard));
         internal static readonly DependencyPropertyDescriptor IsMouseOverPropertyDescriptior = DependencyPropertyDescriptor.FromProperty(IsMouseOverProperty, typeof(SettingsCard));
 
-
         /// <summary>
         /// Creates a new instance of the <see cref="SettingsCard"/> class.
         /// </summary>
@@ -83,8 +82,14 @@ namespace iNKORE.UI.WPF.Modern.Controls
             SetAccessibleContentName();
 
             IsEnabledChanged += OnIsEnabledChanged;
+            SizeChanged += SettingsCard_SizeChanged;
 
             // RegisterPropertyChangedCallback(ContentProperty, OnContentChanged);
+        }
+
+        private void SettingsCard_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            this.UpdateContentAlignmentState();
         }
 
         private static void ContentProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -92,6 +97,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             if (d is SettingsCard control)
             {
                 control.OnContentChanged(e.OldValue, e.NewValue);
+                control.UpdateContentVisibilityStates();
             }
         }
 
@@ -136,6 +142,23 @@ namespace iNKORE.UI.WPF.Modern.Controls
             //PreviewKeyUp -= Control_PreviewKeyUp;
         }
 
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            if (!this.IsClickEnabled)
+                e.Handled = false;
+        }
+        protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonUp(e);
+
+            if (!this.IsClickEnabled)
+                e.Handled = false;
+        }
+
+
+
         //private void Control_PreviewKeyUp(object sender, KeyEventArgs e)
         //{
         //    if (e.Key == Key.Enter || e.Key == Key.Space) //  || e.Key == Key.GamepadA
@@ -168,7 +191,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         //protected override void OnMouseDown(MouseButtonEventArgs e)
         //{
         //    base.OnMouseDown(e);
-            
+
         //    if (IsClickEnabled && IsEnabled)
         //    {
         //        this.IsPressed = true;
@@ -196,7 +219,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         //protected override void OnMouseLeave(MouseEventArgs e)
         //{
         //    base.OnMouseLeave(e);
-            
+
         //    if (IsClickEnabled && IsEnabled)
         //        VisualStateManager.GoToState(this, NormalState, true);
         //}
@@ -224,6 +247,61 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     state = MouseOverState;
                 }
             }
+
+            VisualStateManager.GoToState(this, state, true);
+        }
+
+        private void UpdateContentAlignmentState()
+        {
+            // Manually go to states, adapted from:
+            // https://github.com/CommunityToolkit/Windows/blob/main/components/SettingsControls/src/SettingsCard/SettingsCard.xaml#L304-353
+
+            string state = null;
+
+            if (this.ContentAlignment == ContentAlignment.Left)
+            {
+                state = LeftState;
+            }
+            else if (this.ContentAlignment == ContentAlignment.Vertical)
+            {
+                state = VerticalState;
+            }
+            else
+            {
+                var SettingsCardWrapNoIconThreshold = this.FindResource("SettingsCardWrapNoIconThreshold") as double?;
+                var SettingsCardWrapThreshold = this.FindResource("SettingsCardWrapThreshold") as double?;
+
+                if (SettingsCardWrapThreshold != null && SettingsCardWrapThreshold != null)
+                {
+                    if (this.ActualWidth < SettingsCardWrapNoIconThreshold)
+                    {
+                        state = RightWrappedNoIconState;
+                    }
+                    else if (this.ActualWidth < SettingsCardWrapThreshold)
+                    {
+                        state = RightWrappedState;
+                    }
+                    else
+                    {
+                        state = RightState;
+                    }
+                }
+            }
+
+            if (state != null)
+            {
+                VisualStateManager.GoToState(this, state, true);
+            }
+        }
+
+        public void UpdateContentVisibilityStates()
+        {
+            // Manually go to states, adapted from:
+            // https://github.com/CommunityToolkit/Windows/blob/main/components/SettingsControls/src/SettingsCard/SettingsCard.xaml#L369
+            
+            var state = this.Content == null || this.Content as string == ""
+                ? nameof(Visibility.Collapsed)
+                : nameof(Visibility.Visible);
 
             VisualStateManager.GoToState(this, state, true);
         }
