@@ -26,7 +26,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.SamplePages
     public partial class SampleSystemBackdropsWindow : Window
     {
         BackdropType m_currentBackdrop => WindowHelper.GetSystemBackdropType(this);
-        bool m_useAcrylicBackdrop => WindowHelper.GetUseAcrylicBackdrop(this);
+        bool m_useAcrylicBackdrop => WindowHelper.GetSystemBackdropType(this) == BackdropType.Acrylic;
         bool m_useAeroBackdrop => WindowHelper.GetUseAeroBackdrop(this);
 
         public SampleSystemBackdropsWindow()
@@ -51,7 +51,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.SamplePages
             }
             else if (OSVersionHelper.IsWindows10OrGreater)
             {
-                WindowHelper.SetUseAcrylicBackdrop(this, !m_useAcrylicBackdrop);
+                WindowHelper.SetSystemBackdropType(this, m_useAcrylicBackdrop ? BackdropType.Acrylic : BackdropType.None);
             }
             else if (OSVersionHelper.IsWindowsVistaOrGreater)
             {

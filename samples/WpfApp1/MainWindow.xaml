@@ -24,5 +24,11 @@
             <ui:ToggleSwitch />
         </ui:SettingsCard>
 
+        <RichTextBox HorizontalAlignment="Left" Height="62" VerticalAlignment="Top" Width="150" Canvas.Left="446" Canvas.Top="179"
+                        BorderThickness="0">
+            <FrameworkElement.Resources>
+                <Thickness x:Key="{x:Static ui:ThemeKeys.TextControlBorderThemeThicknessFocusedKey}"></Thickness>
+            </FrameworkElement.Resources>
+        </RichTextBox>
     </Canvas>
 </Window>

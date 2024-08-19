@@ -94,10 +94,10 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
             if (handle == IntPtr.Zero) { return false; }
 
             // Fixes from: https://github.com/iNKORE-NET/UI.WPF.Modern/pull/63
-            //var captionColor = -2; //DWMWA_COLOR_NONE - 0xFFFFFFFE
-            //DWMAPI.DwmSetWindowAttribute(handle, DWMAPI.DWMWINDOWATTRIBUTE.DWMWA_CAPTION_COLOR,
-            //    ref captionColor,
-            //    Marshal.SizeOf(typeof(int)));
+            var captionColor = -2; //DWMWA_COLOR_NONE - 0xFFFFFFFE
+            DWMAPI.DwmSetWindowAttribute(handle, DWMAPI.DWMWINDOWATTRIBUTE.DWMWA_CAPTION_COLOR,
+                ref captionColor,
+                Marshal.SizeOf(typeof(int)));
 
             return type switch
             {
@@ -158,10 +158,10 @@ namespace iNKORE.UI.WPF.Modern.Helpers.Styles
                 Marshal.SizeOf(typeof(int)));
 
             // Fixes from: https://github.com/iNKORE-NET/UI.WPF.Modern/pull/63
-            //var captionColor = -1; //DWMWA_COLOR_DEFAULT - 0xFFFFFFFF
-            //DWMAPI.DwmSetWindowAttribute(handle, DWMAPI.DWMWINDOWATTRIBUTE.DWMWA_CAPTION_COLOR,
-            //    ref captionColor,
-            //    Marshal.SizeOf(typeof(int)));
+            var captionColor = -1; //DWMWA_COLOR_DEFAULT - 0xFFFFFFFF
+            DWMAPI.DwmSetWindowAttribute(handle, DWMAPI.DWMWINDOWATTRIBUTE.DWMWA_CAPTION_COLOR,
+                ref captionColor,
+                Marshal.SizeOf(typeof(int)));
         }
 
         /// <summary>
