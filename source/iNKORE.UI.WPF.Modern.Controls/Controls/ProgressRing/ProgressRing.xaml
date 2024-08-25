@@ -33,7 +33,7 @@
                             StrokeStartLineCap="Round"
                             StrokeThickness="{TemplateBinding StrokeThickness}" />
                         <!--  Progress Ring  -->
-                        <Path
+                        <Path x:Name="Path_Ring"
                             Data="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.RingPath}"
                             Fill="Transparent"
                             Stroke="{TemplateBinding Foreground}"
@@ -41,6 +41,11 @@
                             StrokeStartLineCap="Round"
                             StrokeThickness="{TemplateBinding StrokeThickness}" />
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Value" Value="0">
+                            <Setter TargetName="Path_Ring" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
