@@ -2015,7 +2015,7 @@
 
     <!--  Resources for RatingControl  -->
     <m:StaticResource x:Key="RatingControlUnselectedForeground" ResourceKey="SystemControlBackgroundBaseLowBrush" />
-    <m:StaticResource x:Key="RatingControlSelectedForeground" ResourceKey="SystemControlForegroundAccentBrush" />
+    <m:StaticResource x:Key="RatingControlSelectedForeground" ResourceKey="SystemAccentColorDark1Brush" />
     <m:StaticResource x:Key="RatingControlPlaceholderForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
     <m:StaticResource x:Key="RatingControlPointerOverPlaceholderForeground" ResourceKey="SystemControlForegroundBaseMediumBrush" />
     <m:StaticResource x:Key="RatingControlPointerOverUnselectedForeground" ResourceKey="SystemControlForegroundBaseMediumBrush" />

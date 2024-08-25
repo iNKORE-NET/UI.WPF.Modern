@@ -4,13 +4,18 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>disable</ImplicitUsings>
     <UseWPF>true</UseWPF>
 	  <EnableDefaultPageItems>false</EnableDefaultPageItems>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="david-van-dijk-3LTht2nxd34-unsplash.jpg" />
+    <None Remove="MainWindow.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="MainWindow.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,18 +25,6 @@
 
   <ItemGroup>
     <Resource Include="david-van-dijk-3LTht2nxd34-unsplash.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Pages\Page2.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Pages\Page2.xaml">
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
 
 </Project>

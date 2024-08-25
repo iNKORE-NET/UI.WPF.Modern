@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ExamplePhotoTaker" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
+        xmlns:local="clr-namespace:ExamplePhotoTaker" 
+        xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" 
+        xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
         mc:Ignorable="d" ui:WindowHelper.UseModernWindowStyle="True"
         Title="MainWindow" Height="450" Width="800" Language="en-US">
     <Grid>
@@ -18,20 +20,28 @@
             <Viewbox>
                 <Viewbox x:Name="Viewbox_Viewport" Width="1024">
                     <Border Background="White" Padding="10" Width="640" Height="270">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+                        <ikw:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Spacing="10">
 
-                            <ikw:SimpleStackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
-                                <Button x:Name="Button_NavigateToPage1" Content="To Page 1" Click="Button_NavigateToPage1_Click"/>
-                                <Button x:Name="Button_NavigateToPage2" Content="To Page 2" Click="Button_NavigateToPage2_Click"/>
-                            </ikw:SimpleStackPanel>
+                            <Button Content="Confirm Deletion">
+                                <FrameworkElement.Resources>
+                                    <SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ButtonBackgroundKey}" Color="#FFD80000"/>
+                                    <SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ButtonBorderBrushKey}" Color="#FF960000"/>
 
-                            <ui:Frame x:Name="Frame_Main" Navigating="Frame_Main_Navigating" Margin="10" Grid.Row="1" 
-                                      BorderBrush="Gray" BorderThickness="2,2,2,2"/>
-                        </Grid>
+                                    <SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ButtonBackgroundPointerOverKey}" Color="#FFE90000"/>
+                                    <SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ButtonBorderBrushPointerOverKey}" Color="#FFC00000"/>
+
+                                    <SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ButtonBackgroundPressedKey}" Color="#FF860000"/>
+                                    <ui:StaticResource x:Key="{x:Static ui:ThemeKeys.ButtonBorderBrushPressedKey}" ResourceKey="{x:Static ui:ThemeKeys.ButtonBackgroundPressedKey}"/>
+
+                                    <ui:StaticResource x:Key="{x:Static ui:ThemeKeys.ButtonForegroundKey}" ResourceKey="{x:Static ui:ThemeKeys.AccentButtonForegroundKey}"/>
+                                    <ui:StaticResource x:Key="{x:Static ui:ThemeKeys.ButtonForegroundPointerOverKey}" ResourceKey="{x:Static ui:ThemeKeys.ButtonForegroundKey}"/>
+                                    <ui:StaticResource x:Key="{x:Static ui:ThemeKeys.ButtonForegroundPressedKey}" ResourceKey="{x:Static ui:ThemeKeys.ButtonForegroundKey}"/>
+
+                                </FrameworkElement.Resources>
+                            </Button>
+
+                        </ikw:SimpleStackPanel>
                     </Border>
                 </Viewbox>
             </Viewbox>
