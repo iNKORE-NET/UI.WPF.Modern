@@ -20,8 +20,8 @@
                     Header="Toggle work"
                     IsOn="True"
                     OffContent="Do work"
-                    OnContent="Working" />
-                <ui:ProgressRing Width="130" IsActive="{Binding IsOn, ElementName=toggleSwitch}" />
+                    OnContent="Working" VerticalAlignment="Top" />
+                <ui:ProgressRing Width="64" Height="64" IsActive="{Binding IsOn, ElementName=toggleSwitch}" />
             </StackPanel>
 
             <local:ControlExample.Options>
