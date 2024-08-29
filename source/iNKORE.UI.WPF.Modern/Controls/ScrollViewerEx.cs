@@ -103,7 +103,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             LastVerticalLocation = VerticalOffset;
             LastHorizontalLocation = HorizontalOffset;
-            if (ScrollInfo != null)
+            /*if (ScrollInfo != null)
             {
                 ScrollInfo = new ScrollInfoAdapter(ScrollInfo);
                 ((ScrollInfoAdapter)ScrollInfo).UpdateOffsets();
@@ -112,7 +112,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     Source = this,
                     Path = new PropertyPath(nameof(ForceUseSmoothScroll))
                 });
-            }
+            }*/
             UpdateVisualState(false);
         }
 
