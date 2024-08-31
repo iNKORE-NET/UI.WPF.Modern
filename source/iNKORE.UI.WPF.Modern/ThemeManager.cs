@@ -29,6 +29,8 @@ namespace iNKORE.UI.WPF.Modern
         public const string Link_TelegramGroup = "http://t.me/iNKORE";
         public const string Link_FacebookPage = "https://facebook.com/iNKORE.NET";
 
+        public static readonly Uri BannerUri_1280w = new Uri("/iNKORE.UI.WPF.Modern;component/Resources/Images/UI.WPF.Modern_Main_1280w.png", UriKind.Relative);
+
         public static string AssemblyVersion
         {
             get

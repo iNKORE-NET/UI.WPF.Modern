@@ -82,6 +82,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Resource Include="..\..\assets\images\banners\UI.WPF.Modern_Main_1280w.png" Link="Resources\Images\UI.WPF.Modern_Main_1280w.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="iNKORE.UI.WPF" Version="1.2.7.1" />
 	</ItemGroup>
 
