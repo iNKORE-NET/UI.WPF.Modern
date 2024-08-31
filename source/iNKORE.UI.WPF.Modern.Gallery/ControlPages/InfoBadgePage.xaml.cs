@@ -71,7 +71,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         public void InfoBadgeStyleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string infoBadgeStyle = e.AddedItems[0].ToString();
-            ResourceDictionary Resources = new ResourceDictionary { Source = new Uri("/iNKORE.UI.WPF.Modern.Controls;component/Controls/InfoBadge/InfoBadge.xaml", UriKind.RelativeOrAbsolute) };
+            ResourceDictionary Resources = new ResourceDictionary { Source = new Uri("/iNKORE.UI.WPF.Modern.Controls;component/Controls/Windows/InfoBadge/InfoBadge.xaml", UriKind.RelativeOrAbsolute) };
 
             switch (infoBadgeStyle)
             {

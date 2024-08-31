@@ -8,7 +8,7 @@
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/SettingsControls/SettingsCard/SettingsCard.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Community/SettingsControls/SettingsCard.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/Expander.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/ThemeResources.xaml" />
     </ResourceDictionary.MergedDictionaries>

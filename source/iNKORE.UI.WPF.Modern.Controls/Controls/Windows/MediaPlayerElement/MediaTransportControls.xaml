@@ -8,11 +8,11 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/Slider.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/TextStyles.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/CommandBar/AppBarButton.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/CommandBar/AppBarRepeatButton.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/CommandBar/AppBarToggleButton.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/CommandBar/CommandBar.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Flyout/FlyoutPresenter.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Windows/CommandBar/AppBarButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Windows/CommandBar/AppBarRepeatButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Windows/CommandBar/AppBarToggleButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Windows/CommandBar/CommandBar.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Windows/Flyout/FlyoutPresenter.xaml" />
         <ResourceDictionary>
             <ikw:DoubleProportionConverter x:Key="DoubleProportionConverter" />
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />

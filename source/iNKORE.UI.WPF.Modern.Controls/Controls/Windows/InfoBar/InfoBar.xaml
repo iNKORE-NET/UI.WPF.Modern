@@ -5,7 +5,7 @@
     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/HyperlinkButton/HyperlinkButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Windows/HyperlinkButton/HyperlinkButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="local:InfoBar">

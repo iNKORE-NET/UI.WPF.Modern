@@ -5,10 +5,10 @@
     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/CommandBar/AppBarButton.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/CommandBar/AppBarSeparator.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/CommandBar/AppBarRepeatButton.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/CommandBar/AppBarToggleButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Windows/CommandBar/AppBarButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Windows/CommandBar/AppBarSeparator.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Windows/CommandBar/AppBarRepeatButton.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Windows/CommandBar/AppBarToggleButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="primitives:CommandBarToolBar">
