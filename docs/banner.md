@@ -4,9 +4,17 @@ Ho do you like this project so far? If this project is useful to you, please con
 
 You can use the banner in two sources:
 
-- Github URL (1280w): `https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/assets/images/banners/UI.WPF.Modern_Main_1280w.png?raw=true`
+- Github URL (1280w):
 
-- Github URL (2560w): `https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/assets/images/banners/UI.WPF.Modern_Main_2560w.png?raw=true`
+    ```plaintext
+    https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/assets/images/banners/UI.WPF.Modern_Main_1280w.png?raw=true
+    ```
+
+- Github URL (2560w):
+
+    ```plaintext
+    https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/assets/images/banners/UI.WPF.Modern_Main_2560w.png?raw=true
+    ```
 
 - iNKORE.UI.WPF.Modern Built-in: `ThemeManager.BannerUri_1280w`
 
@@ -43,3 +51,5 @@ In your WPF application, you can use the `ui:ThemeManager.BannerUri_1280w` attac
 ## Remarks
 
 We strongly recommend you to add the banner image as a LINK in your project, instead of downloading the image and adding it to your repository. This way, you will always have the latest version of the banner.
+
+The built-in banner URI is only available in the 0.10.0 version of the library and later.
