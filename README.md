@@ -1,9 +1,9 @@
-<p align="center">
-  <a target="_blank" rel="noopener noreferrer">
-    <img width="128" src="https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/assets/icons/WpfLibrary_256w.png" alt="iNKORE Logo">
-  </a>
-</p>
+<a href="https://docs.inkore.net/ui-wpf-modern/introduction">
+  <img src="https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/assets/images/banners/UI.WPF.Modern_Main_1280w.png?raw=true">
+</a>
 
+<br>
+<br>
 <p align="center">Modern (Fluent 2) styles and controls for your WPF applications.</p>
 
 <h1 align="center">
