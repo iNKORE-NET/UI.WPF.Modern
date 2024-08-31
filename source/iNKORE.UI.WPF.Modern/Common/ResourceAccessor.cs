@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Reflection;
 using System.Resources;
+using System.Windows;
+using System.Windows.Automation;
+using System.Windows.Threading;
 
 namespace iNKORE.UI.WPF.Modern.Common
 {
@@ -172,12 +176,20 @@ namespace iNKORE.UI.WPF.Modern.Common
 
         #endregion
 
-        private readonly Type _controlType;
+        private readonly Type? _controlType;
+        private readonly string? _baseName;
+        private readonly Assembly? _assembly;
         private ResourceManager _resourceManager;
 
         public ResourceAccessor(Type controlType)
         {
             _controlType = controlType ?? throw new ArgumentNullException(nameof(controlType));
+        }
+
+        public ResourceAccessor(string baseName, Assembly assembly)
+        {
+            _baseName = baseName;
+            _assembly = assembly;
         }
 
         public string GetLocalizedStringResource(string resourceName)
@@ -186,11 +198,7 @@ namespace iNKORE.UI.WPF.Modern.Common
             {
                 if (_resourceManager is null)
                 {
-                    var assembly = _controlType.Assembly;
-                    var assemblyName = assembly.GetName().Name;
-                    var controlName = _controlType.Name;
-                    var baseName = $"{assemblyName}.{controlName}.Strings.Resources";
-                    _resourceManager = new ResourceManager(baseName, assembly);
+                    _resourceManager = CreateResourceManager();
                 }
 
                 return _resourceManager.GetString(resourceName);
@@ -199,6 +207,26 @@ namespace iNKORE.UI.WPF.Modern.Common
             {
                 return Strings.ResourceManager.GetString(resourceName) ?? resourceName;
             }
+        }
+
+        private ResourceManager CreateResourceManager()
+        {
+            var baseName = _baseName;
+            var assembly = _assembly;
+
+            if (_controlType != null)
+            {
+                assembly = _controlType.Assembly;
+                var assemblyName = assembly.GetName().Name;
+
+                var controlName = _controlType.Name;
+                if (assemblyName != null)
+                {
+                    baseName = $"{assemblyName}.{controlName}.Strings.Resources";
+                }
+            }
+
+            return new ResourceManager(baseName, assembly);
         }
     }
 }

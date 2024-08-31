@@ -35,7 +35,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         private const string c_iconTextBlockName ="StandardIcon";
         private const string c_contentRootName = "ContentRoot";
 
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(InfoBar));
+        private static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(InfoBar), ModernControlCategory.Windows);
 
         static InfoBar()
         {

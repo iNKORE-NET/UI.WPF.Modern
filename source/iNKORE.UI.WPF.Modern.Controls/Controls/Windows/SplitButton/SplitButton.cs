@@ -20,7 +20,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 {
     public class SplitButton : ContentControl, ICommandSource
     {
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(SplitButton));
+        private static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(SplitButton), ModernControlCategory.Windows);
 
         static SplitButton()
         {

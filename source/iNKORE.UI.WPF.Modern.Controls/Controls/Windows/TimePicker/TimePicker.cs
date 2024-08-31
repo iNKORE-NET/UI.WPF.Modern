@@ -40,7 +40,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         private Button _acceptButton;
         private Button _dismissButton;
 
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(TimePicker));
+        private static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(TimePicker), ModernControlCategory.Windows);
 
         static TimePicker()
         {

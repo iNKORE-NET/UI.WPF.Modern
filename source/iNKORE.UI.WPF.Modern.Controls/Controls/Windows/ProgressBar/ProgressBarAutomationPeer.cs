@@ -14,7 +14,7 @@ namespace iNKORE.UI.WPF.Modern.Automation.Peers
     /// </summary>
     public class ProgressBarAutomationPeer : RangeBaseAutomationPeer, IRangeValueProvider
     {
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(ProgressBar));
+        private static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(ProgressBar), ModernControlCategory.Windows);
 
         /// <summary>
         /// Initializes a new instance of the ProgressBarAutomationPeer class.

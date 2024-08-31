@@ -57,7 +57,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         private const string c_pipsPagerButtonVerticalOrientationVisualState = "VerticalOrientation";
         private const string c_pipsPagerButtonHorizontalOrientationVisualState = "HorizontalOrientation";
 
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(PipsPager));
+        private static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(PipsPager), ModernControlCategory.Windows);
 
         static PipsPager()
         {

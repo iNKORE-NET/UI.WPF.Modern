@@ -113,7 +113,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         static readonly Size c_infSize = new Size(double.PositiveInfinity, double.PositiveInfinity);
 
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(NavigationView));
+        internal static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(NavigationView), ModernControlCategory.Windows);
 
         /*
         ~NavigationView()

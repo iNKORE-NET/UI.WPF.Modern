@@ -16,7 +16,7 @@ namespace iNKORE.UI.WPF.Modern.Automation.Peers
         IValueProvider,
         IRangeValueProvider
     {
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(RatingControl));
+        private static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(RatingControl), ModernControlCategory.Windows);
 
         public RatingControlAutomationPeer(RatingControl owner)
             : base(owner)

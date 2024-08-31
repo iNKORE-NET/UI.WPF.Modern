@@ -16,7 +16,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 {
     public partial class PersonPicture : Control
     {
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(PersonPicture));
+        private static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(PersonPicture), ModernControlCategory.Windows);
 
         static PersonPicture()
         {

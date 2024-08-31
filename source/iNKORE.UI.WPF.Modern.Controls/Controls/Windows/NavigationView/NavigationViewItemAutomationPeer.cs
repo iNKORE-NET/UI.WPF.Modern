@@ -17,7 +17,7 @@ namespace iNKORE.UI.WPF.Modern.Automation.Peers
         ISelectionItemProvider,
         IExpandCollapseProvider
     {
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(NavigationView));
+        private static  ControlStrings ResourceAccessor => NavigationView.ResourceAccessor;
 
         public NavigationViewItemAutomationPeer(NavigationViewItem owner) :
             base(owner)

@@ -48,7 +48,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         const double c_popupShadowDepth = 16.0;
         const string c_numberBoxPopupShadowDepthName = "NumberBoxPopupShadowDepth";
 
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(NumberBox));
+        private static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(NumberBox), ModernControlCategory.Windows);
 
         static NumberBox()
         {

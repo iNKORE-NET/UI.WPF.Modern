@@ -36,7 +36,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private const string c_OverlayCornerRadiusName = "OverlayCornerRadius";
 
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(TeachingTip));
+        private static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(TeachingTip), ModernControlCategory.Windows);
 
         static TeachingTip()
         {

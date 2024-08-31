@@ -10,7 +10,7 @@ namespace iNKORE.UI.WPF.Modern.Automation.Peers
 {
     public class ProgressRingAutomationPeer : FrameworkElementAutomationPeer
     {
-        private static readonly ResourceAccessor ResourceAccessor = new ResourceAccessor(typeof(ProgressRing));
+        private static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(ProgressRing), ModernControlCategory.Windows);
 
         public ProgressRingAutomationPeer(ProgressRing owner) : base(owner)
         {
