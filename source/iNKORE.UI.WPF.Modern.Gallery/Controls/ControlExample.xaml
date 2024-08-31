@@ -52,7 +52,7 @@
                                     x:Name="ExampleContainer"
                                     Background="{DynamicResource ControlExampleDisplayBrush}"
                                     BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
-                                    BorderThickness="1"
+                                    BorderThickness="1,1,1,0"
                                     CornerRadius="8,8,0,0">
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -238,6 +238,16 @@
                                             Storyboard.TargetProperty="Visibility"
                                             Duration="0:0:0">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="ExampleContainer"
+                                            Storyboard.TargetProperty="BorderThickness"
+                                            Duration="0:0:0">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Thickness>1</Thickness>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
