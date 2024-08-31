@@ -40,9 +40,9 @@
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Windows/TwoPaneView/TwoPaneView.xaml" />
        
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Extended/MessageBox/MessageBox.xaml" />
-        
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Community/SettingsControls/SettingsCard.xaml" />
-        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Community/SettingsControls/SettingsExpander.xaml" />
+
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Community/SettingsControls/SettingsCard/SettingsCard.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Community/SettingsControls/SettingsExpander/SettingsExpander.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 
