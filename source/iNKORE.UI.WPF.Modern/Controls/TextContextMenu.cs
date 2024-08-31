@@ -48,27 +48,27 @@ namespace iNKORE.UI.WPF.Modern.Controls
             Items.Add(new MenuItem
             {
                 Command = ApplicationCommands.Cut,
-                Icon = new FontIcon(FluentSystemIcons.Cut_16_Regular)
+                Icon = new FontIcon(SegoeFluentIcons.Cut)
             });
             Items.Add(new MenuItem
             {
                 Command = ApplicationCommands.Copy,
-                Icon = new FontIcon(FluentSystemIcons.Copy_16_Regular)
+                Icon = new FontIcon(SegoeFluentIcons.Copy)
             });
             Items.Add(new MenuItem
             {
                 Command = ApplicationCommands.Paste,
-                Icon = new FontIcon(FluentSystemIcons.ClipboardPaste_16_Regular)
+                Icon = new FontIcon(SegoeFluentIcons.Paste)
             });
             Items.Add(new MenuItem
             {
                 Command = ApplicationCommands.Undo,
-                Icon = new FontIcon(FluentSystemIcons.ArrowUndo_16_Regular)
+                Icon = new FontIcon(SegoeFluentIcons.Undo)
             });
             Items.Add(new MenuItem
             {
                 Command = ApplicationCommands.Redo,
-                Icon = new FontIcon(FluentSystemIcons.ArrowRedo_16_Regular)
+                Icon = new FontIcon(SegoeFluentIcons.Redo)
             });
             Items.Add(new MenuItem
             {
