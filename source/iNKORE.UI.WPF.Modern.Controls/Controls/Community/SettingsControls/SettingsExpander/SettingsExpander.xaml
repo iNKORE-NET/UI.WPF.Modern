@@ -165,145 +165,224 @@
     <ikw:CornerRadiusFilterConverter x:Key="BottomCornerRadiusFilterConverter" Filter="Bottom" />
     <ikw:CornerRadiusFilterConverter x:Key="LeftCornerRadiusFilterConverter" Filter="Left" />
 
-
-    <Style x:Key="SettingsExpanderExpanderStyle" TargetType="Expander">
-        <Setter Property="IsTabStop" Value="False" />
+    <Style x:Key="SettingsExpanderExpanderStyle"
+           TargetType="Expander">
         <Setter Property="Background" Value="{DynamicResource ExpanderContentBackground}" />
         <Setter Property="MinWidth" Value="{DynamicResource FlyoutThemeMinWidth}" />
-        <Setter Property="MinHeight" Value="{DynamicResource ExpanderMinHeight}" />
+        <Setter Property="MinHeight" Value="{StaticResource ExpanderMinHeight}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ExpanderContentDownBorderThickness}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ExpanderContentBorderBrush}" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="ui:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
-        <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Expander">
-                    <Grid MinWidth="{TemplateBinding MinWidth}" MaxWidth="{TemplateBinding MaxWidth}">
+                    <Grid MinWidth="{TemplateBinding MinWidth}"
+                          MaxWidth="{TemplateBinding MaxWidth}">
                         <Grid.RowDefinitions>
-                            <RowDefinition x:Name="Row0" Height="Auto" />
-                            <RowDefinition x:Name="Row1" Height="*" />
+                            <RowDefinition x:Name="Row0"
+                                           Height="Auto" />
+                            <RowDefinition x:Name="Row1"
+                                           Height="*" />
                         </Grid.RowDefinitions>
-                        <ToggleButton
-                            x:Name="ExpanderHeader"
-                            MinHeight="{TemplateBinding MinHeight}"
-                            HorizontalAlignment="Stretch"
-                            HorizontalContentAlignment="{DynamicResource ExpanderHeaderHorizontalContentAlignment}"
-                            VerticalContentAlignment="{DynamicResource ExpanderHeaderVerticalContentAlignment}"
-                            ui:ControlHelper.CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
-                            Background="{DynamicResource ExpanderHeaderBackground}"
-                            BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
-                            BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}"
-                            Content="{TemplateBinding Header}"
-                            ContentTemplate="{TemplateBinding HeaderTemplate}"
-                            ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
-                            IsChecked="{Binding Path=IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                            IsEnabled="{TemplateBinding IsEnabled}"
-                            IsTabStop="True"
-                            Style="{StaticResource SettingsExpanderHeaderDownStyle}"
-                            Tag="{TemplateBinding chelper:ControlHelper.CornerRadius}" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="ExpandStates">
+                                <VisualState x:Name="ExpandUp">
+                                    <VisualState.Storyboard>
+                                        <Storyboard>
+
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderHeader"
+                                                Storyboard.TargetProperty="(ui:ControlHelper.CornerRadius)">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
+                                            </ObjectAnimationUsingKeyFrames>
+
+
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent"
+                                                                           Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="Visible" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContentTranslation"
+                                                                           Storyboard.TargetProperty="Y">
+                                                <DiscreteDoubleKeyFrame KeyTime="0"
+                                                                        Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.ContentHeight}" />
+                                                <SplineDoubleKeyFrame KeySpline="0.0, 0.0, 0.0, 1.0"
+                                                                      KeyTime="0:0:0.333"
+                                                                      Value="0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState.Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="CollapseDown">
+                                    <VisualState.Storyboard>
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent"
+                                                                           Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                                                        Value="Collapsed" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContentTranslation"
+                                                                           Storyboard.TargetProperty="Y">
+                                                <DiscreteDoubleKeyFrame KeyTime="0"
+                                                                        Value="0" />
+                                                <SplineDoubleKeyFrame KeySpline="1.0, 1.0, 0.0, 1.0"
+                                                                      KeyTime="0:0:0.167"
+                                                                      Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.ContentHeight}" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState.Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ExpandDown">
+                                    <VisualState.Storyboard>
+                                        <Storyboard>
+
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderHeader"
+                                                Storyboard.TargetProperty="(ui:ControlHelper.CornerRadius)">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent"
+                                                                           Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="Visible" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContentTranslation"
+                                                                           Storyboard.TargetProperty="Y">
+                                                <DiscreteDoubleKeyFrame KeyTime="0"
+                                                                        Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.NegativeContentHeight}" />
+                                                <SplineDoubleKeyFrame KeySpline="0.0, 0.0, 0.0, 1.0"
+                                                                      KeyTime="0:0:0.333"
+                                                                      Value="0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            
+                                            
+                                        </Storyboard>
+                                    </VisualState.Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="CollapseUp">
+                                    <VisualState.Storyboard>
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent"
+                                                                           Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.167"
+                                                                        Value="Collapsed" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContentTranslation"
+                                                                           Storyboard.TargetProperty="Y">
+                                                <DiscreteDoubleKeyFrame KeyTime="0"
+                                                                        Value="0" />
+                                                <SplineDoubleKeyFrame KeySpline="1.0, 1.0, 0.0, 1.0"
+                                                                      KeyTime="0:0:0.167"
+                                                                      Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.NegativeContentHeight}" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState.Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ExpandDirectionStates">
+                                <VisualState x:Name="Down" />
+                                <VisualState x:Name="Up">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderHeader"
+                                            Storyboard.TargetProperty="Style">
+                                            <!--<DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{StaticResource ExpanderHeaderUpStyle}" />-->
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent"
+                                            Storyboard.TargetProperty="BorderThickness">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{DynamicResource ExpanderContentUpBorderThickness}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent"
+                                            Storyboard.TargetProperty="(ui:ControlHelper.CornerRadius)">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                Value="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
+                                        </ObjectAnimationUsingKeyFrames>
+
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderHeader"
+                                            Storyboard.TargetProperty="Grid.Row">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <sys:Int32>1</sys:Int32>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContentClip"
+                                            Storyboard.TargetProperty="Grid.Row">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <sys:Int32>0</sys:Int32>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Row0"
+                                            Storyboard.TargetProperty="Height">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <GridLength>*</GridLength>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Row1"
+                                            Storyboard.TargetProperty="Height">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <GridLength>Auto</GridLength>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ToggleButton x:Name="ExpanderHeader"
+                                      MinHeight="{TemplateBinding MinHeight}"
+                                      Padding="{DynamicResource SettingsExpanderHeaderPadding}"
+                                      HorizontalAlignment="Stretch"
+                                      HorizontalContentAlignment="{StaticResource ExpanderHeaderHorizontalContentAlignment}"
+                                      VerticalContentAlignment="{StaticResource ExpanderHeaderVerticalContentAlignment}"
+                                      AutomationProperties.AutomationId="ExpanderToggleButton"
+                                      AutomationProperties.Name="{TemplateBinding AutomationProperties.Name}"
+                                      BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
+                                      BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}"
+                                      Content="{TemplateBinding Header}"
+                                      ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                      ui:ControlHelper.CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
+                                      IsChecked="{Binding Path=IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      IsEnabled="{TemplateBinding IsEnabled}"
+                                      IsTabStop="True"
+                                      Style="{StaticResource SettingsExpanderHeaderDownStyle}" />
                         <!--  The clip is a composition clip applied in code  -->
-                        <Border x:Name="ExpanderContentClip" Grid.Row="1">
-                            <Border
-                                x:Name="ExpanderContent"
-                                MinHeight="{DynamicResource SettingsExpanderContentMinHeight}"
-                                Padding="{TemplateBinding Padding}"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{DynamicResource ExpanderContentDownBorderThickness}"
-                                CornerRadius="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource BottomCornerRadiusFilterConverter}}"
-                                Visibility="Collapsed">
-                                <ContentPresenter
-                                    Margin="0,-2,0,0"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
-                                <Border.RenderTransform>
-                                    <TranslateTransform />
-                                </Border.RenderTransform>
+                        <Border x:Name="ExpanderContentClip"
+                                Grid.Row="1">
+                            <Border x:Name="ExpanderContent"
+                                    MinHeight="{DynamicResource SettingsExpanderContentMinHeight}"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{StaticResource ExpanderContentDownBorderThickness}"
+                                    CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BottomCornerRadiusFilterConverter}}"
+                                    Visibility="Collapsed">
+                                <FrameworkElement.RenderTransform>
+                                    <TranslateTransform x:Name="ExpanderContentTranslation"/>
+                                </FrameworkElement.RenderTransform>
+                                <ui:ContentPresenterEx Margin="0,-2,0,0"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
                             </Border>
                         </Border>
-
                     </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsExpanded" Value="true">
-                            <Setter TargetName="ExpanderContent" Property="Visibility" Value="Visible" />
-                        </Trigger>
-                        <Trigger Property="ExpandDirection" Value="Right">
-                            <Setter TargetName="ExpanderHeader" Property="Style" Value="{DynamicResource ExpanderCardRightHeaderRightStyle}" />
-                            <Setter TargetName="ExpanderHeader" Property="Padding" Value="{DynamicResource ExpanderHeaderVerticalPadding}" />
-                            <Setter TargetName="ExpanderHeader" Property="VerticalContentAlignment" Value="Stretch" />
-                            <Setter TargetName="ExpanderHeader" Property="HorizontalContentAlignment" Value="Center" />
-                            <Setter TargetName="ExpanderContent" Property="BorderThickness" Value="{DynamicResource ExpanderContentRightBorderThickness}" />
-                            <Setter TargetName="ExpanderContent" Property="CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource RightCornerRadiusFilterConverter}}" />
-                            <Setter TargetName="ExpanderContentClip" Property="DockPanel.Dock" Value="Right" />
-                            <Setter TargetName="ExpanderHeader" Property="DockPanel.Dock" Value="Left" />
-                        </Trigger>
-                        <Trigger Property="ExpandDirection" Value="Up">
-                            <Setter TargetName="ExpanderHeader" Property="Style" Value="{DynamicResource ExpanderCardHeaderUpStyle}" />
-                            <Setter TargetName="ExpanderContent" Property="BorderThickness" Value="{DynamicResource ExpanderContentUpBorderThickness}" />
-                            <Setter TargetName="ExpanderContent" Property="CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
-                            <Setter TargetName="ExpanderContentClip" Property="DockPanel.Dock" Value="Top" />
-                            <Setter TargetName="ExpanderHeader" Property="DockPanel.Dock" Value="Bottom" />
-                        </Trigger>
-                        <Trigger Property="ExpandDirection" Value="Left">
-                            <Setter TargetName="ExpanderHeader" Property="Style" Value="{DynamicResource ExpanderCardHeaderLeftStyle}" />
-                            <Setter TargetName="ExpanderHeader" Property="Padding" Value="{DynamicResource ExpanderHeaderVerticalPadding}" />
-                            <Setter TargetName="ExpanderHeader" Property="VerticalContentAlignment" Value="Stretch" />
-                            <Setter TargetName="ExpanderHeader" Property="HorizontalContentAlignment" Value="Center" />
-                            <Setter TargetName="ExpanderContent" Property="BorderThickness" Value="{DynamicResource ExpanderContentLeftBorderThickness}" />
-                            <Setter TargetName="ExpanderContent" Property="CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />
-                            <Setter TargetName="ExpanderContentClip" Property="DockPanel.Dock" Value="Left" />
-                            <Setter TargetName="ExpanderHeader" Property="DockPanel.Dock" Value="Right" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource SystemControlDisabledBaseMediumLowBrush}" />
-                        </Trigger>
-
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsExpanded" Value="true" />
-                                <Condition Property="ExpandDirection" Value="Down" />
-                            </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="ExpanderHeader" Property="ui:ControlHelper.CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
-                            </MultiTrigger.Setters>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsExpanded" Value="true" />
-                                <Condition Property="ExpandDirection" Value="Right" />
-                            </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="ExpanderHeader" Property="ui:ControlHelper.CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />
-                            </MultiTrigger.Setters>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsExpanded" Value="true" />
-                                <Condition Property="ExpandDirection" Value="Up" />
-                            </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="ExpanderHeader" Property="ui:ControlHelper.CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
-                            </MultiTrigger.Setters>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsExpanded" Value="true" />
-                                <Condition Property="ExpandDirection" Value="Left" />
-                            </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="ExpanderHeader" Property="ui:ControlHelper.CornerRadius" Value="{Binding ElementName=ExpanderHeader, Path=Tag, Converter={StaticResource RightCornerRadiusFilterConverter}}" />
-                            </MultiTrigger.Setters>
-                        </MultiTrigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

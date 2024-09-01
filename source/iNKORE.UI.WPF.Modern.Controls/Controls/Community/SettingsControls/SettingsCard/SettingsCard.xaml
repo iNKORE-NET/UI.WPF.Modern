@@ -107,9 +107,9 @@
                                             </ObjectAnimationUsingKeyFrames>
                                             
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
+                                                Storyboard.TargetProperty="Foreground">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardForegroundPointerOver}" />
+                                                    Value="{DynamicResource SettingsCardForegroundPointerOver}" />
                                             </ObjectAnimationUsingKeyFrames>
                                             
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenter"
