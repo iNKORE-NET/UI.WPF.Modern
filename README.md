@@ -70,15 +70,17 @@
 
 -   Sponsor us at https://inkore.net/about/members/notyoojun#sponsor
 -   
-# Special Thanks to
+# 🙏🏻 Special Thanks to
 
-~~wherewhere~~ (是他自己先阴阳然后又不要加名字的，能怪谁呢？)
+- Kinnara
 
-> Yoojun Zhou (黑公司: 加班版) 14:20:19
-> 在？你看这样可以不，库名称改为 Fluensign.WPF，然后把你和 Kinnara 的名字加上
+- ~~wherewhere~~ (是他自己先阴阳然后又不要加名字的，能怪谁呢？)
+
+> Yoojun Zhou 14:20:19
+> 在？你看这样可以不，库名称改为 ...，然后把你和 Kinnara 的名字加上
 > where 14:22:25
 > 你随意
-> Yoojun Zhou (黑公司: 加班版) 14:26:36
+> Yoojun Zhou 14:26:36
 > ...
 > where 14:27:00
 > 反正这个项目已经搞砸了
