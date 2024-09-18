@@ -84,6 +84,8 @@
 > ...
 > where 14:27:00
 > 反正这个项目已经搞砸了
+>
+> https://docs.inkore.net/blog/2024/09/17/reflection-interest-in-opensource-community
 
 
 
