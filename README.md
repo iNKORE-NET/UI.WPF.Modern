@@ -74,7 +74,8 @@
 
 - Kinnara
 
-- ~~wherewhere~~ 
+- ~~wherewhere~~
+
   He deserves to be crossed out. Want to eat this melon? Check:
   https://docs.inkore.net/blog/2024/09/17/reflection-interest-in-opensource-community
 
