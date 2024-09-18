@@ -76,16 +76,17 @@
 
 - ~~wherewhere~~ (是他自己先阴阳然后又不要加名字的，能怪谁呢？)
 
-> Yoojun Zhou 14:20:19
-> 在？你看这样可以不，库名称改为 ...，然后把你和 Kinnara 的名字加上
-> where 14:22:25
-> 你随意
-> Yoojun Zhou 14:26:36
-> ...
-> where 14:27:00
-> 反正这个项目已经搞砸了
->
-> https://docs.inkore.net/blog/2024/09/17/reflection-interest-in-opensource-community
+  > Yoojun Zhou 14:20:19
+  > 在？你看这样可以不，库名称改为 ...，然后把你和 Kinnara 的名字加上
+  > where 14:22:25
+  > 你随意
+  > Yoojun Zhou 14:26:36
+  > ...
+  > where 14:27:00
+  > 反正这个项目已经搞砸了
+
+  Want to eat this melon? Check:
+  https://docs.inkore.net/blog/2024/09/17/reflection-interest-in-opensource-community
 
 
 
