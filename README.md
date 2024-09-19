@@ -69,10 +69,14 @@
 -   If the project is not working properly, please file a report. We welcome any issues and pull requests submitted on GitHub.
 
 -   Sponsor us at https://inkore.net/about/members/notyoojun#sponsor
--   
+
 # 🙏🏻 Special Thanks to
 
-- Kinnara
+- Kinnara and all ModernWpf authors
+
+- All contributors who helped us build this project
+
+- Everyone who donated us to let us walk further
 
 - ~~wherewhere~~
 
