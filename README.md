@@ -78,10 +78,7 @@
 
 - Everyone who donated us to let us walk further
 
-- ~~wherewhere~~ (He deserves to be crossed out.)
+- ~~wherewhere~~ (He deserves to be crossed out.
 
-  Want to eat this melon? Check:
-  https://docs.inkore.net/blog/2024/09/17/reflection-interest-in-opensource-community
-
-
+  More info: https://docs.inkore.net/blog/2024/09/17/reflection-interest-in-opensource-community)
 
