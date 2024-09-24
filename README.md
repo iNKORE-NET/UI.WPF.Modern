@@ -52,7 +52,7 @@
 
 -   Check out the [Getting Started](https://docs.inkore.net/ui-wpf-modern/onboarding) guide on our documentation site.
 
-- We're currently working on a documentation site that simplifies your learning curve. However this can be a huge process. You can preview the documentation site [here](https://docs.inkore.net/ui-wpf-modern/introduction) (remember it's not finished yet). Feedback and contributions are welcome and strongly needed.
+- We're currently working on a documentation site that simplifies your learning curve. However this can be a huge process. You can preview the documentation site at [docs.inkore.net/ui-wpf-modern](https://docs.inkore.net/ui-wpf-modern/introduction) (remember it's not finished yet). Feedback and contributions are welcome and strongly needed.
 
 # 🙋🏻‍♂️ Contribution
 
