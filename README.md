@@ -46,7 +46,7 @@
 
 -   Additional controls to help you build modern applications. Some are ported from the [Windows UI Library](https://github.com/microsoft/microsoft-ui-xaml).
 
--   Targets .NET Framework 6.0. Runs on Windows 7 above, but we recommend Windows 10.0.18362.0 and higher
+-   Targets .NET Framework 6.0. Runs on Windows 7 above, but recommends Windows 10 and higher
 
 # 🤔 How to use
 
