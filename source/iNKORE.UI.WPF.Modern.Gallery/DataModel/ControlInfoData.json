@@ -1,4 +1,5 @@
 {
+  "$schema": "ControlInfoDataSchema.json",
   "Groups": [
     {
       "UniqueId": "NewControls",
@@ -2158,8 +2159,7 @@
               "Uri": "https://docs.microsoft.com/windows/apps/design/style/reveal-focus"
             }
           ],
-          "RelatedControls": [
-          ]
+          "RelatedControls": []
         },
         {
           "UniqueId": "ColorPaletteResources",
@@ -2223,8 +2223,7 @@
               "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.composition.systembackdrops.desktopacryliccontroller"
             }
           ],
-          "RelatedControls": [
-          ]
+          "RelatedControls": []
         }
       ]
     },
@@ -2674,8 +2673,7 @@
               "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window?view=winui-3.0-preview"
             }
           ],
-          "RelatedControls": [
-          ]
+          "RelatedControls": []
         },
         {
           "UniqueId": "TitleBar",
@@ -2697,8 +2695,7 @@
               "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window?view=winui-3.0-preview"
             }
           ],
-          "RelatedControls": [
-          ]
+          "RelatedControls": []
         }
       ]
     }
