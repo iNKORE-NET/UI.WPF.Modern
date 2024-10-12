@@ -542,7 +542,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             if (cp == null)
             {
-                throw new InvalidOperationException("Cound not find the ContentPresenter in the owner window.");
+                throw new InvalidOperationException("Could not find the ContentPresenter in the owner window.");
             }
 
             UIElement dialogRoot;
