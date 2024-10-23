@@ -9,6 +9,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Community/SettingsControls/SettingsCard/SettingsCard.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/ToggleButton.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/Expander.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/ThemeResources.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -42,119 +43,47 @@
         ClickableStyle="{StaticResource ClickableSettingsExpanderItemStyle}"
         DefaultStyle="{StaticResource DefaultSettingsExpanderItemStyle}" />
 
-    <Style x:Key="SettingsExpanderHeaderDownStyle" TargetType="ToggleButton">
+    <Style x:Key="SettingsExpanderHeaderDownStyle" TargetType="ToggleButton" BasedOn="{StaticResource {x:Static ui:ThemeKeys.DefaultToggleButtonStyleKey}}">
         <Setter Property="Padding" Value="0" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+
         <!--<Setter Property="BackgroundSizing" Value="InnerBorderEdge" />-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <Border
-                        x:Name="ToggleButtonGrid"
-                        Width="{TemplateBinding Width}"
-                        MinWidth="{TemplateBinding MinWidth}"
-                        MinHeight="{TemplateBinding MinHeight}"
-                        MaxWidth="{TemplateBinding MaxWidth}"
-                        Padding="{TemplateBinding Padding}"
-                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}">
-                        <Grid SnapsToDevicePixels="False">
+                    <Button Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                            Foreground="{TemplateBinding Foreground}"  BorderThickness="{TemplateBinding BorderThickness}" 
+                            ui:ControlHelper.CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            Padding="{TemplateBinding Padding}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                        <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <ui:ContentPresenterEx
-                                x:Name="ContentPresenter"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Foreground="{TemplateBinding Foreground}"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="True" />
-                            <Border
-                                x:Name="ExpandCollapseChevronBorder"
-                                Grid.Column="1"
-                                Width="{DynamicResource ExpanderChevronButtonSize}"
-                                Height="{DynamicResource ExpanderChevronButtonSize}"
-                                Margin="{DynamicResource ExpanderChevronHorizontalMargin}"
-                                Background="{DynamicResource ExpanderChevronBackground}"
-                                BorderBrush="{DynamicResource ExpanderChevronBorderBrush}"
-                                BorderThickness="{DynamicResource ExpanderChevronBorderThickness}"
-                                CornerRadius="{DynamicResource ControlCornerRadius}">
-                                <ui:FontIcon
-                                    x:Name="ExpandCollapseChevron"
-                                    Width="{DynamicResource ExpanderChevronGlyphSize}"
-                                    Height="{DynamicResource ExpanderChevronGlyphSize}"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    FontFamily="{DynamicResource FluentSystemIcons}"
-                                    FontSize="12"
-                                    Foreground="{DynamicResource ExpanderChevronForeground}"
-                                    Glyph="{DynamicResource ExpanderChevronDownGlyph}"
-                                    RenderTransformOrigin="0.5, 0.5"
-                                    SnapsToDevicePixels="false">
-                                    <ui:FontIcon.RenderTransform>
-                                        <RotateTransform x:Name="ExpandCollapseChevronRotateTransform" Angle="0" />
-                                    </ui:FontIcon.RenderTransform>
-                                </ui:FontIcon>
-                            </Border>
+
+                            <ui:ContentPresenterEx Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+
+                            <ContentControl x:Name="ExpandCollapseChevronBorder"
+                                        Grid.Column="1"
+                                        Width="{StaticResource SettingsExpanderChevronButtonWidth}"
+                                        Height="{StaticResource SettingsExpanderChevronButtonHeight}"
+                                        Margin="0,0,8,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        IsTabStop="False"
+                                        ToolTipService.ToolTip="{StaticResource SettingsExpanderChevronToolTip}">
+                                <ui:FontIcon FontFamily="{DynamicResource FluentSystemIcons}"
+                                             FontSize="16"
+                                             Glyph="{DynamicResource ExpanderChevronDownGlyph}"/>
+                            </ContentControl>
                         </Grid>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CheckStates">
-                                <VisualState x:Name="Checked">
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="ExpandCollapseChevronRotateTransform"
-                                            Storyboard.TargetProperty="Angle"
-                                            To="180.0"
-                                            Duration="0:0:0.2" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Unchecked">
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="ExpandCollapseChevronRotateTransform"
-                                            Storyboard.TargetProperty="Angle"
-                                            To="0.0"
-                                            Duration="0:0:0.2" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Indeterminate" />
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="true">
-                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
-                            <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderBrush}" />
-                            <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronForeground}" />
-                            <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderBrush}" />
-                            <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
-                            <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
-                            <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronPointerOverForeground}" />
-                            <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPointerOverBrush}" />
-                            <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
-                            <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPressedBrush}" />
-                            <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderChevronPressedForeground}" />
-                            <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPressedBrush}" />
-                            <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
-                            <Setter TargetName="ToggleButtonGrid" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
-                            <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
-                            <Setter TargetName="ExpandCollapseChevronBorder" Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
-                            <Setter TargetName="ExpandCollapseChevronBorder" Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
+                    </Button>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -193,17 +122,17 @@
                                     <VisualState.Storyboard>
                                         <Storyboard>
 
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderHeader"
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderHeader"
                                                 Storyboard.TargetProperty="(ui:ControlHelper.CornerRadius)">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
                                                     Value="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
-                                            </ObjectAnimationUsingKeyFrames>
+                                            </ObjectAnimationUsingKeyFrames>-->
 
 
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent"
                                                                            Storyboard.TargetProperty="Visibility">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="Visible" />
+                                                                        Value="{x:Static Visibility.Visible}" />
                                             </ObjectAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContentTranslation"
                                                                            Storyboard.TargetProperty="Y">
@@ -239,16 +168,16 @@
                                     <VisualState.Storyboard>
                                         <Storyboard>
 
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderHeader"
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderHeader"
                                                 Storyboard.TargetProperty="(ui:ControlHelper.CornerRadius)">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
                                                     Value="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
-                                            </ObjectAnimationUsingKeyFrames>
+                                            </ObjectAnimationUsingKeyFrames>-->
 
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent"
                                                                            Storyboard.TargetProperty="Visibility">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="Visible" />
+                                                                        Value="{x:Static Visibility.Visible}" />
                                             </ObjectAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContentTranslation"
                                                                            Storyboard.TargetProperty="Y">
@@ -343,7 +272,7 @@
                         </VisualStateManager.VisualStateGroups>
                         <ToggleButton x:Name="ExpanderHeader"
                                       MinHeight="{TemplateBinding MinHeight}"
-                                      Padding="{DynamicResource SettingsExpanderHeaderPadding}"
+                                      Padding="0"
                                       HorizontalAlignment="Stretch"
                                       HorizontalContentAlignment="{StaticResource ExpanderHeaderHorizontalContentAlignment}"
                                       VerticalContentAlignment="{StaticResource ExpanderHeaderVerticalContentAlignment}"
