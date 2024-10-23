@@ -77,7 +77,7 @@
                             </Border.Background>
                         </Border>
                         <!--  main  -->
-                        <local:ClippingBorder CornerRadius="{TemplateBinding CornerRadius}">
+                        <local:ClippedContent CornerRadius="{TemplateBinding CornerRadius}">
                             <Canvas>
                                 <ContentControl chelper:ControlHelper.CornerRadius="{TemplateBinding CornerRadius}">
                                     <ContentControl.Template>
@@ -122,7 +122,7 @@
                                 </ContentControl>
                             </Canvas>
 
-                        </local:ClippingBorder>
+                        </local:ClippedContent>
 
                         <ContentControl Style="{StaticResource AcrylicContentControlStyle}" chelper:ControlHelper.CornerRadius="{TemplateBinding CornerRadius}">
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />

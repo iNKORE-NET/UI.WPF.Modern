@@ -12,6 +12,7 @@
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/Page.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/ThumbEx.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/IconAndText.xaml" />
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/ClippedContent.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/FontIconFallback.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/ListViewHeaderItem.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/TextContextMenu.xaml" />

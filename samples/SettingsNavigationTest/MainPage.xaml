@@ -35,7 +35,7 @@
 
         <ui:SettingsExpander x:Name="settingsCard"
                             Description="The SettingsExpander has the same properties as a Card, and you can set SettingsCard as part of the Items collection."
-                            Header="SettingsExpander">
+                            Header="SettingsExpander" IsExpanded="True">
             <ui:SettingsExpander.HeaderIcon>
                 <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Home}"/>
             </ui:SettingsExpander.HeaderIcon>
@@ -93,6 +93,34 @@
                                 Header="Customization">
 
                 </ui:SettingsCard>
+            </ui:SettingsExpander.Items>
+        </ui:SettingsExpander>
+
+        <ui:SettingsExpander x:Name="settingsCard2"
+                            Description="The SettingsExpander has the same properties as a Card, and you can set SettingsCard as part of the Items collection."
+                            Header="SettingsExpander Collapsed" IsExpanded="False">
+            <ui:SettingsExpander.HeaderIcon>
+                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Home}"/>
+            </ui:SettingsExpander.HeaderIcon>
+            <!--  TODO: This should be TwoWay bound but throws compile error in Uno.  -->
+            <ComboBox SelectedIndex="0">
+                <ComboBoxItem>Option 1</ComboBoxItem>
+                <ComboBoxItem>Option 2</ComboBoxItem>
+                <ComboBoxItem>Option 3</ComboBoxItem>
+            </ComboBox>
+
+            <ui:SettingsExpander.Items>
+                <ui:SettingsCard Header="A basic SettingsCard within an SettingsExpander">
+                    <Button Content="Button" />
+                </ui:SettingsCard>
+                <ui:SettingsCard Description="SettingsCard within an Expander can be made clickable too!"
+                                Header="This item can be clicked"
+                                IsClickEnabled="True" />
+
+                <ui:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="Here the ContentAlignment is set to Left. This is great for e.g. CheckBoxes or RadioButtons." />
+                </ui:SettingsCard>
+
             </ui:SettingsExpander.Items>
         </ui:SettingsExpander>
 

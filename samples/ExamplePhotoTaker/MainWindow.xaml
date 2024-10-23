@@ -23,24 +23,10 @@
                         <ikw:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
                             Spacing="10">
 
-                            <Button Content="Confirm Deletion">
-                                <FrameworkElement.Resources>
-                                    <SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ButtonBackgroundKey}" Color="#FFD80000"/>
-                                    <SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ButtonBorderBrushKey}" Color="#FF960000"/>
-
-                                    <SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ButtonBackgroundPointerOverKey}" Color="#FFE90000"/>
-                                    <SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ButtonBorderBrushPointerOverKey}" Color="#FFC00000"/>
-
-                                    <SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ButtonBackgroundPressedKey}" Color="#FF860000"/>
-                                    <ui:StaticResource x:Key="{x:Static ui:ThemeKeys.ButtonBorderBrushPressedKey}" ResourceKey="{x:Static ui:ThemeKeys.ButtonBackgroundPressedKey}"/>
-
-                                    <ui:StaticResource x:Key="{x:Static ui:ThemeKeys.ButtonForegroundKey}" ResourceKey="{x:Static ui:ThemeKeys.AccentButtonForegroundKey}"/>
-                                    <ui:StaticResource x:Key="{x:Static ui:ThemeKeys.ButtonForegroundPointerOverKey}" ResourceKey="{x:Static ui:ThemeKeys.ButtonForegroundKey}"/>
-                                    <ui:StaticResource x:Key="{x:Static ui:ThemeKeys.ButtonForegroundPressedKey}" ResourceKey="{x:Static ui:ThemeKeys.ButtonForegroundKey}"/>
-
-                                </FrameworkElement.Resources>
-                            </Button>
-
+                            <ui:ClippedContent BorderBrush="Red" Width="160" Height="90" 
+                                    BorderThickness="4 1 3 2" CornerRadius="5">
+                                <Image Source="/david-van-dijk-3LTht2nxd34-unsplash.jpg" Stretch="UniformToFill" Opacity="0.8"/>
+                            </ui:ClippedContent>
                         </ikw:SimpleStackPanel>
                     </Border>
                 </Viewbox>
