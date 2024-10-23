@@ -57,25 +57,31 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         public void ApplyClip()
         {
-            try
-            {
-                if (PART_OuterBorder == null || PART_InnerBorder == null)
-                    return;
-                var innerRadius = new CornerRadiusEx
-                (
-                    CornerRadius.TopLeft - BorderThickness.Left / 2, CornerRadius.TopLeft - BorderThickness.Top / 2,
-                    CornerRadius.TopRight - BorderThickness.Right / 2, CornerRadius.TopRight - BorderThickness.Top / 2,
-                    CornerRadius.BottomLeft - BorderThickness.Left / 2, CornerRadius.BottomLeft - BorderThickness.Bottom / 2,
-                    CornerRadius.BottomRight - BorderThickness.Right / 2, CornerRadius.BottomRight - BorderThickness.Bottom / 2
-                );
-                _clipRect = CreateRoundedRectangleGeometry(new Rect(0, 0, PART_InnerBorder.ActualWidth, PART_InnerBorder.ActualHeight), innerRadius);
+            if (PART_InnerBorder == null)
+                return;
 
-                if (_clipRect != null)
-                {
-                    PART_InnerBorder.Clip = _clipRect;
-                }
+            var innerRadius = new CornerRadiusEx
+            (
+                CornerRadius.TopLeft - BorderThickness.Left / 2, CornerRadius.TopLeft - BorderThickness.Top / 2,
+                CornerRadius.TopRight - BorderThickness.Right / 2, CornerRadius.TopRight - BorderThickness.Top / 2,
+                CornerRadius.BottomLeft - BorderThickness.Left / 2, CornerRadius.BottomLeft - BorderThickness.Bottom / 2,
+                CornerRadius.BottomRight - BorderThickness.Right / 2, CornerRadius.BottomRight - BorderThickness.Bottom / 2
+            );
+
+            innerRadius = new CornerRadiusEx
+            (
+                Math.Max(0, innerRadius.TopLeftX), Math.Max(0, innerRadius.TopLeftY),
+                Math.Max(0, innerRadius.TopRightX), Math.Max(0, innerRadius.TopRightY),
+                Math.Max(0, innerRadius.BottomLeftX), Math.Max(0, innerRadius.BottomLeftY),
+                Math.Max(0, innerRadius.BottomRightX), Math.Max(0, innerRadius.BottomRightY)
+            );
+
+            _clipRect = CreateRoundedRectangleGeometry(new Rect(0, 0, PART_InnerBorder.ActualWidth, PART_InnerBorder.ActualHeight), innerRadius);
+
+            if (_clipRect != null)
+            {
+                PART_InnerBorder.Clip = _clipRect;
             }
-            catch { }
         }
 
 
@@ -83,12 +89,16 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             base.OnApplyTemplate();
 
-            PART_OuterBorder = GetTemplateChild("PART_OuterBorder") as Border;
-            PART_InnerBorder = GetTemplateChild("PART_InnerBorder") as Border;
+            PART_OuterBorder = this.Template.FindName(nameof(PART_OuterBorder), this) as Border;
+            PART_InnerBorder = this.Template.FindName(nameof(PART_InnerBorder), this) as Border;
 
-            if (PART_InnerBorder != null )
+            if (PART_InnerBorder != null)
             {
                 PART_InnerBorder.SizeChanged += PART_InnerBorder_SizeChanged;
+            }
+            else
+            {
+                throw new Exception("PART_InnerBorder not found in template of ClippedContent");
             }
 
             ApplyClip();

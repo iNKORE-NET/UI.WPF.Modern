@@ -120,7 +120,7 @@
                         <!--  The clip is a composition clip applied in code  -->
                         <Border x:Name="ExpanderContentClip"
                                 Grid.Row="1">
-                            <Border x:Name="ExpanderContent"
+                            <ui:ClippedContent x:Name="ExpanderContent"
                                     MinHeight="{DynamicResource SettingsExpanderContentMinHeight}"
                                     Padding="{TemplateBinding Padding}"
                                     HorizontalAlignment="Stretch"
@@ -138,7 +138,7 @@
                                                   Content="{TemplateBinding Content}"
                                                   ContentTemplate="{TemplateBinding ContentTemplate}"
                                                   ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
-                            </Border>
+                            </ui:ClippedContent>
                         </Border>
 
                         <ToggleButton x:Name="ExpanderHeader"
