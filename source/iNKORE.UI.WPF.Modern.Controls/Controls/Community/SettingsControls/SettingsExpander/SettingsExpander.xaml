@@ -15,6 +15,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <CornerRadiusConverter x:Key="CornerRadiusConverter" />
+    <ikw:BoolInversionConverter x:Key="BoolInversionConverter" />
 
     <Style
         x:Key="DefaultSettingsExpanderItemStyle"
@@ -53,21 +54,28 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <Button Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                            Foreground="{TemplateBinding Foreground}"  BorderThickness="{TemplateBinding BorderThickness}" 
-                            ui:ControlHelper.CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
-                            VerticalAlignment="{TemplateBinding VerticalAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                            Padding="{TemplateBinding Padding}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
 
-                            <ui:ContentPresenterEx Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
+                    <ui:ElevationBorder
+                        x:Name="Background"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+                        SnapsToDevicePixels="True">
+                        <Border
+                            x:Name="Border"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <ui:ContentPresenterEx Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
 
-                            <ContentControl x:Name="ExpandCollapseChevronBorder"
+                                <ContentControl x:Name="ExpandCollapseChevronBorder"
                                         Grid.Column="1"
                                         Width="{StaticResource SettingsExpanderChevronButtonWidth}"
                                         Height="{StaticResource SettingsExpanderChevronButtonHeight}"
@@ -78,13 +86,32 @@
                                         VerticalContentAlignment="Center"
                                         IsTabStop="False"
                                         ToolTipService.ToolTip="{StaticResource SettingsExpanderChevronToolTip}">
-                                <ui:FontIcon FontFamily="{DynamicResource FluentSystemIcons}"
+                                    <ui:FontIcon FontFamily="{DynamicResource FluentSystemIcons}"
                                              FontSize="16"
                                              Glyph="{DynamicResource ExpanderChevronDownGlyph}"/>
-                            </ContentControl>
-                        </Grid>
-                    </Button>
-                </ControlTemplate>
+                                </ContentControl>
+                            </Grid>
+                        </Border>
+                    </ui:ElevationBorder>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Background" Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
+                            <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPointerOver}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Background" Property="Background" Value="{DynamicResource ButtonBackgroundPressed}" />
+                            <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Background" Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
+                            <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                                   </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
