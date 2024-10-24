@@ -107,9 +107,9 @@
                                             </ObjectAnimationUsingKeyFrames>
                                             
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
+                                                Storyboard.TargetProperty="Foreground">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{DynamicResource SettingsCardForegroundPointerOver}" />
+                                                    Value="{DynamicResource SettingsCardForegroundPointerOver}" />
                                             </ObjectAnimationUsingKeyFrames>
                                             
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenter"
@@ -440,7 +440,7 @@
                                      Visibility="Collapsed">
                                     <ContentPresenter x:Name="PART_ActionIconPresenter"
                                           Content="{TemplateBinding ActionIcon}"
-                                          TextElement.FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                          TextElement.FontFamily="{x:Static ui:FluentSystemIcons.FontFamilyRegular}"
                                           ToolTipService.ToolTip="{TemplateBinding ActionIconToolTip}" />
                                 </Viewbox>
                             </Grid>

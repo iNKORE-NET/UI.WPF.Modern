@@ -16,6 +16,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Settings" FontSize="28" Grid.Row="0"/>
-        <ui:Frame x:Name="SettingsFrame" Grid.Row="1" Margin="0,20,0,0" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+        <ui:ScrollViewerEx Grid.Row="1" Margin="0,20,0,0" Padding="0,0,20,0">
+            <ui:Frame x:Name="SettingsFrame" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+        </ui:ScrollViewerEx>
     </Grid>
 </Window>
