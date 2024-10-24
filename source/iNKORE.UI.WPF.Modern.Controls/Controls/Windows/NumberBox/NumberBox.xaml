@@ -11,8 +11,8 @@
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/TextBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ikw:CornerRadiusFilterConverter x:Key="LeftCornerRadiusFilterConverter" Filter="Left" />
-    <ikw:CornerRadiusFilterConverter x:Key="RightCornerRadiusFilterConverter" Filter="Right" />
+    <ikw:CornerRadiusExtractionConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" TargetMember="TopLeft" />
+    <ikw:CornerRadiusExtractionConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" TargetMember="BottomRight" />
 
     <Thickness x:Key="NumberBoxPopupIndicatorMargin">0,0,8,0</Thickness>
 

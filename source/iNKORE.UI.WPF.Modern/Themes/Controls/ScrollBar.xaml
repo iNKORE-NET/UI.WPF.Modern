@@ -15,24 +15,24 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary>
-            <ikw:CornerRadiusFilterConverter
+            <ikw:CornerRadiusExtractionConverter
                 x:Key="TopLeftCornerRadiusDoubleValueConverter8x"
-                Filter="TopLeftValue"
+                TargetMember="TopLeft"
                 Scale="8" />
-            <ikw:CornerRadiusFilterConverter
+            <ikw:CornerRadiusExtractionConverter
                 x:Key="BottomRightCornerRadiusDoubleValueConverter8x"
-                Filter="BottomRightValue"
+                TargetMember="BottomRight"
                 Scale="8" />
-            <ikw:CornerRadiusFilterConverter
+            <ikw:CornerRadiusExtractionConverter
                 x:Key="TopLeftCornerRadiusDoubleValueConverter2x"
-                Filter="TopLeftValue"
+                TargetMember="TopLeft"
                 Scale="2" />
-            <ikw:CornerRadiusFilterConverter
+            <ikw:CornerRadiusExtractionConverter
                 x:Key="BottomRightCornerRadiusDoubleValueConverter2x"
-                Filter="BottomRightValue"
+                TargetMember="TopRight"
                 Scale="2" />
-            <ikw:CornerRadiusFilterConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" Filter="TopLeftValue" />
-            <ikw:CornerRadiusFilterConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" Filter="BottomRightValue" />
+            <ikw:CornerRadiusExtractionConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" TargetMember="TopLeft" />
+            <ikw:CornerRadiusExtractionConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" TargetMember="BottomRight" />
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 

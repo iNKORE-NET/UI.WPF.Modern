@@ -12,8 +12,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ToolTip.xaml" />
         <ResourceDictionary>
-            <ikw:CornerRadiusFilterConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" Filter="TopLeftValue" />
-            <ikw:CornerRadiusFilterConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" Filter="BottomRightValue" />
+            <ikw:CornerRadiusExtractionConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" TargetMember="TopLeft" />
+            <ikw:CornerRadiusExtractionConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" TargetMember="BottomRight" />
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
