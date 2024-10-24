@@ -16,7 +16,6 @@
 
     <CornerRadiusConverter x:Key="CornerRadiusConverter" />
     <ikw:BoolInversionConverter x:Key="BoolInversionConverter" />
-
     <Style
         x:Key="DefaultSettingsExpanderItemStyle"
         BasedOn="{StaticResource DefaultSettingsCardStyle}"
@@ -44,13 +43,12 @@
         ClickableStyle="{StaticResource ClickableSettingsExpanderItemStyle}"
         DefaultStyle="{StaticResource DefaultSettingsExpanderItemStyle}" />
 
-    <Style x:Key="SettingsExpanderHeaderDownStyle" TargetType="ToggleButton" BasedOn="{StaticResource {x:Static ui:ThemeKeys.DefaultToggleButtonStyleKey}}">
+    <Style x:Key="SettingsExpanderHeaderDownStyle" TargetType="ToggleButton" 
+        BasedOn="{StaticResource {x:Static ui:ThemeKeys.DefaultToggleButtonStyleKey}}">
         <Setter Property="Padding" Value="0" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-
-        <!--<Setter Property="BackgroundSizing" Value="InnerBorderEdge" />-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
@@ -86,12 +84,38 @@
                                         VerticalContentAlignment="Center"
                                         IsTabStop="False"
                                         ToolTipService.ToolTip="{StaticResource SettingsExpanderChevronToolTip}">
-                                    <ui:FontIcon FontFamily="{DynamicResource FluentSystemIcons}"
-                                             FontSize="16"
-                                             Glyph="{DynamicResource ExpanderChevronDownGlyph}"/>
+                                    <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.ChevronDown_16_Regular}"
+                                             FontSize="16" RenderTransformOrigin="0.5 0.5">
+                                        <FrameworkElement.RenderTransform>
+                                            <RotateTransform x:Name="ExpandCollapseChevronRotateTransform" Angle="0" />
+                                        </FrameworkElement.RenderTransform>
+                                    </ui:FontIcon>
                                 </ContentControl>
                             </Grid>
                         </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ExpandCollapseChevronRotateTransform"
+                                            Storyboard.TargetProperty="Angle"
+                                            To="180.0"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ExpandCollapseChevronRotateTransform"
+                                            Storyboard.TargetProperty="Angle"
+                                            To="0.0"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
                     </ui:ElevationBorder>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -111,7 +135,7 @@
                         </Trigger>
                     </ControlTemplate.Triggers>
 
-                                   </ControlTemplate>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
