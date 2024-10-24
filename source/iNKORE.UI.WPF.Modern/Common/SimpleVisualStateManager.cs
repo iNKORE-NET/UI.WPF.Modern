@@ -47,7 +47,7 @@ namespace iNKORE.UI.WPF.Modern.Common
                 throw new ArgumentNullException("obj");
             }
 
-            // We don't want to get the default value because it will create/return an empty colleciton.
+            // We don't want to get the default value because it will create/return an empty collection.
             BaseValueSource source = DependencyPropertyHelper.GetValueSource(obj, VisualStateGroupsProperty).BaseValueSource;
             if (source != BaseValueSource.Default)
             {
