@@ -4,6 +4,7 @@
 
 using System;
 using System.Windows;
+using iNKORE.UI.WPF.Modern.Common.IconKeys;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
@@ -43,7 +44,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             nameof(ActionIcon),
             typeof(object),
             typeof(SettingsCard),
-            new PropertyMetadata(defaultValue: "\ue974"));
+            new PropertyMetadata(defaultValue: FluentSystemIcons.ChevronRight_16_Regular.Glyph));
 
         /// <summary>
         /// The backing <see cref="DependencyProperty"/> for the <see cref="ActionIconToolTip"/> property.

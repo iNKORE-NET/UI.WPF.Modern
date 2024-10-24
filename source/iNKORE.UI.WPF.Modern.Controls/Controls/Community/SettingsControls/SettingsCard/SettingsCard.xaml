@@ -440,7 +440,7 @@
                                      Visibility="Collapsed">
                                     <ContentPresenter x:Name="PART_ActionIconPresenter"
                                           Content="{TemplateBinding ActionIcon}"
-                                          TextElement.FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                          TextElement.FontFamily="{x:Static ui:FluentSystemIcons.FontFamilyRegular}"
                                           ToolTipService.ToolTip="{TemplateBinding ActionIconToolTip}" />
                                 </Viewbox>
                             </Grid>
