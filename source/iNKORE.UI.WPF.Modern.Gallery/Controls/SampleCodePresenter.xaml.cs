@@ -1,4 +1,7 @@
 ﻿using ColorCodeStandard;
+using ICSharpCode.AvalonEdit;
+using ICSharpCode.AvalonEdit.Editing;
+using ICSharpCode.AvalonEdit.Highlighting;
 using SamplesCommon;
 using System;
 using System.Collections.Generic;
@@ -83,6 +86,10 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
         public SampleCodePresenter()
         {
             InitializeComponent();
+
+            CodePresenter.TextArea.SelectionBorder = new Pen(Brushes.Transparent, 0);
+            CodePresenter.TextArea.SelectionCornerRadius = 0;
+            CodePresenter.TextArea.SetResourceReference(TextArea.SelectionBrushProperty, ThemeKeys.TextControlSelectionHighlightColorKey);
         }
 
         private static void OnSubstitutionsPropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs args)
@@ -176,7 +183,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             }
         }
 
-        private async void FormatAndRenderSampleFromFile(string source, ContentPresenter presenter, ILanguage highlightLanguage)
+        private async void FormatAndRenderSampleFromFile(string source, TextEditor presenter, ILanguage highlightLanguage)
         {
             if (source != null && source.EndsWith("txt"))
             {
@@ -197,41 +204,34 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             }
         }
 
-        private void FormatAndRenderSampleFromString(string sampleString, ContentPresenter presenter, ILanguage highlightLanguage)
+        private void FormatAndRenderSampleFromString(string sampleString, TextEditor presenter, ILanguage highlightLanguage)
         {
-            // Trim out stray blank lines at start and end.
-            sampleString = sampleString.TrimStart('\n').TrimEnd();
-
-            // Also trim out spaces at the end of each line
-            sampleString = string.Join("\n", sampleString.Split('\n').Select(s => s.TrimEnd()).ToArray());
-
-            // Perform any applicable substitutions.
-            sampleString = SubstitutionPattern.Replace(sampleString, match =>
+            var highlighterName = "";
+            if (highlightLanguage == Languages.CSharp)
             {
-                if (Substitutions != null)
-                {
-                    foreach (var substitution in Substitutions)
-                    {
-                        if (substitution.Key == match.Groups[1].Value)
-                        {
-                            return substitution.ValueAsString();
-                        }
-                    }
-                }
-                return string.Empty;
-            });
+                highlighterName = "C#";
+            }
+            else if (highlightLanguage == Languages.Xml)
+            {
+                highlighterName = "XML";
+            }
 
-            actualCode = sampleString;
 
-            var sampleCodeRTB = new TextBlock { FontFamily = new FontFamily("Consolas") };
 
-            var formatter = GenerateRichTextFormatter();
-            formatter.Colorize(sampleString, highlightLanguage);
-
-            sampleCodeRTB.Text = sampleString;
-            presenter.Content = sampleCodeRTB;
+            presenter.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition(highlighterName);
+            presenter.Text = RemoveLeadingAndTrailingEmptyLines(sampleString);
 
             presenter.Visibility = Visibility.Visible;
+        }
+
+        static string RemoveLeadingAndTrailingEmptyLines(string text)
+        {
+            var lines = text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var trimmedLines = lines.SkipWhile(string.IsNullOrWhiteSpace)
+                                    .Reverse()
+                                    .SkipWhile(string.IsNullOrWhiteSpace)
+                                    .Reverse();
+            return string.Join(Environment.NewLine, trimmedLines);
         }
 
         private CodeColorizer GenerateRichTextFormatter()

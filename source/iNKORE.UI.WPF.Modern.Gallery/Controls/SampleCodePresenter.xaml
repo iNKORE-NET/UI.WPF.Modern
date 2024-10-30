@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
     d:DesignHeight="450"
     d:DesignWidth="800"
     ui:ThemeManager.ActualThemeChanged="SampleCodePresenter_ActualThemeChanged"
@@ -25,7 +25,21 @@
             Padding="0,4,0,10"
             HorizontalScrollBarVisibility="Auto"
             VerticalScrollBarVisibility="Disabled">
-            <ContentPresenter x:Name="CodePresenter" Loaded="CodePresenter_Loaded" />
+            <!--<ContentPresenter x:Name="CodePresenter" Loaded="CodePresenter_Loaded" />-->
+            <avalonEdit:TextEditor Name="CodePresenter"
+				FontFamily="Consolas" FontSize="14"
+                IsReadOnly="True" ShowLineNumbers="False" Background="Transparent">
+                <FrameworkElement.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Command="Copy" InputGestureText="Ctrl+C">
+                            <MenuItem.Icon>
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Copy}"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="SelectAll" InputGestureText="Ctrl+A"/>
+                    </ContextMenu>
+                </FrameworkElement.ContextMenu>
+            </avalonEdit:TextEditor>
         </ScrollViewer>
         <Button
             x:Name="CopyCodeButton"
