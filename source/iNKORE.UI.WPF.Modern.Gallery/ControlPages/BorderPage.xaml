@@ -17,6 +17,7 @@
                 <Border
                     x:Name="Control1"
                     VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
                     Background="#FFFFFFFF"
                     BorderBrush="#FFFFD700"
                     BorderThickness="2">
@@ -38,7 +39,7 @@
                         Minimum="0"
                         TickFrequency="1"
                         ValueChanged="ThicknessSlider_ValueChanged"
-                        Value="2" />
+                        Value="2" SmallChange="1" IsSnapToTickEnabled="True" />
 
                     <Grid>
                         <Grid.ColumnDefinitions>

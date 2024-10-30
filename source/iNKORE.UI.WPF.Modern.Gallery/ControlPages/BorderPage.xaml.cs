@@ -31,6 +31,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         private void ThicknessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (Control1 != null) Control1.BorderThickness = new Thickness(e.NewValue);
+
+            UpdateExampleCode();
         }
 
         private void BGRadioButton_Checked(object sender, RoutedEventArgs e)
@@ -54,6 +56,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                         break;
                 }
             }
+
+            UpdateExampleCode();
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -77,6 +81,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                         break;
                 }
             }
+
+            UpdateExampleCode();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -113,6 +119,27 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
             ObservableCollection<ControlExampleSubstitution> Substitutions = new ObservableCollection<ControlExampleSubstitution>() { Substitution1, Substitution2, Substitution3 };
             Example1.Substitutions = Substitutions;
+
+            UpdateExampleCode();
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+            Example1.Xaml = Example1Xaml;
+        }
+
+        public string Example1Xaml => $@"
+<Border x:Name=""Control1"" HorizontalAlignment=""Left""
+    VerticalAlignment=""Top"" BorderThickness=""{Control1.BorderThickness.Left.ToString()}""
+    Background=""{(Control1.Background as SolidColorBrush)?.Color.ToHEX()}"" BorderBrush=""{(Control1.BorderBrush as SolidColorBrush)?.Color.ToHEX()}"">
+    <TextBlock Margin=""8,5"" FontSize=""18""
+        Foreground=""Black""
+        Text=""Text inside a border"" />
+</Border>
+";
+
+        #endregion
     }
 }
