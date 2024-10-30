@@ -70,6 +70,8 @@
 
 - Everyone who donated us to let us walk further
 
+- Microsoft WinUI and CommunityToolkit contributors
+
 - ~~wherewhere~~ (He deserves to be crossed out.
 
   More info: https://docs.inkore.net/blog/2024/09/17/reflection-interest-in-opensource-community)
