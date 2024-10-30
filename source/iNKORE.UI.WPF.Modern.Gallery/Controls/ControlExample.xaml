@@ -112,8 +112,7 @@
                                 </Border>
 
                                 <!--  Sample code display  -->
-                                <Expander
-                                    x:Name="CodeExpander"
+                                <Expander x:Name="CodeExpander"
                                     Grid.Row="1"
                                     HorizontalAlignment="Stretch"
                                     HorizontalContentAlignment="Stretch"

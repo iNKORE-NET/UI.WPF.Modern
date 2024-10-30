@@ -564,7 +564,7 @@
                         <Border x:Name="ExpanderContentClip" DockPanel.Dock="Bottom">
                             <Border
                                 x:Name="ExpanderContent"
-                                MinHeight="{TemplateBinding MinHeight}"
+                                
                                 Padding="{TemplateBinding Padding}"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
@@ -573,7 +573,8 @@
                                 BorderThickness="{DynamicResource ExpanderContentDownBorderThickness}"
                                 CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius,
                                                                Converter={StaticResource BottomCornerRadiusFilterConverter}}"
-                                Visibility="Collapsed">
+                                Visibility="Collapsed"><!--MinHeight="{TemplateBinding MinHeight}"-->
+                                
                                 <ContentPresenter
                                     x:Name="ExpandSite"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"

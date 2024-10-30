@@ -32,12 +32,87 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         private void AcrylicPage_Loaded(object sender, RoutedEventArgs e)
         {
             ColorSelectorInApp.SelectedIndex = 0;
+            UpdateExampleCode();
         }
 
         private void ColorSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             AcrylicPanel shape = CustomAcrylicShapeInApp;
             shape.TintColor = ((SolidColorBrush)e.AddedItems[0]).Color;
+
+            UpdateExampleCode();
         }
+
+        private void OpacitySliderInApp_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            UpdateExampleCode();
+        }
+
+
+        private void UpdateExampleCode()
+        {
+            Example1.Xaml = Example1Xaml;
+            Example3.Xaml = Example3Xaml;
+        }
+
+        string Example1Xaml => @"            
+<Grid x:Name=""Acrylic1Grid"" Background=""{DynamicResource {x:Static ui:ThemeKeys.SolidBackgroundFillColorBaseBrushKey}}"">
+    <Rectangle
+        Width=""100""
+        Height=""200""
+        HorizontalAlignment=""Left""
+        VerticalAlignment=""Top""
+        Fill=""Aqua"" />
+    <Ellipse
+        Width=""152""
+        Height=""152""
+        HorizontalAlignment=""Center""
+        VerticalAlignment=""Center""
+        Fill=""Magenta"" />
+    <Rectangle
+        Width=""80""
+        Height=""100""
+        HorizontalAlignment=""Right""
+        VerticalAlignment=""Bottom""
+        Fill=""Yellow"" />
+</Grid>
+";
+
+        string Example3Xaml => $@"
+<Grid
+    x:Name=""Example3Grid""
+    Width=""320""
+    Height=""200""
+    HorizontalAlignment=""Left"">
+    <Grid x:Name=""Acrylic3Grid"" 
+        Background=""{{DynamicResource {{x:Static ui:ThemeKeys.SolidBackgroundFillColorBaseBrushKey}}}}"">
+        <Rectangle
+            Width=""100""
+            Height=""200""
+            HorizontalAlignment=""Left""
+            VerticalAlignment=""Top""
+            Fill=""Aqua"" />
+        <Ellipse
+            Width=""152""
+            Height=""152""
+            HorizontalAlignment=""Center""
+            VerticalAlignment=""Center""
+            Fill=""Magenta"" />
+        <Rectangle
+            Width=""80""
+            Height=""100""
+            HorizontalAlignment=""Right""
+            VerticalAlignment=""Bottom""
+            Fill=""Yellow"" />
+    </Grid>
+    <ui:AcrylicPanel
+        x:Name=""CustomAcrylicShapeInApp""
+        Margin=""12""
+        Target=""{{Binding ElementName=Acrylic3Grid}}""
+        TintColor=""${CustomAcrylicShapeInApp.TintColor.ToHEX()}""
+        TintOpacity=""${CustomAcrylicShapeInApp.TintOpacity.ToString()}"" />
+</Grid>
+";
+
     }
 }

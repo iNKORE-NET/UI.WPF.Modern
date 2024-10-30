@@ -216,10 +216,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
                 highlighterName = "XML";
             }
 
-
-
-            presenter.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition(highlighterName);
-            presenter.Text = RemoveLeadingAndTrailingEmptyLines(sampleString);
+            var highlighter = HighlightingManager.Instance.GetDefinition(highlighterName);
+            if (presenter.SyntaxHighlighting != highlighter)
+            presenter.SyntaxHighlighting = highlighter;
+            
+            
+            if (sampleString != presenter.Text)
+                presenter.Text = RemoveLeadingAndTrailingEmptyLines(sampleString);
 
             presenter.Visibility = Visibility.Visible;
         }
