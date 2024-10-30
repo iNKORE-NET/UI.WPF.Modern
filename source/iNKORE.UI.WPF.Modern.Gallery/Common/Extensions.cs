@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace iNKORE.UI.WPF.Modern.Gallery
 {
@@ -16,6 +17,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 newTheme = ElementTheme.Dark;
             }
             ThemeManager.SetRequestedTheme(element, newTheme);
+        }
+
+        public static string ToHEX(this Color color)
+        {
+            return $"#{color.R:X2}{color.G:X2}{color.B:X2}";
         }
     }
 }

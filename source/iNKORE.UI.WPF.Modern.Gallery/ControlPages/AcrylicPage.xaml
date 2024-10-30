@@ -35,7 +35,8 @@
                     Width="320"
                     Height="200"
                     HorizontalAlignment="Left">
-                    <Grid x:Name="Acrylic1Grid" Background="{DynamicResource ControlExampleDisplayBrush}">
+                    <Grid x:Name="Acrylic1Grid" 
+                        Background="{DynamicResource {x:Static ui:ThemeKeys.SolidBackgroundFillColorBaseBrushKey}}">
                         <Rectangle
                             Width="100"
                             Height="200"
@@ -74,7 +75,8 @@
                     Width="320"
                     Height="200"
                     HorizontalAlignment="Left">
-                    <Grid x:Name="Acrylic3Grid" Background="{DynamicResource ControlExampleDisplayBrush}">
+                    <Grid x:Name="Acrylic3Grid" 
+                        Background="{DynamicResource {x:Static ui:ThemeKeys.SolidBackgroundFillColorBaseBrushKey}}">
                         <Rectangle
                             Width="100"
                             Height="200"
@@ -114,7 +116,8 @@
                         Minimum="0"
                         SmallChange="0.001"
                         TickFrequency="0.001"
-                        Value="{Binding TintOpacity, ElementName=CustomAcrylicShapeInApp, Mode=TwoWay}" />
+                        Value="{Binding TintOpacity, ElementName=CustomAcrylicShapeInApp, Mode=TwoWay}"
+                        ValueChanged="OpacitySliderInApp_ValueChanged"/>
                     <TextBlock Margin="0,12" Text="Tint Color :" />
                     <ComboBox
                         x:Name="ColorSelectorInApp"
@@ -145,7 +148,8 @@
                     Width="320"
                     Height="200"
                     HorizontalAlignment="Left">
-                    <Grid x:Name="Acrylic4Grid" Background="{DynamicResource ControlExampleDisplayBrush}">
+                    <Grid x:Name="Acrylic4Grid" 
+                        Background="{DynamicResource {x:Static ui:ThemeKeys.SolidBackgroundFillColorBaseBrushKey}}">
                         <Rectangle
                             Width="100"
                             Height="200"

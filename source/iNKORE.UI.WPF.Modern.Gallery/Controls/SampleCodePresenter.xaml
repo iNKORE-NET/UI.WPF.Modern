@@ -44,26 +44,68 @@
         <Button
             x:Name="CopyCodeButton"
             Grid.Row="0"
-            Padding="4"
+            Padding="6"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             AutomationProperties.Name="Copy sample code"
             Click="CopyCodeButton_Click"
             ToolTipService.ToolTip="Copy sample code">
-            <ui:FontIcon FontSize="16" Glyph="&#xE8C8;" />
+            <Grid>
+                <ui:FontIcon x:Name="FontIcon_CopyCodeButton_Copy" FontSize="16" 
+                             Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
+                    <FrameworkElement.RenderTransform>
+                        <ScaleTransform x:Name="ScaleTransform_CopyCodeButton_Copy"
+                                        ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                    </FrameworkElement.RenderTransform>
+                </ui:FontIcon>
+                <ui:FontIcon x:Name="FontIcon_CopyCodeButton_Success" FontSize="16" 
+                             Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5">
+                    <FrameworkElement.RenderTransform>
+                        <ScaleTransform x:Name="ScaleTransform_CopyCodeButton_Success"
+                                        ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                    </FrameworkElement.RenderTransform>
+                </ui:FontIcon>
+            </Grid>
         </Button>
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ConfirmDialogGroups">
-                <VisualState x:Name="ConfirmationDialogHidden" />
+                <VisualState x:Name="ConfirmationDialogHidden">
+                    <Storyboard>
+                        <DoubleAnimation BeginTime="00:00:00:0.15" Duration="00:00:00:0.15" To="0" 
+                                 Storyboard.TargetName="FontIcon_CopyCodeButton_Success"
+                                 Storyboard.TargetProperty="Opacity"/>
+
+                        <DoubleAnimation Duration="00:00:00:0" To="1" 
+                                 Storyboard.TargetName="ScaleTransform_CopyCodeButton_Copy"
+                                 Storyboard.TargetProperty="ScaleX"/>
+                        <DoubleAnimation BeginTime="00:00:00:0.15" Duration="00:00:00:0.15" To="1" 
+                                 Storyboard.TargetName="FontIcon_CopyCodeButton_Copy"
+                                 Storyboard.TargetProperty="Opacity"/>
+
+                    </Storyboard>
+
+                </VisualState>
                 <VisualState x:Name="ConfirmationDialogVisible">
                     <Storyboard>
-                        <BooleanAnimationUsingKeyFrames
-                            Storyboard.TargetName="CopyCodeButton"
-                            Storyboard.TargetProperty="IsEnabled"
-                            Duration="0:0:0">
-                            <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="False" />
-                        </BooleanAnimationUsingKeyFrames>
+                        <DoubleAnimation Duration="00:00:00:0.15" To="0" 
+                                 Storyboard.TargetName="ScaleTransform_CopyCodeButton_Copy"
+                                 Storyboard.TargetProperty="ScaleX"/>
+                        <DoubleAnimation BeginTime="00:00:00:0.1" Duration="00:00:00:0.01" To="0" 
+                                 Storyboard.TargetName="FontIcon_CopyCodeButton_Copy"
+                                 Storyboard.TargetProperty="Opacity"/>
+
+                        <DoubleAnimation BeginTime="00:00:00:0.15" Duration="00:00:00:0.15" To="1" 
+                                 Storyboard.TargetName="ScaleTransform_CopyCodeButton_Success"
+                                 Storyboard.TargetProperty="ScaleX">
+                            <DoubleAnimation.EasingFunction>
+                                <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation BeginTime="00:00:00:0.15" Duration="00:00:00:0.015" To="1" 
+                                 Storyboard.TargetName="FontIcon_CopyCodeButton_Success"
+                                 Storyboard.TargetProperty="Opacity"/>
+
                     </Storyboard>
                 </VisualState>
             </VisualStateGroup>

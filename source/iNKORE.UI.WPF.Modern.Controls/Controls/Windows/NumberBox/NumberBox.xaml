@@ -13,6 +13,10 @@
 
     <ikw:CornerRadiusExtractionConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" TargetMember="TopLeft" />
     <ikw:CornerRadiusExtractionConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" TargetMember="BottomRight" />
+    <ikw:CornerRadiusFilterConverter x:Key="TopCornerRadiusFilterConverter" Filter="Top" />
+    <ikw:CornerRadiusFilterConverter x:Key="RightCornerRadiusFilterConverter" Filter="Right" />
+    <ikw:CornerRadiusFilterConverter x:Key="BottomCornerRadiusFilterConverter" Filter="Bottom" />
+    <ikw:CornerRadiusFilterConverter x:Key="LeftCornerRadiusFilterConverter" Filter="Left" />
 
     <Thickness x:Key="NumberBoxPopupIndicatorMargin">0,0,8,0</Thickness>
 
