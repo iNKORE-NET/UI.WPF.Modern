@@ -65,5 +65,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             LoadTimeTextBlock.Visibility = Visibility.Collapsed;
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

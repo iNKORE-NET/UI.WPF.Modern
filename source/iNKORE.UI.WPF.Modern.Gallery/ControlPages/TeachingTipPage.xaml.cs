@@ -48,5 +48,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 NavigationRootPage.Current.PageHeader.TeachingTip3.IsOpen = true;
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

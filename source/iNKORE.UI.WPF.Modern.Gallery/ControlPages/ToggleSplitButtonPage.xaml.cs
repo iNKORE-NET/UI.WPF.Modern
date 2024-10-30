@@ -67,5 +67,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 myRichEditBox.Selection.Text = "";
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

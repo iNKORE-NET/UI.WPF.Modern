@@ -15,11 +15,6 @@
             <local:ControlExample.Example>
                 <DatePicker ui:ControlHelper.Header="Calendar" ui:ControlHelper.PlaceholderText="Pick a date" />
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;DatePicker ui:ControlHelper.PlaceholderText=&quot;Pick a date&quot; ui:ControlHelper.Header=&quot;Calendar&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>

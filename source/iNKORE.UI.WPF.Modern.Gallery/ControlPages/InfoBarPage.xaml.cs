@@ -105,5 +105,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
     </muxc:InfoBar.ActionButton>";
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

@@ -371,5 +371,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             SamplePage2Item.SelectsOnInvoked = (sender as CheckBox).IsChecked == true ? false : true;
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

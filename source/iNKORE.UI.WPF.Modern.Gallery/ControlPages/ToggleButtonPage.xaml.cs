@@ -107,5 +107,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 }
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

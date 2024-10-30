@@ -106,5 +106,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             SetCheckedState();
         }
         #endregion
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

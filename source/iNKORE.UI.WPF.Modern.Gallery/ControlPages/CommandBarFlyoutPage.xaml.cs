@@ -48,5 +48,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             ShowMenu((sender as Button).IsMouseOver);
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

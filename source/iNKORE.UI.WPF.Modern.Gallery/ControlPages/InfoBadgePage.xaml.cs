@@ -108,5 +108,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 DynamicInfoBadge.Value = (int)args.NewValue;
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

@@ -37,5 +37,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 DialogResult.Text = "User cancelled the dialog";
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

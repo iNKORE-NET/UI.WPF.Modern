@@ -23,6 +23,16 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             DataContext = await Contact.GetContactsAsync();
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 
     public class Contact : INotifyPropertyChanged

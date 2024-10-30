@@ -208,6 +208,16 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 firstContact.ChangeCompany("Line 1\nLine 2");
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 
     public class NestedCategory

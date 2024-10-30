@@ -61,5 +61,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             });
             Example1.Substitutions = new ObservableCollection<ControlExampleSubstitution> { Substitution1, Substitution2, Substitution3 };
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

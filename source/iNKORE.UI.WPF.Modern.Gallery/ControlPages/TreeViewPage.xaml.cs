@@ -117,6 +117,16 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 return new List<AutomationPeer>();
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 
     public class ExplorerItem : INotifyPropertyChanged

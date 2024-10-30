@@ -31,5 +31,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             _clicks += 1;
             Control1Output.Text = "Number of clicks: " + _clicks;
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

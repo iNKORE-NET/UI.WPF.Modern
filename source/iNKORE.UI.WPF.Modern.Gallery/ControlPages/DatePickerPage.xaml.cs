@@ -30,5 +30,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             datePicker.BlackoutDates.AddDatesInPast();
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

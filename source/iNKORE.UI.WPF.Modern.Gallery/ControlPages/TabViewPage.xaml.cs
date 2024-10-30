@@ -64,5 +64,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
             return newItem;
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

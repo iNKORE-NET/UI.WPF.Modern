@@ -32,5 +32,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
             Items = ControlInfoDataSource.Instance.Groups.Take(3).SelectMany(g => g.Items).ToList();
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

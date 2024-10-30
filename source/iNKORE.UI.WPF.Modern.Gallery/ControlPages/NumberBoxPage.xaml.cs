@@ -38,5 +38,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             NumberBox1.Resources["NumberBoxPopupVerticalOffset"] = args.NewValue;
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

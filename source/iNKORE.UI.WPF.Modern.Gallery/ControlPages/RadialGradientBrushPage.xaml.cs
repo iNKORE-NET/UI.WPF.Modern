@@ -76,5 +76,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             RadialGradientBrushExample.RadiusY = RadiusYSlider.Value;
             RadialGradientBrushExample.GradientOrigin = new Point(OriginXSlider.Value, OriginYSlider.Value);
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

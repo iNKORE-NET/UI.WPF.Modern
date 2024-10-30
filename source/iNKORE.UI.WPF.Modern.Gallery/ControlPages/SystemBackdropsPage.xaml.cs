@@ -41,5 +41,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             WindowHelper.SetSystemBackdropType(newWindow,BackdropType.Acrylic);
             newWindow.Show();
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

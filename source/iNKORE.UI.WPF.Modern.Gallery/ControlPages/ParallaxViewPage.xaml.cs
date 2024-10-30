@@ -32,5 +32,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
             Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items).OrderBy(i => i.Title).ToList();
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

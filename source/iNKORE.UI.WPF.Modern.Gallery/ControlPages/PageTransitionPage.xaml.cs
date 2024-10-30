@@ -74,5 +74,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 _transitionInfo = null;
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

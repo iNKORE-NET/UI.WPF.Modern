@@ -44,5 +44,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 SelectedOptionText2.Text = "You clicked: " + (sender as MenuItem).Header;
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

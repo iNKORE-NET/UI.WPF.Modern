@@ -76,6 +76,16 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
             VisualStateManager.GoToElementState((FrameworkElement)Content, colorString, false);
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 
     public class NavLink

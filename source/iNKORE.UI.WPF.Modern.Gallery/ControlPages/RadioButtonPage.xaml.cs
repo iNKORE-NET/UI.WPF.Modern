@@ -31,5 +31,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             Control1Output.Text = string.Format("You selected {0}", (sender as RadioButton).Content.ToString());
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

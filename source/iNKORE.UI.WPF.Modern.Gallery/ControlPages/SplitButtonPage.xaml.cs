@@ -68,5 +68,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 myRichEditBox.Foreground = new SolidColorBrush(currentColor);
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

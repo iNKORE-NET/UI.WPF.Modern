@@ -24,5 +24,14 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             InitializeComponent();
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
     }
 }

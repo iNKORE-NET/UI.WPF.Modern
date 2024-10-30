@@ -49,5 +49,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 page?.CopyState(oldPage);
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

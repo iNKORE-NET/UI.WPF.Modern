@@ -23,5 +23,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             OptionsExpander.Header = "Show options";
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }

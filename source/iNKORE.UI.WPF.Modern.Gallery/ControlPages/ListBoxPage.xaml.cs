@@ -61,5 +61,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             ListBox2.SelectedIndex = 2;
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+
+        }
+
+        #endregion
+
     }
 }
