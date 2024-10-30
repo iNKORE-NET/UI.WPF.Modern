@@ -25,14 +25,9 @@
             </local:ControlExample.Output>
             <local:ControlExample.Options>
                 <StackPanel>
-                    <CheckBox x:Name="DisableButton1" Content="Disable button" />
+                    <CheckBox x:Name="DisableButton1" Content="Disable button" Click="DisableButton1_Click"/>
                 </StackPanel>
             </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;Button Content=&quot;Standard XAML button&quot; Click=&quot;Button_Click&quot; $(IsEnabled)/&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example2" HeaderText="A Button with graphical content.">
@@ -51,16 +46,9 @@
             <local:ControlExample.Output>
                 <TextBlock x:Name="Control2Output" />
             </local:ControlExample.Output>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;Button Content=&quot;Button&quot; Click=&quot;Button_Click&quot; AutomationProperties.Name=&quot;Pie&quot;&gt;
-    &lt;Image Source=&quot;/Assets/Slices.png&quot; AutomationProperties.Name=&quot;Slice&quot;/&gt;
-&lt;/Button&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Wrapping Buttons with large content">
+        <local:ControlExample x:Name="Example3" HeaderText="Wrapping Buttons with large content">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock
@@ -87,37 +75,12 @@
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;StackPanel&gt;
-    &lt;TextBlock Text=&quot;The following buttons' content may get clipped if we don't pay careful attention to their layout containers.&quot; Margin=&quot;0,0,0,8&quot; TextWrapping=&quot;Wrap&quot;/&gt;
-    &lt;TextBlock Text=&quot;One option to mitigate clipped content is to place Buttons underneath each other, allowing for more space to grow horizontally:&quot; Margin=&quot;0,0,0,8&quot; TextWrapping=&quot;Wrap&quot;/&gt;
-    &lt;Button HorizontalAlignment=&quot;Stretch&quot; Margin=&quot;0,0,0,5&quot;&gt;This is some text that is too long and will get cut off&lt;/Button&gt;
-    &lt;Button HorizontalAlignment=&quot;Stretch&quot;&gt;This is another text that would result in being cut off&lt;/Button&gt;
-
-    &lt;TextBlock Text=&quot;Another option is to explicitly wrap the Button's content&quot; Margin=&quot;0,8,0,8&quot;/&gt;
-    &lt;StackPanel Orientation=&quot;Horizontal&quot; HorizontalAlignment=&quot;Center&quot;&gt;
-        &lt;Button MaxWidth=&quot;240&quot; Margin=&quot;0,0,8,0&quot;&gt;
-            &lt;TextBlock Text=&quot;This is some text that is too long and will get cut off&quot; TextWrapping=&quot;WrapWholeWords&quot;/&gt;
-        &lt;/Button&gt;
-        &lt;Button MaxWidth=&quot;240&quot;&gt;
-            &lt;TextBlock Text=&quot;This is another text that would result in being cut off&quot; TextWrapping=&quot;WrapWholeWords&quot;/&gt;
-        &lt;/Button&gt;
-    &lt;/StackPanel&gt;
-&lt;/StackPanel&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Accent style applied to Button.">
+        <local:ControlExample x:Name="Example4" HeaderText="Accent style applied to Button.">
             <local:ControlExample.Example>
-                <Button Content="Accent style button" Style="{DynamicResource AccentButtonStyle}" />
+                <Button Content="Accent style button" Style="{DynamicResource {x:Static ui:ThemeKeys.AccentButtonStyleKey}}" />
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;Button Style=&quot;{StaticResource AccentButtonStyle}&quot; Content=&quot;Accent style button&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
     </StackPanel>

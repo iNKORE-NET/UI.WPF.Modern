@@ -264,6 +264,9 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             var scv = CodePresenter.Template.FindName("PART_ScrollViewer", CodePresenter);
             if (scv is ScrollViewer PART_ScrollViewer)
             {
+                // I don't know why AvalonEditor doesn't handle horizontal scrolling properly,
+                // So we see horizontal scrolls as vertical scrolls and bubble it to the parent.
+
                 PART_ScrollViewer.PreviewMouseWheel += (sender, e) =>
                 {
                     var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
@@ -271,10 +274,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
                     eventArg.Source = sender;
                     this.RaiseEvent(eventArg);
                 };
-            }
-            else
-            {
-                
             }
         }
     }

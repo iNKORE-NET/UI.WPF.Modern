@@ -62,6 +62,71 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             });
             ObservableCollection<ControlExampleSubstitution> Substitutions = new ObservableCollection<ControlExampleSubstitution>() { Substitution };
             Example1.Substitutions = Substitutions;
+
+            UpdateExampleCode();
         }
+
+        private void DisableButton1_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
+            Example3.Xaml = Example3Xaml;
+            Example4.Xaml = Example4Xaml;
+        }
+
+
+        public string Example1Xaml => $@"
+<Button x:Name=""Button1"" Click=""Button_Click""
+    Content=""Standard XAML button"" IsEnabled=""{Button1.IsEnabled}"" />
+";
+
+        public string Example2Xaml => $@"
+<Button x:Name=""Button2""
+    Width=""50"" Height=""50""
+    AutomationProperties.Name=""Pie""
+    Click=""Button_Click"">
+    <Image AutomationProperties.Name=""Slice"" Source=""/Assets/Slices.png"" />
+</Button>
+";
+
+        public string Example3Xaml => $@"
+<StackPanel>
+    <TextBlock
+        Margin=""0,0,0,8""
+        Text=""The following buttons' content may get clipped if we don't pay careful attention to their layout containers.""
+        TextWrapping=""Wrap"" />
+    <TextBlock
+        Margin=""0,0,0,8""
+        Text=""One option to mitigate clipped content is to place Buttons underneath each other, allowing for more space to grow horizontally:""
+        TextWrapping=""Wrap"" />
+    <Button Margin=""0,0,0,5"" HorizontalAlignment=""Stretch"">
+        This is some text that is too long and will get cut off
+    </Button>
+    <Button HorizontalAlignment=""Stretch"">This is another text that would result in being cut off</Button>
+
+    <TextBlock Margin=""0,8,0,8"" Text=""Another option is to explicitly wrap the Button's content"" />
+    <StackPanel HorizontalAlignment=""Center"" Orientation=""Horizontal"">
+        <Button MaxWidth=""240"" Margin=""0,0,8,0"">
+            <TextBlock Text=""This is some text that is too long and will get cut off"" TextWrapping=""Wrap"" />
+        </Button>
+        <Button MaxWidth=""240"">
+            <TextBlock Text=""This is another text that would result in being cut off"" TextWrapping=""Wrap"" />
+        </Button>
+    </StackPanel>
+</StackPanel>
+";
+
+        public string Example4Xaml => $@"
+<Button Content=""Accent style button"" Style=""{{DynamicResource {{x:Static ui:ThemeKeys.AccentButtonStyleKey}}}}"" />
+";
+
+        #endregion
     }
 }
