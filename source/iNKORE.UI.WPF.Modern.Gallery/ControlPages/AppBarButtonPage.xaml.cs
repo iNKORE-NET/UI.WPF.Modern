@@ -50,8 +50,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             if (sender is ToggleButton toggle && toggle.IsChecked != null)
             {
-                Button1.IsCompact =
-                Button2.IsCompact =
+                //Button1.IsCompact =
+                //Button2.IsCompact =
                 Button3.IsCompact =
                 Button4.IsCompact = (bool)toggle.IsChecked;
             }
@@ -65,12 +65,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
                 switch (name)
                 {
-                    case "Button1":
-                        Control1Output.Text = "You clicked: " + name;
-                        break;
-                    case "Button2":
-                        Control2Output.Text = "You clicked: " + name;
-                        break;
                     case "Button3":
                         Control3Output.Text = "You clicked: " + name;
                         break;
@@ -88,5 +82,22 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         {
             e.CanExecute = true;
         }
+
+        #region Example Code
+
+        public string Example3Xaml => @"                    
+<ui:AppBarButton
+    x:Name=""Button3""
+    Click=""AppBarButton_Click""
+    Label=""FontIcon"">
+    <ui:AppBarButton.Icon>
+        <ui:FontIcon Icon=""{x:Static ui:SegoeFluentIcons.Home}""/>
+    </ui:AppBarButton.Icon>
+</ui:AppBarButton>
+";
+
+
+
+        #endregion
     }
 }

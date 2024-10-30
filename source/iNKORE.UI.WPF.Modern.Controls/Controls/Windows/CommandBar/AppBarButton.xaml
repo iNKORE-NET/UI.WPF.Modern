@@ -162,6 +162,10 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <!--#region ApplicationViewStates-->
+                        <!--  FullSize  -->
+                        <Trigger SourceName="ApplicationViewStatesListener" Property="CurrentStateName" Value="FullSize">
+                            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        </Trigger>
                         <!--  Compact  -->
                         <Trigger SourceName="ApplicationViewStatesListener" Property="CurrentStateName" Value="Compact">
                             <Setter TargetName="AppBarButtonInnerBorder" Property="Margin" Value="{DynamicResource AppBarButtonInnerBorderCompactMargin}" />
