@@ -26,59 +26,6 @@
                         Style="{StaticResource OutputTextBlockStyle}" />
                 </StackPanel>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;ui:AutoSuggestBox TextChanged=&quot;AutoSuggestBox_TextChanged&quot;
-                SuggestionChosen=&quot;AutoSuggestBox_SuggestionChosen&quot;
-                Width=&quot;300&quot; AutomationProperties.Name=&quot;Basic AutoSuggestBox&quot;/&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
-                <sys:String xml:space="preserve">
-// List of cats
-private List&lt;string&gt; Cats = new List&lt;string&gt;()
-{
-    &quot;Abyssinian&quot;,
-    &quot;Aegean&quot;,
-    &quot;American Bobtail&quot;,
-    ...
-};
-
-// Handle text change and present suitable items
-private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-{
-    // Since selecting an item will also change the text,
-    // only listen to changes caused by user entering text.
-    if(args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
-    {
-        var suitableItems = new List&lt;string&gt;();
-        var splitText = sender.Text.ToLower().Split(&quot; &quot;);
-        foreach(var cat in Cats)
-        {
-            var found = splitText.All((key)=&gt;
-            {
-                return cat.ToLower().Contains(key);
-            });
-            if(found)
-            {
-                suitableItems.Add(cat);
-            }
-        }
-        if(suitableItems.Count == 0)
-        {
-            suitableItems.Add(&quot;No results found&quot;);
-        }
-        sender.ItemsSource = suitableItems;
-    }
-}
-
-// Handle user selecting an item, in our case just output the selected item.
-private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
-{
-    SuggestionOutput.Text = args.SelectedItem.ToString();
-}
-                </sys:String>
-            </local:ControlExample.CSharp>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="An AutoSuggestBox that provides a SearchBox experience">
             <local:ControlExample.Example>
@@ -120,15 +67,6 @@ private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestB
                     </StackPanel>
                 </Grid>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;ui:AutoSuggestBox PlaceholderText=&quot;Type a control name&quot;
-        TextChanged=&quot;Control2_TextChanged&quot;
-        QueryIcon=&quot;Find&quot;
-        QuerySubmitted=&quot;Control2_QuerySubmitted&quot;
-        SuggestionChosen=&quot;Control2_SuggestionChosen&quot;/&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>

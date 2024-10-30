@@ -62,11 +62,6 @@
                         TintOpacity="0.8" />
                 </Grid>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;Rectangle Fill=&quot;{ThemeResource AcrylicInAppFillColorDefaultBrush}&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="Custom acrylic in-app brush.">
             <local:ControlExample.Example>
@@ -130,16 +125,6 @@
                     </ComboBox>
                 </StackPanel>
             </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;Rectangle Fill=&quot;{ThemeResource CustomAcrylicInAppBrush}&quot; /&gt;
-
-&lt;ResourceDictionary x:Key=&quot;Default&quot;&gt;
-    &lt;media:AcrylicBrush x:Key=&quot;CustomAcrylicBrush&quot; 
-            TintOpacity=&quot;$(OpacitySlider)&quot; TintColor=&quot;$(TintColor)&quot; FallbackColor=&quot;$(FallbackColor)&quot; /&gt;
-&lt;/ResourceDictionary&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example4" HeaderText="Luminosity with in-app Acrylic.">
             <local:ControlExample.Example>
@@ -201,16 +186,6 @@
                         Value="{Binding Amount, ElementName=CustomAcrylicShapeLumin, Mode=TwoWay}" />
                 </StackPanel>
             </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;Rectangle Fill=&quot;{ThemeResource CustomAcrylicInAppLuminosity}&quot; /&gt;
-
-&lt;ResourceDictionary x:Key=&quot;Default&quot;&gt;
-    &lt;media:AcrylicBrush x:Key=&quot;CustomAcrylicInAppLuminosity&quot; 
-            TintOpacity=&quot;$(OpacitySlider)&quot; TintLuminosityOpacity=&quot;$(TintLuminositySlider)&quot; TintColor=&quot;SkyBlue&quot; FallbackColor=&quot;SkyBlue&quot; /&gt;
-&lt;/ResourceDictionary&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>

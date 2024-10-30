@@ -58,15 +58,6 @@
                         VerticalAlignment="Center" />
                 </StackPanel>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;ui:AppBarButton Label=&quot;FontIcon&quot; Click=&quot;AppBarButton_Click&quot;&gt;
-    &lt;ui:AppBarButton.Icon&gt;
-        &lt;ui:FontIcon FontFamily=&quot;Candara&quot; Glyph=&quot;&#x03A3;&quot;/&gt;
-    &lt;/ui:AppBarButton.Icon&gt;
-&lt;/ui:AppBarButton&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example4" HeaderText="An AppBarButton with a path icon.">
             <local:ControlExample.Example>
@@ -86,15 +77,6 @@
                         VerticalAlignment="Center" />
                 </StackPanel>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;ui:AppBarButton Label=&quot;PathIcon&quot; Click=&quot;AppBarButton_Click&quot;&gt;
-    &lt;ui:AppBarButton.Icon&gt;
-        &lt;ui:PathIcon Data=&quot;F1 M 20,20L 24,10L 24,24L 5,24&quot;/&gt;
-    &lt;/ui:AppBarButton.Icon&gt;
-&lt;/ui:AppBarButton&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example5" HeaderText="An AppBarButton with an InputGesture">
@@ -119,15 +101,6 @@
                         VerticalAlignment="Center" />
                 </StackPanel>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;ui:AppBarButton Icon=&quot;Save&quot; Label=&quot;Save&quot; Command=&quot;Save&quot; Click=&quot;AppBarButton_Click&quot;&gt;
-    &lt;ui:AppBarButton.CommandBindings&gt;
-        &lt;CommandBinding Command=&quot;Save&quot; CanExecute=&quot;Save_CanExecute&quot;/&gt;
-    &lt;ui:AppBarButton.CommandBindings/&gt;
-&lt;/ui:AppBarButton&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>

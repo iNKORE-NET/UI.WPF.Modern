@@ -19,28 +19,21 @@
         </Grid.RowDefinitions>
 
         <TextBlock x:Name="SampleHeader" />
-        <ScrollViewer
-            x:Name="CodeScrollViewer"
-            Grid.Row="1"
-            Padding="0,4,0,10"
-            HorizontalScrollBarVisibility="Auto"
-            VerticalScrollBarVisibility="Disabled">
-            <!--<ContentPresenter x:Name="CodePresenter" Loaded="CodePresenter_Loaded" />-->
-            <avalonEdit:TextEditor Name="CodePresenter"
-				FontFamily="Consolas" FontSize="14"
+        <avalonEdit:TextEditor Name="CodePresenter" Grid.Row="1" Padding="0,4,0,10"
+				FontFamily="Consolas" FontSize="14" VerticalScrollBarVisibility="Disabled"
                 IsReadOnly="True" ShowLineNumbers="False" Background="Transparent">
-                <FrameworkElement.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Command="Copy" InputGestureText="Ctrl+C">
-                            <MenuItem.Icon>
-                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Copy}"/>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Command="SelectAll" InputGestureText="Ctrl+A"/>
-                    </ContextMenu>
-                </FrameworkElement.ContextMenu>
-            </avalonEdit:TextEditor>
-        </ScrollViewer>
+            <FrameworkElement.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Command="Copy" InputGestureText="Ctrl+C">
+                        <MenuItem.Icon>
+                            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Copy}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="SelectAll" InputGestureText="Ctrl+A"/>
+                </ContextMenu>
+            </FrameworkElement.ContextMenu>
+        </avalonEdit:TextEditor>
+
         <Button
             x:Name="CopyCodeButton"
             Grid.Row="0"

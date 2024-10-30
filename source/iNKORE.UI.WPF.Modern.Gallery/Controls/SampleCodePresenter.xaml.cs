@@ -134,6 +134,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
         {
             ReevaluateVisibility();
             SampleHeader.Text = IsCSharpSample ? "C#" : "XAML";
+
+            FixAvalonEditScrolling();
         }
 
         private void CodePresenter_Loaded(object sender, RoutedEventArgs e)
@@ -255,6 +257,25 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
                 await Task.Delay(1000);
                 VisualStateManager.GoToState(this, "ConfirmationDialogHidden", false);
             });
+        }
+
+        private void FixAvalonEditScrolling()
+        {
+            var scv = CodePresenter.Template.FindName("PART_ScrollViewer", CodePresenter);
+            if (scv is ScrollViewer PART_ScrollViewer)
+            {
+                PART_ScrollViewer.PreviewMouseWheel += (sender, e) =>
+                {
+                    var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
+                    eventArg.RoutedEvent = UIElement.MouseWheelEvent;
+                    eventArg.Source = sender;
+                    this.RaiseEvent(eventArg);
+                };
+            }
+            else
+            {
+                
+            }
         }
     }
 }

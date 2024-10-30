@@ -43,17 +43,21 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             };
             compactButton.Click += CompactButton_Click;
             appBar.PrimaryCommands.Insert(0, compactButton);
+
+            UpdateExampleCode();
         }
 
         private void CompactButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is ToggleButton toggle && toggle.IsChecked != null)
             {
-                Button1.IsCompact =
-                Button2.IsCompact =
+                //Button1.IsCompact =
+                //Button2.IsCompact =
                 Button3.IsCompact =
                 Button4.IsCompact = (bool)toggle.IsChecked;
             }
+
+            UpdateExampleCode();
         }
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
@@ -64,12 +68,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
                 switch (name)
                 {
-                    case "Button1":
-                        Control1Output.Text = "IsChecked = " + b.IsChecked.ToString();
-                        break;
-                    case "Button2":
-                        Control2Output.Text = "IsChecked = " + b.IsChecked.ToString();
-                        break;
                     case "Button3":
                         Control3Output.Text = "IsChecked = " + b.IsChecked.ToString();
                         break;
@@ -79,5 +77,37 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 }
             }
         }
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+            Example3.Xaml = Example3Xaml;
+            Example4.Xaml = Example4Xaml;
+        }
+
+        private string isCompactProp => compactButton.IsChecked == true
+            ? @"IsCompact=""True""" : "";
+
+        public string Example3Xaml => $@"
+<ui:AppBarToggleButton x:Name=""Button3"" {isCompactProp}
+    Click=""AppBarButton_Click"" Label=""FontIcon"">
+    <ui:AppBarToggleButton.Icon>
+        <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Home}}"" />
+    </ui:AppBarToggleButton.Icon>
+</ui:AppBarToggleButton>
+";
+
+        public string Example4Xaml => $@"
+<ui:AppBarToggleButton x:Name=""Button4""
+    Click=""AppBarButton_Click"" {isCompactProp}
+    IsThreeState=""True"" Label=""PathIcon"">
+    <ui:AppBarToggleButton.Icon>
+        <ui:PathIcon Data=""F1 M 20,20L 24,10L 24,24L 5,24"" />
+    </ui:AppBarToggleButton.Icon>
+</ui:AppBarToggleButton>
+";
+
+        #endregion
     }
 }

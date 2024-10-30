@@ -43,6 +43,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             };
             compactButton.Click += CompactButton_Click;
             appBar.PrimaryCommands.Insert(0, compactButton);
+
+            UpdateExampleCode();
         }
 
         private void CompactButton_Click(object sender, RoutedEventArgs e)
@@ -53,8 +55,55 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             }
             else
             {
-                Control1.DefaultLabelPosition = CommandBarDefaultLabelPosition.Bottom;
+                Control1.DefaultLabelPosition = CommandBarDefaultLabelPosition.Right;
             }
+
+            UpdateExampleCode();
         }
+
+
+        #region Example Code
+
+        public void UpdateExampleCode()
+        {
+            Example1.Xaml = Example1Xaml;
+        }
+
+        public string Example1Xaml => $@"
+<ui:CommandBar x:Name=""Control1""
+    DefaultLabelPosition=""{Control1.DefaultLabelPosition.ToString()}"">
+    <ui:CommandBar.PrimaryCommands>
+        <ui:AppBarButton Label=""Attach Camera"" >
+            <ui:AppBarButton.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.AttachCamera}}""/>
+            </ui:AppBarButton.Icon>
+        </ui:AppBarButton>
+                            
+        <ui:AppBarSeparator />
+                            
+        <ui:AppBarButton Label=""Like"" >
+            <ui:AppBarButton.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Like}}""/>
+            </ui:AppBarButton.Icon>
+        </ui:AppBarButton>
+                            
+        <ui:AppBarButton Label=""Dislike"" >
+            <ui:AppBarButton.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Dislike}}""/>
+            </ui:AppBarButton.Icon>
+        </ui:AppBarButton>
+                            
+        <ui:AppBarSeparator />
+                            
+        <ui:AppBarButton Label=""Orientation"" >
+            <ui:AppBarButton.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Orientation}}""/>
+            </ui:AppBarButton.Icon>
+        </ui:AppBarButton>
+    </ui:CommandBar.PrimaryCommands>
+</ui:CommandBar>
+";
+
+        #endregion
     }
 }

@@ -44,6 +44,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             };
             compactButton.Click += CompactButton_Click;
             appBar.PrimaryCommands.Insert(0, compactButton);
+
+            UpdateExampleCode();
         }
 
         private void CompactButton_Click(object sender, RoutedEventArgs e)
@@ -54,6 +56,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 //Button2.IsCompact =
                 Button3.IsCompact =
                 Button4.IsCompact = (bool)toggle.IsChecked;
+
+                UpdateExampleCode();
             }
         }
 
@@ -85,18 +89,47 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
         #region Example Code
 
-        public string Example3Xaml => @"                    
-<ui:AppBarButton
-    x:Name=""Button3""
-    Click=""AppBarButton_Click""
-    Label=""FontIcon"">
+        public void UpdateExampleCode()
+        {
+            Example3.Xaml = Example3Xaml;
+            Example4.Xaml = Example4Xaml;
+            Example5.Xaml = Example5Xaml;
+        }
+
+        private string isCompactProp => compactButton.IsChecked == true
+            ? @"IsCompact=""True""" : "";
+
+        public string Example3Xaml => $@"                    
+<ui:AppBarButton x:Name=""Button3"" {isCompactProp}
+    Label=""FontIcon"" Click=""AppBarButton_Click"">
     <ui:AppBarButton.Icon>
-        <ui:FontIcon Icon=""{x:Static ui:SegoeFluentIcons.Home}""/>
+        <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Home}}""/>
+    </ui:AppBarButton.Icon>
+</ui:AppBarButton>
+";
+        public string Example4Xaml => $@"
+<ui:AppBarButton x:Name=""Button4"" {isCompactProp}
+    Label=""PathIcon"" Click=""AppBarButton_Click"" >
+    <ui:AppBarButton.Icon>
+        <ui:PathIcon Data=""F1 M 20,20L 24,10L 24,24L 5,24"" />
     </ui:AppBarButton.Icon>
 </ui:AppBarButton>
 ";
 
 
+        public string Example5Xaml => $@"
+<ui:AppBarButton x:Name=""Button5"" {isCompactProp}
+    Click=""AppBarButton_Click""
+    Command=""Save"" Label=""Save"">
+    <ui:AppBarButton.CommandBindings>
+        <CommandBinding CanExecute=""Save_CanExecute"" Command=""Save"" />
+    </ui:AppBarButton.CommandBindings>
+    <ui:AppBarButton.Icon>
+        <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Save}}""/>
+    </ui:AppBarButton.Icon>
+</ui:AppBarButton>
+
+";
 
         #endregion
     }
