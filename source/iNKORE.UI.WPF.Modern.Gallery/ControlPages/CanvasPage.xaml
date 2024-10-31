@@ -61,7 +61,8 @@
                         Maximum="100"
                         Minimum="0"
                         Orientation="Vertical"
-                        TickFrequency="1">
+                        TickFrequency="1"
+                        ValueChanged="TopSlider_ValueChanged">
                         <ui:ControlHelper.Header>
                             <TextBlock Margin="0,0,0,10" Text="Canvas.Top" />
                         </ui:ControlHelper.Header>
@@ -74,7 +75,8 @@
                             AutoToolTipPlacement="TopLeft"
                             Maximum="100"
                             Minimum="0"
-                            TickFrequency="1" />
+                            TickFrequency="1" 
+                            ValueChanged="LeftSlider_ValueChanged"/>
                         <Slider
                             x:Name="ZSlider"
                             Width="100"
@@ -83,20 +85,11 @@
                             IsSnapToTickEnabled="True"
                             Maximum="4"
                             Minimum="0"
-                            TickFrequency="1" />
+                            TickFrequency="1" 
+                            ValueChanged="ZSlider_ValueChanged"/>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;Canvas Width=&quot;120&quot; Height=&quot;120&quot; Background=&quot;Gray&quot;&gt;
-    &lt;Rectangle Fill=&quot;Red&quot; Canvas.Left=&quot;$(Left)&quot; Canvas.Top=&quot;$(Top)&quot; Canvas.ZIndex=&quot;$(Z)&quot; /&gt;
-    &lt;Rectangle Fill=&quot;Blue&quot; Canvas.Left=&quot;20&quot; Canvas.Top=&quot;20&quot; Canvas.ZIndex=&quot;1&quot; /&gt;
-    &lt;Rectangle Fill=&quot;Green&quot; Canvas.Left=&quot;40&quot; Canvas.Top=&quot;40&quot; Canvas.ZIndex=&quot;2&quot; /&gt;
-    &lt;Rectangle Fill=&quot;Yellow&quot; Canvas.Left=&quot;60&quot; Canvas.Top=&quot;60&quot; Canvas.ZIndex=&quot;3&quot; /&gt;
-&lt;/Canvas&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>

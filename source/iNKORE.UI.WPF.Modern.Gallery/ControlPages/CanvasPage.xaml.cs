@@ -60,16 +60,68 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 Path = new PropertyPath("Value"),
             });
             Example1.Substitutions = new ObservableCollection<ControlExampleSubstitution> { Substitution1, Substitution2, Substitution3 };
+
+            UpdateExampleCode();
+        }
+
+        private void TopSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void LeftSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void ZSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<Canvas
+    x:Name=""Control1""
+    Width=""140""
+    Height=""140""
+    VerticalAlignment=""Top""
+    Background=""Gray"">
+    <Canvas.Resources>
+        <Style TargetType=""Rectangle"">
+            <Setter Property=""Height"" Value=""40"" />
+            <Setter Property=""Width"" Value=""40"" />
+        </Style>
+    </Canvas.Resources>
+    <Rectangle
+        Canvas.Left=""{LeftSlider.Value}""
+        Canvas.Top=""{TopSlider.Value}""
+        Canvas.ZIndex=""{ZSlider.Value}""
+        Fill=""Red"" />
+    <Rectangle
+        Canvas.Left=""20""
+        Canvas.Top=""20""
+        Canvas.ZIndex=""1""
+        Fill=""Blue"" />
+    <Rectangle
+        Canvas.Left=""40""
+        Canvas.Top=""40""
+        Canvas.ZIndex=""2""
+        Fill=""Green"" />
+    <Rectangle
+        Canvas.Left=""60""
+        Canvas.Top=""60""
+        Canvas.ZIndex=""3""
+        Fill=""Yellow"" />
+</Canvas>
+";
 
+        #endregion
     }
 }

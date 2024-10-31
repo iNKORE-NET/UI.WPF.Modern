@@ -46,14 +46,6 @@
                         SelectionChanged="CalendarLanguages_SelectionChanged" />
                 </StackPanel>
             </local:ControlExample.Options>
-
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;Calendar 
-    SelectionMode=&quot;$(SelectionMode)&quot; 
-    Language=&quot;$(Language)&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>
