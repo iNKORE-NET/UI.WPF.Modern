@@ -14,7 +14,7 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A 2-state CheckBox.">
             <local:ControlExample.Example>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="10">
                     <!--  A two-state CheckBox.  -->
                     <CheckBox
                         Checked="Control1_Checked"
@@ -25,17 +25,10 @@
             <local:ControlExample.Output>
                 <TextBlock x:Name="Control1Output" />
             </local:ControlExample.Output>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;CheckBox Content=&quot;Two-state CheckBox&quot;
-          Checked=&quot;Control1_Checked&quot;
-          Unchecked=&quot;Control1_Unchecked&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A 3-state CheckBox.">
             <local:ControlExample.Example>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="10">
                     <CheckBox
                         Checked="Control2_Checked"
                         Content="Three-state CheckBox"
@@ -47,19 +40,10 @@
             <local:ControlExample.Output>
                 <TextBlock x:Name="Control2Output" />
             </local:ControlExample.Output>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;CheckBox Content=&quot;Three-state CheckBox&quot;
-          IsThreeState=&quot;True&quot;
-          Checked=&quot;Control2_Checked&quot;
-          Unchecked=&quot;Control2_Unchecked&quot;
-          Indeterminate=&quot;Control2_Indeterminate&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="Using a 3-state CheckBox.">
             <local:ControlExample.Example>
-                <StackPanel>
+                <StackPanel Margin="10">
                     <CheckBox
                         x:Name="OptionsAllCheckBox"
                         Checked="SelectAll_Checked"
@@ -88,18 +72,6 @@
                         Unchecked="Option_Unchecked" />
                 </StackPanel>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;StackPanel&gt;
-    &lt;CheckBox x:Name=&quot;OptionsAllCheckBox&quot; Content=&quot;Select all&quot; IsThreeState=&quot;True&quot;
-              Checked=&quot;SelectAll_Checked&quot; Unchecked=&quot;SelectAll_Unchecked&quot;
-              Indeterminate=&quot;SelectAll_Indeterminate&quot; /&gt;
-    &lt;CheckBox x:Name=&quot;Option1CheckBox&quot; Content=&quot;Option 1&quot; Margin=&quot;24,0,0,0&quot; Checked=&quot;Option_Checked&quot; Unchecked=&quot;Option_Unchecked&quot; /&gt;
-    &lt;CheckBox x:Name=&quot;Option2CheckBox&quot; Content=&quot;Option 2&quot; Margin=&quot;24,0,0,0&quot; Checked=&quot;Option_Checked&quot; Unchecked=&quot;Option_Unchecked&quot; IsChecked=&quot;True&quot; /&gt;
-    &lt;CheckBox x:Name=&quot;Option3CheckBox&quot; Content=&quot;Option 3&quot; Margin=&quot;24,0,0,0&quot; Checked=&quot;Option_Checked&quot; Unchecked=&quot;Option_Unchecked&quot; /&gt;
-&lt;/StackPanel&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>
