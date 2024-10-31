@@ -8,11 +8,10 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     Title="ComboBox"
-    d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample HeaderText="A ComboBox with items defined inline and its width set.">
+        <local:ControlExample x:Name="Example1" HeaderText="A ComboBox with items defined inline and its width set.">
             <local:ControlExample.Example>
                 <StackPanel>
                     <ComboBox
@@ -34,25 +33,14 @@
                         Fill="{DynamicResource ControlFillColorTransparentBrush}" />
                 </StackPanel>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;ComboBox SelectionChanged=&quot;ColorComboBox_SelectionChanged&quot; ui:ControlHelper.Header=&quot;Colors&quot; ui:ControlHelper.PlaceholderText=&quot;Pick a color&quot; Width=&quot;200&quot;&gt;
-    &lt;sys:String&gt;Blue&lt;/sys:String&gt;
-    &lt;sys:String&gt;Green&lt;/sys:String&gt;
-    &lt;sys:String&gt;Red&lt;/sys:String&gt;
-    &lt;sys:String&gt;Yellow&lt;/sys:String&gt;
-&lt;/ComboBox&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A ComboBox with its ItemsSource set.">
+        <local:ControlExample x:Name="Example2" HeaderText="A ComboBox with its ItemsSource set.">
             <local:ControlExample.Example>
                 <StackPanel>
                     <ComboBox
                         x:Name="Combo2"
                         MinWidth="200"
-                        d:DataContext="{d:DesignInstance Type=local:ControlPages.ComboBoxPage}"
                         ui:ControlHelper.Header="Font"
                         DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ui:Page}}}"
                         DisplayMemberPath="Item1"
@@ -66,21 +54,14 @@
                         Text="You can set the font used for this text." />
                 </StackPanel>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;ComboBox ItemsSource=&quot;{Binding Fonts}&quot; DisplayMemberPath=&quot;Item1&quot; SelectedValuePath=&quot;Item2&quot;
-          ui:ControlHelper.Header=&quot;Font&quot; Width=&quot;200&quot; Loaded=&quot;Combo2_Loaded&quot;/&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="An editable ComboBox." MinimumUniversalAPIContract="7">
+        <local:ControlExample x:Name="Example3" HeaderText="An editable ComboBox." MinimumUniversalAPIContract="7">
             <local:ControlExample.Example>
                 <StackPanel>
                     <ComboBox
                         x:Name="Combo3"
                         Width="200"
-                        d:DataContext="{d:DesignInstance Type=local:ControlPages.ComboBoxPage}"
                         ui:ControlHelper.Header="Font Size"
                         DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ui:Page}}}"
                         IsEditable="True"
@@ -94,11 +75,6 @@
                         Text="You can set the font size used for this text." />
                 </StackPanel>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;ComboBox IsEditable=&quot;True&quot; ItemsSource=&quot;{Binding FontSizes}&quot; Width=&quot;200&quot; TextSubmitted=&quot;Combo3_TextSubmitted&quot;/&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>
