@@ -38,6 +38,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             {
                 Control1.SelectionMode = selectionMode;
             }
+
+            UpdateExampleCode();
         }
 
         private void CalendarLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -47,6 +49,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             {
                 Control1.Language = XmlLanguage.GetLanguage(selectedLang);
             }
+
+            UpdateExampleCode();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -73,14 +77,21 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
             ObservableCollection<ControlExampleSubstitution> Substitutions = new ObservableCollection<ControlExampleSubstitution>() { Substitution1, Substitution2 };
             ExampleAccessories.Substitutions = Substitutions;
+
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            ExampleAccessories.Xaml = Example1Xaml;
         }
+
+        public string Example1Xaml => $@"
+<Calendar x:Name=""Control1"" Language=""{Control1.Language.ToString()}""
+    SelectionMode=""{Control1.SelectionMode.ToString()}"" />
+";
 
         #endregion
 
