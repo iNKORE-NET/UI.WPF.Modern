@@ -23,14 +23,19 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         public CalendarDatePickerPage()
         {
             InitializeComponent();
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
         }
+
+        public string Example1Xaml => $@"
+<DatePicker ui:ControlHelper.PlaceholderText=""Pick a date"" />
+";
 
         #endregion
     }
