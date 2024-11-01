@@ -16,6 +16,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         private void Example1_Loaded(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(SampleStandardSizingPage), null, new SuppressNavigationTransitionInfo());
+            UpdateExampleCode();
         }
 
         private async void Standard_Checked(object sender, RoutedEventArgs e)
@@ -32,6 +33,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 var page = ContentFrame.Content as SampleStandardSizingPage;
                 page?.CopyState(oldPage);
             }
+
+            UpdateExampleCode();
         }
 
         private async void Compact_Checked(object sender, RoutedEventArgs e)
@@ -48,13 +51,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 var page = ContentFrame.Content as SampleCompactSizingPage;
                 page?.CopyState(oldPage);
             }
+
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = CompactSize.IsChecked == true ? SampleStandardSizingPage.CodeXaml : SampleCompactSizingPage.CodeXaml;
         }
 
         #endregion

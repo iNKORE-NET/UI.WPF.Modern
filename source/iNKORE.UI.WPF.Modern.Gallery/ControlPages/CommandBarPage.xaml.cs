@@ -201,7 +201,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             Label=""Settings"" />
     </ui:CommandBar.SecondaryCommands>
 </ui:CommandBar>
-"
+";
 
         #endregion
 
