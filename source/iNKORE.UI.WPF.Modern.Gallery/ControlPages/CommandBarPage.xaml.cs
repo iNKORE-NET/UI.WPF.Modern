@@ -162,6 +162,47 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
         }
 
+        public string Example1Xaml => $@"
+<ui:CommandBar
+    x:Name=""PrimaryCommandBar""
+    DefaultLabelPosition=""Right""
+    IsOpen=""{PrimaryCommandBar.IsOpen}"">
+    <ui:AppBarButton
+        x:Name=""AddButton""
+        Click=""OnElementClicked""
+        Label=""Add"" >
+        <ui:AppBarButton.Icon>
+            <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Add}}""/>
+        </ui:AppBarButton.Icon>
+
+    </ui:AppBarButton>
+    <ui:AppBarButton
+        x:Name=""EditButton""
+        Click=""OnElementClicked""
+        Label=""Edit"" >
+        <ui:AppBarButton.Icon>
+            <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Edit}}""/>
+        </ui:AppBarButton.Icon>
+
+    </ui:AppBarButton>
+    <ui:AppBarButton
+        x:Name=""ShareButton""
+        Click=""OnElementClicked""
+        Label=""Share"" >
+        <ui:AppBarButton.Icon>
+            <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Share}}""/>
+        </ui:AppBarButton.Icon>
+    </ui:AppBarButton>
+    <ui:CommandBar.SecondaryCommands>
+        <ui:AppBarButton
+            x:Name=""SettingsButton""
+            Click=""OnElementClicked""
+            Icon=""Setting""
+            Label=""Settings"" />
+    </ui:CommandBar.SecondaryCommands>
+</ui:CommandBar>
+"
+
         #endregion
 
     }

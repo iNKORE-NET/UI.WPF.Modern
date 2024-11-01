@@ -39,10 +39,8 @@
     </Page.Resources>
 
     <StackPanel>
-        <local:ControlExample
-            CSharpSource="CommandBarFlyout/CommandBarFlyoutSample1_cs.txt"
-            HeaderText="CommandBarFlyout for commands on an in-app object"
-            XamlSource="CommandBarFlyout/CommandBarFlyoutSample1_xaml.txt">
+        <local:ControlExample x:Name="Example1"
+            HeaderText="CommandBarFlyout for commands on an in-app object">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock Text="Click or right click the image to open a CommandBarFlyout" />
