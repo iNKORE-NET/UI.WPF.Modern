@@ -10,10 +10,11 @@
             Margin="0,0,0,4"
             Style="{StaticResource BodyTextBlockStyle}"
             Text="Sizing" />
-        <RadioButton
+        <RadioButton x:Name="RadioButton_Standard"
             Checked="Standard_Checked"
             Content="Standard"
             IsChecked="True" />
-        <RadioButton Checked="Compact_Checked" Content="Compact" />
+        <RadioButton x:Name="RadioButton_Compact"
+            Checked="Compact_Checked" Content="Compact" />
     </StackPanel>
 </UserControl>

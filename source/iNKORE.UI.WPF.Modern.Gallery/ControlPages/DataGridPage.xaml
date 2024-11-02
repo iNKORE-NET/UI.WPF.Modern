@@ -91,7 +91,7 @@
     </Page.Resources>
 
     <Grid x:Name="LayoutRoot">
-        <local:ControlExample HeaderText="DataGrid Sample: Mountains">
+        <local:ControlExample x:Name="Example1" HeaderText="DataGrid Sample: Mountains">
             <local:ControlExample.Example>
                 <DataGrid
                     x:Name="dataGrid"
@@ -147,7 +147,7 @@
                             x:Name="LoadTimeTextBlock"
                             MouseLeftButtonUp="LoadTimeTextBlock_MouseLeftButtonUp"
                             Style="{StaticResource BodyTextBlockStyle}" />
-                        <sc:LayoutDensitySelector TargetElement="{Binding ElementName=dataGrid}" />
+                        <sc:LayoutDensitySelector x:Name="Example1_LayoutDensitySelector" TargetElement="{Binding ElementName=dataGrid}" />
                         <CheckBox x:Name="CheckBoxColumnVisibilityToggle" Content="Show CheckBox Column" />
                         <CheckBox x:Name="HyperlinkColumnVisibilityToggle" Content="Show Hyperlink Column" />
                         <CheckBox

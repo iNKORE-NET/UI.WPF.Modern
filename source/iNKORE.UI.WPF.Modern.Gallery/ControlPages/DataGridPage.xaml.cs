@@ -44,6 +44,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                   _stopwatch.Stop();
                   LoadTimeTextBlock.Text = _stopwatch.ElapsedMilliseconds + " ms";
               }, DispatcherPriority.ApplicationIdle);
+
+            UpdateExampleCode();
         }
 
         private void ToggleTheme(object sender, RoutedEventArgs e)
@@ -54,24 +56,86 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         private void GroupingToggle_Checked(object sender, RoutedEventArgs e)
         {
             _cvs.GroupDescriptions.Add(new PropertyGroupDescription(nameof(DataGridDataItem.Range)));
+            UpdateExampleCode();
         }
 
         private void GroupingToggle_Unchecked(object sender, RoutedEventArgs e)
         {
             _cvs.GroupDescriptions.Clear();
+            UpdateExampleCode();
         }
 
         private void LoadTimeTextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             LoadTimeTextBlock.Visibility = Visibility.Collapsed;
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
         }
+
+        // There're too many options, and im too lazy to do them all.
+        // If you're interested in this, you can do it yourself, PRs welcomed.
+        public string Example1Xaml => $@"
+<DataGrid x:Name=""dataGrid""
+    AutoGenerateColumns=""False""
+    GridLinesVisibility=""Horizontal""
+    HeadersVisibility=""Column""
+    ItemsSource=""{{Binding Source={{StaticResource cvs}}}}""
+    RowDetailsTemplate=""{{StaticResource RowDetailsTemplate}}""
+    RowDetailsVisibilityMode=""Collapsed""
+    VirtualizingPanel.IsVirtualizingWhenGrouping=""True""
+    VirtualizingPanel.VirtualizationMode=""Recycling"">
+{(Example1_LayoutDensitySelector.IsCompact ? @"
+    <FrameworkElement.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source=""/iNKORE.UI.WPF.Modern;component/Themes/DensityStyles/Compact.xaml"" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </FrameworkElement.Resources>
+" : "")}
+    <DataGrid.Columns>
+        <DataGridTextColumn
+            Width=""105""
+            Binding=""{{Binding Rank}}""
+            Header=""Rank"" />
+        <DataGridComboBoxColumn
+            Width=""200""
+            Header=""Mountain""
+            SelectedItemBinding=""{{Binding Mountain}}"" />
+        <DataGridTextColumn
+            Width=""135""
+            Binding=""{{Binding Height_m}}""
+            Header=""Height (m)"" />
+        <DataGridTextColumn
+            Width=""260""
+            Binding=""{{Binding Range}}""
+            Header=""Range"" />
+        <DataGridTextColumn
+            Width=""180""
+            Binding=""{{Binding Parent_mountain}}""
+            Header=""Parent Mountain"" />
+        <DataGridCheckBoxColumn
+            Width=""145""
+            Binding=""{{Binding CheckBoxColumnValue}}""
+            Header=""CheckBox Column""
+            Visibility=""{CheckBoxColumnVisibilityToggle.IsChecked.ToString()}"" />
+        <DataGridHyperlinkColumn
+            Width=""220""
+            Binding=""{{Binding HyperlinkColumnValue}}""
+            Header=""Hyperlink Column""
+            Visibility=""{HyperlinkColumnVisibilityToggle.IsChecked.ToString()}"" />
+    </DataGrid.Columns>
+    <DataGrid.GroupStyle>
+        <GroupStyle ContainerStyle=""{{StaticResource DataGridRowGroupContainerStyle}}"" HeaderTemplate=""{{StaticResource RowGroupHeaderTemplate}}"" />
+    </DataGrid.GroupStyle>
+</DataGrid>
+"
 
         #endregion
 
