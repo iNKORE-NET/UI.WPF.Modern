@@ -10,7 +10,7 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample HeaderText="Simple DropDownButton" XamlSource="Buttons/DropDown/DropDownButton_Simple.txt">
+        <local:ControlExample x:Name="Example1" HeaderText="Simple DropDownButton">
             <StackPanel x:Name="Control1" Orientation="Horizontal">
                 <ui:DropDownButton Content="Email">
                     <ui:DropDownButton.Flyout>
@@ -24,27 +24,27 @@
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="DropDownButton with Icons" XamlSource="Buttons/DropDown/DropDownButton_Icon.txt">
+        <local:ControlExample x:Name="Example2" HeaderText="DropDownButton with Icons">
             <StackPanel x:Name="Control2" Orientation="Horizontal">
                 <ui:DropDownButton AutomationProperties.Name="Email">
                     <ui:DropDownButton.Content>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE715;" />
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Mail}" />
                     </ui:DropDownButton.Content>
                     <ui:DropDownButton.Flyout>
                         <ui:MenuFlyout Placement="Bottom">
                             <MenuItem Header="Send">
                                 <MenuItem.Icon>
-                                    <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE725;" />
+                                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Send}" />
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Header="Reply">
                                 <MenuItem.Icon>
-                                    <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8CA;" />
+                                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.MailReply}" />
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Header="Reply All">
                                 <MenuItem.Icon>
-                                    <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8C2;" />
+                                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.MailReplyAll}" />
                                 </MenuItem.Icon>
                             </MenuItem>
                         </ui:MenuFlyout>

@@ -23,14 +23,55 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         public DropDownButtonPage()
         {
             InitializeComponent();
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
         }
+
+        public string Example1Xaml => $@"
+<ui:DropDownButton Content=""Email"">
+    <ui:DropDownButton.Flyout>
+        <ui:MenuFlyout Placement=""Bottom"">
+            <MenuItem Header=""Send"" />
+            <MenuItem Header=""Reply"" />
+            <MenuItem Header=""Reply All"" />
+        </ui:MenuFlyout>
+    </ui:DropDownButton.Flyout>
+</ui:DropDownButton>
+";
+
+        public string Example2Xaml => $@"
+<ui:DropDownButton AutomationProperties.Name=""Email"">
+    <ui:DropDownButton.Content>
+        <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Mail}}"" />
+    </ui:DropDownButton.Content>
+    <ui:DropDownButton.Flyout>
+        <ui:MenuFlyout Placement=""Bottom"">
+            <MenuItem Header=""Send"">
+                <MenuItem.Icon>
+                    <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Send}}"" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header=""Reply"">
+                <MenuItem.Icon>
+                    <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.MailReply}}"" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header=""Reply All"">
+                <MenuItem.Icon>
+                    <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.MailReplyAll}}"" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </ui:MenuFlyout>
+    </ui:DropDownButton.Flyout>
+</ui:DropDownButton>
+";
 
         #endregion
 
