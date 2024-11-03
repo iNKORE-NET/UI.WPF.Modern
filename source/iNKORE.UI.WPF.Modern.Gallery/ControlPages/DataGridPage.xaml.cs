@@ -135,7 +135,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         <GroupStyle ContainerStyle=""{{StaticResource DataGridRowGroupContainerStyle}}"" HeaderTemplate=""{{StaticResource RowGroupHeaderTemplate}}"" />
     </DataGrid.GroupStyle>
 </DataGrid>
-"
+";
 
         #endregion
 

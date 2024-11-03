@@ -1,4 +1,5 @@
 ﻿using iNKORE.UI.WPF.Modern;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         public DatePickerPage()
         {
             InitializeComponent();
+
+            UpdateExampleCode();
         }
 
         private void BlackoutDatesInPast(object sender, RoutedEventArgs e)
@@ -31,14 +34,31 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             datePicker.BlackoutDates.AddDatesInPast();
         }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<DatePicker x:Name=""datePicker"" IsEnabled=""{datePicker.IsEnabled}""
+    ui:ControlHelper.Header=""{ControlHelper.GetHeader(datePicker)}""
+    ui:ControlHelper.PlaceholderText=""{ControlHelper.GetPlaceholderText(datePicker)}""
+    ui:ControlHelper.Description=""{ControlHelper.GetDescription(datePicker)}""
+    IsTodayHighlighted=""{datePicker.IsTodayHighlighted}"" IsDropDownOpen=""{datePicker.IsDropDownOpen}"" />
+";
 
+        #endregion
     }
 }
