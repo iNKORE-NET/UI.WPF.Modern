@@ -9,6 +9,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         public FlyoutPage()
         {
             InitializeComponent();
+            UpdateExampleCode();
         }
 
         private void DeleteConfirmation_Click(object sender, RoutedEventArgs e)
@@ -24,10 +25,32 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
         }
+
+        public string Example1Xaml => $@"
+<Button x:Name=""Control1""
+    Content=""Empty cart"">
+    <ui:FlyoutService.Flyout>
+        <ui:Flyout x:Name=""Flyout1""
+            Placement=""{Flyout1.Placement.ToString()}"">
+            <StackPanel>
+                <TextBlock
+                    Margin=""0,0,0,12""
+                    Style=""{{DynamicResource BaseTextBlockStyle}}""
+                    Text=""All items will be removed. Do you want to continue?"" />
+                <Button Click=""DeleteConfirmation_Click"" Content=""Yes, empty my cart"" />
+            </StackPanel>
+        </ui:Flyout>
+    </ui:FlyoutService.Flyout>
+</Button>
+";
 
         #endregion
 
+        private void RadioButtons_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
     }
 }
