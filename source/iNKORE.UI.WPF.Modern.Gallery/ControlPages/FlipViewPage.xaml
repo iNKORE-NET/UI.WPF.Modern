@@ -25,17 +25,6 @@
                     <Image AutomationProperties.Name="Valley" Source="/Assets/SampleMedia/valley.jpg" />
                 </ui:FlipView>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;FlipView MaxWidth=&quot;400&quot; Height=&quot;270&quot;&gt;
-    &lt;Image Source=&quot;/Assets/SampleMedia/cliff.jpg&quot; AutomationProperties.Name=&quot;Cliff&quot;/&gt;
-    &lt;Image Source=&quot;/Assets/SampleMedia/grapes.jpg&quot; AutomationProperties.Name=&quot;Grapes&quot;/&gt;
-    &lt;Image Source=&quot;/Assets/SampleMedia/rainier.jpg&quot; AutomationProperties.Name=&quot;Rainier&quot;/&gt;
-    &lt;Image Source=&quot;/Assets/SampleMedia/sunset.jpg&quot; AutomationProperties.Name=&quot;Sunset&quot;/&gt;
-    &lt;Image Source=&quot;/Assets/SampleMedia/valley.jpg&quot; AutomationProperties.Name=&quot;Valley&quot;/&gt;
-&lt;/FlipView&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A FlipView showing bound data with a data template.">
             <local:ControlExample.Example>
@@ -74,22 +63,6 @@
                     </ui:FlipView.ItemTemplate>
                 </ui:FlipView>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;FlipView MaxWidth=&quot;400&quot; Height=&quot;180&quot; BorderBrush=&quot;Black&quot; BorderThickness=&quot;1&quot; ItemsSource=&quot;{Binding Items, Mode=OneWay}&quot;&gt;
-    &lt;FlipView.ItemTemplate&gt;
-        &lt;DataTemplate x:DataType=&quot;data:ControlInfoDataItem&quot;&gt;
-            &lt;Grid&gt;
-                &lt;Image Height=&quot;120&quot; Source=&quot;{Binding ImagePath}&quot; Stretch=&quot;Uniform&quot; VerticalAlignment=&quot;Top&quot;/&gt;
-                &lt;Border Background=&quot;#A5FFFFFF&quot; Height=&quot;60&quot; VerticalAlignment=&quot;Bottom&quot;&gt;
-                &lt;TextBlock Text=&quot;{Binding Title}&quot; Foreground=&quot;#CCFFFFFF&quot; Padding=&quot;12,12&quot; Style=&quot;{StaticResource TitleTextBlockStyle}&quot; HorizontalAlignment=&quot;Center&quot;/&gt;
-                &lt;/Border&gt;
-            &lt;/Grid&gt;
-        &lt;/DataTemplate&gt;
-    &lt;/FlipView.ItemTemplate&gt;
-&lt;/FlipView&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="Vertical FlipView">
             <local:ControlExample.Example>
@@ -106,22 +79,6 @@
                     </ui:FlipView.ItemsPanel>
                 </ui:FlipView>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;FlipView MaxWidth=&quot;400&quot; Height=&quot;270&quot;&gt;
-    &lt;Image Source=&quot;/Assets/SampleMedia/cliff.jpg&quot; AutomationProperties.Name=&quot;Cliff&quot;/&gt;
-    &lt;Image Source=&quot;/Assets/SampleMedia/grapes.jpg&quot; AutomationProperties.Name=&quot;Grapes&quot;/&gt;
-    &lt;Image Source=&quot;/Assets/SampleMedia/rainier.jpg&quot; AutomationProperties.Name=&quot;Rainier&quot;/&gt;
-    &lt;Image Source=&quot;/Assets/SampleMedia/sunset.jpg&quot; AutomationProperties.Name=&quot;Sunset&quot;/&gt;
-    &lt;Image Source=&quot;/Assets/SampleMedia/valley.jpg&quot; AutomationProperties.Name=&quot;Valley&quot;/&gt;
-        &lt;FlipView.ItemsPanel &gt;
-            &lt;ItemsPanelTemplate&gt;
-                &lt;VirtualizingStackPanel Orientation=&quot;Vertical&quot;/&gt;
-            &lt;/ItemsPanelTemplate&gt;
-        &lt;/FlipView.ItemsPanel&gt;
-&lt;FlipView&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </local:ItemsPageBase>

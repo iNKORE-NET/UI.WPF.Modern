@@ -24,6 +24,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         public FlipViewPage()
         {
             InitializeComponent();
+            UpdateExampleCode();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -31,14 +32,75 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             base.OnNavigatedTo(e);
 
             Items = ControlInfoDataSource.Instance.Groups.Take(3).SelectMany(g => g.Items).ToList();
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
+            Example3.Xaml = Example3Xaml;
         }
+
+        public string Example1Xaml => $@"
+<ui:FlipView>
+    <Image AutomationProperties.Name=""Cliff"" Source=""/Assets/SampleMedia/cliff.jpg"" />
+    <Image AutomationProperties.Name=""Grapes"" Source=""/Assets/SampleMedia/grapes.jpg"" />
+    <Image AutomationProperties.Name=""Rainier"" Source=""/Assets/SampleMedia/rainier.jpg"" />
+    <Image AutomationProperties.Name=""Sunset"" Source=""/Assets/SampleMedia/sunset.jpg"" />
+    <Image AutomationProperties.Name=""Valley"" Source=""/Assets/SampleMedia/valley.jpg"" />
+</ui:FlipView>
+";
+
+        public string Example2Xaml => $@"
+<ui:FlipView BorderBrush=""Black"" BorderThickness=""1""
+    ItemsSource=""{{Binding Items, Mode=OneWay}}"">
+    <ui:FlipView.ItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=""*"" />
+                    <RowDefinition Height=""Auto"" />
+                </Grid.RowDefinitions>
+                <Image
+                    Width=""36""
+                    VerticalAlignment=""Center""
+                    Source=""{{Binding ImagePath}}""
+                    Stretch=""Uniform"" />
+                <Border
+                    Grid.Row=""1""
+                    Height=""60""
+                    Background=""#A5FFFFFF"">
+                    <TextBlock
+                        x:Name=""Control2Text""
+                        Padding=""12,12""
+                        HorizontalAlignment=""Center""
+                        Foreground=""Black""
+                        Style=""{{StaticResource TitleTextBlockStyle}}""
+                        Text=""{{Binding Title}}"" />
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </ui:FlipView.ItemTemplate>
+</ui:FlipView>
+";
+
+        public string Example3Xaml => $@"
+<ui:FlipView Orientation=""Vertical"">
+    <Image AutomationProperties.Name=""Cliff"" Source=""/Assets/SampleMedia/cliff.jpg"" />
+    <Image AutomationProperties.Name=""Grapes"" Source=""/Assets/SampleMedia/grapes.jpg"" />
+    <Image AutomationProperties.Name=""Rainier"" Source=""/Assets/SampleMedia/rainier.jpg"" />
+    <Image AutomationProperties.Name=""Sunset"" Source=""/Assets/SampleMedia/sunset.jpg"" />
+    <Image AutomationProperties.Name=""Valley"" Source=""/Assets/SampleMedia/valley.jpg"" />
+    <ui:FlipView.ItemsPanel>
+        <ItemsPanelTemplate>
+            <VirtualizingStackPanel Orientation=""Vertical"" />
+        </ItemsPanelTemplate>
+    </ui:FlipView.ItemsPanel>
+</ui:FlipView>
+";
 
         #endregion
 
