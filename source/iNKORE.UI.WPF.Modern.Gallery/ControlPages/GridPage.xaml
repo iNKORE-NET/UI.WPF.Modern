@@ -60,7 +60,8 @@
                         Maximum="2"
                         Minimum="0"
                         Orientation="Vertical"
-                        TickFrequency="1">
+                        TickFrequency="1"
+                        ValueChanged="RowSlider_ValueChanged">
                         <ui:ControlHelper.Header>
                             <TextBlock Margin="0,0,0,10" Text="Grid.Row" />
                         </ui:ControlHelper.Header>
@@ -73,7 +74,8 @@
                         IsSnapToTickEnabled="True"
                         Maximum="2"
                         Minimum="0"
-                        TickFrequency="1" />
+                        TickFrequency="1" 
+                        ValueChanged="ColumnSlider_ValueChanged"/>
                 </StackPanel>
             </local:ControlExample.Options>
 
