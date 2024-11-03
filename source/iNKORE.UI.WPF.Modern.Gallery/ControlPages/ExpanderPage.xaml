@@ -36,18 +36,6 @@
                     </ComboBox>
                 </StackPanel>
             </local:ControlExample.Options>
-
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;Expander
-     IsExpanded=&quot;$(IsExpanded)&quot;
-     ExpandDirection=&quot;$(ExpandDirection)&quot;
-     VerticalAlignment=&quot;$(VerticalAlignment)&quot;
-     HorizontalAlignment=&quot;$(HorizontalAlignment)&quot;
-     Header=&quot;This text is in the header&quot;
-     Content=&quot;This is in the content&quot;/&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example2" HeaderText="An Expander with other controls in the header and content">
@@ -63,23 +51,9 @@
                     </Expander.Content>
                 </Expander>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;Expander x:Name=&quot;Expander2&quot; &gt;
-    &lt;Expander.Header&gt;
-        &lt;ToggleButton Content=&quot;This is a ToggleButton in the header&quot;/&gt;
-    &lt;/Expander.Header&gt;
-    &lt;Expander.Content&gt;
-        &lt;Grid&gt;
-            &lt;Button Margin=&quot;15&quot; Content=&quot;This is a Button in the content&quot;/&gt;
-        &lt;/Grid&gt;
-    &lt;/Expander.Content&gt;
-&lt;/Expander&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Modifying Expanders content alignment">
+        <local:ControlExample x:Name="Example3" HeaderText="Modifying Expanders content alignment">
             <local:ControlExample.Example>
                 <Expander
                     Width="500"
@@ -93,18 +67,6 @@
                     </Expander.Content>
                 </Expander>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;Expander Width=&quot;500&quot; HorizontalContentAlignment=&quot;Left&quot; Padding=&quot;0&quot;&gt;
-    &lt;Expander.Header&gt;
-        &lt;ToggleButton Content=&quot;This ToggleButton is centered&quot; HorizontalAlignment=&quot;Center&quot;/&gt;
-    &lt;/Expander.Header&gt;
-    &lt;Expander.Content&gt;
-        &lt;Button Margin=&quot;4&quot; Content=&quot;This Button is left aligned&quot;/&gt;
-    &lt;/Expander.Content&gt;
-&lt;/Expander&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>
