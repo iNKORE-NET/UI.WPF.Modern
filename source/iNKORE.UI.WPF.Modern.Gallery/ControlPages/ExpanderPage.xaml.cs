@@ -43,7 +43,10 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                     break;
             }
 
-            UpdateExampleCode();
+            if (this.IsLoaded)
+            {
+                UpdateExampleCode();
+            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
