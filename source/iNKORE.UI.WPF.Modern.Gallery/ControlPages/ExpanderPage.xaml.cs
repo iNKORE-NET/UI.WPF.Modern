@@ -104,6 +104,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             Example1.Xaml = Example1Xaml;
             Example2.Xaml = Example2Xaml;
             Example3.Xaml = Example3Xaml;
+            Example4.Xaml = Example4Xaml;
         }
 
         public string Example1Xaml => $@"
@@ -135,6 +136,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         <Button Margin=""4"" Content=""This Button is left aligned"" />
     </Expander.Content>
 </Expander>
+";
+
+        public string Example4Xaml => $@"
+<Expander ExpandDirection=""Down""
+    Style=""{{StaticResource {{x:Static ui:ThemeKeys.ExpanderCardStyleKey}}}}""
+    Content=""This is in the content""
+    Header=""This text is in the header"" />
 ";
 
         #endregion

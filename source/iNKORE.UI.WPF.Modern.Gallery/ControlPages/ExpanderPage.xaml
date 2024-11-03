@@ -68,5 +68,19 @@
                 </Expander>
             </local:ControlExample.Example>
         </local:ControlExample>
+
+        <local:ControlExample x:Name="Example4" HeaderText="Expander with a card-like style">
+            <local:ControlExample.Example>
+                <Expander
+                    Width="500"
+                    Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}"
+                    Content="This is in the content"
+                    ExpandDirection="Down"
+                    Header="This text is in the header"
+                    HorizontalContentAlignment="Left">
+                </Expander>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
     </StackPanel>
 </ui:Page>
