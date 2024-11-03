@@ -10,7 +10,7 @@
     mc:Ignorable="d">
 
     <ikw:SimpleStackPanel>
-        <local:ControlExample HorizontalContentAlignment="Stretch" HeaderText="A simple GridSplitter.">
+        <local:ControlExample x:Name="Example1" HorizontalContentAlignment="Stretch" HeaderText="A simple GridSplitter.">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -36,7 +36,9 @@
             </Grid>
             <local:ControlExample.Options>
                 <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
-                    <CheckBox Content="ShowsPreview" IsChecked="{Binding ElementName=ColumnGridSplitter, Path=ShowsPreview}" />
+                    <CheckBox Content="ShowsPreview" 
+                              IsChecked="{Binding ElementName=ColumnGridSplitter, Path=ShowsPreview}" 
+                              Click="CheckBox_Click"/>
                 </ikw:SimpleStackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
