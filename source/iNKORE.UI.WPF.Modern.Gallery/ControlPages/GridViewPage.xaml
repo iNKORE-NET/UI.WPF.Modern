@@ -114,9 +114,7 @@
 
     <StackPanel>
         <local:ControlExample
-            CSharpSource="GridView/GridViewSample1_cs.txt"
-            HeaderText="Basic GridView with Simple DataTemplate"
-            XamlSource="GridView/GridViewSample1_xaml.txt">
+            HeaderText="Basic GridView with Simple DataTemplate">
             <StackPanel>
                 <TextBlock Margin="0,0,0,15">
                     This is a basic GridView that has the full source code below.<LineBreak />
