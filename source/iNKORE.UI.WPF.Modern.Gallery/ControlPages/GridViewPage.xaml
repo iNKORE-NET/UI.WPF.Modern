@@ -113,7 +113,7 @@
     </Page.Resources>
 
     <StackPanel>
-        <local:ControlExample
+        <local:ControlExample x:Name="Example1"
             HeaderText="Basic GridView with Simple DataTemplate">
             <StackPanel>
                 <TextBlock Margin="0,0,0,15">
@@ -129,7 +129,7 @@
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="GridView with Layout Customization" Loaded="ControlExample_Loaded">
+        <local:ControlExample x:Name="Example2" HeaderText="GridView with Layout Customization" Loaded="ControlExample_Loaded">
             <StackPanel>
                 <TextBlock Margin="0,0,0,15" TextWrapping="Wrap">
                     Use the options on the right to control different layout customizations to the GridView below.
@@ -188,55 +188,9 @@
 
                 </StackPanel>
             </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;!-- The GridView used for this example is shown below. Setter properties are used to customize 
-some parts of the GridViewItems (i.e. the margins). --&gt;
-&lt;GridView
-    x:Name=&quot;StyledGrid&quot;
-    ItemTemplate=&quot;{StaticResource ImageOverlayTemplate}&quot;&gt;
-
-    &lt;GridView.ItemContainerStyle&gt;
-        &lt;Style TargetType=&quot;GridViewItem&quot;&gt;
-            &lt;Setter Property=&quot;Margin&quot; Value=&quot;$(ColMargin), $(RowMargin), $(ColMargin), $(RowMargin)&quot;/&gt;
-        &lt;/Style&gt;
-    &lt;/GridView.ItemContainerStyle&gt;
-                    
-    &lt;!-- An extra property also needs to be added to the GridView's ItemsWrapGrid. 
-    The following sets the maximum # of items to show before wrapping.--&gt;
-    &lt;GridView.ItemsPanel&gt;
-        &lt;ItemsPanelTemplate&gt;
-            &lt;ItemsWrapGrid x:Name=&quot;MaxItemsWrapGrid&quot; 
-                           Orientation=&quot;Horizontal&quot;/&gt;
-        &lt;/ItemsPanelTemplate&gt;
-    &lt;/GridView.ItemsPanel&gt;                  
-&lt;/GridView&gt;      
-                    
-&lt;!-- In this example, the ListView's ItemTemplate property is bound to a data template (shown below)
-called StyledGridTemplate, defined in the Page.Resources section of the XAML file. 
-                    
-The data template is defined to display a CustomDataObject object (same type as in above sample). --&gt;
-                    
-&lt;DataTemplate x:Name=&quot;ImageOverlayTemplate&quot; x:DataType=&quot;local1:CustomDataObject&quot;&gt;
-    &lt;Grid Width=&quot;100&quot;&gt;
-        &lt;Image Source=&quot;{x:Bind ImageLocation}&quot; Stretch=&quot;UniformToFill&quot;/&gt;
-        &lt;StackPanel Orientation=&quot;Vertical&quot; Height=&quot;40&quot; VerticalAlignment=&quot;Bottom&quot; Padding=&quot;5,1,5,1&quot; 
-                    Background=&quot;LightGray&quot; Opacity=&quot;.75&quot;&gt;
-            &lt;TextBlock Text=&quot;{x:Bind Title}&quot;/&gt;
-            &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
-                &lt;TextBlock Text=&quot;{x:Bind Likes}&quot; Style=&quot;{ThemeResource CaptionTextBlockStyle}&quot; 
-                           Foreground=&quot;{ThemeResource SystemControlPageTextBaseMediumBrush}&quot;/&gt;
-                &lt;TextBlock Text=&quot; Likes&quot; Style=&quot;{ThemeResource CaptionTextBlockStyle}&quot; 
-                           Foreground=&quot;{ThemeResource SystemControlPageTextBaseMediumBrush}&quot;/&gt;
-            &lt;/StackPanel&gt;
-        &lt;/StackPanel&gt;
-    &lt;/Grid&gt;
-&lt;/DataTemplate&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Content inside of a GridView." Loaded="ControlExample2_Loaded">
+        <local:ControlExample x:Name="Example3" HeaderText="Content inside of a GridView." Loaded="ControlExample2_Loaded">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -300,12 +254,12 @@ The data template is defined to display a CustomDataObject object (same type as 
                             FontSize="13"
                             TextWrapping="Wrap">
                             Turning on IsItemClickEnabled will allow the user to click on an item (and print output below the GridView), regardless of selection mode.<LineBreak /></TextBlock>
-                        <CheckBox x:Name="DropCheckBox" Content="AllowDrop" />
+                        <CheckBox x:Name="DropCheckBox" Content="AllowDrop" Click="DropCheckBox_Click"/>
                         <CheckBox
                             x:Name="ItemClickCheckBox"
                             Click="ItemClickCheckBox_Click"
                             Content="IsItemClickEnabled" />
-                        <CheckBox x:Name="MultiSelectCheckBoxCheckBox" Content="IsMultiSelectCheckBoxEnabled" />
+                        <CheckBox x:Name="MultiSelectCheckBoxCheckBox" Content="IsMultiSelectCheckBoxEnabled" Click="MultiSelectCheckBoxCheckBox_Click"/>
                         <ComboBox
                             Margin="0,12,0,0"
                             ui:ControlHelper.Header="SelectionMode"

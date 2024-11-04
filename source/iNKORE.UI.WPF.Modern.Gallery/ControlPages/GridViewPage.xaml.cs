@@ -146,6 +146,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         private void ItemClickCheckBox_Click(object sender, RoutedEventArgs e)
         {
             ClickOutput.Text = string.Empty;
+            UpdateExampleCode();
         }
 
         private void FlowDirectionCheckBox_Click(object sender, RoutedEventArgs e)
@@ -158,6 +159,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             {
                 ContentGridView.FlowDirection = FlowDirection.LeftToRight;
             }
+
+            UpdateExampleCode();
         }
 
         private void SelectionModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -185,6 +188,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                         break;
                 }
             }
+
+            UpdateExampleCode();
         }
 
         private void StyledGrid_InitWrapGrid(object sender, RoutedEventArgs e)
@@ -307,16 +312,66 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
             ObservableCollection<ControlExampleSubstitution> Substitutions = new ObservableCollection<ControlExampleSubstitution>() { Substitution1, Substitution2, Substitution3, Substitution4, Substitution5 };
             (sender as ControlExample).Substitutions = Substitutions;
+
+            UpdateExampleCode();
+        }
+
+        private void DropCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void MultiSelectCheckBoxCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsLoaded) return;
 
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
+            Example3.Xaml = Example3Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<ui:GridView x:Name=""BasicGridView""
+    IsItemClickEnabled=""True""
+    ItemClick=""BasicGridView_ItemClick""
+    ItemTemplate=""{{StaticResource ImageTemplate}}""
+    SelectionMode=""Single"" />
+";
 
+        public string Example2Xaml => $@"
+<ui:GridView x:Name=""StyledGrid"" ItemTemplate=""{{StaticResource ImageOverlayTemplate}}"">
+    <ui:GridView.ItemContainerStyle>
+        <Style TargetType=""ui:GridViewItem"">
+            <Setter Property=""Margin"" Value=""5"" />
+        </Style>
+    </ui:GridView.ItemContainerStyle>
+
+    <ui:GridView.ItemsPanel>
+        <ItemsPanelTemplate>
+            <WrapPanel
+                x:Name=""MaxItemsWrapGrid""
+                Loaded=""StyledGrid_InitWrapGrid""
+                Orientation=""Horizontal"" />
+        </ItemsPanelTemplate>
+    </ui:GridView.ItemsPanel>
+</ui:GridView>
+";
+
+        public string Example3Xaml => $@"
+<ui:GridView x:Name=""ContentGridView""
+    AllowDrop=""{ContentGridView.AllowDrop.ToString()}"" FlowDirection=""{ContentGridView.FlowDirection.ToString()}""
+    IsItemClickEnabled=""{ContentGridView.IsItemClickEnabled.ToString()}"" IsMultiSelectCheckBoxEnabled=""{ContentGridView.IsMultiSelectCheckBoxEnabled.ToString()}""
+    ItemClick=""ContentGridView_ItemClick"" ItemTemplate=""{{StaticResource ImageTemplate}}""
+    SelectionMode=""{ContentGridView.SelectionMode.ToString()}"" SelectionChanged=""ContentGridView_SelectionChanged"" />
+";
+
+        #endregion
     }
 }
