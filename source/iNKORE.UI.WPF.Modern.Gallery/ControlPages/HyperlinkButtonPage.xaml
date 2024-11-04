@@ -14,36 +14,26 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A hyperlink button that navigates to a URI.">
             <local:ControlExample.Example>
-                <ui:HyperlinkButton
-                    x:Name="Control1"
-                    Content="Microsoft home page"
+                <ui:HyperlinkButton x:Name="Control1"
+                    Content="iNKORE Studios home page"
                     IsEnabled="{Binding IsChecked, ElementName=DisableControl1, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}"
-                    NavigateUri="http://www.microsoft.com" />
+                    NavigateUri="http://www.inkore.net" />
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <StackPanel>
-                    <CheckBox x:Name="DisableControl1" Content="Disable hyperlink button" />
+                    <CheckBox x:Name="DisableControl1" Content="Disable hyperlink button" Click="DisableControl1_Click"/>
                 </StackPanel>
             </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;ui:HyperlinkButton Content=&quot;Microsoft home page&quot; NavigateUri=&quot;http://www.microsoft.com&quot; $(IsEnabled)/&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A hyperlink button that handles a Click event.">
+        <local:ControlExample x:Name="Example2" HeaderText="A hyperlink button that handles a Click event.">
             <local:ControlExample.Example>
                 <ui:HyperlinkButton
                     x:Name="Control2"
                     Click="GoToHyperlinkButton_Click"
+                    RaiseHyperlinkClicks="False"
                     Content="Go to ToggleButton" />
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;ui:HyperlinkButton Content=&quot;ToggleButton&quot; Click=&quot;HyperlinkButton_Click&quot;/&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>
