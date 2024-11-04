@@ -33,16 +33,10 @@
                     Content="Monochrome"
                     IsChecked="{Binding ShowAsMonochrome, ElementName=SlicesIcon, Mode=TwoWay}" />
             </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;ui:BitmapIcon Name=&quot;SlicesIcon&quot; UriSource=&quot;/Assets/slices.png&quot; Width=&quot;50&quot; ShowAsMonochrome=&quot;$(ShowAsMonochrome)&quot;/&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample
             x:Name="Example2"
-            HeaderText="A FontIcon using a glyph from a specific font family in a button"
-            XamlSource="Icons/FontIconSample1_xaml.txt">
+            HeaderText="A FontIcon using a glyph from a specific font family in a button">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock
