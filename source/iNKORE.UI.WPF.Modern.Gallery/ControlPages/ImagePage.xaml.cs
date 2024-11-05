@@ -35,6 +35,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 var strStretch = (sender as RadioButton).Content.ToString();
                 var stretch = (Stretch)Enum.Parse(typeof(Stretch), strStretch);
                 StretchImage.Stretch = stretch;
+
+                UpdateExampleCode();
             }
         }
 
@@ -51,14 +53,38 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             });
             ObservableCollection<ControlExampleSubstitution> Substitutions = new ObservableCollection<ControlExampleSubstitution>() { Substitution };
             Example3.Substitutions = Substitutions;
+
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
+            Example3.Xaml = Example3Xaml;
         }
+
+        public string Example1Xaml => $@"
+<Image Height=""100""
+    Source=""/Assets/SampleMedia/treetops.jpg"" />
+";
+
+        public string Example2Xaml => $@"
+<Image Height=""100"">
+    <Image.Source>
+        <BitmapImage DecodePixelHeight=""100"" UriSource=""/Assets/SampleMedia/treetops.jpg"" />
+    </Image.Source>
+</Image>
+";
+
+        public string Example3Xaml => $@"
+<Image x:Name=""StretchImage""
+    Width=""100"" Height=""100""
+    Source=""/Assets/SampleMedia/valley.jpg""
+    Stretch=""{StretchImage.Stretch.ToString()}"" />
+";
 
         #endregion
 

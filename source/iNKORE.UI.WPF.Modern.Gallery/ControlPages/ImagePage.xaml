@@ -13,17 +13,10 @@
     mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A basic image from a local file.">
-
             <Image
                 Height="100"
                 HorizontalAlignment="Left"
                 Source="/Assets/SampleMedia/treetops.jpg" />
-
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;Image Source=&quot;/Assets/SampleMedia/treetops.jpg&quot; Height=&quot;100&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example2" HeaderText="An image decoded to the rendering size">
@@ -33,17 +26,6 @@
                     <BitmapImage DecodePixelHeight="100" UriSource="/Assets/SampleMedia/treetops.jpg" />
                 </Image.Source>
             </Image>
-
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;Image Height=&quot;100&quot;&gt;
-    &lt;Image.Source&gt;
-        &lt;BitmapImage UriSource=&quot;/Assets/SampleMedia/treetops.jpg&quot;
-            DecodePixelHeight=&quot;100&quot; /&gt;
-    &lt;/Image.Source&gt;
-&lt;/Image&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example3" HeaderText="Image stretching.">
