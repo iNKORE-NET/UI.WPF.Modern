@@ -39,16 +39,66 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             });
             ObservableCollection<ControlExampleSubstitution> Substitutions = new ObservableCollection<ControlExampleSubstitution>() { Substitution };
             Example1.Substitutions = Substitutions;
+
+            UpdateExampleCode();
+        }
+
+        private void MonochromeButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
+            Example3.Xaml = Example3Xaml;
+            Example4.Xaml = Example4Xaml;
+            Example5.Xaml = Example5Xaml;
+            Example6.Xaml = Example6Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<ui:BitmapIcon x:Name=""SlicesIcon""
+    Width=""50"" Height=""50""
+    HorizontalAlignment=""Left""
+    ShowAsMonochrome=""{SlicesIcon.ShowAsMonochrome}""
+    UriSource=""/Assets/slices.png"" />
+";
 
+        public string Example2Xaml => $@"
+<Button Name=""ExampleButton1"">
+    <ui:FontIcon FontFamily=""Segoe MDL2 Assets"" Glyph=""&#xE790;"" />
+</Button>
+";
+
+        public string Example3Xaml => $@"
+<Button Name=""ImageExample1"" Width=""100"">
+    <ui:ImageIcon Source=""/Assets/slices.png"" />
+</Button>
+";
+
+        public string Example4Xaml => $@"
+<Button Name=""ImageExample2"">
+    <ui:ImageIcon Width=""50"" Source=""https://raw.githubusercontent.com/DiemenDesign/LibreICONS/master/svg-color/libre-camera-panorama.svg"" />
+</Button>
+";
+
+        public string Example5Xaml => $@"
+<Button Name=""Example1Button"">
+    <ui:PathIcon HorizontalAlignment=""Center"" Data=""F1 M 16,12 20,2L 20,16 1,16"" />
+</Button>
+";
+
+        public string Example6Xaml => $@"
+<Button Name=""AcceptButton"">
+    <ui:IconAndText Content=""Confirm""
+        Icon=""{{x:Static ui:SegoeFluentIcons.Accept}}""/>
+</Button>
+";
+
+        #endregion
     }
 }

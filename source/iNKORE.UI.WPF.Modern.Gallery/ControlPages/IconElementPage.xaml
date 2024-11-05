@@ -19,9 +19,8 @@
                         Margin="0,0,0,12"
                         Style="{DynamicResource BodyTextBlockStyle}"
                         Text="The ShowAsMonochrome property (true by default) will result in a solid block of the foreground color if the property is set to true and the icon is more than one color. This behavior can be ignored by setting the ShowAsMonochrome property to false." />
-                    <ui:BitmapIcon
-                        x:Name="SlicesIcon"
-                        Width="50"
+                    <ui:BitmapIcon x:Name="SlicesIcon"
+                        Width="50" Height="50"
                         HorizontalAlignment="Left"
                         ShowAsMonochrome="False"
                         UriSource="/Assets/slices.png" />
@@ -31,7 +30,8 @@
                 <CheckBox
                     x:Name="MonochromeButton"
                     Content="Monochrome"
-                    IsChecked="{Binding ShowAsMonochrome, ElementName=SlicesIcon, Mode=TwoWay}" />
+                    IsChecked="{Binding ShowAsMonochrome, ElementName=SlicesIcon, Mode=TwoWay}"
+                    Click="MonochromeButton_Click"/>
             </local:ControlExample.Options>
         </local:ControlExample>
         <local:ControlExample
@@ -51,8 +51,7 @@
         </local:ControlExample>
         <local:ControlExample
             x:Name="Example3"
-            HeaderText="A ImageIcon using a bitmap image in a button"
-            XamlSource="Icons/ImageIconSample1_xaml.txt">
+            HeaderText="A ImageIcon using a bitmap image in a button">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock
@@ -67,8 +66,7 @@
         </local:ControlExample>
         <local:ControlExample
             x:Name="Example4"
-            HeaderText="A ImageIcon using a SVG image in a button"
-            XamlSource="Icons/ImageIconSample2_xaml.txt">
+            HeaderText="A ImageIcon using a SVG image in a button">
             <local:ControlExample.Example>
                 <Button Name="ImageExample2">
                     <ui:ImageIcon Width="50" Source="https://raw.githubusercontent.com/DiemenDesign/LibreICONS/master/svg-color/libre-camera-panorama.svg" />
@@ -77,8 +75,7 @@
         </local:ControlExample>
         <local:ControlExample
             x:Name="Example5"
-            HeaderText="A PathIcon in a button"
-            XamlSource="Icons/PathIconSample1_xaml.txt">
+            HeaderText="A PathIcon in a button">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock
@@ -93,8 +90,7 @@
         </local:ControlExample>
         <local:ControlExample
             x:Name="Example6"
-            HeaderText="A SymbolIcon in a button"
-            XamlSource="Icons/SymbolIconSample_1_xaml.txt">
+            HeaderText="A SymbolIcon in a button">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock
@@ -102,10 +98,8 @@
                         Style="{DynamicResource BodyTextBlockStyle}"
                         Text="To use a SymbolIcon as the icon for a control, you specify the enum value for the glyph you would like to display. SymbolIcon's enum is based off of icons from the Segoe MDL2 font used by Windows 10." />
                     <Button Name="AcceptButton">
-                        <StackPanel>
-                            <ui:SymbolIcon Symbol="Accept" />
-                            <TextBlock Text="Accept" />
-                        </StackPanel>
+                        <ui:IconAndText Content="Confirm"
+                            Icon="{x:Static ui:SegoeFluentIcons.Accept}"/>
                     </Button>
                 </StackPanel>
             </local:ControlExample.Example>
