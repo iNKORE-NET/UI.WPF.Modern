@@ -40,6 +40,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 typeof(InfoBadgePage),
                 new PropertyMetadata(0.0));
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
         public void NavigationViewDisplayMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string paneDisplayMode = e.AddedItems[0].ToString();
@@ -66,7 +71,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         private void ToggleInfoBadgeOpacity_Toggled(object sender, RoutedEventArgs e)
         {
             InfoBadgeOpacity = (InfoBadgeOpacity == 0.0) ? 1.0 : 0.0;
+
+            UpdateExampleCode();
         }
+
+        string infoBadge2StyleKey = "AttentionIconInfoBadgeStyle";
+        string infoBadge3StyleKey = "AttentionValueInfoBadgeStyle";
+        string infoBadge4StyleKey = "AttentionDotInfoBadgeStyle";
 
         public void InfoBadgeStyleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -76,29 +87,35 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             switch (infoBadgeStyle)
             {
                 case "Attention":
-                    infoBadge2.Style = Resources["AttentionIconInfoBadgeStyle"] as Style;
-                    infoBadge3.Style = Resources["AttentionValueInfoBadgeStyle"] as Style;
-                    infoBadge4.Style = Resources["AttentionDotInfoBadgeStyle"] as Style;
+                    infoBadge2StyleKey = "AttentionIconInfoBadgeStyle";
+                    infoBadge3StyleKey = "AttentionValueInfoBadgeStyle";
+                    infoBadge4StyleKey = "AttentionDotInfoBadgeStyle";
                     break;
 
                 case "Informational":
-                    infoBadge2.Style = Resources["InformationalIconInfoBadgeStyle"] as Style;
-                    infoBadge3.Style = Resources["InformationalValueInfoBadgeStyle"] as Style;
-                    infoBadge4.Style = Resources["InformationalDotInfoBadgeStyle"] as Style;
+                    infoBadge2StyleKey = "InformationalIconInfoBadgeStyle";
+                    infoBadge3StyleKey = "InformationalValueInfoBadgeStyle";
+                    infoBadge4StyleKey = "InformationalDotInfoBadgeStyle";
                     break;
 
                 case "Success":
-                    infoBadge2.Style = Resources["SuccessIconInfoBadgeStyle"] as Style;
-                    infoBadge3.Style = Resources["SuccessValueInfoBadgeStyle"] as Style;
-                    infoBadge4.Style = Resources["SuccessDotInfoBadgeStyle"] as Style;
+                    infoBadge2StyleKey = "SuccessIconInfoBadgeStyle";
+                    infoBadge3StyleKey = "SuccessValueInfoBadgeStyle";
+                    infoBadge4StyleKey = "SuccessDotInfoBadgeStyle";
                     break;
 
                 case "Critical":
-                    infoBadge2.Style = Resources["CriticalIconInfoBadgeStyle"] as Style;
-                    infoBadge3.Style = Resources["CriticalValueInfoBadgeStyle"] as Style;
-                    infoBadge4.Style = Resources["CriticalDotInfoBadgeStyle"] as Style;
+                    infoBadge2StyleKey = "CriticalIconInfoBadgeStyle";
+                    infoBadge3StyleKey = "CriticalValueInfoBadgeStyle";
+                    infoBadge4StyleKey = "CriticalDotInfoBadgeStyle";
                     break;
             }
+
+            infoBadge2.Style = Resources[infoBadge2StyleKey] as Style;
+            infoBadge3.Style = Resources[infoBadge3StyleKey] as Style;
+            infoBadge4.Style = Resources[infoBadge4StyleKey] as Style;
+
+            UpdateExampleCode();
         }
 
         private void ValueNumberBox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
@@ -107,16 +124,81 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             {
                 DynamicInfoBadge.Value = (int)args.NewValue;
             }
+
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsLoaded) return;
 
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
+            Example3.Xaml = Example3Xaml;
+            Example4.Xaml = Example4Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<ui:NavigationViewItem
+    x:Name=""InboxPage""
+    Content=""Inbox"">
+    <ui:NavigationViewItem.Icon>
+        <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Mail}}""/>
+    </ui:NavigationViewItem.Icon>
+    <ui:NavigationViewItem.InfoBadge>
+        <ui:InfoBadge x:Name=""infoBadge1""
+            Opacity=""{InfoBadgeOpacity}"" Value=""5"" />
+    </ui:NavigationViewItem.InfoBadge>
+</ui:NavigationViewItem>
+";
 
+        public string Example2Xaml => $@"
+<ikw:SimpleStackPanel
+    HorizontalAlignment=""Center""
+    Orientation=""Horizontal""
+    Spacing=""20"">
+    <ui:InfoBadge
+        x:Name=""infoBadge2""
+        HorizontalAlignment=""Right""
+        Style=""{{DynamicResource {infoBadge2StyleKey}}}"" />
+    <ui:InfoBadge
+        x:Name=""infoBadge3""
+        HorizontalAlignment=""Right""
+        Style=""{{DynamicResource {infoBadge3StyleKey}}}""
+        Value=""10"" />
+    <ui:InfoBadge
+        x:Name=""infoBadge4""
+        VerticalAlignment=""Center""
+        Style=""{{DynamicResource {infoBadge4StyleKey}}}"" />
+</ikw:SimpleStackPanel>
+";
+
+        public string Example3Xaml => $@"
+<Button Padding=""0""
+    HorizontalContentAlignment=""Stretch""
+    VerticalContentAlignment=""Stretch"">
+    <Grid Width=""Auto"" Height=""Auto""
+        HorizontalAlignment=""Stretch""
+        VerticalAlignment=""Stretch"">
+        <ui:FontIcon HorizontalAlignment=""Center"" Icon=""{{x:Static ui:SegoeFluentIcons.Sync}}""/>
+        <ui:InfoBadge
+            HorizontalAlignment=""Right""
+            VerticalAlignment=""Top""
+            Background=""#C42B1C"">
+            <ui:InfoBadge.IconSource>
+                <ui:FontIconSource FontFamily=""Segoe MDL2 Assets"" Glyph=""&#xF13C;"" />
+            </ui:InfoBadge.IconSource>
+        </ui:InfoBadge>
+    </Grid>
+</Button>
+";
+
+        public string Example4Xaml => $@"
+<ui:InfoBadge x:Name=""DynamicInfoBadge"" Value=""{DynamicInfoBadge.Value.ToString()}""/>
+";
+
+        #endregion
     }
 }

@@ -11,7 +11,7 @@
     Title="InfoBadge Page"
     d:DesignWidth="800"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <ui:Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -85,15 +85,6 @@
                 </StackPanel>
             </local:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;muxc:NavigationViewItem x:Name=&quot;InboxPage&quot; Content=&quot;Inbox&quot; Icon=&quot;Mail&quot;&gt;
-    &lt;muxc:NavigationViewItem.InfoBadge&gt;
-        &lt;muxc:InfoBadge x:Name=&quot;infoBadge1&quot; Value=&quot;5&quot; Opacity=&quot;{Binding InfoBadgeOpacity, Mode=OneWay}&quot;/&gt;
-    &lt;/muxc:NavigationViewItem.InfoBadge&gt;
-&lt;/muxc:NavigationViewItem&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample
@@ -136,14 +127,6 @@
                 </StackPanel>
             </local:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;muxc:InfoBadge x:Name=&quot;infoBadge2&quot; Style=&quot;{StaticResource $(Style)IconInfoBadgeStyle}&quot; /&gt;
-&lt;muxc:InfoBadge x:Name=&quot;infoBadge3&quot; Style=&quot;{StaticResource $(Style)ValueInfoBadgeStyle}&quot; Value=&quot;10&quot; /&gt;
-&lt;muxc:InfoBadge x:Name=&quot;infoBadge4&quot; Style=&quot;{StaticResource $(Style)DotInfoBadgeStyle}&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
-
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="Style" Value="{Binding InfoBadgeStyleComboBox.SelectedValue, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
@@ -170,7 +153,7 @@
                         Height="Auto"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch">
-                        <ui:SymbolIcon HorizontalAlignment="Center" Symbol="Sync" />
+                        <ui:FontIcon HorizontalAlignment="Center" Icon="{x:Static ui:SegoeFluentIcons.Sync}"/>
                         <ui:InfoBadge
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
@@ -184,21 +167,6 @@
 
             </local:ControlExample.Example>
 
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;Button Padding=&quot;0&quot; Width=&quot;200&quot; Height=&quot;60&quot; HorizontalContentAlignment=&quot;Stretch&quot; VerticalContentAlignment=&quot;Stretch&quot;&gt;
-    &lt;Grid HorizontalAlignment=&quot;Stretch&quot; VerticalAlignment=&quot;Stretch&quot; Width=&quot;Auto&quot; Height=&quot;Auto&quot;&gt;
-        &lt;SymbolIcon Symbol=&quot;Sync&quot; HorizontalAlignment=&quot;Center&quot;/&gt;
-        &lt;muxc:InfoBadge Background=&quot;#C42B1C&quot; HorizontalAlignment=&quot;Right&quot; VerticalAlignment=&quot;Top&quot;&gt;
-            &lt;muxc:InfoBadge.IconSource&gt;
-                &lt;muxc:FontIconSource FontFamily=&quot;Segoe MDL2 Assets&quot; Glyph=&quot;&#xF13C;&quot; /&gt;
-            &lt;/muxc:InfoBadge.IconSource&gt;
-        &lt;/muxc:InfoBadge&gt;
-    &lt;/Grid&gt;
-&lt;/Button&gt;                    
-                </sys:String>
-            </local:ControlExample.Xaml>
-
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="Style" Value="{Binding Value.SelectedValue, Source={StaticResource InfoBadgeStyleComboBox}, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
@@ -209,7 +177,7 @@
             HorizontalContentAlignment="Stretch"
             HeaderText="InfoBadge with Dynamic Value">
             <local:ControlExample.Example>
-                <ui:InfoBadge x:Name="DynamicInfoBadge" HorizontalAlignment="Center" />
+                <ui:InfoBadge x:Name="DynamicInfoBadge" HorizontalAlignment="Center" Value="1"/>
             </local:ControlExample.Example>
 
             <local:ControlExample.Options>
@@ -223,25 +191,6 @@
                         Value="1" />
                 </StackPanel>
             </local:ControlExample.Options>
-
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;muxc:InfoBadge Value=&quot;{Binding ElementName=ValueNumberBox, Path=Value, Mode=TwoWay}&quot; /&gt;
-&lt;muxc:NumberBox x:Name=&quot;ValueNumberBox&quot; Header=&quot;InfoBadge Value&quot; Value=&quot;1&quot; Minimum=&quot;-1&quot;
-    SpinButtonPlacementMode=&quot;Inline&quot; ValueChanged=&quot;ValueNumberBox_ValueChanged&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
-                <sys:String xml:space="preserve">
-private void ValueNumberBox_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
-{
-    if((int)args.NewValue &gt;= -1)
-    {
-        DynamicInfoBadge.Value = (int)args.NewValue;
-    }
-}
-                </sys:String>
-            </local:ControlExample.CSharp>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>
