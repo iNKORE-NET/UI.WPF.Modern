@@ -27,11 +27,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            DisplayMessage.Value = "A long essential app message...";
-            DisplayButton.Value = string.Empty;
-        }
+        string example2ActionButtonXaml = null;
 
         private void SeverityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -56,7 +52,25 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                     TestInfoBar1.Severity = InfoBarSeverity.Informational;
                     break;
             }
+
+            UpdateExampleCode();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void InfoBar_Closed(InfoBar sender, InfoBarClosedEventArgs args)
+        {
+            UpdateExampleCode();
+        }
+
 
         private void MessageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -66,13 +80,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             {
                 string shortMessage = "A short essential app message.";
                 TestInfoBar2.Message = shortMessage;
-                DisplayMessage.Value = shortMessage;
             }
             else if (MessageComboBox.SelectedIndex == 1) //long
             {
                 TestInfoBar2.Message = @"A long essential app message for your users to be informed of, acknowledge, or take action on. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus dolor vitae justo rutrum, ut lobortis nibh mattis. Aenean id elit commodo, semper felis nec.";
-                if (DisplayMessage != null) DisplayMessage.Value = "A long essential app message...";
             }
+
+            UpdateExampleCode();
         }
 
         private void ActionButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -82,38 +96,64 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             if (ActionButtonComboBox.SelectedIndex == 0) // none
             {
                 TestInfoBar2.ActionButton = null;
-                if (DisplayButton != null) DisplayButton.Value = string.Empty;
+                example2ActionButtonXaml = null;
             }
             else if (ActionButtonComboBox.SelectedIndex == 1) // button
             {
                 var button = new Button();
                 button.Content = "Action";
                 TestInfoBar2.ActionButton = button;
-                DisplayButton.Value = @"<muxc:InfoBar.ActionButton>
-            <Button Content=""Action"" Click=""InfoBarButton_Click"" />
-    </muxc:InfoBar.ActionButton> ";
+                example2ActionButtonXaml = @"
+    <ui:InfoBar.ActionButton>
+        <Button Content=""Action"" Click=""InfoBarButton_Click"" />
+    </ui:InfoBar.ActionButton> ";
 
             }
             else if (ActionButtonComboBox.SelectedIndex == 2) // hyperlink
             {
+                var href = "https://docs.inkore.net/ui-wpf-modern/components/status/info-bar";
                 var link = new HyperlinkButton();
-                link.NavigateUri = new Uri("http://www.microsoft.com/");
+                link.NavigateUri = new Uri(href);
                 link.Content = "Informational link";
                 TestInfoBar2.ActionButton = link;
-                DisplayButton.Value = @"<muxc:InfoBar.ActionButton>
-            <HyperlinkButton Content=""Informational link"" NavigateUri=""https://www.example.com"" />
-    </muxc:InfoBar.ActionButton>";
+                example2ActionButtonXaml = $@"
+    <ui:InfoBar.ActionButton>
+        <ui:HyperlinkButton Content=""Informational link"" NavigateUri=""{href}"" />
+    </ui:InfoBar.ActionButton>";
             }
+
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsLoaded) return;
 
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
+            Example3.Xaml = Example3Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<ui:InfoBar x:Name=""TestInfoBar1"" Title=""Title"" IsOpen=""{TestInfoBar1.IsOpen}"" Severity=""{TestInfoBar1.Severity}""
+    Message=""Essential app message for your users to be informed of, acknowledge, or take action on."" />
+";
 
+        public string Example2Xaml => $@"
+<ui:InfoBar x:Name=""TestInfoBar2"" 
+    Title=""Title"" IsOpen=""{TestInfoBar2.IsOpen}""
+    Message=""{TestInfoBar2.Message}""> { (example2ActionButtonXaml != null ? "\r\n" : null) + example2ActionButtonXaml }
+</ui:InfoBar>
+";
+
+        public string Example3Xaml => $@"
+<ui:InfoBar x:Name=""TestInfoBar3"" Title=""Title""
+    IsClosable=""{TestInfoBar3.IsClosable}"" IsIconVisible=""{TestInfoBar3.IsIconVisible}"" IsOpen=""{TestInfoBar3.IsOpen}""
+    Message=""Essential app message for your users to be informed of, acknowledge, or take action on."" />
+";
+
+        #endregion
     }
 }
