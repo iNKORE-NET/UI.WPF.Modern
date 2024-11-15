@@ -34,7 +34,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         }
         public ListBoxPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            UpdateExampleCode();
         }
 
         private void ColorListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -66,8 +67,44 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
+            Example2.CSharp = Example2CS;
         }
+
+        public string Example1Xaml => $@"
+<ListBox x:Name=""ListBox1"">
+    <sys:String>Blue</sys:String>
+    <sys:String>Green</sys:String>
+    <sys:String>Red</sys:String>
+    <sys:String>Yellow</sys:String>
+</ListBox>
+";
+
+        public string Example2Xaml => $@"
+<ListBox x:Name=""ListBox2""
+    DataContext=""{{Binding RelativeSource={{RelativeSource Mode=FindAncestor, AncestorType={{x:Type ui:Page}}}}}}""
+    DisplayMemberPath=""Item1""
+    ItemsSource=""{{Binding Fonts}}""
+    Loaded=""ListBox2_Loaded""
+    SelectedValuePath=""Item2"" />
+";
+
+        public string Example2CS => $@"
+private List<Tuple<string, FontFamily>> _fonts = new List<Tuple<string, FontFamily>>()
+{{
+    new Tuple<string, FontFamily>(""Arial"", new FontFamily(""Arial"")),
+    new Tuple<string, FontFamily>(""Comic Sans MS"", new FontFamily(""Comic Sans MS"")),
+    new Tuple<string, FontFamily>(""Courier New"", new FontFamily(""Courier New"")),
+    new Tuple<string, FontFamily>(""Segoe UI"", new FontFamily(""Segoe UI"")),
+    new Tuple<string, FontFamily>(""Times New Roman"", new FontFamily(""Times New Roman""))
+}};
+
+public List<Tuple<string, FontFamily>> Fonts
+{{
+    get {{ return _fonts; }}
+}}
+";
 
         #endregion
 
