@@ -70,7 +70,7 @@
         </TabControl.Resources>
 
         <TabItem Header="Basic">
-            <local:ControlExample HeaderText="Basic ListView with Simple DataTemplate">
+            <local:ControlExample x:Name="Example1" HeaderText="Basic ListView with Simple DataTemplate">
                 <ListView
                     x:Name="listView1"
                     ItemsSource="{Binding}"
@@ -83,15 +83,17 @@
                         <ui:RadioButtons
                             Header="SelectionMode"
                             ItemsSource="{Binding Source={x:Type SelectionMode}, Converter={StaticResource EnumValuesConverter}}"
-                            SelectedItem="{Binding Source={x:Reference listView1}, Path=SelectionMode}" />
-                        <CheckBox Content="IsEnabled" IsChecked="{Binding Source={x:Reference listView1}, Path=IsEnabled}" />
+                            SelectedItem="{Binding Source={x:Reference listView1}, Path=SelectionMode}"
+                            SelectionChanged="RadioButtons_SelectionChanged"/>
+                        <CheckBox Content="IsEnabled" IsChecked="{Binding Source={x:Reference listView1}, Path=IsEnabled}"
+                            Click="CheckBox_Click"/>
                     </ikw:SimpleStackPanel>
                 </local:ControlExample.Options>
             </local:ControlExample>
         </TabItem>
 
         <TabItem Header="Grouped">
-            <local:ControlExample HeaderText="A ListView with Grouped Headers">
+            <local:ControlExample x:Name="Example2" HeaderText="A ListView with Grouped Headers">
                 <ListView
                     x:Name="listView2"
                     ItemTemplate="{StaticResource ContactListViewTemplate}"
@@ -102,7 +104,7 @@
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
                                 <DataTemplate>
-                                    <TextBlock Style="{DynamicResource TitleTextBlockStyle}" Text="{Binding Name, Mode=OneTime}" />
+                                    <TextBlock Style="{DynamicResource {x:Static ui:ThemeKeys.TitleTextBlockStyleKey}}" Text="{Binding Name, Mode=OneTime}" />
                                 </DataTemplate>
                             </GroupStyle.HeaderTemplate>
                         </GroupStyle>
@@ -116,14 +118,15 @@
                                 Header="SelectionMode"
                                 ItemsSource="{Binding Source={x:Type SelectionMode}, Converter={StaticResource EnumValuesConverter}}"
                                 SelectedItem="{Binding Source={x:Reference listView2}, Path=SelectionMode}" />-->
-                        <CheckBox Content="IsEnabled" IsChecked="{Binding Source={x:Reference listView2}, Path=IsEnabled}" />
+                        <CheckBox Content="IsEnabled" IsChecked="{Binding Source={x:Reference listView2}, Path=IsEnabled}"
+                            Click="CheckBox_Click"/>
                     </ikw:SimpleStackPanel>
                 </local:ControlExample.Options>
             </local:ControlExample>
         </TabItem>
 
         <TabItem Header="GridView">
-            <local:ControlExample HeaderText="A ListView that uses a GridView view mode">
+            <local:ControlExample x:Name="Example3" HeaderText="A ListView that uses a GridView view mode">
                 <ListView
                     x:Name="listView3"
                     ItemsSource="{Binding}"
@@ -158,13 +161,15 @@
 
                 <local:ControlExample.Options>
                     <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
-                        <CheckBox Content="AllowsColumnReorder" IsChecked="{Binding Source={x:Reference gridView}, Path=AllowsColumnReorder}" />
+                        <CheckBox Content="AllowsColumnReorder" IsChecked="{Binding Source={x:Reference gridView}, Path=AllowsColumnReorder}"
+                            Click="CheckBox_Click"/>
                         <sc:LayoutDensitySelector TargetElement="{Binding Source={x:Reference listView3}}" />
                         <!--<ui:RadioButtons
                                 Header="SelectionMode"
                                 ItemsSource="{Binding Source={x:Type SelectionMode}, Converter={StaticResource EnumValuesConverter}}"
                                 SelectedItem="{Binding Source={x:Reference listView3}, Path=SelectionMode}" />-->
-                        <CheckBox Content="IsEnabled" IsChecked="{Binding Source={x:Reference listView3}, Path=IsEnabled}" />
+                        <CheckBox Content="IsEnabled" IsChecked="{Binding Source={x:Reference listView3}, Path=IsEnabled}"
+                            Click="CheckBox_Click"/>
                     </ikw:SimpleStackPanel>
                 </local:ControlExample.Options>
             </local:ControlExample>

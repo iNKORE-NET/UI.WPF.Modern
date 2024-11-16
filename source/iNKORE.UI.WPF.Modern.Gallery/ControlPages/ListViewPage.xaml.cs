@@ -21,18 +21,89 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
+            UpdateExampleCode();
             DataContext = await Contact.GetContactsAsync();
         }
+
+        private void RadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsLoaded) return;
 
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
+            Example3.Xaml = Example3Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<ListView x:Name=""listView1"" IsEnabled=""{listView1.IsEnabled}""
+    ItemsSource=""{{Binding}}"" SelectionMode=""{listView1.SelectionMode}""
+    VirtualizingPanel.VirtualizationMode=""Recycling"" />
+";
 
+        public string Example2Xaml => $@"
+<ListView x:Name=""listView2"" IsEnabled=""{listView2.IsEnabled}""
+    ItemTemplate=""{{StaticResource ContactListViewTemplate}}""
+    ItemsSource=""{{Binding Source={{StaticResource ContactsCVS}}}}""
+    VirtualizingPanel.IsVirtualizingWhenGrouping=""True""
+    VirtualizingPanel.VirtualizationMode=""Recycling"">
+    <ListView.GroupStyle>
+        <GroupStyle>
+            <GroupStyle.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Style=""{{DynamicResource {{x:Static ui:ThemeKeys.TitleTextBlockStyleKey}}}}"" Text=""{{Binding Name, Mode=OneTime}}"" />
+                </DataTemplate>
+            </GroupStyle.HeaderTemplate>
+        </GroupStyle>
+    </ListView.GroupStyle>
+</ListView>
+";
+
+        public string Example3Xaml => $@"
+<ListView x:Name=""listView3"" 
+    IsEnabled=""{listView3.IsEnabled}"" ItemsSource=""{{Binding}}""
+    VirtualizingPanel.VirtualizationMode=""Recycling"">
+    <ListView.View>
+        <GridView x:Name=""gridView"" ColumnHeaderToolTip=""Employee Information"" AllowsColumnReorder=""{gridView.AllowsColumnReorder}"">
+            <GridViewColumn
+                Width=""120""
+                DisplayMemberBinding=""{{Binding FirstName, Mode=OneTime}}""
+                Header=""First Name"" />
+
+            <GridViewColumn Width=""120"" DisplayMemberBinding=""{{Binding LastName, Mode=OneTime}}"">
+                <GridViewColumnHeader>
+                    Last Name
+                    <GridViewColumnHeader.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header=""Ascending"" />
+                            <MenuItem Header=""Descending"" />
+                        </ContextMenu>
+                    </GridViewColumnHeader.ContextMenu>
+                </GridViewColumnHeader>
+            </GridViewColumn>
+
+            <GridViewColumn
+                Width=""240""
+                DisplayMemberBinding=""{{Binding Company, Mode=OneTime}}""
+                Header=""Company"" />
+        </GridView>
+    </ListView.View>
+</ListView>
+";
+
+        #endregion
     }
 
     public class Contact : INotifyPropertyChanged
