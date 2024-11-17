@@ -247,7 +247,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
 
         private void CopyCodeButton_Click(object sender, RoutedEventArgs e)
         {
-           try
+            try
             {
                 Clipboard.SetText(actualCode);
                 VisualStateManager.GoToState(this, "ConfirmationDialogVisible", false);
