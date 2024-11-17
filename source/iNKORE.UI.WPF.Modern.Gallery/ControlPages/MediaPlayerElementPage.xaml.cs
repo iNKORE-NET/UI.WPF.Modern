@@ -25,14 +25,26 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         public MediaPlayerElementPage()
         {
             InitializeComponent();
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
         }
+
+        public string Example1Xaml => $@"
+<ui:MediaPlayerElement AreTransportControlsEnabled=""True"" AutoPlay=""False"" Tag=""Assets/SampleMedia/ladybug.wmv"" 
+ Source=""{{Binding Tag, RelativeSource={{RelativeSource Self}}, Converter={{StaticResource RelativeToAbsoluteConverter}}}}"" />
+";
+
+        public string Example2Xaml => $@"
+<ui:MediaPlayerElement AutoPlay=""True"" Tag=""Assets/SampleMedia/fishes.wmv"" 
+    Source=""{{Binding Tag, RelativeSource={{RelativeSource Self}}, Converter={{StaticResource RelativeToAbsoluteConverter}}}}"" />
+";
 
         #endregion
 

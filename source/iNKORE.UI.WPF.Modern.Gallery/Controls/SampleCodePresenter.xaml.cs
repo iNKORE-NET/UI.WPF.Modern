@@ -247,9 +247,12 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
 
         private void CopyCodeButton_Click(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetText(actualCode);
-
-            VisualStateManager.GoToState(this, "ConfirmationDialogVisible", false);
+           try
+            {
+                Clipboard.SetText(actualCode);
+                VisualStateManager.GoToState(this, "ConfirmationDialogVisible", false);
+            }
+            catch { }
 
             // Automatically close teachingtip after 1 seconds
             this.RunOnUIThread(async () =>

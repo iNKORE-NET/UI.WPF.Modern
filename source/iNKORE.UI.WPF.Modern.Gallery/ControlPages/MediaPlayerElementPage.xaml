@@ -21,14 +21,6 @@
                     Source="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource RelativeToAbsoluteConverter}}"
                     Tag="Assets/SampleMedia/ladybug.wmv" />
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;ui:MediaPlayerElement Source=&quot;/Assets/SampleMedia/ladybug.wmv&quot;
-                        MaxWidth=&quot;400&quot;
-                        AutoPlay=&quot;False&quot;
-                        AreTransportControlsEnabled=&quot;True&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A MediaPlayerElement that autoplays the video.">
             <local:ControlExample.Example>
@@ -39,13 +31,6 @@
                     Source="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource RelativeToAbsoluteConverter}}"
                     Tag="Assets/SampleMedia/fishes.wmv" />
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;ui:MediaPlayerElement Source=&quot;/Assets/SampleMedia/fishes.wmv&quot;
-                        MaxWidth=&quot;400&quot;
-                        AutoPlay=&quot;True&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>
