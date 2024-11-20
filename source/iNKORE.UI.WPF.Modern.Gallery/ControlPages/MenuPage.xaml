@@ -9,7 +9,7 @@
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     mc:Ignorable="d">
     <ikw:SimpleStackPanel>
-        <local:ControlExample HeaderText="A simple Menu">
+        <local:ControlExample x:Name="Example1" HeaderText="A simple Menu">
             <Menu>
                 <MenuItem Header="File">
                     <MenuItem Header="New" />
@@ -30,7 +30,7 @@
                 </MenuItem>
             </Menu>
         </local:ControlExample>
-        <local:ControlExample HeaderText="Menu with input gesture texts">
+        <local:ControlExample x:Name="Example2" HeaderText="Menu with input gesture texts">
             <Menu>
                 <MenuItem Header="File">
                     <MenuItem Header="New" InputGestureText="Ctrl+N" />
@@ -51,7 +51,7 @@
                 </MenuItem>
             </Menu>
         </local:ControlExample>
-        <local:ControlExample HeaderText="Menu with submenus, seperators, and radio items">
+        <local:ControlExample x:Name="Example3" HeaderText="Menu with submenus, seperators, and radio items">
             <Menu>
                 <MenuItem Header="File">
                     <MenuItem Header="New">
