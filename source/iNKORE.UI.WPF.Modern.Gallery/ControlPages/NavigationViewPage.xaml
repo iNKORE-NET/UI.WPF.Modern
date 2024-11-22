@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     Title="NavigationView Page"
     d:DesignWidth="1206"
@@ -84,7 +83,7 @@
                     Text="If you have five or more equally important navigation categories that should prominently appear on larger window widths, consider using a left navigation pane."
                     TextWrapping="Wrap" />
 
-                <muxc:NavigationView
+                <ui:NavigationView
                     x:Name="nvSample5"
                     Grid.Row="1"
                     Height="460"
@@ -92,38 +91,38 @@
                     IsTabStop="False"
                     PaneDisplayMode="Auto"
                     SelectionChanged="NavigationView_SelectionChanged5">
-                    <muxc:NavigationView.MenuItems>
-                        <muxc:NavigationViewItem
+                    <ui:NavigationView.MenuItems>
+                        <ui:NavigationViewItem
                             Content="Menu Item1"
                             Tag="SamplePage1">
-                            <muxc:NavigationViewItem.Icon>
-                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Play}"/>
-                            </muxc:NavigationViewItem.Icon>
-                        </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem
+                            <ui:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Play}"/>
+                            </ui:NavigationViewItem.Icon>
+                        </ui:NavigationViewItem>
+                        <ui:NavigationViewItem
                             Content="Menu Item2"
                             Tag="SamplePage2">
-                            <muxc:NavigationViewItem.Icon>
-                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Save}"/>
-                            </muxc:NavigationViewItem.Icon>
-                        </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem
+                            <ui:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Save}"/>
+                            </ui:NavigationViewItem.Icon>
+                        </ui:NavigationViewItem>
+                        <ui:NavigationViewItem
                             Content="Menu Item3"
                             Tag="SamplePage3">
-                            <muxc:NavigationViewItem.Icon>
-                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Refresh}"/>
-                            </muxc:NavigationViewItem.Icon>
-                        </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem
+                            <ui:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Refresh}"/>
+                            </ui:NavigationViewItem.Icon>
+                        </ui:NavigationViewItem>
+                        <ui:NavigationViewItem
                             Content="Menu Item4"
                             Tag="SamplePage4">
-                            <muxc:NavigationViewItem.Icon>
-                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Download}"/>
-                            </muxc:NavigationViewItem.Icon>
-                        </muxc:NavigationViewItem>
-                    </muxc:NavigationView.MenuItems>
+                            <ui:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Download}"/>
+                            </ui:NavigationViewItem.Icon>
+                        </ui:NavigationViewItem>
+                    </ui:NavigationView.MenuItems>
                     <ui:Frame x:Name="contentFrame5" Margin="0,0,0,0" />
-                </muxc:NavigationView>
+                </ui:NavigationView>
             </Grid>
         </local:ControlExample>
 
@@ -143,7 +142,7 @@
                     Text="If you have equally important navigation categories that should be de-emphasized relative to the content of your app, consider using a top navigation pane."
                     TextWrapping="Wrap" />
 
-                <muxc:NavigationView
+                <ui:NavigationView
                     x:Name="nvSample6"
                     Grid.Row="1"
                     Height="460"
@@ -151,15 +150,15 @@
                     IsTabStop="False"
                     PaneDisplayMode="Top"
                     SelectionChanged="NavigationView_SelectionChanged6">
-                    <muxc:NavigationView.MenuItems>
-                        <muxc:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" />
-                        <muxc:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" />
-                        <muxc:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" />
-                        <muxc:NavigationViewItem Content="Menu Item4" Tag="SamplePage3" />
-                    </muxc:NavigationView.MenuItems>
+                    <ui:NavigationView.MenuItems>
+                        <ui:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" />
+                        <ui:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" />
+                        <ui:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" />
+                        <ui:NavigationViewItem Content="Menu Item4" Tag="SamplePage3" />
+                    </ui:NavigationView.MenuItems>
 
                     <ui:Frame x:Name="contentFrame6" />
-                </muxc:NavigationView>
+                </ui:NavigationView>
             </Grid>
         </local:ControlExample>
 
@@ -179,24 +178,24 @@
                     Text="If you have equally important navigation categories and limited app content space, consider using a top navigation pane on larger window widths and a minimal left navigation pane on smaller window widths."
                     TextWrapping="Wrap" />
 
-                <muxc:NavigationView
+                <ui:NavigationView
                     x:Name="nvSample2"
                     Grid.Row="1"
                     Height="460"
                     IsTabStop="False"
                     PaneDisplayMode="Auto"
                     SelectionChanged="NavigationView_SelectionChanged2">
-                    <muxc:NavigationView.MenuItems>
-                        <muxc:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" />
-                        <muxc:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" />
-                        <muxc:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" />
-                        <muxc:NavigationViewItem Content="Menu Item4" Tag="SamplePage4" />
-                    </muxc:NavigationView.MenuItems>
+                    <ui:NavigationView.MenuItems>
+                        <ui:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" />
+                        <ui:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" />
+                        <ui:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" />
+                        <ui:NavigationViewItem Content="Menu Item4" Tag="SamplePage4" />
+                    </ui:NavigationView.MenuItems>
 
-                    <muxc:NavigationView.Content>
+                    <ui:NavigationView.Content>
                         <ui:Frame x:Name="contentFrame2" />
-                    </muxc:NavigationView.Content>
-                </muxc:NavigationView>
+                    </ui:NavigationView.Content>
+                </ui:NavigationView>
             </Grid>
         </local:ControlExample>
 
@@ -216,7 +215,7 @@
                     Text="For the tabs pattern, ensure that you unify selection and focus by setting the SelectionFollowsFocus property to True. If using a Frame to swap out content, then navigating between items shouldn't be recorded into the Frame's navigation stack. Please see the C# in the sample below to understand how to do this."
                     TextWrapping="Wrap" />
 
-                <muxc:NavigationView
+                <ui:NavigationView
                     x:Name="nvSample7"
                     Grid.Row="1"
                     Height="460"
@@ -225,14 +224,14 @@
                     PaneDisplayMode="Top"
                     SelectionChanged="NavigationView_SelectionChanged7"
                     SelectionFollowsFocus="Enabled">
-                    <muxc:NavigationView.MenuItems>
-                        <muxc:NavigationViewItem Content="Item1" Tag="SamplePage1" />
-                        <muxc:NavigationViewItem Content="Item2" Tag="SamplePage2" />
-                        <muxc:NavigationViewItem Content="Item3" Tag="SamplePage3" />
-                        <muxc:NavigationViewItem Content="Item4" Tag="SamplePage4" />
-                    </muxc:NavigationView.MenuItems>
+                    <ui:NavigationView.MenuItems>
+                        <ui:NavigationViewItem Content="Item1" Tag="SamplePage1" />
+                        <ui:NavigationViewItem Content="Item2" Tag="SamplePage2" />
+                        <ui:NavigationViewItem Content="Item3" Tag="SamplePage3" />
+                        <ui:NavigationViewItem Content="Item4" Tag="SamplePage4" />
+                    </ui:NavigationView.MenuItems>
                     <ui:Frame x:Name="contentFrame7" />
-                </muxc:NavigationView>
+                </ui:NavigationView>
             </Grid>
         </local:ControlExample>
 
@@ -252,7 +251,7 @@
                     Text="When data binding, use the MenuItemsSource property to bind to an observable collection of items, and do not set the MenuItems property. In addition, set the MenuItemTemplate property and use a NavigationViewItem as the data template. If you wish to bind to the header content as well, use data template selectors via the MenuItemTemplateSelector property. "
                     TextWrapping="Wrap" />
 
-                <muxc:NavigationView
+                <ui:NavigationView
                     x:Name="nvSample4"
                     Grid.Row="2"
                     Height="460"
@@ -264,7 +263,7 @@
                     <StackPanel>
                         <ui:Frame x:Name="contentFrame4" Margin="0,0,0,0" />
                     </StackPanel>
-                </muxc:NavigationView>
+                </ui:NavigationView>
             </Grid>
         </local:ControlExample>
 
@@ -319,77 +318,77 @@
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
-                <muxc:NavigationView
+                <ui:NavigationView
                     x:Name="nvSample8"
                     Grid.Row="1"
                     Height="460"
                     IsTabStop="False"
                     PaneDisplayMode="Left"
                     SelectionChanged="NavigationView_SelectionChanged8">
-                    <muxc:NavigationView.MenuItems>
-                        <muxc:NavigationViewItem
+                    <ui:NavigationView.MenuItems>
+                        <ui:NavigationViewItem
                             Content="Home"
                             Tag="SamplePage1"
                             ToolTipService.ToolTip="Home">
-                            <muxc:NavigationViewItem.Icon>
-                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Home}"/>
-                            </muxc:NavigationViewItem.Icon>
-                        </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem
+                            <ui:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Home}"/>
+                            </ui:NavigationViewItem.Icon>
+                        </ui:NavigationViewItem>
+                        <ui:NavigationViewItem
                             Content="Account"
                             Tag="SamplePage2"
                             ToolTipService.ToolTip="Account">
-                            <muxc:NavigationViewItem.Icon>
-                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Contact}"/>
-                            </muxc:NavigationViewItem.Icon>
-                            <muxc:NavigationViewItem.MenuItems>
-                                <muxc:NavigationViewItem
+                            <ui:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Contact}"/>
+                            </ui:NavigationViewItem.Icon>
+                            <ui:NavigationViewItem.MenuItems>
+                                <ui:NavigationViewItem
                                     Content="Mail"
                                     Tag="SamplePage3"
                                     ToolTipService.ToolTip="Mail">
-                                    <muxc:NavigationViewItem.Icon>
-                                        <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Mail}"/>
-                                    </muxc:NavigationViewItem.Icon>
-                                </muxc:NavigationViewItem>
-                                <muxc:NavigationViewItem
+                                    <ui:NavigationViewItem.Icon>
+                                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Mail}"/>
+                                    </ui:NavigationViewItem.Icon>
+                                </ui:NavigationViewItem>
+                                <ui:NavigationViewItem
                                     Content="Calendar"
                                     Tag="SamplePage4"
                                     ToolTipService.ToolTip="Calendar">
-                                    <muxc:NavigationViewItem.Icon>
-                                        <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Calendar}"/>
-                                    </muxc:NavigationViewItem.Icon>
-                                </muxc:NavigationViewItem>
-                            </muxc:NavigationViewItem.MenuItems>
-                        </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem
+                                    <ui:NavigationViewItem.Icon>
+                                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Calendar}"/>
+                                    </ui:NavigationViewItem.Icon>
+                                </ui:NavigationViewItem>
+                            </ui:NavigationViewItem.MenuItems>
+                        </ui:NavigationViewItem>
+                        <ui:NavigationViewItem
                             Content="Document options"
                             SelectsOnInvoked="False"
                             ToolTipService.ToolTip="Document options">
-                            <muxc:NavigationViewItem.Icon>
-                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Page}"/>
-                            </muxc:NavigationViewItem.Icon>
-                            <muxc:NavigationViewItem.MenuItems>
-                                <muxc:NavigationViewItem
+                            <ui:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Page}"/>
+                            </ui:NavigationViewItem.Icon>
+                            <ui:NavigationViewItem.MenuItems>
+                                <ui:NavigationViewItem
                                     Content="Create new"
                                     Tag="SamplePage5"
                                     ToolTipService.ToolTip="Create new">
-                                    <muxc:NavigationViewItem.Icon>
-                                        <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.NewFolder}"/>
-                                    </muxc:NavigationViewItem.Icon>
-                                </muxc:NavigationViewItem>
-                                <muxc:NavigationViewItem
+                                    <ui:NavigationViewItem.Icon>
+                                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.NewFolder}"/>
+                                    </ui:NavigationViewItem.Icon>
+                                </ui:NavigationViewItem>
+                                <ui:NavigationViewItem
                                     Content="Upload file"
                                     Tag="SamplePage6"
                                     ToolTipService.ToolTip="Upload file">
-                                    <muxc:NavigationViewItem.Icon>
-                                        <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.OpenLocal}"/>
-                                    </muxc:NavigationViewItem.Icon>
-                                </muxc:NavigationViewItem>
-                            </muxc:NavigationViewItem.MenuItems>
-                        </muxc:NavigationViewItem>
-                    </muxc:NavigationView.MenuItems>
+                                    <ui:NavigationViewItem.Icon>
+                                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.OpenLocal}"/>
+                                    </ui:NavigationViewItem.Icon>
+                                </ui:NavigationViewItem>
+                            </ui:NavigationViewItem.MenuItems>
+                        </ui:NavigationViewItem>
+                    </ui:NavigationView.MenuItems>
                     <ui:Frame x:Name="contentFrame8" />
-                </muxc:NavigationView>
+                </ui:NavigationView>
             </Grid>
         </local:ControlExample>
 
@@ -473,7 +472,7 @@
                 </StackPanel>
 
             </local:ControlExample.Options>
-            <muxc:NavigationView
+            <ui:NavigationView
                 x:Name="nvSample"
                 Height="540"
                 Margin="0,12,0,0"
@@ -483,71 +482,71 @@
                 PaneDisplayMode="Left"
                 PaneTitle="{Binding ElementName=paneText, Path=Text, Mode=TwoWay}"
                 SelectionChanged="NavigationView_SelectionChanged">
-                <muxc:NavigationView.MenuItems>
-                    <muxc:NavigationViewItem
+                <ui:NavigationView.MenuItems>
+                    <ui:NavigationViewItem
                         x:Name="SamplePage1Item"
                         Content="Menu Item1"
                         Tag="SamplePage1">
-                        <muxc:NavigationViewItem.Icon>
+                        <ui:NavigationViewItem.Icon>
                             <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Play}" />
-                        </muxc:NavigationViewItem.Icon>
-                    </muxc:NavigationViewItem>
-                    <muxc:NavigationViewItemHeader Content="Actions" />
-                    <muxc:NavigationViewItem
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                    <ui:NavigationViewItemHeader Content="Actions" />
+                    <ui:NavigationViewItem
                         x:Name="SamplePage2Item"
                         Content="Menu Item2"
                         SelectsOnInvoked="True"
                         Tag="SamplePage2">
-                        <muxc:NavigationViewItem.Icon>
+                        <ui:NavigationViewItem.Icon>
                             <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Save}" />
-                        </muxc:NavigationViewItem.Icon>
-                    </muxc:NavigationViewItem>
-                    <muxc:NavigationViewItem
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                    <ui:NavigationViewItem
                         x:Name="SamplePage3Item"
                         Content="Menu Item3"
                         Tag="SamplePage3">
-                        <muxc:NavigationViewItem.Icon>
+                        <ui:NavigationViewItem.Icon>
                             <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Refresh}" />
-                        </muxc:NavigationViewItem.Icon>
-                    </muxc:NavigationViewItem>
-                </muxc:NavigationView.MenuItems>
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                </ui:NavigationView.MenuItems>
 
-                <muxc:NavigationView.PaneCustomContent>
+                <ui:NavigationView.PaneCustomContent>
                     <ui:HyperlinkButton
                         x:Name="PaneHyperlink"
                         Margin="12,0"
                         Content="More info"
                         Visibility="Collapsed" />
-                </muxc:NavigationView.PaneCustomContent>
+                </ui:NavigationView.PaneCustomContent>
 
-                <muxc:NavigationView.AutoSuggestBox>
+                <ui:NavigationView.AutoSuggestBox>
                     <ui:AutoSuggestBox AutomationProperties.Name="Search">
                         <ui:AutoSuggestBox.QueryIcon>
                             <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Search}"/>
                         </ui:AutoSuggestBox.QueryIcon>
                     </ui:AutoSuggestBox>
-                </muxc:NavigationView.AutoSuggestBox>
+                </ui:NavigationView.AutoSuggestBox>
 
-                <muxc:NavigationView.PaneFooter>
+                <ui:NavigationView.PaneFooter>
                     <StackPanel
                         x:Name="FooterStackPanel"
                         Orientation="Vertical"
                         Visibility="Collapsed">
-                        <muxc:NavigationViewItem AutomationProperties.Name="download">
-                            <muxc:NavigationViewItem.Icon>
-                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.Download}"/>
-                            </muxc:NavigationViewItem.Icon>
-                        </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem AutomationProperties.Name="favorite">
-                            <muxc:NavigationViewItem.Icon>
-                                <ui:FontIcon Icon="{x:Static muxc:SegoeFluentIcons.FavoriteStar}"/>
-                            </muxc:NavigationViewItem.Icon>
-                        </muxc:NavigationViewItem>
+                        <ui:NavigationViewItem AutomationProperties.Name="download">
+                            <ui:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Download}"/>
+                            </ui:NavigationViewItem.Icon>
+                        </ui:NavigationViewItem>
+                        <ui:NavigationViewItem AutomationProperties.Name="favorite">
+                            <ui:NavigationViewItem.Icon>
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.FavoriteStar}"/>
+                            </ui:NavigationViewItem.Icon>
+                        </ui:NavigationViewItem>
                     </StackPanel>
-                </muxc:NavigationView.PaneFooter>
+                </ui:NavigationView.PaneFooter>
 
                 <ui:Frame x:Name="contentFrame" />
-            </muxc:NavigationView>
+            </ui:NavigationView>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>
