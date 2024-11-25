@@ -27,19 +27,19 @@ namespace Acrylic10Example
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            WindowChrome.SetWindowChrome(this, new WindowChrome()
-            {
-                GlassFrameThickness = new Thickness(0, 1, 0, 0),
-                UseAeroCaptionButtons = false,
-                CornerRadius = new CornerRadius(0),
-                ResizeBorderThickness = new Thickness(4),
-                NonClientFrameEdges = NonClientFrameEdges.None,
-                CaptionHeight = 36d,
+            //WindowChrome.SetWindowChrome(this, new WindowChrome()
+            //{
+            //    GlassFrameThickness = new Thickness(0, 1, 0, 0),
+            //    UseAeroCaptionButtons = false,
+            //    CornerRadius = new CornerRadius(0),
+            //    ResizeBorderThickness = new Thickness(4),
+            //    NonClientFrameEdges = NonClientFrameEdges.None,
+            //    CaptionHeight = 36d,
 
-            });
+            //});
 
-            WindowHelper.SetApplyBackground(this, false);
-            AcrylicHelper.Apply(this, true);
+            //WindowHelper.SetApplyBackground(this, false);
+            //AcrylicHelper.Apply(this, true);
         }
     }
 }
