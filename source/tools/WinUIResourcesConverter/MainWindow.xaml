@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:WinUIResourcesConverter"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     Title="WinUI Resources Converter"
     Width="800"
     Height="450"
@@ -23,12 +24,12 @@
             IsPaneOpen="True"
             PanePlacement="Left">
             <Grid>
-                <ui:SimpleStackPanel
+                <ikw:SimpleStackPanel
                     x:Name="MainContentPanel"
                     Margin="10"
                     VerticalAlignment="Center"
                     Spacing="20">
-                    <ui:SimpleStackPanel Orientation="Vertical" Spacing="5">
+                    <ikw:SimpleStackPanel Orientation="Vertical" Spacing="5">
                         <TextBlock Style="{DynamicResource BaseTextBlockStyle}" Text="Source Directory" />
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -50,8 +51,8 @@
                             <Bold>local WinUI repo clone</Bold>
                             <Run>that you want to the convert the resources for</Run>
                         </TextBlock>
-                    </ui:SimpleStackPanel>
-                    <ui:SimpleStackPanel Orientation="Vertical" Spacing="5">
+                    </ikw:SimpleStackPanel>
+                    <ikw:SimpleStackPanel Orientation="Vertical" Spacing="5">
                         <TextBlock Style="{DynamicResource BaseTextBlockStyle}" Text="Destination Directory" />
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -71,8 +72,8 @@
                             <Bold>Strings</Bold>
                             <Run>directory of the target control that you want to the convert the resources for</Run>
                         </TextBlock>
-                    </ui:SimpleStackPanel>
-                    <ui:SimpleStackPanel
+                    </ikw:SimpleStackPanel>
+                    <ikw:SimpleStackPanel
                         HorizontalAlignment="Center"
                         Orientation="Horizontal"
                         Spacing="20">
@@ -85,8 +86,8 @@
                             Click="ConvertButton_Click"
                             Content="Convert"
                             Style="{DynamicResource AccentButtonStyle}" />
-                    </ui:SimpleStackPanel>
-                </ui:SimpleStackPanel>
+                    </ikw:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
                 <ui:ProgressRing
                     x:Name="ProgressRing1"
                     Width="100"
