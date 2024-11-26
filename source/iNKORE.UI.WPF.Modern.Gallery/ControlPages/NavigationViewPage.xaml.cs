@@ -31,11 +31,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             DataContext = this;
             InitializeComponent();
 
-            nvSample2.SelectedItem = nvSample2.MenuItems.OfType<iNKORE.UI.WPF.Modern.Controls.NavigationViewItem>().First();
-            nvSample5.SelectedItem = nvSample5.MenuItems.OfType<iNKORE.UI.WPF.Modern.Controls.NavigationViewItem>().First();
-            nvSample6.SelectedItem = nvSample6.MenuItems.OfType<iNKORE.UI.WPF.Modern.Controls.NavigationViewItem>().First();
-            nvSample7.SelectedItem = nvSample7.MenuItems.OfType<iNKORE.UI.WPF.Modern.Controls.NavigationViewItem>().First();
-            nvSample8.SelectedItem = nvSample8.MenuItems.OfType<iNKORE.UI.WPF.Modern.Controls.NavigationViewItem>().First();
+            nvSample2.SelectedItem = nvSample2.MenuItems.OfType<NavigationViewItem>().First();
+            nvSample5.SelectedItem = nvSample5.MenuItems.OfType<NavigationViewItem>().First();
+            nvSample6.SelectedItem = nvSample6.MenuItems.OfType<NavigationViewItem>().First();
+            nvSample7.SelectedItem = nvSample7.MenuItems.OfType<NavigationViewItem>().First();
+            nvSample8.SelectedItem = nvSample8.MenuItems.OfType<NavigationViewItem>().First();
 
             Categories = new ObservableCollection<CategoryBase>();
             Category firstCategory = new Category { Name = "Category 1", Icon = SegoeFluentIcons.Home, Tooltip = "This is category 1" };
@@ -54,19 +54,19 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             nvSample2.UpdateLayout();
         }
 
-        public iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode ChoosePanePosition(bool toggleOn)
+        public NavigationViewPaneDisplayMode ChoosePanePosition(bool toggleOn)
         {
             if (toggleOn)
             {
-                return iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Left;
+                return NavigationViewPaneDisplayMode.Left;
             }
             else
             {
-                return iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Top;
+                return NavigationViewPaneDisplayMode.Top;
             }
         }
 
-        private void NavigationView_SelectionChanged(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
             {
@@ -74,7 +74,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             }
             else
             {
-                var selectedItem = (iNKORE.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
+                var selectedItem = (NavigationViewItem)args.SelectedItem;
                 if (selectedItem != null)
                 {
                     string selectedItemTag = (string)selectedItem.Tag;
@@ -86,7 +86,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             }
         }
 
-        private void NavigationView_SelectionChanged2(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged2(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             if (!CameFromGridChange)
             {
@@ -96,7 +96,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 }
                 else
                 {
-                    var selectedItem = (iNKORE.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
+                    var selectedItem = (NavigationViewItem)args.SelectedItem;
                     string selectedItemTag = (string)selectedItem.Tag;
                     string pageName = "SamplesCommon.SamplePages." + selectedItemTag;
                     Type pageType = typeof(SamplePage1).Assembly.GetType(pageName);
@@ -107,7 +107,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             CameFromGridChange = false;
         }
 
-        private void NavigationView_SelectionChanged4(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged4(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
             {
@@ -127,7 +127,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         }
 
 
-        private void NavigationView_SelectionChanged5(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged5(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
             {
@@ -135,7 +135,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             }
             else
             {
-                var selectedItem = (iNKORE.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
+                var selectedItem = (NavigationViewItem)args.SelectedItem;
                 string selectedItemTag = (string)selectedItem.Tag;
                 sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
                 string pageName = "SamplesCommon.SamplePages." + selectedItemTag;
@@ -143,7 +143,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 contentFrame5.Navigate(pageType);
             }
         }
-        private void NavigationView_SelectionChanged6(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged6(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
             {
@@ -151,14 +151,14 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             }
             else
             {
-                var selectedItem = (iNKORE.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
+                var selectedItem = (NavigationViewItem)args.SelectedItem;
                 string pageName = "SamplesCommon.SamplePages." + (string)selectedItem.Tag;
                 Type pageType = typeof(SamplePage1).Assembly.GetType(pageName);
                 contentFrame6.Navigate(pageType);
             }
         }
 
-        private void NavigationView_SelectionChanged7(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged7(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
             {
@@ -166,7 +166,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             }
             else
             {
-                var selectedItem = (iNKORE.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
+                var selectedItem = (NavigationViewItem)args.SelectedItem;
                 string pageName = "SamplesCommon.SamplePages." + (string)selectedItem.Tag;
                 Type pageType = typeof(SamplePage1).Assembly.GetType(pageName);
 
@@ -174,7 +174,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             }
         }
 
-        private void NavigationView_SelectionChanged8(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged8(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             /* NOTE: for this function to work, every NavigationView must follow the same naming convention: nvSample# (i.e. nvSample3),
             and every corresponding content frame must follow the same naming convention: contentFrame# (i.e. contentFrame3) */
@@ -189,7 +189,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             }
             else
             {
-                var selectedItem = (iNKORE.UI.WPF.Modern.Controls.NavigationViewItem)args.SelectedItem;
+                var selectedItem = (NavigationViewItem)args.SelectedItem;
                 string selectedItemTag = ((string)selectedItem.Tag);
                 sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
                 string pageName = "SamplesCommon.SamplePages." + selectedItemTag;
@@ -234,28 +234,36 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
         private void headerCheck_Click(object sender, RoutedEventArgs e)
         {
             nvSample.AlwaysShowHeader = (sender as CheckBox).IsChecked == true ? true : false;
+
+            UpdateExampleCode();
         }
 
         private void settingsCheck_Click(object sender, RoutedEventArgs e)
         {
             nvSample.IsSettingsVisible = (sender as CheckBox).IsChecked == true ? true : false;
+
+            UpdateExampleCode();
         }
 
         private void visibleCheck_Click(object sender, RoutedEventArgs e)
         {
             if ((sender as CheckBox).IsChecked == true)
             {
-                nvSample.IsBackButtonVisible = iNKORE.UI.WPF.Modern.Controls.NavigationViewBackButtonVisible.Collapsed;
+                nvSample.IsBackButtonVisible = NavigationViewBackButtonVisible.Visible;
             }
             else
             {
-                nvSample.IsBackButtonVisible = iNKORE.UI.WPF.Modern.Controls.NavigationViewBackButtonVisible.Collapsed;
+                nvSample.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
             }
+
+            UpdateExampleCode();
         }
 
         private void enableCheck_Click(object sender, RoutedEventArgs e)
         {
             nvSample.IsBackEnabled = (sender as CheckBox).IsChecked == true ? true : false;
+
+            UpdateExampleCode();
         }
 
         private void autoSuggestCheck_Click(object sender, RoutedEventArgs e)
@@ -273,6 +281,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                 nvSample.AutoSuggestBox = null;
                 //navViewASB.Value = null;
             }
+
+            UpdateExampleCode();
         }
 
         /*
@@ -292,6 +302,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             {
                 PaneHyperlink.Visibility = Visibility.Collapsed;
             }
+
+            UpdateExampleCode();
         }
 
         private void paneFooterCheck_Click(object sender, RoutedEventArgs e)
@@ -304,6 +316,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             {
                 FooterStackPanel.Visibility = Visibility.Collapsed;
             }
+
+            UpdateExampleCode();
         }
 
         private void panePositionLeft_Checked(object sender, RoutedEventArgs e)
@@ -312,16 +326,18 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             {
                 if ((sender as RadioButton).Name == "nvSampleLeft" && nvSample != null)
                 {
-                    nvSample.PaneDisplayMode = iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Left;
+                    nvSample.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
                     nvSample.IsPaneOpen = true;
                     FooterStackPanel.Orientation = Orientation.Vertical;
                 }
                 else if ((sender as RadioButton).Name == "nvSample8Left" && nvSample8 != null)
                 {
-                    nvSample8.PaneDisplayMode = iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Left;
+                    nvSample8.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
                     nvSample8.IsPaneOpen = true;
                 }
             }
+
+            UpdateExampleCode();
         }
 
 
@@ -331,16 +347,18 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             {
                 if ((sender as RadioButton).Name == "nvSampleTop" && nvSample != null)
                 {
-                    nvSample.PaneDisplayMode = iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Top;
+                    nvSample.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
                     nvSample.IsPaneOpen = false;
                     FooterStackPanel.Orientation = Orientation.Horizontal;
                 }
                 else if ((sender as RadioButton).Name == "nvSample8Top" && nvSample8 != null)
                 {
-                    nvSample8.PaneDisplayMode = iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.Top;
+                    nvSample8.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
                     nvSample8.IsPaneOpen = false;
                 }
             }
+
+            UpdateExampleCode();
         }
 
         private void panePositionLeftCompact_Checked(object sender, RoutedEventArgs e)
@@ -349,37 +367,320 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             {
                 if ((sender as RadioButton).Name == "nvSample8LeftCompact" && nvSample8 != null)
                 {
-                    nvSample8.PaneDisplayMode = iNKORE.UI.WPF.Modern.Controls.NavigationViewPaneDisplayMode.LeftCompact;
+                    nvSample8.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftCompact;
                     nvSample8.IsPaneOpen = false;
                 }
             }
+
+            UpdateExampleCode();
         }
 
         private void sffCheck_Click(object sender, RoutedEventArgs e)
         {
             if ((sender as CheckBox).IsChecked == true)
             {
-                nvSample.SelectionFollowsFocus = iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionFollowsFocus.Enabled;
+                nvSample.SelectionFollowsFocus = NavigationViewSelectionFollowsFocus.Enabled;
             }
             else
             {
-                nvSample.SelectionFollowsFocus = iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionFollowsFocus.Disabled;
+                nvSample.SelectionFollowsFocus = NavigationViewSelectionFollowsFocus.Disabled;
             }
+
+            UpdateExampleCode();
         }
 
         private void suppressselectionCheck_Checked_Click(object sender, RoutedEventArgs e)
         {
             SamplePage2Item.SelectsOnInvoked = (sender as CheckBox).IsChecked == true ? false : true;
+            UpdateExampleCode();
         }
+
+        private void headerText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void paneText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsLoaded) return;
 
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
+            Example3.Xaml = Example3Xaml;
+            Example4.Xaml = Example4Xaml;
+            Example5.Xaml = Example5Xaml;
+            Example6.Xaml = Example6Xaml;
+            Example7.Xaml = Example7Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<ui:NavigationView
+    x:Name=""nvSample5""
+    Header=""This is Header Text""
+    IsTabStop=""False""
+    PaneDisplayMode=""Auto"">
+    <ui:NavigationView.MenuItems>
+        <ui:NavigationViewItem
+            Content=""Menu Item1""
+            Tag=""SamplePage1""
+            <ui:NavigationViewItem.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Play}}""/>
+            </ui:NavigationViewItem.Icon>
+        </ui:NavigationViewItem>
+        <ui:NavigationViewItem
+            Content=""Menu Item2""
+            Tag=""SamplePage2"">
+            <ui:NavigationViewItem.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Save}}""/>
+            </ui:NavigationViewItem.Icon>
+        </ui:NavigationViewItem>
+        <ui:NavigationViewItem
+            Content=""Menu Item3""
+            Tag=""SamplePage3"">
+            <ui:NavigationViewItem.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Refresh}}""/>
+            </ui:NavigationViewItem.Icon>
+        </ui:NavigationViewItem>
+        <ui:NavigationViewItem
+            Content=""Menu Item4""
+            Tag=""SamplePage4"">
+            <ui:NavigationViewItem.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Download}}""/>
+            </ui:NavigationViewItem.Icon>
+        </ui:NavigationViewItem>
+    </ui:NavigationView.MenuItems>
+    <ui:Frame x:Name=""contentFrame5"" Margin=""0,0,0,0"" />
+</ui:NavigationView>
+";
 
+        public string Example2Xaml => $@"
+<ui:NavigationView x:Name=""nvSample6""
+    Header=""This is Header Text""
+    IsTabStop=""False"" PaneDisplayMode=""Top""
+    SelectionChanged=""NavigationView_SelectionChanged6"">
+    <ui:NavigationView.MenuItems>
+        <ui:NavigationViewItem Content=""Menu Item1"" Tag=""SamplePage1"" />
+        <ui:NavigationViewItem Content=""Menu Item2"" Tag=""SamplePage2"" />
+        <ui:NavigationViewItem Content=""Menu Item3"" Tag=""SamplePage3"" />
+        <ui:NavigationViewItem Content=""Menu Item4"" Tag=""SamplePage3"" />
+    </ui:NavigationView.MenuItems>
+
+    <ui:Frame x:Name=""contentFrame6"" />
+</ui:NavigationView>
+";
+
+        public string Example3Xaml => $@"
+<ui:NavigationView x:Name=""nvSample2""
+    IsTabStop=""False"" PaneDisplayMode=""Auto""
+    SelectionChanged=""NavigationView_SelectionChanged2"">
+    <ui:NavigationView.MenuItems>
+        <ui:NavigationViewItem Content=""Menu Item1"" Tag=""SamplePage1"" />
+        <ui:NavigationViewItem Content=""Menu Item2"" Tag=""SamplePage2"" />
+        <ui:NavigationViewItem Content=""Menu Item3"" Tag=""SamplePage3"" />
+        <ui:NavigationViewItem Content=""Menu Item4"" Tag=""SamplePage4"" />
+    </ui:NavigationView.MenuItems>
+
+    <ui:NavigationView.Content>
+        <ui:Frame x:Name=""contentFrame2"" />
+    </ui:NavigationView.Content>
+</ui:NavigationView>
+";
+
+        public string Example4Xaml => $@"
+<ui:NavigationView x:Name=""nvSample7""
+    IsBackButtonVisible=""Collapsed""
+    IsTabStop=""False""
+    PaneDisplayMode=""Top""
+    SelectionChanged=""NavigationView_SelectionChanged7""
+    SelectionFollowsFocus=""Enabled"">
+    <ui:NavigationView.MenuItems>
+        <ui:NavigationViewItem Content=""Item1"" Tag=""SamplePage1"" />
+        <ui:NavigationViewItem Content=""Item2"" Tag=""SamplePage2"" />
+        <ui:NavigationViewItem Content=""Item3"" Tag=""SamplePage3"" />
+        <ui:NavigationViewItem Content=""Item4"" Tag=""SamplePage4"" />
+    </ui:NavigationView.MenuItems>
+    <ui:Frame x:Name=""contentFrame7"" />
+</ui:NavigationView>
+";
+
+        public string Example5Xaml => $@"
+<ui:NavigationView x:Name=""nvSample4""
+    IsTabStop=""False"" IsPaneOpen=""False""
+    MenuItemTemplateSelector=""{{StaticResource selector}}""
+    MenuItemsSource=""{{Binding Categories, Mode=OneWay}}""
+    SelectionChanged=""NavigationView_SelectionChanged4"">
+    <StackPanel>
+        <ui:Frame x:Name=""contentFrame4"" Margin=""0,0,0,0"" />
+    </StackPanel>
+</ui:NavigationView>
+";
+
+        public string Example6Xaml => $@"
+<ui:NavigationView x:Name=""nvSample8""
+    IsTabStop=""False"" PaneDisplayMode=""{nvSample8.PaneDisplayMode}""
+    SelectionChanged=""NavigationView_SelectionChanged8"">
+    <ui:NavigationView.MenuItems>
+        <ui:NavigationViewItem
+            Content=""Home""
+            Tag=""SamplePage1""
+            ToolTipService.ToolTip=""Home"">
+            <ui:NavigationViewItem.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Home}}""/>
+            </ui:NavigationViewItem.Icon>
+        </ui:NavigationViewItem>
+        <ui:NavigationViewItem
+            Content=""Account""
+            Tag=""SamplePage2""
+            ToolTipService.ToolTip=""Account"">
+            <ui:NavigationViewItem.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Contact}}""/>
+            </ui:NavigationViewItem.Icon>
+            <ui:NavigationViewItem.MenuItems>
+                <ui:NavigationViewItem
+                    Content=""Mail""
+                    Tag=""SamplePage3""
+                    ToolTipService.ToolTip=""Mail"">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Mail}}""/>
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+                <ui:NavigationViewItem
+                    Content=""Calendar""
+                    Tag=""SamplePage4""
+                    ToolTipService.ToolTip=""Calendar"">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Calendar}}""/>
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+            </ui:NavigationViewItem.MenuItems>
+        </ui:NavigationViewItem>
+        <ui:NavigationViewItem
+            Content=""Document options""
+            SelectsOnInvoked=""False""
+            ToolTipService.ToolTip=""Document options"">
+            <ui:NavigationViewItem.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Page}}""/>
+            </ui:NavigationViewItem.Icon>
+            <ui:NavigationViewItem.MenuItems>
+                <ui:NavigationViewItem
+                    Content=""Create new""
+                    Tag=""SamplePage5""
+                    ToolTipService.ToolTip=""Create new"">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.NewFolder}}""/>
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+                <ui:NavigationViewItem
+                    Content=""Upload file""
+                    Tag=""SamplePage6""
+                    ToolTipService.ToolTip=""Upload file"">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.OpenLocal}}""/>
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+            </ui:NavigationViewItem.MenuItems>
+        </ui:NavigationViewItem>
+    </ui:NavigationView.MenuItems>
+    <ui:Frame x:Name=""contentFrame8"" />
+</ui:NavigationView>
+";
+
+        public string Example7Xaml => $@"
+<ui:NavigationView x:Name=""nvSample""
+    ExpandedModeThresholdWidth=""500""
+    Header=""{nvSample.Header}""
+    IsTabStop=""False""
+    PaneDisplayMode=""{nvSample.PaneDisplayMode}""
+    PaneTitle=""{nvSample.PaneTitle}""
+    IsSettingsVisible=""{nvSample.IsSettingsVisible}""
+    AlwaysShowHeader=""{nvSample.AlwaysShowHeader}""
+    IsBackButtonVisible=""{nvSample.IsBackButtonVisible}""
+    IsBackEnabled=""{nvSample.IsBackEnabled}""
+    SelectionFollowsFocus=""{nvSample.SelectionFollowsFocus}""
+    SelectionChanged=""NavigationView_SelectionChanged"">
+
+    <ui:NavigationView.MenuItems>
+        <ui:NavigationViewItem
+            x:Name=""SamplePage1Item""
+            Content=""Menu Item1""
+            Tag=""SamplePage1"">
+            <ui:NavigationViewItem.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Play}}"" />
+            </ui:NavigationViewItem.Icon>
+        </ui:NavigationViewItem>
+        <ui:NavigationViewItemHeader Content=""Actions"" />
+        <ui:NavigationViewItem
+            x:Name=""SamplePage2Item""
+            Content=""Menu Item2""
+            SelectsOnInvoked=""{SamplePage2Item.SelectsOnInvoked}""
+            Tag=""SamplePage2"">
+            <ui:NavigationViewItem.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Save}}"" />
+            </ui:NavigationViewItem.Icon>
+        </ui:NavigationViewItem>
+        <ui:NavigationViewItem
+            x:Name=""SamplePage3Item""
+            Content=""Menu Item3""
+            Tag=""SamplePage3"">
+            <ui:NavigationViewItem.Icon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Refresh}}"" />
+            </ui:NavigationViewItem.Icon>
+        </ui:NavigationViewItem>
+    </ui:NavigationView.MenuItems>
+
+    <ui:NavigationView.PaneCustomContent>
+        <ui:HyperlinkButton
+            x:Name=""PaneHyperlink""
+            Margin=""12,0""
+            Content=""More info""
+            Visibility=""{PaneHyperlink.Visibility}"" />
+    </ui:NavigationView.PaneCustomContent>
+
+{(nvSample.AutoSuggestBox == null ? "" : $@"
+    <ui:NavigationView.AutoSuggestBox>
+        <ui:AutoSuggestBox AutomationProperties.Name=""Search"">
+            <ui:AutoSuggestBox.QueryIcon>
+                <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Search}}""/>
+            </ui:AutoSuggestBox.QueryIcon>
+        </ui:AutoSuggestBox>
+    </ui:NavigationView.AutoSuggestBox>
+
+")}
+    <ui:NavigationView.PaneFooter>
+        <StackPanel
+            x:Name=""FooterStackPanel""
+            Orientation=""{FooterStackPanel.Orientation}""
+            Visibility=""{FooterStackPanel.Visibility}"">
+            <ui:NavigationViewItem AutomationProperties.Name=""download"">
+                <ui:NavigationViewItem.Icon>
+                    <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Download}}""/>
+                </ui:NavigationViewItem.Icon>
+            </ui:NavigationViewItem>
+            <ui:NavigationViewItem AutomationProperties.Name=""favorite"">
+                <ui:NavigationViewItem.Icon>
+                    <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.FavoriteStar}}""/>
+                </ui:NavigationViewItem.Icon>
+            </ui:NavigationViewItem>
+        </StackPanel>
+    </ui:NavigationView.PaneFooter>
+
+    <ui:Frame x:Name=""contentFrame"" />
+</ui:NavigationView>
+";
+
+        #endregion
     }
 }
