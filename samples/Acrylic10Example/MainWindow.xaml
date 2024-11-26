@@ -7,6 +7,7 @@
         xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
         xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
         ui:WindowHelper.UseModernWindowStyle="True"
+        ui:WindowHelper.SystemBackdropType="Acrylic10"
         ui:TitleBar.Height="36"
         mc:Ignorable="d"
         Title="Welcome!" Height="450" Width="800"
