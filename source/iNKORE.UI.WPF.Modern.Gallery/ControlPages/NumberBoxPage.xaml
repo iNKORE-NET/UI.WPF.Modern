@@ -7,9 +7,9 @@
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <ikw:SimpleStackPanel>
-        <local:ControlExample HeaderText="A NumberBox that evaluates expressions.">
+        <local:ControlExample x:Name="Example1" HeaderText="A NumberBox that evaluates expressions.">
             <ui:NumberBox
                 AcceptsExpression="True"
                 Header="Enter an expression:"
@@ -17,7 +17,7 @@
                 Value="NaN" />
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A NumberBox with a spin button.">
+        <local:ControlExample x:Name="Example2" HeaderText="A NumberBox with a spin button.">
             <ui:NumberBox
                 x:Name="NumberBoxSpinButtonPlacementExample"
                 Header="Enter an integer:"
@@ -28,7 +28,9 @@
 
             <local:ControlExample.Options>
                 <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
-                    <ui:RadioButtons Header="SpinButton Placement" SelectedItem="{Binding ElementName=NumberBoxSpinButtonPlacementExample, Path=SpinButtonPlacementMode}">
+                    <ui:RadioButtons Header="SpinButton Placement" 
+                                     SelectedItem="{Binding ElementName=NumberBoxSpinButtonPlacementExample, Path=SpinButtonPlacementMode}"
+                                     SelectionChanged="RadioButtons_SelectionChanged">
                         <ui:NumberBoxSpinButtonPlacementMode>Inline</ui:NumberBoxSpinButtonPlacementMode>
                         <ui:NumberBoxSpinButtonPlacementMode>Compact</ui:NumberBoxSpinButtonPlacementMode>
                     </ui:RadioButtons>
@@ -36,7 +38,7 @@
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A formatted NumberBox that rounds to the nearest 0.25.">
+        <local:ControlExample x:Name="Example3" HeaderText="A formatted NumberBox that rounds to the nearest 0.25.">
             <ui:NumberBox
                 x:Name="FormattedNumberBox"
                 Header="Enter a dollar amount:"
@@ -44,7 +46,7 @@
                 Value="NaN" />
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="API in action">
+        <local:ControlExample x:Name="Example4" HeaderText="API in action">
             <ui:NumberBox
                 x:Name="NumberBox1"
                 Width="200"
@@ -56,41 +58,55 @@
 
             <local:ControlExample.Options>
                 <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
-                    <ui:NumberBox Header="Minimum" Value="{Binding ElementName=NumberBox1, Path=Minimum}" />
-                    <ui:NumberBox Header="Maximum" Value="{Binding ElementName=NumberBox1, Path=Maximum}" />
-                    <ui:NumberBox
-                        Header="SmallChange"
+                    <ui:NumberBox Header="Minimum" Value="{Binding ElementName=NumberBox1, Path=Minimum}" 
+                                  ValueChanged="NumberBox_ValueChanged"/>
+                    <ui:NumberBox Header="Maximum" Value="{Binding ElementName=NumberBox1, Path=Maximum}" 
+                                  ValueChanged="NumberBox_ValueChanged"/>
+                    <ui:NumberBox Header="SmallChange"
                         SpinButtonPlacementMode="Inline"
-                        Value="{Binding ElementName=NumberBox1, Path=SmallChange}" />
-                    <ui:NumberBox
-                        Header="LargeChange"
+                        Value="{Binding ElementName=NumberBox1, Path=SmallChange}" 
+                        ValueChanged="NumberBox_ValueChanged"/>
+                    <ui:NumberBox Header="LargeChange"
                         SpinButtonPlacementMode="Inline"
-                        Value="{Binding ElementName=NumberBox1, Path=LargeChange}" />
+                        Value="{Binding ElementName=NumberBox1, Path=LargeChange}" 
+                        ValueChanged="NumberBox_ValueChanged"/>
                     <TextBox
                         ui:ControlHelper.Header="Text"
                         IsEnabled="False"
-                        Text="{Binding ElementName=NumberBox1, Path=Text, Mode=OneWay}" />
-                    <TextBox ui:ControlHelper.Header="Header" Text="{Binding ElementName=NumberBox1, Path=Header, UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBox ui:ControlHelper.Header="PlaceholderText" Text="{Binding ElementName=NumberBox1, Path=PlaceholderText, UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBox ui:ControlHelper.Header="Description" Text="{Binding ElementName=NumberBox1, Path=Description, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding ElementName=NumberBox1, Path=Text, Mode=OneWay}" 
+                        TextChanged="TextBox_TextChanged"/>
+                    <TextBox ui:ControlHelper.Header="Header" 
+                        Text="{Binding ElementName=NumberBox1, Path=Header, UpdateSourceTrigger=PropertyChanged}" 
+                        TextChanged="TextBox_TextChanged"/>
+                    <TextBox ui:ControlHelper.Header="PlaceholderText" 
+                        Text="{Binding ElementName=NumberBox1, Path=PlaceholderText, UpdateSourceTrigger=PropertyChanged}" 
+                        TextChanged="TextBox_TextChanged"/>
+                    <TextBox ui:ControlHelper.Header="Description" 
+                        Text="{Binding ElementName=NumberBox1, Path=Description, UpdateSourceTrigger=PropertyChanged}"
+                        TextChanged="TextBox_TextChanged"/>
                     <ComboBox
                         ui:ControlHelper.Header="ValidationMode"
                         ItemsSource="{Binding Source={x:Type ui:NumberBoxValidationMode}, Converter={StaticResource EnumValuesConverter}}"
-                        SelectedItem="{Binding ElementName=NumberBox1, Path=ValidationMode}" />
+                        SelectedItem="{Binding ElementName=NumberBox1, Path=ValidationMode}" 
+                        SelectionChanged="ComboBox_SelectionChanged"/>
                     <ComboBox
                         ui:ControlHelper.Header="SpinButtonPlacementMode"
                         ItemsSource="{Binding Source={x:Type ui:NumberBoxSpinButtonPlacementMode}, Converter={StaticResource EnumValuesConverter}}"
-                        SelectedItem="{Binding ElementName=NumberBox1, Path=SpinButtonPlacementMode}" />
-                    <CheckBox Content="IsWrapEnabled" IsChecked="{Binding ElementName=NumberBox1, Path=IsWrapEnabled}" />
-                    <CheckBox Content="AcceptsExpression" IsChecked="{Binding ElementName=NumberBox1, Path=AcceptsExpression}" />
-                    <Slider
-                        x:Name="CornerRadiusSlider"
+                        SelectedItem="{Binding ElementName=NumberBox1, Path=SpinButtonPlacementMode}" 
+                        SelectionChanged="ComboBox_SelectionChanged"/>
+                    <CheckBox Content="IsWrapEnabled" 
+                        IsChecked="{Binding ElementName=NumberBox1, Path=IsWrapEnabled}"
+                        Click="CheckBox_Click"/>
+                    <CheckBox Content="AcceptsExpression" 
+                        IsChecked="{Binding ElementName=NumberBox1, Path=AcceptsExpression}"
+                        Click="CheckBox_Click"/>
+                    <Slider x:Name="CornerRadiusSlider"
                         ui:ControlHelper.Header="CornerRadius"
                         AutoToolTipPlacement="TopLeft"
                         IsSnapToTickEnabled="True"
-                        Maximum="20"
-                        TickFrequency="1"
-                        Value="{Binding ElementName=NumberBox1, Path=CornerRadius, Converter={StaticResource CornerRadiusToDoubleConverter}}" />
+                        Maximum="20" TickFrequency="1"
+                        Value="{Binding ElementName=NumberBox1, Path=CornerRadius, Converter={StaticResource CornerRadiusToDoubleConverter}}"
+                        ValueChanged="CornerRadiusSlider_ValueChanged"/>
                     <ui:NumberBox
                         Header="PopupHorizonalOffset"
                         SpinButtonPlacementMode="Inline"
