@@ -6,9 +6,9 @@
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <StackPanel>
-        <local:ControlExample HeaderText="Page transitions">
+        <local:ControlExample x:Name="Example1" HeaderText="Page transitions">
 
             <ui:Frame
                 x:Name="ContentFrame"
@@ -61,11 +61,11 @@
                     <Button
                         Margin="0,0,0,4"
                         HorizontalAlignment="Stretch"
-                        Click="ForwardButton1_Click"
+                        Click="ForwardButton_Click"
                         Content="Navigate Forward" />
                     <Button
                         HorizontalAlignment="Stretch"
-                        Click="BackwardButton1_Click"
+                        Click="BackwardButton_Click"
                         Content="Navigate Backward" />
                 </StackPanel>
             </local:ControlExample.Options>

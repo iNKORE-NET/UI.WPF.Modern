@@ -18,24 +18,32 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             ContentFrame.Navigate(typeof(SamplePage1));
         }
 
-        private void ForwardButton1_Click(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private SamplePage1 _page1 = new SamplePage1();
+        private SamplePage2 _page2 = new SamplePage2();
+
+        private void ForwardButton_Click(object sender, RoutedEventArgs e)
         {
 
-            var pageToNavigateTo = ContentFrame.BackStackDepth % 2 == 1 ? typeof(SamplePage1) : typeof(SamplePage2);
+            Page pageToNavigateTo = ContentFrame.BackStackDepth % 2 == 1 ? _page1 : _page2;
 
             if (_transitionInfo == null)
             {
                 // Default behavior, no transition set or used.
-                ContentFrame.Navigate(sourcePageType: pageToNavigateTo, null);
+                ContentFrame.Navigate(pageToNavigateTo, null);
             }
             else
             {
                 // Explicit transition info used.
-                ContentFrame.Navigate(sourcePageType: pageToNavigateTo, null, _transitionInfo);
+                ContentFrame.Navigate(pageToNavigateTo, null, _transitionInfo);
             }
         }
 
-        private void BackwardButton1_Click(object sender, RoutedEventArgs e)
+        private void BackwardButton_Click(object sender, RoutedEventArgs e)
         {
             if (ContentFrame.BackStackDepth > 0)
             {
@@ -73,16 +81,46 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             {
                 _transitionInfo = null;
             }
+
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
+            Example1.CSharp = Example1CS;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<ui:Frame x:Name=""ContentFrame""/>
+";
 
+        public string Example1CS => $@"
+private void ForwardButton_Click(object sender, RoutedEventArgs e)
+{{
+
+    Page pageToNavigateTo = ContentFrame.BackStackDepth % 2 == 1 ? _page1 : _page2;
+ 
+{(_transitionInfo == null ? $@"
+    // Default behavior, no transition set or used.
+    ContentFrame.Navigate(pageToNavigateTo, null);
+" : $@"
+    // Explicit transition info used.
+    ContentFrame.Navigate(pageToNavigateTo, null, new {_transitionInfo.GetType().Name}());
+")}
+}}
+
+private void BackwardButton_Click(object sender, RoutedEventArgs e)
+{{
+    if (ContentFrame.BackStackDepth > 0)
+    {{
+        ContentFrame.GoBack();
+    }}
+}}
+";
+
+        #endregion
     }
 }
