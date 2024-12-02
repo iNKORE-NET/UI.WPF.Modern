@@ -50,27 +50,6 @@
                     </ui:ListView>
                 </Grid>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;Grid&gt;
-    &lt;ParallaxView Source=&quot;{Binding ElementName=listView}&quot; VerticalShift=&quot;500&quot;&gt;
-        &lt;Image Source=&quot;ms-appx:///Assets/SampleMedia/cliff.jpg&quot; /&gt;
-    &lt;/ParallaxView&gt;
-    &lt;ListView x:Name=&quot;listView&quot; ItemsSource=&quot;{Binding Items}&quot;&gt;
-        &lt;ListView.Header&gt;
-            &lt;Grid&gt;
-                &lt;ParallaxView Source=&quot;{Binding listView}&quot; VerticalShift=&quot;100&quot;
-                              VerticalSourceOffsetKind=&quot;Absolute&quot; VerticalSourceStartOffset=&quot;-50&quot;
-                              VerticalSourceEndOffset=&quot;250&quot;&gt;
-                    &lt;Image Source=&quot;ms-appx:///Assets/SampleMedia/cliff.jpg&quot; /&gt;
-                &lt;/ParallaxView&gt;
-                &lt;TextBlock Text=&quot;Scroll the list to see parallaxing of images&quot; /&gt;
-            &lt;/Grid&gt;
-        &lt;/ListView.Header&gt;
-    &lt;/ListView&gt;
-&lt;/Grid&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </local:ItemsPageBase>

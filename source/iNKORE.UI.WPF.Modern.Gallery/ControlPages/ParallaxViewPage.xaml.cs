@@ -31,14 +31,47 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             base.OnNavigatedTo(e);
 
             Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items).OrderBy(i => i.Title).ToList();
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
         }
+
+        public string Example1Xaml => $@"
+<Grid>
+    <ui:ParallaxView x:Name=""parallaxView""
+        HorizontalAlignment=""Left""
+        VerticalAlignment=""Top""
+        Source=""{{Binding ElementName=listView}}""
+        VerticalShift=""500"">
+        <Image Source=""/Assets/SampleMedia/cliff.jpg"" Stretch=""UniformToFill"" />
+    </ui:ParallaxView>
+    <ui:ListView x:Name=""listView""
+        HorizontalAlignment=""Stretch""
+        VerticalAlignment=""Top""
+        Background=""#80000000""
+        ItemsSource=""{{Binding Items}}"">
+        <ui:ListView.ItemTemplate>
+            <DataTemplate>
+                <TextBlock Foreground=""{{DynamicResource SystemControlForegroundAltHighBrush}}"" Text=""{{Binding Title}}"" />
+            </DataTemplate>
+        </ui:ListView.ItemTemplate>
+        <ui:ListView.Header>
+            <TextBlock MaxWidth=""280""
+                HorizontalAlignment=""Center""
+                VerticalAlignment=""Center""
+                FontSize=""28""
+                Foreground=""White""
+                Text=""Scroll the list to see parallaxing of images""
+                TextWrapping=""Wrap"" />
+        </ui:ListView.Header>
+    </ui:ListView>
+</Grid>
+";
 
         #endregion
 
