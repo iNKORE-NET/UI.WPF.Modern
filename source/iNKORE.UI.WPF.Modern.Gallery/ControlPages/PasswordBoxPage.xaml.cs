@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 {
@@ -27,10 +28,33 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
         public void UpdateExampleCode()
         {
+            if (!this.IsLoaded) return;
 
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
         }
+
+        public string Example1Xaml => $@"
+<PasswordBox/>
+";
+
+        public string Example2Xaml => $@"
+<PasswordBox x:Name=""passwordBox""
+    ui:ControlHelper.Header=""Password"" PasswordChar=""#"" 
+    ui:ControlHelper.PlaceholderText=""Enter your password""
+    ui:PasswordBoxHelper.PasswordRevealMode=""{PasswordBoxHelper.GetPasswordRevealMode(passwordBox)}"" />
+";
 
         #endregion
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void RadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
     }
 }
