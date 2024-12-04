@@ -7,7 +7,7 @@
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <ikw:SimpleStackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="Select different looks for the person picture.">
 
@@ -27,15 +27,18 @@
                         x:Name="ProfileImageRadio"
                         Content="Profile Image"
                         GroupName="Profile"
-                        IsChecked="True" />
+                        IsChecked="True" 
+                        Click="RadioButton_Click"/>
                     <RadioButton
                         x:Name="DisplayNameRadio"
                         Content="Display Name"
-                        GroupName="Profile" />
+                        GroupName="Profile"
+                        Click="RadioButton_Click"/>
                     <RadioButton
                         x:Name="InitialsRadio"
                         Content="Initials"
-                        GroupName="Profile" />
+                        GroupName="Profile"
+                        Click="RadioButton_Click"/>
                 </StackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
@@ -54,19 +57,27 @@
 
             <local:ControlExample.Options>
                 <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
-                    <TextBox ui:ControlHelper.Header="BadgeGlyph" Text="{Binding ElementName=personPicture2, Path=BadgeGlyph, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox ui:ControlHelper.Header="BadgeGlyph" 
+                        Text="{Binding ElementName=personPicture2, Path=BadgeGlyph, UpdateSourceTrigger=PropertyChanged}"
+                        TextChanged="TextBox_TextChanged"/>
                     <ui:NumberBox
                         Header="BadgeNumber"
                         Minimum="0"
                         SpinButtonPlacementMode="Inline"
-                        Value="{Binding ElementName=personPicture2, Path=BadgeNumber}" />
-                    <TextBox ui:ControlHelper.Header="DisplayName" Text="{Binding ElementName=personPicture2, Path=DisplayName, UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBox ui:ControlHelper.Header="Initials" Text="{Binding ElementName=personPicture2, Path=Initials, UpdateSourceTrigger=PropertyChanged}" />
-                    <CheckBox Content="IsGroup" IsChecked="{Binding ElementName=personPicture2, Path=IsGroup}" />
+                        Value="{Binding ElementName=personPicture2, Path=BadgeNumber}" 
+                        ValueChanged="NumberBox_ValueChanged" />
+                    <TextBox ui:ControlHelper.Header="DisplayName" 
+                        Text="{Binding ElementName=personPicture2, Path=DisplayName, UpdateSourceTrigger=PropertyChanged}"
+                        TextChanged="TextBox_TextChanged"/>
+                    <TextBox ui:ControlHelper.Header="Initials" 
+                        Text="{Binding ElementName=personPicture2, Path=Initials, UpdateSourceTrigger=PropertyChanged}"
+                        TextChanged="TextBox_TextChanged"/>
+                    <CheckBox Content="IsGroup" IsChecked="{Binding ElementName=personPicture2, Path=IsGroup}" Click="RadioButton_Click"/>
                     <CheckBox
                         x:Name="ProfileImageCheck"
                         Content="Profile Image"
-                        IsChecked="True" />
+                        IsChecked="True" 
+                        Click="RadioButton_Click"/>
                 </ikw:SimpleStackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
