@@ -9,7 +9,7 @@
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     Title="Pips Pager Page"
     d:DesignWidth="800"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="PipsPager integrated with a FlipView">
             <local:ControlExample.Example>
@@ -33,24 +33,6 @@
                         SelectedPageIndex="{Binding SelectedIndex, ElementName=Gallery, Mode=TwoWay}" />
                 </StackPanel>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve"> 
-&lt;StackPanel&gt;
-    &lt;FlipView x:Name=&quot;Gallery&quot; MaxWidth=&quot;400&quot; Height=&quot;270&quot; ItemsSource=&quot;{Binding Pictures}&quot;&gt;
-        &lt;FlipView.ItemTemplate&gt;
-            &lt;DataTemplate x:DataType=&quot;x:String&quot;&gt;
-                &lt;Image Source=&quot;{Binding Mode=OneWay}&quot; /&gt;
-            &lt;/DataTemplate&gt;
-        &lt;/FlipView.ItemTemplate&gt;
-    &lt;/FlipView&gt;
-    &lt;muxc:PipsPager x:Name=&quot;FlipViewPipsPager&quot;                   
-        HorizontalAlignment=&quot;Center&quot;
-        Margin=&quot;0, 12, 0, 0&quot;
-        NumberOfPages=&quot;{Binding Pictures.Count}&quot;
-        SelectedPageIndex=&quot;{Binding Path=Gallery.SelectedIndex, Mode=TwoWay}&quot; /&gt;
-&lt;/StackPanel&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="PipsPager with options to change its orientation and button visibility.">
             <local:ControlExample.Resources>
@@ -61,7 +43,7 @@
                 </ResourceDictionary>
             </local:ControlExample.Resources>
             <local:ControlExample.Example>
-                <ui:PipsPager x:Name="TestPipsPager2" />
+                <ui:PipsPager x:Name="TestPipsPager2"/>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <StackPanel>
@@ -93,14 +75,6 @@
                     </ComboBox>
                 </StackPanel>
             </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;muxc:PipsPager
-    Orientation=&quot;$(Orientation)&quot;
-    PreviousButtonVisibility=&quot;$(PrevButton)&quot;
-    NextButtonVisibility=&quot;$(NextButton)&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="Orientation" Value="{Binding Value.SelectedValue, Source={StaticResource OrientationComboBox}, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="PrevButton" Value="{Binding Value.SelectedValue, Source={StaticResource PrevButtonComboBox}, Mode=OneWay}" />

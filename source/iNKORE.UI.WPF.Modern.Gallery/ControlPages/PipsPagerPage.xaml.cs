@@ -40,6 +40,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             DataContext = Pictures;
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
         private void OrientationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string orientation = e.AddedItems[0].ToString();
@@ -55,6 +60,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                     TestPipsPager2.Orientation = Orientation.Horizontal;
                     break;
             }
+
+            UpdateExampleCode();
         }
 
         private void PrevButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -76,6 +83,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                     TestPipsPager2.PreviousButtonVisibility = PipsPagerButtonVisibility.Collapsed;
                     break;
             }
+
+            UpdateExampleCode();
         }
 
         private void NextButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -97,16 +106,59 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                     TestPipsPager2.NextButtonVisibility = PipsPagerButtonVisibility.Collapsed;
                     break;
             }
+
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsLoaded) return;
 
+            Example1.Xaml = Example1Xaml;
+            Example1.CSharp = Example1CS;
+            Example2.Xaml = Example2Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<StackPanel>
+    <ui:FlipView x:Name=""Gallery""
+        ItemsSource=""{{Binding}}"">
+        <ui:FlipView.ItemTemplate>
+            <DataTemplate>
+                <Image Source=""{{Binding Mode=OneWay}}"" />
+            </DataTemplate>
+        </ui:FlipView.ItemTemplate>
+    </ui:FlipView>
+    <ui:PipsPager x:Name=""FlipViewPipsPager""
+        Margin=""0,12,0,0"" HorizontalAlignment=""Center""
+        NumberOfPages=""{{Binding Count}}""
+        SelectedPageIndex=""{{Binding SelectedIndex, ElementName=Gallery, Mode=TwoWay}}"" />
+</StackPanel>
+";
 
+        public string Example1CS => $@"
+public List<string> Pictures = new List<string>()
+{{
+    ""/Assets/SampleMedia/LandscapeImage1.jpg"",
+    ""/Assets/SampleMedia/LandscapeImage2.jpg"",
+    ""/Assets/SampleMedia/LandscapeImage3.jpg"",
+    ""/Assets/SampleMedia/LandscapeImage4.jpg"",
+    ""/Assets/SampleMedia/LandscapeImage5.jpg"",
+    ""/Assets/SampleMedia/LandscapeImage6.jpg"",
+    ""/Assets/SampleMedia/LandscapeImage7.jpg"",
+    ""/Assets/SampleMedia/LandscapeImage8.jpg"",
+}};
+ 
+this.DataContext = Pictures;
+";
+
+        public string Example2Xaml => $@"
+<ui:PipsPager x:Name=""TestPipsPager2""  Orientation=""{TestPipsPager2.Orientation}"" 
+    PreviousButtonVisibility=""{TestPipsPager2.PreviousButtonVisibility}"" NextButtonVisibility=""{TestPipsPager2.NextButtonVisibility}""/>
+";
+
+        #endregion
     }
 }

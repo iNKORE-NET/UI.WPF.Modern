@@ -24,6 +24,17 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void RadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+
         #region Example Code
 
         public void UpdateExampleCode()
@@ -46,15 +57,5 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 ";
 
         #endregion
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            UpdateExampleCode();
-        }
-
-        private void RadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateExampleCode();
-        }
     }
 }
