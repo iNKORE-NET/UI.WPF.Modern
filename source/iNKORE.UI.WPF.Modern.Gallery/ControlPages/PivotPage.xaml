@@ -7,9 +7,9 @@
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <ikw:SimpleStackPanel>
-        <local:ControlExample Margin="0,0,24,0" HeaderText="A basic pivot.">
+        <local:ControlExample x:Name="Example1" Margin="0,0,24,0" HeaderText="A basic pivot.">
             <TabControl
                 MinHeight="400"
                 ui:PivotHelper.Title="EMAIL"
