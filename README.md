@@ -76,3 +76,33 @@
 
   More info: https://docs.inkore.net/blog/2024/09/17/reflection-interest-in-opensource-community)
 
+# Credits
+
+The project is maintained by Yoojun Zhou from iNKORE Studios and other contributors. 
+Please check LICENSE.md for more information about the license.
+
+The iNKORE.UI.WPF.Modern and iNKORE.UI.WPF.Modern.Controls projects are based, or using the following projects:
+
+- .NET Framework, .NET and .NET Desktop by Microsoft
+
+- ModernWpf mainly by Kinnara and wherewhere
+
+- Fluent System Icons by Microsoft
+
+- Resource.Embedder by Marc Stan
+
+- System.ValueTuple, System.Runtime by Microsoft
+
+- CommunityToolkit by Microsoft
+
+- Windows UI Library by Microsoft
+
+Besides above, the gallery app is also using the following projects:
+
+- AvalonEdit by ICSharpCode
+
+- ColorCodeStandard by Microsoft and Matt Hawley
+
+- Newtonsoft.Json by James Newton-King
+
+iNKORE Studios is not affiliated with Microsoft or any other company. The project is a community-driven project. Please do not use the project for commercial purposes without permission. 
