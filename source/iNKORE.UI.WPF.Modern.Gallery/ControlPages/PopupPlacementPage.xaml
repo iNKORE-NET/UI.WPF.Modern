@@ -7,9 +7,9 @@
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <ikw:SimpleStackPanel>
-        <local:ControlExample HeaderText="Popup placement">
+        <local:ControlExample x:Name="Example1" HeaderText="Popup placement">
             <Grid>
                 <ToggleButton
                     x:Name="Control1"
@@ -39,7 +39,8 @@
                     <ui:RadioButtons
                         Header="Placement"
                         ItemsSource="{Binding Source={x:Type PlacementMode}, Converter={StaticResource EnumValuesConverter}}"
-                        SelectedItem="{Binding ElementName=Popup1, Path=Placement}" />
+                        SelectedItem="{Binding ElementName=Popup1, Path=Placement}" 
+                        SelectionChanged="RadioButtons_SelectionChanged"/>
                 </ikw:SimpleStackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
