@@ -8,10 +8,10 @@
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <ikw:SimpleStackPanel>
-        <local:ControlExample HeaderText="An indeterminate progress bar.">
-            <ui:ProgressBar
+        <local:ControlExample x:Name="Example1" HeaderText="An indeterminate progress bar.">
+            <ui:ProgressBar x:Name="ProgressBar1"
                 Width="130"
                 Margin="10,10,0,0"
                 VerticalAlignment="Top"
@@ -25,20 +25,23 @@
                         x:Name="RunningRB"
                         Content="Running"
                         GroupName="ProgressState"
-                        IsChecked="True" />
+                        IsChecked="True"
+                        Click="RadioButton_Click"/>
                     <RadioButton
                         x:Name="PausedRB"
                         Content="Paused"
-                        GroupName="ProgressState" />
+                        GroupName="ProgressState"
+                        Click="RadioButton_Click"/>
                     <RadioButton
                         x:Name="ErrorRB"
                         Content="Error"
-                        GroupName="ProgressState" />
+                        GroupName="ProgressState"
+                        Click="RadioButton_Click"/>
                 </StackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A determinate progress bar.">
+        <local:ControlExample x:Name="Example2" HeaderText="A determinate progress bar.">
             <StackPanel Orientation="Horizontal">
                 <ProgressBar
                     x:Name="ProgressBar2"
@@ -60,12 +63,13 @@
                     Maximum="100"
                     Minimum="0"
                     SpinButtonPlacementMode="Inline"
-                    Value="0" />
+                    Value="0"
+                    ValueChanged="ProgressValue_ValueChanged"/>
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample VerticalContentAlignment="Center" HeaderText="An indeterminate progress ring.">
-            <ui:ProgressRing
+        <local:ControlExample x:Name="Example3" VerticalContentAlignment="Center" HeaderText="An indeterminate progress ring.">
+            <ui:ProgressRing x:Name="ProgressRing1"
                 Width="60"
                 Height="60"
                 IsActive="{Binding IsOn, ElementName=ProgressToggle}" />
@@ -76,7 +80,8 @@
                     Header="Toggle work"
                     IsOn="True"
                     OffContent="Do work"
-                    OnContent="Working" />
+                    OnContent="Working"
+                    Toggled="ProgressToggle_Toggled"/>
             </local:ControlExample.Options>
         </local:ControlExample>
     </ikw:SimpleStackPanel>
