@@ -7,9 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <StackPanel>
-        <local:ControlExample HeaderText="An indeterminate progress ring.">
+        <local:ControlExample x:Name="Example1" HeaderText="An indeterminate progress ring.">
             <ui:ProgressRing
                 Width="60"
                 Height="60"
@@ -25,16 +25,12 @@
                         Header="Toggle work"
                         IsOn="True"
                         OffContent="Do work"
-                        OnContent="Working" />
+                        OnContent="Working" 
+                        Toggled="ProgressToggle_Toggled"/>
                 </StackPanel>
             </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;ProgressRing IsActive=&quot;$(IsActive)&quot; /&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
-        <local:ControlExample HeaderText="A determinate progress ring.">
+        <local:ControlExample x:Name="Example2" HeaderText="A determinate progress ring.">
             <StackPanel x:Name="Control2" Orientation="Horizontal">
                 <ui:ProgressRing
                     x:Name="ProgressRing2"
@@ -52,13 +48,9 @@
                     Maximum="100"
                     Minimum="0"
                     SpinButtonPlacementMode="Inline"
-                    Value="{Binding Value, ElementName=ProgressRing2, Mode=TwoWay}" />
+                    Value="{Binding Value, ElementName=ProgressRing2, Mode=TwoWay}" 
+                    ValueChanged="ProgressValue_ValueChanged"/>
             </StackPanel>
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;ProgressRing Width=&quot;60&quot; Height=&quot;60&quot; Value=&quot;$(DeterminateProgressValue)&quot; IsIndeterminate=&quot;False&quot;/&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>

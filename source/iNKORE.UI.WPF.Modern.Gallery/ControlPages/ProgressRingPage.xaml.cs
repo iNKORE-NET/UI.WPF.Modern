@@ -26,12 +26,39 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void ProgressToggle_Toggled(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void ProgressValue_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
+        {
+            UpdateExampleCode();
+        }
+
+
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsLoaded) return;
 
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
         }
+
+        public string Example1Xaml => $@"
+<ui:ProgressRing IsActive=""{ProgressToggle.IsOn}"" />
+";
+
+        public string Example2Xaml => $@"
+<ui:ProgressRing Value=""{ProgressValue.Value}""/>
+";
 
         #endregion
 
