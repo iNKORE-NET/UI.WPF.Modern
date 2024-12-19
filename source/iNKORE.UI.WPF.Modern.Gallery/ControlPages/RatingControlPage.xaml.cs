@@ -23,14 +23,49 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void clearEnabledCheck_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void readOnlyCheck_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            UpdateExampleCode();
+        }
+
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsLoaded) return;
 
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<ui:RatingControl x:Name=""RatingControl1""
+    AutomationProperties.Name=""Simple RatingControl""
+    IsClearEnabled=""{clearEnabledCheck.IsChecked}"" IsReadOnly=""{readOnlyCheck.IsChecked}"" />
+";
 
+        public string Example2Xaml => $@"
+<ui:RatingControl x:Name=""RatingControl2""
+    AutomationProperties.Name=""RatingControl with placeholder""
+    PlaceholderValue=""{slider.Value}"" />
+";
+
+
+        #endregion
     }
 }

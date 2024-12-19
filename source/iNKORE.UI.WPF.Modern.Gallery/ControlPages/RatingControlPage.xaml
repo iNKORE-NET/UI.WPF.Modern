@@ -7,7 +7,7 @@
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <ikw:SimpleStackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A simple RatingControl">
 
@@ -30,12 +30,15 @@
 
             <local:ControlExample.Options>
                 <StackPanel Width="220">
-                    <CheckBox x:Name="clearEnabledCheck" Content="IsClearEnabled" />
+                    <CheckBox x:Name="clearEnabledCheck" 
+                        Content="IsClearEnabled" 
+                        Click="clearEnabledCheck_Click"/>
                     <!--<TextBlock Text="Swipe left to clear your rating." TextWrapping="Wrap"/>-->
                     <CheckBox
                         x:Name="readOnlyCheck"
                         Margin="0,12,0,0"
-                        Content="Is Read Only" />
+                        Content="Is Read Only" 
+                        Click="readOnlyCheck_Click"/>
                 </StackPanel>
             </local:ControlExample.Options>
 
@@ -61,7 +64,8 @@
                         Maximum="5"
                         Minimum="0"
                         SmallChange="0.5"
-                        TickFrequency="0.5" />
+                        TickFrequency="0.5"
+                        ValueChanged="slider_ValueChanged"/>
                 </StackPanel>
             </local:ControlExample.Options>
 
