@@ -8,9 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <ikw:SimpleStackPanel>
-        <local:ControlExample HeaderText="A group of radio buttons.">
+        <local:ControlExample x:Name="Example1" HeaderText="A group of radio buttons.">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -32,7 +32,7 @@
             </Grid>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Two groups of radio buttons.">
+        <local:ControlExample x:Name="Example2" HeaderText="Two groups of radio buttons.">
             <StackPanel>
                 <ui:RadioButtons
                     x:Name="BackgroundRadioButtons"
