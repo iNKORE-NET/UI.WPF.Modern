@@ -33,17 +33,21 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             MappingModeComboBox.SelectionChanged += OnMappingModeChanged;
             SpreadMethodComboBox.SelectionChanged += OnSpreadMethodChanged;
             InitializeSliders();
+            UpdateExampleCode();
         }
 
         private void OnSpreadMethodChanged(object sender, SelectionChangedEventArgs e)
         {
             RadialGradientBrushExample.SpreadMethod = (GradientSpreadMethod)Enum.Parse(typeof(GradientSpreadMethod), SpreadMethodComboBox.SelectedValue.ToString());
+            UpdateExampleCode();
         }
 
         private void OnMappingModeChanged(object sender, SelectionChangedEventArgs e)
         {
             RadialGradientBrushExample.MappingMode = (BrushMappingMode)Enum.Parse(typeof(BrushMappingMode), MappingModeComboBox.SelectedValue.ToString());
             InitializeSliders();
+
+            UpdateExampleCode();
         }
 
         private void InitializeSliders()
@@ -75,14 +79,31 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             RadialGradientBrushExample.RadiusX = RadiusXSlider.Value;
             RadialGradientBrushExample.RadiusY = RadiusYSlider.Value;
             RadialGradientBrushExample.GradientOrigin = new Point(OriginXSlider.Value, OriginYSlider.Value);
+
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsLoaded) return;
 
+            Example1.Xaml = Example1Xaml;
         }
+
+        public string Example1Xaml => $@"
+<Rectangle x:Name=""Rect"">
+    <Rectangle.Fill>
+        <RadialGradientBrush x:Name=""RadialGradientBrushExample"" SpreadMethod=""{RadialGradientBrushExample.SpreadMethod}""
+            RadiusX=""{RadialGradientBrushExample.RadiusX}"" RadiusY=""{RadialGradientBrushExample.RadiusY}"" GradientOrigin=""{RadialGradientBrushExample.GradientOrigin.X}, {RadialGradientBrushExample.GradientOrigin.Y}"" 
+            MappingMode=""{RadialGradientBrushExample.MappingMode}"" Center=""{RadialGradientBrushExample.Center.X}, {RadialGradientBrushExample.Center.Y}"">
+            <GradientStop Offset=""0.0"" Color=""Yellow""/>
+            <GradientStop Offset=""1"" Color=""Blue""/>
+        </RadialGradientBrush>
+    </Rectangle.Fill>
+</Rectangle>
+";
 
         #endregion
 
