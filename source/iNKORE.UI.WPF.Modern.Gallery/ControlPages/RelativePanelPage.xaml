@@ -35,15 +35,5 @@
                 ui:RelativePanel.AlignRightWithPanel="True"
                 Fill="Green" />
         </ui:RelativePanel>
-        <local:ControlExample.Xaml>
-            <sys:String xml:space="preserve">
-&lt;RelativePanel  Width=&quot;300&quot;&gt;
-    &lt;Rectangle x:Name=&quot;Rectangle1&quot; Fill=&quot;Red&quot; Height=&quot;50&quot; Width=&quot;50&quot;/&gt;
-    &lt;Rectangle x:Name=&quot;Rectangle2&quot; Fill=&quot;Blue&quot; Height=&quot;50&quot; Width=&quot;50&quot; RelativePanel.RightOf=&quot;Rectangle1&quot; Margin=&quot;8,0,0,0&quot;/&gt;
-    &lt;Rectangle x:Name=&quot;Rectangle3&quot; Fill=&quot;Green&quot; Height=&quot;50&quot; Width=&quot;50&quot; RelativePanel.AlignRightWithPanel=&quot;True&quot;/&gt;
-    &lt;Rectangle x:Name=&quot;Rectangle4&quot; Fill=&quot;Yellow&quot; Height=&quot;50&quot; Width=&quot;50&quot; RelativePanel.Below=&quot;Rectangle3&quot; RelativePanel.AlignHorizontalCenterWith=&quot;Rectangle3&quot; Margin=&quot;0,8,0,0&quot;/&gt;
-&lt;/RelativePanel&gt;
-            </sys:String>
-        </local:ControlExample.Xaml>
     </local:ControlExample>
 </ui:Page>
