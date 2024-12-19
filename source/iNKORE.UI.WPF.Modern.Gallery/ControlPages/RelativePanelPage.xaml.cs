@@ -25,14 +25,41 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
         #region Example Code
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<ui:RelativePanel Width=""300"">
+    <Rectangle
+        x:Name=""Rectangle1""
+        Width=""50""
+        Height=""50""
+        Fill=""Red"" />
+    <Rectangle
+        x:Name=""Rectangle2""
+        Width=""50""
+        Height=""50""
+        Margin=""8,0,0,0""
+        ui:RelativePanel.RightOf=""Rectangle1""
+        Fill=""Blue"" />
+    <Rectangle
+        x:Name=""Rectangle3""
+        Width=""50""
+        Height=""50""
+        ui:RelativePanel.AlignRightWithPanel=""True""
+        Fill=""Green"" />
+</ui:RelativePanel>
+";
 
+        #endregion
     }
 }
