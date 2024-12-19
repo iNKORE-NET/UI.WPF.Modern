@@ -25,6 +25,16 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void DisableControl1_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
         private static int _clicks = 0;
         private void RepeatButton_Click(object sender, RoutedEventArgs e)
         {
@@ -36,10 +46,14 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<RepeatButton x:Name=""Control1""
+    Content=""Click and hold"" IsEnabled=""{!DisableControl1.IsChecked}"" />
+";
 
+        #endregion
     }
 }
