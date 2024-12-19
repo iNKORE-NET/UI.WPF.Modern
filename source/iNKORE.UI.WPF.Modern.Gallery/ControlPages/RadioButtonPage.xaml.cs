@@ -36,10 +36,22 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
         public void UpdateExampleCode()
         {
-
+            Example1.Xaml = Example1Xaml;
         }
+
+        public string Example1Xaml => $@"
+<ui:RadioButtons Header=""Options:"">
+    <RadioButton Checked=""RadioButton_Checked"" Content=""Option 1"" />
+    <RadioButton Checked=""RadioButton_Checked"" Content=""Option 2"" />
+    <RadioButton Checked=""RadioButton_Checked"" Content=""Option 3"" />
+</ui:RadioButtons>
+";
 
         #endregion
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
     }
 }
