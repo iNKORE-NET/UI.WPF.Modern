@@ -167,7 +167,7 @@
                                                 <TextBlock
                                                     VerticalAlignment="Center"
                                                     Foreground="{DynamicResource HyperlinkButtonForeground}"
-                                                    Text="{Binding}"
+                                                    Text="{Binding Title}"
                                                     TextWrapping="Wrap" />
                                             </ikw:SimpleStackPanel>
                                         </ui:HyperlinkButton>

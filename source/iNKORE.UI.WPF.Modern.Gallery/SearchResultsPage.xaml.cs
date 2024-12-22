@@ -36,19 +36,20 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             set { this.SetProperty(ref _filters, value); }
         }
 
-        public SearchResultsPage()
+        public SearchResultsPage(string queryText = null)
         {
             this.InitializeComponent();
+            if (queryText != null) LoadData(queryText);
+        }
+
+        public void LoadData(string queryText)
+        {
+            BuildFilterList(queryText.ToLower());
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            var queryText = e.ExtraData?.ToString().ToLower();
-
-            BuildFilterList(queryText);
-
             NavigationRootPage.Current.NavigationView.Header = "Search";
         }
 

@@ -41,12 +41,14 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             set { _item = value; }
         }
 
-        public ItemPage()
+        public ItemPage(ControlInfoDataItem item = null)
         {
             InitializeComponent();
 
             Loaded += (s, e) => SetInitialVisuals();
             this.Unloaded += this.ItemPage_Unloaded;
+
+            if (item != null) LoadData(item);
         }
 
         private void ItemPage_Unloaded(object sender, RoutedEventArgs e)
@@ -116,14 +118,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         {
             ButtonBase b = (ButtonBase)sender;
 
-            this.Frame.Navigate(typeof(ItemPage), b.DataContext.ToString());
+            var page = new ItemPage();
+            page.LoadData(b.DataContext as ControlInfoDataItem);
+            this.Frame.Navigate(new ItemPage(b.DataContext as ControlInfoDataItem));
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        public async void LoadData(ControlInfoDataItem item)
         {
             await ControlInfoDataSource.Instance.GetRealmsAsync();
-            var item = e.ExtraData as ControlInfoDataItem;
-
+            
             if (item != null)
             {
                 Item = item;
@@ -147,10 +150,17 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
                     this.contentFrame.Navigate(pageType);
                 }
-
-                NavigationRootPage.Current.NavigationView.Header = item?.Title;
             }
+
             DataContext = Item;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (Item != null)
+            {
+                NavigationRootPage.Current.NavigationView.Header = Item.Title;
+            }
 
             base.OnNavigatedTo(e);
         }

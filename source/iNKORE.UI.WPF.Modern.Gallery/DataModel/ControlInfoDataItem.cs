@@ -29,7 +29,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
             this.IsUpdated = isUpdated;
             this.IsPreview = isPreview;
             this.Docs = new ObservableCollection<ControlInfoDocLink>();
-            this.RelatedControls = new ObservableCollection<string>();
+            this.RelatedControlsIds = new ObservableCollection<string>();
         }
 
         public string UniqueId { get; private set; }
@@ -44,7 +44,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
         public bool IsUpdated { get; private set; }
         public bool IsPreview { get; private set; }
         public ObservableCollection<ControlInfoDocLink> Docs { get; private set; }
-        public ObservableCollection<string> RelatedControls { get; private set; }
+        public ObservableCollection<string> RelatedControlsIds { get; private set; }
+
+        public IList<ControlInfoDataItem> RelatedControls
+        {
+            get
+            {
+                return ControlInfoDataSource.SelectMany(group => group.Items).Where(item => RelatedControlsIds.Contains(item.UniqueId)).ToList();
+            }
+        }
 
         public bool IncludedInBuild { get; set; }
 
@@ -368,7 +376,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
                                     {
                                         if (relatedControlValue.ValueKind == JsonValueKind.String)
                                         {
-                                            item.RelatedControls.Add(relatedControlValue.GetString());
+                                            item.RelatedControlsIds.Add(relatedControlValue.GetString());
                                         }
                                     }
                                 }

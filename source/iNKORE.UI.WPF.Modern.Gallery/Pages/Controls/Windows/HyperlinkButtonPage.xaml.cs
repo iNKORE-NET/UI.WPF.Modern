@@ -1,4 +1,5 @@
-﻿using SamplesCommon;
+﻿using iNKORE.UI.WPF.Modern.Gallery.DataModel;
+using SamplesCommon;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -14,9 +15,9 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             InitializeComponent();
         }
 
-        private void GoToHyperlinkButton_Click(object sender, RoutedEventArgs e)
+        private async void GoToHyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationRootPage.RootFrame.Navigate(typeof(ItemPage), "ToggleButton");
+            NavigationRootPage.RootFrame.Navigate(new ItemPage(await ControlInfoDataSource.Instance.GetItemAsync(await ControlInfoDataSource.Instance.GetRealmAsync("Windows"), "ToggleButton")));
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

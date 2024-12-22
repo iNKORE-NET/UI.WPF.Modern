@@ -22,22 +22,26 @@ namespace iNKORE.UI.WPF.Modern.Gallery
     /// </summary>
     public partial class SectionPage : ItemsPageBase
     {
-        public SectionPage()
+        public SectionPage(ControlInfoDataGroup group = null)
         {
             InitializeComponent();
+            if (group != null) LoadData(group);
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        public void LoadData(ControlInfoDataGroup group)
         {
-            base.OnNavigatedTo(e);
-            var group = (ControlInfoDataGroup)e.ExtraData;
-
-            var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<NavigationViewItemBase>().Single(i => (string)i.Tag == group?.UniqueId);
+            if (group == null) throw new ArgumentNullException("group");
+            var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<NavigationViewItemBase>().Single(i => i.DataContext == group);
             menuItem.IsSelected = true;
             NavigationRootPage.Current.NavigationView.Header = menuItem.Content;
 
             Items = group?.Items?.OrderBy(i => i.Title).ToList();
             DataContext = Items;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
         }
     }
 }
