@@ -95,6 +95,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Extended
             Image = new MsgBoxIcon(SegoeFluentIcons.Heart, "SegoeFluentIcons.Heart"),
         };
 
+        MessageBoxPayload Msg2ImageIconSource => new MessageBoxPayload()
+        {
+            Message = "iNKORE Open Source Products - iNKORE.UI.WPF.Modern - Make Windows Presentation Foundation Great Again!",
+            Title = "iNKORE Open Source",
+            Image = new MsgBoxIcon(new ImageIconSource() { ImageSource = (BitmapImage)this.Resources["WpfLibraryLogo"], DefaultSize = new Size(32, 32) },
+                "new ImageIconSource() { ImageSource = new Uri(\"...\"), DefaultSize = new Size(32, 32) }"),
+        };
+
+
         private void Button_ShowMsg2_Warning_Click(object sender, RoutedEventArgs e)
         {
             Msg2Warning.Show();
@@ -120,10 +129,14 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Extended
             Msg2Error.Show();
         }
 
+        private void Button_ShowMsg2_IconSource_Click(object sender, RoutedEventArgs e)
+        {
+            Msg2ImageIconSource.Show();
+        }
 
-        static readonly MessageBoxPayload[] Example2Data =
+        MessageBoxPayload[] Example2Data =>
         [
-            Msg2Warning, Msg2Info, Msg2Question, Msg2Error, Msg2FontIconData
+            Msg2Warning, Msg2Info, Msg2Question, Msg2Error, Msg2FontIconData, this.Msg2ImageIconSource
         ];
 
         public string Example2CS => string.Join("\n", Example2Data.Select(data => data.ToCode()));
@@ -157,19 +170,25 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Extended
             Button = MessageBoxButton.OKCancel
         };
 
+        private void displayExample3Result(MessageBoxResult result)
+        {
+            TextBlock_Example3_Result.Text = "You clicked " + result.ToString();
+        }
+
+
         private void Button_ShowMsg3_YesNo_Click(object sender, RoutedEventArgs e)
         {
-            Msg3YesNo.Show();
+            displayExample3Result(Msg3YesNo.Show());
         }
 
         private void Button_ShowMsg3_YesNoCancel_Click(object sender, RoutedEventArgs e)
         {
-            Msg3YesNoCancel.Show();
+            displayExample3Result(Msg3YesNoCancel.Show());
         }
 
         private void Button_ShowMsg3_OKCancel_Click(object sender, RoutedEventArgs e)
         {
-            Msg3OKCancel.Show();
+            displayExample3Result(Msg3OKCancel.Show());
         }
 
         static MessageBoxPayload[] Example3Data =
@@ -198,6 +217,89 @@ MessageBox.DefaultBackdropType = BackdropType.{MessageBox.DefaultBackdropType};
 
         #endregion
 
+        #region Example 5
+
+        private static MsgBoxIcon[] _example5_preIcons =
+        [
+            new MsgBoxIcon(),
+            new MsgBoxIcon(MessageBoxImage.Error),
+            new MsgBoxIcon(MessageBoxImage.Question),
+            new MsgBoxIcon(MessageBoxImage.Warning),
+            new MsgBoxIcon(MessageBoxImage.Information),
+
+            new MsgBoxIcon(SegoeFluentIcons.Heart, "SegoeFluentIcons.Heart"),
+            new MsgBoxIcon(SegoeFluentIcons.HeartBroken, "SegoeFluentIcons.HeartBroken"),
+            new MsgBoxIcon(SegoeFluentIcons.Home, "SegoeFluentIcons.Home"),
+            new MsgBoxIcon(SegoeFluentIcons.Settings, "SegoeFluentIcons.Settings"),
+            new MsgBoxIcon(SegoeFluentIcons.Shield, "SegoeFluentIcons.Shield"),
+            new MsgBoxIcon(SegoeFluentIcons.SpecialEffectSize, "SegoeFluentIcons.SpecialEffectSize"),
+            new MsgBoxIcon(SegoeFluentIcons.Emoji2, "SegoeFluentIcons.Emoji2"),
+        ];
+
+        public MsgBoxIcon[] Example5_IconSelects => _example5_preIcons;
+
+
+        public static Dictionary<string, SystemSound> _example5_SoundMap = new Dictionary<string, SystemSound>()
+        {
+            { "Asterisk", SystemSounds.Asterisk },
+            { "Beep", SystemSounds.Beep },
+            { "Exclamation", SystemSounds.Exclamation },
+            { "Hand", SystemSounds.Hand },
+            { "Question", SystemSounds.Question },
+        };
+
+        public ObservableCollection<string> Example5_SoundSelects => new ObservableCollection<string>(_example5_SoundMap.Keys);
+
+        private void TextBox_Example5_Message_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+
+        private void TextBox_Example5_Title_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void ComboBox_Example5_Image_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void ComboBox_Example5_Button_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void ComboBox_Example5_Sound_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void ComboBox_Example5_DefaultButton_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private static string toHardcodeString(string val)
+        {
+            return val.Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\"", "\\\"");
+        }
+
+        public string Example5CS => $@"
+MessageBox.Show
+(
+    ""{toHardcodeString(TextBox_Example5_Message.Text)}"",
+    ""{toHardcodeString(TextBox_Example5_Title.Text)}"",
+    MessageBoxButton.{ComboBox_Example5_Button.SelectedItem},
+    {ComboBox_Example5_Image.SelectedItem},
+    MessageBoxResult.{ComboBox_Example5_DefaultButton.SelectedItem},
+    SystemSounds.{ComboBox_Example5_Sound.SelectedItem}
+);
+";
+
+
+        #endregion
 
         #region Example Code
 
@@ -209,15 +311,47 @@ MessageBox.DefaultBackdropType = BackdropType.{MessageBox.DefaultBackdropType};
             Example2.CSharp = Example2CS;
             Example3.CSharp = Example3CS;
             Example4.CSharp = Example4CS;
+            Example5.CSharp = Example5CS;
         }
 
 
         #endregion
 
+        private void Button_ShowMsg5_Click(object sender, RoutedEventArgs e)
+        {
+            var msg = TextBox_Example5_Message.Text;
+            var title = TextBox_Example5_Title.Text;
+            var button = (MessageBoxButton)ComboBox_Example5_Button.SelectedItem;
+            var image = (MsgBoxIcon)ComboBox_Example5_Image.SelectedItem;
+            var defaultButton = (MessageBoxResult)ComboBox_Example5_DefaultButton.SelectedItem;
+            var sound = _example5_SoundMap[(string)ComboBox_Example5_Sound.SelectedItem];
+            var win = Application.Current.Windows.Cast<Window>()
+                .FirstOrDefault(window => window.IsActive && window.ShowActivated);
+
+            MessageBoxResult result;
+
+            switch (image.Type)
+            {
+                case MsgBoxIconType.Preset:
+                case MsgBoxIconType.None:
+                    result = MessageBox.Show(win, msg, title, button, image.Value_Preset, defaultButton, sound);
+                    break;
+                case MsgBoxIconType.FontIcon:
+                    result = MessageBox.Show(win, msg, title, button, image.Value_FontIcon, defaultButton, sound);
+                    break;
+                case MsgBoxIconType.IconSource:
+                    result = MessageBox.Show(win, msg, title, button, image.Value_IconSource, defaultButton, sound);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("This should never happen!!");
+            }
+
+            TextBlock_Example5_Result.Text = "You clicked " + result.ToString();
+        }
     }
 
-
-    class MessageBoxPayload
+    // This needs to be public for xaml binding purposes
+    public class MessageBoxPayload
     {
         public string Title { get; set; }
         public string Message { get; set; }
@@ -231,9 +365,9 @@ MessageBox.DefaultBackdropType = BackdropType.{MessageBox.DefaultBackdropType};
                 case MsgBoxIconType.Preset:
                     return MessageBox.Show(Message, Title, Button, Image.Value_Preset);
                 case MsgBoxIconType.FontIcon:
-                    return MessageBox.Show(Message, Title, Button, Image.Value_FontIcon);
+                    return MessageBox.Show(Message, Title, Button, Image.Value_FontIcon, null, SystemSounds.Beep);
                 case MsgBoxIconType.IconSource:
-                    return MessageBox.Show(Message, Title, Button, Image.Value_IconSource);
+                    return MessageBox.Show(Message, Title, Button, Image.Value_IconSource, null, SystemSounds.Beep);
                 default:
                     return MessageBox.Show(Message, Title, Button);
             }
@@ -262,11 +396,11 @@ MessageBox.DefaultBackdropType = BackdropType.{MessageBox.DefaultBackdropType};
         }
     }
 
-    struct MsgBoxIcon
+    public struct MsgBoxIcon
     {
         public MsgBoxIconType Type { get; private set; }
 
-        public MessageBoxImage Value_Preset { get; private set; }
+        public MessageBoxImage Value_Preset { get; private set; } = MessageBoxImage.None;
         public FontIconData Value_FontIcon { get; private set; }
         public string Value_FontIconInput { get; private set; }
         public IconSource Value_IconSource { get; private set; }
@@ -317,7 +451,7 @@ MessageBox.DefaultBackdropType = BackdropType.{MessageBox.DefaultBackdropType};
         public static MsgBoxIcon None = new MsgBoxIcon();
     }
 
-    enum MsgBoxIconType
+    public enum MsgBoxIconType
     {
         Preset,
         None,

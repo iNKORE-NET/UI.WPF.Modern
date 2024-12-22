@@ -36,12 +36,38 @@ namespace iNKORE.UI.WPF.Modern.Common
         }
 
         /// <summary>
+        /// Identifies the <see cref="Foreground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty DefaultSizeProperty =
+            DependencyProperty.Register(
+                nameof(DefaultSize),
+                typeof(Size?),
+                typeof(IconSource),
+                new FrameworkPropertyMetadata(null));
+
+        /// <summary>
+        /// Gets or sets a size value that is applied when generating the icon. This is useful in some cases that you can only pass an IconSource instead of an actual element and want to specify the size.
+        /// </summary>
+        public Size? DefaultSize
+        {
+            get => (Size?)GetValue(DefaultSizeProperty);
+            set => SetValue(DefaultSizeProperty, value);
+        }
+
+
+        /// <summary>
         /// Creates an icon UI element.
         /// </summary>
         /// <returns>An icon UI element.</returns>
         public IconElement CreateIconElement()
         {
             var element = CreateIconElementCore();
+            if (DefaultSize != null && element != null)
+            {
+                element.Width = DefaultSize.Value.Width;
+                element.Height = DefaultSize.Value.Height;
+            }
+
             return element;
         }
 
