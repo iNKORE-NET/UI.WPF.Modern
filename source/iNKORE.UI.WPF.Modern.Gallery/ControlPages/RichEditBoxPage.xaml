@@ -5,56 +5,59 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
-    xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
 
     <ScrollViewer>
         <ikw:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
-            <sc:ControlExample HeaderText="A simple text editor using RichTextBox.">
+            <local:ControlExample x:Name="Example1" HeaderText="A simple text editor using RichTextBox.">
                 <RichTextBox
                     x:Name="richTextBox"
                     ui:ControlHelper.Header="Control header"
                     ui:ControlHelper.PlaceholderText="Placeholder text"
                     SpellCheck.IsEnabled="True" />
-            </sc:ControlExample>
+            </local:ControlExample>
 
-            <sc:ControlExample HeaderText="API in action.">
+            <local:ControlExample x:Name="Example2" HeaderText="API in action.">
                 <RichTextBox
                     x:Name="textBox"
                     Width="296"
                     Height="105"
                     ui:ControlHelper.Header="Control header" />
-                <sc:ControlExample.Options>
+                <local:ControlExample.Options>
                     <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
-                        <CheckBox Content="AcceptsReturn" IsChecked="{Binding ElementName=textBox, Path=AcceptsReturn}" />
-                        <CheckBox Content="IsReadOnly" IsChecked="{Binding ElementName=textBox, Path=IsReadOnly}" />
-                        <CheckBox Content="IsReadOnlyCaretVisible" IsChecked="{Binding ElementName=textBox, Path=IsReadOnlyCaretVisible}" />
-                        <CheckBox Content="IsUndoEnabled" IsChecked="{Binding ElementName=textBox, Path=IsUndoEnabled}" />
-                        <CheckBox Content="IsInactiveSelectionHighlightEnabled" IsChecked="{Binding ElementName=textBox, Path=IsInactiveSelectionHighlightEnabled}" />
-                        <CheckBox Content="SpellCheck" IsChecked="{Binding ElementName=textBox, Path=(SpellCheck.IsEnabled)}" />
-                        <TextBox ui:ControlHelper.Header="Header" Text="{Binding ElementName=textBox, Path=(ui:ControlHelper.Header), UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBox ui:ControlHelper.Header="PlaceholderText" Text="{Binding ElementName=textBox, Path=(ui:ControlHelper.PlaceholderText), UpdateSourceTrigger=PropertyChanged}" />
+                        <CheckBox Content="AcceptsReturn" IsChecked="{Binding ElementName=textBox, Path=AcceptsReturn}" Click="CheckBox_Click"/>
+                        <CheckBox Content="IsReadOnly" IsChecked="{Binding ElementName=textBox, Path=IsReadOnly}" Click="CheckBox_Click"/>
+                        <CheckBox Content="IsReadOnlyCaretVisible" IsChecked="{Binding ElementName=textBox, Path=IsReadOnlyCaretVisible}" Click="CheckBox_Click"/>
+                        <CheckBox Content="IsUndoEnabled" IsChecked="{Binding ElementName=textBox, Path=IsUndoEnabled}" Click="CheckBox_Click" />
+                        <CheckBox Content="IsInactiveSelectionHighlightEnabled" IsChecked="{Binding ElementName=textBox, Path=IsInactiveSelectionHighlightEnabled}" Click="CheckBox_Click" />
+                        <CheckBox Content="SpellCheck" IsChecked="{Binding ElementName=textBox, Path=(SpellCheck.IsEnabled)}" Click="CheckBox_Click" />
+                        <TextBox ui:ControlHelper.Header="Header" Text="{Binding ElementName=textBox, Path=(ui:ControlHelper.Header), UpdateSourceTrigger=PropertyChanged}" TextChanged="TextBox_TextChanged" />
+                        <TextBox ui:ControlHelper.Header="PlaceholderText" Text="{Binding ElementName=textBox, Path=(ui:ControlHelper.PlaceholderText), UpdateSourceTrigger=PropertyChanged}" TextChanged="TextBox_TextChanged" />
                         <ComboBox
                             ui:ControlHelper.Header="HorizontalScrollBarVisibility"
                             ItemsSource="{Binding Source={x:Type ScrollBarVisibility}, Converter={StaticResource EnumValuesConverter}}"
-                            SelectedItem="{Binding ElementName=textBox, Path=HorizontalScrollBarVisibility}" />
+                            SelectedItem="{Binding ElementName=textBox, Path=HorizontalScrollBarVisibility}" 
+                            SelectionChanged="ComboBox_SelectionChanged"/>
                         <ComboBox
                             ui:ControlHelper.Header="VerticalScrollBarVisibility"
                             ItemsSource="{Binding Source={x:Type ScrollBarVisibility}, Converter={StaticResource EnumValuesConverter}}"
-                            SelectedItem="{Binding ElementName=textBox, Path=VerticalScrollBarVisibility}" />
+                            SelectedItem="{Binding ElementName=textBox, Path=VerticalScrollBarVisibility}"
+                            SelectionChanged="ComboBox_SelectionChanged"/>
                         <ComboBox
                             ui:ControlHelper.Header="SelectionOpacity"
                             IsEditable="True"
-                            SelectedItem="{Binding ElementName=textBox, Path=SelectionOpacity}">
+                            SelectedItem="{Binding ElementName=textBox, Path=SelectionOpacity}" 
+                            SelectionChanged="ComboBox_SelectionChanged">
                             <sys:Double>0</sys:Double>
                             <sys:Double>0.4</sys:Double>
                             <sys:Double>1</sys:Double>
                         </ComboBox>
                     </ikw:SimpleStackPanel>
-                </sc:ControlExample.Options>
-            </sc:ControlExample>
+                </local:ControlExample.Options>
+            </local:ControlExample>
         </ikw:SimpleStackPanel>
     </ScrollViewer>
 </ui:Page>
