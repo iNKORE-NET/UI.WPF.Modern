@@ -251,7 +251,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
 
                 lock (_lock)
                 {
-                    string pageRoot = $"iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.{realmName}";
+                    string pageRoot = $"iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.{realmName}.";
                     foreach (JsonElement groupValue in jsonArray.EnumerateArray())
                     {
                         if (groupValue.ValueKind != JsonValueKind.Object)
