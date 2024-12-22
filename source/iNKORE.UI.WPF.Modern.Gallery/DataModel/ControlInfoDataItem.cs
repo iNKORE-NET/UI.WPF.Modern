@@ -186,7 +186,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
                 await Task.Run(() => jsonText = reader.ReadToEnd());
             }
 
-            JsonDocument jsonDocument = JsonDocument.Parse(jsonText);
+            JsonDocument jsonDocument = JsonDocument.Parse(jsonText, new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip });
             JsonElement jsonArray = jsonDocument.RootElement.GetProperty("Groups");
 
             lock (_lock)

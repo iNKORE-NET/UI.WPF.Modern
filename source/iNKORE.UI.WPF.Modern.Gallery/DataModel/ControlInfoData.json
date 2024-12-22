@@ -1990,31 +1990,31 @@
             }
           ]
         },
-        {
-          "UniqueId": "WebView2",
-          "Title": "WebView2",
-          "Subtitle": "A Microsoft Edge (Chromium) based control that hosts HTML content in an app.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/WebView.png",
-          "ImageIconPath": "ms-appx:///Assets/ControlIcons/WebViewIcon.png",
-          "Description": "A Microsoft Edge (Chromium) based control that hosts HTML content in an app.",
-          "Content": "",
-          "IsNew": true,
-          "IsUpdated": false,
-          "Docs": [
-            {
-              "Title": "WebView2 - API",
-              "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.webview2?view=winui-3.0"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/microsoft-edge/webview2/gettingstarted/winui"
-            },
-            {
-              "Title": "Examples",
-              "Uri": "https://github.com/MicrosoftEdge/WebView2Samples"
-            }
-          ]
-        }
+        //{
+        //  "UniqueId": "WebView2",
+        //  "Title": "WebView2",
+        //  "Subtitle": "A Microsoft Edge (Chromium) based control that hosts HTML content in an app.",
+        //  "ImagePath": "ms-appx:///Assets/ControlImages/WebView.png",
+        //  "ImageIconPath": "ms-appx:///Assets/ControlIcons/WebViewIcon.png",
+        //  "Description": "A Microsoft Edge (Chromium) based control that hosts HTML content in an app.",
+        //  "Content": "",
+        //  "IsNew": true,
+        //  "IsUpdated": false,
+        //  "Docs": [
+        //    {
+        //      "Title": "WebView2 - API",
+        //      "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.webview2?view=winui-3.0"
+        //    },
+        //    {
+        //      "Title": "Guidelines",
+        //      "Uri": "https://docs.microsoft.com/microsoft-edge/webview2/gettingstarted/winui"
+        //    },
+        //    {
+        //      "Title": "Examples",
+        //      "Uri": "https://github.com/MicrosoftEdge/WebView2Samples"
+        //    }
+        //  ]
+        //}
       ]
     },
     {
