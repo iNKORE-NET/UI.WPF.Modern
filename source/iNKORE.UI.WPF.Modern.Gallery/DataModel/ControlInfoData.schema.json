@@ -140,5 +140,8 @@
                 "required": [ "UniqueId", "Title", "Subtitle", "ImagePath", "ImageIconPath", "Description", "Items" ]
             }
         }
-    }
+    },
+
+    "allowComments": true,
+    "allowTrailingCommas": true
 }
