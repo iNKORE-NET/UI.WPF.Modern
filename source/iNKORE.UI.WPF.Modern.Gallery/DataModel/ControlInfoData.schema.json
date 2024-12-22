@@ -1,92 +1,119 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
-    "properties": {
-        "Groups": {
+    "properties":
+    {
+        "Groups":
+        {
             "type": "array",
-            "items": {
+            "items":
+            {
                 "type": "object",
-                "properties": {
-                    "UniqueId": {
+                "properties":
+                {
+                    "UniqueId":
+                    {
                         "type": "string",
                         "description": "Globally unique id of this group",
                         "uniqueItems": true
                     },
-                    "Title": {
+                    "Title":
+                    {
                         "type": "string",
                         "description": "Title appears on the overview card and control page"
                     },
-                    "Subtitle": {
+                    "Subtitle":
+                    {
                         "type": "string",
                         "description": "Subtitle appears on the overview card of a specific control"
                     },
-                    "ImagePath": {
+                    "ImagePath":
+                    {
                         "type": "string",
                         "description": "Not used."
                     },
-                    "ImageIconPath": {
+                    "ImageIconPath":
+                    {
                         "type": "string",
                         "description": "ImageIconPath appears as an icon of this control group on the NavigationViewItem. Should be a Unicode glyph of the icon"
                     },
-                    "Description": {
+                    "Description":
+                    {
                         "type": "string",
                         "description": "Not used. Leave empty"
                     },
-                    "Items": {
+                    "Items":
+                    {
                         "type": "array",
                         "description": "Individual control info",
-                        "items": {
+                        "items":
+                        {
                             "type": "object",
-                            "properties": {
-                                "UniqueId": {
+                            "properties":
+                            {
+                                "UniqueId":
+                                {
                                     "type": "string",
                                     "description": "Globally unique id of this control",
                                     "uniqueItems": true
                                 },
-                                "Title": {
+                                "Title":
+                                {
                                     "type": "string",
                                     "description": "Title appears on the overview card and control page of this control"
                                 },
-                                "Subtitle": {
+                                "Subtitle":
+                                {
                                     "type": "string",
                                     "description": "Subtitle appears on the overview card of this control"
                                 },
-                                "ImagePath": {
+                                "ImagePath":
+                                {
                                     "type": "string",
                                     "description": "Appears as the image of this control on the overriew card. Should be a uri starts with ms-appx:///Assets/ControlImages/..."
                                 },
-                                "ImageIconPath": {
+                                "ImageIconPath":
+                                {
                                     "type": "string",
                                     "description": "Appears as the icon image of this control on the NavigationViewItem. Should be a uri starts with ms-appx:///Assets/ControlIcons/..."
                                 },
-                                "Description": {
+                                "Description":
+                                {
                                     "type": "string",
                                     "description": "Appears on the control page"
                                 },
-                                "Content": {
+                                "Content":
+                                {
                                     "type": "string",
                                     "description": "Not used. Leave empty"
                                 },
-                                "IsNew": {
+                                "IsNew":
+                                {
                                     "type": "boolean",
                                     "default": true,
                                     "description": "Show on the Recently Added Sample section on the main page and will add a dot on the overview card of this control"
                                 },
-                                "IsUpdated": {
+                                "IsUpdated":
+                                {
                                     "type": "boolean",
                                     "default": false,
                                     "description": "Show on the Recently Updated Sample section on the main page and will add a dot on the overview card of this control"
                                 },
-                                "Docs": {
+                                "Docs":
+                                {
                                     "type": "array",
-                                    "items": {
+                                    "items":
+                                    {
                                         "type": "object",
-                                        "properties": {
-                                            "Title": {
+                                        "properties":
+                                        {
+                                            "Title":
+                                            {
                                                 "type": "string",
                                                 "description": "Link name that appears in the Documentation dropdown"
                                             },
-                                            "Uri": {
+                                            "Uri":
+                                            {
                                                 "type": "string",
                                                 "description": "Documentation link url"
                                             }
@@ -95,9 +122,11 @@
                                     },
                                     "description": "Add a link to the doc in the Documentation dropdown on the detail page of this control"
                                 },
-                                "RelatedControls": {
+                                "RelatedControls":
+                                {
                                     "type": "array",
-                                    "items": {
+                                    "items":
+                                    {
                                         "type": "string",
                                         "description": "Name of the related control"
                                     },
