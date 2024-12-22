@@ -50,7 +50,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             var gridView = (GridView)sender;
             var item = (ControlInfoDataItem)e.ClickedItem;
 
-            this.Frame.Navigate(new ItemPage(item), new DrillInNavigationTransitionInfo());
+            this.Frame.Navigate(ItemPage.Create(item), new DrillInNavigationTransitionInfo());
         }
 
         protected void OnItemGridViewKeyDown(object sender, KeyEventArgs e)

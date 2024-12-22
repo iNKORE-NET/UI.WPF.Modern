@@ -36,10 +36,16 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             set { this.SetProperty(ref _filters, value); }
         }
 
-        public SearchResultsPage(string queryText = null)
+        public SearchResultsPage()
         {
             this.InitializeComponent();
-            if (queryText != null) LoadData(queryText);
+        }
+
+        public static SearchResultsPage Create(string queryText)
+        {
+            var page = new SearchResultsPage();
+            if (queryText != null) page.LoadData(queryText);
+            return page;
         }
 
         public void LoadData(string queryText)

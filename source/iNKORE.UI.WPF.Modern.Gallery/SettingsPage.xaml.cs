@@ -177,7 +177,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         private async void soundPageHyperlink_Click(object sender, RoutedEventArgs args)
         {
-            this.Frame.Navigate(new ItemPage(await ControlInfoDataSource.Instance.GetItemAsync(await ControlInfoDataSource.Instance.GetRealmAsync("Windows"), "Sound")));
+            this.Frame.Navigate(ItemPage.Create(await ControlInfoDataSource.Instance.GetItemAsync(await ControlInfoDataSource.Instance.GetRealmAsync("Windows"), "Sound")));
         }
     }
 }

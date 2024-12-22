@@ -304,12 +304,12 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                     if (selectedItem.DataContext is ControlInfoDataGroup)
                     {
                         var item = (ControlInfoDataGroup)selectedItem.DataContext;
-                        rootFrame.Navigate(new SectionPage(item));
+                        rootFrame.Navigate(SectionPage.Create(item));
                     }
                     else if (selectedItem.DataContext is ControlInfoDataItem)
                     {
                         var item = (ControlInfoDataItem)selectedItem.DataContext;
-                        rootFrame.Navigate(new ItemPage(item));
+                        rootFrame.Navigate(ItemPage.Create(item));
                     }
                 }
             }
@@ -381,11 +381,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
                 var itemId = infoDataItem.UniqueId;
                 EnsureItemIsVisibleInNavigation(infoDataItem.Title);
-                rootFrame.Navigate(new ItemPage(infoDataItem));
+                rootFrame.Navigate(ItemPage.Create(infoDataItem));
             }
             else if (!string.IsNullOrEmpty(args.QueryText))
             {
-                RootFrame.Navigate(new SearchResultsPage(args.QueryText));
+                RootFrame.Navigate(SearchResultsPage.Create(args.QueryText));
             }
         }
 

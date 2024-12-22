@@ -22,10 +22,16 @@ namespace iNKORE.UI.WPF.Modern.Gallery
     /// </summary>
     public partial class SectionPage : ItemsPageBase
     {
-        public SectionPage(ControlInfoDataGroup group = null)
+        public SectionPage()
         {
             InitializeComponent();
-            if (group != null) LoadData(group);
+        }
+
+        public static SectionPage Create(ControlInfoDataGroup group)
+        {
+            var page = new SectionPage();
+            if (group != null) page.LoadData(group);
+            return page;
         }
 
         public void LoadData(ControlInfoDataGroup group)

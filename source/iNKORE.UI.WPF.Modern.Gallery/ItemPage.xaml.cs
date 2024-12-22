@@ -41,14 +41,19 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             set { _item = value; }
         }
 
-        public ItemPage(ControlInfoDataItem item = null)
+        public ItemPage()
         {
             InitializeComponent();
-
+            if (System.Windows.MessageBox.Show("Instance of ItemPage created", "", MessageBoxButton.YesNo) == MessageBoxResult.No) throw new Exception("Instance of ItemPage created");
             Loaded += (s, e) => SetInitialVisuals();
             this.Unloaded += this.ItemPage_Unloaded;
+        }
 
-            if (item != null) LoadData(item);
+        public static ItemPage Create(ControlInfoDataItem item)
+        {
+            var page = new ItemPage();
+            if (item != null) page.LoadData(item);
+            return page;
         }
 
         private void ItemPage_Unloaded(object sender, RoutedEventArgs e)
@@ -120,7 +125,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
             var page = new ItemPage();
             page.LoadData(b.DataContext as ControlInfoDataItem);
-            this.Frame.Navigate(new ItemPage(b.DataContext as ControlInfoDataItem));
+            this.Frame.Navigate(ItemPage.Create(b.DataContext as ControlInfoDataItem));
         }
 
         public async void LoadData(ControlInfoDataItem item)
