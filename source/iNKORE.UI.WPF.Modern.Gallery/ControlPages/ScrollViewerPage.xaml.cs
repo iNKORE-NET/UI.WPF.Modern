@@ -27,6 +27,12 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+
         private void hsbvCombo_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             if (Control1 != null)
@@ -53,6 +59,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                     }
                 }
             }
+
+            UpdateExampleCode();
         }
 
         private void vsbvCombo_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
@@ -81,6 +89,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
                     }
                 }
             }
+
+            UpdateExampleCode();
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -100,10 +110,23 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
         public void UpdateExampleCode()
         {
+            if (!this.IsLoaded) return;
 
+            Example1.Xaml = Example1Xaml;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<ui:ScrollViewerEx x:Name=""Control1""
+    HorizontalScrollBarVisibility=""{Control1.HorizontalScrollBarVisibility}""
+    VerticalScrollBarVisibility=""{Control1.VerticalScrollBarVisibility}"">
+    <Image HorizontalAlignment=""Left""
+        VerticalAlignment=""Top""
+        AutomationProperties.Name=""cliff""
+        Source=""/Assets/SampleMedia/cliff.jpg""
+        Stretch=""None"" />
+</ui:ScrollViewerEx>
+";
 
+        #endregion
     }
 }
