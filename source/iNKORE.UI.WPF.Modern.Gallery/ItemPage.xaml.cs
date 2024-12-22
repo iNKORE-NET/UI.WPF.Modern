@@ -121,7 +121,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            var item = await ControlInfoDataSource.Instance.GetItemAsync((string)e.ExtraData);
+            await ControlInfoDataSource.Instance.GetRealmsAsync();
+            var item = e.ExtraData as ControlInfoDataItem;
 
             if (item != null)
             {

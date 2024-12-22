@@ -37,7 +37,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             await Task.Delay(1);
             Common.WindowHelper.TrackWindow(this);
             ThemeHelper.Initialize();
-            await ControlInfoDataSource.Instance.GetGroupsAsync();
+            await ControlInfoDataSource.Instance.GetRealmsAsync();
             SubscribeToResourcesChanged();
 
             new Thread(() =>

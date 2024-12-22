@@ -1,0 +1,59 @@
+{
+    // Everything from CommunityToolkit
+    "$schema": "../ControlInfoData.schema.json",
+
+    "Groups":
+    [
+        {
+            "UniqueId": "Input",
+            "Title": "Input",
+            "Subtitle": "",
+            "ImagePath": "",
+            "ImageIconPath": "",
+            "Description": "",
+            "Items":
+            [
+            ]
+        },
+        {
+            "UniqueId": "Layout",
+            "Title": "Layout",
+            "Subtitle": "",
+            "ImagePath": "",
+            "ImageIconPath": "",
+            "Description": "Use layout controls to arrange the controls and content in your app."
+        },
+        {
+            "UniqueId": "Media",
+            "Title": "Media",
+            "Subtitle": "",
+            "ImagePath": "",
+            "ImageIconPath": "",
+            "Description": ""
+        },
+        {
+            "UniqueId": "Sizers",
+            "Title": "Sizers",
+            "Subtitle": "",
+            "ImagePath": "",
+            "ImageIconPath": "",
+            "Description": ""
+        },
+        {
+            "UniqueId": "StatusAndInfo",
+            "Title": "Status and Info",
+            "Subtitle": "",
+            "ImagePath": "",
+            "ImageIconPath": "",
+            "Description": ""
+        },
+        {
+            "UniqueId": "Text",
+            "Title": "Text",
+            "Subtitle": "",
+            "ImagePath": "",
+            "ImageIconPath": "",
+            "Description": ""
+        }
+    ]
+}

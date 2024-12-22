@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using iNKORE.UI.WPF.Modern.Gallery.ControlPages;
 using Windows.Foundation.Metadata;
 using Windows.System;
 using iNKORE.UI.WPF.Modern.Gallery.DataModel;
@@ -172,37 +171,42 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         private void AddNavigationMenuItems()
         {
-            foreach (var group in ControlInfoDataSource.Instance.Groups.OrderBy(i => i.Title))
+            foreach(var realm in ControlInfoDataSource.Instance.Realms)
             {
-                var itemGroup = new NavigationViewItem() { Content = group.Title, Tag = group.UniqueId, DataContext = group, Icon = GetIcon(group.ImageIconPath) };
+                NavigationViewControl.MenuItems.Add(new NavigationViewItemHeader() { Content = realm.Title.ToUpper() });
 
-                var groupMenuFlyoutItem = new MenuItem() { Header = $"Copy Link to {group.Title} Samples", Icon = new FontIcon() { Glyph = "\uE8C8", FontSize = 16 }, Tag = group };
-                groupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
-                itemGroup.ContextMenu = new ContextMenu() { Items = { groupMenuFlyoutItem } };
-
-                AutomationProperties.SetName(itemGroup, group.Title);
-
-                foreach (var item in group.Items)
+                foreach (var group in realm.Groups.OrderBy(i => i.Title))
                 {
-                    var itemInGroup = new NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item, Icon = GetIcon(item.ImageIconPath) };
+                    var itemGroup = new NavigationViewItem() { Content = group.Title, Tag = group.UniqueId, DataContext = group, Icon = GetIcon(group.ImageIconPath) };
 
-                    var itemInGroupMenuFlyoutItem = new MenuItem() { Header = $"Copy Link to {item.Title} Sample", Icon = new FontIcon() { Glyph = "\uE8C8", FontSize = 16 }, Tag = item };
-                    itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
-                    itemInGroup.ContextMenu = new ContextMenu() { Items = { itemInGroupMenuFlyoutItem } };
+                    var groupMenuFlyoutItem = new MenuItem() { Header = $"Copy Link to {group.Title} Samples", Icon = new FontIcon() { Glyph = "\uE8C8", FontSize = 16 }, Tag = group };
+                    groupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
+                    itemGroup.ContextMenu = new ContextMenu() { Items = { groupMenuFlyoutItem } };
 
-                    itemGroup.MenuItems.Add(itemInGroup);
-                    AutomationProperties.SetName(itemInGroup, item.Title);
-                }
+                    AutomationProperties.SetName(itemGroup, group.Title);
 
-                NavigationViewControl.MenuItems.Add(itemGroup);
+                    foreach (var item in group.Items)
+                    {
+                        var itemInGroup = new NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item, Icon = GetIcon(item.ImageIconPath) };
 
-                if (group.UniqueId == "AllControls")
-                {
-                    this._allControlsMenuItem = itemGroup;
-                }
-                else if (group.UniqueId == "NewControls")
-                {
-                    this._newControlsMenuItem = itemGroup;
+                        var itemInGroupMenuFlyoutItem = new MenuItem() { Header = $"Copy Link to {item.Title} Sample", Icon = new FontIcon() { Glyph = "\uE8C8", FontSize = 16 }, Tag = item };
+                        itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
+                        itemInGroup.ContextMenu = new ContextMenu() { Items = { itemInGroupMenuFlyoutItem } };
+
+                        itemGroup.MenuItems.Add(itemInGroup);
+                        AutomationProperties.SetName(itemInGroup, item.Title);
+                    }
+
+                    NavigationViewControl.MenuItems.Add(itemGroup);
+
+                    if (group.UniqueId == "AllControls")
+                    {
+                        this._allControlsMenuItem = itemGroup;
+                    }
+                    else if (group.UniqueId == "NewControls")
+                    {
+                        this._newControlsMenuItem = itemGroup;
+                    }
                 }
             }
 
@@ -299,13 +303,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 {
                     if (selectedItem.DataContext is ControlInfoDataGroup)
                     {
-                        var itemId = ((ControlInfoDataGroup)selectedItem.DataContext).UniqueId;
-                        rootFrame.Navigate(typeof(SectionPage), itemId);
+                        var item = (ControlInfoDataGroup)selectedItem.DataContext;
+                        rootFrame.Navigate(typeof(SectionPage), item);
                     }
                     else if (selectedItem.DataContext is ControlInfoDataItem)
                     {
                         var item = (ControlInfoDataItem)selectedItem.DataContext;
-                        rootFrame.Navigate(typeof(ItemPage), item.UniqueId);
+                        rootFrame.Navigate(typeof(ItemPage), item);
                     }
                 }
             }
@@ -331,29 +335,32 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 var suggestions = new List<ControlInfoDataItem>();
 
                 var querySplit = sender.Text.Split(' ');
-                foreach (var group in ControlInfoDataSource.Instance.Groups)
+                foreach (var realm in ControlInfoDataSource.Instance.Realms)
                 {
-                    var matchingItems = group.Items.Where(
-                        item =>
-                        {
-                            // Idea: check for every word entered (separated by space) if it is in the name, 
-                            // e.g. for query "split button" the only result should "SplitButton" since its the only query to contain "split" and "button"
-                            // If any of the sub tokens is not in the string, we ignore the item. So the search gets more precise with more words
-                            bool flag = item.IncludedInBuild;
-                            foreach (string queryToken in querySplit)
-                            {
-                                // Check if token is not in string
-                                if (item.Title.IndexOf(queryToken, StringComparison.CurrentCultureIgnoreCase) < 0)
-                                {
-                                    // Token is not in string, so we ignore this item.
-                                    flag = false;
-                                }
-                            }
-                            return flag;
-                        });
-                    foreach (var item in matchingItems)
+                    foreach (var group in realm.Groups)
                     {
-                        suggestions.Add(item);
+                        var matchingItems = group.Items.Where
+                            (item =>
+                            {
+                                // Idea: check for every word entered (separated by space) if it is in the name, 
+                                // e.g. for query "split button" the only result should "SplitButton" since its the only query to contain "split" and "button"
+                                // If any of the sub tokens is not in the string, we ignore the item. So the search gets more precise with more words
+                                bool flag = item.IncludedInBuild;
+                                foreach (string queryToken in querySplit)
+                                {
+                                    // Check if token is not in string
+                                    if (item.Title.IndexOf(queryToken, StringComparison.CurrentCultureIgnoreCase) < 0)
+                                    {
+                                        // Token is not in string, so we ignore this item.
+                                        flag = false;
+                                    }
+                                }
+                                return flag;
+                            });
+                        foreach (var item in matchingItems)
+                        {
+                            suggestions.Add(item);
+                        }
                     }
                 }
                 if (suggestions.Count > 0)
@@ -374,7 +381,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
                 var itemId = infoDataItem.UniqueId;
                 EnsureItemIsVisibleInNavigation(infoDataItem.Title);
-                RootFrame.Navigate(typeof(ItemPage), itemId);
+                RootFrame.Navigate(typeof(ItemPage), infoDataItem);
             }
             else if (!string.IsNullOrEmpty(args.QueryText))
             {

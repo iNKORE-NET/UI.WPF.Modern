@@ -82,7 +82,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
                 // Query is already lowercase
                 var querySplit = queryText.ToLower().Split(' ');
-                foreach (var group in ControlInfoDataSource.Instance.Groups)
+                foreach (var group in ControlInfoDataSource.Instance.AllGroups)
                 {
                     var matchingItems =
                         group.Items.Where(item =>

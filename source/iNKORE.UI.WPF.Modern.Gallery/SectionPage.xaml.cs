@@ -30,7 +30,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var group = await ControlInfoDataSource.Instance.GetGroupAsync((string)e.ExtraData);
+            var group = (ControlInfoDataGroup)e.ExtraData;
 
             var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<NavigationViewItemBase>().Single(i => (string)i.Tag == group?.UniqueId);
             menuItem.IsSelected = true;

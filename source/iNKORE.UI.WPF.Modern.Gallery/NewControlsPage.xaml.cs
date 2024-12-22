@@ -1,5 +1,4 @@
 ﻿using iNKORE.UI.WPF.Modern.Controls;
-using iNKORE.UI.WPF.Modern.Gallery.ControlPages;
 using iNKORE.UI.WPF.Modern.Gallery.DataModel;
 using System;
 using System.Collections.Generic;
@@ -36,7 +35,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             menuItem.IsSelected = true;
             NavigationRootPage.Current.NavigationView.Header = string.Empty;
 
-            Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items.Where(i => i.BadgeString != null)).OrderBy(i => i.Title).ToList();
+            var items = new List<ControlInfoDataItem>();
+            foreach (var realm in ControlInfoDataSource.Instance.Realms)
+            {
+                items.AddRange(realm.Groups.SelectMany(g => g.Items.Where(i => i.BadgeString != null)).OrderBy(i => i.Title).ToList());
+            }
+
+            Items = items;  
             DataContext = Items;
         }
     }

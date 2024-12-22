@@ -32,7 +32,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             menuItem.IsSelected = true;
             NavigationRootPage.Current.NavigationView.Header = string.Empty;
 
-            Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items).OrderBy(i => i.Title).ToList();
+            Items = ControlInfoDataSource.Instance.AllGroups.SelectMany(g => g.Items).OrderBy(i => i.Title).ToList();
             DataContext = Items;
         }
     }

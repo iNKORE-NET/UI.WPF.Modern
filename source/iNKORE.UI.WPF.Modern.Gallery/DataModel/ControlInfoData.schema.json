@@ -1,5 +1,4 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties":
     {
@@ -118,7 +117,11 @@
                                                 "description": "Documentation link url"
                                             }
                                         },
-                                        "required": [ "Title", "Uri" ]
+                                        "required":
+                                        [
+                                            "Title",
+                                            "Uri"
+                                        ]
                                     },
                                     "description": "Add a link to the doc in the Documentation dropdown on the detail page of this control"
                                 },
@@ -133,11 +136,29 @@
                                     "description": "Array of names of the related control"
                                 }
                             },
-                            "required": [ "UniqueId", "Title", "Subtitle", "ImagePath", "ImageIconPath", "Description", "Content" ]
+                            "required":
+                            [
+                                "UniqueId",
+                                "Title",
+                                "Subtitle",
+                                "ImagePath",
+                                "ImageIconPath",
+                                "Description",
+                                "Content"
+                            ]
                         }
                     }
                 },
-                "required": [ "UniqueId", "Title", "Subtitle", "ImagePath", "ImageIconPath", "Description", "Items" ]
+                "required":
+                [
+                    "UniqueId",
+                    "Title",
+                    "Subtitle",
+                    "ImagePath",
+                    "ImageIconPath",
+                    "Description",
+                    "Items"
+                ]
             }
         }
     },
