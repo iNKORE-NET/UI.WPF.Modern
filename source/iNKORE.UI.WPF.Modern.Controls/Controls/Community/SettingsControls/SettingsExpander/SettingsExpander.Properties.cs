@@ -46,7 +46,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// </summary>
         public static readonly DependencyProperty HeaderIconProperty = DependencyProperty.Register(
             nameof(HeaderIcon),
-            typeof(IconElement),
+            typeof(object),
             typeof(SettingsExpander),
             new PropertyMetadata(defaultValue: null));
 
@@ -112,9 +112,9 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// <summary>
         /// Gets or sets the HeaderIcon.
         /// </summary>
-        public IconElement HeaderIcon
+        public object HeaderIcon
         {
-            get => (IconElement)GetValue(HeaderIconProperty);
+            get => (object)GetValue(HeaderIconProperty);
             set => SetValue(HeaderIconProperty, value);
         }
 
