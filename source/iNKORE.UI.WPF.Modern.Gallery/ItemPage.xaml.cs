@@ -44,7 +44,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         public ItemPage()
         {
             InitializeComponent();
-            if (System.Windows.MessageBox.Show("Instance of ItemPage created", "", MessageBoxButton.YesNo) == MessageBoxResult.No) throw new Exception("Instance of ItemPage created");
             Loaded += (s, e) => SetInitialVisuals();
             this.Unloaded += this.ItemPage_Unloaded;
         }

@@ -34,6 +34,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             return page;
         }
 
+        public ControlInfoDataGroup Group { get; private set; }
+
         public void LoadData(ControlInfoDataGroup group)
         {
             if (group == null) throw new ArgumentNullException("group");
@@ -41,6 +43,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             menuItem.IsSelected = true;
             NavigationRootPage.Current.NavigationView.Header = menuItem.Content;
 
+            Group = group;
             Items = group?.Items?.OrderBy(i => i.Title).ToList();
             DataContext = Items;
         }

@@ -272,6 +272,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             Task.Delay(500).ContinueWith(_ => this.NavigationViewLoaded?.Invoke(), TaskScheduler.FromCurrentSynchronizationContext());
         }
 
+        object _lastItem = null;
+
         private void OnNavigationViewSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
@@ -285,33 +287,39 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             {
                 var selectedItem = args.SelectedItemContainer;
 
-                if (selectedItem == _allControlsMenuItem)
+                if (selectedItem == _allControlsMenuItem || selectedItem == _newControlsMenuItem)
                 {
-                    if (rootFrame.CurrentSourcePageType != typeof(AllControlsPage))
-                    {
-                        rootFrame.Navigate(typeof(AllControlsPage));
-                    }
-                }
-                else if (selectedItem == _newControlsMenuItem)
-                {
-                    if (rootFrame.CurrentSourcePageType != typeof(NewControlsPage))
-                    {
-                        rootFrame.Navigate(typeof(NewControlsPage));
-                    }
+                    Type item = null;
+                    if (selectedItem == _allControlsMenuItem) item = typeof(AllControlsPage);
+                    else if (selectedItem == _newControlsMenuItem) item = typeof(NewControlsPage);
+
+                    if (_lastItem == (object)item) return;
+                    _lastItem = item;
+                    rootFrame.Navigate(item);
                 }
                 else
                 {
                     if (selectedItem.DataContext is ControlInfoDataGroup)
                     {
                         var item = (ControlInfoDataGroup)selectedItem.DataContext;
+                        if (item == _lastItem) return;
+
+                        _lastItem = item;
                         rootFrame.Navigate(SectionPage.Create(item));
                     }
                     else if (selectedItem.DataContext is ControlInfoDataItem)
                     {
                         var item = (ControlInfoDataItem)selectedItem.DataContext;
+                        if (item == _lastItem) return;
+
+                        _lastItem = item;
                         rootFrame.Navigate(ItemPage.Create(item));
                     }
+                    else
+                    {
+                    }
                 }
+
             }
         }
 
@@ -325,6 +333,57 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             else
             {
                 NavigationViewControl.AlwaysShowHeader = true;
+            }
+
+            // Update the selected NavigationViewItem based on the page type
+            NavigationViewItem newItem = null;
+
+            if (rootFrame.SourcePageType == typeof(AllControlsPage))
+            {
+                _lastItem = rootFrame.SourcePageType;
+                newItem = _allControlsMenuItem;
+            }
+            else if (rootFrame.SourcePageType == typeof(NewControlsPage))
+            {
+                _lastItem = rootFrame.SourcePageType;
+                newItem = _newControlsMenuItem;
+            }
+            else if (rootFrame.SourcePageType == typeof(SectionPage))
+            {
+                var page = (SectionPage)rootFrame.Content;
+                _lastItem = page.Group;
+                foreach (NavigationViewItemBase item in NavigationViewControl.MenuItems)
+                {
+                    if (item.DataContext == page.Group)
+                    {
+                        newItem = (NavigationViewItem)item;
+                        break;
+                    }
+                }
+            }
+            else if (rootFrame.SourcePageType == typeof(ItemPage))
+            {
+                var page = (ItemPage)rootFrame.Content;
+                _lastItem = page.Item;
+                foreach (NavigationViewItemBase item in NavigationViewControl.MenuItems)
+                {
+                    if (item.DataContext == page.Item.Parent && item is NavigationViewItem itemx)
+                    {
+                        foreach (NavigationViewItemBase child in itemx.MenuItems)
+                        {
+                            if (child.DataContext == page.Item && child is NavigationViewItem childx)
+                            {
+                                newItem = childx;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if (newItem != null && NavigationViewControl.SelectedItem != newItem)
+            {
+                NavigationViewControl.SelectedItem = newItem;
             }
         }
 
