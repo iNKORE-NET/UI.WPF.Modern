@@ -161,31 +161,31 @@
                                     <VisualState x:Name="Disabled">
                                         <Storyboard>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_ActionIconPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
+                                                   Storyboard.TargetProperty="(ui:ContentPresenterEx.Foreground)">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
                                                 Value="{DynamicResource SettingsCardForegroundDisabled}" />
                                             </ObjectAnimationUsingKeyFrames>
                                             
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderIconPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
+                                                   Storyboard.TargetProperty="(ui:ContentPresenterEx.Foreground)">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
                                                 Value="{DynamicResource SettingsCardForegroundDisabled}" />
                                             </ObjectAnimationUsingKeyFrames>
                                             
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_HeaderPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
+                                                   Storyboard.TargetProperty="(ui:ContentPresenterEx.Foreground)">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
                                                 Value="{DynamicResource SettingsCardForegroundDisabled}" />
                                             </ObjectAnimationUsingKeyFrames>
                                             
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_DescriptionPresenter"
-                                                   Storyboard.TargetProperty="Foreground">
+                                                   Storyboard.TargetProperty="(ui:ContentPresenterEx.Foreground)">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
                                                 Value="{DynamicResource SettingsCardForegroundDisabled}" />
                                             </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                         <!--<VisualState.Setters>
-                                                -->
+                                             https://stackoverflow.com/questions/25566944/wpf-theme-error-cannot-resolve-all-property-references-in-the-property-path   -->
                                         <!--  DisabledVisual Should be handled by the control, not the animated icon.  -->
                                         <!--
                                                 <Setter Target="PART_RootGrid.(muxc:AnimatedIcon.State)" Value="Normal" />
@@ -225,7 +225,11 @@
                                             </ObjectAnimationUsingKeyFrames>-->
                                             
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HeaderPanel" Storyboard.TargetProperty="Margin">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0" />
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Thickness>0,0,0,8</Thickness>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
                                             </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
@@ -254,7 +258,11 @@
                                             </ObjectAnimationUsingKeyFrames>-->
                                             
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HeaderPanel" Storyboard.TargetProperty="Margin">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0" />
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Thickness>0,0,0,8</Thickness>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
                                             </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>

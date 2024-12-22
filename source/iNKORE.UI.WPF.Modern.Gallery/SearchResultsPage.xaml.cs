@@ -41,14 +41,21 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             this.InitializeComponent();
         }
 
+        public static SearchResultsPage Create(string queryText)
+        {
+            var page = new SearchResultsPage();
+            if (queryText != null) page.LoadData(queryText);
+            return page;
+        }
+
+        public void LoadData(string queryText)
+        {
+            BuildFilterList(queryText.ToLower());
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            var queryText = e.ExtraData?.ToString().ToLower();
-
-            BuildFilterList(queryText);
-
             NavigationRootPage.Current.NavigationView.Header = "Search";
         }
 
@@ -82,7 +89,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
                 // Query is already lowercase
                 var querySplit = queryText.ToLower().Split(' ');
-                foreach (var group in ControlInfoDataSource.Instance.Groups)
+                foreach (var group in ControlInfoDataSource.Instance.AllGroups)
                 {
                     var matchingItems =
                         group.Items.Where(item =>

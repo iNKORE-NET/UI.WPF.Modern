@@ -27,17 +27,30 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             InitializeComponent();
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        public static SectionPage Create(ControlInfoDataGroup group)
         {
-            base.OnNavigatedTo(e);
-            var group = await ControlInfoDataSource.Instance.GetGroupAsync((string)e.ExtraData);
+            var page = new SectionPage();
+            if (group != null) page.LoadData(group);
+            return page;
+        }
 
-            var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<NavigationViewItemBase>().Single(i => (string)i.Tag == group?.UniqueId);
+        public ControlInfoDataGroup Group { get; private set; }
+
+        public void LoadData(ControlInfoDataGroup group)
+        {
+            if (group == null) throw new ArgumentNullException("group");
+            var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<NavigationViewItemBase>().Single(i => i.DataContext == group);
             menuItem.IsSelected = true;
             NavigationRootPage.Current.NavigationView.Header = menuItem.Content;
 
+            Group = group;
             Items = group?.Items?.OrderBy(i => i.Title).ToList();
             DataContext = Items;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
         }
     }
 }

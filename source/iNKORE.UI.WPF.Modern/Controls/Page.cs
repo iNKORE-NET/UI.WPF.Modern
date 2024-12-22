@@ -5,10 +5,15 @@ using System.Windows.Navigation;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
+    // Something to say here:
+    // This page used to inherit from PageFunctionBase, but it caused a lot of weird issues.
+    // So I changed it to inherit from System.Windows.Controls.Page.
+    // I'm not sure if this is the right way to do it, but it works for now.
+
     /// <summary>
     /// Represents content that a Frame control can navigate to.
     /// </summary>
-    public class Page : PageFunctionBase
+    public class Page : System.Windows.Controls.Page
     {
         static Page()
         {
@@ -66,6 +71,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         /// <summary>
         /// Invoked when the Page is loaded and becomes the current source of a parent Frame.
+        /// This will be fired only using ui:Frame instead of the original Frame.
         /// </summary>
         /// <param name="e">
         /// Event data that can be examined by overriding code. The event data is representative
@@ -79,6 +85,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// <summary>
         /// Invoked immediately before the Page is unloaded and is no longer the current
         /// source of a parent Frame.
+        /// This will be fired only using ui:Frame instead of the original Frame.
         /// </summary>
         /// <param name="e">
         /// Event data that can be examined by overriding code. The event data is representative
@@ -92,6 +99,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// <summary>
         /// Invoked immediately after the Page is unloaded and is no longer the current source
         /// of a parent Frame.
+        /// This will be fired only using ui:Frame instead of the original Frame.
         /// </summary>
         /// <param name="e">
         /// Event data that can be examined by overriding code. The event data is representative

@@ -148,7 +148,7 @@
     <comment>Opening tags to add to WebView NavigateToString calls</comment>
   </data>
   <data name="PageStringRoot" xml:space="preserve">
-    <value>iNKORE.UI.WPF.Modern.Gallery.ControlPages.</value>
+    <value>iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.</value>
     <comment>Path to control pages. Used to load frame in ItemsPage.</comment>
   </data>
   <data name="RelatedControlsHeader.Text" xml:space="preserve">

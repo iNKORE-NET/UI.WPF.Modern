@@ -12,25 +12,25 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Common
 {
     public class ImageLoader
     {
-        public static string GetSource(DependencyObject obj)
+        public static ControlInfoDataItem GetSource(DependencyObject obj)
         {
-            return (string)obj.GetValue(SourceProperty);
+            return (ControlInfoDataItem)obj.GetValue(SourceProperty);
         }
 
-        public static void SetSource(DependencyObject obj, string value)
+        public static void SetSource(DependencyObject obj, ControlInfoDataItem value)
         {
             obj.SetValue(SourceProperty, value);
         }
 
         // Using a DependencyProperty as the backing store for Path.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.RegisterAttached("Source", typeof(string), typeof(ImageLoader), new PropertyMetadata(string.Empty, OnPropertyChanged));
+            DependencyProperty.RegisterAttached("Source", typeof(ControlInfoDataItem), typeof(ImageLoader), new PropertyMetadata(null, OnPropertyChanged));
 
         private async static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is Image image)
             {
-                var item = await ControlInfoDataSource.Instance.GetItemAsync(e.NewValue?.ToString());
+                var item = e.NewValue as ControlInfoDataItem;
                 if (item?.ImagePath != null)
                 {
                     Uri imageUri = new Uri(item.ImagePath, UriKind.Relative);

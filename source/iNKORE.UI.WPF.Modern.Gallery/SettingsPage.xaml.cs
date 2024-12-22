@@ -22,6 +22,7 @@ using iNKORE.UI.WPF.Modern.Gallery.Helpers;
 using System.Reflection;
 using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Helpers;
+using iNKORE.UI.WPF.Modern.Gallery.DataModel;
 
 namespace iNKORE.UI.WPF.Modern.Gallery
 {
@@ -174,9 +175,9 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             //ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = true;
         }
 
-        private void soundPageHyperlink_Click(object sender, RoutedEventArgs args)
+        private async void soundPageHyperlink_Click(object sender, RoutedEventArgs args)
         {
-            this.Frame.Navigate(typeof(ItemPage), "Sound");
+            this.Frame.Navigate(ItemPage.Create(await ControlInfoDataSource.Instance.GetItemAsync(await ControlInfoDataSource.Instance.GetRealmAsync("Windows"), "Sound")));
         }
     }
 }

@@ -44,9 +44,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         public ItemPage()
         {
             InitializeComponent();
-
             Loaded += (s, e) => SetInitialVisuals();
             this.Unloaded += this.ItemPage_Unloaded;
+        }
+
+        public static ItemPage Create(ControlInfoDataItem item)
+        {
+            var page = new ItemPage();
+            if (item != null) page.LoadData(item);
+            return page;
         }
 
         private void ItemPage_Unloaded(object sender, RoutedEventArgs e)
@@ -116,13 +122,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         {
             ButtonBase b = (ButtonBase)sender;
 
-            this.Frame.Navigate(typeof(ItemPage), b.DataContext.ToString());
+            var page = new ItemPage();
+            page.LoadData(b.DataContext as ControlInfoDataItem);
+            this.Frame.Navigate(ItemPage.Create(b.DataContext as ControlInfoDataItem));
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        public async void LoadData(ControlInfoDataItem item)
         {
-            var item = await ControlInfoDataSource.Instance.GetItemAsync((string)e.ExtraData);
-
+            await ControlInfoDataSource.Instance.GetRealmsAsync();
+            
             if (item != null)
             {
                 Item = item;
@@ -132,7 +140,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
                 string pageRoot = loader.GetString("PageStringRoot");
 
-                string pageString = pageRoot + item.UniqueId + "Page";
+                string pageString = pageRoot + item.Parent?.Parent?.UniqueId + "." + item.UniqueId + "Page";
                 Type pageType = Type.GetType(pageString);
 
                 if (pageType != null)
@@ -146,10 +154,17 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
                     this.contentFrame.Navigate(pageType);
                 }
-
-                NavigationRootPage.Current.NavigationView.Header = item?.Title;
             }
+
             DataContext = Item;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (Item != null)
+            {
+                NavigationRootPage.Current.NavigationView.Header = Item.Title;
+            }
 
             base.OnNavigatedTo(e);
         }
@@ -186,16 +201,16 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         private void OnContentRootSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (contentColumn.ActualWidth >= 1000)
-            {
-                contentFrame.Width = 1028;
-                contentFrame.HorizontalAlignment = HorizontalAlignment.Left;
-            }
-            else
-            {
-                contentFrame.Width = double.NaN;
-                contentFrame.HorizontalAlignment = HorizontalAlignment.Stretch;
-            }
+            //if (contentColumn.ActualWidth >= 1000)
+            //{
+            //    contentFrame.Width = 1028;
+            //    contentFrame.HorizontalAlignment = HorizontalAlignment.Left;
+            //}
+            //else
+            //{
+            //    contentFrame.Width = double.NaN;
+            //    contentFrame.HorizontalAlignment = HorizontalAlignment.Stretch;
+            //}
 
             if (Application.Current.MainWindow.ActualWidth >= 1372)
             {

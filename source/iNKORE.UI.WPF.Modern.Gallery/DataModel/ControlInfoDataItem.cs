@@ -29,7 +29,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
             this.IsUpdated = isUpdated;
             this.IsPreview = isPreview;
             this.Docs = new ObservableCollection<ControlInfoDocLink>();
-            this.RelatedControls = new ObservableCollection<string>();
+            this.RelatedControlsIds = new ObservableCollection<string>();
         }
 
         public string UniqueId { get; private set; }
@@ -44,7 +44,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
         public bool IsUpdated { get; private set; }
         public bool IsPreview { get; private set; }
         public ObservableCollection<ControlInfoDocLink> Docs { get; private set; }
-        public ObservableCollection<string> RelatedControls { get; private set; }
+        public ObservableCollection<string> RelatedControlsIds { get; private set; }
+
+        public IList<ControlInfoDataItem> RelatedControls
+        {
+            get
+            {
+                return ControlInfoDataSource.SelectMany(group => group.Items).Where(item => RelatedControlsIds.Contains(item.UniqueId)).ToList();
+            }
+        }
 
         public bool IncludedInBuild { get; set; }
 
@@ -52,6 +60,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
         {
             return this.Title;
         }
+
+        public ControlInfoDataGroup Parent { get; set; }
     }
 
     public class ControlInfoDocLink
@@ -94,15 +104,34 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
         {
             return this.Title;
         }
+
+        public ControlInfoDataRealm Parent { get; set; }
     }
 
     /// <summary>
-    /// Creates a collection of groups and items with content read from a static json file.
-    ///
-    /// ControlInfoSource initializes with data read from a static json file included in the
-    /// project.  This provides sample data at both design-time and run-time.
+    /// The realm that contains all the data for the control info.
+    /// Should be Windows, Community and Extended.
     /// </summary>
-    public sealed class ControlInfoDataSource
+    public class ControlInfoDataRealm
+    {
+        public string UniqueId { get; set; }
+        public string Title { get; set; }
+
+        public ObservableCollection<ControlInfoDataGroup> Groups { get; set; }
+
+        public ControlInfoDataRealm()
+        {
+            Groups = new ObservableCollection<ControlInfoDataGroup>();
+        }
+    }
+
+        /// <summary>
+        /// Creates a collection of groups and items with content read from a static json file.
+        ///
+        /// ControlInfoSource initializes with data read from a static json file included in the
+        /// project.  This provides sample data at both design-time and run-time.
+        /// </summary>
+        public sealed class ControlInfoDataSource
     {
         private static readonly object _lock = new object();
 
@@ -127,41 +156,76 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
 
         #endregion
 
-        private IList<ControlInfoDataGroup> _groups = new List<ControlInfoDataGroup>();
-        public IList<ControlInfoDataGroup> Groups
+        private IList<ControlInfoDataRealm> _realms = new List<ControlInfoDataRealm>();
+        public IList<ControlInfoDataRealm> Realms
         {
-            get { return this._groups; }
+            get { return this._realms; }
         }
 
-        public async Task<IEnumerable<ControlInfoDataGroup>> GetGroupsAsync()
+        public IList<ControlInfoDataGroup> AllGroups
+        {
+            get
+            {
+                return this.Realms.SelectMany(r => r.Groups).ToList();
+            }
+        }
+
+        public async Task<IEnumerable<ControlInfoDataRealm>> GetRealmsAsync()
         {
             await _instance.GetControlInfoDataAsync();
 
-            return _instance.Groups;
+            return _instance.Realms;
         }
 
-        public async Task<ControlInfoDataGroup> GetGroupAsync(string uniqueId)
+        public async Task<ControlInfoDataRealm> GetRealmAsync(string realmName)
         {
             await _instance.GetControlInfoDataAsync();
-            // Simple linear search is acceptable for small data sets
-            var matches = _instance.Groups.Where((group) => group.UniqueId.Equals(uniqueId));
+            var matches = _instance.Realms.Where((realm) => realm.UniqueId.Equals(realmName));
             if (matches.Count() == 1) return matches.First();
             return null;
         }
 
-        public async Task<ControlInfoDataItem> GetItemAsync(string uniqueId)
+        public async Task<ControlInfoDataGroup> GetGroupAsync(ControlInfoDataRealm realm, string uniqueId)
         {
             await _instance.GetControlInfoDataAsync();
             // Simple linear search is acceptable for small data sets
-            var matches = _instance.Groups.SelectMany(group => group.Items).Where((item) => item.UniqueId.Equals(uniqueId));
+            var matches = realm.Groups.Where((group) => group.UniqueId.Equals(uniqueId));
+            if (matches.Count() == 1) return matches.First();
+            return null;
+        }
+
+        public async Task<ControlInfoDataItem> GetItemAsync(ControlInfoDataRealm realm, string uniqueId)
+        {
+            await _instance.GetControlInfoDataAsync();
+            // Simple linear search is acceptable for small data sets
+            var matches = realm.Groups.SelectMany(group => group.Items).Where((item) => item.UniqueId.Equals(uniqueId));
             if (matches.Count() > 0) return matches.First();
             return null;
+        }
+
+        public static IEnumerable<TResult> SelectMany<TResult>(Func<ControlInfoDataGroup, IEnumerable<TResult>> selector)
+        {
+            var result = new List<TResult>();
+            foreach (var realm in _instance.Realms)
+            {
+                result.AddRange(realm.Groups.SelectMany(selector));
+            }
+
+            return result;
         }
 
         public async Task<ControlInfoDataGroup> GetGroupFromItemAsync(string uniqueId)
         {
             await _instance.GetControlInfoDataAsync();
-            var matches = _instance.Groups.Where((group) => group.Items.FirstOrDefault(item => item.UniqueId.Equals(uniqueId)) != null);
+            // var matches = _instance.Groups.Where((group) => group.Items.FirstOrDefault(item => item.UniqueId.Equals(uniqueId)) != null);
+            var matches = new List<ControlInfoDataGroup>();
+
+            foreach (var realm in _instance.Realms)
+            {
+                var match = realm.Groups.Where(group => group.Items.FirstOrDefault(item => item.UniqueId.Equals(uniqueId)) != null);
+                matches.AddRange(match);
+            }
+
             if (matches.Count() == 1) return matches.First();
             return null;
         }
@@ -170,155 +234,165 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
         {
             lock (_lock)
             {
-                if (this.Groups.Count() != 0)
+                if (this.Realms.Count() != 0)
                 {
                     return;
                 }
             }
 
-            var dataUri = new Uri("/DataModel/ControlInfoData.json", UriKind.Relative);
+            var realmNames = new string[] { "Windows", "Community", "Extended" };
 
-            var file = Application.GetResourceStream(dataUri);
-            string jsonText = string.Empty;
-
-            using (var reader = new StreamReader(file.Stream))
+            foreach (var realmName in realmNames)
             {
-                await Task.Run(() => jsonText = reader.ReadToEnd());
-            }
+                var dataUri = new Uri($"/DataModel/Data/Controls.{realmName}.json", UriKind.Relative);
 
-            JsonDocument jsonDocument = JsonDocument.Parse(jsonText, new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip });
-            JsonElement jsonArray = jsonDocument.RootElement.GetProperty("Groups");
+                var file = Application.GetResourceStream(dataUri);
+                string jsonText = string.Empty;
 
-            lock (_lock)
-            {
-                string pageRoot = "iNKORE.UI.WPF.Modern.Gallery.ControlPages.";
-                foreach (JsonElement groupValue in jsonArray.EnumerateArray())
+                using (var reader = new StreamReader(file.Stream))
                 {
-                    if (groupValue.ValueKind != JsonValueKind.Object)
-                    {
-                        continue;
-                    }
+                    await Task.Run(() => jsonText = reader.ReadToEnd());
+                }
 
-                    JsonElement groupObject;
-                    if (groupValue.TryGetProperty("UniqueId", out JsonElement uniqueIdElement) &&
-                        groupValue.TryGetProperty("Title", out JsonElement titleElement) &&
-                        groupValue.TryGetProperty("Subtitle", out JsonElement subtitleElement) &&
-                        groupValue.TryGetProperty("ImagePath", out JsonElement imagePathElement) &&
-                        groupValue.TryGetProperty("ImageIconPath", out JsonElement imageIconPathElement) &&
-                        groupValue.TryGetProperty("Description", out JsonElement descriptionElement))
-                    {
-                        groupObject = groupValue;
-                    }
-                    else
-                    {
-                        continue;
-                    }
+                var realm = new ControlInfoDataRealm() { UniqueId = realmName, Title = realmName };
 
-                    ControlInfoDataGroup group = new ControlInfoDataGroup(uniqueIdElement.GetString(),
-                                                                          titleElement.GetString(),
-                                                                          subtitleElement.GetString(),
-                                                                          imagePathElement.GetString(),
-                                                                          imageIconPathElement.GetString(),
-                                                                          descriptionElement.GetString());
+                JsonDocument jsonDocument = JsonDocument.Parse(jsonText, new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip });
+                JsonElement jsonArray = jsonDocument.RootElement.GetProperty("Groups");
 
-                    if (groupObject.TryGetProperty("Items", out JsonElement itemsElement) && itemsElement.ValueKind == JsonValueKind.Array)
+                lock (_lock)
+                {
+                    string pageRoot = $"iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.{realmName}.";
+                    foreach (JsonElement groupValue in jsonArray.EnumerateArray())
                     {
-                        foreach (JsonElement itemValue in itemsElement.EnumerateArray())
+                        if (groupValue.ValueKind != JsonValueKind.Object)
                         {
-                            if (itemValue.ValueKind != JsonValueKind.Object)
-                            {
-                                continue;
-                            }
-
-                            JsonElement itemObject;
-                            if (itemValue.TryGetProperty("UniqueId", out JsonElement itemUniqueIdElement) &&
-                                itemValue.TryGetProperty("Title", out JsonElement itemTitleElement) &&
-                                itemValue.TryGetProperty("Subtitle", out JsonElement itemSubtitleElement) &&
-                                itemValue.TryGetProperty("ImagePath", out JsonElement itemImagePathElement) &&
-                                itemValue.TryGetProperty("ImageIconPath", out JsonElement itemImageIconPathElement) &&
-                                itemValue.TryGetProperty("Description", out JsonElement itemDescriptionElement) &&
-                                itemValue.TryGetProperty("Content", out JsonElement itemContentElement))
-                            {
-                                itemObject = itemValue;
-                            }
-                            else
-                            {
-                                continue;
-                            }
-
-                            string badgeString = null;
-
-                            bool isNew = itemObject.TryGetProperty("IsNew", out JsonElement isNewElement) && isNewElement.GetBoolean();
-                            bool isUpdated = itemObject.TryGetProperty("IsUpdated", out JsonElement isUpdatedElement) && isUpdatedElement.GetBoolean();
-                            bool isPreview = itemObject.TryGetProperty("IsPreview", out JsonElement isPreviewElement) && isPreviewElement.GetBoolean();
-
-                            if (isNew)
-                            {
-                                badgeString = "New";
-                            }
-                            else if (isUpdated)
-                            {
-                                badgeString = "Updated";
-                            }
-                            else if (isPreview)
-                            {
-                                badgeString = "Preview";
-                            }
-
-                            var item = new ControlInfoDataItem(itemUniqueIdElement.GetString(),
-                                                                    itemTitleElement.GetString(),
-                                                                    itemSubtitleElement.GetString(),
-                                                                    itemImagePathElement.GetString(),
-                                                                    itemImageIconPathElement.GetString(),
-                                                                    badgeString,
-                                                                    itemDescriptionElement.GetString(),
-                                                                    itemContentElement.GetString(),
-                                                                    isNew,
-                                                                    isUpdated,
-                                                                    isPreview);
-
-                            {
-                                string pageString = pageRoot + item.UniqueId + "Page";
-                                Type pageType = Type.GetType(pageString);
-                                item.IncludedInBuild = pageType != null;
-                            }
-
-                            if (itemObject.TryGetProperty("Docs", out JsonElement docsElement) && docsElement.ValueKind == JsonValueKind.Array)
-                            {
-                                foreach (JsonElement docValue in docsElement.EnumerateArray())
-                                {
-                                    if (docValue.ValueKind != JsonValueKind.Object)
-                                    {
-                                        continue;
-                                    }
-
-                                    if (docValue.TryGetProperty("Title", out JsonElement docTitleElement) &&
-                                        docValue.TryGetProperty("Uri", out JsonElement docUriElement))
-                                    {
-                                        item.Docs.Add(new ControlInfoDocLink(docTitleElement.GetString(), docUriElement.GetString()));
-                                    }
-                                }
-                            }
-
-                            if (itemObject.TryGetProperty("RelatedControls", out JsonElement relatedControlsElement) && relatedControlsElement.ValueKind == JsonValueKind.Array)
-                            {
-                                foreach (JsonElement relatedControlValue in relatedControlsElement.EnumerateArray())
-                                {
-                                    if (relatedControlValue.ValueKind == JsonValueKind.String)
-                                    {
-                                        item.RelatedControls.Add(relatedControlValue.GetString());
-                                    }
-                                }
-                            }
-
-                            group.Items.Add(item);
+                            continue;
                         }
-                        if (!Groups.Any(g => g.Title == group.Title))
+
+                        JsonElement groupObject;
+                        if (groupValue.TryGetProperty("UniqueId", out JsonElement uniqueIdElement) &&
+                            groupValue.TryGetProperty("Title", out JsonElement titleElement) &&
+                            groupValue.TryGetProperty("Subtitle", out JsonElement subtitleElement) &&
+                            groupValue.TryGetProperty("ImagePath", out JsonElement imagePathElement) &&
+                            groupValue.TryGetProperty("ImageIconPath", out JsonElement imageIconPathElement) &&
+                            groupValue.TryGetProperty("Description", out JsonElement descriptionElement))
                         {
-                            Groups.Add(group);
+                            groupObject = groupValue;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+
+                        ControlInfoDataGroup group = new ControlInfoDataGroup(uniqueIdElement.GetString(),
+                            titleElement.GetString(), subtitleElement.GetString(),
+                            imagePathElement.GetString(), imageIconPathElement.GetString(),
+                            descriptionElement.GetString())
+                        { Parent = realm };
+
+                        if (groupObject.TryGetProperty("Items", out JsonElement itemsElement) && itemsElement.ValueKind == JsonValueKind.Array)
+                        {
+                            foreach (JsonElement itemValue in itemsElement.EnumerateArray())
+                            {
+                                if (itemValue.ValueKind != JsonValueKind.Object)
+                                {
+                                    continue;
+                                }
+
+                                JsonElement itemObject;
+                                if (itemValue.TryGetProperty("UniqueId", out JsonElement itemUniqueIdElement) &&
+                                    itemValue.TryGetProperty("Title", out JsonElement itemTitleElement) &&
+                                    itemValue.TryGetProperty("Subtitle", out JsonElement itemSubtitleElement) &&
+                                    itemValue.TryGetProperty("ImagePath", out JsonElement itemImagePathElement) &&
+                                    itemValue.TryGetProperty("ImageIconPath", out JsonElement itemImageIconPathElement) &&
+                                    itemValue.TryGetProperty("Description", out JsonElement itemDescriptionElement))
+                                {
+                                    itemObject = itemValue;
+                                }
+                                else
+                                {
+                                    continue;
+                                }
+
+                                var itemContentElement = itemValue.TryGetProperty("Content");
+
+                                string badgeString = null;
+
+                                bool isNew = itemObject.TryGetProperty("IsNew", out JsonElement isNewElement) && isNewElement.GetBoolean();
+                                bool isUpdated = itemObject.TryGetProperty("IsUpdated", out JsonElement isUpdatedElement) && isUpdatedElement.GetBoolean();
+                                bool isPreview = itemObject.TryGetProperty("IsPreview", out JsonElement isPreviewElement) && isPreviewElement.GetBoolean();
+
+                                if (isNew)
+                                {
+                                    badgeString = "New";
+                                }
+                                else if (isUpdated)
+                                {
+                                    badgeString = "Updated";
+                                }
+                                else if (isPreview)
+                                {
+                                    badgeString = "Preview";
+                                }
+
+                                var item = new ControlInfoDataItem(itemUniqueIdElement.GetString(),
+                                    itemTitleElement.GetString(),
+                                    itemSubtitleElement.GetString(),
+                                    itemImagePathElement.GetString(),
+                                    itemImageIconPathElement.GetString(),
+                                    badgeString,
+                                    itemDescriptionElement.GetString(),
+                                    itemContentElement?.GetString() ?? "",
+                                    isNew,
+                                    isUpdated,
+                                    isPreview)
+                                { Parent = group };
+
+                                {
+                                    string pageString = pageRoot + item.UniqueId + "Page";
+                                    Type pageType = Type.GetType(pageString);
+                                    item.IncludedInBuild = pageType != null;
+                                }
+
+                                if (itemObject.TryGetProperty("Docs", out JsonElement docsElement) && docsElement.ValueKind == JsonValueKind.Array)
+                                {
+                                    foreach (JsonElement docValue in docsElement.EnumerateArray())
+                                    {
+                                        if (docValue.ValueKind != JsonValueKind.Object)
+                                        {
+                                            continue;
+                                        }
+
+                                        if (docValue.TryGetProperty("Title", out JsonElement docTitleElement) &&
+                                            docValue.TryGetProperty("Uri", out JsonElement docUriElement))
+                                        {
+                                            item.Docs.Add(new ControlInfoDocLink(docTitleElement.GetString(), docUriElement.GetString()));
+                                        }
+                                    }
+                                }
+
+                                if (itemObject.TryGetProperty("RelatedControls", out JsonElement relatedControlsElement) && relatedControlsElement.ValueKind == JsonValueKind.Array)
+                                {
+                                    foreach (JsonElement relatedControlValue in relatedControlsElement.EnumerateArray())
+                                    {
+                                        if (relatedControlValue.ValueKind == JsonValueKind.String)
+                                        {
+                                            item.RelatedControlsIds.Add(relatedControlValue.GetString());
+                                        }
+                                    }
+                                }
+
+                                group.Items.Add(item);
+                            }
+                            if (!realm.Groups.Any(g => g.Title == group.Title))
+                            {
+                                realm.Groups.Add(group);
+                            }
                         }
                     }
                 }
+            
+                this.Realms.Add(realm);
             }
         }
     }

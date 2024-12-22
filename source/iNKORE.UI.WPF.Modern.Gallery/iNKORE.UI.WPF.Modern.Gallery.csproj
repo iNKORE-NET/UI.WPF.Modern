@@ -145,6 +145,8 @@
     <None Remove="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_cs.txt" />
     <None Remove="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_xaml.txt" />
     <None Remove="DataModel\ControlInfoData.json" />
+    <None Remove="DataModel\Data\Controls.Community.json" />
+    <None Remove="DataModel\Data\Controls.Extended.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -255,7 +257,9 @@
     <Resource Include="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_xaml.txt" />
     <Resource Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_cs.txt" />
     <Resource Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_xaml.txt" />
-    <Resource Include="DataModel\ControlInfoData.json" />
+    <Resource Include="DataModel\Data\Controls.Community.json" />
+    <Resource Include="DataModel\Data\Controls.Extended.json" />
+    <Resource Include="DataModel\Data\Controls.Windows.json" />
   </ItemGroup>
 
   <ItemGroup>
