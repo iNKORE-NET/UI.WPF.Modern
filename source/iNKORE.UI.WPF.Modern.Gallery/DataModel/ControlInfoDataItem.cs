@@ -52,6 +52,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
         {
             return this.Title;
         }
+
+        public ControlInfoDataGroup Parent { get; set; }
     }
 
     public class ControlInfoDocLink
@@ -325,16 +327,17 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
                                 }
 
                                 var item = new ControlInfoDataItem(itemUniqueIdElement.GetString(),
-                                                                        itemTitleElement.GetString(),
-                                                                        itemSubtitleElement.GetString(),
-                                                                        itemImagePathElement.GetString(),
-                                                                        itemImageIconPathElement.GetString(),
-                                                                        badgeString,
-                                                                        itemDescriptionElement.GetString(),
-                                                                        itemContentElement.GetString(),
-                                                                        isNew,
-                                                                        isUpdated,
-                                                                        isPreview);
+                                    itemTitleElement.GetString(),
+                                    itemSubtitleElement.GetString(),
+                                    itemImagePathElement.GetString(),
+                                    itemImageIconPathElement.GetString(),
+                                    badgeString,
+                                    itemDescriptionElement.GetString(),
+                                    itemContentElement.GetString(),
+                                    isNew,
+                                    isUpdated,
+                                    isPreview)
+                                { Parent = group };
 
                                 {
                                     string pageString = pageRoot + item.UniqueId + "Page";

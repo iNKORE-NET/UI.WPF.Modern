@@ -133,7 +133,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
                 string pageRoot = loader.GetString("PageStringRoot");
 
-                string pageString = pageRoot + item.UniqueId + "Page";
+                string pageString = pageRoot + item.Parent?.Parent?.UniqueId + "." + item.UniqueId + "Page";
                 Type pageType = Type.GetType(pageString);
 
                 if (pageType != null)
