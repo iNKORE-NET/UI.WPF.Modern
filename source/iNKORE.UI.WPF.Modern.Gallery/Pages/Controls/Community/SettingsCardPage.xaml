@@ -10,7 +10,7 @@
     Title="Border" d:DesignWidth="800"
     Loaded="Page_Loaded" mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="A Series of SettingsCards">
+        <local:ControlExample x:Name="Example1" HeaderText="Simple SettingsCards">
             <local:ControlExample.Example>
                 <ikw:SimpleStackPanel Spacing="4">
                     <ui:SettingsCard x:Name="settingsCard"
@@ -79,7 +79,7 @@
             <Run FontWeight="Bold">false</Run>.
         </TextBlock>
 
-        <local:ControlExample x:Name="Example2" HeaderText="A Series of Clickable SettingsCards">
+        <local:ControlExample x:Name="Example2" HeaderText="Clickable SettingsCards">
             <local:ControlExample.Example>
                 <ikw:SimpleStackPanel Spacing="4">
 
