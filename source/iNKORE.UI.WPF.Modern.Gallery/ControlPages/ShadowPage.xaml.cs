@@ -27,10 +27,31 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 
         public void UpdateExampleCode()
         {
+            if (!this.IsLoaded) return;
 
+            Example1.Xaml = Example1Xaml;
         }
 
-        #endregion
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
 
+        private void DepthSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            UpdateExampleCode();
+        }
+
+
+        public string Example1Xaml => $@"
+<ui:ThemeShadowChrome
+    Depth=""{DepthSlider.Value}""
+    IsShadowEnabled=""True"">
+    <Rectangle Width=""200"" Height=""200""
+        Fill=""{{DynamicResource {{x:Static ui:ThemeKeys.SystemControlBackgroundAltHighBrushKey}}}}"" />
+</ui:ThemeShadowChrome>
+";
+
+        #endregion
     }
 }

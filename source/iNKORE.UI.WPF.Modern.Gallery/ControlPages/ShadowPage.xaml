@@ -5,19 +5,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
-    xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    mc:Ignorable="d">
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" 
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
+    mc:Ignorable="d" Loaded="Page_Loaded">
 
     <ikw:SimpleStackPanel Margin="{StaticResource ControlPageContentMargin}">
-        <sc:ControlExample
+        <local:ControlExample x:Name="Example1"
             HorizontalContentAlignment="Stretch"
             VerticalContentAlignment="Stretch"
             HeaderText="ThemeShadowChrome">
             <Border
                 Padding="96"
                 ui:ThemeManager.RequestedTheme="Light"
-                Background="{DynamicResource SystemControlBackgroundAltHighBrush}">
+                Background="{DynamicResource {x:Static ui:ThemeKeys.SystemControlBackgroundAltHighBrushKey}}">
                 <ui:ThemeShadowChrome
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
@@ -26,11 +26,11 @@
                     <Rectangle
                         Width="200"
                         Height="200"
-                        Fill="{DynamicResource SystemControlBackgroundAltHighBrush}" />
+                        Fill="{DynamicResource {x:Static ui:ThemeKeys.SystemControlBackgroundAltHighBrushKey}}" />
                 </ui:ThemeShadowChrome>
             </Border>
 
-            <sc:ControlExample.Options>
+            <local:ControlExample.Options>
                 <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
                     <Slider
                         x:Name="DepthSlider"
@@ -40,9 +40,10 @@
                         Maximum="96"
                         Minimum="1"
                         Ticks="1,2,3,4,6,8,9,12,16,24,32,40,48,64,80,96"
-                        Value="32" />
+                        Value="32" 
+                        ValueChanged="DepthSlider_ValueChanged"/>
                 </ikw:SimpleStackPanel>
-            </sc:ControlExample.Options>
-        </sc:ControlExample>
+            </local:ControlExample.Options>
+        </local:ControlExample>
     </ikw:SimpleStackPanel>
 </ui:Page>
