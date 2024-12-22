@@ -65,9 +65,20 @@
 
             <local:ControlExample.Options>
                 <StackPanel>
-                    <ui:ToggleSwitch x:Name="EnableToggle1" Header="Is Enabled" IsOn="False"/>
+                    <ui:ToggleSwitch x:Name="EnableToggle1" Header="Is Enabled" IsOn="True"/>
                 </StackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
+
+        <TextBlock Margin="0,15" TextWrapping="Wrap">
+            SettingsCard can also be turned into a button, by setting the 
+            <Run FontWeight="Bold">IsClickEnabled</Run> 
+            property. This can be useful whenever you want your settings component to navigate to a detail page or open an external link. You can set a custom icon by setting the 
+            <Run FontWeight="Bold">ActionIcon</Run>, 
+            or hiding it completely by setting the
+            <Run FontWeight="Bold">IsActionIconVisible</Run>
+            to 
+            <Run FontWeight="Bold">false</Run>.
+        </TextBlock>
     </StackPanel>
 </ui:Page>

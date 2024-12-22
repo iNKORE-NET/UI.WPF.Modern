@@ -201,16 +201,16 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         private void OnContentRootSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (contentColumn.ActualWidth >= 1000)
-            {
-                contentFrame.Width = 1028;
-                contentFrame.HorizontalAlignment = HorizontalAlignment.Left;
-            }
-            else
-            {
-                contentFrame.Width = double.NaN;
-                contentFrame.HorizontalAlignment = HorizontalAlignment.Stretch;
-            }
+            //if (contentColumn.ActualWidth >= 1000)
+            //{
+            //    contentFrame.Width = 1028;
+            //    contentFrame.HorizontalAlignment = HorizontalAlignment.Left;
+            //}
+            //else
+            //{
+            //    contentFrame.Width = double.NaN;
+            //    contentFrame.HorizontalAlignment = HorizontalAlignment.Stretch;
+            //}
 
             if (Application.Current.MainWindow.ActualWidth >= 1372)
             {
