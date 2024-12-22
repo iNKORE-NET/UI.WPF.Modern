@@ -13,18 +13,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 {
     /// <summary>
     /// ParallaxViewPage.xaml 的交互逻辑
     /// </summary>
-    public partial class ParallaxViewPage : ItemsPageBase
+    public partial class ParallaxViewPage : Page
     {
         public ParallaxViewPage()
         {
             InitializeComponent();
         }
+
+        public IEnumerable<ControlInfoDataItem> Items { get; private set; }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

@@ -19,7 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using iNKORE.UI.WPF.Helpers;
 
-namespace iNKORE.UI.WPF.Modern.Gallery
+namespace iNKORE.UI.WPF.Modern.Gallery.Pages
 {
     /// <summary>
     /// SearchResultsPage.xaml 的交互逻辑

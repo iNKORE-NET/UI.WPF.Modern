@@ -1,4 +1,4 @@
-﻿<local:ItemsPageBase
+﻿<ui:Page
     x:Class="iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows.ParallaxViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -52,4 +52,4 @@
             </local:ControlExample.Example>
         </local:ControlExample>
     </StackPanel>
-</local:ItemsPageBase>
+</ui:Page>

@@ -13,19 +13,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 {
     /// <summary>
     /// FlipViewPage.xaml 的交互逻辑
     /// </summary>
-    public partial class FlipViewPage : ItemsPageBase
+    public partial class FlipViewPage : Page
     {
         public FlipViewPage()
         {
             InitializeComponent();
             UpdateExampleCode();
         }
+
+        public IEnumerable<ControlInfoDataItem> Items { get; private set; }
+
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

@@ -51,7 +51,7 @@
 
                         <ResourceDictionary x:Key="HighContrast" ui:ThemeDictionary.Key="HighContrast">
                             <ResourceDictionary.MergedDictionaries>
-                                <ResourceDictionary Source="HighContrast.xaml" />
+                                <ResourceDictionary Source="/Themes/HighContrast.xaml" />
                             </ResourceDictionary.MergedDictionaries>
                             <Thickness x:Key="SearchBoxBorderThickness">2</Thickness>
                             <Thickness x:Key="ControlExampleDisplayBorderThickness">1</Thickness>

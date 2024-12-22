@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace iNKORE.UI.WPF.Modern.Gallery
+namespace iNKORE.UI.WPF.Modern.Gallery.Pages
 {
     /// <summary>
     /// NewControlsPage.xaml 的交互逻辑

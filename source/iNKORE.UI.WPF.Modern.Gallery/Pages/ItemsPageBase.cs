@@ -21,8 +21,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using GridView = iNKORE.UI.WPF.Modern.Controls.GridView;
 using Page = iNKORE.UI.WPF.Modern.Controls.Page;
+using iNKORE.UI.WPF.Modern.Gallery.Pages;
 
-namespace iNKORE.UI.WPF.Modern.Gallery
+namespace iNKORE.UI.WPF.Modern.Gallery.Pages
 {
     public abstract class ItemsPageBase : Page, INotifyPropertyChanged
     {

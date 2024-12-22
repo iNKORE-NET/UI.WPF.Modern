@@ -25,7 +25,7 @@ using Frame = iNKORE.UI.WPF.Modern.Controls.Frame;
 using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 using iNKORE.UI.WPF.Helpers;
 
-namespace iNKORE.UI.WPF.Modern.Gallery
+namespace iNKORE.UI.WPF.Modern.Gallery.Pages
 {
     /// <summary>
     /// ItemPage.xaml 的交互逻辑

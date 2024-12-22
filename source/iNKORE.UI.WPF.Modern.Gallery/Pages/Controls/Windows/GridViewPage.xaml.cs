@@ -15,10 +15,11 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Navigation;
 using GridView = iNKORE.UI.WPF.Modern.Controls.GridView;
+using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 {
-    public sealed partial class GridViewPage : ItemsPageBase
+    public sealed partial class GridViewPage : Page
     {
         WrapPanel StyledGridIWG;
 

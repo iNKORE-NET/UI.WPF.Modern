@@ -1,10 +1,10 @@
 ﻿<local:ItemsPageBase
-    x:Class="iNKORE.UI.WPF.Modern.Gallery.NewControlsPage"
+    x:Class="iNKORE.UI.WPF.Modern.Gallery.Pages.NewControlsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" 
     xmlns:uc="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls"
@@ -15,7 +15,7 @@
     <local:ItemsPageBase.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ItemTemplates.xaml" />
+                <ResourceDictionary Source="/Themes/ItemTemplates.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <local:ControlsGroupKeyConverter x:Key="ControlsGroupKeyConverter" />
             <CollectionViewSource x:Key="ItemsCVS" Source="{Binding}">
@@ -58,7 +58,7 @@
                             x:Name="headerImage"
                             HorizontalAlignment="Center"
                             ui:ClipHelper.CornerRadius="{DynamicResource ControlCornerRadius}"
-                            Source="Assets/MainPage_Banner.png"
+                            Source="/Assets/MainPage_Banner.png"
                             Stretch="Fill" />
                     </Border>
                     <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />

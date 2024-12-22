@@ -24,7 +24,7 @@ using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Helpers;
 using iNKORE.UI.WPF.Modern.Gallery.DataModel;
 
-namespace iNKORE.UI.WPF.Modern.Gallery
+namespace iNKORE.UI.WPF.Modern.Gallery.Pages
 {
     /// <summary>
     /// SettingsPage.xaml 的交互逻辑

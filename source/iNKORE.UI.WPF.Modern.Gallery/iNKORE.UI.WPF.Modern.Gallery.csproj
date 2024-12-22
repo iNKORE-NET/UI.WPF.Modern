@@ -19,7 +19,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Update="PageHeader.xaml.cs">
+    <Compile Update="Controls\PageHeader.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
@@ -277,7 +277,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="PageHeader.xaml">
+    <Page Update="Controls\PageHeader.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
