@@ -18,7 +18,7 @@
                 <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Apps}"/>
             </ui:SettingsCard.HeaderIcon>
         </ui:SettingsCard>
-        <ui:SettingsCard Header="Browser Search Engine"
+        <ui:SettingsCard Header="Browser Search Engine" IsEnabled="False"
                          Description="Choose the search engine you like.">
             <ui:SettingsCard.HeaderIcon>
                 <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.CloudSearch}"/>

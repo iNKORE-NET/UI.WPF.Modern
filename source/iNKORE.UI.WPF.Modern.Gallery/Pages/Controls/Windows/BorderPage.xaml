@@ -97,14 +97,6 @@
                     </Grid>
                 </StackPanel>
             </local:ControlExample.Options>
-
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;Border BorderThickness=&quot;$(BorderThickness)&quot; BorderBrush=&quot;$(BorderBrush)&quot; Background=&quot;$(Background)&quot;&gt;
-    &lt;TextBlock Text=&quot;Text inside a border&quot; FontSize=&quot;18&quot; Foreground=&quot;Black&quot; /&gt;
-&lt;/Border&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>

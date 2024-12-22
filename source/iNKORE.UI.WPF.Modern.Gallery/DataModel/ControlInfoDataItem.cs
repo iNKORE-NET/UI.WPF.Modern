@@ -305,8 +305,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
                                     itemValue.TryGetProperty("Subtitle", out JsonElement itemSubtitleElement) &&
                                     itemValue.TryGetProperty("ImagePath", out JsonElement itemImagePathElement) &&
                                     itemValue.TryGetProperty("ImageIconPath", out JsonElement itemImageIconPathElement) &&
-                                    itemValue.TryGetProperty("Description", out JsonElement itemDescriptionElement) &&
-                                    itemValue.TryGetProperty("Content", out JsonElement itemContentElement))
+                                    itemValue.TryGetProperty("Description", out JsonElement itemDescriptionElement))
                                 {
                                     itemObject = itemValue;
                                 }
@@ -314,6 +313,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
                                 {
                                     continue;
                                 }
+
+                                var itemContentElement = itemValue.TryGetProperty("Content");
 
                                 string badgeString = null;
 
@@ -341,7 +342,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
                                     itemImageIconPathElement.GetString(),
                                     badgeString,
                                     itemDescriptionElement.GetString(),
-                                    itemContentElement.GetString(),
+                                    itemContentElement?.GetString() ?? "",
                                     isNew,
                                     isUpdated,
                                     isPreview)
