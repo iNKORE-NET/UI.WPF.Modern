@@ -1,0 +1,66 @@
+﻿<ui:Page
+    x:Class="iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Extended.MessageBoxPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
+    Title="Border" d:DesignWidth="800"
+    Loaded="Page_Loaded" mc:Ignorable="d">
+    <StackPanel>
+        <local:ControlExample x:Name="Example1" HeaderText="A simple MessageBox with just message">
+            <local:ControlExample.Example>
+                <Button x:Name="Button_ShowMsg1" Content="Show MessageBox" Click="Button_ShowMsg1_Click"/>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+        
+        <local:ControlExample x:Name="Example2" HeaderText="MessageBoxes with title and icon">
+            <local:ControlExample.Example>
+
+                <ikw:SimpleStackPanel Spacing="16">
+                    <TextBlock TextWrapping="Wrap">
+                        Multiple icons and titles are used in this example. The sound to play is automatically selected based on the icon, you can also customize it by passing a SystemSound argument.
+                    </TextBlock>
+                    <ikw:SimpleStackPanel Spacing="8" Orientation="Horizontal">
+                        <Button x:Name="Button_ShowMsg2_Warning" Content="Warning" Click="Button_ShowMsg2_Warning_Click"/>
+                        <Button x:Name="Button_ShowMsg2_Info" Content="Info" Click="Button_ShowMsg2_Info_Click"/>
+                        <Button x:Name="Button_ShowMsg2_Question" Content="Question" Click="Button_ShowMsg2_Question_Click"/>
+                        <Button x:Name="Button_ShowMsg2_Error" Content="Error" Click="Button_ShowMsg2_Error_Click"/>
+                        <Button x:Name="Button_ShowMsg2_FontIconData" Content="Custom (using FontIconData)" Click="Button_ShowMsg2_FontIconData_Click"/>
+                    </ikw:SimpleStackPanel>
+
+                </ikw:SimpleStackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
+        <local:ControlExample x:Name="Example3" HeaderText="MessageBoxes with Buttons">
+            <local:ControlExample.Example>
+                <ikw:SimpleStackPanel Spacing="8" Orientation="Horizontal">
+                    <Button x:Name="Button_ShowMsg3_YesNo" Content="YesNo" Click="Button_ShowMsg3_YesNo_Click"/>
+                    <Button x:Name="Button_ShowMsg3_YesNoCancel" Content="YesNoCancel" Click="Button_ShowMsg3_YesNoCancel_Click"/>
+                    <Button x:Name="Button_ShowMsg3_OKCancel" Content="OKCancel" Click="Button_ShowMsg3_OKCancel_Click"/>
+                </ikw:SimpleStackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
+
+        <local:ControlExample x:Name="Example4" HeaderText="Change the backdrop of MessageBoxes">
+            <local:ControlExample.Example>
+                <ikw:SimpleStackPanel Spacing="8">
+                    <ikw:SimpleStackPanel Spacing="8" Orientation="Vertical">
+                        <TextBlock>
+                            Select the backdrop style you want, and click the buttons (in other examples of this page) to see the effect.
+                        </TextBlock>
+                        <ui:RadioButtons x:Name="RadioButtons_DefaultBackdropStyle"
+                            ItemsSource="{Binding Source={x:Type ui:BackdropType}, Converter={StaticResource EnumValuesConverter}}"
+                            SelectionChanged="RadioButtons_SelectionChanged" MaxColumns="3"/>
+                    </ikw:SimpleStackPanel>
+                </ikw:SimpleStackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
+    </StackPanel>
+</ui:Page>

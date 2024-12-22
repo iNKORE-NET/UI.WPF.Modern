@@ -45,7 +45,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Community
                 Info = "More about second item.",
                 ItemType = "Item type: Link button",
                 LinkDescription = "Click here for more on second item.",
-                Url = "https://inkore.net/zh-cn/ui-wpf-modern",
+                Url = "https://docs.inkore.net/zh-cn/ui-wpf-modern",
             },
             new()
             {
@@ -254,7 +254,7 @@ public ObservableCollection<MyDataModel> _myDataSet = new()
         Info = ""More about second item."",
         ItemType = ""Item type: Link button"",
         LinkDescription = ""Click here for more on second item."",
-        Url = ""https://inkore.net/zh-cn/ui-wpf-modern"",
+        Url = ""https://docs.inkore.net/zh-cn/ui-wpf-modern"",
     }},
     new()
     {{

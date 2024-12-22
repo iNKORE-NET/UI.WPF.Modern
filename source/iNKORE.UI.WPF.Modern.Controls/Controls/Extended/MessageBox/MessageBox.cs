@@ -39,7 +39,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         public Button CancelButton { get; private set; }
         public Border Border_UpperBackground { get; private set; }
 
-        public static BackdropType DefaultBackdropType { get; set; } = BackdropType.None;
+        public static BackdropType DefaultBackdropType { get; set; } = BackdropType.Mica;
 
         public static bool MakeSound { get; set; } = true;
 
