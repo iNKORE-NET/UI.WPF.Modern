@@ -31,22 +31,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages
     /// </summary>
     public partial class SettingsPage : Page
     {
-        public string Version
-        {
-            get
-            {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    var version = Windows.ApplicationModel.Package.Current.Id.Version;
-                    return string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
-                }
-                else
-                {
-                    var version = Assembly.GetEntryAssembly()?.GetName().Version;
-                    return string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
-                }
-            }
-        }
+        public string Version => ThemeManager.AssemblyVersion;
 
         public SettingsPage()
         {

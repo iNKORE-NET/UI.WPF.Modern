@@ -94,13 +94,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             {
                 //NavigationOrientationHelper.UpdateTitleBar(NavigationOrientationHelper.IsLeftMode);
             };
+
+            NavigationViewControl.PaneTitle = NavigationViewControl.PaneTitle + $" (v{ThemeManager.AssemblyVersion})";
         }
 
         public static string GetAppTitleFromSystem
         {
             get
             {
-                return "iNKORE.UI.WPF.Modern - Modern styles for your WPF applications by iNKORE Studios";
+                return "iNKORE.UI.WPF.Modern";
                 //if (PackagedAppHelper.IsPackagedApp)
                 //{
                 //    try

@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:controls="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:controls="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls" xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     Title="NavigationRootPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -60,11 +60,13 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="137"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock
-                    x:Name="AppTitle" Grid.Column="1"
-                    VerticalAlignment="Center"
-                    Style="{DynamicResource CaptionTextBlockStyle}"
-                    Text="{x:Static local:NavigationRootPage.GetAppTitleFromSystem}" Margin="0,1,20,0" TextWrapping="NoWrap"/>
+                <ikw:SimpleStackPanel x:Name="AppTitle" Orientation="Horizontal" Spacing="12">
+                    <Image Source="/Assets/WpfLibrary_Minimal_64w.png" Width="20" RenderOptions.BitmapScalingMode="HighQuality" Margin="-3,0,0,0"/>
+                    <TextBlock x:Name="AppTitleText" Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Style="{DynamicResource CaptionTextBlockStyle}"
+                        Text="{x:Static local:NavigationRootPage.GetAppTitleFromSystem}" Margin="0,1,20,0" TextWrapping="NoWrap"/>
+                </ikw:SimpleStackPanel>
             </Grid>
         </Border>
 
@@ -75,7 +77,7 @@
             Canvas.ZIndex="0"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             Header=" " IsFooterSeparatorVisible="{x:Null}"
-            PaneTitle="App Gallery"
+            PaneTitle="Gallery App"
             IsTabStop="False"
             IsTitleBarAutoPaddingEnabled="False"
             Loaded="OnNavigationViewControlLoaded"
