@@ -69,10 +69,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = OnToggleTheme;
             NavigationRootPage.Current.PageHeader.ResetCopyLinkButton();
 
-            if (NavigationRootPage.Current.IsFocusSupported)
-            {
-                this.Focus();
-            }
+            this.Focus();
 
             //if (UIHelper.IsScreenshotMode)
             //{
@@ -268,10 +265,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (WinRTHelper.GetCurrentDeviceFamilyType() == DeviceFamilyType.Xbox)
-            {
-                svPanel.Margin = new Thickness(0, 0, 48, 27);
-            }
+
         }
     }
 }

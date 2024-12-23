@@ -81,10 +81,10 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages
                 {
                     gridView.ScrollIntoView(item);
 
-                    if (NavigationRootPage.Current.IsFocusSupported)
-                    {
-                        //((GridViewItem)gridView.ContainerFromItem(item))?.Focus(FocusState.Programmatic);
-                    }
+                    //if (NavigationRootPage.Current.IsFocusSupported)
+                    //{
+                    //    //((GridViewItem)gridView.ContainerFromItem(item))?.Focus(FocusState.Programmatic);
+                    //}
                 }
             }
         }

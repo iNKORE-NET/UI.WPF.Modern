@@ -66,15 +66,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         public Action NavigationViewLoaded { get; set; }
 
-        public DeviceFamilyType DeviceFamily { get; set; }
-
-        public bool IsFocusSupported
-        {
-            get
-            {
-                return DeviceFamily == DeviceFamilyType.Xbox || _isGamePadConnected || _isKeyboardConnected;
-            }
-        }
 
         public PageHeader PageHeader
         {
@@ -93,22 +84,9 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
             _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
 
-            DeviceFamily = WinRTHelper.GetCurrentDeviceFamilyType() ?? DeviceFamilyType.Other;
             AddNavigationMenuItems();
             Current = this;
             RootFrame = rootFrame;
-
-            try
-            {
-               if (WinRTHelper.IsSupported)
-               {
-                   Gamepad.GamepadAdded += OnGamepadAdded;
-                   Gamepad.GamepadRemoved += OnGamepadRemoved;
-
-                   _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
-               }
-            }
-            catch { _isKeyboardConnected = true; }
 
             // remove the solid-colored backgrounds behind the caption controls and system back button if we are in left mode
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
@@ -252,10 +230,10 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         private void OnNewControlsMenuItemLoaded(object sender, RoutedEventArgs e)
         {
-            if (IsFocusSupported && NavigationViewControl.DisplayMode == NavigationViewDisplayMode.Expanded)
-            {
-                //controlsSearchBox.Focus(FocusState.Keyboard);
-            }
+            //if (IsFocusSupported && NavigationViewControl.DisplayMode == NavigationViewDisplayMode.Expanded)
+            //{
+            //    //controlsSearchBox.Focus(FocusState.Keyboard);
+            //}
         }
 
         private void OnGamepadRemoved(object sender, Gamepad e)
@@ -577,10 +555,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (WinRTHelper.GetCurrentDeviceFamilyType() == DeviceFamilyType.Xbox)
-            {
-                XboxContentSafeRect.Visibility = Visibility.Visible;
-            }
+
         }
 
         private void rootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
