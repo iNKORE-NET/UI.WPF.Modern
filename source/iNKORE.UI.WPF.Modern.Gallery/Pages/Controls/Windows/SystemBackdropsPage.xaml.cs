@@ -27,11 +27,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         public SystemBackdropsPage()
         {
             InitializeComponent();
+            UpdateExampleCode();
         }
 
         private void createMicaWindow_Click(object sender, RoutedEventArgs e)
         {
             var newWindow = new SampleSystemBackdropsWindow();
+            WindowHelper.SetSystemBackdropType(newWindow, BackdropType.Mica);
             newWindow.Show();
         }
 
@@ -46,8 +48,23 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 
         public void UpdateExampleCode()
         {
+            if (!this.IsInitialized) return;
 
+            Example1.CSharp = Example1CS;
+            Example2.CSharp = Example2CS;
         }
+
+        public string Example1CS => $@"
+var newWindow = new SampleSystemBackdropsWindow();
+WindowHelper.SetSystemBackdropType(newWindow, BackdropType.Mica);
+newWindow.Show();
+";
+
+        public string Example2CS => $@"
+var newWindow = new SampleSystemBackdropsWindow();
+WindowHelper.SetSystemBackdropType(newWindow,BackdropType.Acrylic);
+newWindow.Show();
+";
 
         #endregion
 
