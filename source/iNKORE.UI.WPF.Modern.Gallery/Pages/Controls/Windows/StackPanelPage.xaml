@@ -6,16 +6,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:sc="clr-namespace:SamplesCommon;assembly=SamplesCommon"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    mc:Ignorable="d">
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" 
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
+    mc:Ignorable="d" Loaded="Page_Loaded" d:DesignWidth="1158">
     <ScrollViewer>
         <ikw:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
-            <sc:ControlExample x:Name="Example1" HeaderText="A SimpleStackPanel control.">
+            <local:ControlExample x:Name="Example1" HeaderText="A SimpleStackPanel control.">
 
-                <ikw:SimpleStackPanel
-                    x:Name="Control1"
-                    VerticalAlignment="Top"
-                    Orientation="Vertical">
+                <ikw:SimpleStackPanel x:Name="Control1" Spacing="0"
+                    VerticalAlignment="Top" Orientation="Vertical" HorizontalAlignment="Left">
                     <ikw:SimpleStackPanel.Resources>
                         <Style TargetType="Rectangle">
                             <Setter Property="Height" Value="40" />
@@ -28,18 +27,21 @@
                     <Rectangle Fill="Yellow" />
                 </ikw:SimpleStackPanel>
 
-                <sc:ControlExample.Options>
+                <local:ControlExample.Options>
                     <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
-                        <ui:RadioButtons ItemsSource="{Binding Source={x:Type Orientation}, Converter={StaticResource EnumValuesConverter}}" SelectedItem="{Binding ElementName=Control1, Path=Orientation}" />
-                        <ui:NumberBox
-                            Header="Spacing"
-                            Minimum="0"
+                        <ui:RadioButtons x:Name="RadioButtons_Orientation" 
+                            ItemsSource="{Binding Source={x:Type Orientation}, Converter={StaticResource EnumValuesConverter}}" 
+                            SelectedItem="{Binding ElementName=Control1, Path=Orientation}" 
+                            SelectionChanged="RadioButtons_Orientation_SelectionChanged"/>
+                        <ui:NumberBox x:Name="NumberBox_Spacing"
+                            Header="Spacing" Minimum="0"
                             SpinButtonPlacementMode="Inline"
-                            Value="{Binding ElementName=Control1, Path=Spacing}" />
+                            Value="{Binding ElementName=Control1, Path=Spacing}" 
+                            ValueChanged="NumberBox_Spacing_ValueChanged"/>
                     </ikw:SimpleStackPanel>
-                </sc:ControlExample.Options>
+                </local:ControlExample.Options>
 
-            </sc:ControlExample>
+            </local:ControlExample>
         </ikw:SimpleStackPanel>
     </ScrollViewer>
 </ui:Page>
