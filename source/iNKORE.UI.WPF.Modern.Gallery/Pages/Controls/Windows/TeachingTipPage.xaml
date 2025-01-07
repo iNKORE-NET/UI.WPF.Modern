@@ -9,29 +9,25 @@
     Title="Teaching Tip Page"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <StackPanel HorizontalAlignment="Left">
+    <StackPanel>
+        <ui:InfoBar Title="Under development" IsOpen="True" Severity="Warning" IsClosable="False"
+            Message="This component is not ready for production and we're not working on this right now. If you have any ideas or contribution please PR, thanks!"/>
         <local:ControlExample
-            CSharpSource="TeachingTip/TeachingTipSample1_cs.txt"
-            HeaderText="Show a targeted TeachingTip on the Toggle Theme button."
-            XamlSource="TeachingTip/TeachingTipSample1_xaml.txt">
+            HeaderText="Show a targeted TeachingTip on the Toggle Theme button.">
             <local:ControlExample.Example>
                 <Button Click="TestButtonClick1" Content="Show TeachingTip" />
             </local:ControlExample.Example>
         </local:ControlExample>
 
         <local:ControlExample
-            CSharpSource="TeachingTip/TeachingTipSample2_cs.txt"
-            HeaderText="Show a non-targeted TeachingTip with buttons."
-            XamlSource="TeachingTip/TeachingTipSample2_xaml.txt">
+            HeaderText="Show a non-targeted TeachingTip with buttons.">
             <local:ControlExample.Example>
                 <Button Click="TestButtonClick2" Content="Show TeachingTip" />
             </local:ControlExample.Example>
         </local:ControlExample>
 
         <local:ControlExample
-            CSharpSource="TeachingTip/TeachingTipSample3_cs.txt"
-            HeaderText="Show a targeted TeachingTip with hero content on the Toggle Theme button."
-            XamlSource="TeachingTip/TeachingTipSample3_xaml.txt">
+            HeaderText="Show a targeted TeachingTip with hero content on the Toggle Theme button.">
             <local:ControlExample.Example>
                 <Button Click="TestButtonClick3" Content="Show TeachingTip" />
             </local:ControlExample.Example>
