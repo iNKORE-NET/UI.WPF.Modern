@@ -17,7 +17,7 @@
     </Page.Resources>
 
     <ikw:SimpleStackPanel>
-        <local:ControlExample HeaderText="A basic TabControl">
+        <local:ControlExample x:Name="Example1" HeaderText="A basic TabControl">
             <TabControl x:Name="tabControl">
                 <ui:TabControlHelper.TabStripHeader>
                     <Button
@@ -42,13 +42,15 @@
                     <ui:RadioButtons
                         Header="TabStripPlacement"
                         ItemsSource="{Binding Source={x:Type Dock}, Converter={StaticResource EnumValuesConverter}}"
-                        SelectedItem="{Binding ElementName=tabControl, Path=TabStripPlacement}" />
-                    <CheckBox x:Name="ShowHeaderAndFooterCheckBox" Content="Show header and footer" />
+                        SelectedItem="{Binding ElementName=tabControl, Path=TabStripPlacement}"
+                        SelectionChanged="RadioButtons_SelectionChanged"/>
+                    <CheckBox x:Name="ShowHeaderAndFooterCheckBox" Content="Show header and footer" 
+                        Click="ShowHeaderAndFooterCheckBox_Click"/>
                 </ikw:SimpleStackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="TabControl with color tab icons">
+        <local:ControlExample x:Name="Example2" HeaderText="TabControl with color tab icons">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock
@@ -83,7 +85,7 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="You can put custom content in TabStripHeader and TabStripFooter">
+        <local:ControlExample x:Name="Example3" HeaderText="You can put custom content in TabStripHeader and TabStripFooter">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock
@@ -116,7 +118,7 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A TabControl with accent colored TabStrip background">
+        <local:ControlExample x:Name="Example4" HeaderText="A TabControl with accent colored TabStrip background">
             <TabControl x:Name="tabControl3" ui:ThemeManager.HasThemeResources="True">
                 <TabControl.Resources>
                     <ui:ResourceDictionaryEx>
@@ -133,7 +135,7 @@
             </TabControl>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A TabControl with customized headers">
+        <local:ControlExample x:Name="Example5" HeaderText="A TabControl with customized headers">
             <TabControl x:Name="tabControl2">
                 <TabControl.Resources>
                     <sys:Double x:Key="TabViewItemHeaderFontSize">24</sys:Double>
