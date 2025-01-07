@@ -23,14 +23,46 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         public TextBlockPage()
         {
             InitializeComponent();
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsInitialized) return;
 
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
+            Example3.Xaml = Example3Xaml;
+            Example4.Xaml = Example4Xaml;
         }
+
+        public string Example1Xaml => $@"
+<TextBlock Text=""I am a TextBlock."" />
+";
+
+        public string Example2Xaml => $@"
+<TextBlock Style=""{{StaticResource CustomTextBlockStyle}}"" Text=""I am a styled TextBlock."" />
+";
+
+        public string Example3Xaml => $@"
+<TextBlock Foreground=""CornflowerBlue"" TextWrapping=""Wrap""
+    FontFamily=""Arial"" FontSize=""24"" FontStyle=""Italic"" 
+    Text=""I am super excited to be here!"" />
+";
+
+        public string Example4Xaml => $@"
+<TextBlock>
+    <Run FontFamily=""Times New Roman"" Foreground=""DarkGray"">Text in a TextBlock doesn't have to be a simple string.</Run>
+    <LineBreak />
+    <Span>
+        Text can be<Bold>bold</Bold>,
+        <Italic>italic</Italic>,
+        or<Underline>underlined</Underline>.
+    </Span>
+</TextBlock>
+";
 
         #endregion
 
