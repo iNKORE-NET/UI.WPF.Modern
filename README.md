@@ -1,8 +1,6 @@
 <a href="https://docs.inkore.net/ui-wpf-modern/introduction">
-  <img src="https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/assets/images/banners/UI.WPF.Modern_Main_1280w.png?raw=true">
+  <p align="center"><img width="128" src="assets\icons\WpfLibrary_256w.png"></p>
 </a>
-
-<br>
 <br>
 <p align="center">Modern (Fluent 2) styles and controls for your WPF applications.</p>
 
@@ -33,9 +31,12 @@
   <a href="https://twitter.com/NotYoojun"><img src="https://img.shields.io/twitter/follow/NotYoojun?style=social" alt="NotYoojun's Twitter"></a>
 </p>
 
-<br>
+<br align="center">
   
-  ![Home of the Gallery (Light theme)](docs/images/screenshot_home.png "Home of the Gallery (Light theme)")
+ <a href="https://docs.inkore.net/ui-wpf-modern/introduction">
+  <img src="https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/assets/images/banners/UI.WPF.Modern_Main_1280w.png?raw=true">
+ </a>
+</br>
 
 # ✨ Features
 
@@ -61,6 +62,15 @@
 -   If the project is not working properly, please file a report. We welcome any issues and pull requests submitted on GitHub.
 
 -   Sponsor us at https://inkore.net/about/members/notyoojun#sponsor
+
+> [!WARNING]
+> 以下留言致以来自中国大陆的开发者们：
+>
+> **请不要继续在 issues 板块下发表任何无意义且无法促进 UI.WPF.Modern 持续发展的内容。**
+>
+> 你们所发布的任何此类内容，都是我们现阶段无力且无法解决的。如果你有能够解决这些问题的能力，**请直接 fork 该项目并提交 Pull Request**。
+> 
+> 在提交 issue 之前，请仔细思考你要发布的内容**是否合理**以及**开发者能否修复/实现**。如不能，请不要提交此 issue 并请另寻他法。
 
 # 🙏🏻 Special Thanks to
 
