@@ -1,8 +1,6 @@
 <a href="https://docs.inkore.net/ui-wpf-modern/introduction">
   <img src="https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/assets/images/banners/UI.WPF.Modern_Main_1280w.png?raw=true">
 </a>
-
-<br>
 <br>
 <p align="center">Modern (Fluent 2) styles and controls for your WPF applications.</p>
 
@@ -33,9 +31,7 @@
   <a href="https://twitter.com/NotYoojun"><img src="https://img.shields.io/twitter/follow/NotYoojun?style=social" alt="NotYoojun's Twitter"></a>
 </p>
 
-<br>
-  
-  ![Home of the Gallery (Light theme)](docs/images/screenshot_home.png "Home of the Gallery (Light theme)")
+<br align="center">
 
 # ✨ Features
 
@@ -62,21 +58,28 @@
 
 -   Sponsor us at https://inkore.net/about/members/notyoojun#sponsor
 
+> [!WARNING]
+> ## 以下留言致以来自中国大陆的开发者：
+> For English speakers, please ignore this message.
+>
+> **请不要继续在 issues 板块下发表任何无意义且无法促进此项目持续发展的内容**。在提交 issue 之前，请仔细思考你要发布的内容**是否合理**，如果不能，请不要浪费其他人的时间；同时请考虑**开发者能否修复/实现**，如果不能，请自己提交 PR 而不是 issue。
+> 在交流时请尊重他人，不要使用不文明用语。请不要催促或强求开发者和其他贡献者，他们是一群热爱开源的志愿者，不是你的私人雇员！
+> 
+> 尽可能在除国内社交平台外的其他地方使用英语而不是中文，我们会优先处理英文内容。
+
 # 🙏🏻 Special Thanks to
 
-- Kinnara and all ModernWpf authors
+- All contributors of projects listed in the credits
 
 - All contributors who helped us build this project
 
 - Everyone who donated us to let us walk further
 
-- Microsoft WinUI and CommunityToolkit contributors
-
 - ~~wherewhere~~ (He deserves to be crossed out.
 
   More info: https://docs.inkore.net/blog/2024/09/17/reflection-interest-in-opensource-community)
 
-# Credits
+# ⚽ Credits
 
 The project is maintained by Yoojun Zhou from iNKORE Studios and other contributors. 
 Please check LICENSE.md for more information about the license.
@@ -105,4 +108,4 @@ Besides above, the gallery app is also using the following projects:
 
 - Newtonsoft.Json by James Newton-King
 
-iNKORE Studios is not affiliated with Microsoft or any other company. The project is a community-driven project. Please do not use the project for commercial purposes without permission. 
+iNKORE Studios is not affiliated with Microsoft or any other company. The project is a community-driven project. Read LICENSE before using any of the code.

@@ -7,6 +7,15 @@ assignees: ''
 
 ---
 
+> [!WARNING]
+> 以下留言致以来自中国大陆的开发者们：
+>
+> **请不要继续在 issues 板块下发表任何无意义且无法促进 UI.WPF.Modern 持续发展的内容。**
+>
+> 你们所发布的任何此类内容，都是我们现阶段无力且无法解决的。如果你有能够解决这些问题的能力，**请直接 fork 该项目并提交 Pull Request**。
+> 
+> 在提交 issue 之前，请仔细思考你要发布的内容**是否合理**以及**开发者能否修复/实现**。如不能，请不要提交此 issue 并请另寻他法。
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
