@@ -50,6 +50,12 @@
 
 - We're currently working on a documentation site that simplifies your learning curve. However this can be a huge process. You can preview the documentation site at [docs.inkore.net/ui-wpf-modern](https://docs.inkore.net/ui-wpf-modern/introduction) (remember it's not finished yet). Feedback and contributions are welcome and strongly needed.
 
+- We provide a gallery application as well. You can check the latest version of the gallery in GitHub Actions, or download the former version from the button below:
+
+<a href="https://apps.microsoft.com/detail/9n3js11zc38g?mode=direct">
+	<img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200"/>
+</a>
+
 # 🙋🏻‍♂️ Contribution
 
 -   Want to contribute? The team encourages community feedback and contributions.
