@@ -2,6 +2,8 @@
   <img src="https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/assets/images/banners/UI.WPF.Modern_Main_1280w.png?raw=true">
 </a>
 <br>
+<p align='center'><a href="./README.zh-CN.md">简体中文</a>
+<br/>
 <p align="center">现代化 WPF 应用的样式和组件库。</p>
 
 <h1 align="center">
