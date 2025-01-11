@@ -2,6 +2,8 @@
   <img src="https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/assets/images/banners/UI.WPF.Modern_Main_1280w.png?raw=true">
 </a>
 <br>
+<p align='center'><a href="./README.zh-CN.md">简体中文</a>
+<br/>
 <p align="center">Modern (Fluent 2) styles and controls for your WPF applications.</p>
 
 <h1 align="center">
