@@ -2,7 +2,7 @@ name: 💡 Feature Request
 description: Suggest an idea, new feature or component for the library.
 title: "[💡] Your Title Here"
 labels: ["status: needs-triage"]
-type: "Enhancement"
+type: "Feature"
 
 body:
   - type: markdown
