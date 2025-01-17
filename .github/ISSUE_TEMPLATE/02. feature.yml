@@ -71,9 +71,11 @@ body:
       options:
         - label: "Check that there isn't [already an issue](https://github.com/iNKORE-NET/UI.WPF.Modern/issues) that reports the same or similar problem."
           required: true
-        - label: "Check that this is a request that is a feature or something we can take action on, and also this is not about the documentation. Or please choose the right repo and template."
+        - label: "Check that this is a request that is a feature or something we can take action on, and also this is not about the documentation. (Or please choose the right repo and template.)"
           required: true
-        - label: "You've checked that this feature is unavailable yet in the latest version. Keep in mind that we don't provide any support for old versions."
+        - label: "This is one single feature, or a few features with the same core. (If you want to report multiple feature, please create one issue for every single feature.)"
+          required: true
+        - label: "You've checked that this feature is unavailable yet in the latest version.( Keep in mind that we don't provide any support for old versions.)"
           required: true
         - label: "You know that we can't guarantee that we will satisfy your request. This is not really our duty to do everything anyone asks for. Also, you will treat our staff, contributors, and other users with respect and kindness."
           required: true
