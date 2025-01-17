@@ -6,9 +6,9 @@ contact_links:
   - name: I Need Help & Support
     url: Please go to discussion section to ask others for help when you need
     about: https://github.com/iNKORE-NET/UI.WPF.Modern/discussions/new?category=help-support
-  - name: Go to Documentation
-    url: https://docs.inkore.net/ui-wpf-modern
-    about: Look up for the documentation and tutorials we prepared for you.
   - name: Go to Discord Chat
     url: https://discord.gg/m6NPNVk4bs
     about: Ask questions and discuss with other developers users in real time.
+  - name: Go to Documentation
+    url: https://docs.inkore.net/ui-wpf-modern
+    about: Look up for the documentation and tutorials we prepared for you.
