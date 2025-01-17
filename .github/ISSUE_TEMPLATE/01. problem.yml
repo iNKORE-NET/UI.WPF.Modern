@@ -7,7 +7,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        Thanks for taking the time to fill out this bug report! Make sure you are reporting that something is wrong with the library and should be fixed. 
+        If you are requesting a feature, please do not use this template; if it has something to do with the documentation, please go to the [documentation repo](https://github.com/iNKORE-NET/Documentation/issues/new/choose) instead.
+        Keep in mind that fields without a red asterisk are all optional.
+
         > [!WARNING]
         > ## If you are Chinese, or going to fill out this form with Chinese, please read the notice below. Or you can straightly go forward to the first question.
         >
@@ -31,6 +34,16 @@ body:
       placeholder: https://github.com/ghost/my-bug-reproduce
     validations:
       required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Suggested Solution
+      description: |
+        Do you have any ideas how to fix this problem? If you do, write that down clearly below, if not, tell us that you don't know as well. 
+        Please remember those issues with suggested solution submitted by the poster will have a higher priority and be handled first.
+      placeholder: I think this can be fixed by...
+    validations:
+      required: false
   - type: input
     id: package-version
     attributes:
@@ -84,9 +97,9 @@ body:
     validations:
       required: true
   - type: textarea
-    id: additional_notes
+    id: additional
     attributes:
-      label: Additional Notes (optional)
+      label: Additional Notes
       description: Is there anything else you'd like to tell us? If it's related to theming, please tell us
     validations:
       required: false
@@ -96,11 +109,15 @@ body:
       label: Validations
       description: Before submitting the issue, please make sure you do the following.
       options:
-        - label: "Check that there isn't [already an issue](https://github.com/iNKORE-NET/UI.WPF.Modern/issues) that reports the same problem."
+        - label: "Check that there isn't [already an issue](https://github.com/iNKORE-NET/UI.WPF.Modern/issues) that reports the same or similar problem."
+          required: true
+        - label: "This is a bug in the library that should be fixed, not a feature, also this is not about the documentation. Or please choose the right repo and template."
+          required: true
+        - label: "You've checked that this problem still exists in the latest version. Keep in mind that we don't provide any support for old versions."
           required: true
         - label: "You know that we can't guarantee that we will satisfy your request. This is not really our duty to do everything anyone asks for. Also, you will treat our staff, contributors, and other users with respect and kindness."
           required: true
-        - label: "You're sure there's something wrong with the library itself, not how I'm using it. (If you are having issues using it and need help, please go to [discussion](https://github.com/iNKORE-NET/UI.WPF.Modern/discussions/new?category=help-support).)"
+        - label: "You're sure there's something wrong with the library itself, not how you're using it. (If you are having issues using it and need help, please go to [discussion](https://github.com/iNKORE-NET/UI.WPF.Modern/discussions/new?category=help-support).)"
           required: true
     validations:
       required: true
