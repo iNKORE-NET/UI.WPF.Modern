@@ -8,92 +8,92 @@ body:
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
-    - type: textarea
-      id: description
-      attributes:
-        label: Describe the bug
-        description: What happened?  A clear and concise description of what the bug is. Also tell us, what did you expect to happen?
-        placeholder: I am doing ... What I expect is ... What actually happening is ...
-      validations:
-        required: true
-    - type: textarea
-      id: reproduction
-      attributes:
-        label: Reproduction
-        description: How can we reproduce the bug? If you can, please provide the link to the repo that we can reproduce the bug in. Or provide the steps to reproduce the bug.
-        placeholder: https://github.com/ghost/my-bug-reproduce
-      validations:
-        required: true
-    - type: input
-      id: package-version
-      attributes:
-        label: Library Version
-        description: Which version of this library are you using? (PS. The version of this library, not the version of .NET). You can see this in your .csproj file
-        placeholder: 0.9.30 / 0.10.0 / ...
-      validations:
-        required: true
-    - type: dropdown
-      id: system
-      attributes:
-        label: System
-        description: Which operating system are you using to reproduce the bug?
-        multiple: false
-        options:
-          - Windows 11
-          - Windows 10
-          - Windows 8/8.1
-          - Windows 7
-      validations:
-        required: true
-    - type: dropdown
-      id: framework
-      attributes:
-        label: Framework
-        description: Which framework are you using here?
-        multiple: false
-        options:
-          - .NET Framework
-          - .NET Core and .NET
-      validations:
-        required: true
-    - type: input
-      id: framework-version
-      attributes:
-        label: Framework Version
-        description: Which version of the framework are you using? (PS. The version of .NET, not the version of this library)
-        placeholder: 4.5.2 / 3.1 / 6.0.22 / 7...
-      validations:
-        required: true
-    - type: dropdown
-      id: source
-      attributes:
-        label: Source of Package
-        description: Where do you get the library package from? Or where did you download them?
-        multiple: false
-        options:
-          - NuGet.org
-          - Self-Compiled
-          - Other (Tell us in the Additional Notes)
-      validations:
-        required: true
-    - type: textarea
-      id: additional_notes
-      attributes:
-        label: Additional Notes (optional)
-        description: Is there anything else you'd like to tell us? If it's related to theming, please tell us
-      validations:
-        required: false
-    - type: checkboxes
-      id: checkboxes
-      attributes:
-        label: Validations
-        description: Before submitting the issue, please make sure you do the following.
-        options:
-          - label: "Check that there isn't [already an issue](https://github.com/iNKORE-NET/UI.WPF.Modern/issues) that reports the same problem."
-            required: true
-          - label: "You know that we can't guarantee that we will satisfy your request. This is not really our duty to do everything anyone asks for. Also, you will treat our staff, contributors, and other users with respect and kindness."
-            required: true
-          - label: "You're sure there's something wrong with the library itself, not how I'm using it. (If you are having issues using it and need help, please go to [discussion](https://github.com/iNKORE-NET/UI.WPF.Modern/discussions/new?category=help-support).)"
-            required: true
-      validations:
-        required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: What happened?  A clear and concise description of what the bug is. Also tell us, what did you expect to happen?
+      placeholder: I am doing ... What I expect is ... What actually happening is ...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: How can we reproduce the bug? If you can, please provide the link to the repo that we can reproduce the bug in. Or provide the steps to reproduce the bug.
+      placeholder: https://github.com/ghost/my-bug-reproduce
+    validations:
+      required: true
+  - type: input
+    id: package-version
+    attributes:
+      label: Library Version
+      description: Which version of this library are you using? (PS. The version of this library, not the version of .NET). You can see this in your .csproj file
+      placeholder: 0.9.30 / 0.10.0 / ...
+    validations:
+      required: true
+  - type: dropdown
+    id: system
+    attributes:
+      label: System
+      description: Which operating system are you using to reproduce the bug?
+      multiple: false
+      options:
+        - Windows 11
+        - Windows 10
+        - Windows 8/8.1
+        - Windows 7
+    validations:
+      required: true
+  - type: dropdown
+    id: framework
+    attributes:
+      label: Framework
+      description: Which framework are you using here?
+      multiple: false
+      options:
+        - .NET Framework
+        - .NET Core and .NET
+    validations:
+      required: true
+  - type: input
+    id: framework-version
+    attributes:
+      label: Framework Version
+      description: Which version of the framework are you using? (PS. The version of .NET, not the version of this library)
+      placeholder: 4.5.2 / 3.1 / 6.0.22 / 7...
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Source of Package
+      description: Where do you get the library package from? Or where did you download them?
+      multiple: false
+      options:
+        - NuGet.org
+        - Self-Compiled
+        - Other (Tell us in the Additional Notes)
+    validations:
+      required: true
+  - type: textarea
+    id: additional_notes
+    attributes:
+      label: Additional Notes (optional)
+      description: Is there anything else you'd like to tell us? If it's related to theming, please tell us
+    validations:
+      required: false
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: Validations
+      description: Before submitting the issue, please make sure you do the following.
+      options:
+        - label: "Check that there isn't [already an issue](https://github.com/iNKORE-NET/UI.WPF.Modern/issues) that reports the same problem."
+          required: true
+        - label: "You know that we can't guarantee that we will satisfy your request. This is not really our duty to do everything anyone asks for. Also, you will treat our staff, contributors, and other users with respect and kindness."
+          required: true
+        - label: "You're sure there's something wrong with the library itself, not how I'm using it. (If you are having issues using it and need help, please go to [discussion](https://github.com/iNKORE-NET/UI.WPF.Modern/discussions/new?category=help-support).)"
+          required: true
+    validations:
+      required: true
