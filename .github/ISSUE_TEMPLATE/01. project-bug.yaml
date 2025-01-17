@@ -1,6 +1,6 @@
-name: Bug Report
-description: There's someting wrong with the project itself.
-title: "[Project | Bug] Your Title Here"
+name: Project / Bug Report
+description: There's something wrong with the project itself.
+title: "[Project / Bug] Your Title Here"
 labels: ["bug"]
 
 body:
@@ -49,7 +49,7 @@ body:
         id: checkboxes
         attributes:
             label: Validations
-            description: Before submitting the issue, please make sure you do the following
+            description: Before submitting the issue, please make sure you do the following.
             options:
                 - label: Check that there isn't [already an issue](https://github.com/iNKORE-NET/UI.WPF.Modern/issues) that reports the same issue to avoid creating a duplicate.
                   required: true
