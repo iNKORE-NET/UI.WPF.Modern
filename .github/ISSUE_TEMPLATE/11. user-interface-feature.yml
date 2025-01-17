@@ -4,7 +4,7 @@ title: "[UI (UX) / Feature] Your Title Here"
 labels: ["enhancement", "UI/UX"]
 
 body:
-    - type: textarea
+  - type: textarea
     id: why
     attributes:
       label: Related Problem (optional)
@@ -12,22 +12,22 @@ body:
       placeholder: A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
     validations:
       required: false
-    - type: textarea
+  - type: textarea
     id: solution
     attributes:
       label: The Improvement
-      description: What's part of the UI/UX you want us to improve? Describe the solution you'd like.
+      description: What's part of the UI/UX you want us to improve?Describe the solution you'd like.
       placeholder: A clear and concise description of what you wanna suggest
     validations:
       required: true
-    - type: textarea
+  - type: textarea
     id: others
     attributes:
       label: Additional Notes (optional)
       description: Is there anything else you'd like to tell us?
     validations:
       required: false
-    - type: checkboxes
+  - type: checkboxes
     id: checkboxes
     attributes:
       label: Validations
