@@ -4,11 +4,11 @@ title: "[Project / Feature] Your Title Here"
 labels: ["enhancement"]
 
 body:
-    - type: markdown
+  - type: markdown
     attributes:
       value: |
         Thanks for taking the time to fill out this feature request! By taking this form, you're asking for a new feature, improvement or other requests to the project. If you're looking to report a bug, or ask for a project issue, please use the appropriate template.
-    - type: textarea
+  - type: textarea
     id: why
     attributes:
       label: Related Problem (optional)
@@ -16,7 +16,7 @@ body:
       placeholder: A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
     validations:
       required: false
-    - type: textarea
+  - type: textarea
     id: solution
     attributes:
       label: The Feature
@@ -24,14 +24,14 @@ body:
       placeholder: A clear and concise description of what you wanna happen
     validations:
       required: true
-    - type: textarea
+  - type: textarea
     id: others
     attributes:
       label: Additional Notes (optional)
       description: Is there anything else you'd like to tell us?
     validations:
       required: false
-    - type: checkboxes
+  - type: checkboxes
     id: checkboxes
     attributes:
       label: Validations
