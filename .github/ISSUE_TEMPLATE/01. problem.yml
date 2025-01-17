@@ -1,7 +1,8 @@
 name: 🐞 Problem Report
 description: Report an issue with iNKORE.UI.WPF.Modern library
 title: "[🐞] Your Title Here"
-labels: ["type: bug", "status: needs-triage"]
+labels: ["status: needs-triage"]
+type: "Bug"
 
 body:
   - type: markdown
