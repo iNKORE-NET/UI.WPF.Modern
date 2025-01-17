@@ -7,10 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this feature request! By taking this form, you're asking for a new feature, improvement or other requests to the project.
-        If you're looking to report a bug, or ask for a project issue, please use the appropriate template;  if it has something to do with the documentation, 
-        please go to the [documentation repo](https://github.com/iNKORE-NET/Documentation/issues/new/choose) instead.
-        Keep in mind that fields without a red asterisk are all optional.
+        Thanks for taking the time to fill out this feature request! By taking this form, you're asking for a new feature, improvement or other requests to the project. If you're looking to report a bug, or ask for a project issue, please use the appropriate template;  if it has something to do with the documentation, please go to the [documentation repo](https://github.com/iNKORE-NET/Documentation/issues/new/choose) instead. Keep in mind that fields without a red asterisk are all optional.
                 
         > [!WARNING]
         > ## If you are Chinese, or going to fill out this form with Chinese, please read the notice below. Or you can straightly go forward to the first question.

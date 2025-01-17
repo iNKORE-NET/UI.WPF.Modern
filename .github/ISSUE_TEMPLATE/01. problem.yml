@@ -7,9 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report! Make sure you are reporting that something is wrong with the library and should be fixed. 
-        If you are requesting a feature, please do not use this template; if it has something to do with the documentation, please go to the [documentation repo](https://github.com/iNKORE-NET/Documentation/issues/new/choose) instead.
-        Keep in mind that fields without a red asterisk are all optional.
+        Thanks for taking the time to fill out this bug report! Make sure you are reporting that something is wrong with the library and should be fixed. If you are requesting a feature, please do not use this template; if it has something to do with the documentation, please go to the [documentation repo](https://github.com/iNKORE-NET/Documentation/issues/new/choose) instead. Keep in mind that fields without a red asterisk are all optional.
 
         > [!WARNING]
         > ## If you are Chinese, or going to fill out this form with Chinese, please read the notice below. Or you can straightly go forward to the first question.
