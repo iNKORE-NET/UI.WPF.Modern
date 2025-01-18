@@ -21,63 +21,75 @@
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example3" HeaderText="A read-only TextBox with various properties set.">
-            <TextBox
-                AutomationProperties.Name="customized TextBox"
-                FontFamily="Arial"
-                FontSize="24"
-                FontStyle="Italic"
+            <TextBox AutomationProperties.Name="customized TextBox"
+                FontFamily="Arial" FontSize="24"
+                FontStyle="Italic" IsReadOnly="True"
                 Foreground="CornflowerBlue"
-                IsReadOnly="True"
                 Text="I am super excited to be here!" />
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example4" HeaderText="A multi-line TextBox with spell checking and custom selection highlight color.">
-            <TextBox
-                AcceptsReturn="True"
+            <TextBox AcceptsReturn="True"
                 AutomationProperties.Name="multi-line TextBox"
                 SelectionBrush="Green"
                 SpellCheck.IsEnabled="True"
                 TextWrapping="Wrap" />
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="API in action.">
-            <TextBox
-                x:Name="textBox"
-                Width="300"
+        <local:ControlExample x:Name="Example5"
+            HeaderText="API in action.">
+            <TextBox x:Name="textBox"
                 ui:ControlHelper.Header="Control header"
                 ui:ControlHelper.PlaceholderText="Placeholder text" />
 
             <local:ControlExample.Options>
-                <Expander
-                    x:Name="OptionsExpander"
+                <Expander x:Name="OptionsExpander"
                     Collapsed="OptionsExpander_Collapsed"
                     Expanded="OptionsExpander_Expanded"
-                    Header="Show options">
+                    Header="Show options" IsExpanded="True">
                     <ikw:SimpleStackPanel Margin="0,12,0,0" Style="{StaticResource OptionsPanelStyle}">
                         <Button Click="ClearClipboard" Content="Clear clipboard" />
-                        <CheckBox Content="AcceptsReturn" IsChecked="{Binding ElementName=textBox, Path=AcceptsReturn}" />
-                        <CheckBox Content="IsReadOnly" IsChecked="{Binding ElementName=textBox, Path=IsReadOnly}" />
-                        <CheckBox Content="IsReadOnlyCaretVisible" IsChecked="{Binding ElementName=textBox, Path=IsReadOnlyCaretVisible}" />
-                        <CheckBox Content="IsUndoEnabled" IsChecked="{Binding ElementName=textBox, Path=IsUndoEnabled}" />
-                        <CheckBox Content="IsInactiveSelectionHighlightEnabled" IsChecked="{Binding ElementName=textBox, Path=IsInactiveSelectionHighlightEnabled}" />
-                        <TextBox ui:ControlHelper.Header="Header" Text="{Binding ElementName=textBox, Path=(ui:ControlHelper.Header), UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBox ui:ControlHelper.Header="PlaceholderText" Text="{Binding ElementName=textBox, Path=(ui:ControlHelper.PlaceholderText), UpdateSourceTrigger=PropertyChanged}" />
+                        <CheckBox Content="AcceptsReturn" 
+                            IsChecked="{Binding ElementName=textBox, Path=AcceptsReturn}" 
+                            Click="CheckBox_Click"/>
+                        <CheckBox Content="IsReadOnly" 
+                            IsChecked="{Binding ElementName=textBox, Path=IsReadOnly}"
+                            Click="CheckBox_Click"/>
+                        <CheckBox Content="IsReadOnlyCaretVisible" 
+                            IsChecked="{Binding ElementName=textBox, Path=IsReadOnlyCaretVisible}"
+                            Click="CheckBox_Click"/>
+                        <CheckBox Content="IsUndoEnabled" 
+                            IsChecked="{Binding ElementName=textBox, Path=IsUndoEnabled}" 
+                            Click="CheckBox_Click"/>
+                        <CheckBox Content="IsInactiveSelectionHighlightEnabled" 
+                            IsChecked="{Binding ElementName=textBox, Path=IsInactiveSelectionHighlightEnabled}"
+                            Click="CheckBox_Click"/>
+                        <TextBox ui:ControlHelper.Header="Header" 
+                            Text="{Binding ElementName=textBox, Path=(ui:ControlHelper.Header), UpdateSourceTrigger=PropertyChanged}" 
+                            TextChanged="TextBox_TextChanged"/>
+                        <TextBox ui:ControlHelper.Header="PlaceholderText" 
+                            Text="{Binding ElementName=textBox, Path=(ui:ControlHelper.PlaceholderText), UpdateSourceTrigger=PropertyChanged}"
+                            TextChanged="TextBox_TextChanged"/>
                         <ComboBox
                             ui:ControlHelper.Header="TextWrapping"
                             ItemsSource="{Binding Source={x:Type TextWrapping}, Converter={StaticResource EnumValuesConverter}}"
-                            SelectedItem="{Binding ElementName=textBox, Path=TextWrapping}" />
+                            SelectedItem="{Binding ElementName=textBox, Path=TextWrapping}"
+                            SelectionChanged="ComboBox_SelectionChanged" />
                         <ComboBox
                             ui:ControlHelper.Header="HorizontalScrollBarVisibility"
                             ItemsSource="{Binding Source={x:Type ScrollBarVisibility}, Converter={StaticResource EnumValuesConverter}}"
-                            SelectedItem="{Binding ElementName=textBox, Path=HorizontalScrollBarVisibility}" />
+                            SelectedItem="{Binding ElementName=textBox, Path=HorizontalScrollBarVisibility}"
+                            SelectionChanged="ComboBox_SelectionChanged" />
                         <ComboBox
                             ui:ControlHelper.Header="VerticalScrollBarVisibility"
                             ItemsSource="{Binding Source={x:Type ScrollBarVisibility}, Converter={StaticResource EnumValuesConverter}}"
-                            SelectedItem="{Binding ElementName=textBox, Path=VerticalScrollBarVisibility}" />
+                            SelectedItem="{Binding ElementName=textBox, Path=VerticalScrollBarVisibility}"
+                            SelectionChanged="ComboBox_SelectionChanged" />
                         <ComboBox
                             ui:ControlHelper.Header="SelectionOpacity"
                             IsEditable="True"
-                            SelectedItem="{Binding ElementName=textBox, Path=SelectionOpacity}">
+                            SelectedItem="{Binding ElementName=textBox, Path=SelectionOpacity}"
+                            SelectionChanged="ComboBox_SelectionChanged">
                             <sys:Double>0</sys:Double>
                             <sys:Double>0.4</sys:Double>
                             <sys:Double>1</sys:Double>
