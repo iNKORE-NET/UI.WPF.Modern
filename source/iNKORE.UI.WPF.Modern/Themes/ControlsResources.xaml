@@ -48,6 +48,10 @@
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/ToolBar.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/TreeView.xaml" />
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Controls/Window.xaml" />
+
+        <!--The styles allowed to be referenced by the user should also be listed here-->
+        <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Controls/ProjectBadge.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
 
     <m:StaticResource x:Key="ContentControlThemeFontFamily" ResourceKey="{x:Static SystemFonts.MessageFontFamilyKey}" />

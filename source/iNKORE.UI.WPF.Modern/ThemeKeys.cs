@@ -139,6 +139,10 @@ namespace iNKORE.UI.WPF.Modern
         public static readonly string SystemAccentColorDark3Key = "SystemAccentColorDark3";
         public static readonly string SystemAccentColorLight1Key = "SystemAccentColorLight1";
         public static readonly string SystemAccentColorLight2Key = "SystemAccentColorLight2";
+
+        public static readonly string ProjectBadgeButtonStyleKey = "ProjectBadgeButtonStyle";
+        public static readonly string ProjectBadgeShieldStyleKey = "ProjectBadgeShieldStyle";
+
         #endregion
 
         #region Fonts.xaml

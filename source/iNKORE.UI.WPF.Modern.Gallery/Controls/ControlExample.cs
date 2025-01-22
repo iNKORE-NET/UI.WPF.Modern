@@ -166,6 +166,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         }
 
         public static readonly DependencyProperty XamlSourceProperty = DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
+
+        [Obsolete("Use Xaml instead.")]
         public object XamlSource
         {
             get { return (object)GetValue(XamlSourceProperty); }
@@ -173,6 +175,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         }
 
         public static readonly DependencyProperty CSharpProperty = DependencyProperty.Register("CSharp", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
+
         public string CSharp
         {
             get { return (string)GetValue(CSharpProperty); }
@@ -180,6 +183,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         }
 
         public static readonly DependencyProperty CSharpSourceProperty = DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
+
+        [Obsolete("Use CSharp instead.")]
         public string CSharpSource
         {
             get { return GetValue(CSharpSourceProperty) as string; }

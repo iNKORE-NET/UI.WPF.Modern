@@ -16,8 +16,7 @@
                 <ui:BindingProxy x:Key="Control1" Value="{x:Reference Control1}" />
                 <ui:BindingProxy x:Key="SizeSlider" Value="{x:Reference SizeSlider}" />
             </local:ControlExample.Resources>
-            <Viewbox
-                x:Name="Control1"
+            <Viewbox x:Name="Control1"
                 Width="{Binding Value, ElementName=SizeSlider, Mode=OneWay}"
                 Height="{Binding Value, ElementName=SizeSlider, Mode=OneWay}"
                 HorizontalAlignment="Left"
@@ -26,22 +25,14 @@
                 <Border BorderBrush="Gray" BorderThickness="15">
                     <StackPanel Background="DarkGray">
                         <StackPanel Orientation="Horizontal">
-                            <Rectangle
-                                Width="40"
-                                Height="10"
-                                Fill="Blue" />
-                            <Rectangle
-                                Width="40"
-                                Height="10"
-                                Fill="Green" />
-                            <Rectangle
-                                Width="40"
-                                Height="10"
-                                Fill="Red" />
-                            <Rectangle
-                                Width="40"
-                                Height="10"
-                                Fill="Yellow" />
+                            <Rectangle Fill="Blue"
+                                Width="40" Height="10"/>
+                            <Rectangle Fill="Green"
+                                Width="40" Height="10"/>
+                            <Rectangle Fill="Red"
+                                Width="40" Height="10"/>
+                            <Rectangle Fill="Yellow"
+                                Width="40" Height="10"/>
                         </StackPanel>
                         <Image Source="/Assets/Slices.png" />
                         <TextBlock HorizontalAlignment="Center" Text="This is text." />
@@ -51,12 +42,11 @@
 
             <local:ControlExample.Options>
                 <StackPanel Width="200">
-                    <Slider
-                        x:Name="SizeSlider"
+                    <Slider x:Name="SizeSlider"
                         ui:ControlHelper.Header="Width/Height"
-                        Maximum="300"
-                        Minimum="20"
-                        Value="200" />
+                        Maximum="300" Minimum="20" Value="200" 
+                        TickFrequency="1" IsSnapToTickEnabled="True"
+                        ValueChanged="SizeSlider_ValueChanged"/>
 
                     <ui:RadioButtons Header="Stretch">
                         <RadioButton

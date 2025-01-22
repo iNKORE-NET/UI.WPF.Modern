@@ -25,6 +25,12 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         public ViewBoxPage()
         {
             InitializeComponent();
+            UpdateExampleCode();
+        }
+
+        private void SizeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            UpdateExampleCode();
         }
 
         private void StretchDirectionButton_Checked(object sender, RoutedEventArgs e)
@@ -45,6 +51,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
                         break;
                 }
             }
+
+            UpdateExampleCode();
         }
 
         private void StretchButton_Checked(object sender, RoutedEventArgs e)
@@ -68,14 +76,40 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
                         break;
                 }
             }
+
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsInitialized) return;
 
+            Example1.Xaml = Example1Xaml;
         }
+
+        public string Example1Xaml => $@"
+<Viewbox x:Name=""Control1"" StretchDirection=""{Control1.StretchDirection}""
+    Width=""{SizeSlider.Value}"" Height=""{SizeSlider.Value}"" Stretch=""{Control1.Stretch}"">
+    <Border BorderBrush=""Gray"" BorderThickness=""15"">
+        <StackPanel Background=""DarkGray"">
+            <StackPanel Orientation=""Horizontal"">
+                <Rectangle Fill=""Blue""
+                    Width=""40"" Height=""10""/>
+                <Rectangle Fill=""Green""
+                    Width=""40"" Height=""10""/>
+                <Rectangle Fill=""Red""
+                    Width=""40"" Height=""10""/>
+                <Rectangle Fill=""Yellow""
+                    Width=""40"" Height=""10""/>
+            </StackPanel>
+            <Image Source=""/Assets/Slices.png"" />
+            <TextBlock HorizontalAlignment=""Center"" Text=""This is text."" />
+        </StackPanel>
+    </Border>
+</Viewbox>
+";
 
         #endregion
 

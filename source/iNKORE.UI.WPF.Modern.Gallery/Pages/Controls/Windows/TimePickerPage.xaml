@@ -13,11 +13,6 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A simple TimePicker.">
             <ui:TimePicker />
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;TimePicker/&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
         <!--<local:ControlExample
             x:Name="Example2"

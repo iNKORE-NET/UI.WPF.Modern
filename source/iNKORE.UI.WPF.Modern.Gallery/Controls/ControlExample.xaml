@@ -132,9 +132,8 @@
                                             Substitutions="{TemplateBinding Substitutions}" />
                                         <Border
                                             x:Name="SampleCodeSeparator"
-                                            Margin="0,20"
-                                            BorderBrush="{DynamicResource SystemControlBackgroundBaseMediumBrush}"
-                                            BorderThickness="1"
+                                            Margin="-24,20" Height="1"
+                                            Background="{DynamicResource {x:Static ui:ThemeKeys.CardStrokeColorDefaultBrushKey}}"
                                             Visibility="Collapsed" />
                                         <controls:SampleCodePresenter
                                             x:Name="CSharpPresenter"

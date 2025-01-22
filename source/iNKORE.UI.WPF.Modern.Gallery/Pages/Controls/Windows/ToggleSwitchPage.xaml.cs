@@ -23,14 +23,39 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         public ToggleSwitchPage()
         {
             InitializeComponent();
+            UpdateExampleCode();
         }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsInitialized) return;
 
+            Example1.Xaml = Example1Xaml;
+            Example2.Xaml = Example2Xaml;
         }
+
+        public string Example1Xaml => $@"
+<ui:ToggleSwitch AutomationProperties.Name=""simple ToggleSwitch"" />
+";
+
+        public string Example2Xaml => $@"
+<ui:ToggleSwitch x:Name=""toggleSwitch""
+    Header=""{toggleSwitch.Header}"" IsOn=""{toggleSwitch.IsOn}""
+    OffContent=""{toggleSwitch.OffContent}"" OnContent=""{toggleSwitch.OnContent}""/>
+";
 
         #endregion
 

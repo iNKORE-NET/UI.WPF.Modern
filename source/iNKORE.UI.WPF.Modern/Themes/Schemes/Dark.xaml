@@ -2727,4 +2727,11 @@
     <sys:Double x:Key="SettingsCardWrapNoIconThreshold">286</sys:Double>
 
 
+    <!--Project Badge-->
+    <Color x:Key="BrandAccentLight">#947EEC</Color>
+    <Color x:Key="BrandAccentDark">#4026A7</Color>
+
+    <SolidColorBrush x:Key="DefaultBadgeForegroundBrush" Color="{DynamicResource BrandAccentLight}"/>
+    <SolidColorBrush x:Key="DefaultBadgeTertiaryBrush" Color="{DynamicResource BrandAccentDark}"/>
+
 </ResourceDictionary>

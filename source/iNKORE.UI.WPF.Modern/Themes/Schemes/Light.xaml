@@ -2742,5 +2742,12 @@
     </Style>
 
     <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}" BasedOn="{m:StaticColor HighVisibilityFocusVisual}" />
+    
+    <!--Project Badge-->
+    <Color x:Key="BrandAccentLight">#947EEC</Color>
+    <Color x:Key="BrandAccentDark">#4026A7</Color>
+
+    <SolidColorBrush x:Key="DefaultBadgeForegroundBrush" Color="{DynamicResource BrandAccentDark}"/>
+    <SolidColorBrush x:Key="DefaultBadgeTertiaryBrush" Color="{DynamicResource BrandAccentLight}" Opacity="0.6"/>
 
 </ResourceDictionary>
