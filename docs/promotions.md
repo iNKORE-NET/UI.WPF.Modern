@@ -1,8 +1,13 @@
+
 # Spread the Word!
 
 Ho do you like this project so far? If this project is useful to you, please consider giving it a star on GitHub, sharing it with others and add a banner with a link to this project in your README.
 
 We'd really appreciate it if you could help us spread the word about this project. Well currently, you can kindly add a badge and banner to your README file and the About section of your application.
+
+> [!NOTE]
+>
+> This article will be soon moved to the official documentation site (docs.inkore.net, currently under construction). Please check the official documentation site for the latest information.
 
 ## Banners
 
