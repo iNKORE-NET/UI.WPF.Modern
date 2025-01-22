@@ -23,14 +23,21 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         public TimePickerPage()
         {
             InitializeComponent();
+            UpdateExampleCode();
         }
 
         #region Example Code
 
         public void UpdateExampleCode()
         {
+            if (!this.IsInitialized) return;
 
+            Example1.Xaml = Example1Xaml;
         }
+
+        public string Example1Xaml => $@"
+<ui:TimePicker />
+";
 
         #endregion
 
