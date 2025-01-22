@@ -10,7 +10,7 @@
         <Setter Property="Background" Value="{DynamicResource ButtonBackground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThemeThickness}" />
-        <Setter Property="Padding" Value="10,6,10,7" />
+        <Setter Property="Padding" Value="11,6,11,7" />
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -46,7 +46,7 @@
                                     Background="{DynamicResource DefaultBadgeTertiaryBrush}"
                                     TextElement.FontWeight="Bold" Opacity="{Binding ElementName=ContentPresenter, Path=Opacity}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Width="18" Height="18" Margin="-3,0,8,-1" RenderOptions.BitmapScalingMode="HighQuality"
+                                        <Image Width="18" Height="18" Margin="-4,0,8,-1" RenderOptions.BitmapScalingMode="HighQuality"
                                             Source="/iNKORE.UI.WPF.Modern;component/Resources/Images/WpfLibrary_256w.png"/>
                                         <TextBlock>
                                             <Run>iNKORE.</Run><Run Foreground="White">UI.WPF.Modern</Run>
