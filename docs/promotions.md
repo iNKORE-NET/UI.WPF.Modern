@@ -1,8 +1,13 @@
+
 # Spread the Word!
 
 Ho do you like this project so far? If this project is useful to you, please consider giving it a star on GitHub, sharing it with others and add a banner with a link to this project in your README.
 
 We'd really appreciate it if you could help us spread the word about this project. Well currently, you can kindly add a badge and banner to your README file and the About section of your application.
+
+> [!NOTE]
+>
+> This article will be soon moved to the official documentation site (docs.inkore.net, currently under construction). Please check the official documentation site for the latest information.
 
 ## Banners
 
@@ -39,11 +44,13 @@ Use the `ThemeManager.BannerUri_1280w` field to get the banner URI, and you can 
 
 You may also add a Click event to the image to open the project page if you like, which helps users to find the project page easily.
 
+Posting the banner on social media is **always allowed and encouraged**. You can also use the banner in your blog posts, videos, and other content.
+
 ## Badges
 
 Tiny badges are also a great way to show your support for this project if the banners are too large for you. All badges comes in a SVG and built-in control. There are two types of badges available:
 
-### **Button** Style 
+### **Button** Style
 
 Badges meet the Fluent Design System. It looks just like a regular button, which helps it playing with the other controls in your application.
 
@@ -59,7 +66,7 @@ To add the button badge to your README, use the following markdown code.
 </a>
 ```
 
-It can also be used in your application, which brings MORE features than the image, like hover and click effects. We strongly recommend using this badge in your application to go along with the other controls.
+It can also be used in your application, which brings MORE features than the image, like hover, click effects and theme awareness (light and dark scheme). We strongly recommend using this badge in your application to go along with the other controls.
 
 ```xml
 <ui:ProjectBadge Style="{DynamicResource {x:Static ui:ThemeKeys.ProjectBadgeButtonStyleKey}}"/>
