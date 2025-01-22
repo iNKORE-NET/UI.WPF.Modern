@@ -82,6 +82,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Resource Include="..\..\assets\icons\WpfLibrary_256w.png" Link="Resources\Images\WpfLibrary_256w.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="iNKORE.UI.WPF" Version="1.2.8" />
 	</ItemGroup>
 

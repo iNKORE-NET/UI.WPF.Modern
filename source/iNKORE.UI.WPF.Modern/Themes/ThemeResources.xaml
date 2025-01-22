@@ -569,5 +569,4 @@
     <sys:Double x:Key="SettingsCardWrapThreshold">476</sys:Double>
     <sys:Double x:Key="SettingsCardWrapNoIconThreshold">286</sys:Double>
 
-
 </ResourceDictionary>

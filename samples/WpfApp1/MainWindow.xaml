@@ -15,65 +15,6 @@
             <ui:IconAndText Icon="{x:Static ui:SegoeFluentIcons.Message}" Content="MessageBox Test"/>
         </Button>
 
-		<ComboBox Canvas.Left="152" Canvas.Top="205" VerticalAlignment="Top">
-			<ComboBoxItem>Item1</ComboBoxItem>
-			<ComboBoxItem>Item2</ComboBoxItem>
-			<ComboBoxItem>Item3</ComboBoxItem>
-			<ComboBoxItem>Item4</ComboBoxItem>
-			<ComboBoxItem>Item5</ComboBoxItem>
-			<ComboBoxItem>Item6</ComboBoxItem>
-			<ComboBoxItem>Item7</ComboBoxItem>
-			<ComboBoxItem>Item8</ComboBoxItem>
-			<ComboBoxItem>Item9</ComboBoxItem>
-			<ComboBoxItem>Item10</ComboBoxItem>
-			<ComboBoxItem>Item11</ComboBoxItem>
-			<ComboBoxItem>Item12</ComboBoxItem>
-			<ComboBoxItem>Item13</ComboBoxItem>
-			<ComboBoxItem>Item14</ComboBoxItem>
-			<ComboBoxItem>Item15</ComboBoxItem>
-			<ComboBoxItem>Item16</ComboBoxItem>
-			<ComboBoxItem>Item17</ComboBoxItem>
-			<ComboBoxItem>Item18</ComboBoxItem>
-			<ComboBoxItem>Item19</ComboBoxItem>
-			<ComboBoxItem>Item20</ComboBoxItem>
-			<ComboBoxItem>Item21</ComboBoxItem>
-			<ComboBoxItem>Item22</ComboBoxItem>
-			<ComboBoxItem>Item23</ComboBoxItem>
-			<ComboBoxItem>Item24</ComboBoxItem>
-			<ComboBoxItem>Item25</ComboBoxItem>
-			<ComboBoxItem>Item26</ComboBoxItem>
-			<ComboBoxItem>Item27</ComboBoxItem>
-			<ComboBoxItem>Item28</ComboBoxItem>
-			<ComboBoxItem>Item29</ComboBoxItem>
-			<ComboBoxItem>Item30</ComboBoxItem>
-		</ComboBox>
-		<ListBox  Canvas.Left="300" Canvas.Top="205" Height="200" Width="200">
-			<ListBoxItem>1</ListBoxItem>
-			<ListBoxItem>2</ListBoxItem>
-			<ListBoxItem>2</ListBoxItem>
-			<ListBoxItem>2</ListBoxItem>
-			<ListBoxItem>2</ListBoxItem>
-			<ListBoxItem>2</ListBoxItem>
-			<ListBoxItem>2</ListBoxItem>
-			<ListBoxItem>2</ListBoxItem>
-			<ListBoxItem>2</ListBoxItem>
-			<ListBoxItem>2</ListBoxItem>
-		</ListBox>
-
-        <ui:SettingsCard Description="You can use a FontIcon, SymbolIcon or BitmapIcon to set the cards HeaderIcon."
-                               Header="Icon options" IsClickEnabled="True" Click="SettingsCard_Click"
-                               IsEnabled="true" Canvas.Left="31" Canvas.Top="49" VerticalAlignment="Top">
-            <ui:SettingsCard.HeaderIcon>
-                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Home}"/>
-            </ui:SettingsCard.HeaderIcon>
-            <ui:ToggleSwitch />
-        </ui:SettingsCard>
-
-        <RichTextBox HorizontalAlignment="Left" Height="62" VerticalAlignment="Top" Width="150" Canvas.Left="446" Canvas.Top="179"
-                        BorderThickness="0">
-            <FrameworkElement.Resources>
-                <Thickness x:Key="{x:Static ui:ThemeKeys.TextControlBorderThemeThicknessFocusedKey}"></Thickness>
-            </FrameworkElement.Resources>
-        </RichTextBox>
+        <ui:ProjectBadge Canvas.Left="230" Canvas.Top="96" VerticalAlignment="Top"/>
     </Canvas>
 </Window>
