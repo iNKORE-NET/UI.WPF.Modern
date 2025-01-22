@@ -39,11 +39,13 @@ Use the `ThemeManager.BannerUri_1280w` field to get the banner URI, and you can 
 
 You may also add a Click event to the image to open the project page if you like, which helps users to find the project page easily.
 
+Posting the banner on social media is always allowed and encouraged. You can also use the banner in your blog posts, videos, and other content.
+
 ## Badges
 
 Tiny badges are also a great way to show your support for this project if the banners are too large for you. All badges comes in a SVG and built-in control. There are two types of badges available:
 
-### **Button** Style 
+### **Button** Style
 
 Badges meet the Fluent Design System. It looks just like a regular button, which helps it playing with the other controls in your application.
 
