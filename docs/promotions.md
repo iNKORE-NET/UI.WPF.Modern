@@ -39,7 +39,7 @@ Use the `ThemeManager.BannerUri_1280w` field to get the banner URI, and you can 
 
 You may also add a Click event to the image to open the project page if you like, which helps users to find the project page easily.
 
-Posting the banner on social media is always allowed and encouraged. You can also use the banner in your blog posts, videos, and other content.
+Posting the banner on social media is **always allowed and encouraged**. You can also use the banner in your blog posts, videos, and other content.
 
 ## Badges
 
