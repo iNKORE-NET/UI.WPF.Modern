@@ -5,7 +5,7 @@
     xmlns:ch="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf">
 
-    <Style x:Key="ProjectBadgeButtonStyle" TargetType="{x:Type local:ProjectBadge}" >
+    <Style x:Key="ProjectBadgeButtonStyle" TargetType="{x:Type local:ProjectBadge}">
         <Setter Property="Content" Value="Proudly using"/>
         <Setter Property="Background" Value="{DynamicResource ButtonBackground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}" />
@@ -27,7 +27,7 @@
         <Setter Property="Foreground" Value="{DynamicResource DefaultBadgeForegroundBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="local:ProjectBadge">
                     <Grid>
                         <ikw:ClippedContent x:Name="Border" Background="{TemplateBinding Background}"
                             CornerRadius="{TemplateBinding ch:ControlHelper.CornerRadius}">
@@ -79,6 +79,54 @@
                             <Setter TargetName="ContentPresenter" Property="Opacity" Value="0.4" />
                         </Trigger>
                     </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ProjectBadgeShieldStyle" TargetType="{x:Type local:ProjectBadge}" BasedOn="{StaticResource ProjectBadgeButtonStyle}">
+        <Setter Property="Content" Value="ui framework"/>
+        <Setter Property="Padding" Value="6,2,6,3" />
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="Background" Value="#805AE9"/>
+        <Setter Property="FontFamily" Value="Verdana, Microsoft Yahei UI, Segoe UI" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="ch:ControlHelper.CornerRadius" Value="4" />
+        <Setter Property="UseLayoutRounding" Value="true" />
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ProjectBadge">
+                    <ikw:ClippedContent Background="{TemplateBinding Background}" 
+                        CornerRadius="{TemplateBinding ch:ControlHelper.CornerRadius}">
+                        <FrameworkElement.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="0" ShadowDepth="1" Direction="270" Opacity="0.25"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </FrameworkElement.Resources>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="#555555">
+                                <local:ContentPresenterEx x:Name="ContentPresenter" Opacity="1"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Focusable="False" RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                    Margin="{TemplateBinding Padding}"/>
+                            </Border>
+                            <TextBlock Grid.Column="1" Margin="{TemplateBinding Padding}"
+                                Text="inkore.ui.wpf.modern"/>
+                        </Grid>
+                    </ikw:ClippedContent>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

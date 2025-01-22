@@ -15,6 +15,9 @@
             <ui:IconAndText Icon="{x:Static ui:SegoeFluentIcons.Message}" Content="MessageBox Test"/>
         </Button>
 
-        <ui:ProjectBadge Canvas.Left="230" Canvas.Top="96" VerticalAlignment="Top"/>
+        <StackPanel Canvas.Left="230" Canvas.Top="96" VerticalAlignment="Top">
+            <ui:ProjectBadge />
+            <ui:ProjectBadge Style="{DynamicResource {x:Static ui:ThemeKeys.ProjectBadgeShieldStyleKey}}"/>
+        </StackPanel>
     </Canvas>
 </Window>
