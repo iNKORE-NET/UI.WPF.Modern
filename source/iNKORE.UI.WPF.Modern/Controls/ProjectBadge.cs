@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,12 @@ namespace iNKORE.UI.WPF.Modern.Controls
         static ProjectBadge()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ProjectBadge), new FrameworkPropertyMetadata(typeof(ProjectBadge)));
+        }
+
+        protected override void OnClick()
+        {
+            base.OnClick();
+            Process.Start(new ProcessStartInfo(ThemeManager.Link_GithubRepo) { UseShellExecute = true });
         }
     }
 }

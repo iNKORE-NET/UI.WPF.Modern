@@ -33,11 +33,10 @@
                         Depth="16"
                         IsShadowEnabled="{TemplateBinding HasDropShadow}"
                         SnapsToDevicePixels="True">
-                        <Border
-                            Padding="{TemplateBinding Padding}"
+                        <Border Padding="{TemplateBinding Padding}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
                             <local:ContentPresenterEx SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" TextWrapping="Wrap" />
                         </Border>

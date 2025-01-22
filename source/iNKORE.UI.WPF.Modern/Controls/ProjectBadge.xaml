@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls" 
     xmlns:ch="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
+    xmlns:rt="clr-namespace:iNKORE.UI.WPF.Modern"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf">
 
     <Style x:Key="ProjectBadgeButtonStyle" TargetType="{x:Type local:ProjectBadge}">
@@ -25,6 +26,19 @@
         <Setter Property="ch:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
         <Setter Property="Foreground" Value="{DynamicResource DefaultBadgeForegroundBrush}"/>
+        <Setter Property="ToolTip">
+            <Setter.Value>
+                <ToolTip MaxWidth="Infinity" MaxHeight="Infinity" Padding="0">
+                    <ikw:ClippedContent CornerRadius="3">
+                        <Image Width="512" Height="256" RenderOptions.BitmapScalingMode="HighQuality">
+                            <Image.Source>
+                                <BitmapImage UriSource="{x:Static rt:ThemeManager.BannerUri_1280w}"/>
+                            </Image.Source>
+                        </Image>
+                    </ikw:ClippedContent>
+                </ToolTip>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:ProjectBadge">

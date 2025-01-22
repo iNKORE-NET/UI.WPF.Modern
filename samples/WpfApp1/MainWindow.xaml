@@ -10,14 +10,14 @@
         ui:ThemeManager.IsThemeAware="True"
         ui:WindowHelper.UseModernWindowStyle="True"
         Loaded="Window_Loaded" Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
-	<Canvas>
+    <Canvas>
         <Button x:Name="Button_MessageBox" Click="Button_MessageBox_Click" Canvas.Left="152" Canvas.Top="145" VerticalAlignment="Top">
             <ui:IconAndText Icon="{x:Static ui:SegoeFluentIcons.Message}" Content="MessageBox Test"/>
         </Button>
 
-        <StackPanel Canvas.Left="230" Canvas.Top="96" VerticalAlignment="Top">
+        <ikw:SimpleStackPanel Canvas.Left="306" Canvas.Top="49" VerticalAlignment="Top" Spacing="20">
             <ui:ProjectBadge />
             <ui:ProjectBadge Style="{DynamicResource {x:Static ui:ThemeKeys.ProjectBadgeShieldStyleKey}}"/>
-        </StackPanel>
+        </ikw:SimpleStackPanel>
     </Canvas>
 </Window>
