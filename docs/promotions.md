@@ -61,7 +61,7 @@ To add the button badge to your README, use the following markdown code.
 </a>
 ```
 
-It can also be used in your application, which brings MORE features than the image, like hover and click effects. We strongly recommend using this badge in your application to go along with the other controls.
+It can also be used in your application, which brings MORE features than the image, like hover, click effects and theme awareness (light and dark scheme). We strongly recommend using this badge in your application to go along with the other controls.
 
 ```xml
 <ui:ProjectBadge Style="{DynamicResource {x:Static ui:ThemeKeys.ProjectBadgeButtonStyleKey}}"/>
