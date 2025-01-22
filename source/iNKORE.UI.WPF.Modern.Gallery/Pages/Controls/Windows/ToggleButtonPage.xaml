@@ -27,17 +27,13 @@
             </local:ControlExample.Output>
             <local:ControlExample.Options>
                 <StackPanel>
-                    <CheckBox
+                    <CheckBox x:Name="CheckBox_IsEnabled"
                         Content="Disable ToggleButton"
                         Loaded="CheckBox_Loaded"
-                        Tag="DisableToggle1" />
+                        Tag="DisableToggle1" 
+                        Click="CheckBox_IsEnabled_Click"/>
                 </StackPanel>
             </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <sys:String>
-                    &lt;ToggleButton Content=&quot;ToggleButton&quot; Click=&quot;Button_Click&quot; $(IsEnabled)/&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>

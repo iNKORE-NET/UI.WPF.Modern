@@ -31,7 +31,14 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         public ToggleButtonPage()
         {
             InitializeComponent();
+            UpdateExampleCode();
         }
+
+        private void CheckBox_IsEnabled_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateExampleCode();
+        }
+
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -112,10 +119,30 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 
         public void UpdateExampleCode()
         {
+            if (!this.IsInitialized) return;
 
+            Example1.Xaml = Example1Xaml;
+            Example1.CSharp = Example1CS;
         }
 
-        #endregion
+        public string Example1Xaml => $@"
+<ToggleButton IsEnabled=""{CheckBox_IsEnabled.IsChecked}"" Content=""ToggleButton""
+    Checked=""ToggleButton_Checked""
+    Unchecked=""ToggleButton_Unchecked"" />
+";
 
+        public string Example1CS => $@"
+private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+{{
+    Control1Output.Text = ""On"";
+}}
+
+private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+{{
+    Control1Output.Text = ""Off"";
+}}
+";
+
+        #endregion
     }
 }
