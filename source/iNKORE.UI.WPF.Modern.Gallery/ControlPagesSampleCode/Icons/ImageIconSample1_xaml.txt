@@ -1,3 +1,0 @@
-﻿<Button Name="ImageExample1" Width="100">
-    <muxc:ImageIcon Source="/Assets/slices.png"/>
-</Button>
