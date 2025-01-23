@@ -64,7 +64,7 @@
                 </StackPanel>
             </local:ControlExample.Example>
         </local:ControlExample>
-        <local:ControlExample
+        <!--<local:ControlExample
             x:Name="Example4"
             HeaderText="A ImageIcon using a SVG image in a button">
             <local:ControlExample.Example>
@@ -72,7 +72,7 @@
                     <ui:ImageIcon Width="50" Source="https://raw.githubusercontent.com/DiemenDesign/LibreICONS/master/svg-color/libre-camera-panorama.svg" />
                 </Button>
             </local:ControlExample.Example>
-        </local:ControlExample>
+        </local:ControlExample>-->
         <local:ControlExample
             x:Name="Example5"
             HeaderText="A PathIcon in a button">
