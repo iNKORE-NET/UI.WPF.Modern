@@ -2,6 +2,7 @@
 using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Editing;
 using ICSharpCode.AvalonEdit.Highlighting;
+using iNKORE.UI.WPF.Modern.Gallery.Helpers;
 using SamplesCommon;
 using System;
 using System.Collections.Generic;
@@ -158,31 +159,12 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             if (presenter.SyntaxHighlighting != highlighter)
             presenter.SyntaxHighlighting = highlighter;
             
-            
-            if (sampleString != presenter.Text)
-                presenter.Text = RemoveLeadingAndTrailingEmptyLines(sampleString);
+            var formattedText = StringHelper.RemoveLeadingAndTrailingEmptyLines(sampleString);
+            if (formattedText != presenter.Text)
+                presenter.Text = formattedText;
 
             presenter.Visibility = Visibility.Visible;
         }
-
-        static string RemoveLeadingAndTrailingEmptyLines(string text)
-        {
-            if (string.IsNullOrWhiteSpace(text))
-                return string.Empty;
-
-            var lines = text.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-            int start = 0;
-            while (start < lines.Length && string.IsNullOrWhiteSpace(lines[start]))
-                start++;
-
-            int end = lines.Length - 1;
-            while (end >= start && string.IsNullOrWhiteSpace(lines[end]))
-                end--;
-
-            var trimmedLines = lines.Skip(start).Take(end - start + 1);
-            return string.Join(Environment.NewLine, trimmedLines);
-        }
-
 
         private void CopyCodeButton_Click(object sender, RoutedEventArgs e)
         {

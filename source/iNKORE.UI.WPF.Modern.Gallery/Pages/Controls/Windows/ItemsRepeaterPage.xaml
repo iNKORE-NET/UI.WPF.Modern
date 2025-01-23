@@ -14,7 +14,7 @@
     SnapsToDevicePixels="True"
     mc:Ignorable="d">
 
-    <Page.Resources>
+    <FrameworkElement.Resources>
         <Style TargetType="ui:NumberBox">
             <Setter Property="SpinButtonPlacementMode" Value="Inline" />
             <Setter Property="Minimum" Value="0" />
@@ -127,38 +127,24 @@
             </StackPanel>
         </DataTemplate>
 
-        <ui:StackLayout
-            x:Key="VerticalStackLayout"
-            Orientation="Vertical"
-            Spacing="8" />
-        <ui:StackLayout
-            x:Key="HorizontalStackLayout"
-            Orientation="Horizontal"
-            Spacing="8" />
-        <ui:UniformGridLayout
-            x:Key="UniformGridLayout"
-            MinColumnSpacing="8"
-            MinRowSpacing="8" />
+        <ui:StackLayout x:Key="VerticalStackLayout"
+            Orientation="Vertical" Spacing="8" />
+        <ui:StackLayout x:Key="HorizontalStackLayout"
+            Orientation="Horizontal" Spacing="8" />
+        <ui:UniformGridLayout x:Key="UniformGridLayout"
+            MinColumnSpacing="8" MinRowSpacing="8" />
 
-        <common:ActivityFeedLayout
-            x:Key="MyFeedLayout"
-            ColumnSpacing="12"
-            MinItemSize="80, 108"
-            RowSpacing="12" />
-        <ui:UniformGridLayout
-            x:Key="UniformGridLayout2"
-            MinColumnSpacing="12"
-            MinItemHeight="108"
-            MinItemWidth="108"
-            MinRowSpacing="12" />
+        <common:ActivityFeedLayout x:Key="MyFeedLayout"
+            ColumnSpacing="12" MinItemSize="80, 108" RowSpacing="12" />
+        <ui:UniformGridLayout x:Key="UniformGridLayout2"
+            MinColumnSpacing="12" MinItemHeight="108"
+            MinItemWidth="108" MinRowSpacing="12" />
 
-        <l:MyDataTemplateSelector
-            x:Key="MyDataTemplateSelector"
+        <l:MyDataTemplateSelector x:Key="MyDataTemplateSelector"
             Accent="{StaticResource AccentItemTemplate}"
             Normal="{StaticResource NormalItemTemplate}" />
 
-        <l:StringOrIntTemplateSelector
-            x:Key="StringOrIntTemplateSelector"
+        <l:StringOrIntTemplateSelector x:Key="StringOrIntTemplateSelector"
             IntTemplate="{StaticResource IntDataTemplate}"
             StringTemplate="{StaticResource StringDataTemplate}" />
 
@@ -194,7 +180,8 @@
                     Text="{Binding Company}" />
             </Grid>
         </DataTemplate>
-    </Page.Resources>
+    </FrameworkElement.Resources>
+    
 
     <TabControl x:Name="tabControl" Style="{StaticResource TabControlPivotStyle}">
         <TabControl.Resources>
@@ -203,7 +190,7 @@
 
         <TabItem Header="Overview">
             <ikw:SimpleStackPanel Spacing="16">
-                <local:ControlExample HeaderText="Basic, non-interactive items laid out by ItemsRepeater">
+                <local:ControlExample x:Name="Example1" HeaderText="Basic, non-interactive items laid out by ItemsRepeater">
                     <ui:ItemsRepeaterScrollHost MaxHeight="500">
                         <ui:ScrollViewerEx HorizontalScrollBarVisibility="Auto">
                             <ui:ItemsRepeater
@@ -249,22 +236,18 @@
                     </local:ControlExample.Options>
                 </local:ControlExample>
 
-                <local:ControlExample HorizontalContentAlignment="Stretch" HeaderText="Virtualizing, scrollable list of items laid out by ItemsRepeater">
+                <local:ControlExample x:Name="Example2" HorizontalContentAlignment="Stretch" HeaderText="Virtualizing, scrollable list of items laid out by ItemsRepeater">
 
                     <!--
                         ItemsRepeaterScrollHost enables ItemsRepeater to coordinate with ScrollViewer down-level.
                         It's not needed on 17700+ builds.
                     -->
                     <ui:ItemsRepeaterScrollHost>
-                        <ui:ScrollViewerEx
-                            x:Name="scrollViewer"
-                            Height="400"
-                            Padding="0,0,16,0">
+                        <ui:ScrollViewerEx x:Name="scrollViewer"
+                            Height="400" Padding="0,0,16,0">
 
-                            <ui:ItemsRepeater
-                                x:Name="repeater2"
-                                Margin="0,0,12,0"
-                                HorizontalAlignment="Stretch"
+                            <ui:ItemsRepeater x:Name="repeater2"
+                                Margin="0,0,12,0" HorizontalAlignment="Stretch"
                                 ItemTemplate="{StaticResource MyDataTemplateSelector}"
                                 Layout="{StaticResource MyFeedLayout}" />
 
@@ -278,7 +261,7 @@
                                 Content="Uniform grid"
                                 GroupName="Sample2Layouts"
                                 Tag="UniformGridLayout2" />
-                            <RadioButton
+                            <RadioButton x:Name="Ex2_CustomLayout"
                                 Click="LayoutBtn_Click"
                                 Content="Custom virtualizing layout"
                                 GroupName="Sample2Layouts"
@@ -288,13 +271,11 @@
                     </local:ControlExample.Options>
                 </local:ControlExample>
 
-                <local:ControlExample HeaderText="ItemsRepeater with mixed-type collection">
+                <local:ControlExample x:Name="Example3" HeaderText="ItemsRepeater with mixed-type collection">
                     <StackPanel>
                         <TextBlock Text="This is an ItemsRepeater that displays both integer and string items. It uses a DataTemplateSelector to choose the correct layout for each of its items." TextWrapping="Wrap" />
-                        <ui:ItemsRepeater
-                            x:Name="MixedTypeRepeater"
-                            Margin="0,0,12,0"
-                            HorizontalAlignment="Stretch"
+                        <ui:ItemsRepeater x:Name="MixedTypeRepeater"
+                            Margin="0,0,12,0" HorizontalAlignment="Stretch"
                             ItemTemplate="{StaticResource StringOrIntTemplateSelector}">
 
                             <ui:ItemsRepeater.Layout>
@@ -304,9 +285,8 @@
                     </StackPanel>
                 </local:ControlExample>
 
-                <local:ControlExample HeaderText="Laying out nested ItemsRepeaters">
-                    <ui:ItemsRepeater
-                        x:Name="outerRepeater"
+                <local:ControlExample x:Name="Example4" HeaderText="Laying out nested ItemsRepeaters">
+                    <ui:ItemsRepeater x:Name="outerRepeater"
                         VerticalAlignment="Top"
                         ItemTemplate="{StaticResource CategoryTemplate}">
 
@@ -321,7 +301,7 @@
         </TabItem>
 
         <TabItem Header="StackLayout">
-            <local:ControlExample HeaderText="StackLayout">
+            <local:ControlExample x:Name="Example5" HeaderText="StackLayout">
                 <local:ControlExample.Resources>
                     <ui:StackLayout x:Key="stackLayout" />
                     <l:SpacingConverter x:Key="SpacingConverter" />
@@ -329,16 +309,17 @@
 
                 <ui:ItemsRepeaterScrollHost>
                     <ui:ScrollViewerEx>
-                        <ui:ItemsRepeater
+                        <ui:ItemsRepeater ItemsSource="{Binding}"
                             ItemTemplate="{StaticResource ContactListViewTemplate}"
-                            ItemsSource="{Binding}"
                             Layout="{StaticResource stackLayout}" />
                     </ui:ScrollViewerEx>
                 </ui:ItemsRepeaterScrollHost>
 
                 <local:ControlExample.Options>
                     <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
-                        <ui:NumberBox Header="Spacing" Value="{Binding Source={StaticResource stackLayout}, Path=Spacing, Converter={StaticResource SpacingConverter}}" />
+                        <ui:NumberBox x:Name="Example5Spacing" Header="Spacing" 
+                            Value="{Binding Source={StaticResource stackLayout}, Path=Spacing, Converter={StaticResource SpacingConverter}}" 
+                            ValueChanged="NumberBox_ValueChanged"/>
                         <Button
                             x:Name="changeFirstItemButton"
                             Click="ChangeFirstItemButton_Click"
@@ -353,13 +334,13 @@
         </TabItem>
 
         <TabItem Header="UniformGridLayout">
-            <local:ControlExample HeaderText="UniformGridLayout">
-                <local:ControlExample.Resources>
+            <local:ControlExample x:Name="Example6" HeaderText="UniformGridLayout">
+                <FrameworkElement.Resources>
                     <ui:UniformGridLayout
                         x:Key="uniformGridLayout"
                         MinColumnSpacing="24"
                         MinItemWidth="240" />
-                </local:ControlExample.Resources>
+                </FrameworkElement.Resources>
 
                 <ui:ItemsRepeaterScrollHost>
                     <ui:ScrollViewerEx>
@@ -375,8 +356,7 @@
                                 </Style.Triggers>
                             </Style>
                         </ScrollViewer.Style>
-                        <ui:ItemsRepeater
-                            x:Name="UniformGridLayoutRepeater"
+                        <ui:ItemsRepeater x:Name="UniformGridLayoutRepeater"
                             ItemTemplate="{StaticResource ContactListViewTemplate}"
                             ItemsSource="{Binding}"
                             Layout="{StaticResource uniformGridLayout}" />
@@ -386,26 +366,38 @@
                 <local:ControlExample.Options>
                     <ui:ScrollViewerEx Margin="-16">
                         <ikw:SimpleStackPanel Margin="16" Style="{StaticResource OptionsPanelStyle}">
-                            <ui:NumberBox Header="MinItemWidth" Value="{Binding Source={StaticResource uniformGridLayout}, Path=MinItemWidth}" />
-                            <ui:NumberBox Header="MinItemHeight" Value="{Binding Source={StaticResource uniformGridLayout}, Path=MinItemHeight}" />
-                            <ui:NumberBox Header="MinRowSpacing" Value="{Binding Source={StaticResource uniformGridLayout}, Path=MinRowSpacing}" />
-                            <ui:NumberBox Header="MinColumnSpacing" Value="{Binding Source={StaticResource uniformGridLayout}, Path=MinColumnSpacing}" />
-                            <ui:NumberBox
+                            <ui:NumberBox x:Name="Ex6_MinItemWidth" Header="MinItemWidth"
+                                Value="{Binding Source={StaticResource uniformGridLayout}, Path=MinItemWidth}"
+                                ValueChanged="NumberBox_ValueChanged"/>
+                            <ui:NumberBox x:Name="Ex6_MinItemHeight" Header="MinItemHeight" 
+                                Value="{Binding Source={StaticResource uniformGridLayout}, Path=MinItemHeight}" 
+                                ValueChanged="NumberBox_ValueChanged"/>
+                            <ui:NumberBox x:Name="Ex6_MinRowSpacing" Header="MinRowSpacing" 
+                                Value="{Binding Source={StaticResource uniformGridLayout}, Path=MinRowSpacing}"
+                                ValueChanged="NumberBox_ValueChanged"/>
+                            <ui:NumberBox x:Name="Ex6_MinColumnSpacing" Header="MinColumnSpacing" 
+                                Value="{Binding Source={StaticResource uniformGridLayout}, Path=MinColumnSpacing}"
+                                ValueChanged="NumberBox_ValueChanged"/>
+                            <ui:NumberBox x:Name="Ex6_MaximumRowsOrColumns"
                                 Header="MaximumRowsOrColumns"
                                 Minimum="-1"
-                                Value="{Binding Source={StaticResource uniformGridLayout}, Path=MaximumRowsOrColumns}" />
-                            <ui:RadioButtons
+                                Value="{Binding Source={StaticResource uniformGridLayout}, Path=MaximumRowsOrColumns}" 
+                                ValueChanged="NumberBox_ValueChanged"/>
+                            <ui:RadioButtons x:Name="Ex6_ItemsStretch"
                                 Header="ItemsStretch"
                                 ItemsSource="{Binding Source={x:Type ui:UniformGridLayoutItemsStretch}, Converter={StaticResource EnumValuesConverter}}"
-                                SelectedItem="{Binding Source={StaticResource uniformGridLayout}, Path=ItemsStretch}" />
-                            <ui:RadioButtons
+                                SelectedItem="{Binding Source={StaticResource uniformGridLayout}, Path=ItemsStretch}" 
+                                SelectionChanged="RadioButtons_SelectionChanged"/>
+                            <ui:RadioButtons x:Name="Ex6_ItemsJustification"
                                 Header="ItemsJustification"
                                 ItemsSource="{Binding Source={x:Type ui:UniformGridLayoutItemsJustification}, Converter={StaticResource EnumValuesConverter}}"
-                                SelectedItem="{Binding Source={StaticResource uniformGridLayout}, Path=ItemsJustification}" />
-                            <ui:RadioButtons
+                                SelectedItem="{Binding Source={StaticResource uniformGridLayout}, Path=ItemsJustification}"
+                                SelectionChanged="RadioButtons_SelectionChanged"/>
+                            <ui:RadioButtons x:Name="Ex6_Orientation"
                                 Header="Orientation"
                                 ItemsSource="{Binding Source={x:Type Orientation}, Converter={StaticResource EnumValuesConverter}}"
-                                SelectedItem="{Binding Source={StaticResource uniformGridLayout}, Path=Orientation}" />
+                                SelectedItem="{Binding Source={StaticResource uniformGridLayout}, Path=Orientation}"
+                                SelectionChanged="RadioButtons_SelectionChanged"/>
                         </ikw:SimpleStackPanel>
                     </ui:ScrollViewerEx>
                 </local:ControlExample.Options>
@@ -413,10 +405,10 @@
         </TabItem>
 
         <TabItem Header="FlowLayout">
-            <local:ControlExample HeaderText="FlowLayout">
-                <local:ControlExample.Resources>
+            <local:ControlExample x:Name="Example7" HeaderText="FlowLayout">
+                <FrameworkElement.Resources>
                     <ui:FlowLayout x:Key="flowLayout" MinRowSpacing="24" />
-                </local:ControlExample.Resources>
+                </FrameworkElement.Resources>
 
                 <ui:ItemsRepeaterScrollHost>
                     <ui:ScrollViewerEx>
@@ -432,9 +424,8 @@
                                 </Style.Triggers>
                             </Style>
                         </ScrollViewer.Style>
-                        <ui:ItemsRepeater
+                        <ui:ItemsRepeater ItemsSource="{Binding}"
                             ItemTemplate="{StaticResource ContactListViewTemplate}"
-                            ItemsSource="{Binding}"
                             Layout="{StaticResource flowLayout}" />
                     </ui:ScrollViewerEx>
                 </ui:ItemsRepeaterScrollHost>
@@ -442,16 +433,24 @@
                 <local:ControlExample.Options>
                     <ui:ScrollViewerEx Margin="-16">
                         <ikw:SimpleStackPanel Margin="16" Style="{StaticResource OptionsPanelStyle}">
-                            <ui:RadioButtons
+                            <ui:RadioButtons x:Name="Ex7_Orientation"
                                 Header="Orientation"
                                 ItemsSource="{Binding Source={x:Type Orientation}, Converter={StaticResource EnumValuesConverter}}"
-                                SelectedItem="{Binding Source={StaticResource flowLayout}, Path=Orientation}" />
-                            <ui:NumberBox ui:ControlHelper.Header="MinRowSpacing" Value="{Binding Source={StaticResource flowLayout}, Path=MinRowSpacing}" />
-                            <ui:NumberBox ui:ControlHelper.Header="MinColumnSpacing" Value="{Binding Source={StaticResource flowLayout}, Path=MinColumnSpacing}" />
-                            <ui:RadioButtons
+                                SelectedItem="{Binding Source={StaticResource flowLayout}, Path=Orientation}"
+                                SelectionChanged="RadioButtons_SelectionChanged"/>
+                            <ui:NumberBox x:Name="Ex7_MinRowSpacing"
+                                ui:ControlHelper.Header="MinRowSpacing" 
+                                Value="{Binding Source={StaticResource flowLayout}, Path=MinRowSpacing}"
+                                ValueChanged="NumberBox_ValueChanged"/>
+                            <ui:NumberBox x:Name="Ex7_MinColumnSpacing"
+                                ui:ControlHelper.Header="MinColumnSpacing" 
+                                Value="{Binding Source={StaticResource flowLayout}, Path=MinColumnSpacing}"
+                                ValueChanged="NumberBox_ValueChanged"/>
+                            <ui:RadioButtons x:Name="Ex7_LineAlignment"
                                 Header="LineAlignment"
                                 ItemsSource="{Binding Source={x:Type ui:FlowLayoutLineAlignment}, Converter={StaticResource EnumValuesConverter}}"
-                                SelectedItem="{Binding Source={StaticResource flowLayout}, Path=LineAlignment}" />
+                                SelectedItem="{Binding Source={StaticResource flowLayout}, Path=LineAlignment}"
+                                SelectionChanged="RadioButtons_SelectionChanged"/>
                         </ikw:SimpleStackPanel>
                     </ui:ScrollViewerEx>
                 </local:ControlExample.Options>
