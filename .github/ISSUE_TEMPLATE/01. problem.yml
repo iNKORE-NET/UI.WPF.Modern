@@ -90,7 +90,8 @@ body:
       description: Where do you get the library package from? Or where did you download them?
       multiple: false
       options:
-        - NuGet.org
+        - NuGet.org  (Package)
+        - Microsoft Store (Gallery)
         - Self-Compiled
         - Other (Tell us in the Additional Notes)
     validations:
