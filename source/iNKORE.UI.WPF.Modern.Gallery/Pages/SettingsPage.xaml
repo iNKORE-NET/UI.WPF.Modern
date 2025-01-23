@@ -11,10 +11,8 @@
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}" FontSize="14"
     mc:Ignorable="d">
     <Grid>
-        <ScrollViewer
-            x:Name="contentSV"
-            Grid.Row="1"
-            Padding="56,0,0,0"
+        <ui:ScrollViewerEx x:Name="contentSV"
+            Grid.Row="1" Padding="56,0,0,0"
             ui:FocusVisualHelper.UseSystemFocusVisuals="False"
             IsTabStop="False"
             VerticalScrollBarVisibility="Auto">
@@ -65,7 +63,7 @@
                         for how to enable sound in your app!</TextBlock>
                 </StackPanel>-->
 
-                <TextBlock
+                <!--<TextBlock
                     Margin="0,40,0,0"
                     Style="{DynamicResource SubtitleTextBlockStyle}"
                     Text="Navigation Style" />
@@ -76,9 +74,9 @@
                     SelectionChanged="navigationLocation_SelectionChanged">
                     <RadioButton Content="Left" />
                     <RadioButton Content="Top" />
-                </ui:RadioButtons>
+                </ui:RadioButtons>-->
 
-                <StackPanel x:Name="ScreenshotSettingsGrid">
+                <!--<StackPanel x:Name="ScreenshotSettingsGrid">
                     <TextBlock
                         Margin="0,40,0,0"
                         Style="{DynamicResource SubtitleTextBlockStyle}"
@@ -103,9 +101,9 @@
                             <TextBlock x:Name="screenshotFolderLinkContent" TextWrapping="Wrap" />
                         </ui:HyperlinkButton>
                     </StackPanel>
-                </StackPanel>
+                </StackPanel>-->
 
-                <TextBlock
+                <!--<TextBlock
                     Margin="0,40,0,0"
                     Style="{DynamicResource SubtitleTextBlockStyle}"
                     Text="Teaching Tips" />
@@ -114,7 +112,7 @@
                         Margin="0,4,0,0"
                         Click="OnResetTeachingTipsButtonClick"
                         Content="Reset the &quot;Generate Link to Page&quot; Teaching Tip" />
-                </StackPanel>
+                </StackPanel>-->
 
                 <TextBlock
                     Margin="0,40,0,0"
@@ -234,6 +232,6 @@
                 <uc:DocumentationPromotion Margin="0,20,60,60"/>
 
             </StackPanel>
-        </ScrollViewer>
+        </ui:ScrollViewerEx>
     </Grid>
 </ui:Page>
