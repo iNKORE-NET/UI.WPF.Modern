@@ -29,7 +29,7 @@ body:
     id: reproduction
     attributes:
       label: Reproduction
-      description: How can we reproduce the bug? If you can, please provide the link to the repo that we can reproduce the bug in. Or provide the steps to reproduce the bug.
+      description: How can we reproduce the bug? If you can, please provide the link to the repo that we can reproduce the bug in. Or provide the steps to reproduce the bug. **Unreproducible bugs will be closed!**
       placeholder: https://github.com/ghost/my-bug-reproduce
     validations:
       required: true
