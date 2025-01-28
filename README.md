@@ -8,7 +8,11 @@
   iNKORE.UI.WPF.Modern
 </h1>
 
-<p align="center">Give us a star if you like this!</p>
+
+<p align="center">
+    <strong>AKA. iUWM</strong>.
+    Give us a star if you like this!
+</p>
 
 <p align="center">
   <a href="https://github.com/iNKORE-NET/UI.WPF.Modern/releases"><img src="https://img.shields.io/github/downloads/iNKORE-NET/UI.WPF.Modern/total?color=%239F7AEA" alt="Release Downloads"></a>
@@ -61,6 +65,8 @@
                 width="200" alt="iNKORE.UI.WPF.Modern Gallery"/>
         </picture>
     </a>
+
+- This project is named `iNKORE.UI.WPF.Modern`. You can call it as `iUWM` for short if convenient. FYI, iNKORE is the name of the studio (company) that maintains this project. This project is NOT called ~~iNKORE~~, ~~iNKORE UI~~, or anything else.
 
 # 🙋🏻‍♂️ Contribution
 
