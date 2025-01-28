@@ -66,7 +66,7 @@
         </picture>
     </a>
 
-- This project is named `iNKORE.UI.WPF.Modern`. You can call it as `iUWM` for short if convenient. FYI, iNKORE is the name of the studio (company) that maintains this project. This project is NOT called ~~iNKORE~~, ~~iNKORE UI~~, or anything else.
+- This project is named `iNKORE.UI.WPF.Modern`. You can call it as `iUWM` for short if convenient. FYI, iNKORE is the name of the studio (company) that maintains this project. THIS PROJECT is **NOT** called ~~iNKORE~~, ~~iNKORE UI~~, or anything else.
 
 # 🙋🏻‍♂️ Contribution
 
