@@ -14,10 +14,12 @@
         <Button x:Name="Button_MessageBox" Click="Button_MessageBox_Click" Canvas.Left="152" Canvas.Top="145" VerticalAlignment="Top">
             <ui:IconAndText Icon="{x:Static ui:SegoeFluentIcons.Message}" Content="MessageBox Test"/>
         </Button>
-
-        <ikw:SimpleStackPanel Canvas.Left="306" Canvas.Top="49" VerticalAlignment="Top" Spacing="20">
-            <ui:ProjectBadge />
-            <ui:ProjectBadge Style="{DynamicResource {x:Static ui:ThemeKeys.ProjectBadgeShieldStyleKey}}"/>
-        </ikw:SimpleStackPanel>
+        <ComboBox Canvas.Left="396" Canvas.Top="180" ui:ControlHelper.PlaceholderText="Placeh"
+                FontSize="100" VerticalAlignment="Center" Width="322" IsEditable="True">
+            <ComboBoxItem>Test</ComboBoxItem>
+            <ComboBoxItem>Test</ComboBoxItem>
+            <ComboBoxItem>Test</ComboBoxItem>
+            <ComboBoxItem>Test</ComboBoxItem>
+        </ComboBox>
     </Canvas>
 </Window>
