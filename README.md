@@ -8,7 +8,6 @@
   iNKORE.UI.WPF.Modern
 </h1>
 
-
 <p align="center">
     <strong>AKA. iUWM</strong>.
     Give us a star if you like this!
