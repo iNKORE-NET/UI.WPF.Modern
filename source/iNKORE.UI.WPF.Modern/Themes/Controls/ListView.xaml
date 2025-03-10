@@ -66,20 +66,20 @@
                                     </Rectangle.RenderTransform>
                                 </Rectangle>
                             </Grid>
-                            <Grid
+                            <Border
                                 x:Name="ContentPresenterGrid"
                                 Margin="0,0,0,0"
                                 Background="Transparent">
-                                <Grid.RenderTransform>
+                                <FrameworkElement.RenderTransform>
                                     <TranslateTransform x:Name="ContentPresenterTranslateTransform" />
-                                </Grid.RenderTransform>
+                                </FrameworkElement.RenderTransform>
                                 <local:ContentPresenterEx
                                     x:Name="ContentPresenter"
                                     Margin="{TemplateBinding Padding}"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                            </Grid>
+                            </Border>
                             <Border
                                 x:Name="MultiSelectSquare"
                                 Width="{DynamicResource CheckBoxSize}"
