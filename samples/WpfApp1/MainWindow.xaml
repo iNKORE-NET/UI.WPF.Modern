@@ -10,16 +10,10 @@
         ui:ThemeManager.IsThemeAware="True"
         ui:WindowHelper.UseModernWindowStyle="True"
         Loaded="Window_Loaded" Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
-    <Canvas>
+    <Grid>
         <Button x:Name="Button_MessageBox" Click="Button_MessageBox_Click" Canvas.Left="152" Canvas.Top="145" VerticalAlignment="Top">
             <ui:IconAndText Icon="{x:Static ui:SegoeFluentIcons.Message}" Content="MessageBox Test"/>
         </Button>
-        <ComboBox Canvas.Left="396" Canvas.Top="180" ui:ControlHelper.PlaceholderText="Placeh"
-                FontSize="100" VerticalAlignment="Center" Width="322" IsEditable="True">
-            <ComboBoxItem>Test</ComboBoxItem>
-            <ComboBoxItem>Test</ComboBoxItem>
-            <ComboBoxItem>Test</ComboBoxItem>
-            <ComboBoxItem>Test</ComboBoxItem>
-        </ComboBox>
-    </Canvas>
+        <ui:SettingsCard Description="Description" Header="Header" IsClickEnabled="True"/>
+    </Grid>
 </Window>
