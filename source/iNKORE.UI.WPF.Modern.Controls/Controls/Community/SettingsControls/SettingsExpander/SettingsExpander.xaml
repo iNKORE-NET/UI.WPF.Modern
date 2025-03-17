@@ -5,7 +5,8 @@
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:sys="clr-namespace:System;assembly=System.Runtime"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" 
+    xmlns:interactions="http://schemas.microsoft.com/xaml/behaviors">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Community/SettingsControls/SettingsCard/SettingsCard.xaml" />
@@ -167,19 +168,26 @@
                             <RowDefinition x:Name="Row1"
                                            Height="*" />
                         </Grid.RowDefinitions>
+                        
+                        <!-- using TranslateTransform.Y wasn't visually good, chose behavior for code behind animation -->
+                        <interactions:Interaction.Behaviors>
+                            <local:ExpanderAnimationBehavior
+                                AnimationTarget="{Binding ElementName=ExpanderContent}"
+                                ContentControl="{Binding ElementName=SettingsExpanderContent}"
+                                ExpandDirection="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ExpandDirection, Mode=OneWay}"
+                                IsExpanded="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsExpanded, Mode=OneWay}" />
+                        </interactions:Interaction.Behaviors>
 
                         <!--  The clip is a composition clip applied in code  -->
                         <Border x:Name="ExpanderContentClip"
                                 Grid.Row="1">
                             <ikw:ClippedContent x:Name="ExpanderContent"
-                                    MinHeight="{DynamicResource SettingsExpanderContentMinHeight}"
                                     Padding="{TemplateBinding Padding}"
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{StaticResource ExpanderContentDownBorderThickness}"
-                                    CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius, Converter={StaticResource BottomCornerRadiusFilterConverter}}"
-                                    Visibility="Collapsed">
+                                    CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius, Converter={StaticResource BottomCornerRadiusFilterConverter}}">
                                 <FrameworkElement.RenderTransform>
                                     <TranslateTransform x:Name="ExpanderContentTranslation"/>
                                 </FrameworkElement.RenderTransform>
@@ -214,11 +222,23 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsExpanded" Value="true">
-                            <Setter TargetName="ExpanderContent" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="ExpanderContent" Property="MinHeight" Value="{DynamicResource SettingsExpanderContentMinHeight}" />
                         </Trigger>
 
                         <Trigger Property="ExpandDirection" Value="Up">
-                            <!--I'm just way to lazy. Don't wanna do this. If you see this and you're interested in this, please PR it.-->
+                            <Setter TargetName="ExpanderContent" Property="Height" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="ExpandDirection" Value="Down">
+                            <Setter TargetName="ExpanderContent" Property="Height" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="ExpandDirection" Value="Left">
+                            <Setter TargetName="ExpanderContent" Property="Width" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="ExpandDirection" Value="Right">
+                            <Setter TargetName="ExpanderContent" Property="Width" Value="0" />
                         </Trigger>
                         
                         <MultiTrigger>
@@ -308,7 +328,7 @@
                                     IsClickEnabled="False" />
                             </Expander.Header>
                             <Expander.Content>
-                                <Grid>
+                                <Grid x:Name="SettingsExpanderContent">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
