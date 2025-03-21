@@ -93,7 +93,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Helpers
         {
             if (RootTheme == ElementTheme.Default)
             {
-                return ThemeManager.Current.ApplicationTheme == ApplicationTheme.Dark;
+                return ThemeManager.Current.ActualApplicationTheme == ApplicationTheme.Dark;
             }
             return RootTheme == ElementTheme.Dark;
         }
