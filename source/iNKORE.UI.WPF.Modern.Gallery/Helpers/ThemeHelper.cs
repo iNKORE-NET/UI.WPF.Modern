@@ -47,7 +47,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Helpers
             {
                 foreach (Window window in WindowHelper.ActiveWindows)
                 {
-                    return ThemeManager.GetActualTheme(window);
+                    return ThemeManager.GetRequestedTheme(window);
                 }
 
                 return ElementTheme.Default;
