@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1" xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" 
         xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="540" Width="800"
         ui:ThemeManager.IsThemeAware="True"
         ui:WindowHelper.UseModernWindowStyle="True"
         Loaded="Window_Loaded" Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
