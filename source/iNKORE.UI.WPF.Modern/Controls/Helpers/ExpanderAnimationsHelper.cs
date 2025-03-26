@@ -158,9 +158,7 @@ public abstract class ExpanderExpansionBaseHandler
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
         ToAnimateControl = Expander.Template.FindName(_toAnimateTemplateControlName, Expander) as FrameworkElement;
-        var expanderActualContent = LogicalTreeHelper.GetChildren(Expander).OfType<FrameworkElement>().LastOrDefault();
-        ContentControl = VisualTreeHelper.GetParent(expanderActualContent) as FrameworkElement;
-        
+        ContentControl = LogicalTreeHelper.GetChildren(Expander).OfType<FrameworkElement>().LastOrDefault();
         Expander.Loaded -= OnLoaded;
     }
 
