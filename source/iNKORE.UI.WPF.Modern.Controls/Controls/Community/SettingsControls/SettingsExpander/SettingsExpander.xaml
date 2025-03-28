@@ -209,8 +209,10 @@
                                 CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius,
                                                                Converter={StaticResource BottomCornerRadiusFilterConverter}}"
                                 HorizontalAlignment="Stretch"
+                                MinHeight="{DynamicResource SettingsExpanderContentMinHeight}"
                                 Padding="{TemplateBinding Padding}"
                                 VerticalAlignment="Stretch"
+                                Visibility="Collapsed"
                                 x:Name="ExpanderContent">
                                 <FrameworkElement.RenderTransform>
                                     <TranslateTransform x:Name="ExpanderContentTranslation" />
@@ -248,26 +250,6 @@
                             x:Name="ExpanderHeader" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsExpanded" Value="true">
-                            <Setter Property="MinHeight" TargetName="ExpanderContent" Value="{DynamicResource SettingsExpanderContentMinHeight}" />
-                        </Trigger>
-
-                        <Trigger Property="ExpandDirection" Value="Up">
-                            <Setter Property="Height" TargetName="ExpanderContent" Value="0" />
-                        </Trigger>
-
-                        <Trigger Property="ExpandDirection" Value="Down">
-                            <Setter Property="Height" TargetName="ExpanderContent" Value="0" />
-                        </Trigger>
-
-                        <Trigger Property="ExpandDirection" Value="Left">
-                            <Setter Property="Width" TargetName="ExpanderContent" Value="0" />
-                        </Trigger>
-
-                        <Trigger Property="ExpandDirection" Value="Right">
-                            <Setter Property="Width" TargetName="ExpanderContent" Value="0" />
-                        </Trigger>
-
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsExpanded" Value="true" />
