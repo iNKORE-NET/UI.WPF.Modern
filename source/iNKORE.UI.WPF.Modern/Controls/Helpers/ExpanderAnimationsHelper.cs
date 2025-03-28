@@ -256,8 +256,11 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             }
 
             var animationProperty = GetToAnimateProperty();
-            //this will only work before any animation is applied
-            translateTransform.SetValue(animationProperty, correctionFactor * GetAnimationToValue());
+            if (!translateTransform.IsSealed)
+            {
+                //this will only work before any animation is applied
+                translateTransform.SetValue(animationProperty, correctionFactor * GetAnimationToValue());
+            }
 
             RunTranslationAnimation(animationDuration, translateTransform, animationProperty, 0);
         }
