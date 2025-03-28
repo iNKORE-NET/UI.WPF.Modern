@@ -1,12 +1,11 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers;assembly=iNKORE.UI.WPF.Modern"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
-    xmlns:interactions="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:sys="clr-namespace:System;assembly=System.Runtime"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/iNKORE.UI.WPF.Modern.Controls;component/Controls/Community/SettingsControls/SettingsCard/SettingsCard.xaml" />
@@ -18,9 +17,9 @@
     <CornerRadiusConverter x:Key="CornerRadiusConverter" />
     <ikw:BoolInversionConverter x:Key="BoolInversionConverter" />
     <Style
+        x:Key="DefaultSettingsExpanderItemStyle"
         BasedOn="{StaticResource DefaultSettingsCardStyle}"
-        TargetType="local:SettingsCard"
-        x:Key="DefaultSettingsExpanderItemStyle">
+        TargetType="local:SettingsCard">
         <Style.Setters>
             <Setter Property="BorderThickness" Value="{DynamicResource SettingsExpanderItemBorderThickness}" />
             <Setter Property="MinHeight" Value="52" />
@@ -31,72 +30,64 @@
     </Style>
 
     <Style
+        x:Key="ClickableSettingsExpanderItemStyle"
         BasedOn="{StaticResource DefaultSettingsExpanderItemStyle}"
-        TargetType="local:SettingsCard"
-        x:Key="ClickableSettingsExpanderItemStyle">
+        TargetType="local:SettingsCard">
         <Style.Setters>
             <Setter Property="Padding" Value="{DynamicResource ClickableSettingsExpanderItemPadding}" />
         </Style.Setters>
     </Style>
 
     <local:SettingsExpanderItemStyleSelector
+        x:Key="SettingsExpanderItemStyleSelector"
         ClickableStyle="{StaticResource ClickableSettingsExpanderItemStyle}"
-        DefaultStyle="{StaticResource DefaultSettingsExpanderItemStyle}"
-        x:Key="SettingsExpanderItemStyleSelector" />
+        DefaultStyle="{StaticResource DefaultSettingsExpanderItemStyle}" />
 
-    <Style
-        BasedOn="{StaticResource {x:Static ui:ThemeKeys.DefaultToggleButtonStyleKey}}"
-        TargetType="ToggleButton"
-        x:Key="SettingsExpanderHeaderDownStyle">
+    <Style x:Key="SettingsExpanderHeaderDownStyle" TargetType="ToggleButton" 
+        BasedOn="{StaticResource {x:Static ui:ThemeKeys.DefaultToggleButtonStyleKey}}">
         <Setter Property="Padding" Value="0" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
 
                     <ui:ElevationBorder
+                        x:Name="Background"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
-                        SnapsToDevicePixels="True"
-                        x:Name="Background">
+                        SnapsToDevicePixels="True">
                         <Border
-                            CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+                            x:Name="Border"
                             Padding="{TemplateBinding Padding}"
-                            x:Name="Border">
+                            CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <ui:ContentPresenterEx
-                                    Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                <ui:ContentPresenterEx Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
 
-                                <ContentControl
-                                    Grid.Column="1"
-                                    Height="{StaticResource SettingsExpanderChevronButtonHeight}"
-                                    HorizontalAlignment="Center"
-                                    HorizontalContentAlignment="Center"
-                                    IsTabStop="False"
-                                    Margin="0,0,8,0"
-                                    ToolTipService.ToolTip="{StaticResource SettingsExpanderChevronToolTip}"
-                                    VerticalAlignment="Center"
-                                    VerticalContentAlignment="Center"
-                                    Width="{StaticResource SettingsExpanderChevronButtonWidth}"
-                                    x:Name="ExpandCollapseChevronBorder">
-                                    <ui:FontIcon
-                                        FontSize="16"
-                                        Icon="{x:Static ui:FluentSystemIcons.ChevronDown_16_Regular}"
-                                        RenderTransformOrigin="0.5 0.5">
+                                <ContentControl x:Name="ExpandCollapseChevronBorder"
+                                        Grid.Column="1"
+                                        Width="{StaticResource SettingsExpanderChevronButtonWidth}"
+                                        Height="{StaticResource SettingsExpanderChevronButtonHeight}"
+                                        Margin="0,0,8,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        IsTabStop="False"
+                                        ToolTipService.ToolTip="{StaticResource SettingsExpanderChevronToolTip}">
+                                    <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.ChevronDown_16_Regular}"
+                                             FontSize="16" RenderTransformOrigin="0.5 0.5">
                                         <FrameworkElement.RenderTransform>
-                                            <RotateTransform Angle="0" x:Name="ExpandCollapseChevronRotateTransform" />
+                                            <RotateTransform x:Name="ExpandCollapseChevronRotateTransform" Angle="0" />
                                         </FrameworkElement.RenderTransform>
                                     </ui:FontIcon>
                                 </ContentControl>
@@ -107,38 +98,39 @@
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
                                         <DoubleAnimation
-                                            Duration="0:0:0.2"
                                             Storyboard.TargetName="ExpandCollapseChevronRotateTransform"
                                             Storyboard.TargetProperty="Angle"
-                                            To="180.0" />
+                                            To="180.0"
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Unchecked">
                                     <Storyboard>
                                         <DoubleAnimation
-                                            Duration="0:0:0.2"
                                             Storyboard.TargetName="ExpandCollapseChevronRotateTransform"
                                             Storyboard.TargetProperty="Angle"
-                                            To="0.0" />
+                                            To="0.0"
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+
                     </ui:ElevationBorder>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
-                            <Setter Property="BorderBrush" TargetName="Background" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
+                            <Setter TargetName="Background" Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
+                            <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
                             <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPointerOver}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" TargetName="Background" Value="{DynamicResource ButtonBackgroundPressed}" />
-                            <Setter Property="BorderBrush" TargetName="Background" Value="{DynamicResource ButtonBorderBrushPressed}" />
+                            <Setter TargetName="Background" Property="Background" Value="{DynamicResource ButtonBackgroundPressed}" />
+                            <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPressed}" />
                             <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" TargetName="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
-                            <Setter Property="BorderBrush" TargetName="Background" Value="{DynamicResource ButtonBorderBrushDisabled}" />
+                            <Setter TargetName="Background" Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
+                            <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
                             <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -148,17 +140,17 @@
         </Setter>
     </Style>
 
-    <ikw:CornerRadiusFilterConverter Filter="Top" x:Key="TopCornerRadiusFilterConverter" />
-    <ikw:CornerRadiusFilterConverter Filter="Right" x:Key="RightCornerRadiusFilterConverter" />
-    <ikw:CornerRadiusFilterConverter Filter="Bottom" x:Key="BottomCornerRadiusFilterConverter" />
-    <ikw:CornerRadiusFilterConverter Filter="Left" x:Key="LeftCornerRadiusFilterConverter" />
+    <ikw:CornerRadiusFilterConverter x:Key="TopCornerRadiusFilterConverter" Filter="Top" />
+    <ikw:CornerRadiusFilterConverter x:Key="RightCornerRadiusFilterConverter" Filter="Right" />
+    <ikw:CornerRadiusFilterConverter x:Key="BottomCornerRadiusFilterConverter" Filter="Bottom" />
+    <ikw:CornerRadiusFilterConverter x:Key="LeftCornerRadiusFilterConverter" Filter="Left" />
 
     <ikw:SizeToRectConverter x:Key="SizeToRectConverter" />
 
     <sys:TimeSpan x:Key="ExpandAnimationDuration">0:0:0.333</sys:TimeSpan>
     <sys:TimeSpan x:Key="CollapseAnimationDuration">0:0:0.167</sys:TimeSpan>
 
-    <Style TargetType="Expander" x:Key="SettingsExpanderExpanderStyle">
+    <Style x:Key="SettingsExpanderExpanderStyle" TargetType="Expander">
         <Setter Property="Background" Value="{DynamicResource ExpanderContentBackground}" />
         <Setter Property="MinWidth" Value="{DynamicResource FlyoutThemeMinWidth}" />
         <Setter Property="MinHeight" Value="{StaticResource ExpanderMinHeight}" />
@@ -175,14 +167,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Expander">
-                    <Grid MaxWidth="{TemplateBinding MaxWidth}" MinWidth="{TemplateBinding MinWidth}">
+                    <Grid MinWidth="{TemplateBinding MinWidth}" MaxWidth="{TemplateBinding MaxWidth}">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" x:Name="Row0" />
-                            <RowDefinition Height="*" x:Name="Row1" />
+                            <RowDefinition x:Name="Row0" Height="Auto" />
+                            <RowDefinition x:Name="Row1" Height="*" />
                         </Grid.RowDefinitions>
 
                         <!--  The clip is a composition clip applied in code  -->
-                        <Border Grid.Row="1" x:Name="ExpanderContentClip">
+                        <Border x:Name="ExpanderContentClip" Grid.Row="1">
 
                             <Border.Clip>
                                 <RectangleGeometry>
@@ -191,9 +183,9 @@
                                             <Binding Source="0" />
                                             <Binding Source="0" />
                                             <Binding
-                                                RelativeSource="{RelativeSource Mode=TemplatedParent}"
                                                 Mode="OneWay"
-                                                Path="ActualWidth" />
+                                                Path="ActualWidth"
+                                                RelativeSource="{RelativeSource Mode=TemplatedParent}" />
                                             <Binding
                                                 ElementName="ContentPresenter"
                                                 Mode="OneWay"
@@ -204,50 +196,49 @@
                             </Border.Clip>
 
                             <ikw:ClippedContent
+                                x:Name="ExpanderContent"
+                                MinHeight="{DynamicResource SettingsExpanderContentMinHeight}"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{StaticResource ExpanderContentDownBorderThickness}"
                                 CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius,
                                                                Converter={StaticResource BottomCornerRadiusFilterConverter}}"
-                                HorizontalAlignment="Stretch"
-                                MinHeight="{DynamicResource SettingsExpanderContentMinHeight}"
-                                Padding="{TemplateBinding Padding}"
-                                VerticalAlignment="Stretch"
-                                Visibility="Collapsed"
-                                x:Name="ExpanderContent">
+                                Visibility="Collapsed">
                                 <FrameworkElement.RenderTransform>
                                     <TranslateTransform x:Name="ExpanderContentTranslation" />
                                 </FrameworkElement.RenderTransform>
                                 <ui:ContentPresenterEx
+                                    x:Name="ContentPresenter"
+                                    Margin="0,-2,0,0"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     Content="{TemplateBinding Content}"
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    Margin="0,-2,0,0"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    x:Name="ContentPresenter" />
+                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
                             </ikw:ClippedContent>
                         </Border>
 
-                        <ToggleButton
-                            AutomationProperties.AutomationId="ExpanderToggleButton"
-                            AutomationProperties.Name="{TemplateBinding AutomationProperties.Name}"
-                            BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
-                            BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}"
-                            Content="{TemplateBinding Header}"
-                            ContentTemplate="{TemplateBinding HeaderTemplate}"
-                            ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
-                            HorizontalAlignment="Stretch"
-                            HorizontalContentAlignment="{StaticResource ExpanderHeaderHorizontalContentAlignment}"
-                            IsChecked="{Binding Path=IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                            IsEnabled="{TemplateBinding IsEnabled}"
-                            IsTabStop="True"
-                            MinHeight="{TemplateBinding MinHeight}"
-                            Padding="0"
-                            Style="{StaticResource SettingsExpanderHeaderDownStyle}"
-                            Tag="{TemplateBinding chelper:ControlHelper.CornerRadius}"
-                            VerticalContentAlignment="{StaticResource ExpanderHeaderVerticalContentAlignment}"
-                            ui:ControlHelper.CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
-                            x:Name="ExpanderHeader" />
+                        <ToggleButton x:Name="ExpanderHeader"
+                                      MinHeight="{TemplateBinding MinHeight}"
+                                      Padding="0"
+                                      HorizontalAlignment="Stretch"
+                                      HorizontalContentAlignment="{StaticResource ExpanderHeaderHorizontalContentAlignment}"
+                                      VerticalContentAlignment="{StaticResource ExpanderHeaderVerticalContentAlignment}"
+                                      AutomationProperties.AutomationId="ExpanderToggleButton"
+                                      AutomationProperties.Name="{TemplateBinding AutomationProperties.Name}"
+                                      BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
+                                      BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}"
+                                      Content="{TemplateBinding Header}"
+                                      ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                      ui:ControlHelper.CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
+                                      IsChecked="{Binding Path=IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      IsEnabled="{TemplateBinding IsEnabled}"
+                                      IsTabStop="True"
+                                      Style="{StaticResource SettingsExpanderHeaderDownStyle}"
+                                      Tag="{TemplateBinding chelper:ControlHelper.CornerRadius}" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
@@ -256,7 +247,7 @@
                                 <Condition Property="ExpandDirection" Value="Down" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter Property="chelper:ControlHelper.CornerRadius" TargetName="ExpanderHeader" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
+                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -265,7 +256,7 @@
                                 <Condition Property="ExpandDirection" Value="Right" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter Property="chelper:ControlHelper.CornerRadius" TargetName="ExpanderHeader" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />
+                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -274,7 +265,7 @@
                                 <Condition Property="ExpandDirection" Value="Up" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter Property="chelper:ControlHelper.CornerRadius" TargetName="ExpanderHeader" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
+                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -283,7 +274,7 @@
                                 <Condition Property="ExpandDirection" Value="Left" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter Property="chelper:ControlHelper.CornerRadius" TargetName="ExpanderHeader" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource RightCornerRadiusFilterConverter}}" />
+                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource RightCornerRadiusFilterConverter}}" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
@@ -292,7 +283,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="local:SettingsExpander" x:Key="DefaultSettingsExpanderStyle">
+    <Style x:Key="DefaultSettingsExpanderStyle" TargetType="local:SettingsExpander">
         <Style.Setters>
             <Setter Property="Background" Value="{DynamicResource SettingsCardBackground}" />
             <Setter Property="Foreground" Value="{DynamicResource SettingsCardForeground}" />
@@ -317,14 +308,16 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="local:SettingsExpander">
                         <Expander
+                            MinWidth="{TemplateBinding MinWidth}"
+                            MinHeight="{TemplateBinding MinHeight}"
                             HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             IsExpanded="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                            MinHeight="{TemplateBinding MinHeight}"
-                            MinWidth="{TemplateBinding MinWidth}"
                             Style="{StaticResource SettingsExpanderExpanderStyle}">
                             <Expander.Header>
                                 <local:SettingsCard
+                                    Padding="{StaticResource SettingsExpanderHeaderPadding}"
+                                    VerticalAlignment="Center"
                                     Background="{x:Null}"
                                     BorderThickness="0"
                                     Content="{TemplateBinding Content}"
@@ -332,12 +325,10 @@
                                     FontFamily="{TemplateBinding FontFamily}"
                                     Header="{TemplateBinding Header}"
                                     HeaderIcon="{TemplateBinding HeaderIcon}"
-                                    IsClickEnabled="False"
-                                    Padding="{StaticResource SettingsExpanderHeaderPadding}"
-                                    VerticalAlignment="Center" />
+                                    IsClickEnabled="False" />
                             </Expander.Header>
                             <Expander.Content>
-                                <Grid x:Name="SettingsExpanderContent">
+                                <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
@@ -345,16 +336,16 @@
                                     </Grid.RowDefinitions>
                                     <ContentPresenter Content="{TemplateBinding ItemsHeader}" />
                                     <local:ItemsRepeater
+                                        x:Name="PART_ItemsRepeater"
                                         Grid.Row="1"
-                                        ItemTemplate="{Binding ItemTemplate, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                        x:Name="PART_ItemsRepeater">
+                                        ItemTemplate="{Binding ItemTemplate, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}">
                                         <local:ItemsRepeater.Layout>
                                             <local:StackLayout Orientation="Vertical" />
                                         </local:ItemsRepeater.Layout>
                                     </local:ItemsRepeater>
                                     <!--<ItemsPresenter Grid.Row="1" />-->
 
-                                    <ContentPresenter Content="{TemplateBinding ItemsFooter}" Grid.Row="2" />
+                                    <ContentPresenter Grid.Row="2" Content="{TemplateBinding ItemsFooter}" />
                                 </Grid>
                             </Expander.Content>
                         </Expander>
