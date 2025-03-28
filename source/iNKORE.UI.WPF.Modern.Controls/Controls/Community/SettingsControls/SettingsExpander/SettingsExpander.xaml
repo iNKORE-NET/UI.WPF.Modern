@@ -153,8 +153,10 @@
     <ikw:CornerRadiusFilterConverter Filter="Bottom" x:Key="BottomCornerRadiusFilterConverter" />
     <ikw:CornerRadiusFilterConverter Filter="Left" x:Key="LeftCornerRadiusFilterConverter" />
 
-    <Duration x:Key="ExpandAnimationDuration">0:0:0.333</Duration>
-    <Duration x:Key="CollapseAnimationDuration">0:0:0.167</Duration>
+    <ikw:SizeToRectConverter x:Key="SizeToRectConverter" />
+
+    <sys:TimeSpan x:Key="ExpandAnimationDuration">0:0:0.333</sys:TimeSpan>
+    <sys:TimeSpan x:Key="CollapseAnimationDuration">0:0:0.167</sys:TimeSpan>
 
     <Style TargetType="Expander" x:Key="SettingsExpanderExpanderStyle">
         <Setter Property="Background" Value="{DynamicResource ExpanderContentBackground}" />
@@ -181,6 +183,26 @@
 
                         <!--  The clip is a composition clip applied in code  -->
                         <Border Grid.Row="1" x:Name="ExpanderContentClip">
+
+                            <Border.Clip>
+                                <RectangleGeometry>
+                                    <RectangleGeometry.Rect>
+                                        <MultiBinding Converter="{StaticResource SizeToRectConverter}">
+                                            <Binding Source="0" />
+                                            <Binding Source="0" />
+                                            <Binding
+                                                ElementName="ContentPresenter"
+                                                Mode="OneWay"
+                                                Path="ActualWidth" />
+                                            <Binding
+                                                ElementName="ContentPresenter"
+                                                Mode="OneWay"
+                                                Path="ActualHeight" />
+                                        </MultiBinding>
+                                    </RectangleGeometry.Rect>
+                                </RectangleGeometry>
+                            </Border.Clip>
+
                             <ikw:ClippedContent
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{StaticResource ExpanderContentDownBorderThickness}"
@@ -199,7 +221,8 @@
                                     ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     Margin="0,-2,0,0"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    x:Name="ContentPresenter" />
                             </ikw:ClippedContent>
                         </Border>
 
