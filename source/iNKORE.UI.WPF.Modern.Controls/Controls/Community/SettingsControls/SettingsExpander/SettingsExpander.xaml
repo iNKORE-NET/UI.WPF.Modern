@@ -191,7 +191,7 @@
                                             <Binding Source="0" />
                                             <Binding Source="0" />
                                             <Binding
-                                                ElementName="ContentPresenter"
+                                                RelativeSource="{RelativeSource Mode=TemplatedParent}"
                                                 Mode="OneWay"
                                                 Path="ActualWidth" />
                                             <Binding
