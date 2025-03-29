@@ -249,10 +249,6 @@
                             <Setter TargetName="Title" Property="Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}" />
                             <Setter TargetName="Message" Property="Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}" />
                         </Trigger>
-
-                        <Trigger SourceName="Message" Property="ui:TextBlockHelper.IsTextTrimmed" Value="True">
-                            <Setter TargetName="InfoPanel" Property="ForceVertical" Value="true" />
-                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
