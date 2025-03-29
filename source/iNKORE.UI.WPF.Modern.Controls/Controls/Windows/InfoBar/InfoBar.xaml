@@ -28,12 +28,11 @@
                         SnapsToDevicePixels="True">
                         <!--  Background is used here so that it overrides the severity status color if set.  -->
                         <Border
-                            MinHeight="{DynamicResource InfoBarMinHeight}"
                             Padding="{DynamicResource InfoBarContentRootPadding}"
                             HorizontalAlignment="Stretch"
                             Background="{TemplateBinding Background}"
                             CornerRadius="{TemplateBinding CornerRadius}">
-                            <Grid>
+                            <Grid MinHeight="{DynamicResource InfoBarMinHeight}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <!--  Icon  -->
