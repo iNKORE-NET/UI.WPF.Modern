@@ -3,12 +3,14 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -1278,6 +1280,64 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 ChangeBannerText(BannerText);
                 bannerGrid?.BeginStoryboard(showBannerStoryboard);
             }
+        }
+    }
+
+    public class DoubleValueHolder : DependencyObject
+    {
+        public static readonly DependencyProperty XProperty =
+        DependencyProperty.Register("X", typeof(double), typeof(DoubleValueHolder), new PropertyMetadata(0.0));
+
+        public static readonly DependencyProperty YProperty =
+            DependencyProperty.Register("Y", typeof(double), typeof(DoubleValueHolder), new PropertyMetadata(0.0));
+
+        public static readonly DependencyProperty ZProperty =
+            DependencyProperty.Register("Z", typeof(double), typeof(DoubleValueHolder), new PropertyMetadata(0.0));
+
+        public double X
+        {
+            get { return (double)GetValue(XProperty); }
+            set { SetValue(XProperty, value); }
+        }
+
+        public double Y
+        {
+            get { return (double)GetValue(YProperty); }
+            set { SetValue(YProperty, value); }
+        }
+
+        public double Z
+        {
+            get { return (double)GetValue(ZProperty); }
+            set { SetValue(ZProperty, value); }
+        }
+    }
+
+    public class MultiplyConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            var first = values[0];
+
+            if (first is not double result)
+            {
+                return values;
+            }
+
+            for (int index = 1; index < values.Length; index++)
+            {
+                if (values[index] is double current)
+                {
+                    result *= current;
+                }
+            }
+
+            return result;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 }

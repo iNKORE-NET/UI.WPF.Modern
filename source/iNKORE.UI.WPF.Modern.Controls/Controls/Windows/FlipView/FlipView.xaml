@@ -193,6 +193,7 @@
                             </Grid.Resources>
                             <local:TransitioningContentControl
                                 x:Name="PART_Presenter"
+                                RestartTransitionOnContentChange="True"
                                 Padding="{TemplateBinding Padding}"
                                 Content="{TemplateBinding SelectedItem}"
                                 ContentStringFormat="{TemplateBinding ItemStringFormat}"
