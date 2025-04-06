@@ -91,6 +91,9 @@
                                CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="CommonStates">
+                                    <ui:VisualStateGroupListener.Listener>
+                                        <ui:VisualStateGroupListener x:Name="CommonStatesListener" />
+                                    </ui:VisualStateGroupListener.Listener>
                                     <VisualState x:Name="Normal" />
                                     <VisualState x:Name="PointerOver">
                                         <!--<VisualState.Setters>
@@ -376,7 +379,7 @@
 
                         <ControlTemplate.Triggers>
                             <!-- MouseOver State -->
-                            <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger SourceName="CommonStatesListener" Property="CurrentStateName" Value="PointerOver">
                                 <Trigger.Setters>
                                     <Setter TargetName="PART_RootBorder" Property="Background" Value="{DynamicResource SettingsCardBackgroundPointerOver}" />
                                     <Setter TargetName="PART_RootBorder" Property="BorderBrush" Value="{DynamicResource SettingsCardBorderBrushPointerOver}" />
@@ -386,7 +389,7 @@
                             </Trigger>
 
                             <!-- Pressed State -->
-                            <Trigger Property="IsPressed" Value="True">
+                            <Trigger SourceName="CommonStatesListener" Property="CurrentStateName" Value="Pressed">
                                 <Setter TargetName="PART_RootBorder" Property="Background" Value="{DynamicResource SettingsCardBackgroundPressed}" />
                                 <Setter TargetName="PART_RootBorder" Property="BorderBrush" Value="{DynamicResource SettingsCardBorderBrushPressed}" />
                                 <Setter TargetName="PART_HeaderIconPresenter" Property="Foreground" Value="{DynamicResource SettingsCardForegroundPressed}" />
@@ -395,7 +398,7 @@
                             </Trigger>
 
                             <!-- Disabled State -->
-                            <Trigger Property="IsEnabled" Value="False">
+                            <Trigger  SourceName="CommonStatesListener" Property="CurrentStateName" Value="Disabled">
                                 <Setter TargetName="PART_ActionIconPresenter" Property="TextElement.Foreground" Value="{DynamicResource SettingsCardForegroundDisabled}" />
                                 <Setter TargetName="PART_HeaderIconPresenter" Property="Foreground" Value="{DynamicResource SettingsCardForegroundDisabled}" />
                                 <Setter TargetName="PART_HeaderPresenter" Property="Foreground" Value="{DynamicResource SettingsCardForegroundDisabled}" />
