@@ -511,6 +511,7 @@
                         <Popup
                             x:Name="PART_Popup"
                             AllowsTransparency="True"
+                            CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}"
                             IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
                             Placement="Bottom"
                             PlacementTarget="{Binding ElementName=Background}"
