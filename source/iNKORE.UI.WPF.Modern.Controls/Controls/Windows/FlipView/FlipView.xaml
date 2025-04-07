@@ -21,7 +21,7 @@
         <Setter Property="Background" Value="{DynamicResource FlipViewBackground}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="KeyboardNavigation.TabNavigation" Value="Once" />
-        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="IsTabStop" Value="True" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
         <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
@@ -273,7 +273,7 @@
                                 x:Name="PART_BackButton"
                                 Width="16"
                                 Height="38"
-                                Margin="1"
+                                Margin="2,1"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 ui:ControlHelper.CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
@@ -285,7 +285,7 @@
                                 x:Name="PART_ForwardButton"
                                 Width="16"
                                 Height="38"
-                                Margin="1"
+                                Margin="2,1"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 ui:ControlHelper.CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
@@ -297,7 +297,7 @@
                                 x:Name="PART_UpButton"
                                 Width="38"
                                 Height="16"
-                                Margin="1"
+                                Margin="1,2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Top"
                                 ui:ControlHelper.CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
@@ -309,7 +309,7 @@
                                 x:Name="PART_DownButton"
                                 Width="38"
                                 Height="16"
-                                Margin="1"
+                                Margin="1,2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Bottom"
                                 ui:ControlHelper.CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
@@ -320,6 +320,7 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+
                         <DataTrigger Binding="{Binding Path=(SystemParameters.ClientAreaAnimation)}" Value="False">
                             <Setter Property="LeftTransition" Value="Normal" />
                             <Setter Property="RightTransition" Value="Normal" />
