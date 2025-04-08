@@ -1380,6 +1380,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             if (m_tpButtonsFadeOutTimer is not null)
             {
+                m_tpButtonsFadeOutTimer.Stop();
                 m_tpButtonsFadeOutTimer.Start();
             }
         }
