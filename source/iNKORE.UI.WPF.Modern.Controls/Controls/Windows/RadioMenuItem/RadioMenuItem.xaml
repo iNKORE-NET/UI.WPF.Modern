@@ -35,6 +35,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{DynamicResource ControlCornerRadius}"
                         SnapsToDevicePixels="true">
                         <Grid x:Name="AnimationRoot">
                             <Grid.ColumnDefinitions>
