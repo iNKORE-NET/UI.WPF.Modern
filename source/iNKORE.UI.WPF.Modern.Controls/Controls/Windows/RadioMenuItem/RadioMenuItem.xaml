@@ -77,7 +77,7 @@
                             <TextBlock
                                 x:Name="KeyboardAcceleratorTextBlock"
                                 Grid.Column="3"
-                                Margin="24,0,0,0"
+                                Margin="24,0,2,0"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 Foreground="{DynamicResource MenuFlyoutItemKeyboardAcceleratorTextForeground}"
