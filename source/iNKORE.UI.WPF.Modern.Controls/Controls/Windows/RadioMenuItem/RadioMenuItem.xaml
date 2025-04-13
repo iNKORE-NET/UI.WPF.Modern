@@ -45,11 +45,11 @@
                             </Grid.ColumnDefinitions>
                             <ui:FontIconFallback
                                 x:Name="CheckGlyph"
-                                Width="16"
+                                Width="13"
                                 Margin="0,0,12,0"
                                 Data="{StaticResource RadioBullet}"
                                 FontFamily="{DynamicResource SymbolThemeFontFamily}"
-                                FontSize="16"
+                                FontSize="13"
                                 Foreground="{DynamicResource ToggleMenuFlyoutItemCheckGlyphForeground}"
                                 Opacity="0" />
                             <Viewbox
