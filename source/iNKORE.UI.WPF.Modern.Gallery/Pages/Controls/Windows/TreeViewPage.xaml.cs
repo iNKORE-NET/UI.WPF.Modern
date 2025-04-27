@@ -348,7 +348,7 @@ public class ExplorerItem : INotifyPropertyChanged
 
     <DataTemplate x:Key=""FileTemplate"">
         <StackPanel Orientation=""Horizontal"">
-            <Image Width=""20"" Source=""/Assets/file.png"" />
+            <ui:FontIcon Icon=""{{x:Static ui:SegoeFluentIcons.Document}}"" FontSize=""20""/>
             <TextBlock Margin=""0,0,10,0"" />
             <TextBlock Text=""{{Binding Name}}"" />
         </StackPanel>
