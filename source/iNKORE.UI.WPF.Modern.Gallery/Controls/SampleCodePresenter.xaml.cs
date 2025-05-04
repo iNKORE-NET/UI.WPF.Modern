@@ -2,6 +2,7 @@
 using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Editing;
 using ICSharpCode.AvalonEdit.Highlighting;
+using iNKORE.UI.WPF.Modern.Gallery.Helpers;
 using SamplesCommon;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MessageBox = iNKORE.UI.WPF.Modern.Controls.MessageBox;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.Controls
 {
@@ -33,25 +35,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
         {
             get { return (string)GetValue(CodeProperty); }
             set { SetValue(CodeProperty, value); }
-        }
-
-        public static readonly DependencyProperty CodeSourceFileProperty = DependencyProperty.Register("CodeSourceFile", typeof(object), typeof(SampleCodePresenter), new PropertyMetadata(null, OnCodeSourceFilePropertyChanged));
-        public string CodeSourceFile
-        {
-            get 
-            {
-                var value = GetValue(CodeSourceFileProperty);
-
-                if(value is Uri uri)
-                {
-                    return uri.OriginalString;
-                }
-                else
-                {
-                    return value?.ToString();
-                }
-            }
-            set { SetValue(CodeSourceFileProperty, value); }
         }
 
         public static readonly DependencyProperty IsCSharpSampleProperty = DependencyProperty.Register("IsCSharpSample", typeof(bool), typeof(SampleCodePresenter), new PropertyMetadata(false, OnCodeSourceFilePropertyChanged));
@@ -78,9 +61,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             }
         }
 
-        public bool IsEmpty => string.IsNullOrEmpty(Code) && CodeSourceFile == null;
+        public bool IsEmpty => string.IsNullOrEmpty(Code);
 
-        private string actualCode = "";
         private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
 
         public SampleCodePresenter()
@@ -110,7 +92,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
 
         private void ReevaluateVisibility()
         {
-            if (string.IsNullOrEmpty(Code) && CodeSourceFile == null)
+            if (string.IsNullOrEmpty(Code))
             {
                 Visibility = Visibility.Collapsed;
             }
@@ -155,56 +137,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             GenerateSyntaxHighlightedContent();
         }
 
-        private Uri GetDerivedSource(string rawSource)
-        {
-            Uri derivedSource;
-            // Get the full path of the source string
-            string concatString = rawSource;
-
-            if (concatString.StartsWith("/"))
-            {
-                derivedSource = new Uri($"/ControlPagesSampleCode{concatString}", UriKind.Relative);
-            }
-            else
-            {
-                derivedSource = new Uri($"/ControlPagesSampleCode/{concatString}", UriKind.Relative);
-            }
-
-            return derivedSource;
-        }
-
         private void GenerateSyntaxHighlightedContent()
         {
-            if (!string.IsNullOrEmpty(Code))
-            {
-                FormatAndRenderSampleFromString(Code, CodePresenter, IsCSharpSample ? Languages.CSharp : Languages.Xml);
-            }
-            else
-            {
-                FormatAndRenderSampleFromFile(CodeSourceFile, CodePresenter, IsCSharpSample ? Languages.CSharp : Languages.Xml);
-            }
+            FormatAndRenderSampleFromString(Code, CodePresenter, IsCSharpSample ? Languages.CSharp : Languages.Xml);
         }
 
-        private async void FormatAndRenderSampleFromFile(string source, TextEditor presenter, ILanguage highlightLanguage)
-        {
-            if (source != null && source.EndsWith("txt"))
-            {
-                Uri derivedSource = GetDerivedSource(source);
-                var file = Application.GetResourceStream(derivedSource);
-                string sampleString = string.Empty;
-
-                using (var reader = new StreamReader(file.Stream))
-                {
-                    await Task.Run(() => sampleString = reader.ReadToEnd());
-                }
-
-                FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
-            }
-            else
-            {
-                presenter.Visibility = Visibility.Collapsed;
-            }
-        }
 
         private void FormatAndRenderSampleFromString(string sampleString, TextEditor presenter, ILanguage highlightLanguage)
         {
@@ -222,37 +159,24 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             if (presenter.SyntaxHighlighting != highlighter)
             presenter.SyntaxHighlighting = highlighter;
             
-            
-            if (sampleString != presenter.Text)
-                presenter.Text = RemoveLeadingAndTrailingEmptyLines(sampleString);
+            var formattedText = StringHelper.RemoveLeadingAndTrailingEmptyLines(sampleString);
+            if (formattedText != presenter.Text)
+                presenter.Text = formattedText;
 
             presenter.Visibility = Visibility.Visible;
-        }
-
-        static string RemoveLeadingAndTrailingEmptyLines(string text)
-        {
-            var lines = text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            var trimmedLines = lines.SkipWhile(string.IsNullOrWhiteSpace)
-                                    .Reverse()
-                                    .SkipWhile(string.IsNullOrWhiteSpace)
-                                    .Reverse();
-            return string.Join(Environment.NewLine, trimmedLines);
-        }
-
-        private CodeColorizer GenerateRichTextFormatter()
-        {
-            var formatter = new CodeColorizer();
-            return formatter;
         }
 
         private void CopyCodeButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Clipboard.SetText(actualCode);
+                Clipboard.SetText(CodePresenter.Text);
                 VisualStateManager.GoToState(this, "ConfirmationDialogVisible", false);
             }
-            catch { }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Unable to Perform Copy", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
             // Automatically close teachingtip after 1 seconds
             this.RunOnUIThread(async () =>

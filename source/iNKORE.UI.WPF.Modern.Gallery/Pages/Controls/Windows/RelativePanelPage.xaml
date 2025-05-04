@@ -14,7 +14,8 @@
         VerticalAlignment="Top"
         ExampleHeight="Auto"
         HeaderText="A RelativePanel control.">
-        <ui:RelativePanel Width="300" HorizontalAlignment="Left">
+        <ui:RelativePanel Width="300" Height="50"
+             HorizontalAlignment="Left">
             <Rectangle
                 x:Name="Rectangle1"
                 Width="50"

@@ -55,7 +55,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             Example1.Xaml = Example1Xaml;
             Example2.Xaml = Example2Xaml;
             Example3.Xaml = Example3Xaml;
-            Example4.Xaml = Example4Xaml;
             Example5.Xaml = Example5Xaml;
             Example6.Xaml = Example6Xaml;
         }

@@ -125,21 +125,15 @@
                                     </Expander.Header>
 
                                     <StackPanel Margin="8,0">
-                                        <controls:SampleCodePresenter
-                                            x:Name="XamlPresenter"
+                                        <controls:SampleCodePresenter x:Name="XamlPresenter"
                                             Code="{TemplateBinding Xaml}"
-                                            CodeSourceFile="{TemplateBinding XamlSource}"
                                             Substitutions="{TemplateBinding Substitutions}" />
-                                        <Border
-                                            x:Name="SampleCodeSeparator"
+                                        <Border x:Name="SampleCodeSeparator"
                                             Margin="-24,20" Height="1"
                                             Background="{DynamicResource {x:Static ui:ThemeKeys.CardStrokeColorDefaultBrushKey}}"
                                             Visibility="Collapsed" />
-                                        <controls:SampleCodePresenter
-                                            x:Name="CSharpPresenter"
-                                            Code="{TemplateBinding CSharp}"
-                                            CodeSourceFile="{TemplateBinding CSharpSource}"
-                                            IsCSharpSample="true"
+                                        <controls:SampleCodePresenter x:Name="CSharpPresenter"
+                                            Code="{TemplateBinding CSharp}" IsCSharpSample="true"
                                             Substitutions="{TemplateBinding Substitutions}" />
                                     </StackPanel>
                                 </Expander>

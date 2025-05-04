@@ -8,7 +8,10 @@
   iNKORE.UI.WPF.Modern
 </h1>
 
-<p align="center">Give us a star if you like this!</p>
+<p align="center">
+    <strong>AKA. iUWM</strong>.
+    Give us a star if you like this!
+</p>
 
 <p align="center">
   <a href="https://github.com/iNKORE-NET/UI.WPF.Modern/releases"><img src="https://img.shields.io/github/downloads/iNKORE-NET/UI.WPF.Modern/total?color=%239F7AEA" alt="Release Downloads"></a>
@@ -62,6 +65,8 @@
         </picture>
     </a>
 
+- This project is named `iNKORE.UI.WPF.Modern`. You can call it as `iUWM` for short if convenient. FYI, iNKORE is the name of the studio (company) that maintains this project. THIS PROJECT is **NOT** called ~~iNKORE~~, ~~iNKORE UI~~, or anything else.
+
 # 🙋🏻‍♂️ Contribution
 
 - Want to contribute? The team encourages community feedback and contributions. If the project is not working properly, please file a report. We welcome any issues and pull requests submitted on GitHub following our contribution guidelines.
@@ -79,7 +84,7 @@
 > **请不要继续在 issues 板块下发表任何无意义且无法促进此项目持续发展的内容**。在提交 issue 之前，请仔细思考你要发布的内容**是否合理**，如果不能，请不要浪费其他人的时间；同时请考虑**开发者能否修复/实现**，如果不能，请自己提交 PR 而不是 issue。
 > 在交流时请尊重他人，不要使用不文明用语。请不要催促或强求开发者和其他贡献者，他们是一群热爱开源的志愿者，不是你的私人雇员！
 >
-> 尽可能在除国内社交平台外的其他地方使用英语而不是中文，我们会优先处理英文内容。
+> 现在我们已经不再接受使用新的任何使用除英语 (美国) 之外的任何语言提交的任何议题 (包括但不限于 Issue，PR 和 Discussion)！**对于使用中文或其它语言的议题和讨论将被关闭或删除！如果不会说英语，请使用 Google Translator 等翻译工具自行翻译！**
 
 # 🙏🏻 Special Thanks to
 

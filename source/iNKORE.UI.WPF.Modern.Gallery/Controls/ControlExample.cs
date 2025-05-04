@@ -165,30 +165,12 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             set { SetValue(XamlProperty, value); }
         }
 
-        public static readonly DependencyProperty XamlSourceProperty = DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
-
-        [Obsolete("Use Xaml instead.")]
-        public object XamlSource
-        {
-            get { return (object)GetValue(XamlSourceProperty); }
-            set { SetValue(XamlSourceProperty, value); }
-        }
-
         public static readonly DependencyProperty CSharpProperty = DependencyProperty.Register("CSharp", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
 
         public string CSharp
         {
             get { return (string)GetValue(CSharpProperty); }
             set { SetValue(CSharpProperty, value); }
-        }
-
-        public static readonly DependencyProperty CSharpSourceProperty = DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
-
-        [Obsolete("Use CSharp instead.")]
-        public string CSharpSource
-        {
-            get { return GetValue(CSharpSourceProperty) as string; }
-            set { SetValue(CSharpSourceProperty, value); }
         }
 
         public static readonly DependencyProperty SubstitutionsProperty = DependencyProperty.Register("Substitutions", typeof(ObservableCollection<ControlExampleSubstitution>), typeof(ControlExample), new PropertyMetadata(null));
@@ -447,17 +429,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         string GetBestScreenshotName()
         {
             string imageName = "Screenshot.png";
-            if (XamlSource != null)
-            {
-                // Most of them don't have this, but the xaml source name is a really good file name
-                string xamlSource = XamlSource.ToString();
-                string fileName = Path.GetFileNameWithoutExtension(xamlSource);
-                if (!String.IsNullOrWhiteSpace(fileName))
-                {
-                    imageName = fileName + ".png";
-                }
-            }
-            else if (!String.IsNullOrWhiteSpace(Name))
+            
+            if (!String.IsNullOrWhiteSpace(Name))
             {
                 // Put together the page name and the control example name
                 UIElement uie = this;

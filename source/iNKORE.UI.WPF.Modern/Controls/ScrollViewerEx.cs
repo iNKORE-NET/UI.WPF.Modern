@@ -99,6 +99,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         #endregion
 
+
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             LastVerticalLocation = VerticalOffset;
@@ -132,10 +133,11 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             Orientation Direction = GetDirection();
             ScrollViewerBehavior.SetIsAnimating(this, true);
+            
 
             if (Direction == Orientation.Vertical)
             {
-                if (VerticalScrollBarVisibility != ScrollBarVisibility.Disabled)
+                if (this.ScrollableHeight > 0)
                 {
                     e.Handled = true;
                 }
@@ -167,7 +169,10 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
             else
             {
-                if (HorizontalScrollBarVisibility != ScrollBarVisibility.Disabled)
+                if (this.ScrollableWidth > 0)
+                {
+                    e.Handled = true;
+                }
                 {
                     e.Handled = true;
                 }
