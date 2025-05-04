@@ -1,4 +1,0 @@
-﻿private void TestButtonClick2(object sender, RoutedEventArgs e)
-{
-    ToggleThemeTeachingTip2.IsOpen = true;
-}

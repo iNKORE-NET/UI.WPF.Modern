@@ -15,45 +15,38 @@
     <Page.Resources>
     </Page.Resources>
     <StackPanel>
-        <local:ControlExample x:Name="Example3" HeaderText="A command bar with labels on the side free floating in a page">
+        <local:ControlExample x:Name="Example1" HeaderText="A command bar with labels on the side free floating in a page">
             <local:ControlExample.Example>
                 <StackPanel>
-                    <ui:CommandBar
-                        x:Name="PrimaryCommandBar"
-                        DefaultLabelPosition="Right"
-                        IsOpen="False">
-                        <ui:AppBarButton
-                            x:Name="AddButton"
-                            Click="OnElementClicked"
-                            Label="Add" >
+                    <ui:CommandBar x:Name="PrimaryCommandBar"
+                        DefaultLabelPosition="Right" IsOpen="False">
+                        <ui:AppBarButton x:Name="AddButton"
+                            Click="OnElementClicked" Label="Add">
                             <ui:AppBarButton.Icon>
                                 <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Add}"/>
                             </ui:AppBarButton.Icon>
-
                         </ui:AppBarButton>
-                        <ui:AppBarButton
-                            x:Name="EditButton"
-                            Click="OnElementClicked"
-                            Label="Edit" >
+                        <ui:AppBarButton x:Name="EditButton"
+                            Click="OnElementClicked" Label="Edit">
                             <ui:AppBarButton.Icon>
                                 <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Edit}"/>
                             </ui:AppBarButton.Icon>
 
                         </ui:AppBarButton>
-                        <ui:AppBarButton
-                            x:Name="ShareButton"
-                            Click="OnElementClicked"
-                            Label="Share" >
+                        <ui:AppBarButton x:Name="ShareButton"
+                            Click="OnElementClicked" Label="Share">
                             <ui:AppBarButton.Icon>
                                 <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Share}"/>
                             </ui:AppBarButton.Icon>
                         </ui:AppBarButton>
                         <ui:CommandBar.SecondaryCommands>
-                            <ui:AppBarButton
-                                x:Name="SettingsButton"
-                                Click="OnElementClicked"
-                                Icon="Setting"
-                                Label="Settings" />
+                            <ui:AppBarButton x:Name="SettingsButton"
+                                Label="Settings" Click="OnElementClicked">
+                                <ui:AppBarButton.Icon>
+                                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Settings}"/>
+                                </ui:AppBarButton.Icon>
+                            </ui:AppBarButton>
+
                         </ui:CommandBar.SecondaryCommands>
                     </ui:CommandBar>
                     <TextBlock x:Name="SelectedOptionText" Padding="0,8,0,0" />
