@@ -41,7 +41,6 @@
                     Maximum="{Binding Value, ElementName=MaximumValue, Mode=TwoWay}"
                     Minimum="{Binding Value, ElementName=MinimumValue, Mode=TwoWay}"
                     SmallChange="{Binding Value, ElementName=SmallChangeValue, Mode=TwoWay}"
-                    LargeChange="{Binding Value, ElementName=SmallChangeValue, Mode=TwoWay}"
                     TickFrequency="{Binding Value, ElementName=StepFrequencyValue, Mode=TwoWay}"
                      Value="800" />
             </StackPanel>
