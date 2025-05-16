@@ -62,16 +62,12 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 
         public string Example1Xaml => $@"
 <ui:RatingControl x:Name=""RatingControl1""
-    AutomationProperties.Name=""Simple RatingControl""
-    IsClearEnabled=""{clearEnabledCheck.IsChecked}""
-    IsReadOnly=""{readOnlyCheck.IsChecked}""
-    Caption=""{RatingControl1.Caption}""/>
+    AutomationProperties.Name=""Simple RatingControl"" IsClearEnabled=""{clearEnabledCheck.IsChecked}""
+    IsReadOnly=""{readOnlyCheck.IsChecked}"" Caption=""{RatingControl1.Caption}""/>
 ";
 
         public string Example2Xaml => $@"
-<ui:RatingControl x:Name=""RatingControl2""
-    AutomationProperties.Name=""RatingControl with placeholder""
-    PlaceholderValue=""{slider.Value}"" />
+<ui:RatingControl x:Name=""RatingControl2"" AutomationProperties.Name=""RatingControl with placeholder"" PlaceholderValue=""{slider.Value}"" />
 ";
 
 
