@@ -63,7 +63,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 
         public string Example2Xaml => $@"
 <Slider x:Name=""Slider2"" ui:ControlHelper.Header=""Control header"" Width=""{200}"" Minimum=""{MinimumValue?.Value ?? 500}"" Maximum=""{MaximumValue?.Value ?? 1000}"" 
-TickFrequency=""{StepFrequencyValue?.Value ?? 10}"" LargeChange=""{SmallChangeValue?.Value ?? 10}"" SmallChange=""{SmallChangeValue?.Value ?? 10}"" Value=""{Slider2?.Value ?? 800}"" />
+TickFrequency=""{StepFrequencyValue?.Value ?? 10}"" SmallChange=""{SmallChangeValue?.Value ?? 10}"" Value=""{Slider2?.Value ?? 800}"" />
 ";
 
         public string Example3Xaml => $@"
