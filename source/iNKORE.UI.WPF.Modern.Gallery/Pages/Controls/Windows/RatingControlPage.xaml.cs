@@ -43,6 +43,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             UpdateExampleCode();
         }
 
+        private void RatingControl1_ValueChanged(object sender, object e)
+        {
+            RatingControl1.Caption = "Your rating";
+
+             UpdateExampleCode();
+        }
+
         #region Example Code
 
         public void UpdateExampleCode()
@@ -56,7 +63,9 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         public string Example1Xaml => $@"
 <ui:RatingControl x:Name=""RatingControl1""
     AutomationProperties.Name=""Simple RatingControl""
-    IsClearEnabled=""{clearEnabledCheck.IsChecked}"" IsReadOnly=""{readOnlyCheck.IsChecked}"" />
+    IsClearEnabled=""{clearEnabledCheck.IsChecked}""
+    IsReadOnly=""{readOnlyCheck.IsChecked}""
+    Caption=""{RatingControl1.Caption}""/>
 ";
 
         public string Example2Xaml => $@"
