@@ -75,7 +75,7 @@ TickFrequency=""{StepFrequencyValue?.Value ?? 10}"" LargeChange=""{SmallChangeVa
 ";
 
         public string Example4Xaml => $@"
-<Slider x:Name=""Slider4"" AutomationProperties.Name=""vertical slider"" Width=""{100}""  Orientation=""Vertical"" 
+<Slider x:Name=""Slider4"" AutomationProperties.Name=""vertical slider"" Width=""{100}"" Orientation=""Vertical"" 
         TickFrequency=""10"" TickPlacement=""Both"" Maximum=""50"" Minimum=""-50"" />
 ";
 
