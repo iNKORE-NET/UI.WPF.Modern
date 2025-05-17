@@ -98,7 +98,7 @@
                         <ComboBoxItem>Disabled</ComboBoxItem>
                         <ComboBoxItem>Auto</ComboBoxItem>
                     </ComboBox> -->
-                    <TextBlock Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="ScrollbarVisibility" Margin="0,8,0,0"/>
+                    <TextBlock Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="ScrollbarVisibility" Margin="0,0,0,0"/>
                     <TextBlock Grid.Row="6" Margin="0,8,10,0" VerticalAlignment="Center" Text="Horizontal"/>
                     <ComboBox x:Name="hsbvCombo"
                             Grid.Row="6" Grid.Column="1"
