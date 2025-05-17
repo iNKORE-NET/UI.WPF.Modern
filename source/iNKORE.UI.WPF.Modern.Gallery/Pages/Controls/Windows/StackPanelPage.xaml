@@ -13,7 +13,7 @@
         <ikw:SimpleStackPanel Style="{StaticResource ControlPageContentPanelStyle}">
             <local:ControlExample x:Name="Example1" HeaderText="A SimpleStackPanel control.">
 
-                <ikw:SimpleStackPanel x:Name="Control1" Spacing="0"
+                <ikw:SimpleStackPanel x:Name="Control1" Spacing="8"
                     VerticalAlignment="Top" Orientation="Vertical" HorizontalAlignment="Left">
                     <ikw:SimpleStackPanel.Resources>
                         <Style TargetType="Rectangle">
@@ -34,12 +34,12 @@
                             SelectedItem="{Binding ElementName=Control1, Path=Orientation}" 
                             SelectionChanged="RadioButtons_Orientation_SelectionChanged"/>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Text="Spacing" Margin="0,0,0,4"/>
                             <Slider x:Name="Slider_Spacing"
-                                Minimum="0"
+                                ui:ControlHelper.Header="Spacing"
                                 Maximum="16"
-                                TickFrequency="1"
+                                Minimum="0"
                                 IsSnapToTickEnabled="True"
+                                TickFrequency="1"
                                 Value="{Binding ElementName=Control1, Path=Spacing, Mode=TwoWay}"
                                 ValueChanged="Slider_Spacing_ValueChanged"
                                 Width="120"/>
