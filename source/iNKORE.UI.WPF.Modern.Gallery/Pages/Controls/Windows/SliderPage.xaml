@@ -61,7 +61,7 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Minimum:" />
-                    <ui:NumberBox x:Name="MinimumValue" Grid.Row="0" Grid.Column="1" Value="500" SpinButtonPlacementMode="Compact" ValueChanged="NumberBox_ValueChanged"  />
+                    <ui:NumberBox x:Name="MinimumValue" Grid.Row="0" Grid.Column="1" Value="500" SpinButtonPlacementMode="Compact"  Margin="10,0,0,0" ValueChanged="NumberBox_ValueChanged"  />
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Maximum:" Margin="0,7,0,0" />
                     <ui:NumberBox x:Name="MaximumValue" Grid.Row="1" Grid.Column="1" Value="1000" SpinButtonPlacementMode="Compact" Margin="10,5,0,0" ValueChanged="NumberBox_ValueChanged"  />
