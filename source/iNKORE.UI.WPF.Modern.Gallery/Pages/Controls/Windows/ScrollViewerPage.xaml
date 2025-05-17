@@ -105,7 +105,7 @@
                             HorizontalAlignment="Stretch"
                             SelectedIndex="0"
                             SelectionChanged="hsbvCombo_SelectionChanged_1"
-                            Margin="0,8,0,0">
+                            Margin="12,16,0,0">
                         <ComboBoxItem Content="Auto"/>
                         <ComboBoxItem Content="Visible"/>
                         <ComboBoxItem Content="Hidden"/>
@@ -114,7 +114,7 @@
                     <TextBlock Grid.Row="7" Margin="0,8,10,0" VerticalAlignment="Center" Text="Vertical"/>
                     <ComboBox x:Name="vsbvCombo"
                             Grid.Row="7" Grid.Column="1"
-                            Margin="0,8,0,0"
+                            Margin="12,16,0,0"
                             HorizontalAlignment="Stretch"
                             SelectionChanged="vsbvCombo_SelectionChanged_1"
                             SelectedIndex="0">
