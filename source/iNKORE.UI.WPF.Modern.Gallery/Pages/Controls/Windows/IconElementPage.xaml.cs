@@ -1,4 +1,4 @@
-﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -93,8 +93,10 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 
         public string Example6Xaml => $@"
 <Button Name=""AcceptButton"">
-    <ui:IconAndText Content=""Confirm""
-        Icon=""{{x:Static ui:SegoeFluentIcons.Accept}}""/>
+    <StackPanel>
+        <ui:SymbolIcon Symbol=""Accept"" />
+        <TextBlock Text=""Accept"" />
+    </StackPanel>
 </Button>
 ";
 
