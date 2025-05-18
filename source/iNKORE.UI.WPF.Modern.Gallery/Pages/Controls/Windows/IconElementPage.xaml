@@ -1,4 +1,4 @@
-﻿<ui:Page
+<ui:Page
     x:Class="iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows.IconElementPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -98,8 +98,10 @@
                         Style="{DynamicResource BodyTextBlockStyle}"
                         Text="To use a SymbolIcon as the icon for a control, you specify the enum value for the glyph you would like to display. SymbolIcon's enum is based off of icons from the Segoe MDL2 font used by Windows 10." />
                     <Button Name="AcceptButton">
-                        <ui:IconAndText Content="Confirm"
-                            Icon="{x:Static ui:SegoeFluentIcons.Accept}"/>
+                        <StackPanel>
+                            <ui:SymbolIcon Symbol="Accept" />
+                            <TextBlock Text="Accept" />
+                        </StackPanel>
                     </Button>
                 </StackPanel>
             </local:ControlExample.Example>
