@@ -98,10 +98,8 @@
                         Style="{DynamicResource BodyTextBlockStyle}"
                         Text="To use a SymbolIcon as the icon for a control, you specify the enum value for the glyph you would like to display. SymbolIcon's enum is based off of icons from the Segoe MDL2 font used by Windows 10." />
                     <Button Name="AcceptButton">
-                        <StackPanel>
-                            <ui:SymbolIcon Symbol="Accept" />
-                            <TextBlock Text="Accept" />
-                        </StackPanel>
+                        <ui:IconAndText Content="Confirm"
+                            Icon="{x:Static ui:SegoeFluentIcons.Accept}"/>
                     </Button>
                 </StackPanel>
             </local:ControlExample.Example>
