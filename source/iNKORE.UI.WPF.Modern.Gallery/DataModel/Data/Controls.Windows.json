@@ -2354,7 +2354,7 @@
                     "Subtitle": "How to use a Resource Dictionary to enable compact sizing.",
                     "ImagePath": "ms-appx:///Assets/ControlImages/CompactSizing.png",
                     "ImageIconPath": "ms-appx:///Assets/ControlIcons/CompactSizingIcon.png",
-                    "Description": "Enables the creation of compact, smaller apps by adding a style resource at the app, page or control level.",
+                    "Description": "Compact dictionary included in WinUI 2.1. Allows you to create compact smaller apps by adding this at the page or the grid level.",
                     "Content": "",
                     "IsNew": false,
                     "IsUpdated": false,
