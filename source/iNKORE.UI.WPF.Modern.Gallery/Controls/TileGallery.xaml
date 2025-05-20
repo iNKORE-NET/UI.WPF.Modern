@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <!-- Resources -->
     <UserControl.Resources>
         <ResourceDictionary>
             <!-- Theme Dictionaries for Store Icon -->
@@ -18,6 +19,7 @@
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
+            <!-- Scroll Button Style -->
             <Style x:Key="ScrollButtonStyle" TargetType="Button">
                 <Setter Property="Background" Value="{DynamicResource FlipViewNextPreviousButtonBackground}" />
                 <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
@@ -49,6 +51,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
+    <!-- Layout -->
     <Grid>
         <ScrollViewer
             x:Name="scroller"
@@ -91,7 +94,7 @@
                             <ui:FontIcon
                                 Margin="0,8,0,0"
                                 FontSize="44"
-                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                 Glyph="&#xE943;" />
                         </local:HeaderTile.Icon>
                     </local:HeaderTile> 
