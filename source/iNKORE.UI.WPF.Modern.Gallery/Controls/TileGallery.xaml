@@ -94,7 +94,6 @@
                             <ui:FontIcon
                                 Margin="0,8,0,0"
                                 FontSize="44"
-                                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                 Glyph="&#xE943;" />
                         </local:HeaderTile.Icon>
                     </local:HeaderTile> 
