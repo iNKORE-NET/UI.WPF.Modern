@@ -33,17 +33,17 @@
     <!--  Colors  -->
     <Color x:Key="SystemAltHighColor">#FFFFFFFF</Color>
     <Color x:Key="SystemAltLowColor">#33FFFFFF</Color>
-    <Color x:Key="SystemAltMediumColor">#99000000</Color>
-    <Color x:Key="SystemAltMediumHighColor">#CC000000</Color>
-    <Color x:Key="SystemAltMediumLowColor">#66000000</Color>
+    <Color x:Key="SystemAltMediumColor">#99FFFFFF</Color>
+    <Color x:Key="SystemAltMediumHighColor">#CCFFFFFF</Color>
+    <Color x:Key="SystemAltMediumLowColor">#66FFFFFF</Color>
     <Color x:Key="SystemBaseHighColor">#FF000000</Color>
     <Color x:Key="SystemBaseLowColor">#33000000</Color>
-    <Color x:Key="SystemBaseMediumColor">#99FFFFFF</Color>
-    <Color x:Key="SystemBaseMediumHighColor">#CCFFFFFF</Color>
-    <Color x:Key="SystemBaseMediumLowColor">#66FFFFFF</Color>
+    <Color x:Key="SystemBaseMediumColor">#99000000</Color>
+    <Color x:Key="SystemBaseMediumHighColor">#CC000000</Color>
+    <Color x:Key="SystemBaseMediumLowColor">#66000000</Color>
     <Color x:Key="SystemChromeAltHighColor">#FFFFFFFF</Color>
     <Color x:Key="SystemChromeAltLowColor">#FF171717</Color>
-    <Color x:Key="SystemChromeAltMediumHighColor">#CCFFFFFF</Color>
+    <Color x:Key="SystemChromeAltMediumHighColor">#CCFFFFFF</Color>    
     <Color x:Key="SystemChromeBlackHighColor">#FF000000</Color>
     <Color x:Key="SystemChromeBlackLowColor">#33000000</Color>
     <Color x:Key="SystemChromeBlackMediumLowColor">#66000000</Color>
