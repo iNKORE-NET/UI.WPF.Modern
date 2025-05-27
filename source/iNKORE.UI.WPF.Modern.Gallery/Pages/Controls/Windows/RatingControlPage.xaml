@@ -23,7 +23,7 @@
             </StackPanel>
 
             <local:ControlExample.Output>
-                    <TextBlock Margin="5,0,0,0" FontWeight="Bold" Text="{Binding Value, ElementName=RatingControl1}" />
+                    <TextBlock FontWeight="Bold" Text="{Binding Value, ElementName=RatingControl1}" />
             </local:ControlExample.Output>
 
             <local:ControlExample.Options>
