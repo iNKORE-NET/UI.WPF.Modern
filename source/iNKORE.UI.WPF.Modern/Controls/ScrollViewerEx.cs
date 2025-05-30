@@ -99,6 +99,22 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         #endregion
 
+        #region Wheel Sensitivity
+
+        public static readonly DependencyProperty WheelSensitivityProperty =
+            DependencyProperty.Register(
+                nameof(WheelSensitivity),
+                typeof(double),
+                typeof(ScrollViewerEx),
+                new PropertyMetadata(1.0));
+
+        public double WheelSensitivity
+        {
+            get => (double)GetValue(WheelSensitivityProperty);
+            set => SetValue(WheelSensitivityProperty, value);
+        }
+
+        #endregion
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -142,7 +158,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     e.Handled = true;
                 }
 
-                double WheelChange = RewriteWheelChange ? e.Delta * (ViewportHeight / 1.5) / ActualHeight : e.Delta;
+                double WheelChange = RewriteWheelChange ? e.Delta * (ViewportHeight / 1.5) * WheelSensitivity / ActualHeight : e.Delta * WheelSensitivity;
                 double newOffset = LastVerticalLocation - WheelChange;
 
                 if (newOffset < 0)
@@ -177,7 +193,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     e.Handled = true;
                 }
 
-                double WheelChange = RewriteWheelChange ? e.Delta * (ViewportWidth / 1.5) / ActualWidth : e.Delta;
+                double WheelChange = RewriteWheelChange ? e.Delta * (ViewportWidth / 1.5) * WheelSensitivity / ActualWidth : e.Delta * WheelSensitivity;
                 double newOffset = LastHorizontalLocation - WheelChange;
 
                 if (newOffset < 0)
