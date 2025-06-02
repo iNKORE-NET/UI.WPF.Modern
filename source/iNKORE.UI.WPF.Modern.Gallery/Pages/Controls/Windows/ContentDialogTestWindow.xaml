@@ -7,8 +7,6 @@
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     Title="Content Dialog Test Window"
-    xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common;assembly=iNKORE.UI.WPF.Modern"
-    common:ShadowAssist.CacheMode="{x:Null}"
     Width="800"
     Height="640"
     ui:WindowHelper.UseModernWindowStyle="True"
