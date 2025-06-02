@@ -67,11 +67,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
         protected override void OnDpiChanged(DpiScale oldDpi, DpiScale newDpi)
         {
             base.OnDpiChanged(oldDpi, newDpi);
-
-            if (CacheMode is BitmapCache bitmapCache)
-            {
-                bitmapCache.RenderAtScale = newDpi.PixelsPerDip;
-            }
         }
 #endif
     }

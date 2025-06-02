@@ -259,11 +259,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
             m_selectionModel.ChildrenRequested += OnSelectionModelChildrenRequested;
 
             m_navigationViewItemsFactory = new NavigationViewItemsFactory();
-
-            m_bitmapCache = new BitmapCache();
-#if NET462_OR_NEWER
-            m_bitmapCache.RenderAtScale = VisualTreeHelper.GetDpi(this).PixelsPerDip;
-#endif
         }
 
         void OnSelectionModelChildrenRequested(SelectionModel selectionModel, SelectionModelChildrenRequestedEventArgs e)
@@ -2417,11 +2412,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 var scaleTransform = (ScaleTransform)((TransformGroup)indicator.RenderTransform).Children[0];
                 scaleTransform.CenterX = centerPoint.Value.X;
                 scaleTransform.CenterY = centerPoint.Value.Y;
-            }
-
-            if (indicator.CacheMode == null)
-            {
-                indicator.CacheMode = m_bitmapCache;
             }
         }
 
@@ -5823,8 +5813,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
         protected override void OnDpiChanged(DpiScale oldDpi, DpiScale newDpi)
         {
             base.OnDpiChanged(oldDpi, newDpi);
-
-            m_bitmapCache.RenderAtScale = newDpi.PixelsPerDip;
         }
 #endif
 
@@ -5946,8 +5934,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
         GettingFocusHelper m_topNavRepeaterGettingFocusHelper;
         GettingFocusHelper m_leftNavFooterMenuRepeaterGettingFocusHelper;
         GettingFocusHelper m_topNavFooterMenuRepeaterGettingFocusHelper;
-
-        readonly BitmapCache m_bitmapCache;
 
         static readonly PropertyPath s_opacityPath = new PropertyPath(OpacityProperty);
         static readonly PropertyPath s_centerXPath = new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.CenterX)");
