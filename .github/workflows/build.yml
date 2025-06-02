@@ -28,13 +28,13 @@ jobs:
         # dotnet pack .\source\iNKORE.UI.WPF.Modern.Controls --configuration Release -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
 
       - name: Upload binary libraries of iNKORE.UI.WPF.Modern.Controls
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: iNKORE.UI.WPF.Modern.Controls dlls
           path: .\source\iNKORE.UI.WPF.Modern.Controls\bin\Debug
 
       - name: Upload Gallery apps
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: iNKORE.UI.WPF.Modern.Gallery
           path: .\source\iNKORE.UI.WPF.Modern.Gallery\bin\Debug\net6.0-windows10.0.18362.0\win-x64\publish
