@@ -29,12 +29,12 @@ namespace iNKORE.UI.WPF.Modern.Media.Animation
         //protected virtual string GetNavigationStateCore();
         //protected virtual void SetNavigationStateCore(string navigationState);
 
-        internal virtual NavigationAnimation GetEnterAnimation(FrameworkElement element, bool movingBackwards)
+        internal virtual NavigationAnimation GetEnterAnimation(FrameworkElement element, bool movingBackwards, bool useBitmapCache)
         {
             return null;
         }
 
-        internal virtual NavigationAnimation GetExitAnimation(FrameworkElement element, bool movingBackwards)
+        internal virtual NavigationAnimation GetExitAnimation(FrameworkElement element, bool movingBackwards, bool useBitmapCache)
         {
             return null;
         }

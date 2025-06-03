@@ -224,6 +224,23 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         #endregion
 
+        #region UseBitmapCache
+
+        public static readonly DependencyProperty UseBitmapCacheProperty =
+            DependencyProperty.Register(
+                nameof(UseBitmapCache),
+                typeof(bool),
+                typeof(Frame),
+                new PropertyMetadata(false));
+
+        public bool UseBitmapCache
+        {
+            get => (bool)GetValue(UseBitmapCacheProperty);
+            set => SetValue(UseBitmapCacheProperty, value);
+        }
+
+        #endregion
+
         private NavigationTransitionInfo DefaultNavigationTransitionInfo { get; set; }
 
         private JournalEntry BackEntry => BackStack?.OfType<JournalEntry>().FirstOrDefault();
@@ -353,8 +370,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 newContent is FrameworkElement newElement)
             {
                 NavigationTransitionInfo transitionInfo = _transitionInfoOverride ?? DefaultNavigationTransitionInfo;
-                _exitAnimation = transitionInfo.GetExitAnimation(oldElement, _movingBackwards);
-                _enterAnimation = transitionInfo.GetEnterAnimation(newElement, _movingBackwards);
+                _exitAnimation = transitionInfo.GetExitAnimation(oldElement, _movingBackwards, UseBitmapCache);
+                _enterAnimation = transitionInfo.GetEnterAnimation(newElement, _movingBackwards, UseBitmapCache);
 
                 if (_exitAnimation != null || _enterAnimation != null)
                 {

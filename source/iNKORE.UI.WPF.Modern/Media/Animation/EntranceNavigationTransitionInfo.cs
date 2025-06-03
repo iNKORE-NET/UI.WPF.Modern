@@ -17,7 +17,7 @@ namespace iNKORE.UI.WPF.Modern.Media.Animation
         {
         }
 
-        internal override NavigationAnimation GetEnterAnimation(FrameworkElement element, bool movingBackwards)
+        internal override NavigationAnimation GetEnterAnimation(FrameworkElement element, bool movingBackwards, bool useBitmapCache)
         {
             var storyboard = new Storyboard();
 
@@ -54,10 +54,10 @@ namespace iNKORE.UI.WPF.Modern.Media.Animation
                 element.SetCurrentValue(UIElement.RenderTransformProperty, new TranslateTransform());
             }
 
-            return new NavigationAnimation(element, storyboard);
+            return new NavigationAnimation(element, storyboard, useBitmapCache);
         }
 
-        internal override NavigationAnimation GetExitAnimation(FrameworkElement element, bool movingBackwards)
+        internal override NavigationAnimation GetExitAnimation(FrameworkElement element, bool movingBackwards, bool useBitmapCache)
         {
             var storyboard = new Storyboard();
 
@@ -101,7 +101,7 @@ namespace iNKORE.UI.WPF.Modern.Media.Animation
                 storyboard.Children.Add(opacityAnim);
             }
 
-            return new NavigationAnimation(element, storyboard);
+            return new NavigationAnimation(element, storyboard, useBitmapCache);
         }
     }
 }

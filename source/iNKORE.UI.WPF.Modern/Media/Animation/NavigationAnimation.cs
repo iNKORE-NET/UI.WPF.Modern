@@ -13,10 +13,13 @@ namespace iNKORE.UI.WPF.Modern.Media.Animation
             _defaultBitmapCache.Freeze();
         }
 
-        public NavigationAnimation(FrameworkElement element, Storyboard storyboard)
+        private readonly bool _useBitmapCache;
+
+        public NavigationAnimation(FrameworkElement element, Storyboard storyboard, bool useBitmapCache)
         {
             _element = element;
             _storyboard = storyboard;
+            _useBitmapCache = useBitmapCache;
             _storyboard.CurrentStateInvalidated += OnCurrentStateInvalidated;
             _storyboard.Completed += OnCompleted;
         }
@@ -25,7 +28,7 @@ namespace iNKORE.UI.WPF.Modern.Media.Animation
 
         public void Begin()
         {
-            if (!(_element.CacheMode is BitmapCache))
+            if (_useBitmapCache && _element.CacheMode is not BitmapCache)
             {
                 _element.SetCurrentValue(UIElement.CacheModeProperty, GetBitmapCache());
             }
@@ -38,7 +41,10 @@ namespace iNKORE.UI.WPF.Modern.Media.Animation
             {
                 _storyboard.Stop(_element);
             }
-            _element.InvalidateProperty(UIElement.CacheModeProperty);
+            if (_useBitmapCache)
+            {
+                _element.InvalidateProperty(UIElement.CacheModeProperty);
+            }
             _element.InvalidateProperty(UIElement.RenderTransformProperty);
             _element.InvalidateProperty(UIElement.RenderTransformOriginProperty);
         }
