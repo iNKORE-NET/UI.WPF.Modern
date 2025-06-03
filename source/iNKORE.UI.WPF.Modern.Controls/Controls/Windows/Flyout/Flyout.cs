@@ -23,6 +23,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
         private static readonly PropertyPath s_translateYPath = new PropertyPath("(UIElement.RenderTransform).(TranslateTransform.Y)");
         private static readonly KeySpline s_decelerateKeySpline = new KeySpline(0.1, 0.9, 0.2, 1);
 
+        private static readonly BitmapCache s_bitmapCacheMode = new BitmapCache();
+
         public Flyout()
         {
         }
@@ -107,6 +109,16 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 presenter.RenderTransform = new TranslateTransform();
             }
 
+            if (animateFrom != AnimateFrom.None)
+            {
+#if NET462_OR_NEWER
+                var bitmapCache = new BitmapCache(VisualTreeHelper.GetDpi(presenter).PixelsPerDip);
+#else
+                var bitmapCache = s_bitmapCacheMode;
+#endif
+                presenter.CacheMode = bitmapCache;
+            }
+
             m_openingStoryboard.Begin(presenter, true);
         }
 
@@ -152,6 +164,10 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 {
                     Children = { opacityAnim, xAnim, yAnim },
                     FillBehavior = FillBehavior.Stop
+                };
+                m_openingStoryboard.Completed += delegate
+                {
+                    presenter.ClearValue(UIElement.CacheModeProperty);
                 };
             }
         }

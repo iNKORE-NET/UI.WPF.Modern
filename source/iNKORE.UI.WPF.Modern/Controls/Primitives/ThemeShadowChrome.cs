@@ -28,8 +28,14 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         public ThemeShadowChrome()
         {
+#if NET462_OR_NEWER
+            _bitmapCache = new BitmapCache(VisualTreeHelper.GetDpi(this).PixelsPerDip);
+#else
+            _bitmapCache = new BitmapCache();
+#endif
             _background = new Grid
             {
+                CacheMode = _bitmapCache,
                 Focusable = false,
                 IsHitTestVisible = false,
                 SnapsToDevicePixels = false
@@ -281,6 +287,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         protected override void OnDpiChanged(DpiScale oldDpi, DpiScale newDpi)
         {
             base.OnDpiChanged(oldDpi, newDpi);
+
+            _bitmapCache.RenderAtScale = newDpi.PixelsPerDip;
         }
 #endif
 
@@ -877,6 +885,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         }
 
         private readonly Grid _background;
+        private readonly BitmapCache _bitmapCache;
         private Border _shadow1;
         private Border _shadow2;
         private PopupControl _parentPopupControl;
