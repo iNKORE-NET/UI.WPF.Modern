@@ -61,6 +61,23 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         #endregion
 
+        #region UseBitmapCache
+
+        public static readonly DependencyProperty UseBitmapCacheProperty =
+            DependencyProperty.Register(
+                nameof(UseBitmapCache),
+                typeof(bool),
+                typeof(ThemeShadowChrome),
+                new PropertyMetadata(false));
+
+        public bool UseBitmapCache
+        {
+            get => (bool)GetValue(UseBitmapCacheProperty);
+            set => SetValue(UseBitmapCacheProperty, value);
+        }
+
+        #endregion
+
         internal override PopupAnimation DesiredPopupAnimation => PopupAnimation.None;
 
         private bool IsPopupOpenDown => TryGetPopupOffset(out Point offset) && offset.Y > 0;
@@ -109,7 +126,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 presenter.RenderTransform = new TranslateTransform();
             }
 
-            if (animateFrom != AnimateFrom.None)
+            if (UseBitmapCache && animateFrom != AnimateFrom.None)
             {
 #if NET462_OR_NEWER
                 var bitmapCache = new BitmapCache(VisualTreeHelper.GetDpi(presenter).PixelsPerDip);
@@ -167,7 +184,10 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 };
                 m_openingStoryboard.Completed += delegate
                 {
-                    presenter.ClearValue(UIElement.CacheModeProperty);
+                    if (UseBitmapCache)
+                    {
+                        presenter.ClearValue(UIElement.CacheModeProperty);
+                    }
                 };
             }
         }

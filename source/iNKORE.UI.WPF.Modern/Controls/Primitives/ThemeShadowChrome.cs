@@ -28,18 +28,31 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         public ThemeShadowChrome()
         {
-#if NET462_OR_NEWER
-            _bitmapCache = new BitmapCache(VisualTreeHelper.GetDpi(this).PixelsPerDip);
-#else
-            _bitmapCache = new BitmapCache();
-#endif
-            _background = new Grid
+            if (UseBitmapCache)
             {
-                CacheMode = _bitmapCache,
-                Focusable = false,
-                IsHitTestVisible = false,
-                SnapsToDevicePixels = false
-            };
+#if NET462_OR_NEWER
+                _bitmapCache = new BitmapCache(VisualTreeHelper.GetDpi(this).PixelsPerDip);
+#else
+                _bitmapCache = new BitmapCache();
+#endif
+
+                _background = new Grid
+                {
+                    CacheMode = _bitmapCache,
+                    Focusable = false,
+                    IsHitTestVisible = false,
+                    SnapsToDevicePixels = false
+                };
+            }
+            else
+            {
+                _background = new Grid
+                {
+                    Focusable = false,
+                    IsHitTestVisible = false,
+                    SnapsToDevicePixels = false
+                };
+            }
             AddVisualChild(_background);
 
             SizeChanged += OnSizeChanged;
@@ -222,6 +235,23 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         #endregion
 
+        #region UseBitmapCache
+
+        public static readonly DependencyProperty UseBitmapCacheProperty =
+            DependencyProperty.Register(
+                nameof(UseBitmapCache),
+                typeof(bool),
+                typeof(ThemeShadowChrome),
+                new PropertyMetadata(false));
+
+        public bool UseBitmapCache
+        {
+            get => (bool)GetValue(UseBitmapCacheProperty);
+            set => SetValue(UseBitmapCacheProperty, value);
+        }
+
+        #endregion
+
         protected override int VisualChildrenCount =>
             IsShadowEnabled ? Child == null ? 1 : 2 : base.VisualChildrenCount;
 
@@ -288,7 +318,10 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         {
             base.OnDpiChanged(oldDpi, newDpi);
 
-            _bitmapCache.RenderAtScale = newDpi.PixelsPerDip;
+            if (UseBitmapCache)
+            {
+                _bitmapCache.RenderAtScale = newDpi.PixelsPerDip;
+            }
         }
 #endif
 
@@ -884,8 +917,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             }
         }
 
-        private readonly Grid _background;
-        private readonly BitmapCache _bitmapCache;
+        private Grid _background;
+        private BitmapCache _bitmapCache;
         private Border _shadow1;
         private Border _shadow2;
         private PopupControl _parentPopupControl;

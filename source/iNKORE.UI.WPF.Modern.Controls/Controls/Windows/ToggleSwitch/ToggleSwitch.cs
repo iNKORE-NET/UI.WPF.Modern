@@ -284,6 +284,22 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         #endregion
 
+        #region UseBitmapCache
+
+        public static readonly DependencyProperty UseBitmapCacheProperty =
+            DependencyProperty.Register(
+                nameof(UseBitmapCache),
+                typeof(bool),
+                typeof(ThemeShadowChrome),
+                new PropertyMetadata(false));
+
+        public bool UseBitmapCache
+        {
+            get => (bool)GetValue(UseBitmapCacheProperty);
+            set => SetValue(UseBitmapCacheProperty, value);
+        }
+
+        #endregion
 
         private ContentPresenter HeaderContentPresenter { get; set; }
 
@@ -305,7 +321,10 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 SwitchThumb.DragStarted -= OnSwitchThumbDragStarted;
                 SwitchThumb.DragDelta -= OnSwitchThumbDragDelta;
                 SwitchThumb.DragCompleted -= OnSwitchThumbDragCompleted;
-                SwitchThumb.ClearValue(CacheModeProperty);
+                if (UseBitmapCache)
+                {
+                    SwitchThumb.ClearValue(CacheModeProperty);
+                }
             }
 
             base.OnApplyTemplate();
@@ -325,16 +344,19 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 SwitchThumb.DragDelta += OnSwitchThumbDragDelta;
                 SwitchThumb.DragCompleted += OnSwitchThumbDragCompleted;
 
-                if (_bitmapCache == null)
+                if (UseBitmapCache)
                 {
+                    if (_bitmapCache == null)
+                    {
 #if NET462_OR_NEWER
-                    _bitmapCache = new BitmapCache(VisualTreeHelper.GetDpi(this).PixelsPerDip);
+                        _bitmapCache = new BitmapCache(VisualTreeHelper.GetDpi(this).PixelsPerDip);
 #else
                     _bitmapCache = new BitmapCache(2);
 #endif
-                }
+                    }
 
-                SwitchThumb.CacheMode = _bitmapCache;
+                    SwitchThumb.CacheMode = _bitmapCache;
+                }
             }
 
             UpdateHeaderContentPresenterVisibility();
@@ -383,7 +405,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             base.OnDpiChanged(oldDpi, newDpi);
 
-            if (_bitmapCache != null)
+            if (UseBitmapCache && _bitmapCache != null)
             {
                 _bitmapCache.RenderAtScale = newDpi.PixelsPerDip;
             }
