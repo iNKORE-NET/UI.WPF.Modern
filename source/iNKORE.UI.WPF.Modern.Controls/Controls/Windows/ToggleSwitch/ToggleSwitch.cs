@@ -351,7 +351,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 #if NET462_OR_NEWER
                         _bitmapCache = new BitmapCache(VisualTreeHelper.GetDpi(this).PixelsPerDip);
 #else
-                    _bitmapCache = new BitmapCache(2);
+                        _bitmapCache = new BitmapCache(2);
 #endif
                     }
 
