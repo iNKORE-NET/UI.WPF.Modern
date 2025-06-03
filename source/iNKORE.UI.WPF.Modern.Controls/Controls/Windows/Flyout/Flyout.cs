@@ -24,7 +24,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
         private static readonly KeySpline s_decelerateKeySpline = new KeySpline(0.1, 0.9, 0.2, 1);
 
         private static readonly BitmapCache s_bitmapCacheMode = new BitmapCache();
-        private bool UseBitmapCache => ShadowAssist.GetUseBitmapCache(this);
 
         public Flyout()
         {
@@ -110,7 +109,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 presenter.RenderTransform = new TranslateTransform();
             }
 
-            if (UseBitmapCache && animateFrom != AnimateFrom.None)
+            if (ShadowAssist.UseBitmapCache && animateFrom != AnimateFrom.None)
             {
 #if NET462_OR_NEWER
                 var bitmapCache = new BitmapCache(VisualTreeHelper.GetDpi(presenter).PixelsPerDip);
@@ -168,7 +167,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 };
                 m_openingStoryboard.Completed += delegate
                 {
-                    if (UseBitmapCache)
+                    if (ShadowAssist.UseBitmapCache)
                     {
                         presenter.ClearValue(UIElement.CacheModeProperty);
                     }

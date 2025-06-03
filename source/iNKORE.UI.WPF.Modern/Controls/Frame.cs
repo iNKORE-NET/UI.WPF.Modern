@@ -21,8 +21,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
     [TemplatePart(Name = SecondContentPresenterName, Type = typeof(ContentPresenter))]
     public class Frame : System.Windows.Controls.Frame
     {
-        private bool UseBitmapCache => ShadowAssist.GetUseBitmapCache(this);
-
         static Frame()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Frame), new FrameworkPropertyMetadata(typeof(Frame)));
@@ -356,8 +354,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 newContent is FrameworkElement newElement)
             {
                 NavigationTransitionInfo transitionInfo = _transitionInfoOverride ?? DefaultNavigationTransitionInfo;
-                _exitAnimation = transitionInfo.GetExitAnimation(oldElement, _movingBackwards, UseBitmapCache);
-                _enterAnimation = transitionInfo.GetEnterAnimation(newElement, _movingBackwards, UseBitmapCache);
+                _exitAnimation = transitionInfo.GetExitAnimation(oldElement, _movingBackwards);
+                _enterAnimation = transitionInfo.GetEnterAnimation(newElement, _movingBackwards);
 
                 if (_exitAnimation != null || _enterAnimation != null)
                 {

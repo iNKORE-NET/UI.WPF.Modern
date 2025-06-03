@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iNKORE.UI.WPF.Modern.Common;
+using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -18,7 +19,7 @@ namespace iNKORE.UI.WPF.Modern.Media.Animation
         {
         }
 
-        internal override NavigationAnimation GetEnterAnimation(FrameworkElement element, bool movingBackwards, bool useBitmapCache)
+        internal override NavigationAnimation GetEnterAnimation(FrameworkElement element, bool movingBackwards)
         {
             var storyboard = new Storyboard();
 
@@ -96,10 +97,10 @@ namespace iNKORE.UI.WPF.Modern.Media.Animation
             element.SetCurrentValue(UIElement.RenderTransformProperty, new ScaleTransform());
             element.SetCurrentValue(UIElement.RenderTransformOriginProperty, new Point(0.5, 0.5));
 
-            return new NavigationAnimation(element, storyboard, useBitmapCache);
+            return new NavigationAnimation(element, storyboard, ShadowAssist.UseBitmapCache);
         }
 
-        internal override NavigationAnimation GetExitAnimation(FrameworkElement element, bool movingBackwards, bool useBitmapCache)
+        internal override NavigationAnimation GetExitAnimation(FrameworkElement element, bool movingBackwards)
         {
             var storyboard = new Storyboard();
 
@@ -114,7 +115,7 @@ namespace iNKORE.UI.WPF.Modern.Media.Animation
             Storyboard.SetTargetProperty(opacityAnim, OpacityPath);
             storyboard.Children.Add(opacityAnim);
 
-            return new NavigationAnimation(element, storyboard, useBitmapCache);
+            return new NavigationAnimation(element, storyboard, ShadowAssist.UseBitmapCache);
         }
     }
 }

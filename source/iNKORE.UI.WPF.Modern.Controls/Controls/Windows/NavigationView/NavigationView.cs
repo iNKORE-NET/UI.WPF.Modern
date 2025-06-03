@@ -115,8 +115,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         internal static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(NavigationView), ModernControlCategory.Windows);
 
-        private bool UseBitmapCache => ShadowAssist.GetUseBitmapCache(this);
-
         /*
         ~NavigationView()
         {
@@ -262,7 +260,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             m_navigationViewItemsFactory = new NavigationViewItemsFactory();
 
-            if (UseBitmapCache)
+            if (ShadowAssist.UseBitmapCache)
             {
                 m_bitmapCache = new BitmapCache();
 #if NET462_OR_NEWER
@@ -2424,7 +2422,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 scaleTransform.CenterY = centerPoint.Value.Y;
             }
 
-            if (UseBitmapCache && indicator.CacheMode == null)
+            if (ShadowAssist.UseBitmapCache && indicator.CacheMode == null)
             {
                 indicator.CacheMode = m_bitmapCache;
             }
@@ -5829,7 +5827,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             base.OnDpiChanged(oldDpi, newDpi);
 
-            if (UseBitmapCache)
+            if (ShadowAssist.UseBitmapCache)
             {
                 m_bitmapCache.RenderAtScale = newDpi.PixelsPerDip;
             }

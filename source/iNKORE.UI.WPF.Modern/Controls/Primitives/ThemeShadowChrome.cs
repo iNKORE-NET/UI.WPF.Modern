@@ -14,8 +14,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     public class ThemeShadowChrome : Decorator
     {
-        private bool UseBitmapCache => ShadowAssist.GetUseBitmapCache(this);
-
         static ThemeShadowChrome()
         {
             s_bg1 = new SolidColorBrush(Colors.Black) { Opacity = 0.11 };
@@ -31,7 +29,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         public ThemeShadowChrome()
         {
-            if (UseBitmapCache)
+            if (ShadowAssist.UseBitmapCache)
             {
 #if NET462_OR_NEWER
                 _bitmapCache = new BitmapCache(VisualTreeHelper.GetDpi(this).PixelsPerDip);
@@ -304,7 +302,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         {
             base.OnDpiChanged(oldDpi, newDpi);
 
-            if (UseBitmapCache)
+            if (ShadowAssist.UseBitmapCache)
             {
                 _bitmapCache.RenderAtScale = newDpi.PixelsPerDip;
             }

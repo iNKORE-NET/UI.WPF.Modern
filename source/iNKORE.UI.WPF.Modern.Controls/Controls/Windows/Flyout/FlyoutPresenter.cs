@@ -11,8 +11,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
 {
     public class FlyoutPresenter : ContentControl
     {
-        private bool UseBitmapCache => ShadowAssist.GetUseBitmapCache(this);
-
         static FlyoutPresenter()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlyoutPresenter), new FrameworkPropertyMetadata(typeof(FlyoutPresenter)));
@@ -71,7 +69,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             base.OnDpiChanged(oldDpi, newDpi);
 
-            if (UseBitmapCache && CacheMode is BitmapCache bitmapCache)
+            if (ShadowAssist.UseBitmapCache && CacheMode is BitmapCache bitmapCache)
             {
                 bitmapCache.RenderAtScale = newDpi.PixelsPerDip;
             }

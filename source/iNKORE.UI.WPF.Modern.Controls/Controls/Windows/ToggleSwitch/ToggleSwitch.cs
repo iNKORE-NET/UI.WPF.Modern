@@ -48,7 +48,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
         private bool _wasDragged;
 
         private BitmapCache _bitmapCache;
-        private bool UseBitmapCache => ShadowAssist.GetUseBitmapCache(this);
 
         static ToggleSwitch()
         {
@@ -305,7 +304,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 SwitchThumb.DragStarted -= OnSwitchThumbDragStarted;
                 SwitchThumb.DragDelta -= OnSwitchThumbDragDelta;
                 SwitchThumb.DragCompleted -= OnSwitchThumbDragCompleted;
-                if (UseBitmapCache)
+                if (ShadowAssist.UseBitmapCache)
                 {
                     SwitchThumb.ClearValue(CacheModeProperty);
                 }
@@ -328,7 +327,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 SwitchThumb.DragDelta += OnSwitchThumbDragDelta;
                 SwitchThumb.DragCompleted += OnSwitchThumbDragCompleted;
 
-                if (UseBitmapCache)
+                if (ShadowAssist.UseBitmapCache)
                 {
                     if (_bitmapCache == null)
                     {
@@ -389,7 +388,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             base.OnDpiChanged(oldDpi, newDpi);
 
-            if (UseBitmapCache && _bitmapCache != null)
+            if (ShadowAssist.UseBitmapCache && _bitmapCache != null)
             {
                 _bitmapCache.RenderAtScale = newDpi.PixelsPerDip;
             }

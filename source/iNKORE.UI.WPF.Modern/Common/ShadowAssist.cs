@@ -22,20 +22,13 @@ namespace iNKORE.UI.WPF.Modern.Common
 
         #endregion
 
-        #region AttachedProperty : UseBitmapCacheProperty
+        #region Property : UseBitmapCache
 
-        public static readonly DependencyProperty UseBitmapCacheProperty = DependencyProperty.RegisterAttached(
-            "UseBitmapCache", typeof(bool), typeof(ShadowAssist), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
-
-        public static void SetUseBitmapCache(DependencyObject element, bool value)
-        {
-            element.SetValue(UseBitmapCacheProperty, value);
-        }
-
-        public static bool GetUseBitmapCache(DependencyObject element)
-        {
-            return (bool)element.GetValue(UseBitmapCacheProperty);
-        }
+        /// <summary>
+        /// For applications with multiple windows, please set this property to false to avoid possible freezing issues.
+        /// <see href="https://github.com/dotnet/wpf/issues/2158"/>
+        /// </summary>
+        public static bool UseBitmapCache { get; set; } = true;
 
         #endregion
     }
