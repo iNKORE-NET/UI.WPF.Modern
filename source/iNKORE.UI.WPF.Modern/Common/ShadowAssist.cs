@@ -5,6 +5,19 @@ namespace iNKORE.UI.WPF.Modern.Common
 {
     public static class ShadowAssist
     {
+        #region Property : UseBitmapCache
+
+        /// <summary>
+        /// Whether to use BitmapCache for shadow rendering and animations.
+        /// </summary>
+        /// <remarks>
+        /// For applications with multiple windows, please set this property to false to avoid possible freezing issues.
+        /// <see href="https://github.com/dotnet/wpf/issues/2158"/>
+        /// </remarks>
+        public static bool UseBitmapCache { get; set; } = true;
+
+        #endregion
+
         #region AttachedProperty : CacheModeProperty
 
         public static readonly DependencyProperty CacheModeProperty = DependencyProperty.RegisterAttached(
@@ -19,16 +32,6 @@ namespace iNKORE.UI.WPF.Modern.Common
         {
             return (CacheMode)element.GetValue(CacheModeProperty);
         }
-
-        #endregion
-
-        #region Property : UseBitmapCache
-
-        /// <summary>
-        /// For applications with multiple windows, please set this property to false to avoid possible freezing issues.
-        /// <see href="https://github.com/dotnet/wpf/issues/2158"/>
-        /// </summary>
-        public static bool UseBitmapCache { get; set; } = true;
 
         #endregion
     }
