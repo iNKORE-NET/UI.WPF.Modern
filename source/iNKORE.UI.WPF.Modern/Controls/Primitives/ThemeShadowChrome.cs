@@ -903,8 +903,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             }
         }
 
-        private Grid _background;
-        private BitmapCache _bitmapCache;
+        private readonly Grid _background;
+        private readonly BitmapCache _bitmapCache;
         private Border _shadow1;
         private Border _shadow2;
         private PopupControl _parentPopupControl;
