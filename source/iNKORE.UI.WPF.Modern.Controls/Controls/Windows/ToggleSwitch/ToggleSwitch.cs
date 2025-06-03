@@ -290,7 +290,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             DependencyProperty.Register(
                 nameof(UseBitmapCache),
                 typeof(bool),
-                typeof(ThemeShadowChrome),
+                typeof(ToggleSwitch),
                 new PropertyMetadata(false));
 
         public bool UseBitmapCache

@@ -55,7 +55,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             DependencyProperty.Register(
                 nameof(UseBitmapCache),
                 typeof(bool),
-                typeof(ThemeShadowChrome),
+                typeof(FlyoutPresenter),
                 new PropertyMetadata(false));
 
         public bool UseBitmapCache

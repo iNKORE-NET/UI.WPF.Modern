@@ -900,7 +900,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             DependencyProperty.Register(
                 nameof(UseBitmapCache),
                 typeof(bool),
-                typeof(ThemeShadowChrome),
+                typeof(NavigationView),
                 new PropertyMetadata(false));
 
         public bool UseBitmapCache
