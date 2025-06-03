@@ -24,6 +24,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         private static readonly KeySpline s_decelerateKeySpline = new KeySpline(0.1, 0.9, 0.2, 1);
 
         private static readonly BitmapCache s_bitmapCacheMode = new BitmapCache();
+        private bool UseBitmapCache => ShadowAssist.GetUseBitmapCache(this);
 
         public Flyout()
         {
@@ -57,23 +58,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             get => (Style)GetValue(FlyoutPresenterStyleProperty);
             set => SetValue(FlyoutPresenterStyleProperty, value);
-        }
-
-        #endregion
-
-        #region UseBitmapCache
-
-        public static readonly DependencyProperty UseBitmapCacheProperty =
-            DependencyProperty.Register(
-                nameof(UseBitmapCache),
-                typeof(bool),
-                typeof(Flyout),
-                new PropertyMetadata(false));
-
-        public bool UseBitmapCache
-        {
-            get => (bool)GetValue(UseBitmapCacheProperty);
-            set => SetValue(UseBitmapCacheProperty, value);
         }
 
         #endregion

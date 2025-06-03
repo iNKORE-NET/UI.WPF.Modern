@@ -48,6 +48,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         private bool _wasDragged;
 
         private BitmapCache _bitmapCache;
+        private bool UseBitmapCache => ShadowAssist.GetUseBitmapCache(this);
 
         static ToggleSwitch()
         {
@@ -280,23 +281,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             get => (bool)GetValue(IsRightAlignedCompactProperty);
             set => SetValue(IsRightAlignedCompactProperty, value);
-        }
-
-        #endregion
-
-        #region UseBitmapCache
-
-        public static readonly DependencyProperty UseBitmapCacheProperty =
-            DependencyProperty.Register(
-                nameof(UseBitmapCache),
-                typeof(bool),
-                typeof(ToggleSwitch),
-                new PropertyMetadata(false));
-
-        public bool UseBitmapCache
-        {
-            get => (bool)GetValue(UseBitmapCacheProperty);
-            set => SetValue(UseBitmapCacheProperty, value);
         }
 
         #endregion

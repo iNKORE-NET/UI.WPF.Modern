@@ -1,4 +1,5 @@
-﻿using iNKORE.UI.WPF.Modern.Helpers;
+﻿using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Modern.Media.Animation;
 using System;
 using System.Collections.Specialized;
@@ -20,6 +21,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
     [TemplatePart(Name = SecondContentPresenterName, Type = typeof(ContentPresenter))]
     public class Frame : System.Windows.Controls.Frame
     {
+        private bool UseBitmapCache => ShadowAssist.GetUseBitmapCache(this);
+
         static Frame()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Frame), new FrameworkPropertyMetadata(typeof(Frame)));
@@ -220,23 +223,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
         private static void SetNavigationTransitionInfo(JournalEntry entry, NavigationTransitionInfo value)
         {
             entry.SetValue(NavigationTransitionInfoProperty, value);
-        }
-
-        #endregion
-
-        #region UseBitmapCache
-
-        public static readonly DependencyProperty UseBitmapCacheProperty =
-            DependencyProperty.Register(
-                nameof(UseBitmapCache),
-                typeof(bool),
-                typeof(Frame),
-                new PropertyMetadata(false));
-
-        public bool UseBitmapCache
-        {
-            get => (bool)GetValue(UseBitmapCacheProperty);
-            set => SetValue(UseBitmapCacheProperty, value);
         }
 
         #endregion

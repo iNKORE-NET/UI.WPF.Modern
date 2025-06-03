@@ -1,4 +1,5 @@
-﻿using iNKORE.UI.WPF.Modern.Controls.Helpers;
+﻿using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Helpers;
 using System;
 using System.Diagnostics;
@@ -13,6 +14,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
     public class ThemeShadowChrome : Decorator
     {
+        private bool UseBitmapCache => ShadowAssist.GetUseBitmapCache(this);
+
         static ThemeShadowChrome()
         {
             s_bg1 = new SolidColorBrush(Colors.Black) { Opacity = 0.11 };
@@ -231,23 +234,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                     _parentPopupControl.SetMargin(PopupMargin);
                 }
             }
-        }
-
-        #endregion
-
-        #region UseBitmapCache
-
-        public static readonly DependencyProperty UseBitmapCacheProperty =
-            DependencyProperty.Register(
-                nameof(UseBitmapCache),
-                typeof(bool),
-                typeof(ThemeShadowChrome),
-                new PropertyMetadata(false));
-
-        public bool UseBitmapCache
-        {
-            get => (bool)GetValue(UseBitmapCacheProperty);
-            set => SetValue(UseBitmapCacheProperty, value);
         }
 
         #endregion

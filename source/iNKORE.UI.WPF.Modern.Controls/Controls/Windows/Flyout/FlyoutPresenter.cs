@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
+using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 
@@ -10,6 +11,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
 {
     public class FlyoutPresenter : ContentControl
     {
+        private bool UseBitmapCache => ShadowAssist.GetUseBitmapCache(this);
+
         static FlyoutPresenter()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlyoutPresenter), new FrameworkPropertyMetadata(typeof(FlyoutPresenter)));
@@ -45,23 +48,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             get => (bool)GetValue(IsDefaultShadowEnabledProperty);
             set => SetValue(IsDefaultShadowEnabledProperty, value);
-        }
-
-        #endregion
-
-        #region UseBitmapCache
-
-        public static readonly DependencyProperty UseBitmapCacheProperty =
-            DependencyProperty.Register(
-                nameof(UseBitmapCache),
-                typeof(bool),
-                typeof(FlyoutPresenter),
-                new PropertyMetadata(false));
-
-        public bool UseBitmapCache
-        {
-            get => (bool)GetValue(UseBitmapCacheProperty);
-            set => SetValue(UseBitmapCacheProperty, value);
         }
 
         #endregion

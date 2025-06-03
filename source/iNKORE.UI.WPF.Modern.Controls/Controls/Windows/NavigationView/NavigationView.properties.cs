@@ -894,23 +894,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         #endregion
 
-        #region UseBitmapCache
-
-        public static readonly DependencyProperty UseBitmapCacheProperty =
-            DependencyProperty.Register(
-                nameof(UseBitmapCache),
-                typeof(bool),
-                typeof(NavigationView),
-                new PropertyMetadata(false));
-
-        public bool UseBitmapCache
-        {
-            get => (bool)GetValue(UseBitmapCacheProperty);
-            set => SetValue(UseBitmapCacheProperty, value);
-        }
-
-        #endregion
-
         public event TypedEventHandler<NavigationView, NavigationViewSelectionChangedEventArgs> SelectionChanged;
         public event TypedEventHandler<NavigationView, NavigationViewItemInvokedEventArgs> ItemInvoked;
         public event TypedEventHandler<NavigationView, NavigationViewDisplayModeChangedEventArgs> DisplayModeChanged;

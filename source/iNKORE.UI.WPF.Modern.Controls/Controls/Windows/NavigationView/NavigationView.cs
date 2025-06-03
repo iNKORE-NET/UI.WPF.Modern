@@ -115,6 +115,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         internal static readonly ControlStrings ResourceAccessor = new ControlStrings(typeof(NavigationView), ModernControlCategory.Windows);
 
+        private bool UseBitmapCache => ShadowAssist.GetUseBitmapCache(this);
+
         /*
         ~NavigationView()
         {
