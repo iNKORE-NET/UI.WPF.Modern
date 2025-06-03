@@ -22,7 +22,7 @@ namespace iNKORE.UI.WPF.Modern.Common
 
         #endregion
 
-        #region AttachedProperty : UseBitmapCache
+        #region AttachedProperty : UseBitmapCacheProperty
 
         public static readonly DependencyProperty UseBitmapCacheProperty = DependencyProperty.RegisterAttached(
             "UseBitmapCache", typeof(bool), typeof(ShadowAssist), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
