@@ -1,5 +1,4 @@
-﻿using iNKORE.UI.WPF.Modern.Common;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -136,7 +135,7 @@ namespace iNKORE.UI.WPF.Modern.Media.Animation
                 element.SetCurrentValue(UIElement.RenderTransformProperty, new TranslateTransform());
             }
 
-            return new NavigationAnimation(element, storyboard, ShadowAssist.UseBitmapCache);
+            return new NavigationAnimation(element, storyboard);
         }
 
         internal override NavigationAnimation GetExitAnimation(FrameworkElement element, bool movingBackwards)
@@ -223,7 +222,7 @@ namespace iNKORE.UI.WPF.Modern.Media.Animation
                 element.SetCurrentValue(UIElement.RenderTransformProperty, new TranslateTransform());
             }
 
-            return new NavigationAnimation(element, storyboard, ShadowAssist.UseBitmapCache);
+            return new NavigationAnimation(element, storyboard);
         }
     }
 
