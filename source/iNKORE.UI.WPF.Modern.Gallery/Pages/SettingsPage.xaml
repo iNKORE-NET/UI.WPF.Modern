@@ -28,7 +28,7 @@
                     Header="App theme"
                     Description="Select which app theme to display">
                     <ui:SettingsCard.HeaderIcon>
-                        <ui:FontIcon Glyph="&#xE790;" />
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Color}"/>
                     </ui:SettingsCard.HeaderIcon>
                     <ComboBox
                         x:Name="themeMode"                                
@@ -41,7 +41,7 @@
 
                 <ui:SettingsCard Header="Navigation style">
                     <ui:SettingsCard.HeaderIcon>
-                        <ui:FontIcon Glyph="&#xF594;" />
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.HolePunchLandscapeLeft}"/>
                     </ui:SettingsCard.HeaderIcon>
                     <ComboBox
                         x:Name="navigationLocation"
@@ -132,7 +132,7 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"/>
                             <ui:SettingsCard.ActionIcon>
-                                <ui:FontIcon Glyph="&#xE8C8;" />
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Copy}" />
                             </ui:SettingsCard.ActionIcon>
                         </ui:SettingsCard>
 
@@ -141,14 +141,14 @@
                             IsClickEnabled="True"
                             Click="bugRequestCard_Click">
                             <ui:SettingsCard.ActionIcon>
-                                <ui:FontIcon Glyph="&#xE8A7;" />
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.OpenInNewWindow}" />
                             </ui:SettingsCard.ActionIcon>
                         </ui:SettingsCard>
 
 
                         <ui:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Left">
                             <StackPanel Margin="-12,0,0,0" Orientation="Vertical">
-                                <TextBlock TextWrapping="Wrap" Margin="12,0,0,5">
+                                <TextBlock TextWrapping="Wrap" Margin="12,6,0,5">
                                     <Run Text="THIS CODE AND INFORMATION IS PROVIDED ‘AS IS’ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE."/>
                                     <LineBreak/>
                                                             <LineBreak/>
@@ -163,7 +163,7 @@
                     </ui:SettingsExpander.Items>
                 </ui:SettingsExpander>
 
-                <uc:DocumentationPromotion Margin="0,10,0,60"/>
+                <uc:DocumentationPromotion Margin="0,4,0,60"/>
 
                 <!-- <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
                     <RadioButton
