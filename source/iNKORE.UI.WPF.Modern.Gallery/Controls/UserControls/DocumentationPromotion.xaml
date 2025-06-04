@@ -11,7 +11,7 @@
     <Grid>
         <Border Background="{DynamicResource {x:Static ui:ThemeKeys.LayerFillColorDefaultBrushKey}}"
                                 BorderBrush="{DynamicResource {x:Static ui:ThemeKeys.CardStrokeColorDefaultBrushKey}}"
-                                CornerRadius="8" BorderThickness="1" Padding="12, 10" TextElement.FontSize="14">
+                                CornerRadius="4" BorderThickness="1" Padding="12, 10" TextElement.FontSize="14">
 
             <Grid>
                 <Grid.RowDefinitions>
