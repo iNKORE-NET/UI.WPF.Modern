@@ -93,7 +93,7 @@
                     Text="About" 
                     Margin="0,33,10,5"/>
 
-                <ui:SettingsExpander
+                <ui:SettingsExpander x:Name="SettingsExpander_About"
                     Header="{StaticResource AppTitleName}"
                     Description="© 2025 iNKORE Studios. All rights reserved.">
                     <ui:SettingsExpander.HeaderIcon>
@@ -102,7 +102,7 @@
 
                 <Viewbox Stretch="None">
                     <TextBox
-                        Text="{Binding Version, Mode=OneWay}"
+                        Text="{x:Static ui:ThemeManager.AssemblyVersion}"
                         IsReadOnly="True"
                         BorderThickness="0"
                         Background="Transparent"
@@ -145,70 +145,25 @@
                             </ui:SettingsCard.ActionIcon>
                         </ui:SettingsCard>
 
-                        <ui:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Left">
-                            <StackPanel Margin="-12,0,0,0" Orientation="Vertical">
-                                <TextBlock Margin="12,0,0,5" Text="Dependencies &amp; references" />
-
-                                <!-- Runtimes by Microsoft -->
-                                <ui:HyperlinkButton
-                                    Content=".NET Framework / .NET Desktop / .NET (Microsoft)"
-                                    NavigateUri="https://dotnet.microsoft.com/" />
-
-                                 <!-- Community/toolkits -->
-                                <ui:HyperlinkButton
-                                    Content="Windows Community Toolkit (Microsoft)"
-                                    NavigateUri="https://github.com/CommunityToolkit/Windows" />
-                                <ui:HyperlinkButton
-                                    Content="WinUI 3 (Microsoft)"
-                                    NavigateUri="https://aka.ms/winui" />
-                                
-                                <!-- iNKORE projects -->
-                                <ui:HyperlinkButton
-                                    Content="iNKORE.UI.WPF.Modern (iNKORE Studios)"
-                                    NavigateUri="https://github.com/iNKORE-NET/UI.WPF.Modern" />
-
-                                <!-- Styling & theming 
-                                <ui:HyperlinkButton
-                                    Content="ModernWpf (Kinnara &amp; wherewhere)"
-                                    NavigateUri="https://github.com/Kinnara/ModernWpf" />
-                                <ui:HyperlinkButton
-                                    Content="Fluent System Icons (Microsoft)"
-                                    NavigateUri="https://github.com/microsoft/fluentui-system-icons" />
-
-                                <!- Helpers & value types 
-                                <ui:HyperlinkButton
-                                    Content="Resource.Embedder (Marc Stan)"
-                                    NavigateUri="https://github.com/MarcStan/Resource.Embedder" />
-                                <ui:HyperlinkButton
-                                    Content="System.ValueTuple (Microsoft)"
-                                    NavigateUri="https://www.nuget.org/packages/System.ValueTuple" />
-                                <ui:HyperlinkButton
-                                    Content="System.Runtime (Microsoft)"
-                                    NavigateUri="https://www.nuget.org/packages/System.Runtime" /> -->
-
-                                <!-- Gallery-only dependencies -->
-                                <ui:HyperlinkButton
-                                    Content="AvalonEdit (ICSharpCode)"
-                                    NavigateUri="https://github.com/icsharpcode/AvalonEdit" />
-                                <ui:HyperlinkButton
-                                    Content="ColorCodeStandard (Matt Hawley &amp; Microsoft)"
-                                    NavigateUri="https://github.com/MattHawley/ColorCodeStandard" />
-                                <ui:HyperlinkButton
-                                    Content="Newtonsoft.Json (James Newton-King)"
-                                    NavigateUri="https://www.newtonsoft.com/json" />
-                            </StackPanel>
-                        </ui:SettingsCard>
 
                         <ui:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Left">
                             <StackPanel Margin="-12,0,0,0" Orientation="Vertical">
-                                <TextBlock TextWrapping="Wrap" Margin="12,0,0,5" Text="iNKORE Studios IS NOT AFFILIATED WITH MICROSOFT OR ANY OTHER COMPANY. THE PROJECT IS A COMMUNITY-DRIVEN PROJECT. READ LICENSE BEFORE USING ANY OF THE CODE." />
-                                <ui:HyperlinkButton Content="License" NavigateUri="https://github.com/iNKORE-NET/UI.WPF.Modern?tab=License-1-ov-file"/>
+                                <TextBlock TextWrapping="Wrap" Margin="12,0,0,5">
+                                    <Run Text="THIS CODE AND INFORMATION IS PROVIDED ‘AS IS’ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE."/>
+                                    <LineBreak/>
+                                                            <LineBreak/>
+            <Run Text="iNKORE Studios IS NOT AFFILIATED WITH MICROSOFT OR ANY OTHER COMPANY. THE PROJECT IS A COMMUNITY-DRIVEN PROJECT. READ LICENSE BEFORE USING ANY OF THE CODE."/>
+                                </TextBlock>
+                                <WrapPanel Margin="0,10,0,0">
+                                    <ui:HyperlinkButton Content="License" NavigateUri="https://github.com/iNKORE-NET/UI.WPF.Modern?tab=License-1-ov-file"/>
+                                    <ui:HyperlinkButton Content="Dependencies &amp; references" NavigateUri="https://github.com/iNKORE-NET/UI.WPF.Modern?tab=readme-ov-file#-credits" />
+                                </WrapPanel>
                             </StackPanel>
                         </ui:SettingsCard>
                     </ui:SettingsExpander.Items>
                 </ui:SettingsExpander>
 
-                <uc:DocumentationPromotion Margin="0,20,0,60"/>
+                <uc:DocumentationPromotion Margin="0,10,0,60"/>
 
                 <!-- <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
                     <RadioButton
