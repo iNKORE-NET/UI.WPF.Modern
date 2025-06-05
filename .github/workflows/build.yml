@@ -20,21 +20,23 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
-      - name: Build and pack
-        continue-on-error: true
-        run: |
-          dotnet build .\source\iNKORE.UI.WPF.Modern
-          dotnet publish .\source\iNKORE.UI.WPF.Modern.Gallery -r win-x64 -f net6.0-windows10.0.18362.0 --no-self-contained -p:PublishSingleFile=true -p:IncludeContentInSingleFile=true
-        # dotnet pack .\source\iNKORE.UI.WPF.Modern.Controls --configuration Release -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
+      - name: Build iNKORE.UI.WPF.Modern
+        run: dotnet build source/iNKORE.UI.WPF.Modern/iNKORE.UI.WPF.Modern.csproj --configuration Release
 
-      - name: Upload binary libraries of iNKORE.UI.WPF.Modern.Controls
-        uses: actions/upload-artifact@v4
+      - name: Build and publish Gallery
+        run: dotnet publish source/iNKORE.UI.WPF.Modern.Gallery/iNKORE.UI.WPF.Modern.Gallery.csproj --configuration Release -r win-x64 -f net6.0-windows10.0.18362.0 --no-self-contained -p:PublishSingleFile=true -p:IncludeContentInSingleFile=true
+
+      - name: Build Controls
+        run: dotnet build source/iNKORE.UI.WPF.Modern.Controls/iNKORE.UI.WPF.Modern.Controls.csproj --configuration Release
+
+      - name: Upload Controls artifacts
+        uses: actions/upload-artifact@v3
         with:
-          name: iNKORE.UI.WPF.Modern.Controls dlls
-          path: .\source\iNKORE.UI.WPF.Modern.Controls\bin\Debug
+          name: iNKORE.UI.WPF.Modern.Controls
+          path: source/iNKORE.UI.WPF.Modern.Controls/bin/Release/
 
-      - name: Upload Gallery apps
-        uses: actions/upload-artifact@v4
+      - name: Upload Gallery artifacts
+        uses: actions/upload-artifact@v3
         with:
           name: iNKORE.UI.WPF.Modern.Gallery
-          path: .\source\iNKORE.UI.WPF.Modern.Gallery\bin\Debug\net6.0-windows10.0.18362.0\win-x64\publish
+          path: source/iNKORE.UI.WPF.Modern.Gallery/bin/Release/net6.0-windows10.0.18362.0/win-x64/publish/
