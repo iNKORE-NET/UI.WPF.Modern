@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="iNKORE.UI.WPF" Version="1.2.8" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Include="MainWindow.xaml" />
   </ItemGroup>
 
