@@ -57,7 +57,8 @@
 
 - We're currently working on a documentation site that simplifies your learning curve. However this can be a huge process. You can preview the documentation site at [docs.inkore.net/ui-wpf-modern](https://docs.inkore.net/ui-wpf-modern/introduction) (remember it's not finished yet). Feedback and contributions are welcome and strongly needed.
 
-> [!NOTE] It's time for a brand-new docmentation set!
+> [!NOTE]
+> It's time for a brand-new docmentation set!
 >
 > We are looking for passionate volunteers to help us write and improve the documentation for the
 iNKORE.UI.WPF.Modern library. Your contributions will be invaluable in making this project more
