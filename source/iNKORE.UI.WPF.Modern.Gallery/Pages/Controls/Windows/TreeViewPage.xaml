@@ -34,7 +34,7 @@
 
         <Style x:Key="TreeContainerBorderStyle" TargetType="Border">
             <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static ui:ThemeKeys.CardStrokeColorDefaultBrushKey}}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Height" Value="280"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
