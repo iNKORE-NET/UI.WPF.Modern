@@ -88,6 +88,8 @@ welcome your help!
   
 - Help us promote the project by starring the repository, sharing it on social media, telling your friends about it and add gadgets to your projects ([instructions here](https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/docs/promotions.md))
 
+- We're also looking for volunteers to help us with the documentation and its translations, and other tasks. Check the [documentation repository](https://github.com/iNKORE-NET/Documentation) for more information.
+
 - Sponsor us at https://www.inkore.net/donate to help us keep the project alive and well. Your support is greatly appreciated!
 
 > [!WARNING]
