@@ -121,8 +121,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
                     }
                 }
                 return $@"
-        <ui:ProgressRing Width=""60"" Height=""60"" Value=""{ProgressValue.Value}"" 
-        IsIndeterminate=""False"" Background=""{background}"" />
+<ui:ProgressRing Width=""60"" Height=""60"" Value=""{ProgressValue.Value}"" 
+    IsIndeterminate=""False"" Background=""{background}"" />
         ";
             }
         }
