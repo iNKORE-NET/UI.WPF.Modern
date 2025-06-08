@@ -62,30 +62,30 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 ";
 
         public string Example2Xaml => $@"
-<Slider x:Name=""Slider2"" ui:ControlHelper.Header=""Control header"" Width=""{200}"" Minimum=""{MinimumValue?.Value ?? 500}"" Maximum=""{MaximumValue?.Value ?? 1000}"" 
-TickFrequency=""{StepFrequencyValue?.Value ?? 10}"" SmallChange=""{SmallChangeValue?.Value ?? 10}"" Value=""{Slider2?.Value ?? 800}"" />
+<Slider x:Name=""Slider2"" ui:ControlHelper.Header=""Control header"" Maximum=""{MaximumValue?.Value ?? 1000}"" 
+    TickFrequency=""{StepFrequencyValue?.Value ?? 10}"" SmallChange=""{SmallChangeValue?.Value ?? 10}"" Value=""{Slider2?.Value ?? 800}"" Width=""{200}"" Minimum=""{MinimumValue?.Value ?? 500}"" />
 ";
 
         public string Example3Xaml => $@"
 <Slider x:Name=""Slider3""
-        AutomationProperties.Name=""Slider with ticks""
-        TickFrequency=""20"" 
-        TickPlacement=""Both"" 
-        SnapsTo=""{SnapsToValue}"" />
+    AutomationProperties.Name=""Slider with ticks""
+    TickFrequency=""20"" 
+    TickPlacement=""Both"" 
+    SnapsTo=""{SnapsToValue}"" />
 ";
 
         public string Example4Xaml => $@"
 <Slider x:Name=""Slider4"" AutomationProperties.Name=""vertical slider"" Width=""{100}"" Orientation=""Vertical"" 
-        TickFrequency=""10"" TickPlacement=""Both"" Maximum=""50"" Minimum=""-50"" />
+    TickFrequency=""10"" TickPlacement=""Both"" Maximum=""50"" Minimum=""-50"" />
 ";
 
         public string Example5Xaml => $@"
 <Slider x:Name=""slider"" Orientation=""{slider.Orientation}""
-        ui:ControlHelper.Header=""Control header""
-        AutoToolTipPlacement=""{slider.AutoToolTipPlacement}"" TickPlacement=""{slider.TickPlacement}""
-        IsSelectionRangeEnabled=""{slider.IsSelectionRangeEnabled}"" IsDirectionReversed=""{slider.IsDirectionReversed}""
-        IsMoveToPointEnabled=""{slider.IsMoveToPointEnabled}"" IsSnapToTickEnabled=""{slider.IsSnapToTickEnabled}""
-        Maximum=""100"" TickFrequency=""10"" TickPlacement=""Both"">
+    ui:ControlHelper.Header=""Control header""
+    AutoToolTipPlacement=""{slider.AutoToolTipPlacement}"" TickPlacement=""{slider.TickPlacement}""
+    IsSelectionRangeEnabled=""{slider.IsSelectionRangeEnabled}"" IsDirectionReversed=""{slider.IsDirectionReversed}""
+    IsMoveToPointEnabled=""{slider.IsMoveToPointEnabled}"" IsSnapToTickEnabled=""{slider.IsSnapToTickEnabled}""
+    Maximum=""100"" TickFrequency=""10"" TickPlacement=""Both"">
 </Slider>
 ";
 
