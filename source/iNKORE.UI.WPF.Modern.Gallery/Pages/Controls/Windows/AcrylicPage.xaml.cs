@@ -123,7 +123,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
     </Grid>
     <ui:AcrylicPanel x:Name=""CustomAcrylicShapeInApp""
         Margin=""12"" Target=""{{Binding ElementName=Acrylic3Grid}}""
-        TintColor=""${CustomAcrylicShapeInApp.TintColor.ToHEX()}"" TintOpacity=""${CustomAcrylicShapeInApp.TintOpacity.ToString()}"" />
+        TintColor=""{CustomAcrylicShapeInApp.TintColor.ToHEX()}"" TintOpacity=""{CustomAcrylicShapeInApp.TintOpacity.ToString()}"" />
 </Grid>
 ";
 
