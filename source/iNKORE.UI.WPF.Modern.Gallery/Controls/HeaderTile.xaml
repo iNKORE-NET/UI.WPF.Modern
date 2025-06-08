@@ -16,11 +16,11 @@
         BorderBrush="{DynamicResource SurfaceStrokeColorFlyoutBrush}">
         <FrameworkElement.Resources>
             <ResourceDictionary>
-                <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary.MergedDictionaries>
                     <ui:ThemeResources CanBeAccessedAcrossThreads="{x:Static local:App.IsMultiThreaded}">
                         <ui:ThemeResources.ThemeDictionaries>
                             <ResourceDictionary x:Key="Light" ui:ThemeDictionary.Key="Light">
-                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{DynamicResource {x:Static ui:ThemeKeys.ControlStrokeColorDefaultKey}}" />
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{DynamicResource ControlStrokeColorDefault}" />
                                 <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{DynamicResource ControlStrokeColorSecondary}" />
                                 <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPressed" Color="{DynamicResource ControlStrokeColorDefault}" />
                                 <SolidColorBrush x:Key="HyperlinkButtonBorderBrushDisabled" Color="{DynamicResource ControlStrokeColorDefault}" />
@@ -39,7 +39,14 @@
                             </ResourceDictionary>
                         </ui:ThemeResources.ThemeDictionaries>
                     </ui:ThemeResources>
-                </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary.MergedDictionaries>-->
+
+                <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{DynamicResource ControlStrokeColorDefault}" />
+                <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{DynamicResource ControlStrokeColorSecondary}" />
+                <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPressed" Color="{DynamicResource ControlStrokeColorDefault}" />
+                <SolidColorBrush x:Key="HyperlinkButtonBorderBrushDisabled" Color="{DynamicResource ControlStrokeColorDefault}" />
+
+                
             </ResourceDictionary>
         </FrameworkElement.Resources>
 
