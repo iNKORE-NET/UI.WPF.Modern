@@ -29,7 +29,7 @@
     <Grid Background="{DynamicResource HomePageBackgroundBrush}">
         <ui:GridView
             x:Name="itemGridView"
-            Padding="30,0,30,0"
+            Padding="36,0,36,0"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             IsItemClickEnabled="True"
@@ -65,7 +65,7 @@
                         </Grid>
                     </Border>
 
-                    <StackPanel Grid.RowSpan="4" Margin="33,63,30,0" Orientation="Vertical" VerticalAlignment="Top">
+                    <StackPanel Grid.RowSpan="4" Margin="36,63,36,0" Orientation="Vertical" VerticalAlignment="Top">
                         <TextBlock
                             x:Name="smallHeaderSubtitleText"
                             Foreground="Black"
@@ -82,7 +82,7 @@
 
                     <controls:TileGallery Grid.Row="2" Margin="0,0,0,0"/>
 
-                    <uc:DocumentationPromotion Grid.Row="3" Margin="30,16,30,0" />
+                    <uc:DocumentationPromotion Grid.Row="3" Margin="36,16,36,0" />
                 </Grid>
             </ui:ListViewHelper.Header>
 
