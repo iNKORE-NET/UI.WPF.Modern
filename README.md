@@ -34,6 +34,9 @@
   <a href="https://twitter.com/NotYoojun"><img src="https://img.shields.io/twitter/follow/NotYoojun?style=social" alt="NotYoojun's Twitter"></a>
 </p>
 
+<p align="center">
+ <a href="https://docs.inkore.net/zh-cn/ui-wpf-modern/introduction">Documentation</a> | <a href="https://www.inkore.net">Official Website</a>
+
 <br align="center">
 
 # ✨ Features
@@ -53,6 +56,17 @@
 - Check out the [Getting Started](https://docs.inkore.net/ui-wpf-modern/onboarding) guide on our documentation site.
 
 - We're currently working on a documentation site that simplifies your learning curve. However this can be a huge process. You can preview the documentation site at [docs.inkore.net/ui-wpf-modern](https://docs.inkore.net/ui-wpf-modern/introduction) (remember it's not finished yet). Feedback and contributions are welcome and strongly needed.
+
+> [!NOTE] It's time for a brand-new docmentation set!
+>
+> We are looking for passionate volunteers to help us write and improve the documentation for the
+iNKORE.UI.WPF.Modern library. Your contributions will be invaluable in making this project more
+accessible and user-friendly for the entire community.
+>
+> Whether you are an experienced developer or just enthusiastic about contributing to open-source, we
+welcome your help!
+>
+> It's very easy to join us! You can create a PR in our [Documentation repository](https://github.com/iNKORE-NET/Documentation) when you're free. You can also join our [Discord server](https://discord.gg/m6NPNVk4bs) and [Telegram group](https://t.me/iNKORE) to hang out with us.
 
 - We provide a gallery application as well. You can check the latest version of the gallery in GitHub Actions, or download the stable version from Microsoft Store.
 
@@ -83,6 +97,9 @@
 >
 > **请不要继续在 issues 板块下发表任何无意义且无法促进此项目持续发展的内容**。在提交 issue 之前，请仔细思考你要发布的内容**是否合理**，如果不能，请不要浪费其他人的时间；同时请考虑**开发者能否修复/实现**，如果不能，请自己提交 PR 而不是 issue。
 > 在交流时请尊重他人，不要使用不文明用语。请不要催促或强求开发者和其他贡献者，他们是一群热爱开源的志愿者，不是你的私人雇员！
+>
+> 如果你是 WPF 或 C# 的初学者，我们不建议你使用本项目。相反，提升自己的能力更为重要。
+> 你可以在 [YSGStudyHards / DotNetGuide](https://github.com/YSGStudyHards/DotNetGuide) 学习初步知识。对于 UI 库方面，我们更建议使用 [HandyOrg / HandyControl](https://github.com/HandyOrg/HandyControl) 等更加容易入手的项目。提升个人能力也有助于更好地运用包括 iNKORE.UI.WPF.Modern 在内的任何 WPF 库！
 >
 > 现在我们已经不再接受使用新的任何使用除英语 (美国) 之外的任何语言提交的任何议题 (包括但不限于 Issue，PR 和 Discussion)！**对于使用中文或其它语言的议题和讨论将被关闭或删除！如果不会说英语，请使用 Google Translator 等翻译工具自行翻译！**
 
