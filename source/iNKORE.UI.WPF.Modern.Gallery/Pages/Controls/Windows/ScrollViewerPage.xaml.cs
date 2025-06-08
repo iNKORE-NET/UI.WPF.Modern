@@ -124,8 +124,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 <ui:ScrollViewerEx x:Name=""Control1"" Width=""{400}"" Height=""{266}""
     VerticalAlignment=""Top"" HorizontalAlignment=""Left""       
     HorizontalScrollBarVisibility=""{((ComboBoxItem)hsbvCombo.SelectedItem).Content}"" VerticalScrollBarVisibility=""{((ComboBoxItem)vsbvCombo.SelectedItem).Content}"">
-    <Image Source=""/Assets/SampleMedia/cliff.jpg"" AutomationProperties.Name=""cliff""  Stretch=""None"" 
-    HorizontalAlignment=""Center"" VerticalAlignment=""Center"" />  
+    <Image Source=""/Assets/SampleMedia/cliff.jpg"" AutomationProperties.Name=""cliff"" 
+        HorizontalAlignment=""Center"" VerticalAlignment=""Center"" Stretch=""None"" />  
 </ui:ScrollViewerEx>
 ";
 
