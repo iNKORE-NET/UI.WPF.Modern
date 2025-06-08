@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
+    mc:Ignorable="d" d:DesignWidth="886.575">
 
     <!-- Resources -->
     <UserControl.Resources>
@@ -35,15 +35,18 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}"
+                            <ui:DropShadowPanel BlurRadius="12"
+                                CornerRadius="{DynamicResource ControlCornerRadius}" ShadowOpacity="0.06" ShadowDepth="2" ShadowMode="Outer">
+                                <Border Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="{DynamicResource ControlCornerRadius}">
-                                <ContentPresenter
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Content="{TemplateBinding Content}" />
-                            </Border>
+                                    <ContentPresenter
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding Content}" />
+                                </Border>
+                            </ui:DropShadowPanel>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -118,7 +121,7 @@
             x:Name="ScrollBackBtn"
             Width="16"
             Height="38"
-            Margin="8,0,0,25"
+            Margin="12,0,0,25"
             VerticalAlignment="Center"
             AutomationProperties.Name="Scroll left"
             Style="{StaticResource ScrollButtonStyle}"
@@ -130,7 +133,7 @@
             x:Name="ScrollForwardBtn"
             Width="16"
             Height="38"
-            Margin="0,0,8,25"
+            Margin="0,0,12,25"
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             AutomationProperties.Name="Scroll right"

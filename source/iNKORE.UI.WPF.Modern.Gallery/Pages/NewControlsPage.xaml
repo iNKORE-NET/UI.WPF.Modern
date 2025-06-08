@@ -66,12 +66,13 @@
                     </Border>
 
                     <StackPanel Grid.RowSpan="4" Margin="36,63,36,0" Orientation="Vertical" VerticalAlignment="Top">
-                        <TextBlock
-                            x:Name="smallHeaderSubtitleText"
+                        <TextBlock x:Name="smallHeaderSubtitleText"
                             Foreground="Black"
                             Style="{DynamicResource SubtitleTextBlockStyle}"
-                            Text="{x:Static ui:ThemeManager.AssemblyVersion}"
-                            Visibility="Visible" />
+                            Visibility="Visible" >
+                            <Run>Version</Run>
+                            <Run Text="{x:Static ui:ThemeManager.AssemblyVersion}"/>
+                        </TextBlock>
                         <TextBlock
                             x:Name="smallHeaderText"
                             Foreground="Black"
