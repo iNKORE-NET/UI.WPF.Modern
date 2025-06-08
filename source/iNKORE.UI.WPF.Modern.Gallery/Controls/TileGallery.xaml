@@ -48,13 +48,15 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+    
+            
+        
         </ResourceDictionary>
     </UserControl.Resources>
 
     <!-- Layout -->
-    <Grid>
-        <ScrollViewer
-            x:Name="scroller"
+    <Grid RenderOptions.BitmapScalingMode="HighQuality">
+        <ScrollViewer x:Name="scroller"
             HorizontalScrollBarVisibility="Hidden"
             VerticalScrollBarVisibility="Disabled">
             <Grid Margin="36,0,36,0">
@@ -62,15 +64,21 @@
                     <local:HeaderTile
                         Title="Getting started"
                         Description="Get started with iUWM and explore detailed documentation."
-                        Link="https://docs.inkore.net/ui-wpf-modern/onboarding"
-                        Source="pack://application:,,,/Assets/HomeHeaderTiles/Header-iUWM.png"/>
+                        Link="https://docs.inkore.net/ui-wpf-modern/onboarding">
+                        <local:HeaderTile.Icon>
+                            <Image Width="55" Source="/iNKORE.UI.WPF.Modern.Gallery;component/Assets/WpfLibrary_256w.png"/>
+                        </local:HeaderTile.Icon>
+                    </local:HeaderTile>
                     <local:HeaderTile
-                        Title="Design"
+                        Title="Design" RenderOptions.BitmapScalingMode="Linear"
                         Description="Guidelines and toolkits for creating stunning WinUI experiences."
-                        Link="https://learn.microsoft.com/windows/apps/design/"
-                        Source="/Assets/HomeHeaderTiles/Header-WindowsDesign.png"/>
+                        Link="https://learn.microsoft.com/windows/apps/design/">
+                        <local:HeaderTile.Icon>
+                            <Image Width="55" Source="/iNKORE.UI.WPF.Modern.Gallery;component/Assets/HomeHeaderTiles/Header-WindowsDesign.png"/>
+                        </local:HeaderTile.Icon>
+                    </local:HeaderTile>
                     <local:HeaderTile
-                        Title="iUWM on GitHub"
+                        Title="Source code"
                         Description="Explore the iUWM source code and repository."
                         Link="https://github.com/iNKORE-NET/UI.WPF.Modern">
                         <local:HeaderTile.Icon>

@@ -11,11 +11,38 @@
     Height="230"
     DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
-    <Border
+    <Border CornerRadius="8" Margin="0,0,12,12"
         Background="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}"
-        BorderBrush="{DynamicResource SurfaceStrokeColorFlyoutBrush}"
-        CornerRadius="8"
-        Margin="0,0,12,12">
+        BorderBrush="{DynamicResource SurfaceStrokeColorFlyoutBrush}">
+        <FrameworkElement.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ui:ThemeResources CanBeAccessedAcrossThreads="{x:Static local:App.IsMultiThreaded}">
+                        <ui:ThemeResources.ThemeDictionaries>
+                            <ResourceDictionary x:Key="Light" ui:ThemeDictionary.Key="Light">
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{DynamicResource {x:Static ui:ThemeKeys.ControlStrokeColorDefaultKey}}" />
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{DynamicResource ControlStrokeColorSecondary}" />
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPressed" Color="{DynamicResource ControlStrokeColorDefault}" />
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrushDisabled" Color="{DynamicResource ControlStrokeColorDefault}" />
+                            </ResourceDictionary>
+                            <ResourceDictionary x:Key="Dark" ui:ThemeDictionary.Key="Dark">
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{DynamicResource ControlStrokeColorDefault}" />
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{DynamicResource ControlStrokeColorSecondary}" />
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPressed" Color="{DynamicResource ControlStrokeColorDefault}" />
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrushDisabled" Color="{DynamicResource ControlStrokeColorDefault}" />
+                            </ResourceDictionary>
+                            <ResourceDictionary x:Key="HighContrast" ui:ThemeDictionary.Key="HighContrast">
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{DynamicResource SystemColorButtonTextColor}" />
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{DynamicResource SystemColorButtonTextColor}" />
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPressed" Color="{DynamicResource SystemColorButtonTextColor}" />
+                                <SolidColorBrush x:Key="HyperlinkButtonBorderBrushDisabled" Color="{DynamicResource SystemColorButtonTextColor}" />
+                            </ResourceDictionary>
+                        </ui:ThemeResources.ThemeDictionaries>
+                    </ui:ThemeResources>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </FrameworkElement.Resources>
+
         <ui:HyperlinkButton
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
@@ -23,34 +50,6 @@
             VerticalContentAlignment="Stretch"
             NavigateUri="{Binding Link, Mode=OneWay}">
             <Grid>
-                <Grid.Resources>
-                    <ResourceDictionary>
-                        <ResourceDictionary.MergedDictionaries>
-                            <ui:ThemeResources CanBeAccessedAcrossThreads="{x:Static local:App.IsMultiThreaded}">
-                                <ui:ThemeResources.ThemeDictionaries>
-                                    <ResourceDictionary x:Key="Light" ui:ThemeDictionary.Key="Light">
-                                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{DynamicResource ControlStrokeColorDefault}" />
-                                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{DynamicResource ControlStrokeColorSecondary}" />
-                                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPressed" Color="{DynamicResource ControlStrokeColorDefault}" />
-                                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushDisabled" Color="{DynamicResource ControlStrokeColorDefault}" />
-                                    </ResourceDictionary>
-                                    <ResourceDictionary x:Key="Dark" ui:ThemeDictionary.Key="Dark">
-                                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{DynamicResource ControlStrokeColorDefault}" />
-                                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{DynamicResource ControlStrokeColorSecondary}" />
-                                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPressed" Color="{DynamicResource ControlStrokeColorDefault}" />
-                                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushDisabled" Color="{DynamicResource ControlStrokeColorDefault}" />
-                                    </ResourceDictionary>
-                                    <ResourceDictionary x:Key="HighContrast" ui:ThemeDictionary.Key="HighContrast">
-                                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{DynamicResource SystemColorButtonTextColor}" />
-                                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{DynamicResource SystemColorButtonTextColor}" />
-                                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPressed" Color="{DynamicResource SystemColorButtonTextColor}" />
-                                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushDisabled" Color="{DynamicResource SystemColorButtonTextColor}" />
-                                    </ResourceDictionary>
-                                </ui:ThemeResources.ThemeDictionaries>
-                            </ui:ThemeResources>
-                        </ResourceDictionary.MergedDictionaries>
-                    </ResourceDictionary>
-                </Grid.Resources>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="75" />
                     <RowDefinition Height="*" />
