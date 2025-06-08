@@ -268,15 +268,15 @@ public class ExplorerItem : INotifyPropertyChanged
         </StackPanel>
     </DataTemplate>
 
-    <pcw:ExplorerItemTemplateSelector
+    <local:ExplorerItemTemplateSelector
         x:Key=""ExplorerItemTemplateSelector""
         FileTemplate=""{{StaticResource FileTemplate}}""
         FolderTemplate=""{{StaticResource FolderTemplate}}"" />
 </FrameworkElement.Resources>
 
 <TreeView x:Name=""FileTree""
-        ItemTemplateSelector=""{{StaticResource ExplorerItemTemplateSelector}}""
-        ItemsSource=""{{Binding}}"">
+    ItemTemplateSelector=""{{StaticResource ExplorerItemTemplateSelector}}""
+    ItemsSource=""{{Binding}}"">
     <TreeView.ItemContainerStyle>
         <Style BasedOn=""{{StaticResource DefaultTreeViewItemStyle}}"" TargetType=""TreeViewItem"">
             <Setter Property=""IsExpanded"" Value=""True"" />
