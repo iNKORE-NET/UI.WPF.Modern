@@ -88,7 +88,7 @@ welcome your help!
   
 - Help us promote the project by starring the repository, sharing it on social media, telling your friends about it and add gadgets to your projects ([instructions here](https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/docs/promotions.md))
 
-- Sponsor us at https://inkore.net/about/members/notyoojun#sponsor (website under construction, so pls consider to sponsor us on [Patreon](https://patreon.com/notyoojun), [爱发电](https://ifdian.net/a/NotYoojun) or [Buy Me a Coffee](https://buymeacoffee.com/notyoojun) for now)
+- Sponsor us at https://www.inkore.net/donate to help us keep the project alive and well. Your support is greatly appreciated!
 
 > [!WARNING]
 >
