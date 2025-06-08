@@ -24,7 +24,9 @@
         </ResourceDictionary>
     </Page.Resources>
     <StackPanel>
-        <TextBlock TextWrapping="Wrap">
+        <TextBlock TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
+            <!--FontSize is a workaround to force Hyperlinks to use the correct font size.-->
+            
             Acrylic Brush might fall back to SolidColorBrush in certain scenarios.
             If you can't see the Acrylic effect, please refer to
             <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/acrylic#usability-and-adaptability"
