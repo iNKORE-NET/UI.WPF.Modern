@@ -109,46 +109,27 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 ";
 
         string Example3Xaml => $@"
-<Grid
-    x:Name=""Example3Grid""
-    Width=""320""
-    Height=""200""
+<Grid x:Name=""Example3Grid""
+    Width=""320"" Height=""200""
     HorizontalAlignment=""Left"">
     <Grid x:Name=""Acrylic3Grid"" 
         Background=""{{DynamicResource {{x:Static ui:ThemeKeys.SolidBackgroundFillColorBaseBrushKey}}}}"">
-        <Rectangle
-            Width=""100""
-            Height=""200""
-            HorizontalAlignment=""Left""
-            VerticalAlignment=""Top""
-            Fill=""Aqua"" />
-        <Ellipse
-            Width=""152""
-            Height=""152""
-            HorizontalAlignment=""Center""
-            VerticalAlignment=""Center""
-            Fill=""Magenta"" />
-        <Rectangle
-            Width=""80""
-            Height=""100""
-            HorizontalAlignment=""Right""
-            VerticalAlignment=""Bottom""
-            Fill=""Yellow"" />
+        <Rectangle Width=""100"" Height=""200"" Fill=""Aqua""
+            HorizontalAlignment=""Left"" VerticalAlignment=""Top"" />
+        <Ellipse Width=""152"" Height=""152"" Fill=""Magenta""
+            HorizontalAlignment=""Center"" VerticalAlignment=""Center"" />
+        <Rectangle Width=""80"" Height=""100"" Fill=""Yellow""
+            HorizontalAlignment=""Right"" VerticalAlignment=""Bottom"" />
     </Grid>
-    <ui:AcrylicPanel
-        x:Name=""CustomAcrylicShapeInApp""
-        Margin=""12""
-        Target=""{{Binding ElementName=Acrylic3Grid}}""
-        TintColor=""${CustomAcrylicShapeInApp.TintColor.ToHEX()}""
-        TintOpacity=""${CustomAcrylicShapeInApp.TintOpacity.ToString()}"" />
+    <ui:AcrylicPanel x:Name=""CustomAcrylicShapeInApp""
+        Margin=""12"" Target=""{{Binding ElementName=Acrylic3Grid}}""
+        TintColor=""${CustomAcrylicShapeInApp.TintColor.ToHEX()}"" TintOpacity=""${CustomAcrylicShapeInApp.TintOpacity.ToString()}"" />
 </Grid>
 ";
 
 string Example4Xaml => $@"
-<Grid
-    x:Name=""Example4Grid""
-    Width=""320""
-    Height=""200""
+<Grid x:Name=""Example4Grid""
+    Width=""320"" Height=""200""
     HorizontalAlignment=""Left"">
     <Grid x:Name=""Acrylic4Grid"" 
         Background=""{{DynamicResource {{x:Static ui:ThemeKeys.SolidBackgroundFillColorBaseBrushKey}}}}"">
@@ -171,13 +152,10 @@ string Example4Xaml => $@"
             VerticalAlignment=""Bottom""
             Fill=""Yellow"" />
     </Grid>
-    <ui:AcrylicPanel
-        x:Name=""CustomAcrylicShapeLumin""
-        Margin=""12""
+    <ui:AcrylicPanel x:Name=""CustomAcrylicShapeLumin""
+        Margin=""12"" TintColor=""SkyBlue""
         Target=""{{Binding ElementName=Acrylic4Grid}}""
-        TintColor=""SkyBlue""
-        TintOpacity=""{CustomAcrylicShapeLumin.TintOpacity.ToString()}""
-        Amount=""{CustomAcrylicShapeLumin.Amount.ToString()}"" />
+        TintOpacity=""{CustomAcrylicShapeLumin.TintOpacity.ToString()}"" Amount=""{CustomAcrylicShapeLumin.Amount.ToString()}"" />
 </Grid>
 ";
 
