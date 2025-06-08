@@ -98,7 +98,7 @@
                         <ComboBoxItem>Disabled</ComboBoxItem>
                         <ComboBoxItem>Auto</ComboBoxItem>
                     </ComboBox> -->
-                    <TextBlock Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="ScrollbarVisibility" Margin="0,0,0,0"/>
+                    <TextBlock Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="ScrollbarVisibility" Margin="0,0,0,0" FontWeight="Bold"/>
                     <TextBlock Grid.Row="6" Margin="0,8,10,0" VerticalAlignment="Center" Text="Horizontal"/>
                     <ComboBox x:Name="hsbvCombo"
                             Grid.Row="6" Grid.Column="1"
@@ -125,22 +125,6 @@
                     </ComboBox>
                 </Grid>
             </local:ControlExample.Options>
-
-            <local:ControlExample.Xaml>
-                <sys:String xml:space="preserve">
-&lt;ScrollViewerEx Width="400" Height="266"
-    HorizontalScrollBarVisibility="$(HorizontalScrollBarVisibility)"
-    VerticalScrollBarVisibility="$(VerticalScrollBarVisibility)"&gt;
-    &lt;Grid&gt;
-        &lt;Grid.LayoutTransform&gt;
-            &lt;ScaleTransform ScaleX="$(Zoom)" ScaleY="$(Zoom)" /&gt;
-        &lt;/Grid.LayoutTransform&gt;
-        &lt;Image Source="/Assets/SampleMedia/cliff.jpg" Stretch="None"
-            HorizontalAlignment="Left" VerticalAlignment="Top"/&gt;
-    &lt;/Grid&gt;
-&lt;/ScrollViewerEx&gt;
-                </sys:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </ui:Page>
