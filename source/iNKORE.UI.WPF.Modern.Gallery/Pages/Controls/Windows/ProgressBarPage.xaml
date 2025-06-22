@@ -15,6 +15,7 @@
                 Width="130"
                 Margin="10,10,0,0"
                 VerticalAlignment="Top"
+                HorizontalAlignment="Left"
                 IsIndeterminate="True"
                 ShowError="{Binding IsChecked, ElementName=ErrorRB}"
                 ShowPaused="{Binding IsChecked, ElementName=PausedRB}" />
@@ -69,7 +70,7 @@
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example3" VerticalContentAlignment="Center" HeaderText="An indeterminate progress ring.">
+        <local:ControlExample x:Name="Example3" VerticalContentAlignment="Center" HeaderText="An indeterminate progress ring." Visibility="Collapsed">
             <ui:ProgressRing x:Name="ProgressRing1"
                 Width="60"
                 Height="60"
