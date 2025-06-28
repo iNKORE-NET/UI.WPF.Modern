@@ -5,6 +5,7 @@ using iNKORE.UI.WPF.Converters;
 using iNKORE.UI.WPF.Modern.Common.Converters;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
@@ -115,9 +116,14 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 var popup = GetTemplateChild<System.Windows.Controls.Primitives.Popup>("PART_Popup", comboBox);
                 bool isOpenDown = GetPopupVerticalOffset(comboBox) > popup.VerticalOffset;
 
-                if (isOpenDown && GetTemplateChild<FrameworkElement>("PopupBorder", comboBox) is FrameworkElement childContainer)
+                if (isOpenDown &&
+                    comboBox.ItemContainerGenerator.ContainerFromItem(comboBox.SelectedItem) is FrameworkElement itemContainer)
                 {
-                    popup.VerticalOffset = (comboBox.SelectedIndex + 1) * -1.0 / comboBox.Items.Count * childContainer.ActualHeight;
+                    var itemTop = itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + comboBox.Margin.Top + comboBox.Padding.Top), comboBox);
+                    if (itemTop.Y != 0)
+                    {
+                        popup.VerticalOffset -= itemTop.Y;
+                    }
                 }
 
                 if (popup.VerticalOffset is 0)
