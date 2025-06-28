@@ -120,7 +120,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                     popup.VerticalOffset = (comboBox.SelectedIndex + 1) * -1.0 / comboBox.Items.Count * childContainer.ActualHeight;
                 }
 
-                if (popup.VerticalOffset != 0)
+                if (popup.VerticalOffset is 0)
                 {
                     popupRadius = GetFilteredPopupRadius(popupRadius, isOpenDown);
                 }
