@@ -5,7 +5,6 @@ using iNKORE.UI.WPF.Converters;
 using iNKORE.UI.WPF.Modern.Common.Converters;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
@@ -113,7 +112,13 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
             if (isDropDownOpen)
             {
-                bool isOpenDown = IsPopupOpenDown(comboBox);
+                var popup = GetTemplateChild<System.Windows.Controls.Primitives.Popup>("PART_Popup", comboBox);
+                bool isOpenDown = GetPopupVerticalOffset(comboBox) > popup.VerticalOffset;
+
+                if (isOpenDown && GetTemplateChild<FrameworkElement>("PopupBorder", comboBox) is FrameworkElement childContainer)
+                {
+                    popup.VerticalOffset = (comboBox.SelectedIndex + 1) * -1.0 / comboBox.Items.Count * childContainer.ActualHeight;
+                }
 
                 var popupRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Bottom : CornerRadiusFilterKind.Top;
                 popupRadius = CornerRadiusFilterConverter.Convert(popupRadius, popupRadiusFilter);
@@ -148,7 +153,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             }
         }
 
-        private static bool IsPopupOpenDown(ComboBox comboBox)
+        private static double GetPopupVerticalOffset(ComboBox comboBox)
         {
             double verticalOffset = 0;
             if (GetTemplateChild<Border>(c_popupBorderName, comboBox) is Border popupBorder)
@@ -159,7 +164,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                     verticalOffset = popupTop.Y;
                 }
             }
-            return verticalOffset > 0;
+            return verticalOffset;
         }
 
         private static object ResourceLookup(Control control, object key)
