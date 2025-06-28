@@ -5,7 +5,6 @@ using iNKORE.UI.WPF.Converters;
 using iNKORE.UI.WPF.Modern.Common.Converters;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
