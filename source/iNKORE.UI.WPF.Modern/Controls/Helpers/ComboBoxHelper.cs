@@ -117,13 +117,10 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 bool isOpenDown = GetPopupVerticalOffset(comboBox) > popup.VerticalOffset;
 
                 if (isOpenDown &&
-                    comboBox.ItemContainerGenerator.ContainerFromItem(comboBox.SelectedItem) is FrameworkElement itemContainer)
+                    comboBox.ItemContainerGenerator.ContainerFromItem(comboBox.SelectedItem) is FrameworkElement itemContainer &&
+                    itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + comboBox.Margin.Top + comboBox.Padding.Top), comboBox) is { Y: not 0 } itemTop)
                 {
-                    var itemTop = itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + comboBox.Margin.Top + comboBox.Padding.Top), comboBox);
-                    if (itemTop.Y != 0)
-                    {
-                        popup.VerticalOffset -= itemTop.Y;
-                    }
+                    popup.VerticalOffset -= itemTop.Y;
                 }
 
                 if (popup.VerticalOffset is 0)
