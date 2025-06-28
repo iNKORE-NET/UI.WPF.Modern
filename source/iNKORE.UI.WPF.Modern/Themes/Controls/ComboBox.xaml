@@ -4,8 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
-    xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters"
-    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common">
@@ -53,7 +51,6 @@
         <Setter Property="KeyboardNavigation.TabNavigation" Value="Local" />
         <Setter Property="Padding" Value="{DynamicResource ComboBoxItemThemePadding}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
         <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-3" />
         <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="True" />
@@ -146,7 +143,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ComboBoxItemBackgroundPointerOver}" />
                             <Setter TargetName="LayoutRoot" Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushPointerOver}" />
-                            <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundPointerOver}" />
+                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundPointerOver}" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -155,7 +152,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ComboBoxItemBackgroundPressed}" />
                             <Setter TargetName="LayoutRoot" Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushPressed}" />
-                            <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundPressed}" />
+                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundPressed}" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -164,14 +161,14 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ComboBoxItemBackgroundDisabled}" />
                             <Setter TargetName="LayoutRoot" Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushDisabled}" />
-                            <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundDisabled}" />
+                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundDisabled}" />
                         </MultiTrigger>
                         <!--  Selected  -->
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="Pill" Property="Opacity" Value="1" />
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ComboBoxItemBackgroundSelected}" />
                             <Setter TargetName="LayoutRoot" Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushSelected}" />
-                            <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelected}" />
+                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelected}" />
                         </Trigger>
                         <!--  SelectedFocused  -->
                         <MultiTrigger>
@@ -189,9 +186,10 @@
                                 <Condition Property="IsSelected" Value="True" />
                                 <Condition Property="IsFocused" Value="False" />
                             </MultiTrigger.Conditions>
+                            <Setter TargetName="Pill" Property="Opacity" Value="1" />
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ComboBoxItemBackgroundSelectedUnfocused}" />
                             <Setter TargetName="LayoutRoot" Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushSelectedUnfocused}" />
-                            <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedUnfocused}" />
+                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedUnfocused}" />
                         </MultiTrigger>
                         <!--  SelectedDisabled  -->
                         <MultiTrigger>
@@ -199,9 +197,10 @@
                                 <Condition Property="IsSelected" Value="True" />
                                 <Condition Property="IsEnabled" Value="False" />
                             </MultiTrigger.Conditions>
+                            <Setter TargetName="Pill" Property="Opacity" Value="1" />
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ComboBoxItemBackgroundSelectedDisabled}" />
                             <Setter TargetName="LayoutRoot" Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushSelectedDisabled}" />
-                            <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedDisabled}" />
+                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedDisabled}" />
                         </MultiTrigger>
                         <!--  SelectedPointerOver  -->
                         <MultiTrigger>
@@ -209,9 +208,10 @@
                                 <Condition Property="IsSelected" Value="True" />
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
+                            <Setter TargetName="Pill" Property="Opacity" Value="1" />
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ComboBoxItemBackgroundSelectedPointerOver}" />
                             <Setter TargetName="LayoutRoot" Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushSelectedPointerOver}" />
-                            <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedPointerOver}" />
+                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedPointerOver}" />
                         </MultiTrigger>
                         <!--  SelectedPressed  -->
                         <MultiTrigger>
@@ -219,9 +219,10 @@
                                 <Condition Property="IsSelected" Value="True" />
                                 <Condition SourceName="LayoutRoot" Property="chelper:PressHelper.IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
+                            <Setter TargetName="Pill" Property="Opacity" Value="1" />
                             <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource ComboBoxItemBackgroundSelectedPressed}" />
                             <Setter TargetName="LayoutRoot" Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushSelectedPressed}" />
-                            <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedPressed}" />
+                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedPressed}" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -333,7 +334,7 @@
         <Setter Property="chelper:ControlHelper.PlaceholderForeground" Value="{DynamicResource ComboBoxPlaceHolderForeground}" />
         <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource IsApplicationFocusVisualKindReveal}" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
-        <Setter Property="chelper:ComboBoxHelper.KeepInteriorCornersSquare" Value="True" />
+        <Setter Property="chelper:WinUIComboBoxBehaviorHelper.IsEnabled" Value="True" />
         <Setter Property="chelper:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource TextControlValidationErrorTemplate}" />
         <Setter Property="Template">
