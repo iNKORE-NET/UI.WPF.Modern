@@ -120,8 +120,10 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                     popup.VerticalOffset = (comboBox.SelectedIndex + 1) * -1.0 / comboBox.Items.Count * childContainer.ActualHeight;
                 }
 
-                var popupRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Bottom : CornerRadiusFilterKind.Top;
-                popupRadius = CornerRadiusFilterConverter.Convert(popupRadius, popupRadiusFilter);
+                if (popup.VerticalOffset != 0)
+                {
+                    popupRadius = GetFilteredPopupRadius(popupRadius, isOpenDown);
+                }
 
                 var textBoxRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Top : CornerRadiusFilterKind.Bottom;
                 textBoxRadius = CornerRadiusFilterConverter.Convert(textBoxRadius, textBoxRadiusFilter);
@@ -151,6 +153,12 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                     highlightBackground.CornerRadius = textBoxRadius;
                 }
             }
+        }
+
+        private static CornerRadius GetFilteredPopupRadius(CornerRadius popupRadius, bool isOpenDown)
+        {
+            var popupRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Bottom : CornerRadiusFilterKind.Top;
+            return CornerRadiusFilterConverter.Convert(popupRadius, popupRadiusFilter);
         }
 
         private static double GetPopupVerticalOffset(ComboBox comboBox)
