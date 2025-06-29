@@ -15,6 +15,7 @@ using System.Windows.Threading;
 using iNKORE.UI.WPF.Helpers;
 using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Helpers;
+using iNKORE.UI.WPF.Modern.Helpers.Styles;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 {
@@ -168,8 +169,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
             if (m_layoutRoot != null)
             {
-                m_openingStoryboard = m_layoutRoot.Resources["OpeningStoryboard"] as Storyboard;
-                m_closingStoryboard = m_layoutRoot.Resources["ClosingStoryboard"] as Storyboard;
+                m_openingStoryboard = GetOpeningStoryboard();
+                m_closingStoryboard = GetClosingStoryboard();
             }
 
             if (m_moreButton != null)
@@ -184,12 +185,32 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
             if (OverflowPopup is PopupEx popupEx)
             {
-                popupEx.SuppressFadeAnimation = true;
+                //popupEx.SuppressFadeAnimation = true;
             }
 
             AttachEventHandlers();
             UpdateFlowsFromAndFlowsTo();
             UpdateUI(false /* useTransitions */);
+        }
+
+        private Storyboard GetOpeningStoryboard()
+        {
+            if (m_layoutRoot.Resources["OpeningOpacityStoryboard"] is Storyboard opacityStoryboard)
+            {
+                return opacityStoryboard;
+            }
+
+            return m_layoutRoot.Resources["OpeningStoryboard"] as Storyboard;
+        }
+
+        private Storyboard GetClosingStoryboard()
+        {
+            if (m_layoutRoot.Resources["ClosingOpacityStoryboard"] is Storyboard opacityStoryboard)
+            {
+                return opacityStoryboard;
+            }
+
+            return m_layoutRoot.Resources["ClosingStoryboard"] as Storyboard; 
         }
 
         protected override void OnIsKeyboardFocusWithinChanged(DependencyPropertyChangedEventArgs e)
@@ -401,10 +422,11 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         }
 
         void UpdateUI(
-            bool useTransitions = true)
+            bool useTransitions = true,
+            bool isForSizeChange = false)
         {
             UpdateTemplateSettings();
-            UpdateVisualState(useTransitions);
+            UpdateVisualState(useTransitions, isForSizeChange);
 
             UpdateShadow();
 
@@ -415,7 +437,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         }
 
         void UpdateVisualState(
-            bool useTransitions)
+            bool useTransitions, bool isForSizeChange)
         {
             if (IsOpen)
             {
@@ -446,6 +468,11 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
                 void updateExpansionStates()
                 {
+                    if (isForSizeChange)
+                    {
+                        VisualStateManager.GoToState(this, "Collapsed", useTransitions);
+                    }
+
                     if (shouldExpandUp)
                     {
                         VisualStateManager.GoToState(this, "ExpandedUp", useTransitions);
@@ -503,7 +530,51 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 VisualStateManager.GoToState(this, "Default", useTransitions);
                 VisualStateManager.GoToState(this, "Collapsed", useTransitions);
             }
+
+            // If no primary command has labels, then we'll shrink down the size of primary commands since the extra space to accommodate labels is unnecessary.
+            bool hasPrimaryCommandLabels = false;
+            foreach (var primaryCommand in PrimaryCommands)
+            {
+                if (HasVisibleLabel(primaryCommand as AppBarButton) ||
+                    HasVisibleLabel(primaryCommand as AppBarToggleButton))
+                {
+                    hasPrimaryCommandLabels = true;
+                    break;
+                }
+            }
+
+            foreach (var command in PrimaryCommands)
+            {
+                if (command is Control commandControl)
+                {
+                    VisualStateManager.GoToState(commandControl,
+                        hasPrimaryCommandLabels ? "HasPrimaryLabels" : "NoPrimaryLabels", useTransitions);
+                }
+            }
+
+            foreach (var command in SecondaryCommands)
+            {
+                if (command is Control commandControl)
+                {
+                    VisualStateManager.GoToState(commandControl, "NoPrimaryLabels", useTransitions);
+                }
+            }
+
+            VisualStateManager.GoToState(this, hasPrimaryCommandLabels ? "HasPrimaryLabels" : "NoPrimaryLabels",
+                useTransitions);
         }
+        
+        bool HasVisibleLabel(AppBarButton command) =>
+            command != null &&
+            !string.IsNullOrEmpty(command.Label as string) &&
+            command.Visibility == Visibility.Visible &&
+            command.LabelPosition == CommandBarLabelPosition.Default;
+        
+        bool HasVisibleLabel(AppBarToggleButton command) =>
+            command != null &&
+            !string.IsNullOrEmpty(command.Label as string) &&
+            command.Visibility == Visibility.Visible &&
+            command.LabelPosition == CommandBarLabelPosition.Default;
 
         void UpdateTemplateSettings()
         {
@@ -1033,8 +1104,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         private void SecondaryItemsRootSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            //m_secondaryItemsRootSized = true;
-            UpdateUI();
+            m_secondaryItemsRootSized = true;
+            UpdateUI(isForSizeChange: true);
         }
 
         private void SecondaryItemsRootPreviewKeyDown(object sender, KeyEventArgs args)
