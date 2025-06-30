@@ -191,6 +191,11 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
                 _textBlock = value;
 
+                if (_textBlock == Content)
+                {
+                    return;
+                }
+
                 if (_textBlock != null)
                 {
                     _textBlock.TextWrapping = TextWrapping;
