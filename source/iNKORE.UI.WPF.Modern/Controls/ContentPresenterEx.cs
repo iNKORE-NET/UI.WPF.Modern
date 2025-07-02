@@ -191,11 +191,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
                 _textBlock = value;
 
-                if (_textBlock == Content)
-                {
-                    return;
-                }
-
                 if (_textBlock != null)
                 {
                     _textBlock.TextWrapping = TextWrapping;
@@ -264,7 +259,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             if (visualAdded != null && IsUsingDefaultTemplate)
             {
-                if (visualAdded is TextBlock textBlock)
+                if (visualAdded is TextBlock textBlock && textBlock != Content)
                 {
                     TextBlock = textBlock;
                 }
