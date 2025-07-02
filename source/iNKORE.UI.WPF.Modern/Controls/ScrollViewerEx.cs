@@ -1,6 +1,7 @@
 ﻿using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -285,14 +286,14 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 if (horizontalOffset.HasValue)
                 {
                     ScrollToHorizontalOffset(LastHorizontalLocation);
-                    AnimateScroll(horizontalOffset.Value, Orientation.Vertical, 1);
+                    AnimateScroll(Math.Min(ScrollableWidth, horizontalOffset.Value), Orientation.Horizontal, 1);
                     LastHorizontalLocation = horizontalOffset.Value;
                 }
 
                 if (verticalOffset.HasValue)
                 {
                     ScrollToVerticalOffset(LastVerticalLocation);
-                    AnimateScroll(verticalOffset.Value, Orientation.Vertical, 1);
+                    AnimateScroll(Math.Min(ScrollableHeight, verticalOffset.Value), Orientation.Vertical, 1);
                     LastVerticalLocation = verticalOffset.Value;
                 }
             }
