@@ -2,9 +2,11 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using iNKORE.UI.WPF.Converters;
+using iNKORE.UI.WPF.Helpers;
 using iNKORE.UI.WPF.Modern.Common.Converters;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
@@ -120,12 +122,19 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                     itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + comboBox.Padding.Top), comboBox) is { Y: not 0 } itemTop)
                 {
                     popup.VerticalOffset -= itemTop.Y;
+
+                    if (itemContainer.ActualHeight - comboBox.ActualHeight > 0)
+                    {
+                        popup.VerticalOffset -= comboBox.ActualHeight;
+                    }
                 }
 
-                if (popup.Child is FrameworkElement frmelmnt && frmelmnt.ActualWidth > comboBox.ActualWidth)
+                /*popup.HorizontalOffset = popup.Child switch
                 {
-                    popup.HorizontalOffset = (frmelmnt.ActualWidth - comboBox.ActualWidth) / 2;
-                }
+                    FrameworkElement fe when fe.ActualWidth > comboBox.ActualWidth =>
+                        -(fe.ActualWidth - comboBox.ActualWidth) / 2,
+                    _ => 0
+                };*/
 
                 if (popup.VerticalOffset is 0)
                 {
