@@ -117,9 +117,14 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
                 if (isOpenDown &&
                     comboBox.ItemContainerGenerator.ContainerFromItem(comboBox.SelectedItem) is FrameworkElement itemContainer &&
-                    itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + comboBox.Margin.Top + comboBox.Padding.Top), comboBox) is { Y: not 0 } itemTop)
+                    itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + comboBox.Padding.Top), comboBox) is { Y: not 0 } itemTop)
                 {
                     popup.VerticalOffset -= itemTop.Y;
+                }
+
+                if (popup.Child is FrameworkElement frmelmnt && frmelmnt.ActualWidth > comboBox.ActualWidth)
+                {
+                    popup.HorizontalOffset = (frmelmnt.ActualWidth - comboBox.ActualWidth) / 2;
                 }
 
                 if (popup.VerticalOffset is 0)
