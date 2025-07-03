@@ -37,20 +37,12 @@
             <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrush}" />
             <Setter Property="BorderThickness" Value="{DynamicResource NumberBoxSpinButtonBorderThickness}" />
             <Setter Property="FontFamily" Value="{DynamicResource SymbolThemeFontFamily}" />
-            <Setter Property="ContentTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <ui:FontIconFallback Data="{Binding}" />
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
         </Style.Setters>
     </Style>
 
-    <Style
-        x:Key="NumberBoxPopupSpinButtonStyle"
-        BasedOn="{StaticResource NumberBoxSpinButtonStyle}"
-        TargetType="RepeatButton">
+    <Style x:Key="NumberBoxPopupSpinButtonStyle" 
+           BasedOn="{StaticResource NumberBoxSpinButtonStyle}"
+           TargetType="RepeatButton">
         <Style.Setters>
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Width" Value="36" />
@@ -60,13 +52,6 @@
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontFamily" Value="{DynamicResource SymbolThemeFontFamily}" />
             <Setter Property="ui:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
-            <Setter Property="ContentTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <ui:FontIconFallback Data="{Binding}" />
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
         </Style.Setters>
     </Style>
 
@@ -252,23 +237,23 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="HeaderContentPresenter" Property="Foreground" Value="{DynamicResource TextControlHeaderForegroundDisabled}" />
-                            <Setter Property="Background" Value="{DynamicResource TextControlBackgroundDisabled}" />
+                            <Setter TargetName="BorderElement" Property="Background" Value="{DynamicResource TextControlBackgroundDisabled}" />
                             <Setter TargetName="BorderElement" Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushDisabled}" />
-                            <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundDisabled}" />
+                            <Setter TargetName="PART_ContentHost" Property="Foreground" Value="{DynamicResource TextControlForegroundDisabled}" />
                             <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundDisabled}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter TargetName="BorderElement" Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushPointerOver}" />
-                            <Setter Property="Background" Value="{DynamicResource TextControlBackgroundPointerOver}" />
+                            <Setter TargetName="BorderElement" Property="Background" Value="{DynamicResource TextControlBackgroundPointerOver}" />
                             <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundPointerOver}" />
-                            <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundPointerOver}" />
+                            <Setter TargetName="PART_ContentHost" Property="Foreground" Value="{DynamicResource TextControlForegroundPointerOver}" />
                         </Trigger>
                         <Trigger Property="IsSelectionActive" Value="true">
                             <Setter TargetName="PlaceholderTextContentPresenter" Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundFocused}" />
-                            <Setter Property="Background" Value="{DynamicResource TextControlBackgroundFocused}" />
+                            <Setter TargetName="BorderElement" Property="Background" Value="{DynamicResource TextControlBackgroundFocused}" />
                             <Setter TargetName="BorderElement" Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}" />
                             <Setter TargetName="BorderElement" Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}" />
-                            <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundFocused}" />
+                            <Setter TargetName="PART_ContentHost" Property="Foreground" Value="{DynamicResource TextControlForegroundFocused}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -303,11 +288,6 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:NumberBox">
-                    <ControlTemplate.Resources>
-                        <StreamGeometry x:Key="ChevronDown">M 18.935547 4.560547 L 19.814453 5.439453 L 10 15.253906 L 0.185547 5.439453 L 1.064453 4.560547 L 10 13.496094 Z</StreamGeometry>
-                        <StreamGeometry x:Key="ChevronUp">M 19.091797 14.970703 L 10 5.888672 L 0.908203 14.970703 L 0.029297 14.091797 L 10 4.111328 L 19.970703 14.091797 Z</StreamGeometry>
-                    </ControlTemplate.Resources>
-
                     <Grid ui:ThemeManager.HasThemeResources="True" Height="{TemplateBinding Height}">
                         <Grid.Resources>
                             <ui:ResourceDictionaryEx>
@@ -410,14 +390,14 @@
 
                                         <RepeatButton
                                             x:Name="PopupUpSpinButton"
-                                            Content="{StaticResource ChevronUp}"
+                                            Content="&#xE70E;"
                                             Margin="0,0,0,4"
                                             Style="{StaticResource NumberBoxPopupSpinButtonStyle}" />
 
                                         <RepeatButton
                                             x:Name="PopupDownSpinButton"
                                             Grid.Row="1"
-                                            Content="{StaticResource ChevronDown}"
+                                            Content="&#xE70D;"
                                             Style="{StaticResource NumberBoxPopupSpinButtonStyle}" />
                                     </Grid>
                                 </Border>
@@ -446,7 +426,7 @@
                             Grid.Column="1"
                             Margin="4"
                             ui:ControlHelper.CornerRadius="{TemplateBinding CornerRadius}"
-                            Content="{StaticResource ChevronUp}"
+                            Content="&#xE70E;"
                             FontSize="{TemplateBinding FontSize}"
                             Style="{StaticResource NumberBoxSpinButtonStyle}"
                             Visibility="Collapsed" />
@@ -457,7 +437,7 @@
                             Grid.Column="2"
                             ui:ControlHelper.CornerRadius="{TemplateBinding CornerRadius}"
                             Margin="0,4,4,4"
-                            Content="{StaticResource ChevronDown}"
+                            Content="&#xE70D;"
                             FontSize="{TemplateBinding FontSize}"
                             Style="{StaticResource NumberBoxSpinButtonStyle}"
                             Visibility="Collapsed" />
@@ -519,7 +499,6 @@
                             <Setter TargetName="DownSpinButton" Property="Visibility" Value="Visible" />
                             <Setter TargetName="UpSpinButton" Property="Visibility" Value="Visible" />
                             <Setter TargetName="InputEater" Property="Visibility" Value="Visible" />
-                            <!--<Setter TargetName="InputBox" Property="ui:ControlHelper.CornerRadius" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CornerRadius, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />-->
                             <Setter TargetName="InputBox" Property="MinWidth" Value="{StaticResource NumberBoxMinWidth}" />
                         </Trigger>
                         <!--  SpinButtonsPopup  -->
