@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System;
 using iNKORE.UI.WPF.Converters;
 using iNKORE.UI.WPF.Helpers;
 using iNKORE.UI.WPF.Modern.Common.Converters;
@@ -118,7 +119,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 bool isOpenDown = IsPopupOpenDown(comboBox, popup.VerticalOffset);
 
                 if (isOpenDown &&
-                    comboBox.ItemContainerGenerator.ContainerFromItem(comboBox.SelectedItem) is FrameworkElement itemContainer &&
+                    GetToAlignContainer(comboBox) is { } itemContainer &&
                     itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + comboBox.Padding.Top), comboBox) is { Y: not 0 } itemTop)
                 {
                     popup.VerticalOffset -= itemTop.Y;
@@ -168,6 +169,28 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 {
                     highlightBackground.CornerRadius = textBoxRadius;
                 }
+            }
+
+            static FrameworkElement? GetToAlignContainer(ComboBox comboBox)
+            {
+                DependencyObject container;
+                if (comboBox.SelectedItem is null)
+                {
+                    container = comboBox.ItemContainerGenerator.ContainerFromIndex(
+                        (int)Math.Ceiling(comboBox.Items.Count / 2.0));
+
+                    if (comboBox.ItemContainerGenerator.ContainerFromIndex(0) is ComboBoxItem item)
+                    {
+                        //item.IsSelected = true;
+                        //item.IsPseudoSelected = true;
+                    }
+                }
+                else
+                {
+                    container = comboBox.ItemContainerGenerator.ContainerFromItem(comboBox.SelectedItem);
+                }
+
+                return container as  FrameworkElement;
             }
         }
 
