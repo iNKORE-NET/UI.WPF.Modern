@@ -1,11 +1,13 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System;
 using iNKORE.UI.WPF.Converters;
+using iNKORE.UI.WPF.Helpers;
 using iNKORE.UI.WPF.Modern.Common.Converters;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading;
+using System.Windows.Controls.Primitives;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
@@ -113,10 +115,32 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
             if (isDropDownOpen)
             {
-                bool isOpenDown = IsPopupOpenDown(comboBox);
+                var popup = GetTemplateChild<System.Windows.Controls.Primitives.Popup>("PART_Popup", comboBox);
+                bool isOpenDown = IsPopupOpenDown(comboBox, popup.VerticalOffset);
 
-                var popupRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Bottom : CornerRadiusFilterKind.Top;
-                popupRadius = CornerRadiusFilterConverter.Convert(popupRadius, popupRadiusFilter);
+                if (isOpenDown &&
+                    GetToAlignContainer(comboBox) is { } itemContainer &&
+                    itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + comboBox.Padding.Top), comboBox) is { Y: not 0 } itemTop)
+                {
+                    popup.VerticalOffset -= itemTop.Y;
+
+                    if (itemContainer.ActualHeight - comboBox.ActualHeight > 0)
+                    {
+                        popup.VerticalOffset -= comboBox.ActualHeight;
+                    }
+                }
+
+                /*popup.HorizontalOffset = popup.Child switch
+                {
+                    FrameworkElement fe when fe.ActualWidth > comboBox.ActualWidth =>
+                        -(fe.ActualWidth - comboBox.ActualWidth) / 2,
+                    _ => 0
+                };*/
+
+                if (popup.VerticalOffset is 0)
+                {
+                    popupRadius = GetFilteredPopupRadius(popupRadius, isOpenDown);
+                }
 
                 var textBoxRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Top : CornerRadiusFilterKind.Bottom;
                 textBoxRadius = CornerRadiusFilterConverter.Convert(textBoxRadius, textBoxRadiusFilter);
@@ -146,11 +170,39 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                     highlightBackground.CornerRadius = textBoxRadius;
                 }
             }
+
+            static FrameworkElement? GetToAlignContainer(ComboBox comboBox)
+            {
+                DependencyObject container;
+                if (comboBox.SelectedItem is null)
+                {
+                    container = comboBox.ItemContainerGenerator.ContainerFromIndex(
+                        (int)Math.Ceiling(comboBox.Items.Count / 2.0));
+
+                    if (comboBox.ItemContainerGenerator.ContainerFromIndex(0) is ComboBoxItem item)
+                    {
+                        //item.IsSelected = true;
+                        //item.IsPseudoSelected = true;
+                    }
+                }
+                else
+                {
+                    container = comboBox.ItemContainerGenerator.ContainerFromItem(comboBox.SelectedItem);
+                }
+
+                return container as  FrameworkElement;
+            }
         }
 
-        private static bool IsPopupOpenDown(ComboBox comboBox)
+        private static CornerRadius GetFilteredPopupRadius(CornerRadius popupRadius, bool isOpenDown)
         {
-            double verticalOffset = 0;
+            var popupRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Bottom : CornerRadiusFilterKind.Top;
+            return CornerRadiusFilterConverter.Convert(popupRadius, popupRadiusFilter);
+        }
+
+        private static bool IsPopupOpenDown(ComboBox comboBox, double popupVerticalOffset)
+        {
+            double verticalOffset = popupVerticalOffset;
             if (GetTemplateChild<Border>(c_popupBorderName, comboBox) is Border popupBorder)
             {
                 if (GetTemplateChild<TextBox>(c_editableTextName, comboBox) is TextBox textBox)
@@ -159,7 +211,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                     verticalOffset = popupTop.Y;
                 }
             }
-            return verticalOffset > 0;
+            return verticalOffset > popupVerticalOffset;
         }
 
         private static object ResourceLookup(Control control, object key)
