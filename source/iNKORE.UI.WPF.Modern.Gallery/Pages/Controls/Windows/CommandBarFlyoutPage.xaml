@@ -21,16 +21,27 @@
                 </ui:AppBarButton.Icon>
 
             </ui:AppBarButton>
+            
             <ui:AppBarButton
                 Click="OnElementClicked"
-                Icon="Save"
                 Label="Save"
-                ToolTipService.ToolTip="Save" />
+                ToolTipService.ToolTip="Save">
+                <ui:AppBarButton.Icon>
+                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Save}" />
+                </ui:AppBarButton.Icon>
+                
+            </ui:AppBarButton>
+            
             <ui:AppBarButton
                 Click="OnElementClicked"
-                Icon="Delete"
                 Label="Delete"
-                ToolTipService.ToolTip="Delete" />
+                ToolTipService.ToolTip="Delete">
+                <ui:AppBarButton.Icon>
+                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Delete}" />
+                </ui:AppBarButton.Icon>
+                
+            </ui:AppBarButton>
+            
             <ui:CommandBarFlyout.SecondaryCommands>
                 <ui:AppBarButton Click="OnElementClicked" Label="Resize" />
                 <ui:AppBarButton Click="OnElementClicked" Label="Move" />
