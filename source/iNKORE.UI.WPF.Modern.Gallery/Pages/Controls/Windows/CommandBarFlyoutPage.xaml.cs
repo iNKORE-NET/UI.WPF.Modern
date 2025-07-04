@@ -37,6 +37,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 
         private void ShowMenu(bool isTransient)
         {
+            CommandBarFlyout1.ShowMode = isTransient ? FlyoutShowMode.Transient : FlyoutShowMode.Standard;
             CommandBarFlyout1.ShowAt(Image1);
         }
 
@@ -48,7 +49,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 
         private void MyImageButton_Click(object sender, RoutedEventArgs e)
         {
-            ShowMenu((sender as Button).IsMouseOver);
+            ShowMenu(true);
         }
 
         #region Example Code
