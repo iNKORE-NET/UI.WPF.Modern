@@ -10,6 +10,12 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
     public sealed class WinUIComboBoxBehaviorHelper
     {
+        static WinUIComboBoxBehaviorHelper()
+        {
+            EventManager.RegisterClassHandler(typeof(ComboBoxItem), Mouse.MouseEnterEvent,
+                new MouseEventHandler(OnOverrideMouseEnter), false);
+        }
+
         private const string c_popupBorderName = "PopupBorder";
 
         private const string c_editableTextName = "PART_EditableTextBox";
