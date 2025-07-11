@@ -37,6 +37,7 @@
                         x:Name="RootGrid"
                         Background="{TemplateBinding Background}"
                         CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+                        chelper:FocusVisualHelper.IsTemplateFocusTarget="True"
                         SnapsToDevicePixels="True">
                         <local:FontIcon
                             x:Name="Content"

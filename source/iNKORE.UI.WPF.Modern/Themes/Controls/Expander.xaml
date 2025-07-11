@@ -39,6 +39,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+                        chelper:FocusVisualHelper.IsTemplateFocusTarget="True"
                         CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
                         <Grid SnapsToDevicePixels="False">
                             <Grid.ColumnDefinitions>
@@ -559,6 +560,7 @@
                             IsChecked="{Binding Path=IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                             IsEnabled="{TemplateBinding IsEnabled}"
                             Style="{DynamicResource ExpanderCardHeaderDownStyle}"
+                            chelper:FocusVisualHelper.IsTemplateFocusTarget="True"
                             Tag="{TemplateBinding chelper:ControlHelper.CornerRadius}" />
                         <!--  The clip is a composition clip applied in code  -->
                         <Border x:Name="ExpanderContentClip" DockPanel.Dock="Bottom">
@@ -907,6 +909,7 @@
     </Style>
 
     <Style x:Key="DefaultExpanderStyle" TargetType="Expander">
+        <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
         <Setter Property="Background" Value="Transparent" />
