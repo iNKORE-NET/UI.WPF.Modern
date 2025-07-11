@@ -17,15 +17,9 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         }
 
         private const string c_popupBorderName = "PopupBorder";
-
         private const string c_editableTextName = "PART_EditableTextBox";
-
-        //private const string c_editableTextBorderName = "BorderElement";
         private const string c_backgroundName = "Background";
-
         private const string c_highlightBackgroundName = "HighlightBackground";
-
-        //private const string c_controlCornerRadiusKey = "ControlCornerRadius";
         private const string c_overlayCornerRadiusKey = "OverlayCornerRadius";
 
         /// <summary>
@@ -89,24 +83,43 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             comboBox.Dispatcher.BeginInvoke(() =>
             {
                 var popup = GetTemplateChild<Popup>("PART_Popup", comboBox);
-                var isOpenDown = IsPopupOpenDown(comboBox, popup.VerticalOffset);
 
-                AlignSelectedContainer(comboBox, popup, isOpenDown);
+                AlignSelectedContainer(comboBox, popup);
+                var isOpenDown = IsPopupOpenDown(comboBox, popup.VerticalOffset);
                 UpdateCornerRadius(comboBox, popup, true, isOpenDown);
             });
         }
 
-        private static void AlignSelectedContainer(ComboBox comboBox, Popup popup, bool isOpenDown)
+        private static void AlignSelectedContainer(ComboBox comboBox, Popup popup)
         {
-            if (!isOpenDown ||
-                GetToAlignContainer(comboBox) is not { } itemContainer ||
-                itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + comboBox.Padding.Top),
+            if (comboBox.IsEditable)
+            {
+                popup.VerticalOffset = 0;
+                return;
+            }
+
+            if (GetToAlignContainer(comboBox) is not { } itemContainer ||
+                itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + itemContainer.Padding.Top + comboBox.Padding.Top),
                     comboBox) is not { Y: not 0 } itemTop)
             {
                 return;
             }
 
-            popup.VerticalOffset -= itemTop.Y;
+            while (itemTop.Y is not 0)
+            {
+                var preY = itemTop.Y;
+                popup.VerticalOffset -= preY;
+                itemTop = itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + comboBox.Padding.Top),
+                    comboBox);
+
+                var postY = itemTop.Y;
+                
+                if (postY >= preY)
+                {
+                    //if this loop didn't bring the popup top closer, then this mean the popup couldn't position itself.
+                    break;
+                }
+            }
 
             if (itemContainer.ActualHeight - comboBox.ActualHeight > 0)
             {
@@ -114,34 +127,40 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             }
         }
 
-        private static FrameworkElement GetToAlignContainer(ComboBox comboBox)
+        private static ComboBoxItem GetToAlignContainer(ComboBox comboBox)
         {
             DependencyObject container;
             if (comboBox.SelectedItem is null)
             {
                 container = comboBox.ItemContainerGenerator.ContainerFromIndex(
                     (int)Math.Ceiling(comboBox.Items.Count / 2.0));
-
-                if (comboBox.ItemContainerGenerator.ContainerFromIndex(0) is ComboBoxItem item)
-                {
-                    var highlightedInfoProperty = typeof(ComboBox).GetProperty("HighlightedInfo",
-                        BindingFlags.Instance | BindingFlags.NonPublic);
-
-                    var setter = highlightedInfoProperty.SetMethod;
-
-                    var itemInfo = typeof(ComboBox)
-                        .GetMethod("ItemInfoFromContainer", BindingFlags.Instance | BindingFlags.NonPublic)?
-                        .Invoke(comboBox, [item]);
-
-                    setter?.Invoke(comboBox, [itemInfo]);
-                }
+                TryHighlightingFirstItem(comboBox);
             }
             else
             {
                 container = comboBox.ItemContainerGenerator.ContainerFromItem(comboBox.SelectedItem);
             }
 
-            return container as FrameworkElement;
+            return container as ComboBoxItem;
+        }
+
+        private static void TryHighlightingFirstItem(ComboBox comboBox)
+        {
+            if (comboBox.ItemContainerGenerator.ContainerFromIndex(0) is not ComboBoxItem item)
+            {
+                return;
+            }
+
+            var highlightedInfoProperty = typeof(ComboBox).GetProperty("HighlightedInfo",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+
+            var setter = highlightedInfoProperty?.SetMethod;
+
+            var itemInfo = typeof(ComboBox)
+                .GetMethod("ItemInfoFromContainer", BindingFlags.Instance | BindingFlags.NonPublic)?
+                .Invoke(comboBox, [item]);
+
+            setter?.Invoke(comboBox, [itemInfo]);
         }
 
         private static void UpdateCornerRadius(ComboBox comboBox, Popup? popup, bool isDropDownOpen, bool isOpenDown)
@@ -194,17 +213,15 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         private static bool IsPopupOpenDown(ComboBox comboBox, double popupVerticalOffset)
         {
-            double verticalOffset = popupVerticalOffset;
-            if (GetTemplateChild<Border>(c_popupBorderName, comboBox) is { } popupBorder)
+            if (GetTemplateChild<Border>(c_popupBorderName, comboBox) is not { } popupBorder ||
+                GetTemplateChild<TextBox>(c_editableTextName, comboBox) is not { } textBox)
             {
-                if (GetTemplateChild<TextBox>(c_editableTextName, comboBox) is { } textBox)
-                {
-                    var popupTop = popupBorder.TranslatePoint(new Point(0, 0), textBox);
-                    verticalOffset = popupTop.Y;
-                }
+                return false;
             }
-
-            return verticalOffset > popupVerticalOffset;
+            
+            var popupTopPoint = popupBorder.TranslatePoint(new Point(0, 0), textBox);
+            
+            return popupTopPoint.Y + popupVerticalOffset > 0;
         }
 
         private static object ResourceLookup(Control control, object key)
