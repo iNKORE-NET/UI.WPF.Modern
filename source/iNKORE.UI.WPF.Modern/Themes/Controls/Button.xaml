@@ -33,6 +33,7 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+                        chelper:FocusVisualHelper.IsTemplateFocusTarget="True"
                         SnapsToDevicePixels="True">
                         <Border
                             x:Name="Border"
@@ -81,7 +82,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Grid>
+                    <Grid chelper:FocusVisualHelper.IsTemplateFocusTarget="True">
                         <local:ElevationBorder
                             x:Name="Background"
                             Background="{TemplateBinding Background}"

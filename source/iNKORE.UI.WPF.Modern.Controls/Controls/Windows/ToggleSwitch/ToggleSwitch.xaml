@@ -32,6 +32,7 @@
         <Setter Property="MinWidth" Value="{DynamicResource ToggleSwitchThemeMinWidth}" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
         <Setter Property="ui:FocusVisualHelper.FocusVisualMargin" Value="-7,-3,-7,-3" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:ToggleSwitch">
