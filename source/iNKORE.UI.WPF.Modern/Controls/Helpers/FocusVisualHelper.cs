@@ -532,6 +532,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 SetIsSystemFocusVisual(control, false);
                 control.Style = focusVisualStyle;
                 control.Margin = GetFocusVisualMargin(focusedElement);
+
+                ControlHelper.SetCornerRadius(control, ControlHelper.GetCornerRadius(focusedElement));
                 TransferValue(focusedElement, control, FocusVisualPrimaryBrushProperty);
                 TransferValue(focusedElement, control, FocusVisualPrimaryThicknessProperty);
                 TransferValue(focusedElement, control, FocusVisualSecondaryBrushProperty);

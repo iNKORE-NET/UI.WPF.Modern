@@ -39,6 +39,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+                        chelper:FocusVisualHelper.IsTemplateFocusTarget="True"
                         CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
                         <Grid SnapsToDevicePixels="False">
                             <Grid.ColumnDefinitions>
