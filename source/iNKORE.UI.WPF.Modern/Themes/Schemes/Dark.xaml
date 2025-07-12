@@ -2672,15 +2672,18 @@
                     <Border
                         BorderBrush="{TemplateBinding chelper:FocusVisualHelper.FocusVisualPrimaryBrush}"
                         BorderThickness="{TemplateBinding chelper:FocusVisualHelper.FocusVisualPrimaryThickness}"
-                        SnapsToDevicePixels="True">
-                        <Border BorderBrush="{TemplateBinding chelper:FocusVisualHelper.FocusVisualSecondaryBrush}" BorderThickness="{TemplateBinding chelper:FocusVisualHelper.FocusVisualSecondaryThickness}" />
+                        SnapsToDevicePixels="True"
+                        CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
+                        <Border CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+                                BorderBrush="{TemplateBinding chelper:FocusVisualHelper.FocusVisualSecondaryBrush}" 
+                                BorderThickness="{TemplateBinding chelper:FocusVisualHelper.FocusVisualSecondaryThickness}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}" BasedOn="{m:StaticColor HighVisibilityFocusVisual}" />
+    <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}" BasedOn="{StaticResource HighVisibilityFocusVisual}" />
 
     
     <!--Resources for SettingsCard-->

@@ -483,6 +483,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                     }
                     else
                     {
+                        TransferValue(focusedElement, focusVisual, ControlHelper.CornerRadiusProperty); 
                         TransferValue(focusedElement, focusVisual, FocusVisualPrimaryBrushProperty);
                         TransferValue(focusedElement, focusVisual, FocusVisualPrimaryThicknessProperty);
                         TransferValue(focusedElement, focusVisual, FocusVisualSecondaryBrushProperty);
@@ -532,12 +533,14 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 SetIsSystemFocusVisual(control, false);
                 control.Style = focusVisualStyle;
                 control.Margin = GetFocusVisualMargin(focusedElement);
+
+                TransferValue(focusedElement, control, ControlHelper.CornerRadiusProperty);
                 TransferValue(focusedElement, control, FocusVisualPrimaryBrushProperty);
                 TransferValue(focusedElement, control, FocusVisualPrimaryThicknessProperty);
                 TransferValue(focusedElement, control, FocusVisualSecondaryBrushProperty);
                 TransferValue(focusedElement, control, FocusVisualSecondaryThicknessProperty);
                 _adorderChild = control;
-                IsClipEnabled = true;
+                IsClipEnabled = false;
                 IsHitTestVisible = false;
                 IsEnabled = false;
                 AddVisualChild(_adorderChild);
