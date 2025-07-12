@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using iNKORE.UI.WPF.Converters;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
@@ -92,56 +93,38 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         private static void AlignSelectedContainer(ComboBox comboBox, Popup popup)
         {
-            if (comboBox.IsEditable)
+            if (comboBox.IsEditable || comboBox.ItemContainerGenerator.Items.Count < 1)
             {
                 popup.VerticalOffset = 0;
                 return;
             }
 
-            if (GetToAlignContainer(comboBox) is not { } itemContainer ||
-                itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + itemContainer.Padding.Top + comboBox.Padding.Top),
-                    comboBox) is not { Y: not 0 } itemTop)
+            var mockContainer = (comboBox.ItemContainerGenerator.ContainerFromIndex(0) as ComboBoxItem)!;
+            var scrollViewer = GetTemplateChild<ScrollViewer>("ScrollViewer", comboBox);
+            
+            var toSelectIndex = comboBox.SelectedIndex;
+            if (toSelectIndex < 0)
             {
-                return;
-            }
-
-            while (itemTop.Y is not 0)
-            {
-                var preY = itemTop.Y;
-                popup.VerticalOffset -= preY;
-                itemTop = itemContainer.TranslatePoint(new Point(0, -itemContainer.ActualHeight + comboBox.Padding.Top),
-                    comboBox);
-
-                var postY = itemTop.Y;
-                
-                if (postY >= preY)
-                {
-                    //if this loop didn't bring the popup top closer, then this mean the popup couldn't position itself.
-                    break;
-                }
-            }
-
-            if (itemContainer.ActualHeight - comboBox.ActualHeight > 0)
-            {
-                popup.VerticalOffset -= comboBox.ActualHeight;
-            }
-        }
-
-        private static ComboBoxItem GetToAlignContainer(ComboBox comboBox)
-        {
-            DependencyObject container;
-            if (comboBox.SelectedItem is null)
-            {
-                container = comboBox.ItemContainerGenerator.ContainerFromIndex(
-                    (int)Math.Ceiling(comboBox.Items.Count / 2.0));
+                toSelectIndex = (int)Math.Ceiling(comboBox.Items.Count / 2.0);
                 TryHighlightingFirstItem(comboBox);
+            }
+            else if (mockContainer.ActualHeight * comboBox.Items.Count > comboBox.MaxDropDownHeight)
+            {
+                toSelectIndex = 0;
+            }
+            
+            var paddingBorder = (scrollViewer.Parent as Border)!;
+
+            if (IsPopupOpenDown(comboBox, popup.VerticalOffset))
+            {
+                popup.VerticalOffset = -mockContainer.ActualHeight * (toSelectIndex + 1) - paddingBorder.Padding.Top;
             }
             else
             {
-                container = comboBox.ItemContainerGenerator.ContainerFromItem(comboBox.SelectedItem);
+                popup.VerticalOffset =
+                    mockContainer.ActualHeight * (Math.Min((int)(comboBox.MaxDropDownHeight / mockContainer.ActualHeight), comboBox.Items.Count) - toSelectIndex) +
+                    paddingBorder.Padding.Bottom;
             }
-
-            return container as ComboBoxItem;
         }
 
         private static void TryHighlightingFirstItem(ComboBox comboBox)
@@ -221,7 +204,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             
             var popupTopPoint = popupBorder.TranslatePoint(new Point(0, 0), textBox);
             
-            return popupTopPoint.Y + popupVerticalOffset > 0;
+            return popupTopPoint.Y > popupVerticalOffset;
         }
 
         private static object ResourceLookup(Control control, object key)
