@@ -108,8 +108,8 @@
     <!--  Header  -->
     <HorizontalAlignment x:Key="ExpanderHeaderHorizontalContentAlignment">Stretch</HorizontalAlignment>
     <VerticalAlignment x:Key="ExpanderHeaderVerticalContentAlignment">Center</VerticalAlignment>
-    <Thickness x:Key="ExpanderHeaderHorizontalPadding">16,0,0,0</Thickness>
-    <Thickness x:Key="ExpanderChevronHorizontalMargin">20,0,8,0</Thickness>
+    <Thickness x:Key="ExpanderHeaderPadding">16,0,0,0</Thickness>
+    <Thickness x:Key="ExpanderChevronMargin">20,0,8,0</Thickness>
     <Thickness x:Key="ExpanderHeaderVerticalPadding">0,16,0,0</Thickness>
     <Thickness x:Key="ExpanderChevronVerticalMargin">0,20,0,8</Thickness>
     <sys:Double x:Key="ExpanderChevronButtonSize">32</sys:Double>

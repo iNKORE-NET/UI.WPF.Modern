@@ -18,9 +18,9 @@
                         CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}">
 
                         <Border.Resources>
-                            <local:MultiplyConverter x:Key="MultiplyConverter"/>
-                            <local:DoubleValueHolder x:Key="DummyPreviousContentSlider"/>
-                            <local:DoubleValueHolder x:Key="DummyCurrentContentSlider"/>
+                            <ui:MultiplyConverter x:Key="MultiplyConverter"/>
+                            <ui:DoubleValueHolder x:Key="DummyPreviousContentSlider"/>
+                            <ui:DoubleValueHolder x:Key="DummyCurrentContentSlider"/>
                         </Border.Resources>
                         
                         <Grid>
