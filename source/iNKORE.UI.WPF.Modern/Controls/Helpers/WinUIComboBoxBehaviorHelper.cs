@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Media;
 using iNKORE.UI.WPF.Converters;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 
@@ -28,8 +30,9 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         /// 1. align selected container in popup to combobox.
         /// 2. in case of no selection, first in popup is highlighted (done)
         /// 3. mouse hovering shouldn't trigger focus ?! (done)
-        /// 4. persist selected item only when drop down closes?? (not done)
-        /// 5. KeepInteriorCornersSquare (already done)
+        /// 4. KeepInteriorCornersSquare (already done)
+        /// 5. light dismiss behavior only if click inside the window (not done)
+        /// 6. popup bounded by the screen (not done)
         /// </summary>
         public static readonly DependencyProperty IsEnabledProperty =
             DependencyProperty.RegisterAttached(
@@ -99,30 +102,31 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 return;
             }
 
-            var mockContainer = (comboBox.ItemContainerGenerator.ContainerFromIndex(0) as ComboBoxItem)!;
+            var firstContainer = (comboBox.ItemContainerGenerator.ContainerFromIndex(0) as ComboBoxItem)!;
             var scrollViewer = GetTemplateChild<ScrollViewer>("ScrollViewer", comboBox);
             
-            var toSelectIndex = comboBox.SelectedIndex;
-            if (toSelectIndex < 0)
+            var toCenterIndex = comboBox.SelectedIndex;
+            if (toCenterIndex < 0)
             {
-                toSelectIndex = (int)Math.Ceiling(comboBox.Items.Count / 2.0);
+                toCenterIndex = (int)Math.Ceiling(comboBox.Items.Count / 2.0);
                 TryHighlightingFirstItem(comboBox);
             }
-            else if (mockContainer.ActualHeight * comboBox.Items.Count > comboBox.MaxDropDownHeight)
+            else if (firstContainer.ActualHeight * comboBox.Items.Count > comboBox.MaxDropDownHeight)
             {
-                toSelectIndex = 0;
+                var maxVisible = Math.Floor(comboBox.MaxDropDownHeight / firstContainer.ActualHeight);
+                toCenterIndex = (int)Math.Floor(maxVisible / 2.0);
             }
             
             var paddingBorder = (scrollViewer.Parent as Border)!;
 
             if (IsPopupOpenDown(comboBox, popup.VerticalOffset))
             {
-                popup.VerticalOffset = -mockContainer.ActualHeight * (toSelectIndex + 1) - paddingBorder.Padding.Top;
+                popup.VerticalOffset = -firstContainer.ActualHeight * (toCenterIndex + 1) - paddingBorder.Padding.Top;
             }
             else
             {
                 popup.VerticalOffset =
-                    mockContainer.ActualHeight * (Math.Min((int)(comboBox.MaxDropDownHeight / mockContainer.ActualHeight), comboBox.Items.Count) - toSelectIndex) +
+                    firstContainer.ActualHeight * (Math.Min((int)(comboBox.MaxDropDownHeight / firstContainer.ActualHeight), comboBox.Items.Count) - toCenterIndex) +
                     paddingBorder.Padding.Bottom;
             }
         }

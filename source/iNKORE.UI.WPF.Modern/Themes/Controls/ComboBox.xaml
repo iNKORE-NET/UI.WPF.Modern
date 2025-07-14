@@ -80,6 +80,7 @@
                             </Rectangle>
                             <local:ContentPresenterEx
                                 x:Name="ContentPresenter"
+                                MinHeight="20"
                                 Margin="{TemplateBinding Padding}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
