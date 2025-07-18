@@ -204,8 +204,7 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{StaticResource ExpanderContentDownBorderThickness}"
                                 CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius,
-                                                               Converter={StaticResource BottomCornerRadiusFilterConverter}}"
-                                Visibility="Collapsed">
+                                                               Converter={StaticResource BottomCornerRadiusFilterConverter}}">
                                 <FrameworkElement.RenderTransform>
                                     <TranslateTransform  x:Name="ExpanderContentTranslation" >
                                         <TranslateTransform.X>
