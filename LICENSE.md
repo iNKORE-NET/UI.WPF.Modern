@@ -67,7 +67,7 @@ To discuss and arrange a commercial subscription, contact [studios@inkore.net](m
 
 ### 8. Contributor Exception
 
-Frequent contributors who substantially aid in developing or maintaining the Software may receive specific exemptions to certain restrictions upon request and approval. Please contact [studios@inkore.net](mailto:studios@inkore.net) to see if you qualify for such exceptions and discuss further arrangements.
+Frequent contributors who substantially aid in developing or maintaining the Software may receive specific exemptions to certain restrictions upon request and approval, determined at the sole discretion of iNKORE Studios. Please contact [studios@inkore.net](mailto:studios@inkore.net) to see if you qualify for such exceptions and discuss further arrangements.
 
 ---
 
