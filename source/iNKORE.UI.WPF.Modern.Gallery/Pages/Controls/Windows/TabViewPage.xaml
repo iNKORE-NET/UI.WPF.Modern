@@ -50,7 +50,7 @@
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example3" HeaderText="You can put custom content in TabStripHeader and TabStripFooter">
+        <local:ControlExample x:Name="Example3" HeaderText="Custom content in TabStripHeader and TabStripFooter">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock
