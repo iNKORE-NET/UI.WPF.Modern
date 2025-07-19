@@ -12,7 +12,7 @@
     Loaded="Page_Loaded"
     mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="An card-like style expander with text in the header and content areas">
+        <local:ControlExample x:Name="Example1" HeaderText="An card-like style Expander with text in the header and content areas">
             <local:ControlExample.Example>
                 <Expander
                     x:Name="Expander1"
@@ -40,7 +40,7 @@
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example2" HeaderText="An card-like style expander with other controls in the header and content">
+        <local:ControlExample x:Name="Example2" HeaderText="An card-like style Expander with other controls in the header and content">
             <local:ControlExample.Example>
                 <Expander x:Name="Expander2" Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}">
                     <Expander.Header>
@@ -55,7 +55,7 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example3" HeaderText="Modifying card-like style expander content alignment">
+        <local:ControlExample x:Name="Example3" HeaderText="Modifying card-like style Expander content alignment">
             <local:ControlExample.Example>
                 <Expander
                     Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}"
