@@ -2,6 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
+    xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters;assembly=iNKORE.UI.WPF.Modern"
+    xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common;assembly=iNKORE.UI.WPF.Modern"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
 
     <Style TargetType="local:TransitioningContentControl">
@@ -18,9 +20,9 @@
                         CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}">
 
                         <Border.Resources>
-                            <local:MultiplyConverter x:Key="MultiplyConverter"/>
-                            <local:DoubleValueHolder x:Key="DummyPreviousContentSlider"/>
-                            <local:DoubleValueHolder x:Key="DummyCurrentContentSlider"/>
+                            <converters:MultiplyConverter x:Key="MultiplyConverter"/>
+                            <common:DoubleValueHolder x:Key="DummyPreviousContentSlider"/>
+                            <common:DoubleValueHolder x:Key="DummyCurrentContentSlider"/>
                         </Border.Resources>
                         
                         <Grid>
