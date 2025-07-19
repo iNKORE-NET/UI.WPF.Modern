@@ -35,13 +35,12 @@ namespace iNKORE.UI.WPF.Modern.Controls
         #endregion
 
         #region IsPaneOpen
-
         public static readonly DependencyProperty IsPaneOpenProperty =
             DependencyProperty.Register(
                 nameof(IsPaneOpen),
                 typeof(bool),
                 typeof(NavigationView),
-                new PropertyMetadata(true, OnIsPaneOpenPropertyChanged));
+                new PropertyMetadata(false, OnIsPaneOpenPropertyChanged));
 
         public bool IsPaneOpen
         {
