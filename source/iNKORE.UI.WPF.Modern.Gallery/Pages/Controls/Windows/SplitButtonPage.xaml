@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    xmlns:primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework"
     Title="Split Button Page"
     d:DesignWidth="800"
     mc:Ignorable="d" Loaded="Page_Loaded">
@@ -38,7 +37,7 @@
                             <ui:GridView IsItemClickEnabled="True" ItemClick="GridView_ItemClick">
                                 <ui:GridView.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <primitives:UniformGrid Columns="3" />
+                                        <UniformGrid Columns="3" />
                                     </ItemsPanelTemplate>
                                 </ui:GridView.ItemsPanel>
                                 <ui:GridView.Resources>
@@ -82,8 +81,8 @@
                     Choose color
                     <ui:SplitButton.Flyout>
                         <ui:Flyout Placement="Bottom">
-                            <primitives:UniformGrid Columns="3">
-                                <primitives:UniformGrid.Resources>
+                            <UniformGrid Columns="3">
+                                <UniformGrid.Resources>
                                     <Style TargetType="Rectangle">
                                         <Setter Property="Width" Value="{StaticResource SwatchSize}" />
                                         <Setter Property="Height" Value="{StaticResource SwatchSize}" />
@@ -97,7 +96,7 @@
                                         <Setter Property="Margin" Value="6" />
                                         <Setter Property="ui:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
                                     </Style>
-                                </primitives:UniformGrid.Resources>
+                                </UniformGrid.Resources>
                                 <Button AutomationProperties.Name="Red" Click="RevealColorButton_Click">
                                     <Button.Content>
                                         <Rectangle Fill="Red" />
@@ -143,7 +142,7 @@
                                         <Rectangle Fill="Black" />
                                     </Button.Content>
                                 </Button>
-                            </primitives:UniformGrid>
+                            </UniformGrid>
                         </ui:Flyout>
                     </ui:SplitButton.Flyout>
                 </ui:SplitButton>
