@@ -163,6 +163,20 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         #endregion
 
+        #region FocusVisualPrimaryCornerRadius
+
+        public static CornerRadius GetFocusVisualPrimaryCornerRadius(FrameworkElement element) => (CornerRadius)element.GetValue(FocusVisualPrimaryCornerRadiusProperty);
+        private static void SetFocusVisualPrimaryCornerRadius(FrameworkElement element, CornerRadius value) => element.SetValue(FocusVisualPrimaryCornerRadiusProperty, value);
+
+        public static readonly DependencyProperty FocusVisualPrimaryCornerRadiusProperty =
+            DependencyProperty.RegisterAttached(
+                "FocusVisualPrimaryCornerRadius",
+                typeof(CornerRadius),
+                typeof(FocusVisualHelper),
+                new FrameworkPropertyMetadata(new CornerRadius(0)));
+
+        #endregion
+        
         #region FocusVisualMargin
 
         /// <summary>
@@ -483,11 +497,29 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                     }
                     else
                     {
+                        var focusVisualMargin = GetFocusVisualMargin(focusedElement);
+
+                        var cornerRadius = focusedElement.GetValue(ControlHelper.CornerRadiusProperty);
+                        if (cornerRadius != DependencyProperty.UnsetValue && cornerRadius is CornerRadius focusedCornerRadius && focusedCornerRadius != default)
+                        {
+                            var focusVisualCornerRadius = new CornerRadius(focusedCornerRadius.TopLeft - (focusVisualMargin.Left + focusVisualMargin.Top) / 2,
+                                focusedCornerRadius.TopRight - (focusVisualMargin.Right + focusVisualMargin.Top) / 2,
+                                focusedCornerRadius.BottomLeft - (focusVisualMargin.Left + focusVisualMargin.Bottom) / 2,
+                                focusedCornerRadius.BottomRight - (focusVisualMargin.Right + focusVisualMargin.Bottom) / 2);
+                    
+                            ControlHelper.SetCornerRadius(focusVisual, focusVisualCornerRadius);
+                            SetFocusVisualPrimaryCornerRadius(focusVisual, new CornerRadius(
+                                focusVisualCornerRadius.TopLeft + GetFocusVisualSecondaryThickness(focusedElement).Left,
+                                focusVisualCornerRadius.TopRight + GetFocusVisualSecondaryThickness(focusedElement).Right,
+                                focusVisualCornerRadius.BottomLeft + GetFocusVisualSecondaryThickness(focusedElement).Left,
+                                focusVisualCornerRadius.BottomRight + GetFocusVisualSecondaryThickness(focusedElement).Right));
+                        }
+
                         TransferValue(focusedElement, focusVisual, FocusVisualPrimaryBrushProperty);
                         TransferValue(focusedElement, focusVisual, FocusVisualPrimaryThicknessProperty);
                         TransferValue(focusedElement, focusVisual, FocusVisualSecondaryBrushProperty);
                         TransferValue(focusedElement, focusVisual, FocusVisualSecondaryThicknessProperty);
-                        focusVisual.Margin = GetFocusVisualMargin(focusedElement);
+                        focusVisual.Margin = focusVisualMargin;
                     }
 
                     SetFocusedElement(focusVisual, focusedElement);
@@ -531,13 +563,32 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 Control control = new Control();
                 SetIsSystemFocusVisual(control, false);
                 control.Style = focusVisualStyle;
-                control.Margin = GetFocusVisualMargin(focusedElement);
+                
+                var focusVisualMargin = GetFocusVisualMargin(focusedElement);
+                control.Margin = focusVisualMargin;
+
+                var cornerRadius = focusedElement.GetValue(ControlHelper.CornerRadiusProperty);
+                if (cornerRadius != DependencyProperty.UnsetValue && cornerRadius is CornerRadius focusedCornerRadius && focusedCornerRadius != default)
+                {
+                    var focusVisualCornerRadius = new CornerRadius(focusedCornerRadius.TopLeft - (focusVisualMargin.Left + focusVisualMargin.Top) / 2,
+                        focusedCornerRadius.TopRight - (focusVisualMargin.Right + focusVisualMargin.Top) / 2,
+                        focusedCornerRadius.BottomLeft - (focusVisualMargin.Left + focusVisualMargin.Bottom) / 2,
+                        focusedCornerRadius.BottomRight - (focusVisualMargin.Right + focusVisualMargin.Bottom) / 2);
+
+                    ControlHelper.SetCornerRadius(control, focusVisualCornerRadius);
+                    SetFocusVisualPrimaryCornerRadius(control, new CornerRadius(
+                        focusVisualCornerRadius.TopLeft + GetFocusVisualSecondaryThickness(focusedElement).Left,
+                        focusVisualCornerRadius.TopRight + GetFocusVisualSecondaryThickness(focusedElement).Right,
+                        focusVisualCornerRadius.BottomLeft + GetFocusVisualSecondaryThickness(focusedElement).Left,
+                        focusVisualCornerRadius.BottomRight + GetFocusVisualSecondaryThickness(focusedElement).Right));
+                }
+
                 TransferValue(focusedElement, control, FocusVisualPrimaryBrushProperty);
                 TransferValue(focusedElement, control, FocusVisualPrimaryThicknessProperty);
                 TransferValue(focusedElement, control, FocusVisualSecondaryBrushProperty);
                 TransferValue(focusedElement, control, FocusVisualSecondaryThicknessProperty);
                 _adorderChild = control;
-                IsClipEnabled = true;
+                IsClipEnabled = false;
                 IsHitTestVisible = false;
                 IsEnabled = false;
                 AddVisualChild(_adorderChild);

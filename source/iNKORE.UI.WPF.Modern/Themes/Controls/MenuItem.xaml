@@ -50,6 +50,7 @@
             Margin="{DynamicResource MenuBarItemMargin}"
             Background="{TemplateBinding Background}"
             CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+            chelper:FocusVisualHelper.IsTemplateFocusTarget="True"
             SnapsToDevicePixels="True">
             <Grid>
                 <Border
@@ -86,6 +87,7 @@
             Margin="{DynamicResource MenuBarItemMargin}"
             Background="{TemplateBinding Background}"
             CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+            chelper:FocusVisualHelper.IsTemplateFocusTarget="True"
             SnapsToDevicePixels="True">
             <Grid>
                 <Border
@@ -168,6 +170,7 @@
             BorderBrush="{TemplateBinding BorderBrush}"
             BorderThickness="{TemplateBinding BorderThickness}"
             CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+            chelper:FocusVisualHelper.IsTemplateFocusTarget="True"
             SnapsToDevicePixels="true">
             <Grid x:Name="AnimationRoot">
                 <Grid.ColumnDefinitions>
@@ -269,6 +272,7 @@
             BorderBrush="{TemplateBinding BorderBrush}"
             BorderThickness="{TemplateBinding BorderThickness}"
             CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+            chelper:FocusVisualHelper.IsTemplateFocusTarget="True"
             SnapsToDevicePixels="True">
             <Grid x:Name="AnimationRoot">
                 <Grid.ColumnDefinitions>
