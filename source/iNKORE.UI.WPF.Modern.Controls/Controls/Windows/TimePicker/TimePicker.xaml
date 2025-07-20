@@ -165,10 +165,14 @@
                             <Setter TargetName="Root" Property="Background" Value="{DynamicResource LoopingSelectorItemBackgroundSelected}" />
                             <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource TimePickerFlyoutPresenterHighlightForegroundBrush}" />
                         </Trigger>
-                        <Trigger SourceName="Root" Property="ui:PressHelper.IsPressed" Value="True">
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="Root" Property="ui:PressHelper.IsPressed" Value="True"/>
+                                <Condition Property="IsSelected" Value="False"/>
+                            </MultiTrigger.Conditions>
                             <Setter TargetName="Root" Property="Background" Value="{DynamicResource LoopingSelectorItemBackgroundPressed}" />
                             <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource LoopingSelectorItemForegroundPressed}" />
-                        </Trigger>
+                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
