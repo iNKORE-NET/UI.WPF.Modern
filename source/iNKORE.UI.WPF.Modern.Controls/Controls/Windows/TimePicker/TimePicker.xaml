@@ -4,7 +4,7 @@
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common;assembly=iNKORE.UI.WPF.Modern" 
-    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime" xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf">
 
     <sys:Double x:Key="LoopingSelectorUpDownButtonScalePressed">0.800</sys:Double>
 
@@ -205,21 +205,20 @@
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="Button">
-                                            <Grid Background="{TemplateBinding Background}">
+                                            <ikw:ClippedContent CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}">
                                                 <ui:ElevationBorder
                                                     x:Name="Border"
                                                     Background="{TemplateBinding Background}"
                                                     BorderBrush="{TemplateBinding BorderBrush}"
-                                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                                    CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}">
+                                                    BorderThickness="{TemplateBinding BorderThickness}">
                                                     <ContentPresenter
                                                         x:Name="ContentPresenter"
                                                         HorizontalAlignment="Stretch"
                                                         VerticalAlignment="Stretch"
                                                         TextElement.Foreground="{TemplateBinding Foreground}" />
                                                 </ui:ElevationBorder>
-                                            </Grid>
-
+                                            </ikw:ClippedContent>
+                                            
                                             <ControlTemplate.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
                                                     <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource TimePickerButtonBorderBrushPointerOver}" />
