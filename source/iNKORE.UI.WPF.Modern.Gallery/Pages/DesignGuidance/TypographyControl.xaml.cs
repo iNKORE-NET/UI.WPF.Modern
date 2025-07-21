@@ -82,7 +82,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.DesignGuidance
                     // Hide confirmation after 2 seconds
                     var timer = new System.Windows.Threading.DispatcherTimer
                     {
-                        Interval = TimeSpan.FromSeconds(2)
+                        Interval = TimeSpan.FromSeconds(1)
                     };
                     timer.Tick += (s, args) =>
                     {
