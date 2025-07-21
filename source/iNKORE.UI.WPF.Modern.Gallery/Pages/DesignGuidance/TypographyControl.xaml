@@ -44,14 +44,22 @@
                     Style="{DynamicResource CaptionTextBlockStyle}"
                     Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                     Text="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=SizeLineHeight}" />
-                <TextBlock
+                <TextBox
                     Grid.Column="3"
-                    Margin="0,12,0,12"
-                    VerticalAlignment="Center"
+                    Margin="-10,12,0,12"
                     FontFamily="Consolas"
-                    TextWrapping="Wrap"
-                    Style="{DynamicResource CaptionTextBlockStyle}"
+                    FontSize="{DynamicResource CaptionTextBlockStyle.FontSize}"
+                    IsReadOnly="True"
+                    BorderThickness="0"
+                    Background="Transparent"
+                    IsReadOnlyCaretVisible="False"
                     Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                    TextAlignment="Left"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    HorizontalScrollBarVisibility="Hidden"
+                    TextWrapping="NoWrap"
+                    MinWidth="120"
                     Text="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=ResourceName}" />
                 <Button
                     x:Name="CopyToClipboardButton"
