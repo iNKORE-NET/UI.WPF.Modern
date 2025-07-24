@@ -1212,8 +1212,7 @@
                                 </local:SplitView.Pane>
 
                                 <local:SplitView.Content>
-                                    <Border
-                                        x:Name="ContentBorder"
+                                    <ikw:ClippedContent x:Name="ContentBorder"
                                         Margin="{DynamicResource NavigationViewContentMargin}"
                                         Background="{DynamicResource NavigationViewContentBackground}"
                                         BorderBrush="{DynamicResource NavigationViewContentGridBorderBrush}"
@@ -1255,7 +1254,7 @@
                                                 Grid.ColumnSpan="2"
                                                 Content="{TemplateBinding Content}" />
                                         </Grid>
-                                    </Border>
+                                    </ikw:ClippedContent>
                                 </local:SplitView.Content>
                             </local:SplitView>
 
