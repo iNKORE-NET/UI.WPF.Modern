@@ -1,26 +1,24 @@
-﻿using ColorCodeStandard;
-using ICSharpCode.AvalonEdit;
-using ICSharpCode.AvalonEdit.Editing;
-using ICSharpCode.AvalonEdit.Highlighting;
-using iNKORE.UI.WPF.Modern.Gallery.Helpers;
-using SamplesCommon;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
+using System.Windows.Automation;
+using ColorCode;
+using ColorCode.Common;
+using ColorCode.Styling;
+using ColorCode.Wpf;
+using SamplesCommon;
+using iNKORE.UI.WPF.Modern;
+using iNKORE.UI.WPF.Modern.Gallery.Helpers;
 using MessageBox = iNKORE.UI.WPF.Modern.Controls.MessageBox;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.Controls
@@ -30,177 +28,271 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
     /// </summary>
     public partial class SampleCodePresenter : UserControl
     {
-        public static readonly DependencyProperty CodeProperty = DependencyProperty.Register("Code", typeof(string), typeof(SampleCodePresenter), new PropertyMetadata(string.Empty, OnCodeSourceFilePropertyChanged));
+        public static readonly DependencyProperty CodeProperty =
+            DependencyProperty.Register(
+                nameof(Code),
+                typeof(string),
+                typeof(SampleCodePresenter),
+                new PropertyMetadata(string.Empty, OnCodeOrSampleChanged));
+
         public string Code
         {
-            get { return (string)GetValue(CodeProperty); }
-            set { SetValue(CodeProperty, value); }
+            get => (string)GetValue(CodeProperty);
+            set => SetValue(CodeProperty, value);
         }
 
-        public static readonly DependencyProperty IsCSharpSampleProperty = DependencyProperty.Register("IsCSharpSample", typeof(bool), typeof(SampleCodePresenter), new PropertyMetadata(false, OnCodeSourceFilePropertyChanged));
+        public static readonly DependencyProperty IsCSharpSampleProperty =
+            DependencyProperty.Register(
+                nameof(IsCSharpSample),
+                typeof(bool),
+                typeof(SampleCodePresenter),
+                new PropertyMetadata(false, OnCodeOrSampleChanged));
+
         public bool IsCSharpSample
         {
-            get { return (bool)GetValue(IsCSharpSampleProperty); }
-            set { SetValue(IsCSharpSampleProperty, value); }
+            get => (bool)GetValue(IsCSharpSampleProperty);
+            set => SetValue(IsCSharpSampleProperty, value);
         }
 
-        public static readonly DependencyProperty SubstitutionsProperty = DependencyProperty.Register("Substitutions", typeof(ObservableCollection<ControlExampleSubstitution>), typeof(SampleCodePresenter), new PropertyMetadata(null, OnSubstitutionsPropertyChanged));
+        public static readonly DependencyProperty SubstitutionsProperty =
+            DependencyProperty.Register(
+                nameof(Substitutions),
+                typeof(ObservableCollection<ControlExampleSubstitution>),
+                typeof(SampleCodePresenter),
+                new PropertyMetadata(null, OnSubstitutionsChanged));
+
         public ObservableCollection<ControlExampleSubstitution> Substitutions
         {
             get => (ObservableCollection<ControlExampleSubstitution>)GetValue(SubstitutionsProperty);
             set
             {
-                if (value == null)
-                {
+                if (value is null)
                     ClearValue(SubstitutionsProperty);
-                }
                 else
-                {
                     SetValue(SubstitutionsProperty, value);
-                }
             }
         }
 
         public bool IsEmpty => string.IsNullOrEmpty(Code);
 
-        private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
+        private static readonly Regex SubstitutionPattern =
+            new Regex(@"\$\(([^)]+)\)", RegexOptions.Compiled);
+
+        private readonly DispatcherTimer _resetTimer;
+        private string _actualCode = string.Empty;
+        private string _lastHighlightedCode = null;
+        private bool _lastIsDark = false;
 
         public SampleCodePresenter()
         {
             InitializeComponent();
 
-            CodePresenter.TextArea.SelectionBorder = new Pen(Brushes.Transparent, 0);
-            CodePresenter.TextArea.SelectionCornerRadius = 0;
-            CodePresenter.TextArea.SetResourceReference(TextArea.SelectionBrushProperty, ThemeKeys.TextControlSelectionHighlightColorKey);
+            // Timer to reset visual state after copy
+            _resetTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+            _resetTimer.Tick += (s, e) =>
+            {
+                _resetTimer.Stop();
+                VisualStateManager.GoToState(this, "ConfirmationDialogHidden", false);
+            };
+
+            // Hook context menu
+            CodePresenter.ContextMenuOpening += CodePresenter_ContextMenuOpening;
         }
 
-        private static void OnSubstitutionsPropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs args)
+        private static void OnCodeOrSampleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (target is SampleCodePresenter presenter)
+            var ctl = (SampleCodePresenter)d;
+            ctl.UpdateVisibilityAndHighlight();
+        }
+
+        private static void OnSubstitutionsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctl = (SampleCodePresenter)d;
+            if (e.OldValue is ObservableCollection<ControlExampleSubstitution> old)
             {
-                presenter.RegisterSubstitutions();
+                foreach (var sub in old)
+                    sub.ValueChanged -= ctl.OnSubstitutionValueChanged;
+            }
+            if (e.NewValue is ObservableCollection<ControlExampleSubstitution> neu)
+            {
+                foreach (var sub in neu)
+                    sub.ValueChanged += ctl.OnSubstitutionValueChanged;
             }
         }
 
-        private static void OnCodeSourceFilePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs args)
+        private void OnSubstitutionValueChanged(ControlExampleSubstitution sender, object newValue)
         {
-            if (target is SampleCodePresenter presenter)
-            {
-                presenter.ReevaluateVisibility();
-            }
-        }
-
-        private void ReevaluateVisibility()
-        {
-            if (string.IsNullOrEmpty(Code))
-            {
-                Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                Visibility = Visibility.Visible;
-                GenerateSyntaxHighlightedContent();
-                SampleHeader.Text = IsCSharpSample ? "C#" : "XAML";
-            }
-        }
-
-        private void RegisterSubstitutions()
-        {
-            foreach (var substitution in Substitutions)
-            {
-                substitution.ValueChanged += OnValueChanged;
-            }
+            GenerateSyntaxHighlightedContent();
         }
 
         private void SampleCodePresenter_Loaded(object sender, RoutedEventArgs e)
         {
-            ReevaluateVisibility();
-            SampleHeader.Text = IsCSharpSample ? "C#" : "XAML";
-
-            FixAvalonEditScrolling();
-        }
-
-        private void CodePresenter_Loaded(object sender, RoutedEventArgs e)
-        {
-            GenerateSyntaxHighlightedContent();
+            UpdateVisibilityAndHighlight();
         }
 
         private void SampleCodePresenter_ActualThemeChanged(object sender, RoutedEventArgs e)
         {
-            // If the theme has changed after the user has already opened the app (ie. via settings), then the new locally set theme will overwrite the colors that are set during Loaded.
-            // Therefore we need to re-format the REB to use the correct colors.
             GenerateSyntaxHighlightedContent();
         }
 
-        private void OnValueChanged(ControlExampleSubstitution sender, object e)
+        private void UpdateVisibilityAndHighlight()
         {
+            if (IsEmpty)
+            {
+                Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            Visibility = Visibility.Visible;
+            SampleHeader.Text = IsCSharpSample ? "C#" : "XAML";
             GenerateSyntaxHighlightedContent();
         }
 
         private void GenerateSyntaxHighlightedContent()
         {
-            FormatAndRenderSampleFromString(Code, CodePresenter, IsCSharpSample ? Languages.CSharp : Languages.Xml);
-        }
+            // Prevent NullReferenceException if controls are not loaded yet
+            if (CodePresenter == null || InlinePresenter == null || CopyCodeButton == null)
+                return;
 
+            // Determine language
+            ILanguage lang = IsCSharpSample ? Languages.CSharp : Languages.Xml;
+            string raw = Code ?? string.Empty;
 
-        private void FormatAndRenderSampleFromString(string sampleString, TextEditor presenter, ILanguage highlightLanguage)
-        {
-            var highlighterName = "";
-            if (highlightLanguage == Languages.CSharp)
+            // Apply substitutions
+            if (Substitutions != null && Substitutions.Count > 0)
             {
-                highlighterName = "C#";
+                raw = SubstitutionPattern.Replace(raw, match =>
+                {
+                    var key = match.Groups[1].Value;
+                    var sub = Substitutions.FirstOrDefault(s => s.Key == key);
+                    if (sub == null)
+                        throw new KeyNotFoundException(key);
+
+                    return sub.ValueAsString();
+                });
             }
-            else if (highlightLanguage == Languages.Xml)
+
+            _actualCode = raw.Trim('\n').TrimEnd();
+
+            // Update automation name
+            AutomationProperties.SetName(CopyCodeButton,
+                $"Copy {(IsCSharpSample ? "C#" : "XAML")} Code");
+
+            // Show inline or full
+            bool isInline = !IsCSharpSample && raw.Length < 100; 
+            if (isInline)
             {
-                highlighterName = "XML";
+                InlinePresenter.Visibility = Visibility.Visible;
+                CodePresenter.Visibility = Visibility.Collapsed;
+
+                var tb = new TextBox
+                {
+                    Text = _actualCode,
+                    FontFamily = new FontFamily("Consolas"),
+                    IsReadOnly = true,
+                    BorderThickness = new Thickness(0),
+                    Background = Brushes.Transparent,
+                    //TextTrimming = TextTrimming.CharacterEllipsis
+                };
+                InlinePresenter.Content = tb;
             }
+            else
+            {
+                InlinePresenter.Visibility = Visibility.Collapsed;
+                CodePresenter.Visibility = Visibility.Visible;
 
-            var highlighter = HighlightingManager.Instance.GetDefinition(highlighterName);
-            if (presenter.SyntaxHighlighting != highlighter)
-            presenter.SyntaxHighlighting = highlighter;
-            
-            var formattedText = StringHelper.RemoveLeadingAndTrailingEmptyLines(sampleString);
-            if (formattedText != presenter.Text)
-                presenter.Text = formattedText;
+                bool isDark = ThemeHelper.IsDarkTheme();
 
-            presenter.Visibility = Visibility.Visible;
+                // Only update if code or theme changed
+                if (_actualCode == _lastHighlightedCode && isDark == _lastIsDark)
+                    return;
+
+                _lastHighlightedCode = _actualCode;
+                _lastIsDark = isDark;
+
+                // Use current theme for styling, do not set/change theme here
+                var style = isDark
+                    ? StyleDictionary.DefaultDark
+                    : StyleDictionary.DefaultLight;
+                var formatter = new RichTextBoxFormatter(style);
+
+                // Dark theme tweaks
+                if (isDark)
+                {
+                    // Remove old styles by key
+                    var removeKeys = new[] {
+                        ScopeName.XmlAttribute,
+                        ScopeName.XmlAttributeQuotes,
+                        ScopeName.XmlAttributeValue,
+                        ScopeName.HtmlComment,
+                        ScopeName.XmlDelimiter,
+                        ScopeName.XmlName
+                    };
+                    foreach (var key in removeKeys)
+                        formatter.Styles.Remove(key);
+
+                    // Add custom styles
+                    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttribute)
+                    {
+                        Foreground = "#FF87CEFA",
+                        ReferenceName = "xmlAttribute"
+                    });
+                    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttributeQuotes)
+                    {
+                        Foreground = "#FFFFA07A",
+                        ReferenceName = "xmlAttributeQuotes"
+                    });
+                    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttributeValue)
+                    {
+                        Foreground = "#FFFFA07A",
+                        ReferenceName = "xmlAttributeValue"
+                    });
+                    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.HtmlComment)
+                    {
+                        Foreground = "#FF6B8E23",
+                        ReferenceName = "htmlComment"
+                    });
+                    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlDelimiter)
+                    {
+                        Foreground = "#FF808080",
+                        ReferenceName = "xmlDelimiter"
+                    });
+                    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlName)
+                    {
+                        Foreground = "#FF5F82E8",
+                        ReferenceName = "xmlName"
+                    });
+                }
+
+                // Clear the document before formatting
+                CodePresenter.Document.Blocks.Clear();
+                formatter.FormatRichTextBox(_actualCode, lang, CodePresenter);
+            }
         }
 
         private void CopyCodeButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Clipboard.SetText(CodePresenter.Text);
+                Clipboard.SetText(_actualCode);
+
                 VisualStateManager.GoToState(this, "ConfirmationDialogVisible", false);
+                _resetTimer.Start();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Unable to Perform Copy", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            // Automatically close teachingtip after 1 seconds
-            this.RunOnUIThread(async () =>
-            {
-                await Task.Delay(1000);
-                VisualStateManager.GoToState(this, "ConfirmationDialogHidden", false);
-            });
         }
 
-        private void FixAvalonEditScrolling()
+        private void CodePresenter_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
-            var scv = CodePresenter.Template.FindName("PART_ScrollViewer", CodePresenter);
-            if (scv is ScrollViewer PART_ScrollViewer)
+            if (CodePresenter.ContextMenu == null)
             {
-                // I don't know why AvalonEditor doesn't handle horizontal scrolling properly,
-                // So we see horizontal scrolls as vertical scrolls and bubble it to the parent.
-
-                PART_ScrollViewer.PreviewMouseWheel += (sender, e) =>
-                {
-                    var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
-                    eventArg.RoutedEvent = UIElement.MouseWheelEvent;
-                    eventArg.Source = sender;
-                    this.RaiseEvent(eventArg);
-                };
+                var menu = new ContextMenu();
+                menu.Items.Add(new MenuItem { Header = "Copy", Command = ApplicationCommands.Copy });
+                menu.Items.Add(new MenuItem { Header = "Select All", Command = ApplicationCommands.SelectAll });
+                CodePresenter.ContextMenu = menu;
             }
         }
     }
