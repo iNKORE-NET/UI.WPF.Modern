@@ -1,4 +1,4 @@
-﻿<ui:Page
+<ui:Page
     x:Class="iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows.TabViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -50,52 +50,24 @@
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example2" HeaderText="TabControl with color tab icons">
+        <local:ControlExample x:Name="Example3" HeaderText="Custom content in TabStripHeader and TabStripFooter">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock
                         Margin="0,0,0,12"
-                        Text="Use BitmapIcon.ShowAsMonochrome=&quot;False&quot; to display full color icons in the TabItem"
-                        TextWrapping="Wrap" />
-
-                    <TabControl
-                        x:Name="TabView4"
-                        MinWidth="490"
-                        MinHeight="0"
-                        SelectedIndex="0">
-                        <TabControl.Items>
-                            <TabItem Header="CMD Prompt">
-                                <ui:TabItemHelper.Icon>
-                                    <ui:BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/TabViewIcons/cmd.png" />
-                                </ui:TabItemHelper.Icon>
-                            </TabItem>
-                            <TabItem Header="Powershell">
-                                <ui:TabItemHelper.Icon>
-                                    <ui:BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/TabViewIcons/powershell.png" />
-                                </ui:TabItemHelper.Icon>
-                            </TabItem>
-                            <TabItem Header="Windows Subsystem for Linux">
-                                <ui:TabItemHelper.Icon>
-                                    <ui:BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/TabViewIcons/linux.png" />
-                                </ui:TabItemHelper.Icon>
-                            </TabItem>
-                        </TabControl.Items>
-                    </TabControl>
-                </StackPanel>
-            </local:ControlExample.Example>
-        </local:ControlExample>
-
-        <local:ControlExample x:Name="Example3" HeaderText="You can put custom content in TabStripHeader and TabStripFooter">
-            <local:ControlExample.Example>
-                <StackPanel>
-                    <TextBlock
-                        Margin="0,0,0,24"
                         Text="You can put any content in the TabStripHeader and TabStripFooter areas"
                         TextWrapping="Wrap" />
+                    <TextBlock
+                        Margin="0,0,0,12"
+                        Text="If your TabView is used inside the app's titlebar area, use the TabStripFooter to specify a custom drag region"
+                        TextWrapping="Wrap" />
+                    <!-- <TextBlock
+                        Margin="0,0,0,24"
+                        Text="See TabViewWindowingSamplePage.xaml and *.cs files to see the complete code"
+                        TextWrapping="Wrap" /> -->
 
                     <TabControl
                         MinHeight="475"
-                        Margin="-12"
                         Loaded="TabView_Loaded"
                         SelectedIndex="0">
                         <ui:TabControlHelper.TabStripHeader>
@@ -113,6 +85,42 @@
                                 Style="{DynamicResource BaseTextBlockStyle}"
                                 Text="TabStripFooter Content" />
                         </ui:TabControlHelper.TabStripFooter>
+                    </TabControl>
+                </StackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
+        <local:ControlExample x:Name="Example2" HeaderText="TabControl with color tab icons">
+            <local:ControlExample.Example>
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,12"
+                        Text="Use BitmapIcon.ShowAsMonochrome=&quot;False&quot; to display full color icons in the TabItem"
+                        TextWrapping="Wrap" />
+
+                    <TabControl
+                        x:Name="TabView4"
+                        MinWidth="490"
+                        MinHeight="0"
+                        SelectedIndex="0"
+                        ui:TabControlHelper.IsAddTabButtonVisible="False">
+                        <TabControl.Items>
+                            <TabItem Header="CMD Prompt">
+                                <ui:TabItemHelper.Icon>
+                                    <ui:BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/TabViewIcons/cmd.png" />
+                                </ui:TabItemHelper.Icon>
+                            </TabItem>
+                            <TabItem Header="Powershell">
+                                <ui:TabItemHelper.Icon>
+                                    <ui:BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/TabViewIcons/powershell.png" />
+                                </ui:TabItemHelper.Icon>
+                            </TabItem>
+                            <TabItem Header="Windows Subsystem for Linux">
+                                <ui:TabItemHelper.Icon>
+                                    <ui:BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/TabViewIcons/linux.png" />
+                                </ui:TabItemHelper.Icon>
+                            </TabItem>
+                        </TabControl.Items>
                     </TabControl>
                 </StackPanel>
             </local:ControlExample.Example>
