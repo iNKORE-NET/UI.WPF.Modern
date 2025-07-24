@@ -34,6 +34,9 @@
   <a href="https://twitter.com/NotYoojun"><img src="https://img.shields.io/twitter/follow/NotYoojun?style=social" alt="NotYoojun's Twitter"></a>
 </p>
 
+<p align="center">
+ <a href="https://docs.inkore.net/zh-cn/ui-wpf-modern/introduction">Documentation</a> | <a href="https://www.inkore.net">Official Website</a>
+
 <br align="center">
 
 # ✨ Features
@@ -54,6 +57,18 @@
 
 - We're currently working on a documentation site that simplifies your learning curve. However this can be a huge process. You can preview the documentation site at [docs.inkore.net/ui-wpf-modern](https://docs.inkore.net/ui-wpf-modern/introduction) (remember it's not finished yet). Feedback and contributions are welcome and strongly needed.
 
+> [!NOTE]
+> It's time for a brand-new docmentation set!
+>
+> We are looking for passionate volunteers to help us write and improve the documentation for the
+iNKORE.UI.WPF.Modern library. Your contributions will be invaluable in making this project more
+accessible and user-friendly for the entire community.
+>
+> Whether you are an experienced developer or just enthusiastic about contributing to open-source, we
+welcome your help!
+>
+> It's very easy to join us! You can create a PR in our [Documentation repository](https://github.com/iNKORE-NET/Documentation) when you're free. You can also join our [Discord server](https://discord.gg/m6NPNVk4bs) and [Telegram group](https://t.me/iNKORE) to hang out with us.
+
 - We provide a gallery application as well. You can check the latest version of the gallery in GitHub Actions, or download the stable version from Microsoft Store.
 
     <a href="https://apps.microsoft.com/detail/9n3js11zc38g?mode=direct">
@@ -73,7 +88,9 @@
   
 - Help us promote the project by starring the repository, sharing it on social media, telling your friends about it and add gadgets to your projects ([instructions here](https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/docs/promotions.md))
 
-- Sponsor us at https://inkore.net/about/members/notyoojun#sponsor (website under construction, so pls consider to sponsor us on [Patreon](https://patreon.com/notyoojun), [爱发电](https://ifdian.net/a/NotYoojun) or [Buy Me a Coffee](https://buymeacoffee.com/notyoojun) for now)
+- We're also looking for volunteers to help us with the documentation and its translations, and other tasks. Check the [documentation repository](https://github.com/iNKORE-NET/Documentation) for more information.
+
+- Sponsor us at https://www.inkore.net/donate to help us keep the project alive and well. Your support is greatly appreciated!
 
 > [!WARNING]
 >
@@ -83,6 +100,9 @@
 >
 > **请不要继续在 issues 板块下发表任何无意义且无法促进此项目持续发展的内容**。在提交 issue 之前，请仔细思考你要发布的内容**是否合理**，如果不能，请不要浪费其他人的时间；同时请考虑**开发者能否修复/实现**，如果不能，请自己提交 PR 而不是 issue。
 > 在交流时请尊重他人，不要使用不文明用语。请不要催促或强求开发者和其他贡献者，他们是一群热爱开源的志愿者，不是你的私人雇员！
+>
+> 如果你是 WPF 或 C# 的**初学者**，我们**不建议**你使用本项目。使用 iUWM 通常要求开发者有较强的知识体系和开发经验，对于新手，提升自己的能力更重要。
+> 你可以寻找一些入门教程学习初步知识。对于 UI，我们更建议使用一些更加容易入手的库。提升个人能力也有助于在将来更好地让 iUWM 服务于你，完成更高质量的项目。
 >
 > 现在我们已经不再接受使用新的任何使用除英语 (美国) 之外的任何语言提交的任何议题 (包括但不限于 Issue，PR 和 Discussion)！**对于使用中文或其它语言的议题和讨论将被关闭或删除！如果不会说英语，请使用 Google Translator 等翻译工具自行翻译！**
 

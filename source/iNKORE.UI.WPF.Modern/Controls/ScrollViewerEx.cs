@@ -1,6 +1,7 @@
 ﻿using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -99,6 +100,22 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         #endregion
 
+        #region Wheel Sensitivity
+
+        public static readonly DependencyProperty WheelSensitivityProperty =
+            DependencyProperty.Register(
+                nameof(WheelSensitivity),
+                typeof(double),
+                typeof(ScrollViewerEx),
+                new PropertyMetadata(1.0));
+
+        public double WheelSensitivity
+        {
+            get => (double)GetValue(WheelSensitivityProperty);
+            set => SetValue(WheelSensitivityProperty, value);
+        }
+
+        #endregion
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -142,7 +159,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     e.Handled = true;
                 }
 
-                double WheelChange = RewriteWheelChange ? e.Delta * (ViewportHeight / 1.5) / ActualHeight : e.Delta;
+                double WheelChange = RewriteWheelChange ? e.Delta * (ViewportHeight / 1.5) * WheelSensitivity / ActualHeight : e.Delta * WheelSensitivity;
                 double newOffset = LastVerticalLocation - WheelChange;
 
                 if (newOffset < 0)
@@ -177,7 +194,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     e.Handled = true;
                 }
 
-                double WheelChange = RewriteWheelChange ? e.Delta * (ViewportWidth / 1.5) / ActualWidth : e.Delta;
+                double WheelChange = RewriteWheelChange ? e.Delta * (ViewportWidth / 1.5) * WheelSensitivity / ActualWidth : e.Delta * WheelSensitivity;
                 double newOffset = LastHorizontalLocation - WheelChange;
 
                 if (newOffset < 0)
@@ -269,14 +286,14 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 if (horizontalOffset.HasValue)
                 {
                     ScrollToHorizontalOffset(LastHorizontalLocation);
-                    AnimateScroll(horizontalOffset.Value, Orientation.Vertical, 1);
+                    AnimateScroll(Math.Min(ScrollableWidth, horizontalOffset.Value), Orientation.Horizontal, 1);
                     LastHorizontalLocation = horizontalOffset.Value;
                 }
 
                 if (verticalOffset.HasValue)
                 {
                     ScrollToVerticalOffset(LastVerticalLocation);
-                    AnimateScroll(verticalOffset.Value, Orientation.Vertical, 1);
+                    AnimateScroll(Math.Min(ScrollableHeight, verticalOffset.Value), Orientation.Vertical, 1);
                     LastVerticalLocation = verticalOffset.Value;
                 }
             }

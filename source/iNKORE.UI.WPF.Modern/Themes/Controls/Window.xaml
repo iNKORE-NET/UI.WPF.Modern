@@ -140,7 +140,7 @@
                                         ResizeBorderThickness="{TemplateBinding primitives:TitleBar.ResizeBorderThickness}"
                                         Style="{TemplateBinding primitives:TitleBar.Style}" />
 
-                                    <AdornerDecorator x:Name="AdornerDecorator" Grid.Row="1">
+                                    <AdornerDecorator x:Name="AdornerDecorator" Grid.Row="1" CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}">
                                         <local:ContentPresenterEx Foreground="{TemplateBinding Foreground}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                     </AdornerDecorator>
 
