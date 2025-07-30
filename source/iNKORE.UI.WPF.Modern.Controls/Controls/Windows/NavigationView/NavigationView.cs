@@ -1565,7 +1565,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
 
             if (previousMode == NavigationViewDisplayMode.Expanded
-                && displayMode == NavigationViewDisplayMode.Compact)
+                && (displayMode == NavigationViewDisplayMode.Compact ||
+                    displayMode == NavigationViewDisplayMode.Minimal))
             {
                 m_initialListSizeStateSet = false;
                 ClosePane();
