@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -23,6 +23,19 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         {
             UpdateExampleCode();
             DataContext = await Contact.GetContactsAsync();
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FocusSelectedTabHeader();
+        }
+
+        private void FocusSelectedTabHeader()
+        {
+            if (tabControl.ItemContainerGenerator.ContainerFromIndex(tabControl.SelectedIndex) is TabItem tabItem)
+            {
+                tabItem.Focus();
+            }
         }
 
         private void RadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
