@@ -389,6 +389,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             UpdateCommonState(useTransitions);
             UpdateKeyboardAcceleratorTextVisibility(useTransitions);
             UpdateFlyoutState(useTransitions);
+            UpdatePrimaryLabelState(useTransitions);
         }
 
         private void UpdateCommonState(bool useTransitions = true)
@@ -442,6 +443,12 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             bool hasFlyout = Flyout != null && !ToolBar.GetIsOverflowItem(this);
             VisualStateManager.GoToState(this, hasFlyout ? "HasFlyout" : "NoFlyout", useTransitions);
+        }
+
+        private void UpdatePrimaryLabelState(bool useTransitions = true)
+        {
+            bool hasPrimaryLabel = !IsInOverflow && Label is not null;
+            VisualStateManager.GoToState(this, hasPrimaryLabel ? "HasPrimaryLabels" : "NoPrimaryLabels", useTransitions);
         }
 
         private AppBarElementVisualStateManager _vsm;
