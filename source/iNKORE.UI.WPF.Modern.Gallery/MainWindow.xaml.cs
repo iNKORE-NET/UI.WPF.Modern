@@ -18,6 +18,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Interop;
 using System.Threading;
+using iNKORE.UI.WPF.Modern.Gallery.SamplePages;
 
 namespace iNKORE.UI.WPF.Modern.Gallery
 {
@@ -27,9 +28,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         public MainWindow()
         {
+            var window = new SampleSystemBackdropsWindow();
+            window.Show();
+
             Current = this;
             InitializeComponent();
-            InitialzeApp();
+            /*InitialzeApp();*/
+            Close();
         }
 
         private async void InitialzeApp()
