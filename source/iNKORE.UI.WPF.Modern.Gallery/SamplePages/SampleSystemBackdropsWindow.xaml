@@ -2,86 +2,32 @@
     x:Class="iNKORE.UI.WPF.Modern.Gallery.SamplePages.SampleSystemBackdropsWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
-    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.SamplePages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     Title="System Backdrops Window"
-    Width="700"
+    Width="800"
     Height="450"
-    ui:ThemeManager.IsThemeAware="True"
-    ui:TitleBar.ExtendViewIntoTitleBar="True"
-    ui:TitleBar.Height="48"
     ui:WindowHelper.SystemBackdropType="Mica"
+    ui:WindowHelper.UseAcrylicBackdrop="True"
+    ui:WindowHelper.UseAeroBackdrop="True"
     ui:WindowHelper.UseModernWindowStyle="True"
-    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
-        <ui:NavigationView
-            x:Name="NavigationViewControl"
-            AlwaysShowHeader="True"
-            Canvas.ZIndex="0"
-            CompactModeThresholdWidth="600"
-            DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
-            ExpandedModeThresholdWidth="800"
-            Header="General"
-            IsPaneOpen="True"
-            IsTabStop="False"
-            Loaded="OnNavigationViewControlLoaded"
-            PaneClosing="NavigationViewControl_PaneClosing"
-            PaneOpening="NavigationViewControl_PaneOpening"
-            SelectionChanged="OnNavigationViewSelectionChanged">
-
-            <ui:NavigationView.PaneCustomContent>
-                <ikw:SimpleStackPanel
-                    Margin="4,10,0,10"
-                    Orientation="Horizontal"
-                    Spacing="12">
-                    <Image
-                        Width="60"
-                        Height="60"
-                        RenderOptions.BitmapScalingMode="HighQuality"
-                        Source="/Assets/WpfLibrary_Minimal_64w.png" />
-                    <TextBlock
-                        Grid.Column="1"
-                        VerticalAlignment="Center"
-                        FontSize="14"
-                        FontWeight="SemiBold"
-                        Style="{DynamicResource CaptionTextBlockStyle}"
-                        Text="{x:Static local:NavigationRootPage.GetAppTitleFromSystem}"
-                        TextWrapping="NoWrap" />
-                </ikw:SimpleStackPanel>
-            </ui:NavigationView.PaneCustomContent>
-
-            <ui:NavigationView.MenuItems>
-                <ui:NavigationViewItem Content="General">
-                    <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon Glyph="&#xE713;" />
-                    </ui:NavigationViewItem.Icon>
-                </ui:NavigationViewItem>
-                <ui:NavigationViewItem Content="About">
-                    <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon Glyph="&#xE946;" />
-                    </ui:NavigationViewItem.Icon>
-                </ui:NavigationViewItem>
-            </ui:NavigationView.MenuItems>
-
-            <ui:NavigationView.HeaderTemplate>
-                <DataTemplate>
-                    <TextBlock
-                        FontSize="28"
-                        FontWeight="SemiBold"
-                        Text="{Binding Header, ElementName=NavigationViewControl, Mode=OneWay}" />
-                </DataTemplate>
-            </ui:NavigationView.HeaderTemplate>
-
-            <ui:Frame
-                x:Name="rootFrame"
-                Margin="0,24,0,0"
-                Navigated="OnRootFrameNavigated"
-                Navigating="OnRootFrameNavigating" />
-        </ui:NavigationView>
+        <StackPanel>
+            <ikw:SimpleStackPanel Margin="20" Spacing="10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Current backdrop: " />
+                    <TextBlock x:Name="tbCurrentBackdrop" />
+                </StackPanel>
+                <Button
+                    x:Name="btnChangeBackdrop"
+                    AutomationProperties.Name="ChangeBackdropButton"
+                    Click="ChangeBackdropButton_Click"
+                    Content="Change Backdrop" />
+                <TextBlock x:Name="tbChangeStatus" />
+            </ikw:SimpleStackPanel>
+        </StackPanel>
     </Grid>
 </Window>

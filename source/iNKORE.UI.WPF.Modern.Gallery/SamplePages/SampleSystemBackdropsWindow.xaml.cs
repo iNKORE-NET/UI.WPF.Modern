@@ -1,63 +1,62 @@
-﻿using iNKORE.UI.WPF.Modern.Controls;
+﻿using iNKORE.UI.WPF.Helpers;
+using iNKORE.UI.WPF.Modern.Controls.Helpers;
+using iNKORE.UI.WPF.Modern.Controls.Primitives;
+using iNKORE.UI.WPF.Modern.Helpers;
+using iNKORE.UI.WPF.Modern.Helpers.Styles;
+using System;
+using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Navigation;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
-namespace iNKORE.UI.WPF.Modern.Gallery.SamplePages;
-
-public partial class SampleSystemBackdropsWindow : Window
+namespace iNKORE.UI.WPF.Modern.Gallery.SamplePages
 {
-    public SampleSystemBackdropsWindow()
+    /// <summary>
+    /// SampleSystemBackdropsWindow.xaml 的交互逻辑
+    /// </summary>
+    public partial class SampleSystemBackdropsWindow : Window
     {
-        InitializeComponent();
-    }
+        BackdropType m_currentBackdrop => WindowHelper.GetSystemBackdropType(this);
+        bool m_useAcrylicBackdrop => WindowHelper.GetSystemBackdropType(this) == BackdropType.Acrylic;
+        bool m_useAeroBackdrop => WindowHelper.GetUseAeroBackdrop(this);
 
-    private void OnNavigationViewControlLoaded(object sender, RoutedEventArgs e)
-    {
+        public SampleSystemBackdropsWindow()
+        {
+            InitializeComponent();
+        }
 
-    }
-
-    object _lastItem = null;
-
-    private void OnNavigationViewSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-    {
-    }
-
-    private void OnRootFrameNavigated(object sender, NavigationEventArgs e)
-    {
-    }
-
-    private void OnControlsSearchBoxTextChanged(iNKORE.UI.WPF.Modern.Controls.AutoSuggestBox sender, iNKORE.UI.WPF.Modern.Controls.AutoSuggestBoxTextChangedEventArgs args)
-    {
-    }
-
-    private void OnControlsSearchBoxQuerySubmitted(iNKORE.UI.WPF.Modern.Controls.AutoSuggestBox sender, iNKORE.UI.WPF.Modern.Controls.AutoSuggestBoxQuerySubmittedEventArgs args)
-    {
-    }
-
-    private void NavigationViewControl_PaneClosing(NavigationView sender, NavigationViewPaneClosingEventArgs args)
-    {
-    }
-
-    private void NavigationViewControl_PaneOpening(NavigationView sender, object args)
-    {
-    }
-
-    private void NavigationViewControl_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
-    {
-
-    }
-
-    private void Page_Loaded(object sender, RoutedEventArgs e)
-    {
-
-    }
-
-    private void rootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
-    {
-
-    }
-
-    private void OnRootFrameNavigating(object sender, NavigatingCancelEventArgs e)
-    {
+        void ChangeBackdropButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (OSVersionHelper.IsWindows11OrGreater)
+            {
+                BackdropType newType;
+                switch (m_currentBackdrop)
+                {
+                    case BackdropType.Mica: newType = BackdropType.Tabbed; break;
+                    case BackdropType.Tabbed: newType = BackdropType.Acrylic; break;
+                    case BackdropType.Acrylic: newType = BackdropType.None; break;
+                    default:
+                    case BackdropType.None: newType = BackdropType.Mica; break;
+                }
+                WindowHelper.SetSystemBackdropType(this, newType);
+            }
+            else if (OSVersionHelper.IsWindows10OrGreater)
+            {
+                WindowHelper.SetSystemBackdropType(this, m_useAcrylicBackdrop ? BackdropType.Acrylic : BackdropType.None);
+            }
+            else if (OSVersionHelper.IsWindowsVistaOrGreater)
+            {
+                WindowHelper.SetUseAeroBackdrop(this, !m_useAeroBackdrop);
+            }
+        }
     }
 }
