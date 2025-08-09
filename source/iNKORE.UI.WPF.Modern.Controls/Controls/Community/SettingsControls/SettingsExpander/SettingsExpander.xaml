@@ -3,6 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers;assembly=iNKORE.UI.WPF.Modern"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
+    xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters;assembly=iNKORE.UI.WPF.Modern"
+    xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common;assembly=iNKORE.UI.WPF.Modern"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:sys="clr-namespace:System;assembly=System.Runtime"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
@@ -146,6 +148,7 @@
     <ikw:CornerRadiusFilterConverter x:Key="LeftCornerRadiusFilterConverter" Filter="Left" />
 
     <ikw:SizeToRectConverter x:Key="SizeToRectConverter" />
+    <converters:MultiplyConverter x:Key="MultiplyConverter" />
 
     <sys:TimeSpan x:Key="ExpandAnimationDuration">0:0:0.333</sys:TimeSpan>
     <sys:TimeSpan x:Key="CollapseAnimationDuration">0:0:0.167</sys:TimeSpan>
@@ -160,10 +163,6 @@
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="ui:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
-        <Setter Property="chelper:ExpanderAnimationsHelper.CollapseAnimationDuration" Value="{DynamicResource CollapseAnimationDuration}" />
-        <Setter Property="chelper:ExpanderAnimationsHelper.ExpandAnimationDuration" Value="{DynamicResource ExpandAnimationDuration}" />
-        <Setter Property="chelper:ExpanderAnimationsHelper.ToAnimateControlName" Value="ExpanderContent" />
-        <Setter Property="chelper:ExpanderAnimationsHelper.IsEnabled" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Expander">
@@ -173,27 +172,12 @@
                             <RowDefinition x:Name="Row1" Height="*" />
                         </Grid.RowDefinitions>
 
+                        <Grid.Resources>
+                            <common:DoubleValueHolder x:Key="TranslationHolder" x:Name="TranslationHolder"/>
+                        </Grid.Resources>
                         <!--  The clip is a composition clip applied in code  -->
-                        <Border x:Name="ExpanderContentClip" Grid.Row="1">
-
-                            <Border.Clip>
-                                <RectangleGeometry>
-                                    <RectangleGeometry.Rect>
-                                        <MultiBinding Converter="{StaticResource SizeToRectConverter}">
-                                            <Binding Source="0" />
-                                            <Binding Source="0" />
-                                            <Binding
-                                                Mode="OneWay"
-                                                Path="ActualWidth"
-                                                RelativeSource="{RelativeSource Mode=TemplatedParent}" />
-                                            <Binding
-                                                ElementName="ContentPresenter"
-                                                Mode="OneWay"
-                                                Path="ActualHeight" />
-                                        </MultiBinding>
-                                    </RectangleGeometry.Rect>
-                                </RectangleGeometry>
-                            </Border.Clip>
+                        <ikw:ClippedContent x:Name="ExpanderContentClip" Grid.Row="1"
+                                            ClipToBounds="True">
 
                             <ikw:ClippedContent
                                 x:Name="ExpanderContent"
@@ -204,10 +188,30 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{StaticResource ExpanderContentDownBorderThickness}"
                                 CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius,
-                                                               Converter={StaticResource BottomCornerRadiusFilterConverter}}"
-                                Visibility="Collapsed">
+                                                               Converter={StaticResource BottomCornerRadiusFilterConverter}}">
                                 <FrameworkElement.RenderTransform>
-                                    <TranslateTransform x:Name="ExpanderContentTranslation" />
+                                    <TranslateTransform  x:Name="ExpanderContentTranslation" >
+                                        <TranslateTransform.X>
+                                            <MultiBinding Converter="{StaticResource MultiplyConverter}">
+                                                <Binding ElementName="ExpanderContent"
+                                                         Path="ActualWidth"
+                                                         Mode="OneWay"/>
+                                                <Binding Source="{StaticResource TranslationHolder}"
+                                                         Path="X"
+                                                         Mode="OneWay"/>
+                                            </MultiBinding>
+                                        </TranslateTransform.X>
+                                        <TranslateTransform.Y>
+                                            <MultiBinding Converter="{StaticResource MultiplyConverter}">
+                                                <Binding ElementName="ExpanderContent"
+                                                         Path="ActualHeight"
+                                                         Mode="OneWay"/>
+                                                <Binding Source="{StaticResource TranslationHolder}"
+                                                         Path="Y"
+                                                         Mode="OneWay"/>
+                                            </MultiBinding>
+                                        </TranslateTransform.Y>
+                                    </TranslateTransform>
                                 </FrameworkElement.RenderTransform>
                                 <ui:ContentPresenterEx
                                     x:Name="ContentPresenter"
@@ -218,7 +222,7 @@
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
                                     ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
                             </ikw:ClippedContent>
-                        </Border>
+                        </ikw:ClippedContent>
 
                         <ToggleButton x:Name="ExpanderHeader"
                                       MinHeight="{TemplateBinding MinHeight}"
@@ -237,46 +241,243 @@
                                       IsChecked="{Binding Path=IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                       IsEnabled="{TemplateBinding IsEnabled}"
                                       IsTabStop="True"
-                                      Style="{StaticResource SettingsExpanderHeaderDownStyle}"
-                                      Tag="{TemplateBinding chelper:ControlHelper.CornerRadius}" />
+                                      Style="{StaticResource SettingsExpanderHeaderDownStyle}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
+                        
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsExpanded" Value="true" />
                                 <Condition Property="ExpandDirection" Value="Down" />
                             </MultiTrigger.Conditions>
+
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="ExpandDownStoryboard">
+                                    <Storyboard >
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent" Storyboard.TargetProperty="Visibility" >
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TranslationHolder" Storyboard.TargetProperty="Y">
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="-1" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.333" Value="0" KeySpline="0.0, 0.0, 0.0, 1.0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="ExpandDownStoryboard"/>
+                            </MultiTrigger.ExitActions>
+                            
                             <MultiTrigger.Setters>
-                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
+                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Path=(chelper:ControlHelper.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="False" />
+                                <Condition Property="ExpandDirection" Value="Down" />
+                            </MultiTrigger.Conditions>
+
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="CollapseUpStoryboard">
+                                    <Storyboard >
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent" Storyboard.TargetProperty="Visibility" >
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.167" Value="{x:Static Visibility.Collapsed}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TranslationHolder" Storyboard.TargetProperty="Y">
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.167" Value="-1" KeySpline="1.0, 1.0, 0.0, 1.0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="CollapseUpStoryboard"/>
+                            </MultiTrigger.ExitActions>
+
+                        </MultiTrigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsExpanded" Value="true" />
                                 <Condition Property="ExpandDirection" Value="Right" />
                             </MultiTrigger.Conditions>
+
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="ExpandRightStoryboard">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent" Storyboard.TargetProperty="Visibility" >
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TranslationHolder" Storyboard.TargetProperty="X">
+                                            <DiscreteDoubleKeyFrame KeyTime="0" Value="-1" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.333" Value="0" KeySpline="0.0, 0.0, 0.0, 1.0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="ExpandRightStoryboard"/>
+                            </MultiTrigger.ExitActions>
+
                             <MultiTrigger.Setters>
-                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />
+                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Path=(chelper:ControlHelper.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="False" />
+                                <Condition Property="ExpandDirection" Value="Right" />
+                            </MultiTrigger.Conditions>
+
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="CollapseLeftStoryboard">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent" Storyboard.TargetProperty="Visibility" >
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.167" Value="{x:Static Visibility.Collapsed}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TranslationHolder" Storyboard.TargetProperty="X">
+                                            <DiscreteDoubleKeyFrame KeyTime="0" Value="0" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.167" Value="-1" KeySpline="1.0, 1.0, 0.0, 1.0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="CollapseLeftStoryboard"/>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsExpanded" Value="true" />
                                 <Condition Property="ExpandDirection" Value="Up" />
                             </MultiTrigger.Conditions>
+
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="ExpandUpStoryboard">
+                                    <BeginStoryboard.Storyboard>
+                                        <Storyboard >
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent" Storyboard.TargetProperty="Visibility" >
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TranslationHolder" Storyboard.TargetProperty="Y">
+                                                <DiscreteDoubleKeyFrame KeyTime="0" Value="1" />
+                                                <SplineDoubleKeyFrame KeyTime="0:0:0.333" Value="0" KeySpline="0.0, 0.0, 0.0, 1.0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard.Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="ExpandUpStoryboard"/>
+                            </MultiTrigger.ExitActions>
+                            
                             <MultiTrigger.Setters>
-                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
+                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Path=(chelper:ControlHelper.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="False" />
+                                <Condition Property="ExpandDirection" Value="Up" />
+                            </MultiTrigger.Conditions>
+
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="CollapseDownStoryboard">
+                                    <BeginStoryboard.Storyboard>
+                                        <Storyboard >
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent" Storyboard.TargetProperty="Visibility" >
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TranslationHolder" Storyboard.TargetProperty="Y">
+                                                <DiscreteDoubleKeyFrame KeyTime="0" Value="0" />
+                                                <SplineDoubleKeyFrame KeyTime="0:0:0.167" Value="1" KeySpline="1.0, 1.0, 0.0, 1.0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard.Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="CollapseDownStoryboard"/>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsExpanded" Value="true" />
                                 <Condition Property="ExpandDirection" Value="Left" />
                             </MultiTrigger.Conditions>
+
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="ExpandLeftStoryboard">
+                                    <BeginStoryboard.Storyboard>
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent" Storyboard.TargetProperty="Visibility" >
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TranslationHolder" Storyboard.TargetProperty="X">
+                                                <DiscreteDoubleKeyFrame KeyTime="0" Value="1" />
+                                                <SplineDoubleKeyFrame KeyTime="0:0:0.333" Value="0" KeySpline="0.0, 0.0, 0.0, 1.0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard.Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="ExpandLeftStoryboard"/>
+                            </MultiTrigger.ExitActions>
+
                             <MultiTrigger.Setters>
-                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource RightCornerRadiusFilterConverter}}" />
+                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Path=(chelper:ControlHelper.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource RightCornerRadiusFilterConverter}}" />
                             </MultiTrigger.Setters>
                         </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="False" />
+                                <Condition Property="ExpandDirection" Value="Left" />
+                            </MultiTrigger.Conditions>
+
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="CollapseRightStoryboard">
+                                    <BeginStoryboard.Storyboard>
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpanderContent" Storyboard.TargetProperty="Visibility" >
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TranslationHolder" Storyboard.TargetProperty="X">
+                                                <DiscreteDoubleKeyFrame KeyTime="0" Value="0" />
+                                                <SplineDoubleKeyFrame KeyTime="0:0:0.167" Value="1" KeySpline="1.0, 1.0, 0.0, 1.0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard.Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="CollapseRightStoryboard"/>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                        
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
