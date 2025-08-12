@@ -16,7 +16,50 @@
             <ikw:RoundRadiusConverter x:Key="RoundRadiusConverter" />
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
-
+    
+    <Style x:Key="EllipticalFocusStyle" BasedOn="{StaticResource {x:Static SystemParameters.FocusVisualStyleKey}}">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Ellipse Stroke="{TemplateBinding chelper:FocusVisualHelper.FocusVisualSecondaryBrush}" 
+                             StrokeThickness="{TemplateBinding chelper:FocusVisualHelper.FocusVisualSecondaryThickness}" >
+                            <Ellipse.Width>
+                                <MultiBinding Converter="{StaticResource RoundMathConverter}">
+                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                                </MultiBinding>
+                            </Ellipse.Width>
+                            <Ellipse.Height>
+                                <MultiBinding Converter="{StaticResource RoundMathConverter}">
+                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                                </MultiBinding>
+                            </Ellipse.Height>
+                        </Ellipse>
+                        <Ellipse
+                            Stroke="{TemplateBinding chelper:FocusVisualHelper.FocusVisualPrimaryBrush}"
+                            StrokeThickness="{TemplateBinding chelper:FocusVisualHelper.FocusVisualPrimaryThickness}"
+                            SnapsToDevicePixels="True">
+                            <Ellipse.Width>
+                                <MultiBinding Converter="{StaticResource RoundMathConverter}">
+                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                                </MultiBinding>
+                            </Ellipse.Width>
+                            <Ellipse.Height>
+                                <MultiBinding Converter="{StaticResource RoundMathConverter}">
+                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                                </MultiBinding>
+                            </Ellipse.Height>
+                        </Ellipse>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <Style x:Key="DefaultCalendarItemStyle" TargetType="CalendarItem">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -588,7 +631,7 @@
         <Setter Property="FontSize" Value="{DynamicResource CalendarViewDayItemFontSize}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource EllipticalFocusStyle}"/>
         <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="True" />
         <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-2" />
         <Setter Property="Template">
@@ -770,6 +813,7 @@
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
         <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="True" />
         <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-2" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource EllipticalFocusStyle}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarButton">
