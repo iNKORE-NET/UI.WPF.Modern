@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -308,7 +308,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         private void OnRootFrameNavigated(object sender, NavigationEventArgs e)
         {
             if (rootFrame.SourcePageType == typeof(AllControlsPage) ||
-                rootFrame.SourcePageType == typeof(NewControlsPage))
+                rootFrame.SourcePageType == typeof(NewControlsPage) ||
+                rootFrame.SourcePageType == typeof(SearchResultsPage))
             {
                 NavigationViewControl.AlwaysShowHeader = false;
             }
