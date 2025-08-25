@@ -576,6 +576,10 @@
     <sys:Double x:Key="TreeViewItemPillMinScale">0.625</sys:Double>
     <KeyTime x:Key="TreeViewItemScaleAnimationDuration">00:00:00.167</KeyTime>
 
+    <!-- Resources for expander animation-->
+    <sys:TimeSpan x:Key="ExpandAnimationDuration">0:0:0.333</sys:TimeSpan>
+    <sys:TimeSpan x:Key="CollapseAnimationDuration">0:0:0.167</sys:TimeSpan>
+
     <sys:String x:Key="SettingsExpanderChevronToolTip">Show all settings</sys:String>
     <Thickness x:Key="SettingsExpanderHeaderPadding">16,16,4,16</Thickness>
     <Thickness x:Key="SettingsExpanderItemPadding">58,8,44,8</Thickness>

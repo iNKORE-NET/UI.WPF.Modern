@@ -108,6 +108,33 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             expandDirectionDescriptor?.AddValueChanged(expander, OnExpandDirectionChanged);
             expander.Expanded += OnExpanderExpanded;
             expander.Collapsed += OnExpanderCollapsed;
+            
+            if (expander.IsLoaded)
+            {
+                TriggerExpandAnimation(expander);
+            }
+            else
+            {
+                expander.Loaded += TriggerExpandAnimationOnLoad;
+            }
+
+            void TriggerExpandAnimationOnLoad(object sender, RoutedEventArgs routedEventArgs)
+            {
+                TriggerExpandAnimation(expander);
+                expander.Loaded -= TriggerExpandAnimationOnLoad;
+            }
+        }
+
+        private static void TriggerExpandAnimation(Expander expander)
+        {
+            if (expander.IsExpanded)
+            {
+                OnExpanderExpanded(expander, null);
+            }
+            else
+            {
+                OnExpanderCollapsed(expander, null);
+            }
         }
 
         private static void OnExpanderExpanded(object sender, RoutedEventArgs e)
@@ -176,7 +203,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         protected readonly Expander Expander;
         private string _toAnimateTemplateControlName;
         protected FrameworkElement ToAnimateControl;
-        protected FrameworkElement ContentControl;
 
         protected ExpanderExpansionBaseHandler(Expander expander, string toAnimateTemplateControlName)
         {
@@ -202,7 +228,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         private void FindAnimationControls()
         {
             FindToAnimateControl();
-            ContentControl = LogicalTreeHelper.GetChildren(Expander).OfType<FrameworkElement>().LastOrDefault();
         }
 
         private void FindToAnimateControl()
@@ -222,7 +247,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         public void Handle(TimeSpan animationDuration)
         {
-            if (ToAnimateControl is null || ContentControl is null || Expander is null)
+            if (ToAnimateControl is null || Expander is null)
             {
                 return;
             }
@@ -248,7 +273,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             ToAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
             ToAnimateControl.Visibility = Visibility.Visible;
 
-            UpdateLayout(ContentControl);
+            UpdateLayout(ToAnimateControl);
 
             if (ToAnimateControl.RenderTransform is not TranslateTransform translateTransform)
             {
@@ -258,7 +283,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             var animationProperty = GetToAnimateProperty();
             if (!translateTransform.IsSealed)
             {
-                //this will only work before any animation is applied
                 translateTransform.SetValue(animationProperty, correctionFactor * GetAnimationToValue());
             }
 
@@ -279,7 +303,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 ]
             };
 
-            UpdateLayout(ContentControl);
+            UpdateLayout(ToAnimateControl);
 
             if (ToAnimateControl.RenderTransform is not TranslateTransform translateTransform)
             {
@@ -327,7 +351,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         : ExpanderExpansionBaseHandler(expander, toAnimateTemplateControlName)
     {
         protected override DependencyProperty GetToAnimateProperty() => TranslateTransform.XProperty;
-        protected override double GetAnimationToValue() => ContentControl.ActualWidth;
+        protected override double GetAnimationToValue() => ToAnimateControl.ActualWidth;
     }
 
     public sealed class ExpanderVerticalExpansionHandler(Expander expander, string toAnimateTemplateControlName)
@@ -335,6 +359,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
     {
         protected override DependencyProperty GetToAnimateProperty() => TranslateTransform.YProperty;
 
-        protected override double GetAnimationToValue() => ContentControl.ActualHeight;
+        protected override double GetAnimationToValue() => ToAnimateControl.ActualHeight;
     }
 }
