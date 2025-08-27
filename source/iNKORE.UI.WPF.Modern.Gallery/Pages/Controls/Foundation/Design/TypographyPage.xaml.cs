@@ -12,7 +12,7 @@ using System.Windows.Threading;
 using iNKORE.UI.WPF.Modern.Gallery.Helpers;
 using iNKORE.UI.WPF.Modern;
 
-namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
+namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
 {
     /// <summary>
     /// Typography page showcasing Windows typography styles and system fonts.

@@ -5,7 +5,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace iNKORE.UI.WPF.Modern.Gallery.Pages.DesignGuidance
+namespace iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls
 {
     public sealed partial class TypographyControl : UserControl
     {

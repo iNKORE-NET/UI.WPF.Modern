@@ -2,12 +2,12 @@
 <!--  Licensed under the MIT License.  -->
 
 <ui:Page
-    x:Class="iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows.TypographyPage"
+    x:Class="iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation.TypographyPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
-    xmlns:guidance="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Pages.DesignGuidance"
+    xmlns:uc="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="compactPage"
@@ -207,7 +207,7 @@
                                     Text="Style" />
                             </Grid>
 
-                            <guidance:TypographyControl
+                            <uc:TypographyControl
                                 HorizontalAlignment="Stretch"
                                 Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                                 Example="Caption"
@@ -217,7 +217,7 @@
                                 ResourceName="CaptionTextBlockStyle"
                                 Weight="400" />
 
-                            <guidance:TypographyControl
+                            <uc:TypographyControl
                                 Example="Body"
                                 ExampleStyle="{DynamicResource BodyTextBlockStyle}"
                                 VariableFont="Text, Regular"
@@ -225,7 +225,7 @@
                                 ResourceName="BodyTextBlockStyle"
                                 Weight="400" />
 
-                            <guidance:TypographyControl
+                            <uc:TypographyControl
                                 Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                                 Example="Body Strong"
                                 ExampleStyle="{DynamicResource BodyStrongTextBlockStyle}"
@@ -234,7 +234,7 @@
                                 ResourceName="BodyStrongTextBlockStyle"
                                 Weight="600" />
 
-                            <guidance:TypographyControl
+                            <uc:TypographyControl
                                 Example="Subtitle"
                                 ExampleStyle="{DynamicResource SubtitleTextBlockStyle}"
                                 VariableFont="Display, SemiBold"
@@ -242,7 +242,7 @@
                                 ResourceName="SubtitleTextBlockStyle"
                                 Weight="600" />
 
-                            <guidance:TypographyControl
+                            <uc:TypographyControl
                                 Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                                 Example="Title"
                                 ExampleStyle="{DynamicResource TitleTextBlockStyle}"
@@ -251,7 +251,7 @@
                                 ResourceName="TitleTextBlockStyle"
                                 Weight="600" />
 
-                            <guidance:TypographyControl
+                            <uc:TypographyControl
                                 Example="Title Large"
                                 ExampleStyle="{DynamicResource TitleLargeTextBlockStyle}"
                                 VariableFont="Display, SemiBold"
@@ -259,7 +259,7 @@
                                 ResourceName="TitleLargeTextBlockStyle"
                                 Weight="600" />
 
-                            <guidance:TypographyControl
+                            <uc:TypographyControl
                                 Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                                 Example="Display"
                                 ExampleStyle="{DynamicResource DisplayTextBlockStyle}"
