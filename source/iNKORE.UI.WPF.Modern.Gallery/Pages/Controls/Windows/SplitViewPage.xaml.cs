@@ -74,17 +74,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         {
             //if (!this.IsLoaded) return;
 
-            splitView.DisplayMode = (SplitViewDisplayMode)Enum.Parse(typeof(SplitViewDisplayMode), (e.AddedItems[0] as ComboBoxItem).Content.ToString());
-
             UpdateExampleCode();
         }
 
         private void paneBackgroundCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var colorString = (e.AddedItems[0] as ComboBoxItem).Content.ToString();
-
-            VisualStateManager.GoToElementState((FrameworkElement)Content, colorString, false);
-
             UpdateExampleCode();
         }
 

@@ -89,22 +89,21 @@
                             Toggled="PanePlacement_Toggled" />
 
                     <ComboBox x:Name="displayModeCombobox"
-                                ui:ControlHelper.Header="DisplayMode"
-                                SelectedIndex="0">
+                        ui:ControlHelper.Header="DisplayMode"
+                        SelectionChanged="displayModeCombobox_SelectionChanged"
+                        SelectedIndex="0">
 
-                            <ComboBoxItem Content="Inline" Tag="{x:Static ui:SplitViewDisplayMode.Inline}" />
-                            <ComboBoxItem Content="CompactInline" Tag="{x:Static ui:SplitViewDisplayMode.CompactInline}" />
-                            <ComboBoxItem Content="Overlay" Tag="{x:Static ui:SplitViewDisplayMode.Overlay}" />
-                            <ComboBoxItem Content="CompactOverlay" Tag="{x:Static ui:SplitViewDisplayMode.CompactOverlay}" />
+                        <ComboBoxItem Content="Inline" Tag="{x:Static ui:SplitViewDisplayMode.Inline}" />
+                        <ComboBoxItem Content="CompactInline" Tag="{x:Static ui:SplitViewDisplayMode.CompactInline}" />
+                        <ComboBoxItem Content="Overlay" Tag="{x:Static ui:SplitViewDisplayMode.Overlay}" />
+                        <ComboBoxItem Content="CompactOverlay" Tag="{x:Static ui:SplitViewDisplayMode.CompactOverlay}" />
                     </ComboBox>
 
-                    <ComboBox
-                            x:Name="paneBackgroundCombobox"
-                            Width="196"
-                            Margin="0,12,0,0"
-                            VerticalAlignment="Center"
-                            ui:ControlHelper.Header="PaneBackground"
-                            SelectedIndex="0">
+                    <ComboBox x:Name="paneBackgroundCombobox"
+                        Width="196" Margin="0,12,0,0"
+                        VerticalAlignment="Center"
+                        ui:ControlHelper.Header="PaneBackground"
+                        SelectedIndex="0" SelectionChanged="paneBackgroundCombobox_SelectionChanged">
                             
                         <ComboBoxItem Content="System Default" Tag="{DynamicResource {x:Static ui:ThemeKeys.SystemControlBackgroundChromeMediumLowBrushKey}}" />
                         <ComboBoxItem Content="Red" Tag="{StaticResource RedBrush}" />
