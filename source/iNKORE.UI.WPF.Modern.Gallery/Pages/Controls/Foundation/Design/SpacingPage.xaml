@@ -23,7 +23,7 @@
                 Below, you can find a few examples of common layout types with highlighted spacing values (in epx).
             </TextBlock>
 
-            <ui:ScrollViewerEx HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="0,24,0,0">
+            <ui:ScrollViewerEx HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="0,24,0,-24">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
                     <StackPanel Margin="0,0,36,0">
                         <TextBlock HorizontalAlignment="Center" Style="{DynamicResource SubtitleTextBlockStyle}" Text="Page with cards layout" />
@@ -31,12 +31,12 @@
                     </StackPanel>
                     <StackPanel>
                         <TextBlock HorizontalAlignment="Center" Style="{DynamicResource SubtitleTextBlockStyle}" Text="Form layout" />
-                        <Image x:Name="DialogImage" Margin="0,12,0,0" Height="505" Source="pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/Dialog.dark.png" />
+                        <Image x:Name="DialogImage" Margin="0,12,0,18" Height="505" Source="pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/Dialog.dark.png" />
                     </StackPanel>
                 </StackPanel>
             </ui:ScrollViewerEx>
 
-                <local:ControlExample HeaderText="Spacing values">
+                <local:ControlExample>
                     <local:ControlExample.Resources>
                         <Style TargetType="Expander" x:Key="HideCodeExpanderStyle">
                             <Setter Property="Visibility" Value="Hidden" />
