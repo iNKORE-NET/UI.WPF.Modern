@@ -41,7 +41,6 @@
                                         Height="450"
                                         Canvas.ZIndex="0"
                                         Source="pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/Typography.dark.png" />
-                                    
                                     <!-- Caption Button with Flyout -->
                                     <Button x:Name="ShowTypographyButton1"
                                         Canvas.Left="650"
@@ -182,7 +181,8 @@
                                     <ColumnDefinition Width="272" />
                                     <ColumnDefinition Width="136" />
                                     <ColumnDefinition Width="112" />
-                                    <ColumnDefinition Width="164" />
+                                    <ColumnDefinition Width="180" />
+                                    <ColumnDefinition Width="540" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock
@@ -205,6 +205,11 @@
                                     Style="{DynamicResource CaptionTextBlockStyle}"
                                     Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                     Text="Style" />
+                                <TextBlock
+                                    Grid.Column="4"
+                                    Style="{DynamicResource CaptionTextBlockStyle}"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Text="Usage (XAML)" FontWeight="SemiBold" />
                             </Grid>
 
                             <uc:TypographyControl

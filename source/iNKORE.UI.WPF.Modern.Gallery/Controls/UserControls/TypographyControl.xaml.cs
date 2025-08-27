@@ -60,7 +60,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls
         }
 
         public static readonly DependencyProperty ResourceNameProperty = 
-            DependencyProperty.Register(nameof(ResourceName), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
+            DependencyProperty.Register(nameof(ResourceName), typeof(string), typeof(TypographyControl), new PropertyMetadata("", ResourceNameProperty_ValueChanged));
+
+        private static void ResourceNameProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is TypographyControl sender)
+            {
+                sender.Usage = $"Style=\"{{StaticResource {{x:Static ui:ThemeKeys.{e.NewValue}Key}}}}\"";
+            }
+        }
 
         public string ResourceName
         {
@@ -68,13 +76,23 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls
             set => SetValue(ResourceNameProperty, value);
         }
 
+        public static readonly DependencyProperty UsageProperty = 
+            DependencyProperty.Register(nameof(Usage), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
+
+        public string Usage
+        {
+            get => (string)GetValue(UsageProperty);
+            set => SetValue(UsageProperty, value);
+        }
+
+
         private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (!string.IsNullOrEmpty(ResourceName))
+                if (!string.IsNullOrEmpty(Usage))
                 {
-                    Clipboard.SetText(ResourceName);
+                    Clipboard.SetText(Usage);
                     
                     // Show confirmation animation
                     VisualStateManager.GoToState(this, "ConfirmationDialogVisible", true);

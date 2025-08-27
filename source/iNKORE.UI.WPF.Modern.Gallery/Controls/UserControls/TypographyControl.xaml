@@ -21,7 +21,9 @@
                     <ColumnDefinition Width="272" />
                     <ColumnDefinition Width="136" />
                     <ColumnDefinition Width="112" />
-                    <ColumnDefinition Width="164" />
+                    <ColumnDefinition Width="180" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="540" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBlock
@@ -61,6 +63,23 @@
                     TextWrapping="NoWrap"
                     MinWidth="120"
                     Text="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=ResourceName}" />
+                <TextBox
+                    Grid.Column="5"
+                    Margin="-10,12,0,12"
+                    FontFamily="Consolas"
+                    FontSize="{DynamicResource CaptionTextBlockStyle.FontSize}"
+                    IsReadOnly="True"
+                    BorderThickness="0"
+                    Background="Transparent"
+                    IsReadOnlyCaretVisible="False"
+                    Foreground="{DynamicResource {x:Static ui:ThemeKeys.AccentTextFillColorPrimaryBrushKey}}"
+                    TextAlignment="Left"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    HorizontalScrollBarVisibility="Hidden"
+                    TextWrapping="NoWrap"
+                    MinWidth="120"
+                    Text="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=Usage}" />
                 <Button
                     x:Name="CopyToClipboardButton"
                     Grid.Column="4"

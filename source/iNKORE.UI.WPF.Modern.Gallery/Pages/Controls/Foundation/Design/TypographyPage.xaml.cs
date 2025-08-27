@@ -257,13 +257,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
         }
 
         string Example1Xaml => @"
-<TextBlock Text=""Caption"" Style=""{StaticResource CaptionTextBlockStyle}""/>
-<TextBlock Text=""Body"" Style=""{StaticResource BodyTextBlockStyle}""/>
-<TextBlock Text=""Body Strong"" Style=""{StaticResource BodyStrongTextBlockStyle}""/>
-<TextBlock Text=""Subtitle"" Style=""{StaticResource SubtitleTextBlockStyle}""/>
-<TextBlock Text=""Title"" Style=""{StaticResource TitleTextBlockStyle}""/>
-<TextBlock Text=""Title Large"" Style=""{StaticResource TitleLargeTextBlockStyle}""/>
-<TextBlock Text=""Display"" Style=""{StaticResource DisplayTextBlockStyle}""/>
+<TextBlock Text=""Caption"" Style=""{StaticResource {x:Static ui:ThemeKeys.CaptionTextBlockStyleKey}}""/>
+<TextBlock Text=""Body"" Style=""{StaticResource {x:Static ui:ThemeKeys.BodyTextBlockStyleKey}}""/>
+<TextBlock Text=""Body Strong"" Style=""{StaticResource {x:Static ui:ThemeKeys.BodyStrongTextBlockStyleKey}}""/>
+<TextBlock Text=""Subtitle"" Style=""{StaticResource {x:Static ui:ThemeKeys.SubtitleTextBlockStyleKey}}""/>
+<TextBlock Text=""Title"" Style=""{StaticResource {x:Static ui:ThemeKeys.TitleTextBlockStyleKey}}""/>
+<TextBlock Text=""Title Large"" Style=""{StaticResource {x:Static ui:ThemeKeys.TitleLargeTextBlockStyleKey}}""/>
+<TextBlock Text=""Display"" Style=""{StaticResource {x:Static ui:ThemeKeys.DisplayTextBlockStyleKey}}""/>
 ";
     }
 }
