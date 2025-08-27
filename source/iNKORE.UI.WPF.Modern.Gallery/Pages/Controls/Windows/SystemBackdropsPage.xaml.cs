@@ -101,6 +101,5 @@ newWindow.Show();
 ";
 
         #endregion
-
     }
 }
