@@ -25,6 +25,9 @@
             </TextBlock>
 
             <StackPanel Margin="0">
+                <StackPanel.Resources>
+                    <SolidColorBrush x:Key="CardBackgroundFillColorDefaultSoftBrush" Color="{StaticResource CardBackgroundFillColorDefault}" Opacity="0.50" />
+                </StackPanel.Resources>
                 <local:ControlExample x:Name="Example1" HeaderText="Type ramp">
                     <local:ControlExample.Example>
                         <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
@@ -214,7 +217,7 @@
 
                             <uc:TypographyControl
                                 HorizontalAlignment="Stretch"
-                                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                                Background="{StaticResource CardBackgroundFillColorDefaultSoftBrush}"
                                 Example="Caption"
                                 ExampleStyle="{DynamicResource CaptionTextBlockStyle}"
                                 VariableFont="Small, Regular"
@@ -231,7 +234,7 @@
                                 Weight="400" />
 
                             <uc:TypographyControl
-                                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                                Background="{StaticResource CardBackgroundFillColorDefaultSoftBrush}"
                                 Example="Body Strong"
                                 ExampleStyle="{DynamicResource BodyStrongTextBlockStyle}"
                                 VariableFont="Text, SemiBold"
@@ -248,7 +251,7 @@
                                 Weight="600" />
 
                             <uc:TypographyControl
-                                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                                Background="{StaticResource CardBackgroundFillColorDefaultSoftBrush}"
                                 Example="Title"
                                 ExampleStyle="{DynamicResource TitleTextBlockStyle}"
                                 VariableFont="Display, SemiBold"
@@ -265,7 +268,7 @@
                                 Weight="600" />
 
                             <uc:TypographyControl
-                                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                                Background="{StaticResource CardBackgroundFillColorDefaultSoftBrush}"
                                 Example="Display"
                                 ExampleStyle="{DynamicResource DisplayTextBlockStyle}"
                                 VariableFont="Display, SemiBold"
