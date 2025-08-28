@@ -23,7 +23,7 @@
                 Below, you can find a few examples of common layout types with highlighted spacing values (in epx).
             </TextBlock>
 
-            <ui:ScrollViewerEx HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="0,24,0,-24">
+            <ui:ScrollViewerEx HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="0,24,0,26">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
                     <StackPanel Margin="0,0,36,0">
                         <TextBlock HorizontalAlignment="Center" Style="{DynamicResource SubtitleTextBlockStyle}" Text="Page with cards layout" />
@@ -36,236 +36,133 @@
                 </StackPanel>
             </ui:ScrollViewerEx>
 
-                <local:ControlExample>
-                    <local:ControlExample.Resources>
-                        <Style TargetType="Expander" x:Key="HideCodeExpanderStyle">
-                            <Setter Property="Visibility" Value="Hidden" />
-                        </Style>
-                    </local:ControlExample.Resources>
-                <local:ControlExample.Example>
-                    <ui:ScrollViewerEx HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden" Margin="0,0,0,0">
-                        <StackPanel Margin="0,12,0,0">
-                            <Grid Margin="0,0,0,24" HorizontalAlignment="Stretch">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="86" />
-                                    <ColumnDefinition Width="136" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock
-                                    Margin="16,0,0,0"
-                                    Style="{DynamicResource CaptionTextBlockStyle}"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                    Text="Value" />
-                                <TextBlock
-                                    Grid.Column="2"
-                                    Style="{DynamicResource CaptionTextBlockStyle}"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                    Text="Usage" />
-                            </Grid>
-                            <Grid HorizontalAlignment="Stretch" Height="56">
-                                <Border
-                                    HorizontalAlignment="Stretch"
-                                    Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                                    CornerRadius="{DynamicResource ControlCornerRadius}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="86" />
-                                            <ColumnDefinition Width="136" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            Margin="16,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource BodyTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                            Text="4epx" />
-                                        <Border Grid.Column="1" Height="20" Width="4" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                        <TextBlock
-                                            Grid.Column="2"
-                                            Margin="0,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource CaptionTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                            TextWrapping="Wrap"
-                                            Text="Spacing used for compact sizing." />
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                            <Grid HorizontalAlignment="Stretch" Height="56">
-                                <Border
-                                    HorizontalAlignment="Stretch"
-                                    CornerRadius="{DynamicResource ControlCornerRadius}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="86" />
-                                            <ColumnDefinition Width="136" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            Margin="16,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource BodyTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                            Text="8epx" />
-                                        <Border Grid.Column="1" Height="20" Width="8" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                        <TextBlock
-                                            Grid.Column="2"
-                                            Margin="0,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource CaptionTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                            TextWrapping="Wrap"
-                                            Text="Spacing between UI controls, control + label." />
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                            <Grid HorizontalAlignment="Stretch" Height="56">
-                                <Border
-                                    HorizontalAlignment="Stretch"
-                                    Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                                    CornerRadius="{DynamicResource ControlCornerRadius}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="86" />
-                                            <ColumnDefinition Width="136" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            Margin="16,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource BodyTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                            Text="12epx" />
-                                        <Border Grid.Column="1" Height="20" Width="12" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                        <TextBlock
-                                            Grid.Column="2"
-                                            Margin="0,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource CaptionTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                            TextWrapping="Wrap"
-                                            Text="Spacing between control + header, surface and edge text, text sections." />
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                            <Grid HorizontalAlignment="Stretch" Height="56">
-                                <Border
-                                    HorizontalAlignment="Stretch"
-                                    CornerRadius="{DynamicResource ControlCornerRadius}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="86" />
-                                            <ColumnDefinition Width="136" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            Margin="16,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource BodyTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                            Text="16epx" />
-                                        <Border Grid.Column="1" Height="20" Width="16" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                        <TextBlock
-                                            Grid.Column="2"
-                                            Margin="0,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource CaptionTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                            TextWrapping="Wrap"
-                                            Text="Padding used in list styles, cards." />
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                            <Grid HorizontalAlignment="Stretch" Height="56">
-                                <Border
-                                    HorizontalAlignment="Stretch"
-                                    Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                                    CornerRadius="{DynamicResource ControlCornerRadius}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="86" />
-                                            <ColumnDefinition Width="136" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            Margin="16,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource BodyTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                            Text="24epx" />
-                                        <Border Grid.Column="1" Height="20" Width="24" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                        <TextBlock
-                                            Grid.Column="2"
-                                            Margin="0,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource CaptionTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                            TextWrapping="Wrap"
-                                            Text="Spacing between content sections." />
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                            <Grid HorizontalAlignment="Stretch" Height="56">
-                                <Border
-                                    HorizontalAlignment="Stretch"
-                                    CornerRadius="{DynamicResource ControlCornerRadius}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="86" />
-                                            <ColumnDefinition Width="136" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            Margin="16,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource BodyTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                            Text="36epx" />
-                                        <Border Grid.Column="1" Height="20" Width="36" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                        <TextBlock
-                                            Grid.Column="2"
-                                            Margin="0,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource CaptionTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                            TextWrapping="Wrap"
-                                            Text="Padding on pages." />
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                            <Grid HorizontalAlignment="Stretch" Height="56">
-                                <Border
-                                    HorizontalAlignment="Stretch"
-                                    Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                                    CornerRadius="{DynamicResource ControlCornerRadius}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="86" />
-                                            <ColumnDefinition Width="136" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            Margin="16,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource BodyTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                            Text="48epx" />
-                                        <Border Grid.Column="1" Height="20" Width="48" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                        <TextBlock
-                                            Grid.Column="2"
-                                            Margin="0,12,0,12"
-                                            VerticalAlignment="Center"
-                                            Style="{DynamicResource CaptionTextBlockStyle}"
-                                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                            TextWrapping="Wrap"
-                                            Text="Spacing between page sections with title." />
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                        </StackPanel>
-                    </ui:ScrollViewerEx>
-                </local:ControlExample.Example>
-            </local:ControlExample>
+            <Border
+                Background="{DynamicResource ControlExampleDisplayBrush}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1,1,1,0"
+                CornerRadius="8"
+                Padding="12"
+                Margin="0,10,0,0">
+                <ui:ScrollViewerEx HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden" Margin="0,0,0,0">
+                    <StackPanel>
+                        <Grid Margin="0,12,0,24" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="86" />
+                                <ColumnDefinition Width="136" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Margin="16,0,0,0"
+                                Style="{DynamicResource CaptionTextBlockStyle}"
+                                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                Text="Value" />
+                            <TextBlock
+                                Grid.Column="2"
+                                Style="{DynamicResource CaptionTextBlockStyle}"
+                                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                Text="Usage" />
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" Height="56">
+                            <Border HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="86" />
+                                        <ColumnDefinition Width="136" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="4epx" />
+                                    <Border Grid.Column="1" Height="20" Width="4" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
+                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Spacing used for compact sizing." />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" Height="56">
+                            <Border HorizontalAlignment="Stretch" CornerRadius="{DynamicResource ControlCornerRadius}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="86" />
+                                        <ColumnDefinition Width="136" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="8epx" />
+                                    <Border Grid.Column="1" Height="20" Width="8" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
+                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Spacing between UI controls, control + label." />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" Height="56">
+                            <Border HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="86" />
+                                        <ColumnDefinition Width="136" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="12epx" />
+                                    <Border Grid.Column="1" Height="20" Width="12" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
+                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Spacing between control + header, surface and edge text, text sections." />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" Height="56">
+                            <Border HorizontalAlignment="Stretch" CornerRadius="{DynamicResource ControlCornerRadius}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="86" />
+                                        <ColumnDefinition Width="136" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="16epx" />
+                                    <Border Grid.Column="1" Height="20" Width="16" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
+                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Padding used in list styles, cards." />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" Height="56">
+                            <Border HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="86" />
+                                        <ColumnDefinition Width="136" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="24epx" />
+                                    <Border Grid.Column="1" Height="20" Width="24" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
+                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Spacing between content sections." />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" Height="56">
+                            <Border HorizontalAlignment="Stretch" CornerRadius="{DynamicResource ControlCornerRadius}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="86" />
+                                        <ColumnDefinition Width="136" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="36epx" />
+                                    <Border Grid.Column="1" Height="20" Width="36" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
+                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Padding on pages." />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" Height="56">
+                            <Border HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="86" />
+                                        <ColumnDefinition Width="136" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="48epx" />
+                                    <Border Grid.Column="1" Height="20" Width="48" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
+                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Spacing between page sections with title." />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                </ui:ScrollViewerEx>
+            </Border>
         </StackPanel>
     </ui:ScrollViewerEx>
 </ui:Page>
