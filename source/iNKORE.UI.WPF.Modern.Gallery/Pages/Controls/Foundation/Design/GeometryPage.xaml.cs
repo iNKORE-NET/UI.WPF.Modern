@@ -5,6 +5,7 @@ using iNKORE.UI.WPF.Modern.Controls;
 using System;
 using System.Windows;
 using iNKORE.UI.WPF.Modern.Gallery;
+using iNKORE.UI.WPF.Modern;
 using System.Windows.Controls;
 using Page = iNKORE.UI.WPF.Modern.Controls.Page;
 using MessageBox = iNKORE.UI.WPF.Modern.Controls.MessageBox;
@@ -17,11 +18,177 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
     /// </summary>
     public partial class GeometryPage : Page
     {
+    private ElementTheme _lastKnownTheme = ElementTheme.Default;
+
         public GeometryPage()
         {
             this.InitializeComponent();
 
+            Loaded += GeometryPage_Loaded;
+
+            iNKORE.UI.WPF.Modern.ThemeManager.Current.ActualApplicationThemeChanged += OnThemeChanged;
+            iNKORE.UI.WPF.Modern.ThemeManager.AddActualThemeChangedHandler(this, OnElementThemeChanged);
+
+            System.ComponentModel.DependencyPropertyDescriptor.FromProperty(iNKORE.UI.WPF.Modern.ThemeManager.RequestedThemeProperty, typeof(FrameworkElement))
+                ?.AddValueChanged(this, OnRequestedThemeChanged);
+
+            var _themeMonitorTimer = new System.Windows.Threading.DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(200)
+            };
+            _themeMonitorTimer.Tick += ThemeMonitorTimer_Tick;
+            _themeMonitorTimer.Start();
+
             UpdateExampleCode();
+        }
+
+        private void GeometryPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateGeometryImage();
+        }
+
+        private void UpdateGeometryImage()
+        {
+            if (GeometryImage == null) return;
+
+            var pageTheme = ThemeManager.GetActualTheme(this);
+            var parentTheme = ElementTheme.Default;
+            var controlExampleTheme = ElementTheme.Default;
+
+            var parentElement = this.Parent as FrameworkElement;
+            while (parentElement != null)
+            {
+                var currentParentTheme = ThemeManager.GetActualTheme(parentElement);
+                if (currentParentTheme != ElementTheme.Default)
+                {
+                    parentTheme = currentParentTheme;
+                    break;
+                }
+                parentElement = parentElement.Parent as FrameworkElement;
+            }
+
+            if (Example1 != null)
+            {
+                try
+                {
+                    var exampleTheme = ThemeManager.GetActualTheme(Example1);
+                    if (exampleTheme != ElementTheme.Default)
+                    {
+                        controlExampleTheme = exampleTheme;
+                    }
+                    else if (Example1.ExampleContainer != null)
+                    {
+                        var containerTheme = ThemeManager.GetActualTheme(Example1.ExampleContainer);
+                        if (containerTheme != ElementTheme.Default)
+                        {
+                            controlExampleTheme = containerTheme;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Theme detection error: {ex.Message}");
+                }
+            }
+
+            var effectiveTheme = controlExampleTheme != ElementTheme.Default ? controlExampleTheme :
+                                 pageTheme != ElementTheme.Default ? pageTheme : parentTheme;
+            var isDarkTheme = effectiveTheme == ElementTheme.Dark ||
+                             (effectiveTheme == ElementTheme.Default && iNKORE.UI.WPF.Modern.Gallery.Helpers.ThemeHelper.IsDarkTheme());
+
+            var imageName = isDarkTheme ? "Geometry.dark.png" : "Geometry.light.png";
+            var uri = new System.Uri($"pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/{imageName}");
+
+            try
+            {
+                var bitmapImage = new System.Windows.Media.Imaging.BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = uri;
+                bitmapImage.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
+                bitmapImage.CreateOptions = System.Windows.Media.Imaging.BitmapCreateOptions.IgnoreImageCache;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze();
+                GeometryImage.Source = bitmapImage;
+                System.Diagnostics.Debug.WriteLine($"Geometry image updated to: {imageName}");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Failed to load geometry image: {ex.Message}");
+                var fallbackUri = new System.Uri("pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/Geometry.dark.png");
+                GeometryImage.Source = new System.Windows.Media.Imaging.BitmapImage(fallbackUri);
+            }
+        }
+
+        private void OnThemeChanged(iNKORE.UI.WPF.Modern.ThemeManager sender, object args)
+        {
+            UpdateGeometryImage();
+        }
+
+        private void OnElementThemeChanged(object sender, RoutedEventArgs e)
+        {
+            UpdateGeometryImage();
+        }
+
+        private void ThemeMonitorTimer_Tick(object sender, EventArgs e)
+        {
+            var currentTheme = iNKORE.UI.WPF.Modern.ThemeManager.GetActualTheme(this);
+            if (currentTheme != _lastKnownTheme)
+            {
+                _lastKnownTheme = currentTheme;
+                UpdateGeometryImage();
+                System.Diagnostics.Debug.WriteLine($"Theme change detected: {currentTheme}");
+            }
+
+            var parentElement = this.Parent as FrameworkElement;
+            while (parentElement != null)
+            {
+                var parentTheme = ThemeManager.GetActualTheme(parentElement);
+                if (parentTheme != currentTheme)
+                {
+                    UpdateGeometryImage();
+                    System.Diagnostics.Debug.WriteLine($"Element-level theme change detected: Parent={parentTheme}, Current={currentTheme}");
+                    break;
+                }
+                parentElement = parentElement.Parent as FrameworkElement;
+            }
+
+            if (Example1 != null)
+            {
+                try
+                {
+                    var controlExampleTheme = ThemeManager.GetActualTheme(Example1);
+                    var containerTheme = ElementTheme.Default;
+
+                    if (Example1.ExampleContainer != null)
+                    {
+                        containerTheme = ThemeManager.GetActualTheme(Example1.ExampleContainer);
+                    }
+
+                    if (controlExampleTheme != currentTheme || containerTheme != currentTheme)
+                    {
+                        UpdateGeometryImage();
+                        System.Diagnostics.Debug.WriteLine($"ControlExample theme change detected: ControlExample={controlExampleTheme}, Container={containerTheme}, Page={currentTheme}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Theme monitor error: {ex.Message}");
+                }
+            }
+        }
+
+        private void OnRequestedThemeChanged(object sender, EventArgs e)
+        {
+            Dispatcher.BeginInvoke(new System.Action(() => {
+                UpdateGeometryImage();
+            }), System.Windows.Threading.DispatcherPriority.ApplicationIdle);
+
+            var timer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
+            timer.Tick += (s, args) => {
+                timer.Stop();
+                UpdateGeometryImage();
+            };
+            timer.Start();
         }
 
         // kept for backward compatibility if we want to programmatically set usage
@@ -64,7 +231,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
         }
 
         /// <summary>
-        /// Helper method: if you want resource-copy buttons to also show the same animation,
+        /// Helper method: if we want resource-copy buttons to also show the same animation,
         /// call this. Left public for optional reuse.
         /// </summary>
         public async Task ShowCopyConfirmationAnimationAsync()
