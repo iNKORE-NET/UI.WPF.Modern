@@ -1,361 +1,331 @@
-<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
-<!--  Licensed under the MIT License.  -->
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-<ui:Page
-    x:Class="iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation.GeometryPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
-    xmlns:uc="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    x:Name="geometryPage"
-    mc:Ignorable="d">
+using iNKORE.UI.WPF.Modern.Controls;
+using System;
+using System.Windows;
+using iNKORE.UI.WPF.Modern.Gallery;
+using iNKORE.UI.WPF.Modern;
+using System.Windows.Controls;
+using Page = iNKORE.UI.WPF.Modern.Controls.Page;
+using MessageBox = iNKORE.UI.WPF.Modern.Controls.MessageBox;
+using System.Threading.Tasks;
 
-    <Grid x:Name="LayoutRoot">
-        <ui:ScrollViewerEx>
-            <StackPanel>
-                <TextBlock Margin="0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                    Geometry describes the shape, size and position of UI elements on screen. These fundamental design elements help experiences feel coherent across the entire design system. WinUI uses three levels of rounding depending on what UI component is being rounded and how that component is arranged relative to neighboring elements.
-                    You can reference built-in corner radii styles using:
-                    <Italic>CornerRadius="{DynamicResource ControlCornerRadius}"</Italic>.
-                </TextBlock>
+namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
+{
+    /// <summary>
+    /// Geometry page showcasing Windows geometry values and layout examples.
+    /// </summary>
+    public partial class GeometryPage : Page
+    {
+    private ElementTheme _lastKnownTheme = ElementTheme.Default;
 
-                <local:ControlExample Margin="0,-43,0,0" x:Name="Example1">
-                    <local:ControlExample.Example>
-                        <StackPanel>
-                            <ui:ScrollViewerEx HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="0,0,0,34">
-                                <Canvas Width="505" Height="271" HorizontalAlignment="Left">
-                                    <Image x:Name="GeometryImage" Height="271" Source="pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/Geometry.dark.png" />
+        public GeometryPage()
+        {
+            this.InitializeComponent();
 
-                                    <Button
-                                        x:Name="ShowGeometryButton1"
-                                        Canvas.Left="16"
-                                        Canvas.Top="16"
-                                        Padding="4"
-                                        AutomationProperties.Name="Show Geometry"
-                                        Click="ShowGeometryButtonClick1"
-                                        ToolTipService.ToolTip="8px">
-                                        <ui:FontIcon FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Info}" />
-                                        <ui:FlyoutService.Flyout>
-                                            <ui:Flyout Placement="Top">
-                                                <StackPanel>
-                                                    <TextBlock FontWeight="SemiBold" Text="8px" />
-                                                    <TextBlock Text="OverlayCornerRadius" />
-                                                </StackPanel>
-                                            </ui:Flyout>
-                                        </ui:FlyoutService.Flyout>
-                                    </Button>
-                                    <!-- TeachingTip commented out - not available yet in iNKORE
-                                    <TeachingTip
-                                        x:Name="ShowGeometryInfoTooltip1"
-                                        Title="8px"
-                                        Subtitle="OverlayCornerRadius"
-                                        Target="{x:Bind ShowGeometryButton1}" />
-                                    -->
+            Loaded += GeometryPage_Loaded;
 
-                                    <Button
-                                        x:Name="ShowGeometryButton2"
-                                        Canvas.Left="16"
-                                        Canvas.Top="148"
-                                        Padding="4"
-                                        AutomationProperties.Name="Show Geometry"
-                                        Click="ShowGeometryButtonClick2"
-                                        ToolTipService.ToolTip="0px">
-                                        <ui:FontIcon FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Info}" />
-                                        <ui:FlyoutService.Flyout>
-                                            <ui:Flyout Placement="Top">
-                                                <StackPanel>
-                                                    <TextBlock FontWeight="SemiBold" Text="0px" />
-                                                </StackPanel>
-                                            </ui:Flyout>
-                                        </ui:FlyoutService.Flyout>
-                                    </Button>
-                                    <!-- TeachingTip commented out - not available yet in iNKORE
-                                    <TeachingTip
-                                        x:Name="ShowGeometryInfoTooltip2"
-                                        Title="0px"
-                                        Target="{x:Bind ShowGeometryButton2}" />
-                                    -->
+            iNKORE.UI.WPF.Modern.ThemeManager.Current.ActualApplicationThemeChanged += OnThemeChanged;
+            iNKORE.UI.WPF.Modern.ThemeManager.AddActualThemeChangedHandler(this, OnElementThemeChanged);
 
-                                    <Button
-                                        x:Name="ShowGeometryButton3"
-                                        Canvas.Left="240"
-                                        Canvas.Top="168"
-                                        Padding="4"
-                                        AutomationProperties.Name="Show geometry"
-                                        Click="ShowGeometryButtonClick3"
-                                        ToolTipService.ToolTip="4px">
-                                        <ui:FontIcon FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Info}" />
-                                        <ui:FlyoutService.Flyout>
-                                            <ui:Flyout Placement="Top">
-                                                <StackPanel>
-                                                    <TextBlock FontWeight="SemiBold" Text="4px" />
-                                                    <TextBlock Text="ControlCornerRadius" />
-                                                </StackPanel>
-                                            </ui:Flyout>
-                                        </ui:FlyoutService.Flyout>
-                                    </Button>
-                                    <!-- TeachingTip commented out - not available yet in iNKORE
-                                    <TeachingTip
-                                        x:Name="ShowGeometryInfoTooltip3"
-                                        Title="4px"
-                                        Subtitle="ControlCornerRadius"
-                                        Target="{x:Bind ShowGeometryButton3}" />
-                                    -->
-                                </Canvas>
-                            </ui:ScrollViewerEx>
+            System.ComponentModel.DependencyPropertyDescriptor.FromProperty(iNKORE.UI.WPF.Modern.ThemeManager.RequestedThemeProperty, typeof(FrameworkElement))
+                ?.AddValueChanged(this, OnRequestedThemeChanged);
 
-                            <ui:ScrollViewerEx HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden" Margin="0,0,0,0">
-                                <StackPanel Margin="0,12,0,0">
-                                    <Grid Margin="0,0,0,24" HorizontalAlignment="Stretch">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="148" />
-                                            <ColumnDefinition Width="*" MaxWidth="400" />
-                                            <ColumnDefinition Width="112" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Margin="16,0,0,0" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Corner radius" />
-                                        <TextBlock Grid.Column="1" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Usage" />
-                                        <TextBlock Grid.Column="2" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Style" />
-                                        <TextBlock Grid.Column="3" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="" />
-                                    </Grid>
+            var _themeMonitorTimer = new System.Windows.Threading.DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(200)
+            };
+            _themeMonitorTimer.Tick += ThemeMonitorTimer_Tick;
+            _themeMonitorTimer.Start();
 
-                                    <Grid HorizontalAlignment="Stretch" Height="56">
-                                        <Border HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="148" />
-                                                    <ColumnDefinition Width="*" MaxWidth="400" />
-                                                    <ColumnDefinition Width="160" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="16,0,0,0">
-                                                    <Border Width="20" Height="20" Background="{DynamicResource AccentFillColorDefaultBrush}" CornerRadius="{DynamicResource OverlayCornerRadius}" />
-                                                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="8px" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                                                </StackPanel>
-                                                <TextBlock Grid.Column="1" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Text="Top-level containers such as app windows, flyouts, cards and dialogs." Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                                                <TextBox Grid.Column="2"
-                                                         Margin="-10,12,0,12"
-                                                         FontFamily="Consolas"
-                                                         FontSize="{DynamicResource CaptionTextBlockStyle.FontSize}"
-                                                         IsReadOnly="True"
-                                                         BorderThickness="0"
-                                                         Background="Transparent"
-                                                         IsReadOnlyCaretVisible="False"
-                                                         Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                                         TextAlignment="Left"
-                                                         VerticalAlignment="Center"
-                                                         VerticalContentAlignment="Center"
-                                                         HorizontalScrollBarVisibility="Hidden"
-                                                         TextWrapping="NoWrap"
-                                                         MinWidth="120"
-                                                         Text="OverlayCornerRadius" />
-                                                <Button
-                                                    x:Name="OverlayCornerRadiusCopyButton"
-                                                    Grid.Column="3"
-                                                    Margin="4,14,8,12"
-                                                    Padding="6"
-                                                    Click="OverlayCornerRadiusCopyButton_Click"
-                                                    Tag='CornerRadius="{DynamicResource OverlayCornerRadius}"'
-                                                    AutomationProperties.Name="Copy resource name"
-                                                    ToolTipService.ToolTip="Copy to clipboard">
-                                                    <Grid>
-                                                        <ui:FontIcon x:Name="FontIcon_OverlayCornerRadiusCopyButton_Copy" FontSize="16"
-                                                                    Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5" Opacity="1">
-                                                            <FrameworkElement.RenderTransform>
-                                                                <ScaleTransform x:Name="ScaleTransform_OverlayCornerRadiusCopyButton_Copy"
-                                                                                ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                                            </FrameworkElement.RenderTransform>
-                                                        </ui:FontIcon>
-                                                        <ui:FontIcon x:Name="FontIcon_OverlayCornerRadiusCopyButton_Success" FontSize="16"
-                                                                    Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5" Opacity="0">
-                                                            <FrameworkElement.RenderTransform>
-                                                                <ScaleTransform x:Name="ScaleTransform_OverlayCornerRadiusCopyButton_Success"
-                                                                                ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                                            </FrameworkElement.RenderTransform>
-                                                        </ui:FontIcon>
-                                                    </Grid>
-                                                </Button>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+            UpdateExampleCode();
+        }
 
-                                    <Grid HorizontalAlignment="Stretch" Height="56">
-                                        <Border HorizontalAlignment="Stretch" CornerRadius="{DynamicResource ControlCornerRadius}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="148" />
-                                                    <ColumnDefinition Width="*" MaxWidth="400" />
-                                                    <ColumnDefinition Width="160" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="16,0,0,0">
-                                                    <Border Width="20" Height="20" Background="{DynamicResource AccentFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}" />
-                                                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="4px" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                                                </StackPanel>
-                                                <TextBlock Grid.Column="1" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Text="In-page elements such as controls and list backplates." Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                                                <TextBox Grid.Column="2"
-                                                         Margin="-10,12,0,12"
-                                                         FontFamily="Consolas"
-                                                         FontSize="{DynamicResource CaptionTextBlockStyle.FontSize}"
-                                                         IsReadOnly="True"
-                                                         BorderThickness="0"
-                                                         Background="Transparent"
-                                                         IsReadOnlyCaretVisible="False"
-                                                         Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                                         TextAlignment="Left"
-                                                         VerticalAlignment="Center"
-                                                         VerticalContentAlignment="Center"
-                                                         HorizontalScrollBarVisibility="Hidden"
-                                                         TextWrapping="NoWrap"
-                                                         MinWidth="120"
-                                                         Text="ControlCornerRadius" />
-                                                <Button
-                                                    x:Name="ControlCornerRadiusCopyButton"
-                                                    Grid.Column="3"
-                                                    Margin="4,14,8,12"
-                                                    Padding="6"
-                                                    Click="CopyControlCornerRadiusButton_Click"
-                                                    Tag='CornerRadius="{DynamicResource ControlCornerRadius}"'
-                                                    AutomationProperties.Name="Copy resource name"
-                                                    ToolTipService.ToolTip="Copy to clipboard">
-                                                    <Grid>
-                                                        <ui:FontIcon x:Name="FontIcon_ControlCornerRadiusCopyButton_Copy" FontSize="16"
-                                                                    Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5" Opacity="1">
-                                                            <FrameworkElement.RenderTransform>
-                                                                <ScaleTransform x:Name="ScaleTransform_ControlCornerRadiusCopyButton_Copy"
-                                                                                ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                                            </FrameworkElement.RenderTransform>
-                                                        </ui:FontIcon>
-                                                        <ui:FontIcon x:Name="FontIcon_ControlCornerRadiusCopyButton_Success" FontSize="16"
-                                                                    Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5" Opacity="0">
-                                                            <FrameworkElement.RenderTransform>
-                                                                <ScaleTransform x:Name="ScaleTransform_ControlCornerRadiusCopyButton_Success"
-                                                                                ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                                            </FrameworkElement.RenderTransform>
-                                                        </ui:FontIcon>
-                                                    </Grid>
-                                                </Button>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+        private void GeometryPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateGeometryImage();
+        }
 
-                                    <Grid HorizontalAlignment="Stretch" Height="56">
-                                        <Border HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="148" />
-                                                    <ColumnDefinition Width="*" MaxWidth="400" />
-                                                    <ColumnDefinition Width="160" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="16,0,0,0">
-                                                    <Border Width="20" Height="20" Background="{DynamicResource AccentFillColorDefaultBrush}" CornerRadius="0" />
-                                                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="0px" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                                                </StackPanel>
-                                                <TextBlock Grid.Column="1" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Text="No rounding" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                                                <TextBox Grid.Column="2"
-                                                         Margin="-10,12,0,12"
-                                                         FontFamily="Consolas"
-                                                         FontSize="{DynamicResource CaptionTextBlockStyle.FontSize}"
-                                                         IsReadOnly="True"
-                                                         BorderThickness="0"
-                                                         Background="Transparent"
-                                                         IsReadOnlyCaretVisible="False"
-                                                         Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                                         TextAlignment="Left"
-                                                         VerticalAlignment="Center"
-                                                         VerticalContentAlignment="Center"
-                                                         HorizontalScrollBarVisibility="Hidden"
-                                                         TextWrapping="NoWrap"
-                                                         MinWidth="120"
-                                                         Text="N/a" />
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
-                                </StackPanel>
-                            </ui:ScrollViewerEx>
-                        </StackPanel>
-                    </local:ControlExample.Example>
-                </local:ControlExample>
-            </StackPanel>
-        </ui:ScrollViewerEx>
+        private void UpdateGeometryImage()
+        {
+            if (GeometryImage == null) return;
 
-        <VisualStateManager.VisualStateGroups>
-            <!-- ControlCornerRadiusCopyButton VisualStateGroup -->
-            <VisualStateGroup x:Name="ControlCornerRadiusCopyButtonStates">
-                <VisualState x:Name="ControlCornerRadiusCopyButtonHidden">
-                    <Storyboard>
-                        <DoubleAnimation BeginTime="00:00:00:0.15" Duration="00:00:00:0.15" To="0" 
-                                         Storyboard.TargetName="FontIcon_ControlCornerRadiusCopyButton_Success"
-                                         Storyboard.TargetProperty="Opacity"/>
-                        <DoubleAnimation Duration="00:00:00:0" To="1" 
-                                         Storyboard.TargetName="ScaleTransform_ControlCornerRadiusCopyButton_Copy"
-                                         Storyboard.TargetProperty="ScaleX"/>
-                        <DoubleAnimation BeginTime="00:00:00:0.15" Duration="00:00:00:0.15" To="1" 
-                                         Storyboard.TargetName="FontIcon_ControlCornerRadiusCopyButton_Copy"
-                                         Storyboard.TargetProperty="Opacity"/>
-                    </Storyboard>
-                </VisualState>
-                <VisualState x:Name="ControlCornerRadiusCopyButtonVisible">
-                    <Storyboard>
-                        <DoubleAnimation Duration="00:00:00:0.15" To="0" 
-                                         Storyboard.TargetName="ScaleTransform_ControlCornerRadiusCopyButton_Copy"
-                                         Storyboard.TargetProperty="ScaleX"/>
-                        <DoubleAnimation BeginTime="00:00:00:0.1" Duration="00:00:00:0.01" To="0" 
-                                         Storyboard.TargetName="FontIcon_ControlCornerRadiusCopyButton_Copy"
-                                         Storyboard.TargetProperty="Opacity"/>
-                        <DoubleAnimation BeginTime="00:00:00:0.15" Duration="00:00:00:0.15" To="1" 
-                                         Storyboard.TargetName="ScaleTransform_ControlCornerRadiusCopyButton_Success"
-                                         Storyboard.TargetProperty="ScaleX">
-                            <DoubleAnimation.EasingFunction>
-                                <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
-                            </DoubleAnimation.EasingFunction>
-                        </DoubleAnimation>
-                        <DoubleAnimation BeginTime="00:00:00:0.15" Duration="00:00:00:0.015" To="1" 
-                                         Storyboard.TargetName="FontIcon_ControlCornerRadiusCopyButton_Success"
-                                         Storyboard.TargetProperty="Opacity"/>
-                    </Storyboard>
-                </VisualState>
-            </VisualStateGroup>
-            <!-- OverlayCornerRadiusCopyButton VisualStateGroup -->
-            <VisualStateGroup x:Name="OverlayCornerRadiusCopyButtonStates">
-                <VisualState x:Name="OverlayCornerRadiusCopyButtonHidden">
-                    <Storyboard>
-                        <DoubleAnimation BeginTime="00:00:00:0.15" Duration="00:00:00:0.15" To="0" 
-                                         Storyboard.TargetName="FontIcon_OverlayCornerRadiusCopyButton_Success"
-                                         Storyboard.TargetProperty="Opacity"/>
-                        <DoubleAnimation Duration="00:00:00:0" To="1" 
-                                         Storyboard.TargetName="ScaleTransform_OverlayCornerRadiusCopyButton_Copy"
-                                         Storyboard.TargetProperty="ScaleX"/>
-                        <DoubleAnimation BeginTime="00:00:00:0.15" Duration="00:00:00:0.15" To="1" 
-                                         Storyboard.TargetName="FontIcon_OverlayCornerRadiusCopyButton_Copy"
-                                         Storyboard.TargetProperty="Opacity"/>
-                    </Storyboard>
-                </VisualState>
-                <VisualState x:Name="OverlayCornerRadiusCopyButtonVisible">
-                    <Storyboard>
-                        <DoubleAnimation Duration="00:00:00:0.15" To="0" 
-                                         Storyboard.TargetName="ScaleTransform_OverlayCornerRadiusCopyButton_Copy"
-                                         Storyboard.TargetProperty="ScaleX"/>
-                        <DoubleAnimation BeginTime="00:00:00:0.1" Duration="00:00:00:0.01" To="0" 
-                                         Storyboard.TargetName="FontIcon_OverlayCornerRadiusCopyButton_Copy"
-                                         Storyboard.TargetProperty="Opacity"/>
-                        <DoubleAnimation BeginTime="00:00:00:0.15" Duration="00:00:00:0.15" To="1" 
-                                         Storyboard.TargetName="ScaleTransform_OverlayCornerRadiusCopyButton_Success"
-                                         Storyboard.TargetProperty="ScaleX">
-                            <DoubleAnimation.EasingFunction>
-                                <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
-                            </DoubleAnimation.EasingFunction>
-                        </DoubleAnimation>
-                        <DoubleAnimation BeginTime="00:00:00:0.15" Duration="00:00:00:0.015" To="1" 
-                                         Storyboard.TargetName="FontIcon_OverlayCornerRadiusCopyButton_Success"
-                                         Storyboard.TargetProperty="Opacity"/>
-                    </Storyboard>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-    </Grid>
-</ui:Page>
+            var pageTheme = ThemeManager.GetActualTheme(this);
+            var parentTheme = ElementTheme.Default;
+            var controlExampleTheme = ElementTheme.Default;
+
+            var parentElement = this.Parent as FrameworkElement;
+            while (parentElement != null)
+            {
+                var currentParentTheme = ThemeManager.GetActualTheme(parentElement);
+                if (currentParentTheme != ElementTheme.Default)
+                {
+                    parentTheme = currentParentTheme;
+                    break;
+                }
+                parentElement = parentElement.Parent as FrameworkElement;
+            }
+
+            if (Example1 != null)
+            {
+                try
+                {
+                    var exampleTheme = ThemeManager.GetActualTheme(Example1);
+                    if (exampleTheme != ElementTheme.Default)
+                    {
+                        controlExampleTheme = exampleTheme;
+                    }
+                    else if (Example1.ExampleContainer != null)
+                    {
+                        var containerTheme = ThemeManager.GetActualTheme(Example1.ExampleContainer);
+                        if (containerTheme != ElementTheme.Default)
+                        {
+                            controlExampleTheme = containerTheme;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Theme detection error: {ex.Message}");
+                }
+            }
+
+            var effectiveTheme = controlExampleTheme != ElementTheme.Default ? controlExampleTheme :
+                                 pageTheme != ElementTheme.Default ? pageTheme : parentTheme;
+            var isDarkTheme = effectiveTheme == ElementTheme.Dark ||
+                             (effectiveTheme == ElementTheme.Default && iNKORE.UI.WPF.Modern.Gallery.Helpers.ThemeHelper.IsDarkTheme());
+
+            var imageName = isDarkTheme ? "Geometry.dark.png" : "Geometry.light.png";
+            var uri = new System.Uri($"pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/{imageName}");
+
+            try
+            {
+                var bitmapImage = new System.Windows.Media.Imaging.BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = uri;
+                bitmapImage.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
+                bitmapImage.CreateOptions = System.Windows.Media.Imaging.BitmapCreateOptions.IgnoreImageCache;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze();
+                GeometryImage.Source = bitmapImage;
+                System.Diagnostics.Debug.WriteLine($"Geometry image updated to: {imageName}");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Failed to load geometry image: {ex.Message}");
+                var fallbackUri = new System.Uri("pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/Geometry.dark.png");
+                GeometryImage.Source = new System.Windows.Media.Imaging.BitmapImage(fallbackUri);
+            }
+        }
+
+        private void OnThemeChanged(iNKORE.UI.WPF.Modern.ThemeManager sender, object args)
+        {
+            UpdateGeometryImage();
+        }
+
+        private void OnElementThemeChanged(object sender, RoutedEventArgs e)
+        {
+            UpdateGeometryImage();
+        }
+
+        private void ThemeMonitorTimer_Tick(object sender, EventArgs e)
+        {
+            var currentTheme = iNKORE.UI.WPF.Modern.ThemeManager.GetActualTheme(this);
+            if (currentTheme != _lastKnownTheme)
+            {
+                _lastKnownTheme = currentTheme;
+                UpdateGeometryImage();
+                System.Diagnostics.Debug.WriteLine($"Theme change detected: {currentTheme}");
+            }
+
+            var parentElement = this.Parent as FrameworkElement;
+            while (parentElement != null)
+            {
+                var parentTheme = ThemeManager.GetActualTheme(parentElement);
+                if (parentTheme != currentTheme)
+                {
+                    UpdateGeometryImage();
+                    System.Diagnostics.Debug.WriteLine($"Element-level theme change detected: Parent={parentTheme}, Current={currentTheme}");
+                    break;
+                }
+                parentElement = parentElement.Parent as FrameworkElement;
+            }
+
+            if (Example1 != null)
+            {
+                try
+                {
+                    var controlExampleTheme = ThemeManager.GetActualTheme(Example1);
+                    var containerTheme = ElementTheme.Default;
+
+                    if (Example1.ExampleContainer != null)
+                    {
+                        containerTheme = ThemeManager.GetActualTheme(Example1.ExampleContainer);
+                    }
+
+                    if (controlExampleTheme != currentTheme || containerTheme != currentTheme)
+                    {
+                        UpdateGeometryImage();
+                        System.Diagnostics.Debug.WriteLine($"ControlExample theme change detected: ControlExample={controlExampleTheme}, Container={containerTheme}, Page={currentTheme}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Theme monitor error: {ex.Message}");
+                }
+            }
+        }
+
+        private void OnRequestedThemeChanged(object sender, EventArgs e)
+        {
+            Dispatcher.BeginInvoke(new System.Action(() => {
+                UpdateGeometryImage();
+            }), System.Windows.Threading.DispatcherPriority.ApplicationIdle);
+
+            var timer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
+            timer.Tick += (s, args) => {
+                timer.Stop();
+                UpdateGeometryImage();
+            };
+            timer.Start();
+        }
+
+        // kept for backward compatibility if we want to programmatically set usage
+        public string Usage { get; set; }
+
+        /// <summary>
+        /// Unified handler for resource-copy buttons that use the Tag property to store copy text.
+        /// (OverlayCornerRadiusCopyButton and ControlCornerRadiusCopyButton call this.)
+        /// </summary>
+        private async void CopyControlCornerRadiusButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Use GoToElementState for FrameworkElement-based VSM.
+                bool started = VisualStateManager.GoToElementState(LayoutRoot, "ControlCornerRadiusCopyButtonVisible", true);
+                if (!started)
+                {
+                    // MessageBox.Show("Could not find visual state 'ControlCornerRadiusCopyButtonVisible' on LayoutRoot.", "VSM", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                if (sender is Button btn && btn.Tag is string tagText)
+                {
+                    Clipboard.SetText(tagText);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Unable to Perform Copy", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            await Task.Delay(1000);
+
+            try
+            {
+                VisualStateManager.GoToElementState(LayoutRoot, "ControlCornerRadiusCopyButtonHidden", true);
+            }
+            catch
+            {
+                // swallow
+            }
+        }
+
+        /// <summary>
+        /// Helper method: if we want resource-copy buttons to also show the same animation,
+        /// call this. Left public for optional reuse.
+        /// </summary>
+        public async Task ShowCopyConfirmationAnimationAsync()
+        {
+            try
+            {
+                VisualStateManager.GoToElementState(LayoutRoot, "ConfirmationDialogVisible", true);
+            }
+            catch { }
+
+            await Task.Delay(1000);
+
+            try
+            {
+                VisualStateManager.GoToElementState(LayoutRoot, "ConfirmationDialogHidden", true);
+            }
+            catch { }
+        }
+
+        private async void OverlayCornerRadiusCopyButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bool started = VisualStateManager.GoToElementState(LayoutRoot, "OverlayCornerRadiusCopyButtonVisible", true);
+                if (!started)
+                {
+                    // MessageBox.Show("Could not find visual state 'OverlayCornerRadiusCopyButtonVisible' on LayoutRoot.", "VSM", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                if (sender is Button btn && btn.Tag is string tagText)
+                {
+                    Clipboard.SetText(tagText);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Unable to Perform Copy", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            await Task.Delay(1000);
+
+            try
+            {
+                VisualStateManager.GoToElementState(LayoutRoot, "OverlayCornerRadiusCopyButtonHidden", true);
+            }
+            catch
+            {
+                // swallow
+            }
+        }
+
+        private void ShowGeometryButtonClick1(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                var flyout = FlyoutService.GetFlyout(button);
+                if (flyout != null)
+                {
+                    flyout.ShowAt(button);
+                }
+            }
+        }
+
+        private void ShowGeometryButtonClick2(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                var flyout = FlyoutService.GetFlyout(button);
+                if (flyout != null)
+                {
+                    flyout.ShowAt(button);
+                }
+            }
+        }
+
+        private void ShowGeometryButtonClick3(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                var flyout = FlyoutService.GetFlyout(button);
+                if (flyout != null)
+                {
+                    flyout.ShowAt(button);
+                }
+            }
+        }
+
+        private void UpdateExampleCode()
+        {
+            Example1.Xaml = Example1Xaml;
+        }
+        
+         string Example1Xaml => @"
+<Grid CornerRadius=""{StaticResource OverlayCornerRadius}""/>
+<Grid CornerRadius=""{StaticResource ControlCornerRadius}""/>";
+
+    }
+}
