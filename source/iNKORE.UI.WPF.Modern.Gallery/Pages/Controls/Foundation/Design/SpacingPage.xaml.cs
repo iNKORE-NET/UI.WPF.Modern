@@ -1,168 +1,129 @@
-<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
-<!--  Licensed under the MIT License.  -->
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-<ui:Page
-    x:Class="iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation.SpacingPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
-    xmlns:uc="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls.UserControls"
-    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    x:Name="spacingPage"
-    mc:Ignorable="d">
+using iNKORE.UI.WPF.Modern.Controls;
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Navigation;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
+using iNKORE.UI.WPF.Modern.Gallery.Helpers;
+using iNKORE.UI.WPF.Modern;
 
-    <ui:ScrollViewerEx>
-        <StackPanel>
-            <TextBlock Margin="0,0,0,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                    The use of consistently sized spacing and gutters semantically groups an experience into separate components. These values map to our rounded corner logic and together help create a cohesive and usable layout.
-                    A best practice in design is to use a 4px grid. This means that any spacing or sizing should be a multiple of 4. This helps to create a consistent and harmonious layout and these values are easy to scale.
-            </TextBlock>
-            <TextBlock TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                Below, you can find a few examples of common layout types with highlighted spacing values (in epx).
-            </TextBlock>
+namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
+{
+    /// <summary>
+    /// Spacing page showcasing Windows spacing values and layout examples.
+    /// </summary>
+    public partial class SpacingPage : Page
+    {
+        private DispatcherTimer _themeMonitorTimer;
+        private ElementTheme _lastKnownTheme = ElementTheme.Default;
 
-            <ui:ScrollViewerEx HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="0,24,0,26">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
-                    <StackPanel Margin="0,0,36,0">
-                        <TextBlock HorizontalAlignment="Center" Style="{DynamicResource SubtitleTextBlockStyle}" Text="Page with cards layout" />
-                        <Image x:Name="CardsImage" Margin="0,12,0,0" Height="505" Source="pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/Cards.dark.png" />
-                    </StackPanel>
-                    <StackPanel>
-                        <TextBlock HorizontalAlignment="Center" Style="{DynamicResource SubtitleTextBlockStyle}" Text="Form layout" />
-                        <Image x:Name="DialogImage" Margin="0,12,0,18" Height="505" Source="pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/Dialog.dark.png" />
-                    </StackPanel>
-                </StackPanel>
-            </ui:ScrollViewerEx>
+        public SpacingPage()
+        {
+            this.InitializeComponent();
+            Loaded += SpacingPage_Loaded;
 
-            <Border
-                Background="{DynamicResource ControlExampleDisplayBrush}"
-                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1,1,1,0"
-                CornerRadius="8"
-                Padding="12"
-                Margin="0,10,0,0">
-                <ui:ScrollViewerEx HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden" Margin="0,0,0,0">
-                    <StackPanel>
-                        <Grid Margin="0,12,0,24" HorizontalAlignment="Stretch">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="86" />
-                                <ColumnDefinition Width="136" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock
-                                Margin="16,0,0,0"
-                                Style="{DynamicResource CaptionTextBlockStyle}"
-                                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                Text="Value" />
-                            <TextBlock
-                                Grid.Column="2"
-                                Style="{DynamicResource CaptionTextBlockStyle}"
-                                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                Text="Usage" />
-                        </Grid>
-                        <Grid HorizontalAlignment="Stretch" Height="56">
-                            <Border HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="86" />
-                                        <ColumnDefinition Width="136" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="4epx" />
-                                    <Border Grid.Column="1" Height="20" Width="4" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Spacing used for compact sizing." />
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <Grid HorizontalAlignment="Stretch" Height="56">
-                            <Border HorizontalAlignment="Stretch" CornerRadius="{DynamicResource ControlCornerRadius}">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="86" />
-                                        <ColumnDefinition Width="136" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="8epx" />
-                                    <Border Grid.Column="1" Height="20" Width="8" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Spacing between UI controls, control + label." />
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <Grid HorizontalAlignment="Stretch" Height="56">
-                            <Border HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="86" />
-                                        <ColumnDefinition Width="136" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="12epx" />
-                                    <Border Grid.Column="1" Height="20" Width="12" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Spacing between control + header, surface and edge text, text sections." />
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <Grid HorizontalAlignment="Stretch" Height="56">
-                            <Border HorizontalAlignment="Stretch" CornerRadius="{DynamicResource ControlCornerRadius}">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="86" />
-                                        <ColumnDefinition Width="136" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="16epx" />
-                                    <Border Grid.Column="1" Height="20" Width="16" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Padding used in list styles, cards." />
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <Grid HorizontalAlignment="Stretch" Height="56">
-                            <Border HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="86" />
-                                        <ColumnDefinition Width="136" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="24epx" />
-                                    <Border Grid.Column="1" Height="20" Width="24" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Spacing between content sections." />
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <Grid HorizontalAlignment="Stretch" Height="56">
-                            <Border HorizontalAlignment="Stretch" CornerRadius="{DynamicResource ControlCornerRadius}">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="86" />
-                                        <ColumnDefinition Width="136" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="36epx" />
-                                    <Border Grid.Column="1" Height="20" Width="36" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Padding on pages." />
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <Grid HorizontalAlignment="Stretch" Height="56">
-                            <Border HorizontalAlignment="Stretch" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="86" />
-                                        <ColumnDefinition Width="136" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="16,12,0,12" VerticalAlignment="Center" Style="{DynamicResource BodyTextBlockStyle}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="48epx" />
-                                    <Border Grid.Column="1" Height="20" Width="48" CornerRadius="4" Background="{DynamicResource AccentFillColorDefaultBrush}" HorizontalAlignment="Left" />
-                                    <TextBlock Grid.Column="2" Margin="0,12,0,12" VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" Text="Spacing between page sections with title." />
-                                </Grid>
-                            </Border>
-                        </Grid>
-                    </StackPanel>
-                </ui:ScrollViewerEx>
-            </Border>
-        </StackPanel>
-    </ui:ScrollViewerEx>
-</ui:Page>
+            ThemeManager.Current.ActualApplicationThemeChanged += OnThemeChanged;
+            ThemeManager.AddActualThemeChangedHandler(this, OnElementThemeChanged);
+
+            _themeMonitorTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(200)
+            };
+            _themeMonitorTimer.Tick += ThemeMonitorTimer_Tick;
+            _themeMonitorTimer.Start();
+        }
+
+        private void SpacingPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (NavigationRootPage.Current?.NavigationView != null)
+            {
+                NavigationRootPage.Current.NavigationView.Header = "Spacing";
+            }
+            UpdateSpacingImages();
+        }
+
+        private void UpdateSpacingImages()
+        {
+            if (CardsImage == null || DialogImage == null) return;
+
+            var pageTheme = ThemeManager.GetActualTheme(this);
+            var parentTheme = ElementTheme.Default;
+
+            var parentElement = this.Parent as FrameworkElement;
+            while (parentElement != null)
+            {
+                var currentParentTheme = ThemeManager.GetActualTheme(parentElement);
+                if (currentParentTheme != ElementTheme.Default)
+                {
+                    parentTheme = currentParentTheme;
+                    break;
+                }
+                parentElement = parentElement.Parent as FrameworkElement;
+            }
+
+            var effectiveTheme = pageTheme != ElementTheme.Default ? pageTheme : parentTheme;
+            var isDarkTheme = effectiveTheme == ElementTheme.Dark ||
+                             (effectiveTheme == ElementTheme.Default && ThemeHelper.IsDarkTheme());
+
+            var cardsImageName = isDarkTheme ? "Cards.dark.png" : "Cards.light.png";
+            var dialogImageName = isDarkTheme ? "Dialog.dark.png" : "Dialog.light.png";
+
+            var cardsUri = new Uri($"pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/{cardsImageName}");
+            var dialogUri = new Uri($"pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/{dialogImageName}");
+
+            try
+            {
+                var cardsBitmap = new BitmapImage();
+                cardsBitmap.BeginInit();
+                cardsBitmap.UriSource = cardsUri;
+                cardsBitmap.CacheOption = BitmapCacheOption.OnLoad;
+                cardsBitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                cardsBitmap.EndInit();
+                cardsBitmap.Freeze();
+                CardsImage.Source = cardsBitmap;
+
+                var dialogBitmap = new BitmapImage();
+                dialogBitmap.BeginInit();
+                dialogBitmap.UriSource = dialogUri;
+                dialogBitmap.CacheOption = BitmapCacheOption.OnLoad;
+                dialogBitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                dialogBitmap.EndInit();
+                dialogBitmap.Freeze();
+                DialogImage.Source = dialogBitmap;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Failed to load spacing images: {ex.Message}");
+                // Fallback to dark images if there's an issue
+                CardsImage.Source = new BitmapImage(new Uri("pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/Cards.dark.png"));
+                DialogImage.Source = new BitmapImage(new Uri("pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/Dialog.dark.png"));
+            }
+        }
+
+        private void OnThemeChanged(ThemeManager sender, object args)
+        {
+            UpdateSpacingImages();
+        }
+
+        private void OnElementThemeChanged(object sender, RoutedEventArgs e)
+        {
+            UpdateSpacingImages();
+        }
+
+        private void ThemeMonitorTimer_Tick(object sender, EventArgs e)
+        {
+            var currentTheme = ThemeManager.GetActualTheme(this);
+            if (currentTheme != _lastKnownTheme)
+            {
+                _lastKnownTheme = currentTheme;
+                UpdateSpacingImages();
+                Debug.WriteLine($"Theme change detected: {currentTheme}");
+            }
+        }
+    }
+}
