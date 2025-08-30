@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -98,6 +98,7 @@
     <Resource Include="DataModel\Data\Controls.Community.json" />
     <Resource Include="DataModel\Data\Controls.Extended.json" />
     <Resource Include="DataModel\Data\Controls.Foundation.json" />
+  <EmbeddedResource Include="DataModel\IconsData.json" />
     <Resource Include="DataModel\Data\Controls.Windows.json" />
   </ItemGroup>
 
