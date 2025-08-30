@@ -405,11 +405,54 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
 
         private async void CopyValueButton_Click(object sender, RoutedEventArgs e)
         {
+            string textToCopy = null;
             try
             {
-                if (sender is Button btn && btn.Tag is string tagText)
+                if (sender is Button btn)
                 {
-                    Clipboard.SetText(tagText);
+                    // Primary path: Tag is bound to the value to copy
+                    textToCopy = btn.Tag as string;
+
+                    // Fallbacks for cases where the Tag binding isn't available or was modified
+                    if (string.IsNullOrEmpty(textToCopy))
+                    {
+                        switch (btn.Name)
+                        {
+                            case "CopyInlineExampleButton":
+                                textToCopy = (FindName("InlineExampleBox") as TextBox)?.Text;
+                                break;
+                            case "CopyNameButton":
+                                textToCopy = SelectedItem?.Name;
+                                break;
+                            case "CopyTextGlyphButton":
+                                textToCopy = SelectedItem?.TextGlyph;
+                                break;
+                            case "CopyCodeGlyphButton":
+                                textToCopy = SelectedItem?.CodeGlyph;
+                                break;
+                            case "CopyXamlButton":
+                                textToCopy = FontIconXaml;
+                                break;
+                            case "CopyCSharpButton":
+                                textToCopy = FontIconCSharp;
+                                break;
+                            case "CopySymbolXamlButton":
+                                textToCopy = SymbolIconXaml;
+                                break;
+                            case "CopySymbolCSharpButton":
+                                textToCopy = SymbolIconCSharp;
+                                break;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(textToCopy))
+                    {
+                        var copied = TrySetClipboardText(textToCopy, 3, TimeSpan.FromMilliseconds(150));
+                        if (!copied)
+                        {
+                            throw new InvalidOperationException("Unable to open clipboard after multiple attempts.");
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -494,6 +537,41 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
                     queue.Enqueue(child);
                 }
             }
+        }
+
+        // Robust clipboard setter: runs SetText on a new STA thread and retries when clipboard is busy.
+        private static bool TrySetClipboardText(string text, int maxAttempts, TimeSpan delayBetweenAttempts)
+        {
+            if (string.IsNullOrEmpty(text)) return false;
+
+            for (int attempt = 0; attempt < maxAttempts; attempt++)
+            {
+                var success = false;
+                var thread = new Thread(() =>
+                {
+                    try
+                    {
+                        // Use System.Windows.Clipboard on STA thread
+                        System.Windows.Clipboard.SetText(text);
+                        success = true;
+                    }
+                    catch
+                    {
+                        success = false;
+                    }
+                });
+
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.IsBackground = true;
+                thread.Start();
+                thread.Join();
+
+                if (success) return true;
+
+                Thread.Sleep(delayBetweenAttempts);
+            }
+
+            return false;
         }
 
         //Keep for reference in the future
