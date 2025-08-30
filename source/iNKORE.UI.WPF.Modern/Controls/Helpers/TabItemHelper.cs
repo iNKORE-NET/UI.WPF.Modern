@@ -227,9 +227,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 void ExecutedCustomCommand(object sender, ExecutedRoutedEventArgs e)
                 {
                     var eventArgs = new TabViewTabCloseRequestedEventArgs(TabItem.Content, TabItem);
-
-                    var action = TabControlHelper.GetTabControlHelperEvents(TabControl).TabCloseRequested;
-                    action?.Invoke(TabControl, eventArgs);
+                    TabControlHelper.GetTabControlHelperEvents(TabControl).TabCloseRequested?.Invoke(TabControl, eventArgs);
                     if (eventArgs.Cancel)
                     {
                         return;
