@@ -226,13 +226,26 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
                 void ExecutedCustomCommand(object sender, ExecutedRoutedEventArgs e)
                 {
-                    TabControlHelper.GetTabControlHelperEvents(TabControl).TabCloseRequested?.Invoke(TabControl, new TabViewTabCloseRequestedEventArgs(TabItem.Content, TabItem));
+                    var eventArgs = new TabViewTabCloseRequestedEventArgs(TabItem.Content, TabItem);
+
+                    var action = TabControlHelper.GetTabControlHelperEvents(TabControl).TabCloseRequested;
+                    action?.Invoke(TabControl, eventArgs);
+                    if (eventArgs.Cancel)
+                    {
+                        return;
+                    }
+
                     GetTabItemHelperEvents(TabItem).CloseRequested?.Invoke(TabItem, new TabViewTabCloseRequestedEventArgs(TabItem.Content, TabItem));
                     if (TabControl.SelectedItem == TabItem)
                     {
                         TabControl.SelectedIndex--;
                     }
-                    TabControl.Items.Remove(sender);
+
+                    if (TabControl.ItemsSource is null)
+                    {
+                        TabControl.Items.Remove(sender);
+                    }
+                    
                     e.Handled = true;
                 }
 
