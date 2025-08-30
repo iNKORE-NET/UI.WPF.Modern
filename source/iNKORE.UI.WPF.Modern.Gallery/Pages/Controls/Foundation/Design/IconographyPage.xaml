@@ -487,7 +487,7 @@
                             If you don't specify a FontFamily, or you specify a FontFamily that is not available on the system at runtime, a
                             <InlineUIContainer BaselineAlignment="Center">
                                 <ui:HyperlinkButton
-                                                   NavigateUri="https://learn.microsoft.com/windows/apps/design/controls/font-icon"
+                                                   NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.fonticon"
                                                    VerticalAlignment="Center"
                                                    VerticalContentAlignment="Center"
                                                    Padding="0,1,0,0"
