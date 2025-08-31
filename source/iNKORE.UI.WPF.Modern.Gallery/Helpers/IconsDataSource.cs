@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using iNKORE.UI.WPF.Modern.Gallery.DataModel;
@@ -16,6 +17,12 @@ internal class IconsDataSource
 
     public static List<IconData> Icons => Instance.icons;
 
+    // Public list of available icon sets discovered via reflection
+    public List<string> AvailableSets { get; } = new();
+
+    // Current active set name (null = all)
+    public string ActiveSet { get; private set; }
+
     private List<IconData> icons = new();
 
     private IconsDataSource() { }
@@ -24,6 +31,7 @@ internal class IconsDataSource
 
     public async Task<List<IconData>> LoadIcons()
     {
+        // If already loaded, return current list
         lock (_lock)
         {
             if (icons.Count != 0)
@@ -32,44 +40,201 @@ internal class IconsDataSource
             }
         }
 
-        // Load from embedded resource
-        var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-        var resourceName = "iNKORE.UI.WPF.Modern.Gallery.DataModel.IconsData.json";
-
-        using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+        // Try reflection-first: enumerate types in Common.IconKeys namespace
+        try
         {
-            if (stream != null)
+            var assembly = typeof(iNKORE.UI.WPF.Modern.Common.IconKeys.FontDictionary).Assembly;
+            var types = assembly.GetTypes().Where(t => t.IsClass && t.IsSealed && t.IsAbstract && t.Namespace == "iNKORE.UI.WPF.Modern.Common.IconKeys");
+            var discovered = new List<IconData>();
+
+            foreach (var type in types)
             {
-                using (StreamReader reader = new StreamReader(stream))
+                // collect a set name for the class
+                var setName = type.Name;
+                // Try public static fields and properties of type FontIconData
+                var fields = type.GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+                foreach (var f in fields)
                 {
-                    var jsonText = await reader.ReadToEndAsync();
-                    lock (_lock)
+                    if (f.FieldType.FullName == "iNKORE.UI.WPF.Modern.Common.IconKeys.FontIconData")
                     {
-                        if (icons.Count == 0)
+                        try
                         {
-                            icons = JsonSerializer.Deserialize<List<IconData>>(jsonText);
+                            var value = f.GetValue(null);
+                            var glyphProp = value?.GetType().GetProperty("Glyph");
+                            var glyph = glyphProp?.GetValue(value) as string;
+                            var name = f.Name;
+                            var data = new IconData { Name = name, Code = ToCode(glyph), Set = setName };
+                            discovered.Add(data);
                         }
-                        return icons;
+                        catch { }
+                    }
+                }
+
+                var props = type.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+                foreach (var p in props)
+                {
+                    if (p.PropertyType.FullName == "iNKORE.UI.WPF.Modern.Common.IconKeys.FontIconData")
+                    {
+                        try
+                        {
+                            var value = p.GetValue(null);
+                            var glyphProp = value?.GetType().GetProperty("Glyph");
+                            var glyph = glyphProp?.GetValue(value) as string;
+                            var name = p.Name;
+                            var data = new IconData { Name = name, Code = ToCode(glyph), Set = setName };
+                            discovered.Add(data);
+                        }
+                        catch { }
+                    }
+                }
+
+                if (discovered.Any(d => d.Set == setName))
+                {
+                    AvailableSets.Add(setName);
+                }
+            }
+
+            if (discovered.Count > 0)
+            {
+                lock (_lock)
+                {
+                    icons = discovered.OrderBy(i => i.Name).ToList();
+                }
+                // Ensure legacy/alias sets are present so the UI can show them
+                EnsureLegacySets();
+                return icons;
+            }
+        }
+        catch
+        {
+            // reflection failed; fall back to JSON below
+        }
+
+        // Load from embedded resource as a fallback
+        try
+        {
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var resourceName = "iNKORE.UI.WPF.Modern.Gallery.DataModel.IconsData.json";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream != null)
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        var jsonText = await reader.ReadToEndAsync();
+                        lock (_lock)
+                        {
+                            if (icons.Count == 0)
+                            {
+                                icons = JsonSerializer.Deserialize<List<IconData>>(jsonText);
+                            }
+                            EnsureLegacySets();
+                            return icons;
+                        }
                     }
                 }
             }
         }
+        catch { }
 
         // Fallback: try to load from file
-        var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DataModel", "IconsData.json");
-        if (File.Exists(filePath))
+        try
         {
-            var jsonText = await File.ReadAllTextAsync(filePath);
-            lock (_lock)
+            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DataModel", "IconsData.json");
+            if (File.Exists(filePath))
             {
-                if (icons.Count == 0)
+                var jsonText = await File.ReadAllTextAsync(filePath);
+                lock (_lock)
                 {
-                    icons = JsonSerializer.Deserialize<List<IconData>>(jsonText);
+                    if (icons.Count == 0)
+                    {
+                        icons = JsonSerializer.Deserialize<List<IconData>>(jsonText);
+                    }
+                    EnsureLegacySets();
+                    return icons;
                 }
-                return icons;
+            }
+        }
+        catch { }
+
+        return icons;
+    }
+
+    private static string ToCode(string glyph)
+    {
+        if (string.IsNullOrEmpty(glyph)) return string.Empty;
+        // glyph is a single-character string; convert to hex code (without leading 0x)
+        var ch = glyph[0];
+        return ((int)ch).ToString("X4");
+    }
+
+    // Set active set and return filtered icons
+    public List<IconData> SetActiveSet(string setName)
+    {
+        // Normalize legacy aliases to concrete set names when possible
+        if (string.Equals(setName, "SegoeMDL2Assets", StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(setName, "Segoe MDL2 Assets", StringComparison.OrdinalIgnoreCase))
+        {
+            // These glyphs generally live in the JSON data under empty Set (or specific set names).
+            // Treat this alias as a request to show all non-Fluent-only icons.
+            ActiveSet = setName;
+            return icons.Where(i => !i.IsSegoeFluentOnly).ToList();
+        }
+
+        if (string.Equals(setName, "SegoeIcons", StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(setName, "Segoe Icons", StringComparison.OrdinalIgnoreCase))
+        {
+            // No dedicated SegoeIcons set in the built-in keys; treat as all icons (fallback).
+            ActiveSet = setName;
+            return icons;
+        }
+
+        ActiveSet = setName;
+        if (string.IsNullOrEmpty(setName)) return icons;
+        return icons.Where(i => i.Set == setName).ToList();
+    }
+
+    private void EnsureLegacySets()
+    {
+        // Ensure some commonly expected legacy set names appear in AvailableSets
+        void addIfMissing(string name)
+        {
+            if (!AvailableSets.Any(s => string.Equals(s, name, StringComparison.OrdinalIgnoreCase)))
+            {
+                AvailableSets.Add(name);
             }
         }
 
-        return icons;
+        // Ensure primary sets exist
+        addIfMissing("SegoeFluentIcons");
+        addIfMissing("FluentSystemIcons");
+        // Legacy/OS font aliases
+        addIfMissing("SegoeMDL2Assets");
+        addIfMissing("SegoeIcons");
+
+        // Enforce requested ordering at the front of the list so the UI shows them in this order
+        var preferredOrder = new[] { "SegoeFluentIcons", "FluentSystemIcons", "SegoeMDL2Assets", "SegoeIcons" };
+        var ordered = new List<string>();
+        // Add preferred in requested order if present
+        foreach (var p in preferredOrder)
+        {
+            var match = AvailableSets.FirstOrDefault(s => string.Equals(s, p, StringComparison.OrdinalIgnoreCase));
+            if (match != null)
+            {
+                ordered.Add(match);
+            }
+        }
+        // Append any remaining sets not in the preferred list, preserving original discovery order
+        foreach (var s in AvailableSets)
+        {
+            if (!ordered.Any(o => string.Equals(o, s, StringComparison.OrdinalIgnoreCase)))
+            {
+                ordered.Add(s);
+            }
+        }
+
+        AvailableSets.Clear();
+        foreach (var s in ordered) AvailableSets.Add(s);
     }
 }
