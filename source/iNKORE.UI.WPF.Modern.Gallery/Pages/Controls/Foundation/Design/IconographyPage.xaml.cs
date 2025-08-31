@@ -162,6 +162,31 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
                     {
                         iconsItemsView.ItemsSource = icons;
 
+                        // Populate icon set ComboBox if present
+                        var setCombo = FindName("IconSetComboBox") as ComboBox;
+                        try
+                        {
+                            if (setCombo != null)
+                            {
+                                setCombo.ItemsSource = IconsDataSource.Instance.AvailableSets;
+                                setCombo.SelectionChanged += IconSetComboBox_SelectionChanged;
+                                if (IconsDataSource.Instance.AvailableSets.Count > 0)
+                                {
+                                    // Prefer SegoeFluentIcons when present
+                                    var preferred = IconsDataSource.Instance.AvailableSets.FirstOrDefault(s => string.Equals(s, "SegoeFluentIcons", StringComparison.OrdinalIgnoreCase));
+                                    if (!string.IsNullOrEmpty(preferred))
+                                    {
+                                        setCombo.SelectedItem = preferred;
+                                    }
+                                    else
+                                    {
+                                        setCombo.SelectedIndex = 0;
+                                    }
+                                }
+                            }
+                        }
+                        catch { }
+
                         // Select the first item by default and show side panel
                         if (icons != null && icons.Count > 0)
                         {
@@ -199,8 +224,19 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
             }
 
             // Populate code strings for TextBoxes
-            FontIconXaml = $"<FontIcon Glyph=\"{value.TextGlyph}\" />";
-            FontIconCSharp = "FontIcon icon = new FontIcon();" + Environment.NewLine + $"icon.Glyph = \"{value.CodeGlyph}\";";
+            if (!string.IsNullOrEmpty(value.Set))
+            {
+                // Use static icon class reference when available
+                // Example XAML: <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Edit}" />
+                FontIconXaml = $"<ui:FontIcon Icon=\"{{x:Static ui:{value.Set}.{value.Name}}}\" />";
+                // Use fully-qualified C# reference to the static property in Common.IconKeys
+                FontIconCSharp = $"FontIcon icon = new FontIcon();" + Environment.NewLine + $"icon.Icon = iNKORE.UI.WPF.Modern.Common.IconKeys.{value.Set}.{value.Name};";
+            }
+            else
+            {
+                FontIconXaml = $"<FontIcon Glyph=\"{value.TextGlyph}\" />";
+                FontIconCSharp = "FontIcon icon = new FontIcon();" + Environment.NewLine + $"icon.Glyph = \"{value.CodeGlyph}\";";
+            }
 
             if (!string.IsNullOrEmpty(value.SymbolName))
             {
@@ -226,15 +262,17 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
             // Tags visibility
             try
             {
+                var tagsView = FindName("TagsItemsView") as iNKORE.UI.WPF.Modern.Controls.ItemsRepeater;
+                var noTags = FindName("NoTagsTextBlock") as TextBlock;
                 if (value.Tags == null || value.Tags.Length == 0 || value.Tags.All(t => string.IsNullOrWhiteSpace(t)))
                 {
-                    TagsItemsView.Visibility = Visibility.Collapsed;
-                    NoTagsTextBlock.Visibility = Visibility.Visible;
+                    if (tagsView != null) tagsView.Visibility = Visibility.Collapsed;
+                    if (noTags != null) noTags.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    TagsItemsView.Visibility = Visibility.Visible;
-                    NoTagsTextBlock.Visibility = Visibility.Collapsed;
+                    if (tagsView != null) tagsView.Visibility = Visibility.Visible;
+                    if (noTags != null) noTags.Visibility = Visibility.Collapsed;
                 }
             }
             catch { }
@@ -242,7 +280,9 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
 
         private void SearchTextBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            Filter(IconsSearchBox.Text);
+            var tb = FindName("IconsSearchBox");
+            var text = tb?.GetType().GetProperty("Text")?.GetValue(tb) as string;
+            Filter(text);
         }
 
         public void Filter(string search)
@@ -288,11 +328,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
             try
             {
                 // Try to read a SelectedItem property from the sender (GridView exposes this)
-                var selProp = IconsItemsView.GetType().GetProperty("SelectedItem");
-                if (selProp != null)
+                var view = FindName("IconsItemsView");
+                if (view != null)
                 {
-                    var sel = selProp.GetValue(IconsItemsView) as IconData;
-                    if (sel != null) SelectedItem = sel;
+                    var selProp = view.GetType().GetProperty("SelectedItem");
+                    if (selProp != null)
+                    {
+                        var sel = selProp.GetValue(view) as IconData;
+                        if (sel != null) SelectedItem = sel;
+                    }
                 }
             }
             catch { }
@@ -306,7 +350,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
                     var tag = invokedProp.GetValue(e) as string;
                     if (!string.IsNullOrEmpty(tag))
                     {
-                        IconsSearchBox.Text = tag;
+                        // Set text on the named search box if present
+                        var searchBox = FindName("IconsSearchBox");
+                        if (searchBox != null)
+                        {
+                            var textProp = searchBox.GetType().GetProperty("Text");
+                            textProp?.SetValue(searchBox, tag);
+                        }
                     }
                 }
             }
@@ -321,6 +371,31 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
                 {
                     SelectedItem = data;
                     UpdateSelectionVisuals(data);
+                }
+            }
+            catch { }
+        }
+
+        private void IconSetComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (sender is ComboBox cb && cb.SelectedItem is string setName)
+                {
+                    var items = IconsDataSource.Instance.SetActiveSet(setName);
+                    Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        var iconsItemsView = FindName("IconsItemsView") as iNKORE.UI.WPF.Modern.Controls.ItemsRepeater;
+                        if (iconsItemsView != null)
+                        {
+                            iconsItemsView.ItemsSource = items;
+                            if (items.Count > 0)
+                            {
+                                SelectedItem = items[0];
+                                UpdateSelectionVisuals(items[0]);
+                            }
+                        }
+                    }));
                 }
             }
             catch { }
