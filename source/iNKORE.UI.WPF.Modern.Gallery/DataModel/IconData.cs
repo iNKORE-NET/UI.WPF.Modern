@@ -10,6 +10,8 @@ public class IconData
 {
     public string Name { get; set; }
     public string Code { get; set; }
+    // To check which icon set this icon came from (e.g. "SegoeFluentIcons", "FluentSystemIcons.Regular")
+    public string Set { get; set; }
     public string[] Tags { get; set; } = Array.Empty<string>();
     public bool IsSegoeFluentOnly { get; set; }
 
