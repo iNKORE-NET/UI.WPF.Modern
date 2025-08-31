@@ -571,7 +571,7 @@
             MinWidth="304"
             MaxWidth="320"
             HorizontalAlignment="Left"
-            PlaceholderText="Search icons by name, code, or tags"
+            PlaceholderText="Search icons by name"
             TextChanged="SearchTextBox_TextChanged">
             <ui:AutoSuggestBox.Header>
                 <TextBlock Text="Fluent Icons Library" FontWeight="SemiBold" />
