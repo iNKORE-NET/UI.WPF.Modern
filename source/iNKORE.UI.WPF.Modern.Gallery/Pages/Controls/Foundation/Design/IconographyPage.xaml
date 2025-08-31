@@ -9,7 +9,8 @@
       xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
     xmlns:models="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.DataModel"
       xmlns:helpers="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Helpers"
-      xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
       x:Name="iconographyPage"
       mc:Ignorable="d">
 
@@ -564,21 +565,24 @@
         </ui:SettingsExpander.Items>
     </ui:SettingsExpander>
 
-    <ui:AutoSuggestBox
-        x:Name="IconsSearchBox"
-        MinWidth="304"
-        MaxWidth="320"
-        HorizontalAlignment="Left"
-        Margin="0,16,0,10"
-        PlaceholderText="Search icons by name, code, or tags"
-        TextChanged="SearchTextBox_TextChanged">
-        <ui:AutoSuggestBox.Header>
-            <TextBlock Text="Fluent Icons Library" FontWeight="SemiBold" />
-        </ui:AutoSuggestBox.Header>
-        <ui:AutoSuggestBox.QueryIcon>
-            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Search}" />
-        </ui:AutoSuggestBox.QueryIcon>
-    </ui:AutoSuggestBox>
+    <StackPanel Orientation="Horizontal" Margin="0,16,0,10" HorizontalAlignment="Left">
+        <ui:AutoSuggestBox
+            x:Name="IconsSearchBox"
+            MinWidth="304"
+            MaxWidth="320"
+            HorizontalAlignment="Left"
+            PlaceholderText="Search icons by name, code, or tags"
+            TextChanged="SearchTextBox_TextChanged">
+            <ui:AutoSuggestBox.Header>
+                <TextBlock Text="Fluent Icons Library" FontWeight="SemiBold" />
+            </ui:AutoSuggestBox.Header>
+            <ui:AutoSuggestBox.QueryIcon>
+                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Search}" />
+            </ui:AutoSuggestBox.QueryIcon>
+        </ui:AutoSuggestBox>
+
+        <ComboBox x:Name="IconSetComboBox" MinWidth="200" MaxWidth="320" HorizontalAlignment="Left" Margin="12,26,0,0" />
+    </StackPanel>
 </StackPanel>
 
     <Border x:Name="ExampleContainerBorder" Grid.Row="1" Background="{DynamicResource ControlExampleDisplayBrush}" CornerRadius="8" MaxHeight="600">
@@ -592,7 +596,7 @@
                     <!-- Disable horizontal scrolling so the repeater is constrained to the page width
                          and the FlowLayout can wrap items correctly. Keep vertical scrolling enabled. -->
                     <ui:ScrollViewerEx HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                        <ui:ItemsRepeater x:Name="IconsItemsView" Margin="10" HorizontalAlignment="Stretch">
+                        <ui:ItemsRepeater x:Name="IconsItemsView" Margin="5" HorizontalAlignment="Stretch">
                         <ui:ItemsRepeater.ItemTemplate>
                             <DataTemplate>
                                 <Button
@@ -610,7 +614,7 @@
                         </ui:ItemsRepeater.ItemTemplate>
 
                         <ui:ItemsRepeater.Layout>
-                            <ui:FlowLayout Orientation="Horizontal" MinColumnSpacing="8" MinRowSpacing="6" />
+                            <ui:FlowLayout Orientation="Horizontal"/>
                         </ui:ItemsRepeater.Layout>
                         </ui:ItemsRepeater>
                     </ui:ScrollViewerEx>
@@ -618,13 +622,13 @@
 
                 <Border x:Name="SidePanel" Grid.Column="1" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}" BorderThickness="{DynamicResource ControlExampleDisplayBorderThickness}" DataContext="{Binding}" CornerRadius="0,8,8,0" Visibility="Collapsed">
                     <ScrollViewer>
-                        <StackPanel Margin="16,16,8,16" >
-                            <Grid Margin="0,0,0,24" HorizontalAlignment="Stretch">
+                        <ikw:SimpleStackPanel Margin="16,8,8,16" Spacing="5">
+                            <Grid Margin="0,0,0,15" HorizontalAlignment="Stretch">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border Margin="0,0,8,0" Padding="8" HorizontalAlignment="Left">
+                                <Border Margin="-10,0,8,0" Padding="8" HorizontalAlignment="Left">
                                     <TextBlock FontFamily="{DynamicResource SymbolThemeFontFamily}" FontSize="48" Text="{Binding SelectedItem.Character, Mode=OneWay}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
                                 </Border>
                                 <Grid Grid.Column="1" HorizontalAlignment="Stretch" Visibility="Collapsed">
@@ -635,188 +639,200 @@
                                 </Grid>
                             </Grid>
 
-                            <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="Icon name" />
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <TextBox Text="{Binding SelectedItem.Name, Mode=OneWay}" FontFamily="Consolas" Margin="-10,0,0,0"
-                                                         FontSize="{DynamicResource ControlContentThemeFontSize}"
-                                                         IsReadOnly="True"
-                                                         BorderThickness="0"
-                                                         Background="Transparent"
-                                                         IsReadOnlyCaretVisible="False"
-                                                         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                                         TextAlignment="Left"
-                                                         VerticalAlignment="Center"
-                                                         VerticalContentAlignment="Center"
-                                                         HorizontalScrollBarVisibility="Hidden"
-                                                         TextWrapping="NoWrap"
-                                                         MinWidth="120" />
-                                <Button x:Name="CopyNameButton" Grid.Column="1" Margin="8,0,8,0" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding SelectedItem.Name, Mode=OneWay}">
-                                    <Grid>
-                                        <ui:FontIcon x:Name="FontIcon_CopyName_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
-                                            <FrameworkElement.RenderTransform>
-                                                <ScaleTransform x:Name="ScaleTransform_CopyName_Copy" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                            </FrameworkElement.RenderTransform>
-                                        </ui:FontIcon>
-                                        <ui:FontIcon x:Name="FontIcon_CopyName_Success" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5">
-                                            <FrameworkElement.RenderTransform>
-                                                <ScaleTransform x:Name="ScaleTransform_CopyName_Success" ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                            </FrameworkElement.RenderTransform>
-                                        </ui:FontIcon>
-                                    </Grid>
-                                </Button>
-                            </Grid>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="Icon name" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Text="{Binding SelectedItem.Name, Mode=OneWay}" FontFamily="Consolas" Margin="-10,-10,0,0"
+                                             FontSize="{DynamicResource ControlContentThemeFontSize}"
+                                             IsReadOnly="True"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             IsReadOnlyCaretVisible="False"
+                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                             TextAlignment="Left"
+                                             VerticalAlignment="Center"
+                                             VerticalContentAlignment="Center"
+                                             HorizontalScrollBarVisibility="Hidden"
+                                             TextWrapping="NoWrap"
+                                             MinWidth="120" />
+                                    <Button x:Name="CopyNameButton" Grid.Column="1" Margin="8,0,8,0" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding SelectedItem.Name, Mode=OneWay}">
+                                        <Grid>
+                                            <ui:FontIcon x:Name="FontIcon_CopyName_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
+                                                <FrameworkElement.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleTransform_CopyName_Copy" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                                                </FrameworkElement.RenderTransform>
+                                            </ui:FontIcon>
+                                            <ui:FontIcon x:Name="FontIcon_CopyName_Success" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5">
+                                                <FrameworkElement.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleTransform_CopyName_Success" ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                                                </FrameworkElement.RenderTransform>
+                                            </ui:FontIcon>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
 
-                            <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="Text glyph" />
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <TextBox Text="{Binding SelectedItem.TextGlyph, Mode=OneWay}" FontFamily="Consolas" Margin="-10,0,0,0"
-                                                         FontSize="{DynamicResource ControlContentThemeFontSize}"
-                                                         IsReadOnly="True"
-                                                         BorderThickness="0"
-                                                         Background="Transparent"
-                                                         IsReadOnlyCaretVisible="False"
-                                                         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                                         TextAlignment="Left"
-                                                         VerticalAlignment="Center"
-                                                         VerticalContentAlignment="Center"
-                                                         HorizontalScrollBarVisibility="Hidden"
-                                                         TextWrapping="NoWrap"
-                                                         MinWidth="120"/>
-                                <Button x:Name="CopyTextGlyphButton" Grid.Column="1" Margin="8,0,8,0" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding SelectedItem.TextGlyph, Mode=OneWay}">
-                                    <Grid>
-                                        <ui:FontIcon x:Name="FontIcon_CopyTextGlyph_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
-                                            <FrameworkElement.RenderTransform>
-                                                <ScaleTransform x:Name="ScaleTransform_CopyTextGlyph_Copy" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                            </FrameworkElement.RenderTransform>
-                                        </ui:FontIcon>
-                                        <ui:FontIcon x:Name="FontIcon_CopyTextGlyph_Success" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5">
-                                            <FrameworkElement.RenderTransform>
-                                                <ScaleTransform x:Name="ScaleTransform_CopyTextGlyph_Success" ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                            </FrameworkElement.RenderTransform>
-                                        </ui:FontIcon>
-                                    </Grid>
-                                </Button>
-                            </Grid>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="Text glyph" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Text="{Binding SelectedItem.TextGlyph, Mode=OneWay}" FontFamily="Consolas" Margin="-10,-10,0,0"
+                                             FontSize="{DynamicResource ControlContentThemeFontSize}"
+                                             IsReadOnly="True"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             IsReadOnlyCaretVisible="False"
+                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                             TextAlignment="Left"
+                                             VerticalAlignment="Center"
+                                             VerticalContentAlignment="Center"
+                                             HorizontalScrollBarVisibility="Hidden"
+                                             TextWrapping="NoWrap"
+                                             MinWidth="120"/>
+                                    <Button x:Name="CopyTextGlyphButton" Grid.Column="1" Margin="8,0,8,0" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding SelectedItem.TextGlyph, Mode=OneWay}">
+                                        <Grid>
+                                            <ui:FontIcon x:Name="FontIcon_CopyTextGlyph_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
+                                                <FrameworkElement.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleTransform_CopyTextGlyph_Copy" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                                                </FrameworkElement.RenderTransform>
+                                            </ui:FontIcon>
+                                            <ui:FontIcon x:Name="FontIcon_CopyTextGlyph_Success" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5">
+                                                <FrameworkElement.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleTransform_CopyTextGlyph_Success" ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                                                </FrameworkElement.RenderTransform>
+                                            </ui:FontIcon>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
 
-                            <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="Code glyph" />
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <TextBox Text="{Binding SelectedItem.CodeGlyph, Mode=OneWay}" FontFamily="Consolas" Margin="-10,0,0,0"
-                                                         FontSize="{DynamicResource ControlContentThemeFontSize}"
-                                                         IsReadOnly="True"
-                                                         BorderThickness="0"
-                                                         Background="Transparent"
-                                                         IsReadOnlyCaretVisible="False"
-                                                         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                                         TextAlignment="Left"
-                                                         VerticalAlignment="Center"
-                                                         VerticalContentAlignment="Center"
-                                                         HorizontalScrollBarVisibility="Hidden"
-                                                         TextWrapping="NoWrap"
-                                                         MinWidth="120"/>
-                                <Button x:Name="CopyCodeGlyphButton" Grid.Column="1" Margin="8,0,8,0" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding SelectedItem.CodeGlyph, Mode=OneWay}">
-                                    <Grid>
-                                        <ui:FontIcon x:Name="FontIcon_CopyCodeGlyph_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
-                                            <FrameworkElement.RenderTransform>
-                                                <ScaleTransform x:Name="ScaleTransform_CopyCodeGlyph_Copy" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                            </FrameworkElement.RenderTransform>
-                                        </ui:FontIcon>
-                                        <ui:FontIcon x:Name="FontIcon_CopyCodeGlyph_Success" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5">
-                                            <FrameworkElement.RenderTransform>
-                                                <ScaleTransform x:Name="ScaleTransform_CopyCodeGlyph_Success" ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                            </FrameworkElement.RenderTransform>
-                                        </ui:FontIcon>
-                                    </Grid>
-                                </Button>
-                            </Grid>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="Code glyph" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Text="{Binding SelectedItem.CodeGlyph, Mode=OneWay}" FontFamily="Consolas" Margin="-10,-10,0,0"
+                                             FontSize="{DynamicResource ControlContentThemeFontSize}"
+                                             IsReadOnly="True"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             IsReadOnlyCaretVisible="False"
+                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                             TextAlignment="Left"
+                                             VerticalAlignment="Center"
+                                             VerticalContentAlignment="Center"
+                                             HorizontalScrollBarVisibility="Hidden"
+                                             TextWrapping="NoWrap"
+                                             MinWidth="120"/>
+                                    <Button x:Name="CopyCodeGlyphButton" Grid.Column="1" Margin="8,0,8,0" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding SelectedItem.CodeGlyph, Mode=OneWay}">
+                                        <Grid>
+                                            <ui:FontIcon x:Name="FontIcon_CopyCodeGlyph_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
+                                                <FrameworkElement.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleTransform_CopyCodeGlyph_Copy" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                                                </FrameworkElement.RenderTransform>
+                                            </ui:FontIcon>
+                                            <ui:FontIcon x:Name="FontIcon_CopyCodeGlyph_Success" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5">
+                                                <FrameworkElement.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleTransform_CopyCodeGlyph_Success" ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                                                </FrameworkElement.RenderTransform>
+                                            </ui:FontIcon>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
 
-                            <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="XAML" />
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <TextBox x:Name="FontIconXamlBox" Text="{Binding FontIconXaml, Mode=OneWay}" FontFamily="Consolas" Margin="-10,0,0,0"
-                                         FontSize="12"
-                                         IsReadOnly="True"
-                                         AcceptsReturn="True"
-                                         AcceptsTab="True"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         IsReadOnlyCaretVisible="False"
-                                         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                         TextAlignment="Left"
-                                         VerticalAlignment="Center"
-                                         VerticalContentAlignment="Center"
-                                         HorizontalScrollBarVisibility="Auto"
-                                         VerticalScrollBarVisibility="Auto"
-                                         TextWrapping="Wrap"
-                                         MinWidth="120"
-                                         Padding="6"/>
-                                <Button x:Name="CopyXamlButton" Grid.Column="1" Margin="8,0,8,0" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding FontIconXaml, Mode=OneWay}">
-                                    <Grid>
-                                        <ui:FontIcon x:Name="FontIcon_CopyXaml_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
-                                            <FrameworkElement.RenderTransform>
-                                                <ScaleTransform x:Name="ScaleTransform_CopyXaml_Copy" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                            </FrameworkElement.RenderTransform>
-                                        </ui:FontIcon>
-                                        <ui:FontIcon x:Name="FontIcon_CopyXaml_Success" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5">
-                                            <FrameworkElement.RenderTransform>
-                                                <ScaleTransform x:Name="ScaleTransform_CopyXaml_Success" ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                            </FrameworkElement.RenderTransform>
-                                        </ui:FontIcon>
-                                    </Grid>
-                                </Button>
-                            </Grid>
+                            <!-- XAML -->
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="XAML" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox x:Name="FontIconXamlBox" Text="{Binding FontIconXaml, Mode=OneWay}" FontFamily="Consolas" Margin="-6,-5,0,0"
+                                             FontSize="{DynamicResource ControlContentThemeFontSize}"
+                                             IsReadOnly="True"
+                                             AcceptsReturn="True"
+                                             AcceptsTab="True"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             IsReadOnlyCaretVisible="False"
+                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                             TextAlignment="Left"
+                                             VerticalAlignment="Center"
+                                             VerticalContentAlignment="Center"
+                                             HorizontalScrollBarVisibility="Auto"
+                                             VerticalScrollBarVisibility="Auto"
+                                             TextWrapping="Wrap"
+                                             MinWidth="120"
+                                             Padding="6"/>
+                                    <Button x:Name="CopyXamlButton" Grid.Column="1" Margin="8,0,8,0" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding FontIconXaml, Mode=OneWay}">
+                                        <Grid>
+                                            <ui:FontIcon x:Name="FontIcon_CopyXaml_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
+                                                <FrameworkElement.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleTransform_CopyXaml_Copy" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                                                </FrameworkElement.RenderTransform>
+                                            </ui:FontIcon>
+                                            <ui:FontIcon x:Name="FontIcon_CopyXaml_Success" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5">
+                                                <FrameworkElement.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleTransform_CopyXaml_Success" ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                                                </FrameworkElement.RenderTransform>
+                                            </ui:FontIcon>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
 
-                            <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="C#" />
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <TextBox x:Name="FontIconCSharpBox" Text="{Binding FontIconCSharp, Mode=OneWay}" FontFamily="Consolas" Margin="-10,0,0,0"
-                                         FontSize="12"
-                                         IsReadOnly="True"
-                                         AcceptsReturn="True"
-                                         AcceptsTab="True"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         IsReadOnlyCaretVisible="False"
-                                         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                         TextAlignment="Left"
-                                         VerticalAlignment="Center"
-                                         VerticalContentAlignment="Center"
-                                         HorizontalScrollBarVisibility="Auto"
-                                         VerticalScrollBarVisibility="Auto"
-                                         TextWrapping="Wrap"
-                                         MinWidth="120"
-                                         Padding="6"/>
-                                <Button x:Name="CopyCSharpButton" Grid.Column="1" Margin="8,0,8,0" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding FontIconCSharp, Mode=OneWay}">
-                                    <Grid>
-                                        <ui:FontIcon x:Name="FontIcon_CopyCSharp_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
-                                            <FrameworkElement.RenderTransform>
-                                                <ScaleTransform x:Name="ScaleTransform_CopyCSharp_Copy" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                            </FrameworkElement.RenderTransform>
-                                        </ui:FontIcon>
-                                        <ui:FontIcon x:Name="FontIcon_CopyCSharp_Success" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5">
-                                            <FrameworkElement.RenderTransform>
-                                                <ScaleTransform x:Name="ScaleTransform_CopyCSharp_Success" ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                            </FrameworkElement.RenderTransform>
-                                        </ui:FontIcon>
-                                    </Grid>
-                                </Button>
-                            </Grid>
+                            <!-- C# -->
+                            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                                <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="C#" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox x:Name="FontIconCSharpBox" Text="{Binding FontIconCSharp, Mode=OneWay}" FontFamily="Consolas" Margin="-6,-5,0,0"
+                                             FontSize="{DynamicResource ControlContentThemeFontSize}"
+                                             IsReadOnly="True"
+                                             AcceptsReturn="True"
+                                             AcceptsTab="True"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             IsReadOnlyCaretVisible="False"
+                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                             TextAlignment="Left"
+                                             VerticalAlignment="Center"
+                                             VerticalContentAlignment="Center"
+                                             HorizontalScrollBarVisibility="Auto"
+                                             VerticalScrollBarVisibility="Auto"
+                                             TextWrapping="Wrap"
+                                             MinWidth="120"
+                                             Padding="6"/>
+                                    <Button x:Name="CopyCSharpButton" Grid.Column="1" Margin="8,0,8,0" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding FontIconCSharp, Mode=OneWay}">
+                                        <Grid>
+                                            <ui:FontIcon x:Name="FontIcon_CopyCSharp_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
+                                                <FrameworkElement.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleTransform_CopyCSharp_Copy" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                                                </FrameworkElement.RenderTransform>
+                                            </ui:FontIcon>
+                                            <ui:FontIcon x:Name="FontIcon_CopyCSharp_Success" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5">
+                                                <FrameworkElement.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleTransform_CopyCSharp_Success" ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                                                </FrameworkElement.RenderTransform>
+                                            </ui:FontIcon>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
 
                             <StackPanel x:Name="SymbolPanel">
                                 <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="SymbolIcon XAML" />
@@ -825,19 +841,19 @@
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <TextBox x:Name="SymbolIconXamlBox" Text="{Binding SymbolIconXaml, Mode=OneWay}" FontFamily="Consolas" Margin="-10,0,0,0"
-                                                         FontSize="{DynamicResource ControlContentThemeFontSize}"
-                                                         IsReadOnly="True"
-                                                         BorderThickness="0"
-                                                         Background="Transparent"
-                                                         IsReadOnlyCaretVisible="False"
-                                                         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                                         TextAlignment="Left"
-                                                         VerticalAlignment="Center"
-                                                         VerticalContentAlignment="Center"
-                                                         HorizontalScrollBarVisibility="Hidden"
-                                                         TextWrapping="NoWrap"
-                                                         MinWidth="120"/>
+                                    <TextBox x:Name="SymbolIconXamlBox" Text="{Binding SymbolIconXaml, Mode=OneWay}" FontFamily="Consolas" Margin="-6,-5,0,0"
+                                             FontSize="{DynamicResource ControlContentThemeFontSize}"
+                                             IsReadOnly="True"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             IsReadOnlyCaretVisible="False"
+                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                             TextAlignment="Left"
+                                             VerticalAlignment="Center"
+                                             VerticalContentAlignment="Center"
+                                             HorizontalScrollBarVisibility="Hidden"
+                                             TextWrapping="NoWrap"
+                                             MinWidth="120"/>
                                     <Button x:Name="CopySymbolXamlButton" Grid.Column="1" Margin="8,0,8,0" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding SymbolIconXaml, Mode=OneWay}">
                                         <Grid>
                                             <ui:FontIcon x:Name="FontIcon_CopySymbolXaml_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
@@ -860,19 +876,19 @@
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <TextBox x:Name="SymbolIconCSharpBox" Text="{Binding SymbolIconCSharp, Mode=OneWay}" FontFamily="Consolas" Margin="-10,0,0,0"
-                                                         FontSize="{DynamicResource ControlContentThemeFontSize}"
-                                                         IsReadOnly="True"
-                                                         BorderThickness="0"
-                                                         Background="Transparent"
-                                                         IsReadOnlyCaretVisible="False"
-                                                         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                                         TextAlignment="Left"
-                                                         VerticalAlignment="Center"
-                                                         VerticalContentAlignment="Center"
-                                                         HorizontalScrollBarVisibility="Hidden"
-                                                         TextWrapping="NoWrap"
-                                                         MinWidth="120"/>
+                                    <TextBox x:Name="SymbolIconCSharpBox" Text="{Binding SymbolIconCSharp, Mode=OneWay}" FontFamily="Consolas" Margin="-6,-5,0,0"
+                                             FontSize="{DynamicResource ControlContentThemeFontSize}"
+                                             IsReadOnly="True"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             IsReadOnlyCaretVisible="False"
+                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                             TextAlignment="Left"
+                                             VerticalAlignment="Center"
+                                             VerticalContentAlignment="Center"
+                                             HorizontalScrollBarVisibility="Hidden"
+                                             TextWrapping="NoWrap"
+                                             MinWidth="120"/>
                                     <Button x:Name="CopySymbolCSharpButton" Grid.Column="1" Margin="8,0,8,0" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding SymbolIconCSharp, Mode=OneWay}">
                                         <Grid>
                                             <ui:FontIcon x:Name="FontIcon_CopySymbolCSharp_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
@@ -893,30 +909,27 @@
                             <TextBlock x:Name="TagsLabel" Margin="0,4,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="Tags" />
                             <ui:ItemsRepeater x:Name="TagsItemsView" Margin="0,8,0,4" ItemsSource="{Binding SelectedItem.Tags, Mode=OneWay}">
                                 <ui:ItemsRepeater.Layout>
-                                        <ui:FlowLayout Orientation="Horizontal" MinColumnSpacing="8" MinRowSpacing="6"/>
-                                    </ui:ItemsRepeater.Layout>
+                                    <ui:FlowLayout Orientation="Horizontal" MinColumnSpacing="8" MinRowSpacing="6"/>
+                                </ui:ItemsRepeater.Layout>
                                 <ui:ItemsRepeater.ItemTemplate>
                                     <DataTemplate>
-                                        <!-- Use a Button with a local ControlTemplate that only affects
-                                             opacity so the chip remains stable in size while preserving
-                                             Button semantics (keyboard/automation). -->
                                         <Button Style="{StaticResource TagChipButtonStyle}"
                                                 Click="TagButton_Click"
                                                 MinHeight="24"
                                                 MinWidth="44"
                                                 HorizontalAlignment="Left"
                                                 ToolTipService.ToolTip="{Binding}">
-                                                <TextBlock VerticalAlignment="Center"
-                                                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                                        Text="{Binding}"
-                                                        TextTrimming="CharacterEllipsis"
-                                                        TextWrapping="NoWrap" />
+                                            <TextBlock VerticalAlignment="Center"
+                                                       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                                       Text="{Binding}"
+                                                       TextTrimming="CharacterEllipsis"
+                                                       TextWrapping="NoWrap" />
                                         </Button>
                                     </DataTemplate>
                                 </ui:ItemsRepeater.ItemTemplate>
                             </ui:ItemsRepeater>
-                            <TextBlock x:Name="NoTagsTextBlock" Grid.Row="1" Margin="0,4,0,0" Text="No tags available." Visibility="Collapsed" />
-                        </StackPanel>
+                            <TextBlock x:Name="NoTagsTextBlock" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Grid.Row="1" Margin="0,-5,0,0" Text="No tags available." Visibility="Collapsed" />
+                        </ikw:SimpleStackPanel>
                     </ScrollViewer>
                 </Border>
             </Grid>
