@@ -29,6 +29,8 @@ internal class IconsDataSource
 
     public async Task<List<IconData>> LoadIcons()
     {
+    // Yield once to keep this method truly asynchronous without changing logic.
+    await Task.Yield();
         // If already loaded, return current list
         lock (_lock)
         {
@@ -60,8 +62,10 @@ internal class IconsDataSource
                             var value = f.GetValue(null);
                             var glyphProp = value?.GetType().GetProperty("Glyph");
                             var glyph = glyphProp?.GetValue(value) as string;
+                            var familyProp = value?.GetType().GetProperty("FontFamily");
+                            var family = familyProp?.GetValue(value) as System.Windows.Media.FontFamily;
                             var name = f.Name;
-                            var data = new IconData { Name = name, Code = ToCode(glyph), Set = setName };
+                            var data = new IconData { Name = name, Code = ToCode(glyph), Set = setName, FontFamily = family };
                             discovered.Add(data);
                         }
                         catch { }
@@ -78,8 +82,10 @@ internal class IconsDataSource
                             var value = p.GetValue(null);
                             var glyphProp = value?.GetType().GetProperty("Glyph");
                             var glyph = glyphProp?.GetValue(value) as string;
+                            var familyProp = value?.GetType().GetProperty("FontFamily");
+                            var family = familyProp?.GetValue(value) as System.Windows.Media.FontFamily;
                             var name = p.Name;
-                            var data = new IconData { Name = name, Code = ToCode(glyph), Set = setName };
+                            var data = new IconData { Name = name, Code = ToCode(glyph), Set = setName, FontFamily = family };
                             discovered.Add(data);
                         }
                         catch { }
@@ -147,15 +153,6 @@ internal class IconsDataSource
 
     private void EnsureLegacySets()
     {
-        // Ensure some commonly expected legacy set names appear in AvailableSets
-        void addIfMissing(string name)
-        {
-            if (!AvailableSets.Any(s => string.Equals(s, name, StringComparison.OrdinalIgnoreCase)))
-            {
-                AvailableSets.Add(name);
-            }
-        }
-
-        return;
+    // No-op: legacy set aliases are handled in SetActiveSet().
     }
 }
