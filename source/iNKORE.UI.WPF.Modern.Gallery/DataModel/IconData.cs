@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Windows.Media;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
 {
@@ -14,6 +15,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
         public string Set { get; set; }
         public string[] Tags { get; set; } = Array.Empty<string>();
         public bool IsSegoeFluentOnly { get; set; }
+        // The actual font to use for rendering this glyph (important for Fluent System Icons)
+        public FontFamily FontFamily { get; set; }
 
         public string Character
         {
