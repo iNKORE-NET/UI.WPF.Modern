@@ -25,9 +25,6 @@
             </TextBlock>
 
             <StackPanel Margin="0">
-                <StackPanel.Resources>
-                    <!-- Use theme key via DynamicResource where possible. Kept no local soft brush; use ThemeKeys if available. -->
-                </StackPanel.Resources>
                 <local:ControlExample x:Name="Example1" HeaderText="Type ramp">
                     <local:ControlExample.Example>
                         <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
