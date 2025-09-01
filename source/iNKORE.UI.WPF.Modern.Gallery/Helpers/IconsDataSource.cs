@@ -3,9 +3,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 using iNKORE.UI.WPF.Modern.Gallery.DataModel;
 
@@ -107,56 +105,8 @@ internal class IconsDataSource
         }
         catch
         {
-            // reflection failed; fall back to JSON below
+            // reflection failed; no fallback
         }
-
-        // Load from embedded resource as a fallback
-        try
-        {
-            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            var resourceName = "iNKORE.UI.WPF.Modern.Gallery.DataModel.IconsData.json";
-
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            {
-                if (stream != null)
-                {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        var jsonText = await reader.ReadToEndAsync();
-                        lock (_lock)
-                        {
-                            if (icons.Count == 0)
-                            {
-                                icons = JsonSerializer.Deserialize<List<IconData>>(jsonText);
-                            }
-                            EnsureLegacySets();
-                            return icons;
-                        }
-                    }
-                }
-            }
-        }
-        catch { }
-
-        // Fallback: try to load from file
-        try
-        {
-            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DataModel", "IconsData.json");
-            if (File.Exists(filePath))
-            {
-                var jsonText = await File.ReadAllTextAsync(filePath);
-                lock (_lock)
-                {
-                    if (icons.Count == 0)
-                    {
-                        icons = JsonSerializer.Deserialize<List<IconData>>(jsonText);
-                    }
-                    EnsureLegacySets();
-                    return icons;
-                }
-            }
-        }
-        catch { }
 
         return icons;
     }
@@ -206,35 +156,6 @@ internal class IconsDataSource
             }
         }
 
-        // Ensure primary sets exist
-        addIfMissing("SegoeFluentIcons");
-        addIfMissing("FluentSystemIcons");
-        // Legacy/OS font aliases
-        addIfMissing("SegoeMDL2Assets");
-        addIfMissing("SegoeIcons");
-
-        // Enforce requested ordering at the front of the list so the UI shows them in this order
-        var preferredOrder = new[] { "SegoeFluentIcons", "FluentSystemIcons", "SegoeMDL2Assets", "SegoeIcons" };
-        var ordered = new List<string>();
-        // Add preferred in requested order if present
-        foreach (var p in preferredOrder)
-        {
-            var match = AvailableSets.FirstOrDefault(s => string.Equals(s, p, StringComparison.OrdinalIgnoreCase));
-            if (match != null)
-            {
-                ordered.Add(match);
-            }
-        }
-        // Append any remaining sets not in the preferred list, preserving original discovery order
-        foreach (var s in AvailableSets)
-        {
-            if (!ordered.Any(o => string.Equals(o, s, StringComparison.OrdinalIgnoreCase)))
-            {
-                ordered.Add(s);
-            }
-        }
-
-        AvailableSets.Clear();
-        foreach (var s in ordered) AvailableSets.Add(s);
+        return;
     }
 }
