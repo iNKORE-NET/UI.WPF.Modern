@@ -219,11 +219,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
             e.Handled = true;
         }
 
-        private void UpdateExampleCode()
-        {
-            Example1.Xaml = Example1Xaml;
-        }
-
         // Button click handlers for typography info buttons
         private void ShowTypographyButtonClick1(object sender, RoutedEventArgs e)
         {
@@ -254,6 +249,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
         {
             // Display button clicked
             System.Windows.MessageBox.Show("Display: Display, SemiBold - 68/92 epx\nStyle: DisplayTextBlockStyle", "Typography Info", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+        }
+
+        private void UpdateExampleCode()
+        {
+            Example1.Xaml = Example1Xaml;
         }
 
         string Example1Xaml => @"
