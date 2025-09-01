@@ -433,336 +433,344 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             // Stop update anything because of PropertyChange during OnApplyTemplate. Update them all together at the end of this function
             m_appliedTemplate = false;
+            m_fromOnApplyTemplate = true;
 
-            UnhookEventsAndClearFields();
-
-            IControlProtected controlProtected = this;
-
-            // Set up the pane toggle button click handler
-            if (GetTemplateChild(c_togglePaneButtonName) is Button paneToggleButton)
+            try
             {
-                m_paneToggleButton = paneToggleButton;
-                paneToggleButton.Click += OnPaneToggleButtonClick;
+                UnhookEventsAndClearFields();
 
-                SetPaneToggleButtonAutomationName();
+                IControlProtected controlProtected = this;
 
-                // TODO: WPF - KeyboardAccelerator
-                /*
-                if (SharedHelpers::IsRS3OrHigher())
+                // Set up the pane toggle button click handler
+                if (GetTemplateChild(c_togglePaneButtonName) is Button paneToggleButton)
                 {
-                    winrt::KeyboardAccelerator keyboardAccelerator;
-                    keyboardAccelerator.Key(winrt::VirtualKey::Back);
-                    keyboardAccelerator.Modifiers(winrt::VirtualKeyModifiers::Windows);
-                    paneToggleButton.KeyboardAccelerators().Append(keyboardAccelerator);
-                }
-                */
+                    m_paneToggleButton = paneToggleButton;
+                    paneToggleButton.Click += OnPaneToggleButtonClick;
 
-                WindowChrome.SetIsHitTestVisibleInChrome(paneToggleButton, true);
-            }
+                    SetPaneToggleButtonAutomationName();
 
-            m_leftNavPaneHeaderContentBorder = GetTemplateChild(c_leftNavPaneHeaderContentBorder) as ContentControl;
-            m_leftNavPaneCustomContentBorder = GetTemplateChild(c_leftNavPaneCustomContentBorder) as ContentControl;
-            m_leftNavFooterContentBorder = GetTemplateChild(c_leftNavFooterContentBorder) as ContentControl;
-            m_paneHeaderOnTopPane = GetTemplateChild(c_paneHeaderOnTopPane) as ContentControl;
-            m_paneTitleOnTopPane = GetTemplateChild(c_paneTitleOnTopPane) as ContentControl;
-            m_paneCustomContentOnTopPane = GetTemplateChild(c_paneCustomContentOnTopPane) as ContentControl;
-            m_paneFooterOnTopPane = GetTemplateChild(c_paneFooterOnTopPane) as ContentControl;
-
-            // Get a pointer to the root SplitView
-            if (GetTemplateChild(c_rootSplitViewName) is SplitView splitView)
-            {
-                m_rootSplitView = splitView;
-                splitView.IsPaneOpenChanged += OnSplitViewClosedCompactChanged;
-                splitView.DisplayModeChanged += OnSplitViewClosedCompactChanged;
-
-                if (SharedHelpers.IsRS3OrHigher()) // These events are new to RS3/v5 API
-                {
-                    splitView.PaneClosed += OnSplitViewPaneClosed;
-                    splitView.PaneClosing += OnSplitViewPaneClosing;
-                    splitView.PaneOpened += OnSplitViewPaneOpened;
-                    splitView.PaneOpening += OnSplitViewPaneOpening;
-                }
-
-                UpdateIsClosedCompact();
-            }
-
-            m_topNavGrid = GetTemplateChild(c_topNavGrid) as Grid;
-
-            // Change code to NOT do this if we're in top nav mode, to prevent it from being realized:
-            if (GetTemplateChild(c_menuItemsHost) is ItemsRepeater leftNavRepeater)
-            {
-                m_leftNavRepeater = leftNavRepeater;
-
-                // API is currently in preview, so setting this via code.
-                // Disabling virtualization for now because of https://github.com/microsoft/microsoft-ui-xaml/issues/2095
-                if (leftNavRepeater.Layout is StackLayout stackLayout)
-                {
-                    var stackLayoutImpl = stackLayout;
-                    stackLayoutImpl.DisableVirtualization = true;
-                }
-
-                leftNavRepeater.ElementPrepared += OnRepeaterElementPrepared;
-                leftNavRepeater.ElementClearing += OnRepeaterElementClearing;
-
-                leftNavRepeater.IsVisibleChanged += OnRepeaterIsVisibleChanged;
-
-                m_leftNavRepeaterGettingFocusHelper = new GettingFocusHelper(leftNavRepeater);
-                m_leftNavRepeaterGettingFocusHelper.GettingFocus += OnRepeaterGettingFocus;
-
-                leftNavRepeater.ItemTemplate = m_navigationViewItemsFactory;
-            }
-
-            // Change code to NOT do this if we're in left nav mode, to prevent it from being realized:
-            if (GetTemplateChild(c_topNavMenuItemsHost) is ItemsRepeater topNavRepeater)
-            {
-                m_topNavRepeater = topNavRepeater;
-
-                // API is currently in preview, so setting this via code
-                if (topNavRepeater.Layout is StackLayout stackLayout)
-                {
-                    var stackLayoutImpl = stackLayout;
-                    stackLayoutImpl.DisableVirtualization = true;
-                }
-
-                topNavRepeater.ElementPrepared += OnRepeaterElementPrepared;
-                topNavRepeater.ElementClearing += OnRepeaterElementClearing;
-
-                topNavRepeater.IsVisibleChanged += OnRepeaterIsVisibleChanged;
-
-                m_topNavRepeaterGettingFocusHelper = new GettingFocusHelper(topNavRepeater);
-                m_topNavRepeaterGettingFocusHelper.GettingFocus += OnRepeaterGettingFocus;
-
-                topNavRepeater.ItemTemplate = m_navigationViewItemsFactory;
-            }
-
-            // Change code to NOT do this if we're in left nav mode, to prevent it from being realized:
-            if (GetTemplateChild(c_topNavMenuItemsOverflowHost) is ItemsRepeater topNavListOverflowRepeater)
-            {
-                m_topNavRepeaterOverflowView = topNavListOverflowRepeater;
-
-                // API is currently in preview, so setting this via code.
-                // Disabling virtualization for now because of https://github.com/microsoft/microsoft-ui-xaml/issues/2095
-                if (topNavListOverflowRepeater.Layout is StackLayout stackLayout)
-                {
-                    var stackLayoutImpl = stackLayout;
-                    stackLayoutImpl.DisableVirtualization = true;
-                }
-
-                topNavListOverflowRepeater.ElementPrepared += OnRepeaterElementPrepared;
-                topNavListOverflowRepeater.ElementClearing += OnRepeaterElementClearing;
-
-                topNavListOverflowRepeater.ItemTemplate = m_navigationViewItemsFactory;
-            }
-
-            if (GetTemplateChild(c_topNavOverflowButton) is Button topNavOverflowButton)
-            {
-                m_topNavOverflowButton = topNavOverflowButton;
-                AutomationProperties.SetName(topNavOverflowButton, ResourceAccessor.GetLocalizedStringResource(SR_NavigationOverflowButtonName));
-                topNavOverflowButton.Content = ResourceAccessor.GetLocalizedStringResource(SR_NavigationOverflowButtonText);
-                // TODO: WPF - Header Animation
-                /*
-                auto visual = winrt::ElementCompositionPreview::GetElementVisual(topNavOverflowButton);
-                CreateAndAttachHeaderAnimation(visual);
-                */
-
-                var toolTip = ToolTipService.GetToolTip(topNavOverflowButton);
-                if (toolTip is null)
-                {
-                    var tooltip = new ToolTip();
-                    tooltip.Content = ResourceAccessor.GetLocalizedStringResource(SR_NavigationOverflowButtonToolTip);
-                    ToolTipService.SetToolTip(topNavOverflowButton, tooltip);
-                }
-
-                if (FlyoutService.GetFlyout(topNavOverflowButton) is { } flyoutBase)
-                {
+                    // TODO: WPF - KeyboardAccelerator
                     /*
-                    if (winrt::IFlyoutBase6 topNavOverflowButtonAsFlyoutBase6 = flyoutBase)
+                    if (SharedHelpers::IsRS3OrHigher())
                     {
-                        topNavOverflowButtonAsFlyoutBase6.ShouldConstrainToRootBounds(false);
+                        winrt::KeyboardAccelerator keyboardAccelerator;
+                        keyboardAccelerator.Key(winrt::VirtualKey::Back);
+                        keyboardAccelerator.Modifiers(winrt::VirtualKeyModifiers::Windows);
+                        paneToggleButton.KeyboardAccelerators().Append(keyboardAccelerator);
                     }
                     */
-                    flyoutBase.Closing += OnFlyoutClosing;
-                    flyoutBase.Offset = 0;
+
+                    WindowChrome.SetIsHitTestVisibleInChrome(paneToggleButton, true);
                 }
-            }
 
-            // Change code to NOT do this if we're in top nav mode, to prevent it from being realized:
-            if (GetTemplateChildT<ItemsRepeater>(c_footerMenuItemsHost, controlProtected) is { } leftFooterMenuNavRepeater)
-            {
-                m_leftNavFooterMenuRepeater = leftFooterMenuNavRepeater;
+                m_leftNavPaneHeaderContentBorder = GetTemplateChild(c_leftNavPaneHeaderContentBorder) as ContentControl;
+                m_leftNavPaneCustomContentBorder = GetTemplateChild(c_leftNavPaneCustomContentBorder) as ContentControl;
+                m_leftNavFooterContentBorder = GetTemplateChild(c_leftNavFooterContentBorder) as ContentControl;
+                m_paneHeaderOnTopPane = GetTemplateChild(c_paneHeaderOnTopPane) as ContentControl;
+                m_paneTitleOnTopPane = GetTemplateChild(c_paneTitleOnTopPane) as ContentControl;
+                m_paneCustomContentOnTopPane = GetTemplateChild(c_paneCustomContentOnTopPane) as ContentControl;
+                m_paneFooterOnTopPane = GetTemplateChild(c_paneFooterOnTopPane) as ContentControl;
 
-                // API is currently in preview, so setting this via code.
-                // Disabling virtualization for now because of https://github.com/microsoft/microsoft-ui-xaml/issues/2095
-                if (leftFooterMenuNavRepeater.Layout is StackLayout stackLayout)
+                // Get a pointer to the root SplitView
+                if (GetTemplateChild(c_rootSplitViewName) is SplitView splitView)
                 {
-                    var stackLayoutImpl = stackLayout;
-                    stackLayoutImpl.DisableVirtualization = true;
+                    m_rootSplitView = splitView;
+                    splitView.IsPaneOpenChanged += OnSplitViewClosedCompactChanged;
+                    splitView.DisplayModeChanged += OnSplitViewClosedCompactChanged;
+
+                    if (SharedHelpers.IsRS3OrHigher()) // These events are new to RS3/v5 API
+                    {
+                        splitView.PaneClosed += OnSplitViewPaneClosed;
+                        splitView.PaneClosing += OnSplitViewPaneClosing;
+                        splitView.PaneOpened += OnSplitViewPaneOpened;
+                        splitView.PaneOpening += OnSplitViewPaneOpening;
+                    }
+
+                    UpdateIsClosedCompact();
                 }
 
-                leftFooterMenuNavRepeater.ElementPrepared += OnRepeaterElementPrepared;
-                leftFooterMenuNavRepeater.ElementClearing += OnRepeaterElementClearing;
+                m_topNavGrid = GetTemplateChild(c_topNavGrid) as Grid;
 
-                leftFooterMenuNavRepeater.IsVisibleChanged += OnRepeaterIsVisibleChanged;
-
-                m_leftNavFooterMenuRepeaterGettingFocusHelper = new GettingFocusHelper(leftFooterMenuNavRepeater);
-                m_leftNavFooterMenuRepeaterGettingFocusHelper.GettingFocus += OnRepeaterGettingFocus;
-
-                leftFooterMenuNavRepeater.ItemTemplate = m_navigationViewItemsFactory;
-            }
-
-            // Change code to NOT do this if we're in left nav mode, to prevent it from being realized:
-            if (GetTemplateChildT<ItemsRepeater>(c_topNavFooterMenuItemsHost, controlProtected) is { } topFooterMenuNavRepeater)
-            {
-                m_topNavFooterMenuRepeater = topFooterMenuNavRepeater;
-
-                // API is currently in preview, so setting this via code.
-                // Disabling virtualization for now because of https://github.com/microsoft/microsoft-ui-xaml/issues/2095
-                if (topFooterMenuNavRepeater.Layout is StackLayout stackLayout)
+                // Change code to NOT do this if we're in top nav mode, to prevent it from being realized:
+                if (GetTemplateChild(c_menuItemsHost) is ItemsRepeater leftNavRepeater)
                 {
-                    var stackLayoutImpl = stackLayout;
-                    stackLayoutImpl.DisableVirtualization = true;
+                    m_leftNavRepeater = leftNavRepeater;
+
+                    // API is currently in preview, so setting this via code.
+                    // Disabling virtualization for now because of https://github.com/microsoft/microsoft-ui-xaml/issues/2095
+                    if (leftNavRepeater.Layout is StackLayout stackLayout)
+                    {
+                        var stackLayoutImpl = stackLayout;
+                        stackLayoutImpl.DisableVirtualization = true;
+                    }
+
+                    leftNavRepeater.ElementPrepared += OnRepeaterElementPrepared;
+                    leftNavRepeater.ElementClearing += OnRepeaterElementClearing;
+
+                    leftNavRepeater.IsVisibleChanged += OnRepeaterIsVisibleChanged;
+
+                    m_leftNavRepeaterGettingFocusHelper = new GettingFocusHelper(leftNavRepeater);
+                    m_leftNavRepeaterGettingFocusHelper.GettingFocus += OnRepeaterGettingFocus;
+
+                    leftNavRepeater.ItemTemplate = m_navigationViewItemsFactory;
                 }
 
-                topFooterMenuNavRepeater.ElementPrepared += OnRepeaterElementPrepared;
-                topFooterMenuNavRepeater.ElementClearing += OnRepeaterElementClearing;
-
-                topFooterMenuNavRepeater.IsVisibleChanged += OnRepeaterIsVisibleChanged;
-
-                m_topNavFooterMenuRepeaterGettingFocusHelper = new GettingFocusHelper(topFooterMenuNavRepeater);
-                m_topNavFooterMenuRepeaterGettingFocusHelper.GettingFocus += OnRepeaterGettingFocus;
-
-                topFooterMenuNavRepeater.ItemTemplate = m_navigationViewItemsFactory;
-            }
-
-            m_topNavContentOverlayAreaGrid = GetTemplateChild(c_topNavContentOverlayAreaGrid) as Border;
-            m_leftNavPaneAutoSuggestBoxPresenter = GetTemplateChild(c_leftNavPaneAutoSuggestBoxPresenter) as ContentControl;
-            m_topNavPaneAutoSuggestBoxPresenter = GetTemplateChild(c_topNavPaneAutoSuggestBoxPresenter) as ContentControl;
-
-            // Get pointer to the pane content area, for use in the selection indicator animation
-            m_paneContentGrid = GetTemplateChild(c_paneContentGridName) as UIElement;
-
-            m_contentLeftPadding = GetTemplateChild(c_contentLeftPadding) as FrameworkElement;
-
-            m_paneHeaderCloseButtonColumn = GetTemplateChild(c_paneHeaderCloseButtonColumn) as ColumnDefinition;
-            m_paneHeaderToggleButtonColumn = GetTemplateChild(c_paneHeaderToggleButtonColumn) as ColumnDefinition;
-            m_paneHeaderContentBorderRow = GetTemplateChild(c_paneHeaderContentBorderRow) as RowDefinition;
-            m_paneTitleFrameworkElement = GetTemplateChild(c_paneTitleFrameworkElement) as FrameworkElement;
-            m_paneTitlePresenter = GetTemplateChild(c_paneTitlePresenter) as ContentControl;
-
-            if (GetTemplateChild(c_paneTitleHolderFrameworkElement) is FrameworkElement paneTitleHolderFrameworkElement)
-            {
-                m_paneTitleHolderFrameworkElement = paneTitleHolderFrameworkElement;
-                paneTitleHolderFrameworkElement.SizeChanged += OnPaneTitleHolderSizeChanged;
-            }
-
-            // Set automation name on search button
-            if (GetTemplateChild(c_searchButtonName) is Button button)
-            {
-                m_paneSearchButton = button;
-                button.Click += OnPaneSearchButtonClick;
-
-                var searchButtonName = ResourceAccessor.GetLocalizedStringResource(SR_NavigationViewSearchButtonName);
-                AutomationProperties.SetName(button, searchButtonName);
-                var toolTip = new ToolTip();
-                toolTip.Content = searchButtonName;
-                ToolTipService.SetToolTip(button, toolTip);
-            }
-
-            if (GetTemplateChild(c_navViewBackButton) is Button backButton)
-            {
-                m_backButton = backButton;
-                backButton.Click += OnBackButtonClicked;
-
-                string navigationName = ResourceAccessor.GetLocalizedStringResource(SR_NavigationBackButtonName);
-                AutomationProperties.SetName(backButton, navigationName);
-
-                WindowChrome.SetIsHitTestVisibleInChrome(backButton, true);
-            }
-
-            // Register for changes in title bar layout
-            if (CoreApplicationViewTitleBar.GetTitleBar(this) is { } coreTitleBar)
-            {
-                m_coreTitleBar = coreTitleBar;
-                coreTitleBar.LayoutMetricsChanged += OnTitleBarMetricsChanged;
-                coreTitleBar.IsVisibleChanged += OnTitleBarIsVisibleChanged;
-
-                if (ShouldPreserveNavigationViewRS4Behavior())
+                // Change code to NOT do this if we're in left nav mode, to prevent it from being realized:
+                if (GetTemplateChild(c_topNavMenuItemsHost) is ItemsRepeater topNavRepeater)
                 {
-                    m_togglePaneTopPadding = GetTemplateChild(c_togglePaneTopPadding) as FrameworkElement;
-                    m_contentPaneTopPadding = GetTemplateChild(c_contentPaneTopPadding) as FrameworkElement;
+                    m_topNavRepeater = topNavRepeater;
+
+                    // API is currently in preview, so setting this via code
+                    if (topNavRepeater.Layout is StackLayout stackLayout)
+                    {
+                        var stackLayoutImpl = stackLayout;
+                        stackLayoutImpl.DisableVirtualization = true;
+                    }
+
+                    topNavRepeater.ElementPrepared += OnRepeaterElementPrepared;
+                    topNavRepeater.ElementClearing += OnRepeaterElementClearing;
+
+                    topNavRepeater.IsVisibleChanged += OnRepeaterIsVisibleChanged;
+
+                    m_topNavRepeaterGettingFocusHelper = new GettingFocusHelper(topNavRepeater);
+                    m_topNavRepeaterGettingFocusHelper.GettingFocus += OnRepeaterGettingFocus;
+
+                    topNavRepeater.ItemTemplate = m_navigationViewItemsFactory;
                 }
-            }
 
-            if (GetTemplateChild(c_navViewBackButtonToolTip) is ToolTip backButtonToolTip)
-            {
-                string navigationBackButtonToolTip = ResourceAccessor.GetLocalizedStringResource(SR_NavigationBackButtonToolTip);
-                backButtonToolTip.Content = navigationBackButtonToolTip;
-            }
-
-            if (GetTemplateChild(c_navViewCloseButton) is Button closeButton)
-            {
-                m_closeButton = closeButton;
-                closeButton.Click += OnPaneToggleButtonClick;
-
-                string navigationName = ResourceAccessor.GetLocalizedStringResource(SR_NavigationCloseButtonName);
-                AutomationProperties.SetName(closeButton, navigationName);
-
-                WindowChrome.SetIsHitTestVisibleInChrome(closeButton, true);
-            }
-
-            if (GetTemplateChild(c_navViewCloseButtonToolTip) is ToolTip closeButtonToolTip)
-            {
-                string navigationCloseButtonToolTip = ResourceAccessor.GetLocalizedStringResource(SR_NavigationButtonOpenName);
-                closeButtonToolTip.Content = navigationCloseButtonToolTip;
-            }
-
-            m_itemsContainerRow = GetTemplateChildT<RowDefinition>(c_itemsContainerRow, controlProtected);
-            m_menuItemsScrollViewer = GetTemplateChildT<FrameworkElement>(c_menuItemsScrollViewer, controlProtected);
-            m_footerItemsScrollViewer = GetTemplateChildT<FrameworkElement>(c_footerItemsScrollViewer, controlProtected);
-            m_visualItemsSeparator = GetTemplateChildT<FrameworkElement>(c_visualItemsSeparator, controlProtected);
-
-            m_itemsContainerSizeChangedRevoker?.Revoke();
-            if (GetTemplateChildT<FrameworkElement>(c_itemsContainer, controlProtected) is { } itemsContainerRow)
-            {
-                m_itemsContainerSizeChangedRevoker = new FrameworkElementSizeChangedRevoker(itemsContainerRow, OnItemsContainerSizeChanged);
-            }
-
-            if (SharedHelpers.IsRS2OrHigher())
-            {
-                // Get hold of the outermost grid and enable XYKeyboardNavigationMode
-                // However, we only want this to work in the content pane + the hamburger button (which is not inside the splitview)
-                // so disable it on the grid in the content area of the SplitView
-                if (GetTemplateChildT<Grid>(c_rootGridName, controlProtected) is { } rootGrid)
+                // Change code to NOT do this if we're in left nav mode, to prevent it from being realized:
+                if (GetTemplateChild(c_topNavMenuItemsOverflowHost) is ItemsRepeater topNavListOverflowRepeater)
                 {
-                    KeyboardNavigation.SetDirectionalNavigation(rootGrid, KeyboardNavigationMode.Contained);
+                    m_topNavRepeaterOverflowView = topNavListOverflowRepeater;
+
+                    // API is currently in preview, so setting this via code.
+                    // Disabling virtualization for now because of https://github.com/microsoft/microsoft-ui-xaml/issues/2095
+                    if (topNavListOverflowRepeater.Layout is StackLayout stackLayout)
+                    {
+                        var stackLayoutImpl = stackLayout;
+                        stackLayoutImpl.DisableVirtualization = true;
+                    }
+
+                    topNavListOverflowRepeater.ElementPrepared += OnRepeaterElementPrepared;
+                    topNavListOverflowRepeater.ElementClearing += OnRepeaterElementClearing;
+
+                    topNavListOverflowRepeater.ItemTemplate = m_navigationViewItemsFactory;
                 }
 
-                if (GetTemplateChildT<Grid>(c_contentGridName, controlProtected) is { } contentGrid)
+                if (GetTemplateChild(c_topNavOverflowButton) is Button topNavOverflowButton)
                 {
-                    KeyboardNavigation.SetDirectionalNavigation(contentGrid, KeyboardNavigationMode.None);
+                    m_topNavOverflowButton = topNavOverflowButton;
+                    AutomationProperties.SetName(topNavOverflowButton, ResourceAccessor.GetLocalizedStringResource(SR_NavigationOverflowButtonName));
+                    topNavOverflowButton.Content = ResourceAccessor.GetLocalizedStringResource(SR_NavigationOverflowButtonText);
+                    // TODO: WPF - Header Animation
+                    /*
+                    auto visual = winrt::ElementCompositionPreview::GetElementVisual(topNavOverflowButton);
+                    CreateAndAttachHeaderAnimation(visual);
+                    */
+
+                    var toolTip = ToolTipService.GetToolTip(topNavOverflowButton);
+                    if (toolTip is null)
+                    {
+                        var tooltip = new ToolTip();
+                        tooltip.Content = ResourceAccessor.GetLocalizedStringResource(SR_NavigationOverflowButtonToolTip);
+                        ToolTipService.SetToolTip(topNavOverflowButton, tooltip);
+                    }
+
+                    if (FlyoutService.GetFlyout(topNavOverflowButton) is { } flyoutBase)
+                    {
+                        /*
+                        if (winrt::IFlyoutBase6 topNavOverflowButtonAsFlyoutBase6 = flyoutBase)
+                        {
+                            topNavOverflowButtonAsFlyoutBase6.ShouldConstrainToRootBounds(false);
+                        }
+                        */
+                        flyoutBase.Closing += OnFlyoutClosing;
+                        flyoutBase.Offset = 0;
+                    }
                 }
+
+                // Change code to NOT do this if we're in top nav mode, to prevent it from being realized:
+                if (GetTemplateChildT<ItemsRepeater>(c_footerMenuItemsHost, controlProtected) is { } leftFooterMenuNavRepeater)
+                {
+                    m_leftNavFooterMenuRepeater = leftFooterMenuNavRepeater;
+
+                    // API is currently in preview, so setting this via code.
+                    // Disabling virtualization for now because of https://github.com/microsoft/microsoft-ui-xaml/issues/2095
+                    if (leftFooterMenuNavRepeater.Layout is StackLayout stackLayout)
+                    {
+                        var stackLayoutImpl = stackLayout;
+                        stackLayoutImpl.DisableVirtualization = true;
+                    }
+
+                    leftFooterMenuNavRepeater.ElementPrepared += OnRepeaterElementPrepared;
+                    leftFooterMenuNavRepeater.ElementClearing += OnRepeaterElementClearing;
+
+                    leftFooterMenuNavRepeater.IsVisibleChanged += OnRepeaterIsVisibleChanged;
+
+                    m_leftNavFooterMenuRepeaterGettingFocusHelper = new GettingFocusHelper(leftFooterMenuNavRepeater);
+                    m_leftNavFooterMenuRepeaterGettingFocusHelper.GettingFocus += OnRepeaterGettingFocus;
+
+                    leftFooterMenuNavRepeater.ItemTemplate = m_navigationViewItemsFactory;
+                }
+
+                // Change code to NOT do this if we're in left nav mode, to prevent it from being realized:
+                if (GetTemplateChildT<ItemsRepeater>(c_topNavFooterMenuItemsHost, controlProtected) is { } topFooterMenuNavRepeater)
+                {
+                    m_topNavFooterMenuRepeater = topFooterMenuNavRepeater;
+
+                    // API is currently in preview, so setting this via code.
+                    // Disabling virtualization for now because of https://github.com/microsoft/microsoft-ui-xaml/issues/2095
+                    if (topFooterMenuNavRepeater.Layout is StackLayout stackLayout)
+                    {
+                        var stackLayoutImpl = stackLayout;
+                        stackLayoutImpl.DisableVirtualization = true;
+                    }
+
+                    topFooterMenuNavRepeater.ElementPrepared += OnRepeaterElementPrepared;
+                    topFooterMenuNavRepeater.ElementClearing += OnRepeaterElementClearing;
+
+                    topFooterMenuNavRepeater.IsVisibleChanged += OnRepeaterIsVisibleChanged;
+
+                    m_topNavFooterMenuRepeaterGettingFocusHelper = new GettingFocusHelper(topFooterMenuNavRepeater);
+                    m_topNavFooterMenuRepeaterGettingFocusHelper.GettingFocus += OnRepeaterGettingFocus;
+
+                    topFooterMenuNavRepeater.ItemTemplate = m_navigationViewItemsFactory;
+                }
+
+                m_topNavContentOverlayAreaGrid = GetTemplateChild(c_topNavContentOverlayAreaGrid) as Border;
+                m_leftNavPaneAutoSuggestBoxPresenter = GetTemplateChild(c_leftNavPaneAutoSuggestBoxPresenter) as ContentControl;
+                m_topNavPaneAutoSuggestBoxPresenter = GetTemplateChild(c_topNavPaneAutoSuggestBoxPresenter) as ContentControl;
+
+                // Get pointer to the pane content area, for use in the selection indicator animation
+                m_paneContentGrid = GetTemplateChild(c_paneContentGridName) as UIElement;
+
+                m_contentLeftPadding = GetTemplateChild(c_contentLeftPadding) as FrameworkElement;
+
+                m_paneHeaderCloseButtonColumn = GetTemplateChild(c_paneHeaderCloseButtonColumn) as ColumnDefinition;
+                m_paneHeaderToggleButtonColumn = GetTemplateChild(c_paneHeaderToggleButtonColumn) as ColumnDefinition;
+                m_paneHeaderContentBorderRow = GetTemplateChild(c_paneHeaderContentBorderRow) as RowDefinition;
+                m_paneTitleFrameworkElement = GetTemplateChild(c_paneTitleFrameworkElement) as FrameworkElement;
+                m_paneTitlePresenter = GetTemplateChild(c_paneTitlePresenter) as ContentControl;
+
+                if (GetTemplateChild(c_paneTitleHolderFrameworkElement) is FrameworkElement paneTitleHolderFrameworkElement)
+                {
+                    m_paneTitleHolderFrameworkElement = paneTitleHolderFrameworkElement;
+                    paneTitleHolderFrameworkElement.SizeChanged += OnPaneTitleHolderSizeChanged;
+                }
+
+                // Set automation name on search button
+                if (GetTemplateChild(c_searchButtonName) is Button button)
+                {
+                    m_paneSearchButton = button;
+                    button.Click += OnPaneSearchButtonClick;
+
+                    var searchButtonName = ResourceAccessor.GetLocalizedStringResource(SR_NavigationViewSearchButtonName);
+                    AutomationProperties.SetName(button, searchButtonName);
+                    var toolTip = new ToolTip();
+                    toolTip.Content = searchButtonName;
+                    ToolTipService.SetToolTip(button, toolTip);
+                }
+
+                if (GetTemplateChild(c_navViewBackButton) is Button backButton)
+                {
+                    m_backButton = backButton;
+                    backButton.Click += OnBackButtonClicked;
+
+                    string navigationName = ResourceAccessor.GetLocalizedStringResource(SR_NavigationBackButtonName);
+                    AutomationProperties.SetName(backButton, navigationName);
+
+                    WindowChrome.SetIsHitTestVisibleInChrome(backButton, true);
+                }
+
+                // Register for changes in title bar layout
+                if (CoreApplicationViewTitleBar.GetTitleBar(this) is { } coreTitleBar)
+                {
+                    m_coreTitleBar = coreTitleBar;
+                    coreTitleBar.LayoutMetricsChanged += OnTitleBarMetricsChanged;
+                    coreTitleBar.IsVisibleChanged += OnTitleBarIsVisibleChanged;
+
+                    if (ShouldPreserveNavigationViewRS4Behavior())
+                    {
+                        m_togglePaneTopPadding = GetTemplateChild(c_togglePaneTopPadding) as FrameworkElement;
+                        m_contentPaneTopPadding = GetTemplateChild(c_contentPaneTopPadding) as FrameworkElement;
+                    }
+                }
+
+                if (GetTemplateChild(c_navViewBackButtonToolTip) is ToolTip backButtonToolTip)
+                {
+                    string navigationBackButtonToolTip = ResourceAccessor.GetLocalizedStringResource(SR_NavigationBackButtonToolTip);
+                    backButtonToolTip.Content = navigationBackButtonToolTip;
+                }
+
+                if (GetTemplateChild(c_navViewCloseButton) is Button closeButton)
+                {
+                    m_closeButton = closeButton;
+                    closeButton.Click += OnPaneToggleButtonClick;
+
+                    string navigationName = ResourceAccessor.GetLocalizedStringResource(SR_NavigationCloseButtonName);
+                    AutomationProperties.SetName(closeButton, navigationName);
+
+                    WindowChrome.SetIsHitTestVisibleInChrome(closeButton, true);
+                }
+
+                if (GetTemplateChild(c_navViewCloseButtonToolTip) is ToolTip closeButtonToolTip)
+                {
+                    string navigationCloseButtonToolTip = ResourceAccessor.GetLocalizedStringResource(SR_NavigationButtonOpenName);
+                    closeButtonToolTip.Content = navigationCloseButtonToolTip;
+                }
+
+                m_itemsContainerRow = GetTemplateChildT<RowDefinition>(c_itemsContainerRow, controlProtected);
+                m_menuItemsScrollViewer = GetTemplateChildT<FrameworkElement>(c_menuItemsScrollViewer, controlProtected);
+                m_footerItemsScrollViewer = GetTemplateChildT<FrameworkElement>(c_footerItemsScrollViewer, controlProtected);
+                m_visualItemsSeparator = GetTemplateChildT<FrameworkElement>(c_visualItemsSeparator, controlProtected);
+
+                m_itemsContainerSizeChangedRevoker?.Revoke();
+                if (GetTemplateChildT<FrameworkElement>(c_itemsContainer, controlProtected) is { } itemsContainerRow)
+                {
+                    m_itemsContainerSizeChangedRevoker = new FrameworkElementSizeChangedRevoker(itemsContainerRow, OnItemsContainerSizeChanged);
+                }
+
+                if (SharedHelpers.IsRS2OrHigher())
+                {
+                    // Get hold of the outermost grid and enable XYKeyboardNavigationMode
+                    // However, we only want this to work in the content pane + the hamburger button (which is not inside the splitview)
+                    // so disable it on the grid in the content area of the SplitView
+                    if (GetTemplateChildT<Grid>(c_rootGridName, controlProtected) is { } rootGrid)
+                    {
+                        KeyboardNavigation.SetDirectionalNavigation(rootGrid, KeyboardNavigationMode.Contained);
+                    }
+
+                    if (GetTemplateChildT<Grid>(c_contentGridName, controlProtected) is { } contentGrid)
+                    {
+                        KeyboardNavigation.SetDirectionalNavigation(contentGrid, KeyboardNavigationMode.None);
+                    }
+                }
+
+                // TODO: WPF - AccessKey
+                //m_accessKeyInvokedRevoker = AccessKeyInvoked(winrt::auto_revoke, { this, &NavigationView::OnAccessKeyInvoked });
+
+                UpdatePaneShadow();
+
+                m_appliedTemplate = true;
+
+                // Do initial setup
+                UpdatePaneDisplayMode();
+                UpdateHeaderVisibility();
+                UpdatePaneTitleFrameworkElementParents();
+                UpdateTitleBarPadding();
+                UpdatePaneTabFocusNavigation();
+                UpdateBackAndCloseButtonsVisibility();
+                UpdateSingleSelectionFollowsFocusTemplateSetting();
+                UpdatePaneVisibility();
+                UpdateVisualState();
+                UpdatePaneTitleMargins();
+                UpdatePaneLayout();
+                UpdatePaneOverlayGroup();
             }
-
-            // TODO: WPF - AccessKey
-            //m_accessKeyInvokedRevoker = AccessKeyInvoked(winrt::auto_revoke, { this, &NavigationView::OnAccessKeyInvoked });
-
-            UpdatePaneShadow();
-
-            m_appliedTemplate = true;
-
-            // Do initial setup
-            UpdatePaneDisplayMode();
-            UpdateHeaderVisibility();
-            UpdatePaneTitleFrameworkElementParents();
-            UpdateTitleBarPadding();
-            UpdatePaneTabFocusNavigation();
-            UpdateBackAndCloseButtonsVisibility();
-            UpdateSingleSelectionFollowsFocusTemplateSetting();
-            UpdatePaneVisibility();
-            UpdateVisualState();
-            UpdatePaneTitleMargins();
-            UpdatePaneLayout();
-            UpdatePaneOverlayGroup();
+            finally
+            {
+                m_fromOnApplyTemplate = false;
+            }
         }
 
         void UpdateRepeaterItemsSource(bool forceSelectionModelUpdate)
@@ -2832,7 +2840,18 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 {
                     VisualStateManager.GoToState(this, visualStateName, false /*useTransitions*/);
                 }
-                splitView.DisplayMode = splitViewDisplayMode;
+
+                // Updating the splitview 'DisplayMode' property in some diplaymodes causes children to be added to the popup root.
+                // This causes an exception if the NavigationView is in the popup root itself (as SplitView is trying to add children to the tree while it is being measured).
+                // Due to this, we want to defer updating this property for all calls coming from `OnApplyTemplate`to the OnLoaded function.
+                if (m_fromOnApplyTemplate)
+                {
+                    m_updateVisualStateForDisplayModeFromOnLoaded = true;
+                }
+                else
+                {
+                    splitView.DisplayMode = splitViewDisplayMode;
+                }
             }
         }
 
@@ -4333,6 +4352,12 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         void OnLoaded(object sender, RoutedEventArgs args)
         {
+            if (m_updateVisualStateForDisplayModeFromOnLoaded)
+            {
+                m_updateVisualStateForDisplayModeFromOnLoaded = false;
+                UpdateVisualStateForDisplayModeGroup(DisplayMode);
+            }
+
             if (m_coreTitleBar is { } coreTitleBar)
             {
                 coreTitleBar.LayoutMetricsChanged += OnTitleBarMetricsChanged;
@@ -5916,6 +5941,12 @@ namespace iNKORE.UI.WPF.Modern.Controls
         ItemsSourceView m_footerItemsSource = null;
 
         bool m_appliedTemplate = false;
+
+        // Identifies whenever a call is the result of OnApplyTemplate
+        bool m_fromOnApplyTemplate = false;
+
+        // Used to defer updating the SplitView displaymode property
+        bool m_updateVisualStateForDisplayModeFromOnLoaded = false;
 
         // flag is used to stop recursive call. eg:
         // Customer select an item from SelectedItem property->ChangeSelection update ListView->LIstView raise OnSelectChange(we want stop here)->change property do do animation again.
