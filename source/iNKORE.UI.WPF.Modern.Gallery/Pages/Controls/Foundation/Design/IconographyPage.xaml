@@ -17,7 +17,8 @@
     <FrameworkElement.Resources>
         <DataTemplate x:Key="IconTemplate" DataType="{x:Type models:IconData}">
             <Border Width="96" Height="96" CornerRadius="{DynamicResource ControlCornerRadius}" ToolTipService.ToolTip="{Binding Name}">
-                <Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="{DynamicResource ControlCornerRadius}">
+                <!--<Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="{DynamicResource ControlCornerRadius}">-->
+                <Border>
                     <Grid>
                         <Viewbox Width="28" Height="28" Margin="0,0,0,16" Stretch="Uniform">
                             <TextBlock x:Name="IconGlyph" FontFamily="{DynamicResource SymbolThemeFontFamily}" Text="{Binding Character}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
@@ -599,16 +600,14 @@
                         <ui:ItemsRepeater x:Name="IconsItemsView" Margin="5" HorizontalAlignment="Stretch">
                             <ui:ItemsRepeater.ItemTemplate>
                                 <DataTemplate>
-                                    <Button
-                                Margin="4"
-                                Tag="IconItemContainer"
-                                Click="IconsItemsView_ItemClicked"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                Padding="0"
-                                HorizontalContentAlignment="Center"
-                                VerticalContentAlignment="Center">
-                                        <ContentControl Content="{Binding}" ContentTemplate="{StaticResource IconTemplate}" />
+                                    <Button Margin="4" Padding="0"
+                                        Tag="IconItemContainer"
+                                        Click="IconsItemsView_ItemClicked"
+                                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" 
+                                        BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"                                        
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center">
+                                        <ContentControl Content="{Binding}" ContentTemplate="{StaticResource IconTemplate}"/>
                                     </Button>
                                 </DataTemplate>
                             </ui:ItemsRepeater.ItemTemplate>
