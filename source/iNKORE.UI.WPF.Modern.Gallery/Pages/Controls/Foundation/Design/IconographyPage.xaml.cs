@@ -230,11 +230,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
                 // Example XAML: <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Edit}" />
                 FontIconXaml = $"<ui:FontIcon Icon=\"{{x:Static ui:{value.Set}.{value.Name}}}\" />";
                 // Use fully-qualified C# reference to the static property in Common.IconKeys
-                FontIconCSharp = $"FontIcon icon = new FontIcon();" + Environment.NewLine + $"icon.Icon = iNKORE.UI.WPF.Modern.Common.IconKeys.{value.Set}.{value.Name};";
+                FontIconCSharp = "using iNKORE.UI.WPF.Modern.Common.IconKeys;" + Environment.NewLine + Environment.NewLine + $"FontIcon icon = new FontIcon();" + Environment.NewLine + $"icon.Icon = {value.Set}.{value.Name};";
             }
             else
             {
-                FontIconXaml = $"<FontIcon Glyph=\"{value.TextGlyph}\" />";
+                FontIconXaml = $"<ui:FontIcon Glyph=\"{value.TextGlyph}\" />";
                 FontIconCSharp = "FontIcon icon = new FontIcon();" + Environment.NewLine + $"icon.Glyph = \"{value.CodeGlyph}\";";
             }
 
@@ -267,12 +267,14 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
                 if (value.Tags == null || value.Tags.Length == 0 || value.Tags.All(t => string.IsNullOrWhiteSpace(t)))
                 {
                     if (tagsView != null) tagsView.Visibility = Visibility.Collapsed;
-                    if (noTags != null) noTags.Visibility = Visibility.Visible;
+                    if (noTags != null) noTags.Visibility = Visibility.Collapsed;
+                    TagsLabel.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
                     if (tagsView != null) tagsView.Visibility = Visibility.Visible;
                     if (noTags != null) noTags.Visibility = Visibility.Collapsed;
+                    TagsLabel.Visibility = Visibility.Visible;
                 }
             }
             catch { }

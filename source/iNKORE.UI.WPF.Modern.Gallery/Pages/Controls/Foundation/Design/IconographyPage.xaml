@@ -12,7 +12,7 @@
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     x:Name="iconographyPage"
-    mc:Ignorable="d">
+    mc:Ignorable="d" d:DesignHeight="358.907" d:DesignWidth="785.333">
 
     <FrameworkElement.Resources>
         <DataTemplate x:Key="IconTemplate" DataType="{x:Type models:IconData}">
@@ -621,7 +621,7 @@
                 </ui:ItemsRepeaterScrollHost>
 
                 <Border x:Name="SidePanel" Grid.Column="1" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}" BorderThickness="{DynamicResource ControlExampleDisplayBorderThickness}" DataContext="{Binding}" CornerRadius="0,8,8,0" Visibility="Collapsed">
-                    <ScrollViewer>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <ikw:SimpleStackPanel Margin="16,8,8,16" Spacing="5">
                             <Grid Margin="0,0,0,15" HorizontalAlignment="Stretch">
                                 <Grid.ColumnDefinitions>
@@ -759,7 +759,7 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <TextBox x:Name="FontIconXamlBox" Text="{Binding FontIconXaml, Mode=OneWay}" FontFamily="Consolas" Margin="-6,-5,0,0"
-                                            FontSize="{DynamicResource ControlContentThemeFontSize}"
+                                            FontSize="12"
                                             IsReadOnly="True"
                                             AcceptsReturn="True"
                                             AcceptsTab="True"
@@ -801,7 +801,7 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <TextBox x:Name="FontIconCSharpBox" Text="{Binding FontIconCSharp, Mode=OneWay}" FontFamily="Consolas" Margin="-6,-5,0,0"
-                                            FontSize="{DynamicResource ControlContentThemeFontSize}"
+                                            FontSize="12"
                                             IsReadOnly="True"
                                             AcceptsReturn="True"
                                             AcceptsTab="True"
@@ -928,7 +928,7 @@
                                     </DataTemplate>
                                 </ui:ItemsRepeater.ItemTemplate>
                             </ui:ItemsRepeater>
-                            <TextBlock x:Name="NoTagsTextBlock" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Grid.Row="1" Margin="0,-5,0,0" Text="No tags available." Visibility="Collapsed" />
+                            <!--<TextBlock x:Name="NoTagsTextBlock" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Grid.Row="1" Margin="0,-5,0,0" Text="No tags available." Visibility="Collapsed" />-->
                         </ikw:SimpleStackPanel>
                     </ScrollViewer>
                 </Border>
