@@ -21,7 +21,7 @@
                 <Border>
                     <Grid>
                         <Viewbox Width="28" Height="28" Margin="0,0,0,16" Stretch="Uniform">
-                            <TextBlock x:Name="IconGlyph" FontFamily="{DynamicResource SymbolThemeFontFamily}" Text="{Binding Character}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock x:Name="IconGlyph" FontFamily="{Binding FontFamily}" Text="{Binding Character}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
                         </Viewbox>
                         <TextBlock x:Name="IconName" Margin="8,0,8,8" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{DynamicResource CaptionTextBlockStyle}" Text="{Binding Name}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
                     </Grid>
@@ -454,85 +454,54 @@
         </VisualStateManager.VisualStateGroups>
 
         <StackPanel Grid.Row="0" Orientation="Vertical">
-            <ui:SettingsExpander Margin="0,0,0,20" Header="How to use Segoe Fluent Icons">
+            <ui:SettingsExpander Margin="0,0,0,20" Header="Iconography in iUWM">
                 <ui:SettingsExpander.Items>
-                    <ui:SettingsCard Header="How to get the font" FontWeight="SemiBold">
+                    <ui:SettingsCard Header="Overview" FontWeight="SemiBold">
                         <ui:SettingsCard.Description>
-                            <TextBlock Margin="0,0,0,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                            Segoe Fluent Icons comes preinstalled on Windows 11. On Windows 10, it requires a manual installation. You can download it
-                            <InlineUIContainer BaselineAlignment="Center">
-                                <!-- The hyperlink under the settings expander text was not automatically 
-                                styled in Fluent style, so we used a hyperlink button instead. -->
-                                <ui:HyperlinkButton
-                                                   NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts"
-                                                   VerticalAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Padding="0,1,0,0"
-                                                   FontWeight="Normal"
-                                                   FontFamily="{DynamicResource ContentControlThemeFontFamily}"
-                                                   FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                                    <TextBlock Text="here"
-                                               TextDecorations="Underline"
-                                               FontWeight="Normal"
-                                               FontFamily="{DynamicResource ContentControlThemeFontFamily}"
-                                               FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}" />
-                                </ui:HyperlinkButton>
-                            </InlineUIContainer>.
-                        </TextBlock>
+                            <StackPanel Orientation="Vertical" Margin="0">
+                                <TextBlock TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
+                                    iUWM provides a unified icon system that supports multiple sets, including Segoe Fluent Icons, Fluent System Icons, and Segoe MDL2. These icons are optimized for Fluent Design principles ensuring clarity, scale, and theme consistency across your WPF applications.
+                                </TextBlock>
+                                <TextBlock Margin="0,6,0,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
+                                    Learn more in the
+                                    <InlineUIContainer BaselineAlignment="Center">
+                                        <ui:HyperlinkButton
+                                            NavigateUri="https://docs.inkore.net/en-us/ui-wpf-modern/introduction/"
+                                            VerticalAlignment="Center"
+                                            VerticalContentAlignment="Center"
+                                            Padding="0,1,0,0"
+                                            FontWeight="Normal"
+                                            FontFamily="{DynamicResource ContentControlThemeFontFamily}"
+                                            FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
+                                            <TextBlock Text="documentation"
+                                                       TextDecorations="Underline"
+                                                       FontWeight="Normal"
+                                                       FontFamily="{DynamicResource ContentControlThemeFontFamily}"
+                                                       FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}" />
+                                        </ui:HyperlinkButton>
+                                    </InlineUIContainer>.
+                                </TextBlock>
+                            </StackPanel>
                         </ui:SettingsCard.Description>
                     </ui:SettingsCard>
 
-                    <ui:SettingsCard Header="How to use" FontWeight="SemiBold">
+                    <ui:SettingsCard Header="How it works" FontWeight="SemiBold">
                         <ui:SettingsCard.Description>
                             <StackPanel Orientation="Vertical" Margin="0">
+                                <TextBlock TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
+                                    Use <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">ui:FontIcon</Run> with icon keys, such as <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">SegoeFluentIcons.Delete</Run> or <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FluentSystemIcons.Regular.Edit</Run>. When you set the <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">Icon</Run> property, the correct <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FontFamily</Run> is applied automatically for the selected icon set.
+                                </TextBlock>
                                 <TextBlock Margin="0,0,0,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                                If you don't specify a FontFamily, or you specify a FontFamily that is not available on the system at runtime, a
-                                <InlineUIContainer BaselineAlignment="Center">
-                                    <ui:HyperlinkButton
-                                                       NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.fonticon"
-                                                       VerticalAlignment="Center"
-                                                       VerticalContentAlignment="Center"
-                                                       Padding="0,1,0,0"
-                                                       FontWeight="Normal"
-                                                       FontFamily="{DynamicResource ContentControlThemeFontFamily}"
-                                                       FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                                        <TextBlock Text="FontIcon"
-                                                   TextDecorations="Underline"
-                                                   FontWeight="Normal"
-                                                   FontFamily="{DynamicResource ContentControlThemeFontFamily}"
-                                                   FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}" />
-                                    </ui:HyperlinkButton>
-                                </InlineUIContainer> falls back to the default font family defined by the SymbolThemeFontFamily resource.
-                            </TextBlock>
-
+                                    If you don't specify a <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FontFamily</Run>, or you specify a <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FontFamily</Run> that isn't available on the system at runtime, <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FontIcon</Run> falls back to the default font family defined by the <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">SymbolThemeFontFamily</Run> resource.
+                                </TextBlock>
                                 <TextBlock Margin="0,0,0,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                                An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable. For optimal appearance, use these specific sizes: 16, 20, 24, 32, 40, 48, and 64. Deviating from these font sizes could lead to less crisp or blurry outcomes.
+                                    An icon rendered at a font size of 16 epx is equivalent to a 16x16 epx bitmap. For best clarity, use these sizes: 16, 20, 24, 32, 40, 48, and 64. Using other sizes can result in softer or blurry rendering.
+                                </TextBlock>
+                                <TextBlock Margin="0,0,0,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
+                                    All glyphs in Segoe Fluent Icons use a fixed width with a consistent height and left origin point. You can layer and colorize multiple glyphs by drawing them directly on top of each other.
                                 </TextBlock>
 
-                                <TextBlock Margin="0,0,0,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so
-                                <InlineUIContainer BaselineAlignment="Center">
-                                     <!-- The hyperlink under the settings expander text was not automatically
-                                    styled in Fluent style, so we used a hyperlink button instead. -->
-                                    <ui:HyperlinkButton
-                                                       NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring"
-                                                       VerticalAlignment="Center"
-                                                       VerticalContentAlignment="Center"
-                                                       Padding="0,1,0,0"
-                                                       FontWeight="Normal"
-                                                       FontFamily="{DynamicResource ContentControlThemeFontFamily}"
-                                                       FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                                        <TextBlock Text="layering"
-                                                   TextDecorations="Underline"
-                                                   FontWeight="Normal"
-                                                   FontFamily="{DynamicResource ContentControlThemeFontFamily}"
-                                                   FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}" />
-                                    </ui:HyperlinkButton>
-                                </InlineUIContainer>
-                                and colorization effects can be achieved by drawing glyphs directly on top of each other.
-                            </TextBlock>
-
-                                <Grid HorizontalAlignment="Stretch">
+                                <Grid HorizontalAlignment="Stretch" Margin="0,8,0,0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
@@ -542,24 +511,24 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <TextBox Grid.Row="0" Grid.Column="0" x:Name="InlineExampleBox" Margin="0" FontFamily="Consolas" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}" FontWeight="Normal" IsReadOnly="True" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                         AcceptsReturn="True" AcceptsTab="True" TextWrapping="NoWrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MinHeight="72" xml:space="preserve" TextAlignment="Left"
+                                         AcceptsReturn="True" AcceptsTab="True" TextWrapping="NoWrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MinHeight="50" xml:space="preserve" TextAlignment="Left"
                                          HorizontalAlignment="Stretch"
-                                         Text="&lt;Grid&gt;&#x0A;    &lt;FontIcon Glyph=&quot;&amp;#xEB51;&quot; Foreground=&quot;#C72335&quot; /&gt;&#x0A;    &lt;FontIcon Glyph=&quot;&amp;#xEB52;&quot; /&gt;&#x0A;&lt;/Grid&gt;" />
-                                <Button x:Name="CopyInlineExampleButton" Grid.Row="0" Grid.Column="1" Margin="8,0,8,20" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding Text, ElementName=InlineExampleBox}">
-                                    <Grid>
-                                        <ui:FontIcon x:Name="FontIcon_CopyInlineExample_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
-                                            <FrameworkElement.RenderTransform>
-                                                <ScaleTransform x:Name="ScaleTransform_CopyInlineExample_Copy" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                            </FrameworkElement.RenderTransform>
-                                        </ui:FontIcon>
-                                        <ui:FontIcon x:Name="FontIcon_CopyInlineExample_Success" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5" Opacity="0">
-                                            <FrameworkElement.RenderTransform>
-                                                <ScaleTransform x:Name="ScaleTransform_CopyInlineExample_Success" ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
-                                            </FrameworkElement.RenderTransform>
-                                        </ui:FontIcon>
-                                    </Grid>
-                                </Button>
-                            </Grid>
+                                         Text="&lt;ui:FontIcon Icon=&quot;{x:Static ui:SegoeFluentIcons.Edit}&quot; /&gt;&#x0a;&lt;ui:FontIcon Icon=&quot;{x:Static ui:FluentSystemIcons.Regular.Edit}&quot; /&gt;" />
+                                    <Button x:Name="CopyInlineExampleButton" Grid.Row="0" Grid.Column="1" Margin="8,0,8,20" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding Text, ElementName=InlineExampleBox}">
+                                        <Grid>
+                                            <ui:FontIcon x:Name="FontIcon_CopyInlineExample_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
+                                                <FrameworkElement.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleTransform_CopyInlineExample_Copy" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                                                </FrameworkElement.RenderTransform>
+                                            </ui:FontIcon>
+                                            <ui:FontIcon x:Name="FontIcon_CopyInlineExample_Success" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" RenderTransformOrigin="0.5 0.5" Opacity="0">
+                                                <FrameworkElement.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleTransform_CopyInlineExample_Success" ScaleX="0" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+                                                </FrameworkElement.RenderTransform>
+                                            </ui:FontIcon>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
                             </StackPanel>
                         </ui:SettingsCard.Description>
                     </ui:SettingsCard>
@@ -628,7 +597,7 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <Border Margin="-10,0,8,0" Padding="8" HorizontalAlignment="Left">
-                                    <TextBlock FontFamily="{DynamicResource SymbolThemeFontFamily}" FontSize="48" Text="{Binding SelectedItem.Character, Mode=OneWay}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+                                    <TextBlock FontFamily="{Binding SelectedItem.FontFamily, Mode=OneWay}" FontSize="48" Text="{Binding SelectedItem.Character, Mode=OneWay}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
                                 </Border>
                                 <Grid Grid.Column="1" HorizontalAlignment="Stretch" Visibility="Collapsed">
                                     <Grid.ColumnDefinitions>
