@@ -26,7 +26,7 @@
 
             <StackPanel Margin="0">
                 <StackPanel.Resources>
-                    <SolidColorBrush x:Key="CardBackgroundFillColorDefaultSoftBrush" Color="{StaticResource CardBackgroundFillColorDefault}" Opacity="0.50" />
+                    <!-- Use theme key via DynamicResource where possible. Kept no local soft brush; use ThemeKeys if available. -->
                 </StackPanel.Resources>
                 <local:ControlExample x:Name="Example1" HeaderText="Type ramp">
                     <local:ControlExample.Example>
@@ -191,33 +191,33 @@
                                 <TextBlock
                                     Margin="16,0,0,0"
                                     Style="{DynamicResource CaptionTextBlockStyle}"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Foreground="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}"
                                     Text="Example" />
                                 <TextBlock
                                     Grid.Column="1"
                                     Style="{DynamicResource CaptionTextBlockStyle}"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Foreground="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}"
                                     Text="Variable Font" />
                                 <TextBlock
                                     Grid.Column="2"
                                     Style="{DynamicResource CaptionTextBlockStyle}"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Foreground="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}"
                                     Text="Size/Line height" />
                                 <TextBlock
                                     Grid.Column="3"
                                     Style="{DynamicResource CaptionTextBlockStyle}"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Foreground="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}"
                                     Text="Style" />
                                 <TextBlock
                                     Grid.Column="4"
                                     Style="{DynamicResource CaptionTextBlockStyle}"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Foreground="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}"
                                     Text="Usage (XAML)" FontWeight="SemiBold" />
                             </Grid>
 
                             <uc:TypographyControl
                                 HorizontalAlignment="Stretch"
-                                Background="{StaticResource CardBackgroundFillColorDefaultSoftBrush}"
+                                Background="{DynamicResource {x:Static ui:ThemeKeys.CardBackgroundFillColorDefaultBrushKey}}"
                                 Example="Caption"
                                 ExampleStyle="{DynamicResource CaptionTextBlockStyle}"
                                 VariableFont="Small, Regular"
@@ -234,7 +234,7 @@
                                 Weight="400" />
 
                             <uc:TypographyControl
-                                Background="{StaticResource CardBackgroundFillColorDefaultSoftBrush}"
+                                Background="{DynamicResource {x:Static ui:ThemeKeys.CardBackgroundFillColorDefaultBrushKey}}"
                                 Example="Body Strong"
                                 ExampleStyle="{DynamicResource BodyStrongTextBlockStyle}"
                                 VariableFont="Text, SemiBold"
@@ -251,7 +251,7 @@
                                 Weight="600" />
 
                             <uc:TypographyControl
-                                Background="{StaticResource CardBackgroundFillColorDefaultSoftBrush}"
+                                Background="{DynamicResource {x:Static ui:ThemeKeys.CardBackgroundFillColorDefaultBrushKey}}"
                                 Example="Title"
                                 ExampleStyle="{DynamicResource TitleTextBlockStyle}"
                                 VariableFont="Display, SemiBold"
@@ -268,7 +268,7 @@
                                 Weight="600" />
 
                             <uc:TypographyControl
-                                Background="{StaticResource CardBackgroundFillColorDefaultSoftBrush}"
+                                Background="{DynamicResource {x:Static ui:ThemeKeys.CardBackgroundFillColorDefaultBrushKey}}"
                                 Example="Display"
                                 ExampleStyle="{DynamicResource DisplayTextBlockStyle}"
                                 VariableFont="Display, SemiBold"
