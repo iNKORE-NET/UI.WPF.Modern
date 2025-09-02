@@ -1,12 +1,14 @@
-﻿using iNKORE.UI.WPF.Modern.Common.IconKeys;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+using iNKORE.UI.WPF.Modern.Common.IconKeys;
 using iNKORE.UI.WPF.Modern.Controls;
 using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using SamplesCommon.SamplePages;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
 using Frame = iNKORE.UI.WPF.Modern.Controls.Frame;
+using MessageBox = iNKORE.UI.WPF.Modern.Controls.MessageBox;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 {
@@ -23,6 +25,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
                 tabControl3.Items.Add(CreateNewTab(i));
             }
 
+            InitializeExample6();
             UpdateExampleCode();
         }
 
@@ -77,6 +80,56 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             UpdateExampleCode();
         }
 
+        #region Example 6
+
+        private const string NiceTry = "Nice try!";
+
+        private void InitializeExample6()
+        {
+            ResetExample6Tabs();
+
+            tabControl.RegisterTabClosingEvent((menuControl, e) =>
+            {
+                if (e.Tab.Tag is "ConfirmClose")
+                {
+                    var msgResult = MessageBox.Show("Do you want to close this tab?", "Confirm", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+                    if (msgResult != MessageBoxResult.OK)
+                    {
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+                else if (e.Tab.Tag is "NiceTry")
+                {
+                    e.Cancel = true;
+
+                    if ((e.Tab.Header as string) != NiceTry)
+                        e.Tab.Header = NiceTry;
+                    else e.Tab.Header = "You can't close me!";
+
+                    return;
+                }
+            });
+        }
+
+        private void ResetExample6Tabs()
+        {
+            tabControl6.Items.Clear();
+            tabControl6.Items.Add(TabItem_Example6_Tab1);
+            tabControl6.Items.Add(TabItem_Example6_Tab2);
+            tabControl6.Items.Add(TabItem_Example6_Tab3);
+
+            TabItem_Example6_Tab3.Header = "DON'T TOUCH ME!";
+        }
+
+        private void Button_Example6_ResetTabs_Click(object sender, RoutedEventArgs e)
+        {
+            ResetExample6Tabs();
+        }
+
+
+        #endregion
+
 
         #region Example Code
 
@@ -89,6 +142,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             Example3.Xaml = Example3Xaml;
             Example4.Xaml = Example4Xaml;
             Example5.Xaml = Example5Xaml;
+            Example6.Xaml = Example6Xaml;
+            Example6.CSharp = Example6CS;
         }
 
         public string Example1Xaml => $@"
@@ -185,6 +240,45 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         </Style>
     </TabControl.ItemContainerStyle>
 </TabControl>
+";
+
+        public string Example6Xaml => $@"
+<TabControl x:Name=""tabControl6"">
+    <TabItem x:Name=""TabItem_Example6_Tab1"" Header=""Closable""/>
+    <TabItem x:Name=""TabItem_Example6_Tab2"" Header=""Confirm To Close"" Tag=""ConfirmClose""/>
+    <TabItem x:Name=""TabItem_Example6_Tab3"" Header=""DON'T TOUCH ME!"" Tag=""NiceTry""/>
+</TabControl>
+";
+
+        public string Example6CS => $@"
+// Invoked during the constructor after InitializeComponent or at any later time
+private void InitializeExample6()
+{{
+    ResetExample6Tabs();
+
+    tabControl.RegisterTabClosingEvent((menuControl, e) =>
+    {{
+        if (e.Tab.Tag is ""ConfirmClose"")
+        {{
+            var msgResult = MessageBox.Show(""Do you want to close this tab?"", ""Confirm"", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (msgResult != MessageBoxResult.OK)
+            {{
+                e.Cancel = true;
+                return;
+            }}
+        }}
+        else if (e.Tab.Tag is ""NiceTry"")
+        {{
+            e.Cancel = true;
+
+            if ((e.Tab.Header as string) != NiceTry)
+                e.Tab.Header = NiceTry;
+            else e.Tab.Header = ""You can't close me!"";
+
+            return;
+        }}
+    }});
+}}
 ";
 
 
