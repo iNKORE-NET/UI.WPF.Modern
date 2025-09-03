@@ -48,6 +48,7 @@
                                     -->
                                     <ContentControl
                                         x:Name="ContentControl"
+                                        Margin="{TemplateBinding Padding}"
                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -76,14 +77,15 @@
                                     IsChecked="{Binding Path=IsOverflowOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                     IsEnabled="{TemplateBinding HasOverflowItems}"
                                     Style="{DynamicResource EllipsisButton}"
+                                    ui:FocusVisualHelper.IsTemplateFocusTarget="True"
                                     Visibility="{TemplateBinding EffectiveOverflowButtonVisibility}">
                                     <ui:FontIcon
                                         x:Name="EllipsisIcon"
                                         Height="{DynamicResource AppBarExpandButtonCircleDiameter}"
                                         VerticalAlignment="Center"
-                                        FontFamily="{DynamicResource FluentSystemIcons}"
+                                        FontFamily="{DynamicResource SymbolThemeFontFamily}"
                                         FontSize="20"
-                                        Glyph="&#xE826;" />
+                                        Glyph="&#xE712;" />
                                 </ToggleButton>
                                 <Rectangle
                                     x:Name="HighContrastBorder"
@@ -129,6 +131,7 @@
                                             </primitives:CommandBarOverflowPresenter.Resources>
                                             <primitives:CommandBarOverflowPanel
                                                 x:Name="PART_ToolBarOverflowPanel"
+                                                Margin="{DynamicResource CommandBarOverflowPresenterMargin}"
                                                 FocusVisualStyle="{x:Null}"
                                                 Focusable="true"
                                                 KeyboardNavigation.DirectionalNavigation="Cycle"
@@ -210,7 +213,6 @@
                         SnapsToDevicePixels="True">
                         <Border Padding="{TemplateBinding Padding}" CornerRadius="{TemplateBinding CornerRadius}">
                             <ui:ScrollViewerEx
-                                Padding="{DynamicResource CommandBarOverflowPresenterMargin}"
                                 Content="{TemplateBinding Content}"
                                 HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
