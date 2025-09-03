@@ -5,28 +5,6 @@
     "Groups":
     [
         {
-            "UniqueId": "NewControls",
-            "Title": "Home",
-            "Subtitle": "",
-            "ImagePath": "",
-            "ImageIconPath": "",
-            "Description": "",
-            "Items":
-            [
-            ]
-        },
-        {
-            "UniqueId": "AllControls",
-            "Title": "All controls",
-            "Subtitle": "",
-            "ImagePath": "",
-            "ImageIconPath": "",
-            "Description": "",
-            "Items":
-            [
-            ]
-        },
-        {
             "UniqueId": "MenusAndToolbars",
             "Title": "Menus and Toolbars",
             "Subtitle": "",
@@ -2354,7 +2332,7 @@
                     "Subtitle": "How to use a Resource Dictionary to enable compact sizing.",
                     "ImagePath": "ms-appx:///Assets/ControlImages/CompactSizing.png",
                     "ImageIconPath": "ms-appx:///Assets/ControlIcons/CompactSizingIcon.png",
-                    "Description": "Compact dictionary included in WinUI 2.1. Allows you to create compact smaller apps by adding this at the page or the grid level.",
+                    "Description": "Enables the creation of compact, smaller apps by adding a style resource at the app, page or control level.",
                     "Content": "",
                     "IsNew": false,
                     "IsUpdated": false,
@@ -2372,7 +2350,7 @@
                     "Subtitle": "System backdrops, like Mica and Acrylic, for the window.",
                     "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
                     "ImageIconPath": "ms-appx:///Assets/ControlIcons/SystemBackdropsIcon.png",
-                    "Description": "System backdrops are used to provide a different background for a Window other than the default white or black (depending on Light or Dark theme). Mica and Desktop Acrylic are the current supported backdrops. Applying a backdrop currently requires a bunch of app code, but this will be easier in a future release.",
+                    "Description": "System backdrops provide a transparency effect for the window background. Mica and Acrylic are the current supported backdrops. There are two options for applying a backdrop: first, to use built-in Mica/Acrylic types, which have no customization and are simple to apply. The second is to create a customizable backdrop, which requires more code.",
                     "Content": "<p>Look at the <i>SampleSystemBackdropsWindow.xaml.cs</i> file in Visual Studio to see the full code for applying a backdrop.</p>",
                     "IsNew": true,
                     "IsUpdated": false,

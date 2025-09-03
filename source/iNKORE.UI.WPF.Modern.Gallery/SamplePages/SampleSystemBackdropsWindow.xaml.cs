@@ -1,22 +1,13 @@
-﻿using iNKORE.UI.WPF.Helpers;
+using iNKORE.UI.WPF.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Modern.Helpers.Styles;
 using System;
-using System.Collections.Generic;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Microsoft.UI.Xaml;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.SamplePages
 {
@@ -25,37 +16,102 @@ namespace iNKORE.UI.WPF.Modern.Gallery.SamplePages
     /// </summary>
     public partial class SampleSystemBackdropsWindow : Window
     {
-        BackdropType m_currentBackdrop => WindowHelper.GetSystemBackdropType(this);
-        bool m_useAcrylicBackdrop => WindowHelper.GetSystemBackdropType(this) == BackdropType.Acrylic;
-        bool m_useAeroBackdrop => WindowHelper.GetUseAeroBackdrop(this);
 
-        public SampleSystemBackdropsWindow()
+        public enum BackdropPickerMode
         {
-            InitializeComponent();
+            Full,        // None, Mica, MicaAlt (Tabbed), Acrylic
+            MicaOnly,    // Mica, MicaAlt (Tabbed), None
+            AcrylicOnly  // Acrylic, None
         }
 
-        void ChangeBackdropButton_Click(object sender, RoutedEventArgs e)
+        private readonly BackdropPickerMode _mode;
+
+        public SampleSystemBackdropsWindow()
+            : this(BackdropPickerMode.Full)
         {
+        }
+
+        public SampleSystemBackdropsWindow(BackdropPickerMode mode)
+        {
+            InitializeComponent();
+
+            _mode = mode;
+            PopulateBackdropCombo();
+
+            cbBackdrop.SelectedIndex = 0;
+            cbTheme.SelectedIndex    = 0;
+        }
+
+        private void PopulateBackdropCombo()
+        {
+            cbBackdrop.Items.Clear();
+
+            BackdropType[] baseList = _mode switch
+            {
+                BackdropPickerMode.MicaOnly    => new[] { BackdropType.Mica, BackdropType.Tabbed },
+                BackdropPickerMode.AcrylicOnly => new[] { BackdropType.Acrylic },
+                BackdropPickerMode.Full        => new[] { BackdropType.Mica, BackdropType.Tabbed, BackdropType.Acrylic },
+                _ => throw new InvalidOperationException($"Unknown mode {_mode}")
+            };
+
+            foreach (var b in baseList)
+            {
+                string text = b == BackdropType.Tabbed ? "MicaAlt" : b.ToString();
+                cbBackdrop.Items.Add(new ComboBoxItem
+                {
+                    Content = text,
+                    Tag     = b
+                });
+            }
+
+            cbBackdrop.Items.Add(new ComboBoxItem
+            {
+                Content = BackdropType.None.ToString(),
+                Tag     = BackdropType.None
+            });
+        }
+
+        private void CbBackdrop_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbBackdrop.SelectedItem is not ComboBoxItem item ||
+                !Enum.TryParse(item.Tag?.ToString(), out BackdropType type))
+                return;
+
             if (OSVersionHelper.IsWindows11OrGreater)
             {
-                BackdropType newType;
-                switch (m_currentBackdrop)
-                {
-                    case BackdropType.Mica: newType = BackdropType.Tabbed; break;
-                    case BackdropType.Tabbed: newType = BackdropType.Acrylic; break;
-                    case BackdropType.Acrylic: newType = BackdropType.None; break;
-                    default:
-                    case BackdropType.None: newType = BackdropType.Mica; break;
-                }
-                WindowHelper.SetSystemBackdropType(this, newType);
+                WindowHelper.SetSystemBackdropType(this, type);
             }
             else if (OSVersionHelper.IsWindows10OrGreater)
             {
-                WindowHelper.SetSystemBackdropType(this, m_useAcrylicBackdrop ? BackdropType.Acrylic : BackdropType.None);
+                bool acrylic = (type == BackdropType.Acrylic);
+                WindowHelper.SetSystemBackdropType(this,
+                    acrylic ? BackdropType.Acrylic : BackdropType.None);
             }
             else if (OSVersionHelper.IsWindowsVistaOrGreater)
             {
-                WindowHelper.SetUseAeroBackdrop(this, !m_useAeroBackdrop);
+                WindowHelper.SetUseAeroBackdrop(this, type != BackdropType.None);
+            }
+        }
+
+        private void CbTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbTheme.SelectedItem is not ComboBoxItem item)
+                return;
+
+            string selected = item.Content?.ToString() ?? "Use system setting";
+
+            switch (selected)
+            {
+                case "Light":
+                    ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
+                    break;
+                case "Dark":
+                    ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
+                    break;
+                case "Use system setting":
+                default:
+                    ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
+                    break;
             }
         }
     }
