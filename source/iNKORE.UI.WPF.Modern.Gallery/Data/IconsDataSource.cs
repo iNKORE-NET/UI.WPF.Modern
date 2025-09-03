@@ -29,8 +29,8 @@ internal class IconsDataSource
 
     public async Task<List<IconData>> LoadIcons()
     {
-    // Yield once to keep this method truly asynchronous without changing logic.
-    await Task.Yield();
+        // Yield once to keep this method truly asynchronous without changing logic.
+        await Task.Yield();
         // If already loaded, return current list
         lock (_lock)
         {
@@ -65,7 +65,7 @@ internal class IconsDataSource
                             var familyProp = value?.GetType().GetProperty("FontFamily");
                             var family = familyProp?.GetValue(value) as System.Windows.Media.FontFamily;
                             var name = f.Name;
-                            var data = new IconData { Name = name, Code = ToCode(glyph), Set = setName, FontFamily = family };
+                            var data = new IconData { Name = name, Glyph = glyph, Set = setName, FontFamily = family };
                             discovered.Add(data);
                         }
                         catch { }
@@ -85,7 +85,7 @@ internal class IconsDataSource
                             var familyProp = value?.GetType().GetProperty("FontFamily");
                             var family = familyProp?.GetValue(value) as System.Windows.Media.FontFamily;
                             var name = p.Name;
-                            var data = new IconData { Name = name, Code = ToCode(glyph), Set = setName, FontFamily = family };
+                            var data = new IconData { Name = name, Glyph = glyph, Set = setName, FontFamily = family };
                             discovered.Add(data);
                         }
                         catch { }
@@ -117,34 +117,34 @@ internal class IconsDataSource
         return icons;
     }
 
-    private static string ToCode(string glyph)
-    {
-        if (string.IsNullOrEmpty(glyph)) return string.Empty;
-        // glyph is a single-character string; convert to hex code (without leading 0x)
-        var ch = glyph[0];
-        return ((int)ch).ToString("X4");
-    }
+    //private static string ToCode(string glyph)
+    //{
+    //    if (string.IsNullOrEmpty(glyph)) return string.Empty;
+    //    // glyph is a single-character string; convert to hex code (without leading 0x)
+    //    var ch = glyph[0];
+    //    return ((int)ch).ToString("X4");
+    //}
 
     // Set active set and return filtered icons
     public List<IconData> SetActiveSet(string setName)
     {
         // Normalize legacy aliases to concrete set names when possible
-        if (string.Equals(setName, "SegoeMDL2Assets", StringComparison.OrdinalIgnoreCase) ||
-            string.Equals(setName, "Segoe MDL2 Assets", StringComparison.OrdinalIgnoreCase))
-        {
-            // These glyphs generally live in the JSON data under empty Set (or specific set names).
-            // Treat this alias as a request to show all non-Fluent-only icons.
-            ActiveSet = setName;
-            return icons.Where(i => !i.IsSegoeFluentOnly).ToList();
-        }
+        //if (string.Equals(setName, "SegoeMDL2Assets", StringComparison.OrdinalIgnoreCase) ||
+        //    string.Equals(setName, "Segoe MDL2 Assets", StringComparison.OrdinalIgnoreCase))
+        //{
+        //    // These glyphs generally live in the JSON data under empty Set (or specific set names).
+        //    // Treat this alias as a request to show all non-Fluent-only icons.
+        //    ActiveSet = setName;
+        //    return icons.Where(i => !i.IsSegoeFluentOnly).ToList();
+        //}
 
-        if (string.Equals(setName, "SegoeIcons", StringComparison.OrdinalIgnoreCase) ||
-            string.Equals(setName, "Segoe Icons", StringComparison.OrdinalIgnoreCase))
-        {
-            // No dedicated SegoeIcons set in the built-in keys; treat as all icons (fallback).
-            ActiveSet = setName;
-            return icons;
-        }
+        //if (string.Equals(setName, "SegoeIcons", StringComparison.OrdinalIgnoreCase) ||
+        //    string.Equals(setName, "Segoe Icons", StringComparison.OrdinalIgnoreCase))
+        //{
+        //    // No dedicated SegoeIcons set in the built-in keys; treat as all icons (fallback).
+        //    ActiveSet = setName;
+        //    return icons;
+        //}
 
         ActiveSet = setName;
         if (string.IsNullOrEmpty(setName)) return icons;

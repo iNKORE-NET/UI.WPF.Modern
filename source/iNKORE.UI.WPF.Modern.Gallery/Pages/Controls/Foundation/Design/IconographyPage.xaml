@@ -12,7 +12,7 @@
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     x:Name="iconographyPage"
-    mc:Ignorable="d" d:DesignHeight="358.907" d:DesignWidth="785.333">
+    mc:Ignorable="d" d:DesignHeight="1122.907" d:DesignWidth="1047.333">
 
     <FrameworkElement.Resources>
         <DataTemplate x:Key="IconTemplate" DataType="{x:Type models:IconData}">
@@ -20,8 +20,9 @@
                 <!--<Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="{DynamicResource ControlCornerRadius}">-->
                 <Border>
                     <Grid>
-                        <Viewbox Width="28" Height="28" Margin="0,0,0,16" Stretch="Uniform">
-                            <TextBlock x:Name="IconGlyph" FontFamily="{Binding FontFamily}" Text="{Binding Character}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                        <Viewbox Width="28" Height="28" Stretch="Uniform" Margin="0,0,0,16">
+                            <!--<TextBlock x:Name="IconGlyph" FontFamily="{Binding FontFamily}" Text="{Binding Character}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>-->
+                            <ui:FontIcon FontFamily="{Binding FontFamily}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Glyph="{Binding Glyph}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Viewbox>
                         <TextBlock x:Name="IconName" Margin="8,0,8,8" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Style="{DynamicResource CaptionTextBlockStyle}" Text="{Binding Name}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
                     </Grid>
@@ -89,11 +90,7 @@
         names unique and in the same namescope as LayoutRoot so Storyboards
         can resolve them at runtime.
     -->
-    <Grid x:Name="LayoutRoot">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <ikw:SimpleStackPanel x:Name="LayoutRoot">
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ControlCornerRadiusCopyButtonStates">
@@ -534,7 +531,6 @@
                     </ui:SettingsCard>
                 </ui:SettingsExpander.Items>
             </ui:SettingsExpander>
-
             <StackPanel Orientation="Horizontal" Margin="0,16,0,10" HorizontalAlignment="Left">
                 <ui:AutoSuggestBox
                 x:Name="IconsSearchBox"
@@ -597,7 +593,7 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <Border Margin="-10,0,8,0" Padding="8" HorizontalAlignment="Left">
-                                    <TextBlock FontFamily="{Binding SelectedItem.FontFamily, Mode=OneWay}" FontSize="48" Text="{Binding SelectedItem.Character, Mode=OneWay}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+                                    <TextBlock FontFamily="{Binding SelectedItem.FontFamily, Mode=OneWay}" FontSize="48" Text="{Binding SelectedItem.Glyph, Mode=OneWay}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
                                 </Border>
                                 <Grid Grid.Column="1" HorizontalAlignment="Stretch" Visibility="Collapsed">
                                     <Grid.ColumnDefinitions>
@@ -902,5 +898,5 @@
                 </Border>
             </Grid>
         </Border>
-    </Grid>
+    </ikw:SimpleStackPanel>
 </ui:Page>
