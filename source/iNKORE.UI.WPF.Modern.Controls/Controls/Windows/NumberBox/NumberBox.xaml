@@ -291,26 +291,46 @@
                     <Grid ui:ThemeManager.HasThemeResources="True" Height="{TemplateBinding Height}">
                         <Grid.Resources>
                             <ui:ResourceDictionaryEx>
-                                <!--<ui:ResourceDictionaryEx.ThemeDictionaries>
+                                <ui:ResourceDictionaryEx.ThemeDictionaries>
                                     <ResourceDictionary x:Key="Light" ui:ThemeDictionary.Key="Light">
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="TextControlBorderBrush" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="TextControlBorderBrush" />
+                                        <ui:StaticResource x:Key="RepeatButtonBackground" ResourceKey="TextControlButtonBackground" />
+                                        <ui:StaticResource x:Key="RepeatButtonBackgroundPointerOver" ResourceKey="TextControlButtonBackgroundPointerOver" />
+                                        <ui:StaticResource x:Key="RepeatButtonBackgroundPressed" ResourceKey="TextControlButtonBackgroundPressed" />
+                                        <ui:StaticResource x:Key="RepeatButtonForeground" ResourceKey="TextControlButtonForeground" />
+                                        <ui:StaticResource x:Key="RepeatButtonForegroundPointerOver" ResourceKey="TextControlButtonForegroundPointerOver" />
+                                        <ui:StaticResource x:Key="RepeatButtonForegroundPressed" ResourceKey="TextControlButtonForegroundPressed" />
+                                        <ui:StaticResource x:Key="RepeatButtonBorderBrush" ResourceKey="TextControlButtonBorderBrush" />
+                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="TextControlButtonBorderBrushPointerOver" />
+                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="TextControlButtonBorderBrushPressed" />
+                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushDisabled" ResourceKey="TextControlButtonBorderBrush" />
                                     </ResourceDictionary>
 
                                     <ResourceDictionary x:Key="Dark" ui:ThemeDictionary.Key="Dark">
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="TextControlBorderBrush" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="TextControlBorderBrush" />
+                                        <ui:StaticResource x:Key="RepeatButtonBackground" ResourceKey="TextControlButtonBackground" />
+                                        <ui:StaticResource x:Key="RepeatButtonBackgroundPointerOver" ResourceKey="TextControlButtonBackgroundPointerOver" />
+                                        <ui:StaticResource x:Key="RepeatButtonBackgroundPressed" ResourceKey="TextControlButtonBackgroundPressed" />
+                                        <ui:StaticResource x:Key="RepeatButtonForeground" ResourceKey="TextControlButtonForeground" />
+                                        <ui:StaticResource x:Key="RepeatButtonForegroundPointerOver" ResourceKey="TextControlButtonForegroundPointerOver" />
+                                        <ui:StaticResource x:Key="RepeatButtonForegroundPressed" ResourceKey="TextControlButtonForegroundPressed" />
+                                        <ui:StaticResource x:Key="RepeatButtonBorderBrush" ResourceKey="TextControlButtonBorderBrush" />
+                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="TextControlButtonBorderBrushPointerOver" />
+                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="TextControlButtonBorderBrushPressed" />
+                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushDisabled" ResourceKey="TextControlButtonBorderBrush" />
                                     </ResourceDictionary>
 
                                     <ResourceDictionary x:Key="HighContrast" ui:ThemeDictionary.Key="HighContrast">
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="SystemControlHighlightBaseMediumLowBrush" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="SystemControlHighlightTransparentBrush" />
+                                        <ui:StaticResource x:Key="RepeatButtonBackground" ResourceKey="TextControlButtonBackground" />
+                                        <ui:StaticResource x:Key="RepeatButtonBackgroundPointerOver" ResourceKey="TextControlButtonBackgroundPointerOver" />
+                                        <ui:StaticResource x:Key="RepeatButtonBackgroundPressed" ResourceKey="TextControlButtonBackgroundPressed" />
+                                        <ui:StaticResource x:Key="RepeatButtonForeground" ResourceKey="TextControlButtonForeground" />
+                                        <ui:StaticResource x:Key="RepeatButtonForegroundPointerOver" ResourceKey="TextControlButtonForegroundPointerOver" />
+                                        <ui:StaticResource x:Key="RepeatButtonForegroundPressed" ResourceKey="TextControlButtonForegroundPressed" />
+                                        <ui:StaticResource x:Key="RepeatButtonBorderBrush" ResourceKey="TextControlButtonBorderBrush" />
+                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="TextControlButtonBorderBrushPointerOver" />
+                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="TextControlButtonBorderBrushPressed" />
+                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushDisabled" ResourceKey="TextControlButtonBorderBrush" />
                                     </ResourceDictionary>
-                                </ui:ResourceDictionaryEx.ThemeDictionaries>-->
-                                <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="TextControlBorderBrush" />
-                                <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="TextControlBorderBrush" />
-
-
+                                </ui:ResourceDictionaryEx.ThemeDictionaries>
                             </ui:ResourceDictionaryEx>
                         </Grid.Resources>
 
