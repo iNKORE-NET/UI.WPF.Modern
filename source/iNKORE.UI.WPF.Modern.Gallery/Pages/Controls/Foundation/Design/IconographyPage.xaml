@@ -90,7 +90,7 @@
         names unique and in the same namescope as LayoutRoot so Storyboards
         can resolve them at runtime.
     -->
-    <ikw:SimpleStackPanel x:Name="LayoutRoot">
+    <ikw:SimpleStackPanel x:Name="LayoutRoot" Orientation="Vertical">
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ControlCornerRadiusCopyButtonStates">
@@ -551,7 +551,11 @@
             </StackPanel>
         </StackPanel>
 
-        <Border x:Name="ExampleContainerBorder" Grid.Row="1" Background="{DynamicResource ControlExampleDisplayBrush}" CornerRadius="8" MaxHeight="600">
+        <Border x:Name="ExampleContainerBorder" Grid.Row="1"
+            Background="{DynamicResource ControlExampleDisplayBrush}" 
+            BorderBrush="{DynamicResource GalleryBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="8" Height="600">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -584,7 +588,7 @@
                     </ui:ScrollViewerEx>
                 </ui:ItemsRepeaterScrollHost>
 
-                <Border x:Name="SidePanel" Grid.Column="1" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}" BorderThickness="{DynamicResource ControlExampleDisplayBorderThickness}" DataContext="{Binding}" CornerRadius="0,8,8,0" Visibility="Collapsed">
+                <Border x:Name="SidePanel" Grid.Column="1" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource {x:Static ui:ThemeKeys.DividerStrokeColorDefaultBrushKey}}" BorderThickness="1,0,0,0" DataContext="{Binding}" CornerRadius="0,7,7,0" Visibility="Collapsed">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <ikw:SimpleStackPanel Margin="16,8,8,16" Spacing="5">
                             <Grid Margin="0,0,0,15" HorizontalAlignment="Stretch">
