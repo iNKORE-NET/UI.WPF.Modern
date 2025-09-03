@@ -457,13 +457,13 @@
                         <ui:SettingsCard.Description>
                             <StackPanel Orientation="Vertical" Margin="0">
                                 <TextBlock TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                                    iUWM provides a unified icon system that supports multiple sets, including Segoe Fluent Icons, Fluent System Icons, and Segoe MDL2. These icons are optimized for Fluent Design principles ensuring clarity, scale, and theme consistency across your WPF applications.
+                                    iUWM provides a unified icon system with icon keys for <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">SegoeFluentIcons</Run> and <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FluentSystemIcons</Run>. Segoe MDL2 is available via <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">SymbolIcon</Run> or as a fallback through <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">SymbolThemeFontFamily</Run>. We recommend Fluent System Icons as your primary choice.
                                 </TextBlock>
                                 <TextBlock Margin="0,6,0,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                                    Learn more in the
+                                    Learn more about the Iconography in iUWM by visiting the
                                     <InlineUIContainer BaselineAlignment="Center">
                                         <ui:HyperlinkButton
-                                            NavigateUri="https://docs.inkore.net/en-us/ui-wpf-modern/introduction/"
+                                            NavigateUri="https://docs.inkore.net/en-us/ui-wpf-modern/components/media/font-icon/"
                                             VerticalAlignment="Center"
                                             VerticalContentAlignment="Center"
                                             Padding="0,1,0,0"
@@ -486,16 +486,20 @@
                         <ui:SettingsCard.Description>
                             <StackPanel Orientation="Vertical" Margin="0">
                                 <TextBlock TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                                    Use <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">ui:FontIcon</Run> with icon keys, such as <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">SegoeFluentIcons.Delete</Run> or <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FluentSystemIcons.Regular.Edit</Run>. When you set the <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">Icon</Run> property, the correct <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FontFamily</Run> is applied automatically for the selected icon set.
+                                    Use <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">ui:FontIcon</Run> with icon keys, such as <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">SegoeFluentIcons.Delete</Run> or <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FluentSystemIcons.Edit_24_Regular</Run> (match <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FontSize</Run> to the icon’s designed size). When you set the <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">Icon</Run> property, the correct <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FontFamily</Run> is applied automatically for the selected icon set.
                                 </TextBlock>
                                 <TextBlock Margin="0,0,0,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
                                     If you don't specify a <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FontFamily</Run>, or you specify a <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FontFamily</Run> that isn't available on the system at runtime, <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FontIcon</Run> falls back to the default font family defined by the <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">SymbolThemeFontFamily</Run> resource.
                                 </TextBlock>
                                 <TextBlock Margin="0,0,0,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
-                                    An icon rendered at a font size of 16 epx is equivalent to a 16x16 epx bitmap. For best clarity, use these sizes: 16, 20, 24, 32, 40, 48, and 64. Using other sizes can result in softer or blurry rendering.
+                                    The default <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FontSize</Run> is 16 (roughly a 16x16 epx bitmap). For multi-size sets like Fluent System Icons, set <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">FontSize</Run> to the icon’s designed size (e.g., 12, 16, 20, 24, 28, 32, 48) to keep pixel-perfect rendering.
                                 </TextBlock>
                                 <TextBlock Margin="0,0,0,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
                                     All glyphs in Segoe Fluent Icons use a fixed width with a consistent height and left origin point. You can layer and colorize multiple glyphs by drawing them directly on top of each other.
+                                </TextBlock>
+
+                                <TextBlock Margin="0,0,0,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}">
+                                    Avoid using raw <Run FontFamily="{DynamicResource ContentControlThemeFontFamily}">Glyph</Run> strings directly; prefer icon keys for clarity, theme compatibility, and future-proofing.
                                 </TextBlock>
 
                                 <Grid HorizontalAlignment="Stretch" Margin="0,8,0,0">
@@ -510,7 +514,7 @@
                                     <TextBox Grid.Row="0" Grid.Column="0" x:Name="InlineExampleBox" Margin="0" FontFamily="Consolas" FontSize="{DynamicResource {x:Static ui:ThemeKeys.BodyTextBlockFontSizeKey}}" FontWeight="Normal" IsReadOnly="True" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                          AcceptsReturn="True" AcceptsTab="True" TextWrapping="NoWrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MinHeight="50" xml:space="preserve" TextAlignment="Left"
                                          HorizontalAlignment="Stretch"
-                                         Text="&lt;ui:FontIcon Icon=&quot;{x:Static ui:SegoeFluentIcons.Edit}&quot; /&gt;&#x0a;&lt;ui:FontIcon Icon=&quot;{x:Static ui:FluentSystemIcons.Regular.Edit}&quot; /&gt;" />
+                                         Text="&lt;ui:FontIcon Icon=&quot;{x:Static ui:SegoeFluentIcons.Edit}&quot; /&gt;&#x0a;&lt;ui:FontIcon FontSize=&quot;24&quot; Icon=&quot;{x:Static ui:FluentSystemIcons.Edit_24_Regular}&quot; /&gt;" />
                                     <Button x:Name="CopyInlineExampleButton" Grid.Row="0" Grid.Column="1" Margin="8,0,8,20" Padding="6" Click="CopyValueButton_Click" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy value" Tag="{Binding Text, ElementName=InlineExampleBox}">
                                         <Grid>
                                             <ui:FontIcon x:Name="FontIcon_CopyInlineExample_Copy" FontSize="16" Icon="{x:Static ui:SegoeFluentIcons.Copy}" RenderTransformOrigin="0.5 0.5">
