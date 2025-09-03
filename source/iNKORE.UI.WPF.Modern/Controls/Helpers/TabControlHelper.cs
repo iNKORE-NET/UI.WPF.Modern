@@ -454,6 +454,11 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         /// </summary>
         public TabItem Tab { get; private set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the event should be canceled.
+        /// </summary>
+        public bool Cancel { get; set; }
+
         internal TabViewTabCloseRequestedEventArgs(object item, TabItem tab)
         {
             Item = item;
