@@ -402,12 +402,13 @@
         <Setter Property="Padding" Value="{DynamicResource MenuFlyoutItemThemePadding}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="chelper:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
-        <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource UseSystemFocusVisuals}" />
         <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type MenuItem}, ResourceId=SubmenuItemTemplateKey}}" />
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
@@ -416,7 +417,6 @@
                 <Setter Property="BorderThickness" Value="{DynamicResource MenuBarItemBorderThickness}" />
                 <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type MenuItem}, ResourceId=TopLevelHeaderTemplateKey}}" />
                 <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                <Setter Property="IsTabStop" Value="True" />
                 <Setter Property="Header" Value="Item" />
                 <Setter Property="Height" Value="{DynamicResource MenuBarHeight}" />
             </Trigger>
@@ -426,7 +426,6 @@
                 <Setter Property="BorderThickness" Value="{DynamicResource MenuBarItemBorderThickness}" />
                 <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type MenuItem}, ResourceId=TopLevelItemTemplateKey}}" />
                 <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                <Setter Property="IsTabStop" Value="True" />
                 <Setter Property="Header" Value="Item" />
                 <Setter Property="Height" Value="{DynamicResource MenuBarHeight}" />
             </Trigger>
