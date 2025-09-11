@@ -1226,6 +1226,7 @@ namespace iNKORE.UI.WPF.Modern
         public static readonly string ListViewItemMinWidthKey = "ListViewItemMinWidth";
         public static readonly string ListViewItemMinHeightKey = "ListViewItemMinHeight";
         public static readonly string ListViewItemCompactSelectedBorderThemeThicknessKey = "ListViewItemCompactSelectedBorderThemeThickness";
+        public static readonly string GridViewItemCompactSelectedBorderThemeThicknessKey = "GridViewItemCompactSelectedBorderThemeThickness";
         public static readonly string ListViewItemBorderBackgroundKey = "ListViewItemBorderBackground";
         public static readonly string ListViewItemBackgroundKey = "ListViewItemBackground";
         public static readonly string ListViewItemBackgroundPointerOverKey = "ListViewItemBackgroundPointerOver";

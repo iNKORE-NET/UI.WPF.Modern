@@ -657,7 +657,7 @@
                 <ControlTemplate TargetType="ListViewItem">
                     <Border
                         x:Name="LayoutRoot"
-                        Margin="0,4"
+                        Margin="{DynamicResource GridViewItemCompactSelectedBorderThemeThickness}"
                         chelper:PressHelper.IsEnabled="True"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"

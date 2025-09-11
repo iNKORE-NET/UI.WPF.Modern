@@ -1336,6 +1336,7 @@
     <CornerRadius x:Key="GridViewItemCornerRadius">4</CornerRadius>
     <CornerRadius x:Key="GridViewItemCheckBoxCornerRadius">3</CornerRadius>
     <Thickness x:Key="GridViewItemSelectedBorderThickness">2</Thickness>
+    <Thickness x:Key="GridViewItemCompactSelectedBorderThemeThickness">0,4</Thickness>
     <m:StaticResource x:Key="GridViewItemBackground" ResourceKey="SubtleFillColorTransparentBrush" />
     <m:StaticResource x:Key="GridViewItemForeground" ResourceKey="TextFillColorPrimaryBrush" />
     <m:StaticResource x:Key="GridViewItemPointerOverBorderBrush" ResourceKey="ControlStrokeColorOnAccentTertiaryBrush" />
