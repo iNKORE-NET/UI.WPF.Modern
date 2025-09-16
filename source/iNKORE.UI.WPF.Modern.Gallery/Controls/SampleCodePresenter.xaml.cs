@@ -129,7 +129,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
                     {
                             if (item.Command == ApplicationCommands.Copy)
                             {
-                                // Fallback tooltip text for gallery samples. These match the intent of the library descriptions.
                                 item.Header = "Copy";
                                 item.ToolTip = "Copy the selected content to the clipboard";
                                 ToolTipService.SetInitialShowDelay(item, 700);
