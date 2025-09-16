@@ -117,19 +117,19 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         #endregion
 
-        #region EnableScrollAnimation
+        #region IsScrollAnimationEnabled
 
-        public static readonly DependencyProperty EnableScrollAnimationProperty =
+        public static readonly DependencyProperty IsScrollAnimationEnabledProperty =
             DependencyProperty.Register(
-                nameof(EnableScrollAnimation),
+                nameof(IsScrollAnimationEnabled),
                 typeof(bool),
                 typeof(ScrollViewerEx),
                 new PropertyMetadata(true));
 
-        public bool EnableScrollAnimation
+        public bool IsScrollAnimationEnabled
         {
-            get => (bool)GetValue(EnableScrollAnimationProperty);
-            set => SetValue(EnableScrollAnimationProperty, value);
+            get => (bool)GetValue(IsScrollAnimationEnabledProperty);
+            set => SetValue(IsScrollAnimationEnabledProperty, value);
         }
 
         #endregion
@@ -196,7 +196,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
                 ScrollToVerticalOffset(LastVerticalLocation);
 
-                if (EnableScrollAnimation)
+                if (IsScrollAnimationEnabled)
                 {
                     double scale = Math.Abs((LastVerticalLocation - newOffset) / WheelChange);
 
@@ -239,7 +239,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
                 ScrollToHorizontalOffset(LastHorizontalLocation);
 
-                if (EnableScrollAnimation)
+                if (IsScrollAnimationEnabled)
                 {
                     double scale = Math.Abs((LastHorizontalLocation - newOffset) / WheelChange);
 
@@ -318,7 +318,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 if (horizontalOffset.HasValue)
                 {
                     ScrollToHorizontalOffset(LastHorizontalLocation);
-                    if (EnableScrollAnimation)
+                    if (IsScrollAnimationEnabled)
                     {
                         AnimateScroll(Math.Min(ScrollableWidth, horizontalOffset.Value), Orientation.Horizontal, 1);
                     }
@@ -332,7 +332,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 if (verticalOffset.HasValue)
                 {
                     ScrollToVerticalOffset(LastVerticalLocation);
-                    if (EnableScrollAnimation)
+                    if (IsScrollAnimationEnabled)
                     {
                         AnimateScroll(Math.Min(ScrollableHeight, verticalOffset.Value), Orientation.Vertical, 1);
                     }
