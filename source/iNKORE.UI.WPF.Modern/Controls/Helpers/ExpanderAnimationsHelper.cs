@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media;
@@ -108,16 +107,38 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             expandDirectionDescriptor?.AddValueChanged(expander, OnExpandDirectionChanged);
             expander.Expanded += OnExpanderExpanded;
             expander.Collapsed += OnExpanderCollapsed;
+            
+            if (expander.IsLoaded)
+            {
+                TriggerExpandAnimation(expander);
+            }
+            else
+            {
+                expander.Loaded += TriggerExpandAnimationOnLoad;
+            }
+
+            void TriggerExpandAnimationOnLoad(object sender, RoutedEventArgs routedEventArgs)
+            {
+                TriggerExpandAnimation(expander);
+                expander.Loaded -= TriggerExpandAnimationOnLoad;
+            }
+        }
+
+        private static void TriggerExpandAnimation(Expander expander)
+        {
+            if (expander.IsExpanded)
+            {
+                OnExpanderExpanded(expander, null);
+            }
+            else
+            {
+                OnExpanderCollapsed(expander, null);
+            }
         }
 
         private static void OnExpanderExpanded(object sender, RoutedEventArgs e)
         {
-            if (sender is not Expander expander)
-            {
-                return;
-            }
-
-            if (GetExpansionHandler(expander) is not { } handler)
+            if (sender is not Expander expander || GetExpansionHandler(expander) is not { } handler)
             {
                 return;
             }
@@ -176,7 +197,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         protected readonly Expander Expander;
         private string _toAnimateTemplateControlName;
         protected FrameworkElement ToAnimateControl;
-        protected FrameworkElement ContentControl;
 
         protected ExpanderExpansionBaseHandler(Expander expander, string toAnimateTemplateControlName)
         {
@@ -202,7 +222,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         private void FindAnimationControls()
         {
             FindToAnimateControl();
-            ContentControl = LogicalTreeHelper.GetChildren(Expander).OfType<FrameworkElement>().LastOrDefault();
         }
 
         private void FindToAnimateControl()
@@ -222,12 +241,12 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         public void Handle(TimeSpan animationDuration)
         {
-            if (ToAnimateControl is null || ContentControl is null || Expander is null)
+            if (ToAnimateControl is null || Expander is null)
             {
                 return;
             }
 
-            var correctionFactor = Expander.ExpandDirection switch
+            var directionFactor = Expander.ExpandDirection switch
             {
                 ExpandDirection.Down or ExpandDirection.Left => -1,
                 _ => 1
@@ -235,20 +254,20 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
             if (Expander.IsExpanded)
             {
-                AnimateExpand(animationDuration, correctionFactor);
+                AnimateExpand(animationDuration, directionFactor);
             }
             else
             {
-                AnimateCollapse(animationDuration, correctionFactor);
+                AnimateCollapse(animationDuration, directionFactor);
             }
         }
 
-        private void AnimateExpand(TimeSpan animationDuration, int correctionFactor)
+        private void AnimateExpand(TimeSpan animationDuration, int directionFactor)
         {
             ToAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
             ToAnimateControl.Visibility = Visibility.Visible;
 
-            UpdateLayout(ContentControl);
+            UpdateLayout(ToAnimateControl);
 
             if (ToAnimateControl.RenderTransform is not TranslateTransform translateTransform)
             {
@@ -258,8 +277,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             var animationProperty = GetToAnimateProperty();
             if (!translateTransform.IsSealed)
             {
-                //this will only work before any animation is applied
-                translateTransform.SetValue(animationProperty, correctionFactor * GetAnimationToValue());
+                translateTransform.SetValue(animationProperty, directionFactor * GetAnimationToValue());
             }
 
             RunTranslationAnimation(animationDuration, translateTransform, animationProperty, 0);
@@ -279,7 +297,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 ]
             };
 
-            UpdateLayout(ContentControl);
+            UpdateLayout(ToAnimateControl);
 
             if (ToAnimateControl.RenderTransform is not TranslateTransform translateTransform)
             {
@@ -297,7 +315,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             DependencyProperty toAnimateProperty,
             double targetValue)
         {
-            var yAnimation = new DoubleAnimationUsingKeyFrames
+            var animation = new DoubleAnimationUsingKeyFrames
             {
                 KeyFrames = new DoubleKeyFrameCollection
                 {
@@ -312,7 +330,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 Duration = animationDuration
             };
 
-            translateTransform.BeginAnimation(toAnimateProperty, yAnimation);
+            translateTransform.BeginAnimation(toAnimateProperty, animation);
         }
 
         protected static void UpdateLayout(FrameworkElement contentControl)
@@ -327,7 +345,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         : ExpanderExpansionBaseHandler(expander, toAnimateTemplateControlName)
     {
         protected override DependencyProperty GetToAnimateProperty() => TranslateTransform.XProperty;
-        protected override double GetAnimationToValue() => ContentControl.ActualWidth;
+        protected override double GetAnimationToValue() => ToAnimateControl.ActualWidth;
     }
 
     public sealed class ExpanderVerticalExpansionHandler(Expander expander, string toAnimateTemplateControlName)
@@ -335,6 +353,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
     {
         protected override DependencyProperty GetToAnimateProperty() => TranslateTransform.YProperty;
 
-        protected override double GetAnimationToValue() => ContentControl.ActualHeight;
+        protected override double GetAnimationToValue() => ToAnimateControl.ActualHeight;
     }
 }
