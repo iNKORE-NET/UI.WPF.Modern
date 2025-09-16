@@ -1,4 +1,4 @@
-﻿using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Common.IconKeys;
 using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using System.Linq;
@@ -252,26 +252,59 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     if (command == ApplicationCommands.Cut)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelCut);
+                        var cutDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionCut);
+                        // Show only the description as tooltip (remove accelerator text)
+                        menuItem.ToolTip = cutDescription;
+                        ToolTipService.SetInitialShowDelay(menuItem, 700);
+                        ToolTipService.SetShowDuration(menuItem, 10000);
+                        ToolTipService.SetPlacement(menuItem, PlacementMode.Top);
                     }
                     else if (command == ApplicationCommands.Copy)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelCopy);
+                        // Add a tooltip for long-hover to show description (accelerator removed)
+                        var copyDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionCopy);
+                        menuItem.ToolTip = copyDescription;
+                        // set tooltip timing for long-hover experience
+                        ToolTipService.SetInitialShowDelay(menuItem, 700);
+                        ToolTipService.SetShowDuration(menuItem, 10000);
+                        ToolTipService.SetPlacement(menuItem, PlacementMode.Top);
                     }
                     else if (command == ApplicationCommands.Paste)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelPaste);
+                        var pasteDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionPaste);
+                        menuItem.ToolTip = pasteDescription;
+                        ToolTipService.SetInitialShowDelay(menuItem, 700);
+                        ToolTipService.SetShowDuration(menuItem, 10000);
+                        ToolTipService.SetPlacement(menuItem, PlacementMode.Top);
                     }
                     else if (command == ApplicationCommands.Undo)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelUndo);
+                        var undoDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionUndo);
+                        menuItem.ToolTip = undoDescription;
+                        ToolTipService.SetInitialShowDelay(menuItem, 700);
+                        ToolTipService.SetShowDuration(menuItem, 10000);
+                        ToolTipService.SetPlacement(menuItem, PlacementMode.Top);
                     }
                     else if (command == ApplicationCommands.Redo)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelRedo);
+                        var redoDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionRedo);
+                        menuItem.ToolTip = redoDescription;
+                        ToolTipService.SetInitialShowDelay(menuItem, 700);
+                        ToolTipService.SetShowDuration(menuItem, 10000);
+                        ToolTipService.SetPlacement(menuItem, PlacementMode.Top);
                     }
                     else if (command == ApplicationCommands.SelectAll)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelSelectAll);
+                        var selectAllDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionSelectAll);
+                        menuItem.ToolTip = selectAllDescription;
+                        ToolTipService.SetInitialShowDelay(menuItem, 700);
+                        ToolTipService.SetShowDuration(menuItem, 10000);
+                        ToolTipService.SetPlacement(menuItem, PlacementMode.Top);
                     }
 
                     menuItem.CommandTarget = target;
