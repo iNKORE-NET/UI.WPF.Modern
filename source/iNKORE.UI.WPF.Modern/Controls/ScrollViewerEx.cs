@@ -215,9 +215,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 {
                     e.Handled = true;
                 }
-                {
-                    e.Handled = true;
-                }
 
                 double WheelChange = RewriteWheelChange ? e.Delta * (ViewportWidth / 1.5) * WheelSensitivity / ActualWidth : e.Delta * WheelSensitivity;
                 double newOffset = LastHorizontalLocation - WheelChange;
