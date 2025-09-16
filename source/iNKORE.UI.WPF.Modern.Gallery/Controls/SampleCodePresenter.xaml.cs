@@ -119,7 +119,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
 
             FixAvalonEditScrolling();
 
-            // Ensure the CodePresenter context menu items have the same long-hover, description-only
+            // Ensure the CodePresenter context menu items have the same long-hover
             // tooltips and placement as the library TextContextMenu for consistency.
             try
             {
