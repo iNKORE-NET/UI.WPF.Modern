@@ -1,4 +1,4 @@
-﻿using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Common.IconKeys;
 using System.ComponentModel;
 using System.Windows;
@@ -235,37 +235,57 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 FontWeight = FontWeight,
                 Text = Glyph
             };
-
-            if (ShouldInheritForegroundFromVisualParent)
+            // Instead of manually copying brushes, just bind. WPF inheritance will supply parent Foreground
+            // when our own Foreground is default; explicit user-set Foreground flows through.
+            _textBlock.SetBinding(TextBlock.ForegroundProperty, new System.Windows.Data.Binding
             {
-                _textBlock.Foreground = VisualParentForeground;
-            }
+                Path = new PropertyPath(nameof(Foreground)),
+                Source = this
+            });
 
             Children.Add(_textBlock);
         }
 
-        private protected override void OnShouldInheritForegroundFromVisualParentChanged()
-        {
-            if (_textBlock != null)
-            {
-                if (ShouldInheritForegroundFromVisualParent)
-                {
-                    _textBlock.Foreground = VisualParentForeground;
-                }
-                else
-                {
-                    _textBlock.ClearValue(TextBlock.ForegroundProperty);
-                }
-            }
-        }
-
-        private protected override void OnVisualParentForegroundPropertyChanged(DependencyPropertyChangedEventArgs args)
-        {
-            if (ShouldInheritForegroundFromVisualParent && _textBlock != null)
-            {
-                _textBlock.Foreground = (Brush)args.NewValue;
-            }
-        }
+        // Foreground propagation now handled purely via binding; overrides no longer necessary.
+        // Legacy foreground inheritance logic (kept for reference only):
+        //
+        // private protected override void OnShouldInheritForegroundFromVisualParentChanged()
+        // {
+        //     if (_textBlock != null)
+        //     {
+        //         if (ShouldInheritForegroundFromVisualParent)
+        //         {
+        //             _textBlock.Foreground = VisualParentForeground;
+        //         }
+        //         else
+        //         {
+        //             _textBlock.ClearValue(TextBlock.ForegroundProperty);
+        //             // Apply our own Foreground if explicitly set.
+        //             if (Foreground != null)
+        //             {
+        //                 _textBlock.Foreground = Foreground;
+        //             }
+        //         }
+        //     }
+        // }
+        //
+        // private protected override void OnVisualParentForegroundPropertyChanged(DependencyPropertyChangedEventArgs args)
+        // {
+        //     if (ShouldInheritForegroundFromVisualParent && _textBlock != null)
+        //     {
+        //         _textBlock.Foreground = (Brush)args.NewValue;
+        //     }
+        // }
+        //
+        // private protected override void OnOwnForegroundPropertyChanged(DependencyPropertyChangedEventArgs args)
+        // {
+        //     if (!ShouldInheritForegroundFromVisualParent && _textBlock != null)
+        //     {
+        //         // When we're not inheriting from visual parent, push our Foreground to the text block.
+        //         _textBlock.Foreground = (Brush)args.NewValue;
+        //     }
+        // }
+        //
 
         private TextBlock _textBlock;
 
