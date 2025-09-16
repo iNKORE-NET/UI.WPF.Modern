@@ -342,7 +342,7 @@
                                 <ItemsPresenter
                                     Grid.IsSharedSizeScope="true"
                                     KeyboardNavigation.DirectionalNavigation="Cycle"
-                                    KeyboardNavigation.TabNavigation="Cycle"
+                                    KeyboardNavigation.TabNavigation="None"
                                     RenderOptions.ClearTypeHint="Enabled"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             </local:ScrollViewerEx>
