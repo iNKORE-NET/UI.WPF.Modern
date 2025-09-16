@@ -51,7 +51,7 @@
                                 Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer,
                                                                               TypeInTargetAssembly={x:Type FrameworkElement}}}">
                                 <ItemsPresenter
-                                    KeyboardNavigation.DirectionalNavigation="None"
+                                    KeyboardNavigation.DirectionalNavigation="Cycle"
                                     KeyboardNavigation.TabNavigation="None"
                                     RenderOptions.ClearTypeHint="Enabled"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
