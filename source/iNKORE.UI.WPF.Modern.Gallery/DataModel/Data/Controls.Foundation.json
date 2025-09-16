@@ -25,6 +25,27 @@
             "Items":
             [
                 {
+                    "UniqueId": "Spacing",
+                    "Title": "Spacing",
+                    "Subtitle": "Spacing values and layout examples",
+                    "ImagePath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
+                    "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
+                    "Description": "",
+                    "Content": "",
+                    "IncludedInBuild": true,
+                    "IsNew": false,
+                    "IsUpdated": false,
+                    "Docs": [
+                        {
+                            "Title": "Content design basics",
+                            "Uri": "https://learn.microsoft.com/windows/apps/design/basics/content-basics"
+                        }
+                    ],
+                    "RelatedControls": 
+                    [
+                    ]
+                },
+                {
                     "UniqueId": "Typography",
                     "Title": "Typography",
                     "Subtitle": "Typography type ramp and system fonts",

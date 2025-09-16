@@ -293,19 +293,29 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                     _lastItem = item;
                     rootFrame.Navigate(item);
                 }
+                else if (selectedItem?.Tag?.ToString() == "Spacing")
+                {
+                    var spacingId = "Spacing";
+                    if (_lastItem?.ToString() == spacingId) return;
+                    _lastItem = spacingId;
+                    var spacingItem = ControlInfoDataSource.Instance.Realms
+                        .SelectMany(r => r.Groups)
+                        .SelectMany(g => g.Items)
+                        .FirstOrDefault(i => i.UniqueId == "Spacing");
+                    if (spacingItem != null)
+                    {
+                        rootFrame.Navigate(ItemPage.Create(spacingItem));
+                    }
+                }
                 else if (selectedItem?.Tag?.ToString() == "Typography")
                 {
-                    // Handle Typography navigation
                     var typographyId = "Typography";
                     if (_lastItem?.ToString() == typographyId) return;
                     _lastItem = typographyId;
-                    
-                    // Find Typography item from the data source
                     var typographyItem = ControlInfoDataSource.Instance.Realms
                         .SelectMany(r => r.Groups)
                         .SelectMany(g => g.Items)
                         .FirstOrDefault(i => i.UniqueId == "Typography");
-                    
                     if (typographyItem != null)
                     {
                         rootFrame.Navigate(ItemPage.Create(typographyItem));
