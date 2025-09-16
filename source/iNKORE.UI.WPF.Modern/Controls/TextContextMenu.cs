@@ -253,7 +253,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelCut);
                         var cutDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionCut);
-                        // Show only the description as tooltip (remove accelerator text)
                         menuItem.ToolTip = cutDescription;
                         ToolTipService.SetInitialShowDelay(menuItem, 700);
                         ToolTipService.SetShowDuration(menuItem, 10000);
@@ -262,10 +261,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     else if (command == ApplicationCommands.Copy)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelCopy);
-                        // Add a tooltip for long-hover to show description (accelerator removed)
                         var copyDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionCopy);
                         menuItem.ToolTip = copyDescription;
-                        // set tooltip timing for long-hover experience
                         ToolTipService.SetInitialShowDelay(menuItem, 700);
                         ToolTipService.SetShowDuration(menuItem, 10000);
                         ToolTipService.SetPlacement(menuItem, PlacementMode.Top);
