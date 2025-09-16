@@ -1,4 +1,4 @@
-﻿using ColorCodeStandard;
+using ColorCodeStandard;
 using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Editing;
 using ICSharpCode.AvalonEdit.Highlighting;
@@ -118,6 +118,39 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             SampleHeader.Text = IsCSharpSample ? "C#" : "XAML";
 
             FixAvalonEditScrolling();
+
+            // Ensure the CodePresenter context menu items have the same long-hover, description-only
+            // tooltips and placement as the library TextContextMenu for consistency.
+            try
+            {
+                if (CodePresenter?.ContextMenu != null)
+                {
+                    foreach (var item in CodePresenter.ContextMenu.Items.OfType<MenuItem>())
+                    {
+                            if (item.Command == ApplicationCommands.Copy)
+                            {
+                                // Fallback tooltip text for gallery samples. These match the intent of the library descriptions.
+                                item.Header = "Copy";
+                                item.ToolTip = "Copy the selected content to the clipboard";
+                                ToolTipService.SetInitialShowDelay(item, 700);
+                                ToolTipService.SetShowDuration(item, 10000);
+                                System.Windows.Controls.ToolTipService.SetPlacement(item, System.Windows.Controls.Primitives.PlacementMode.Top);
+                            }
+                            else if (item.Command == ApplicationCommands.SelectAll)
+                            {
+                                item.Header = "Select All";
+                                item.ToolTip = "Select all content";
+                                ToolTipService.SetInitialShowDelay(item, 700);
+                                ToolTipService.SetShowDuration(item, 10000);
+                                System.Windows.Controls.ToolTipService.SetPlacement(item, System.Windows.Controls.Primitives.PlacementMode.Top);
+                            }
+                    }
+                }
+            }
+            catch
+            {
+                // Swallow any errors here to avoid breaking the sample if localization isn't available.
+            }
         }
 
         private void CodePresenter_Loaded(object sender, RoutedEventArgs e)
