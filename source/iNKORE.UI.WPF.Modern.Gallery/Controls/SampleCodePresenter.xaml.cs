@@ -119,29 +119,64 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
 
             FixAvalonEditScrolling();
 
-            // Ensure the CodePresenter context menu items have the same long-hover
+            // Ensure the CodePresenter context menu items have the same long-hover, description-only
             // tooltips and placement as the library TextContextMenu for consistency.
             try
             {
                 if (CodePresenter?.ContextMenu != null)
                 {
+                    ToolTip BuildCenteredMouseToolTip(string text)
+                    {
+                        var tt = new ToolTip
+                        {
+                            Content = text,
+                            Placement = System.Windows.Controls.Primitives.PlacementMode.Mouse
+                        };
+                        tt.Opened += (s, e2) =>
+                        {
+                            if (s is ToolTip t)
+                            {
+                                t.HorizontalOffset = 0;
+                                t.VerticalOffset = 0;
+                                void ApplyOffsets()
+                                {
+                                    const double gap = 32;
+                                    t.HorizontalOffset = -t.ActualWidth / 2.0;
+                                    t.VerticalOffset = -(t.ActualHeight + gap);
+                                }
+
+                                if (t.ActualWidth <= 0 || t.ActualHeight <= 0)
+                                {
+                                    t.Dispatcher.BeginInvoke((System.Action)(() =>
+                                    {
+                                        ApplyOffsets();
+                                    }));
+                                }
+                                else
+                                {
+                                    ApplyOffsets();
+                                }
+                            }
+                        };
+                        return tt;
+                    }
+
                     foreach (var item in CodePresenter.ContextMenu.Items.OfType<MenuItem>())
                     {
                             if (item.Command == ApplicationCommands.Copy)
                             {
+                                // Fallback tooltip text for gallery samples. These match the intent of the library descriptions.
                                 item.Header = "Copy";
-                                item.ToolTip = "Copy the selected content to the clipboard";
+                                item.ToolTip = BuildCenteredMouseToolTip("Copy the selected content to the clipboard");
                                 ToolTipService.SetInitialShowDelay(item, 700);
                                 ToolTipService.SetShowDuration(item, 10000);
-                                System.Windows.Controls.ToolTipService.SetPlacement(item, System.Windows.Controls.Primitives.PlacementMode.Top);
                             }
                             else if (item.Command == ApplicationCommands.SelectAll)
                             {
                                 item.Header = "Select All";
-                                item.ToolTip = "Select all content";
+                                item.ToolTip = BuildCenteredMouseToolTip("Select all content");
                                 ToolTipService.SetInitialShowDelay(item, 700);
                                 ToolTipService.SetShowDuration(item, 10000);
-                                System.Windows.Controls.ToolTipService.SetPlacement(item, System.Windows.Controls.Primitives.PlacementMode.Top);
                             }
                     }
                 }
