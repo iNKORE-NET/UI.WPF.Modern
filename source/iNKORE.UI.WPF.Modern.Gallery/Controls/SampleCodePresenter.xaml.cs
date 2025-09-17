@@ -118,6 +118,33 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             SampleHeader.Text = IsCSharpSample ? "C#" : "XAML";
 
             FixAvalonEditScrolling();
+
+            try
+            {
+                if (CodePresenter?.ContextMenu != null)
+                {
+                    // Match library behavior: show Copy only when there is a selection; always show Select All.
+                    CodePresenter.ContextMenu.Opened += (s, args) =>
+                    {
+                        var hasSelection = CodePresenter?.SelectionLength > 0;
+                        foreach (var mi in CodePresenter.ContextMenu.Items.OfType<MenuItem>())
+                        {
+                            if (mi.Command == ApplicationCommands.Copy)
+                            {
+                                mi.Visibility = hasSelection == true ? Visibility.Visible : Visibility.Collapsed;
+                            }
+                            else if (mi.Command == ApplicationCommands.SelectAll)
+                            {
+                                mi.Visibility = Visibility.Visible;
+                            }
+                        }
+                    };
+                }
+            }
+            catch
+            {
+                // Swallow any errors here to avoid breaking the sample if localization isn't available.
+            }
         }
 
         private void CodePresenter_Loaded(object sender, RoutedEventArgs e)
