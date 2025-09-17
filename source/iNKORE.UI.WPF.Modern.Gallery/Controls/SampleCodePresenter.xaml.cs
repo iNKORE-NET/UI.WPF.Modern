@@ -123,7 +123,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             {
                 if (CodePresenter?.ContextMenu != null)
                 {
-                    // Match library behavior: show Copy only when there is a selection; always show Select All.
+                    //show Copy only when there is a selection; always show Select All.
                     CodePresenter.ContextMenu.Opened += (s, args) =>
                     {
                         var hasSelection = CodePresenter?.SelectionLength > 0;
