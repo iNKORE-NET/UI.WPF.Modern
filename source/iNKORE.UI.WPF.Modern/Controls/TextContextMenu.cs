@@ -292,7 +292,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
                         var cutDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionCut);
                         menuItem.ToolTip = BuildCenteredMouseToolTip(cutDescription);
                         ToolTipService.SetInitialShowDelay(menuItem, 700);
-                        ToolTipService.SetShowDuration(menuItem, 10000);
                     }
                     else if (command == ApplicationCommands.Copy)
                     {
@@ -300,7 +299,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
                         var copyDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionCopy);
                         menuItem.ToolTip = BuildCenteredMouseToolTip(copyDescription);
                         ToolTipService.SetInitialShowDelay(menuItem, 700);
-                        ToolTipService.SetShowDuration(menuItem, 10000);
                     }
                     else if (command == ApplicationCommands.Paste)
                     {
@@ -308,7 +306,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
                         var pasteDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionPaste);
                         menuItem.ToolTip = BuildCenteredMouseToolTip(pasteDescription);
                         ToolTipService.SetInitialShowDelay(menuItem, 700);
-                        ToolTipService.SetShowDuration(menuItem, 10000);
                     }
                     else if (command == ApplicationCommands.Undo)
                     {
@@ -316,7 +313,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
                         var undoDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionUndo);
                         menuItem.ToolTip = BuildCenteredMouseToolTip(undoDescription);
                         ToolTipService.SetInitialShowDelay(menuItem, 700);
-                        ToolTipService.SetShowDuration(menuItem, 10000);
                     }
                     else if (command == ApplicationCommands.Redo)
                     {
@@ -324,7 +320,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
                         var redoDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionRedo);
                         menuItem.ToolTip = BuildCenteredMouseToolTip(redoDescription);
                         ToolTipService.SetInitialShowDelay(menuItem, 700);
-                        ToolTipService.SetShowDuration(menuItem, 10000);
                     }
                     else if (command == ApplicationCommands.SelectAll)
                     {
@@ -332,7 +327,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
                         var selectAllDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionSelectAll);
                         menuItem.ToolTip = BuildCenteredMouseToolTip(selectAllDescription);
                         ToolTipService.SetInitialShowDelay(menuItem, 700);
-                        ToolTipService.SetShowDuration(menuItem, 10000);
                     }
 
                     menuItem.CommandTarget = target;
