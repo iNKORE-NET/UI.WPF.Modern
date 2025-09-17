@@ -169,14 +169,12 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
                                 item.Header = "Copy";
                                 item.ToolTip = BuildCenteredMouseToolTip("Copy the selected content to the clipboard");
                                 ToolTipService.SetInitialShowDelay(item, 700);
-                                ToolTipService.SetShowDuration(item, 10000);
                             }
                             else if (item.Command == ApplicationCommands.SelectAll)
                             {
                                 item.Header = "Select All";
                                 item.ToolTip = BuildCenteredMouseToolTip("Select all content");
                                 ToolTipService.SetInitialShowDelay(item, 700);
-                                ToolTipService.SetShowDuration(item, 10000);
                             }
                     }
                 }
