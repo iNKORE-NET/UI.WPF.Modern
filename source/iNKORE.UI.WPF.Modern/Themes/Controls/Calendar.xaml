@@ -464,6 +464,9 @@
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="Opacity">
                                                 <DiscreteDoubleKeyFrame KeyTime="0" Value="0" />
                                             </DoubleAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Hidden}" />
+                                            </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_YearView" Storyboard.TargetProperty="Visibility">
                                                 <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}" />
                                             </ObjectAnimationUsingKeyFrames>
@@ -536,6 +539,9 @@
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="Opacity">
                                                 <DiscreteDoubleKeyFrame KeyTime="0" Value="0" />
                                             </DoubleAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Hidden}" />
+                                            </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_YearView" Storyboard.TargetProperty="Visibility">
                                                 <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}" />
                                             </ObjectAnimationUsingKeyFrames>
@@ -628,7 +634,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource EllipticalFocusStyle}"/>
         <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="True" />
-        <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-3" />
+        <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-4,-3.5,-3.5,-3" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarDayButton">
@@ -687,6 +693,8 @@
                         </Trigger>
                         <!--  Selected  -->
                         <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="IsTabStop" Value="True" />
+                            <Setter Property="TabIndex" Value="4" />
                             <Setter TargetName="NormalText" Property="Foreground" Value="{DynamicResource CalendarViewSelectedForeground}" />
                             <Setter TargetName="HighlightBorder" Property="Stroke" Value="{DynamicResource CalendarViewSelectedBorderBrush}" />
                         </Trigger>
@@ -738,6 +746,10 @@
                             <Setter TargetName="Background" Property="Fill" Value="{DynamicResource CalendarViewTodayBackground}" />
                             <Setter TargetName="NormalText" Property="FontWeight" Value="{DynamicResource CalendarViewTodayFontWeight}" />
                             <Setter TargetName="NormalText" Property="Foreground" Value="{DynamicResource CalendarViewTodayForeground}" />
+                        </Trigger>
+                        <Trigger Property="IsToday" Value="True">
+                            <Setter Property="IsTabStop" Value="True" />
+                            <Setter Property="TabIndex" Value="5" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -857,6 +869,8 @@
                         </Trigger>
                         <!--  Selected  -->
                         <Trigger Property="HasSelectedDays" Value="True">
+                            <Setter Property="IsTabStop" Value="True" />
+                            <Setter Property="TabIndex" Value="4" />
                             <Setter TargetName="Background" Property="Fill" Value="{DynamicResource CalendarViewTodayBackground}" />
                             <Setter TargetName="NormalText" Property="FontWeight" Value="{DynamicResource CalendarViewTodayFontWeight}" />
                             <Setter TargetName="NormalText" Property="Foreground" Value="{DynamicResource CalendarViewTodayForeground}" />
