@@ -1777,7 +1777,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
         // Call this when you want an uncancellable close
         void ClosePane()
         {
-            CollapseMenuItemsInRepeater(m_leftNavRepeater);
             try
             {
                 m_isOpenPaneForInteraction = true;
