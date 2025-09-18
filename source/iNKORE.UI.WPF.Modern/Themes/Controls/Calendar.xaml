@@ -818,6 +818,9 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource EllipticalFocusStyle}"/>
+        <Setter Property="chelper:CalendarHelper.CalendarDisplayMode" Value="{Binding RelativeSource={RelativeSource AncestorType=Calendar}, Path=DisplayMode, Mode=OneWay}" />
+        <Setter Property="chelper:CalendarHelper.IsContainsTodayActive" Value="{Binding RelativeSource={RelativeSource AncestorType=Calendar}, Path=IsTodayHighlighted, Mode=OneWay}" />
+        <Setter Property="chelper:CalendarHelper.ContextDate" Value="{Binding }" />
         <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="True" />
         <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-4,-3.5,-3.5,-3" />
         <Setter Property="Template">
@@ -868,30 +871,39 @@
                             <Setter TargetName="NormalText" Property="Foreground" Value="{DynamicResource CalendarViewDisabledForeground}" />
                         </Trigger>
                         <!--  Selected  -->
-                        <Trigger Property="HasSelectedDays" Value="True">
+                        <Trigger Property="chelper:CalendarHelper.ContainsToday" Value="True">
                             <Setter Property="IsTabStop" Value="True" />
                             <Setter Property="TabIndex" Value="4" />
+                        </Trigger>
+                        <MultiTrigger >
+                            <MultiTrigger.Conditions>
+                                <Condition Property="chelper:CalendarHelper.ContainsToday" Value="True"/>
+                                <Condition Property="chelper:CalendarHelper.IsContainsTodayActive" Value="True"/>
+                            </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Fill" Value="{DynamicResource CalendarViewTodayBackground}" />
                             <Setter TargetName="NormalText" Property="FontWeight" Value="{DynamicResource CalendarViewTodayFontWeight}" />
                             <Setter TargetName="NormalText" Property="Foreground" Value="{DynamicResource CalendarViewTodayForeground}" />
-                        </Trigger>
+                        </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="HasSelectedDays" Value="True" />
+                                <Condition Property="chelper:CalendarHelper.ContainsToday" Value="True"/>
+                                <Condition Property="chelper:CalendarHelper.IsContainsTodayActive" Value="True"/>
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Fill" Value="{DynamicResource CalendarViewTodayHoverBackground}" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="HasSelectedDays" Value="True" />
+                                <Condition Property="chelper:CalendarHelper.ContainsToday" Value="True"/>
+                                <Condition Property="chelper:CalendarHelper.IsContainsTodayActive" Value="True"/>
                                 <Condition Property="IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Fill" Value="{DynamicResource CalendarViewTodayPressedBackground}" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="HasSelectedDays" Value="True" />
+                                <Condition Property="chelper:CalendarHelper.ContainsToday" Value="True"/>
+                                <Condition Property="chelper:CalendarHelper.IsContainsTodayActive" Value="True"/>
                                 <Condition Property="IsEnabled" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Fill" Value="{DynamicResource CalendarViewTodayDisabledBackground}" />
@@ -937,6 +949,7 @@
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="chelper:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="chelper:CalendarHelper.AutoReleaseMouseCapture" Value="True" />
+        <Setter Property="chelper:CalendarHelper.KeyboardBehaviorOverride" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Calendar">
