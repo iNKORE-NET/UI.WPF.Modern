@@ -159,7 +159,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
             foreach(var realm in ControlInfoDataSource.Instance.Realms)
             {
-                NavigationViewControl.MenuItems.Add(new NavigationViewItemHeader() { Content = realm.Title.ToUpper() });
+                // Skip showing the header for the Foundation realm but still include its groups
+                if (!string.Equals(realm.UniqueId, "Foundation", StringComparison.OrdinalIgnoreCase))
+                {
+                    NavigationViewControl.MenuItems.Add(new NavigationViewItemHeader() { Content = realm.Title.ToUpper() });
+                }
 
                 foreach (var group in realm.Groups.OrderBy(i => i.Title))
                 {
