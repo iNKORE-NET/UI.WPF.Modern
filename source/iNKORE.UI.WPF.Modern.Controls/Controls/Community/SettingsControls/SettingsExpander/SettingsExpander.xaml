@@ -53,13 +53,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
 
-                    <ui:ElevationBorder
+                    <Border
                         x:Name="Background"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
-                        SnapsToDevicePixels="True">
+                        SnapsToDevicePixels="True"
+                        ui:FocusVisualHelper.IsTemplateFocusTarget="True">
                         <Border
                             x:Name="Border"
                             Padding="{TemplateBinding Padding}"
@@ -116,7 +117,7 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
 
-                    </ui:ElevationBorder>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Background" Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />

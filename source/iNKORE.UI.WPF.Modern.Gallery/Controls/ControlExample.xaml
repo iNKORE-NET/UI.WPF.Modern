@@ -13,6 +13,7 @@
     <sys:Double x:Key="ExampleMaxWidth">1000</sys:Double>
 
     <Style TargetType="local:ControlExample">
+        <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:ControlExample">

@@ -42,6 +42,7 @@
         <Setter Property="chelper:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
         <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource UseSystemFocusVisuals}" />
+        <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="0,-1,0,-1" />
         <Setter Property="chelper:TreeViewItemHelper.IsEnabled" Value="True" />
         <Setter Property="chelper:TreeViewItemHelper.GlyphBrush" Value="{DynamicResource TreeViewItemForeground}" />
         <Setter Property="Template">
@@ -53,6 +54,9 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Border
+                            chelper:FocusVisualHelper.IsTemplateFocusTarget="True" 
+                            CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}">
+                            <Border
                             x:Name="ContentPresenterGrid"
                             Margin="{DynamicResource TreeViewItemPresenterMargin}"
                             Padding="{DynamicResource TreeViewItemPresenterPadding}"
@@ -163,6 +167,7 @@
                                     </Grid>
                                 </Border>
                             </Grid>
+                        </Border>
                         </Border>
                         <ItemsPresenter x:Name="ItemsHost" Grid.Row="1" />
                         <VisualStateManager.VisualStateGroups>
@@ -325,6 +330,7 @@
     <Style BasedOn="{StaticResource DefaultTreeViewItemStyle}" TargetType="TreeViewItem" />
 
     <Style x:Key="DefaultTreeViewStyle" TargetType="TreeView">
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
