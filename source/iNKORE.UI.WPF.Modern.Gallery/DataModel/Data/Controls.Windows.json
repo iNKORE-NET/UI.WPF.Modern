@@ -2316,7 +2316,7 @@
                     "ImageIconPath": "ms-appx:///Assets/ControlIcons/AnimationsIcon.png",
                     "Description": "An element that displays and controls an icon that animates when the user interacts with the control.",
                     "Content": "<p>Look at the <i>AnimatedIconPage.xaml</i> and <i>AnimatedIconPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
-                    "IsNew": true,
+                    "IsNew": false,
                     "Docs":
                     [
                         {
@@ -3008,7 +3008,7 @@
                     "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
                     "Description": "AppWindow provides advanced window management, allowing customization of size, position, and presentation. This sample showcases different ways to create, display, and control windows for enhanced flexibility.",
                     "Content": "<p>Look at the <i>CreateMultipleWindowsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-                    "IsNew": true,
+                    "IsNew": false,
                     "IsUpdated": false,
                     "Docs":
                     [
@@ -3074,7 +3074,7 @@
                     "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
                     "Description": "This sample shows how to use a custom UIElement as titlebar for app's window.",
                     "Content": "<p>Look at the <i>TitleBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-                    "IsNew": true,
+                    "IsNew": false,
                     "IsUpdated": false,
                     "Docs":
                     [
@@ -3110,7 +3110,7 @@
                     "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
                     "Description": "Send rich, interactive notifications from your app. Notifications can include text, images, and actions.",
                     "Content": "",
-                    "IsNew": true,
+                    "IsNew": false,
                     "IsUpdated": false,
                     "Docs":
                     [
@@ -3143,7 +3143,7 @@
                     "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
                     "Description": "Badge notifications provide a lightweight way to convey status or alerts through small overlays on your app's icon.",
                     "Content": "",
-                    "IsNew": true,
+                    "IsNew": false,
                     "IsUpdated": false,
                     "Docs":
                     [
@@ -3172,7 +3172,7 @@
                     "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
                     "Description": "Copy and paste to and from the system Clipboard.",
                     "Content": "",
-                    "IsNew": true,
+                    "IsNew": false,
                     "IsUpdated": false,
                     "Docs":
                     [
