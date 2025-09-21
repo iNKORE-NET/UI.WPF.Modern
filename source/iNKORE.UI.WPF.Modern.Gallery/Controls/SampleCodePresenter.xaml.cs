@@ -200,7 +200,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
                         }
                     }
 
-                    // Adjust context menu to only show 'Copy' if there is a selection; 'Select All' always visible.
+                     // Adjust context menu to only show 'Copy' if there is a selection
                     CodePresenter.ContextMenu.Opened += (s, args) =>
                     {
                         var hasSelection = CodePresenter?.SelectionLength > 0;
