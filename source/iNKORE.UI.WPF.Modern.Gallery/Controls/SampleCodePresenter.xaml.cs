@@ -146,7 +146,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             {
                 if (CodePresenter?.ContextMenu != null)
                 {
-                    //show Copy only when there is a selection; always show Select All.
+                    // Adjust context menu to only show 'Copy' if there is a selection
                     CodePresenter.ContextMenu.Opened += (s, args) =>
                     {
                         var hasSelection = CodePresenter?.SelectionLength > 0;
@@ -166,7 +166,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             }
             catch
             {
-                // Swallow any errors here to avoid breaking the sample if localization isn't available.
+                // Exception can happen if the localization resources are not loaded, ignore it.
             }
         }
 
