@@ -101,23 +101,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         private static T GetTemplateChild<T>(string childName, Control control) where T : DependencyObject =>
             control.Template?.FindName(childName, control) as T;
 
-        #region RestrictToTaskbar
-
-        public static readonly DependencyProperty RestrictToTaskbarProperty =
-            DependencyProperty.RegisterAttached(
-                "RestrictToTaskbar",
-                typeof(bool),
-                typeof(ComboBoxBehaviorHelper),
-                new PropertyMetadata(false));
-
-        public static bool GetRestrictToTaskbar(ComboBox comboBox) =>
-            (bool)comboBox.GetValue(RestrictToTaskbarProperty);
-
-        public static void SetRestrictToTaskbar(ComboBox comboBox, bool value) =>
-            comboBox.SetValue(RestrictToTaskbarProperty, value);
-
-        #endregion
-
         #region AdjustScroll
 
         internal static readonly DependencyProperty AdjustScrollProperty =
