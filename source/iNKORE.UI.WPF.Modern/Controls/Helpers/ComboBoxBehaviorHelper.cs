@@ -11,9 +11,9 @@ using iNKORE.UI.WPF.Modern.Controls.Primitives;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
-    public sealed class WinUIComboBoxBehaviorHelper
+    public sealed class ComboBoxBehaviorHelper
     {
-        static WinUIComboBoxBehaviorHelper()
+        static ComboBoxBehaviorHelper()
         {
             EventManager.RegisterClassHandler(typeof(ComboBoxItem), Mouse.MouseEnterEvent,
                 new MouseEventHandler(OnOverrideMouseEnter), false);
@@ -28,7 +28,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             DependencyProperty.RegisterAttached(
                 "IsEnabled",
                 typeof(bool),
-                typeof(WinUIComboBoxBehaviorHelper),
+                typeof(ComboBoxBehaviorHelper),
                 new PropertyMetadata(false, OnIsEnabledChanged));
 
         public static bool GetIsEnabled(ComboBox comboBox) => (bool)comboBox.GetValue(IsEnabledProperty);
@@ -107,7 +107,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             DependencyProperty.RegisterAttached(
                 "RestrictToTaskbar",
                 typeof(bool),
-                typeof(WinUIComboBoxBehaviorHelper),
+                typeof(ComboBoxBehaviorHelper),
                 new PropertyMetadata(false));
 
         public static bool GetRestrictToTaskbar(ComboBox comboBox) =>
@@ -124,7 +124,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             DependencyProperty.RegisterAttached(
                 "AdjustScroll",
                 typeof(bool),
-                typeof(WinUIComboBoxBehaviorHelper),
+                typeof(ComboBoxBehaviorHelper),
                 new PropertyMetadata(true));
 
         internal static bool GetAdjustScroll(ComboBox comboBox) =>
@@ -391,10 +391,10 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 return;
             }
 
-            if (WinUIComboBoxBehaviorHelper.GetAdjustScroll(_comboBox))
+            if (ComboBoxBehaviorHelper.GetAdjustScroll(_comboBox))
             {
                 BringIndexToView(_itemIndexBelow + 1);
-                WinUIComboBoxBehaviorHelper.SetAdjustScroll(_comboBox, false);
+                ComboBoxBehaviorHelper.SetAdjustScroll(_comboBox, false);
             }
             HighlightItem(item);
         }

@@ -334,7 +334,7 @@
         <Setter Property="chelper:ControlHelper.PlaceholderForeground" Value="{DynamicResource ComboBoxPlaceHolderForeground}" />
         <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource IsApplicationFocusVisualKindReveal}" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
-        <Setter Property="chelper:WinUIComboBoxBehaviorHelper.IsEnabled" Value="True" />
+        <Setter Property="chelper:ComboBoxBehaviorHelper.IsEnabled" Value="True" />
         <Setter Property="chelper:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource TextControlValidationErrorTemplate}" />
         <Setter Property="Template">
