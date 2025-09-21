@@ -1,25 +1,26 @@
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 using iNKORE.UI.WPF.Modern.Common.IconKeys;
 using iNKORE.UI.WPF.Modern.Controls;
 using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 using SamplesCommon.SamplePages;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
 using Frame = iNKORE.UI.WPF.Modern.Controls.Frame;
+using MessageBox = iNKORE.UI.WPF.Modern.Controls.MessageBox;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 {
     public partial class TabViewPage
     {
-        private readonly HashSet<TabControl> _setupControls = new HashSet<TabControl>();
+        private readonly System.Collections.Generic.HashSet<TabControl> _setupControls = new System.Collections.Generic.HashSet<TabControl>();
 
         public TabViewPage()
         {
             InitializeComponent();
 
-            // Initialize the main tab controls with tabs
+            // Seed the primary demo TabControls with initial tabs.
             for (int i = 0; i < 3; i++)
             {
                 tabControl.Items.Add(CreateNewTab(i));
@@ -27,33 +28,43 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
                 tabControl3.Items.Add(CreateNewTab(i));
             }
 
+            InitializeExample6();
             UpdateExampleCode();
         }
 
         private void TabView_Loaded(object sender, RoutedEventArgs e)
         {
-            var loadedTabControl = sender as TabControl;
-            if (loadedTabControl != null && !_setupControls.Contains(loadedTabControl))
-            {
-                // Setup add button handler only once per TabControl
-                var events = TabControlHelper.GetTabControlHelperEvents(loadedTabControl);
-                events.AddTabButtonClick += TabControl_AddButtonClick;
-                _setupControls.Add(loadedTabControl);
+            if (sender is not TabControl loadedTabControl) return;
 
-                // Only add initial tabs for example TabControls other than the main ones
-                if (loadedTabControl != tabControl && 
-                    loadedTabControl != tabControl2 && 
-                    loadedTabControl != tabControl3)
+            if (_setupControls.Contains(loadedTabControl))
+                return;
+
+            // Hook add button (if visible) once.
+            var events = TabControlHelper.GetTabControlHelperEvents(loadedTabControl);
+            events.AddTabButtonClick += TabControl_AddButtonClick;
+            events.TabCloseRequested += TabControl_TabCloseRequested;
+            _setupControls.Add(loadedTabControl);
+
+            // Only auto-seed for dynamically loaded examples (avoid duplicating those we seeded in ctor)
+            if (loadedTabControl != tabControl && loadedTabControl != tabControl2 && loadedTabControl != tabControl3)
+            {
+                for (int i = 0; i < 3; i++)
                 {
-                    for (int i = 0; i < 3; i++)
-                    {
-                        loadedTabControl.Items.Add(CreateNewTab(i));
-                    }
+                    loadedTabControl.Items.Add(CreateNewTab(i));
                 }
             }
         }
 
+        private void TabControl_AddButtonClick(TabControl sender, object args)
+        {
+            sender.Items.Add(CreateNewTab(sender.Items.Count));
+            sender.SelectedIndex = sender.Items.Count - 1;
+        }
 
+        private void TabControl_TabCloseRequested(TabControl sender, TabViewTabCloseRequestedEventArgs args)
+        {
+            sender.Items.Remove(args.Item);
+        }
 
         private TabItem CreateNewTab(int index)
         {
@@ -98,11 +109,55 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             UpdateExampleCode();
         }
 
-        private void TabControl_AddButtonClick(TabControl sender, object args)
+        #region Example 6
+
+        private const string NiceTry = "Nice try!";
+
+        private void InitializeExample6()
         {
-            sender.Items.Add(CreateNewTab(sender.Items.Count));
-            sender.SelectedIndex = sender.Items.Count - 1;
+            ResetExample6Tabs();
+
+            tabControl.RegisterTabClosingEvent((menuControl, e) =>
+            {
+                if (e.Tab.Tag is "ConfirmClose")
+                {
+                    var msgResult = MessageBox.Show("Do you want to close this tab?", "Confirm", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+                    if (msgResult != MessageBoxResult.OK)
+                    {
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+                else if (e.Tab.Tag is "NiceTry")
+                {
+                    e.Cancel = true;
+
+                    if ((e.Tab.Header as string) != NiceTry)
+                        e.Tab.Header = NiceTry;
+                    else e.Tab.Header = "You can't close me!";
+
+                    return;
+                }
+            });
         }
+
+        private void ResetExample6Tabs()
+        {
+            tabControl6.Items.Clear();
+            tabControl6.Items.Add(TabItem_Example6_Tab1);
+            tabControl6.Items.Add(TabItem_Example6_Tab2);
+            tabControl6.Items.Add(TabItem_Example6_Tab3);
+
+            TabItem_Example6_Tab3.Header = "DON'T TOUCH ME!";
+        }
+
+        private void Button_Example6_ResetTabs_Click(object sender, RoutedEventArgs e)
+        {
+            ResetExample6Tabs();
+        }
+
+
+        #endregion
 
 
         #region Example Code
@@ -117,6 +172,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             Example3.Xaml = Example3Xaml;
             Example4.Xaml = Example4Xaml;
             Example5.Xaml = Example5Xaml;
+            Example6.Xaml = Example6Xaml;
+            Example6.CSharp = Example6CS;
         }
 
         public string Example1Xaml => $@"
@@ -141,7 +198,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 </TabControl>
 ";
 
-public string Example1CS => $@"
+    public string Example1CS => $@"
     private void TabView_Loaded(object sender, RoutedEventArgs e)
     {{
         var loadedTabControl = (TabControl)sender;
@@ -190,7 +247,6 @@ public string Example1CS => $@"
         return newItem;
     }}
 ";
-
         public string Example2Xaml => $@"
 <TabControl x:Name=""TabView4""
     SelectedIndex=""0"">
@@ -263,6 +319,45 @@ public string Example1CS => $@"
         </Style>
     </TabControl.ItemContainerStyle>
 </TabControl>
+";
+
+        public string Example6Xaml => $@"
+<TabControl x:Name=""tabControl6"">
+    <TabItem x:Name=""TabItem_Example6_Tab1"" Header=""Closable""/>
+    <TabItem x:Name=""TabItem_Example6_Tab2"" Header=""Confirm To Close"" Tag=""ConfirmClose""/>
+    <TabItem x:Name=""TabItem_Example6_Tab3"" Header=""DON'T TOUCH ME!"" Tag=""NiceTry""/>
+</TabControl>
+";
+
+        public string Example6CS => $@"
+// Invoked during the constructor after InitializeComponent or at any later time
+private void InitializeExample6()
+{{
+    ResetExample6Tabs();
+
+    tabControl.RegisterTabClosingEvent((menuControl, e) =>
+    {{
+        if (e.Tab.Tag is ""ConfirmClose"")
+        {{
+            var msgResult = MessageBox.Show(""Do you want to close this tab?"", ""Confirm"", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (msgResult != MessageBoxResult.OK)
+            {{
+                e.Cancel = true;
+                return;
+            }}
+        }}
+        else if (e.Tab.Tag is ""NiceTry"")
+        {{
+            e.Cancel = true;
+
+            if ((e.Tab.Header as string) != NiceTry)
+                e.Tab.Header = NiceTry;
+            else e.Tab.Header = ""You can't close me!"";
+
+            return;
+        }}
+    }});
+}}
 ";
 
 
