@@ -73,7 +73,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         private static void UpdateCornerRadiusForClosedDropDown(ComboBox comboBox)
         {
             var textBoxRadius = ControlHelper.GetCornerRadius(comboBox);
-            var popupRadius = (CornerRadius)ResourceLookup(comboBox, "OverlayCornerRadius");
+            var popupRadius = (CornerRadius)ResourceLookup(comboBox, ThemeKeys.OverlayCornerRadiusKey);
 
             if (GetTemplateChild<Border>("PopupBorder", comboBox) is { } popupBorder)
             {
