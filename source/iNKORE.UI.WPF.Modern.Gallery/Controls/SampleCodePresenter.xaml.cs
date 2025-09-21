@@ -72,6 +72,29 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             CodePresenter.TextArea.SelectionBorder = new Pen(Brushes.Transparent, 0);
             CodePresenter.TextArea.SelectionCornerRadius = 0;
             CodePresenter.TextArea.SetResourceReference(TextArea.SelectionBrushProperty, ThemeKeys.TextControlSelectionHighlightColorKey);
+
+            // Ensure caret never shows (keep selection & copy)
+            HideCaretPermanently();
+            CodePresenter.TextArea.GotFocus += (s,e)=> HideCaretPermanently();
+            CodePresenter.TextArea.TextView.VisualLinesChanged += (s,e)=> HideCaretPermanently();
+        }
+
+        private void HideCaretPermanently()
+        {
+            // Make sure the editor can still be clicked for selection but caret invisible.
+            var caret = CodePresenter.TextArea.Caret;
+            caret.CaretBrush = Brushes.Transparent;
+            // keep focus off the editor so IME/caret logic does not repaint a visible caret
+            if (CodePresenter.IsFocused)
+            {
+                // Move focus to parent container (still allows mouse selection highlight within AvalonEdit)
+                var parent = (DependencyObject)CodePresenter.Parent;
+                while (parent != null && parent is not Control)
+                {
+                    parent = LogicalTreeHelper.GetParent(parent);
+                }
+                (parent as Control)?.Focusable.Equals(true);
+            }
         }
 
         private static void OnSubstitutionsPropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs args)
@@ -119,12 +142,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
 
             FixAvalonEditScrolling();
 
-            // Ensure the CodePresenter context menu items have the same long-hover, description-only
-            // tooltips and placement as the library TextContextMenu for consistency.
             try
             {
                 if (CodePresenter?.ContextMenu != null)
                 {
+                    // Local function to build centered tooltip similar to library TextContextMenu style.
                     ToolTip BuildCenteredMouseToolTip(string text)
                     {
                         var tt = new ToolTip
@@ -132,9 +154,9 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
                             Content = text,
                             Placement = System.Windows.Controls.Primitives.PlacementMode.Mouse
                         };
-                        tt.Opened += (s, e2) =>
+                        tt.Opened += (s2, e2) =>
                         {
-                            if (s is ToolTip t)
+                            if (s2 is ToolTip t)
                             {
                                 t.HorizontalOffset = 0;
                                 t.VerticalOffset = 0;
@@ -147,7 +169,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
 
                                 if (t.ActualWidth <= 0 || t.ActualHeight <= 0)
                                 {
-                                    t.Dispatcher.BeginInvoke((System.Action)(() =>
+                                    t.Dispatcher.BeginInvoke((Action)(() =>
                                     {
                                         ApplyOffsets();
                                     }));
@@ -161,27 +183,44 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
                         return tt;
                     }
 
+                    // Apply tooltip/header customization.
                     foreach (var item in CodePresenter.ContextMenu.Items.OfType<MenuItem>())
                     {
-                            if (item.Command == ApplicationCommands.Copy)
-                            {
-                                // Fallback tooltip text for gallery samples. These match the intent of the library descriptions.
-                                item.Header = "Copy";
-                                item.ToolTip = BuildCenteredMouseToolTip("Copy the selected content to the clipboard");
-                                ToolTipService.SetInitialShowDelay(item, 700);
-                            }
-                            else if (item.Command == ApplicationCommands.SelectAll)
-                            {
-                                item.Header = "Select All";
-                                item.ToolTip = BuildCenteredMouseToolTip("Select all content");
-                                ToolTipService.SetInitialShowDelay(item, 700);
-                            }
+                        if (item.Command == ApplicationCommands.Copy)
+                        {
+                            item.Header = "Copy";
+                            item.ToolTip = BuildCenteredMouseToolTip("Copy the selected content to the clipboard");
+                            ToolTipService.SetInitialShowDelay(item, 700);
+                        }
+                        else if (item.Command == ApplicationCommands.SelectAll)
+                        {
+                            item.Header = "Select All";
+                            item.ToolTip = BuildCenteredMouseToolTip("Select all content");
+                            ToolTipService.SetInitialShowDelay(item, 700);
+                        }
                     }
+
+                    // Adjust context menu to only show 'Copy' if there is a selection; 'Select All' always visible.
+                    CodePresenter.ContextMenu.Opened += (s, args) =>
+                    {
+                        var hasSelection = CodePresenter?.SelectionLength > 0;
+                        foreach (var mi in CodePresenter.ContextMenu.Items.OfType<MenuItem>())
+                        {
+                            if (mi.Command == ApplicationCommands.Copy)
+                            {
+                                mi.Visibility = hasSelection == true ? Visibility.Visible : Visibility.Collapsed;
+                            }
+                            else if (mi.Command == ApplicationCommands.SelectAll)
+                            {
+                                mi.Visibility = Visibility.Visible;
+                            }
+                        }
+                    };
                 }
             }
             catch
             {
-                // Swallow any errors here to avoid breaking the sample if localization isn't available.
+                // Exception can happen if the localization resources are not loaded, ignore it.
             }
         }
 
