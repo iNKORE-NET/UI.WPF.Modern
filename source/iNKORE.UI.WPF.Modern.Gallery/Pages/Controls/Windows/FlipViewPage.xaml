@@ -30,11 +30,12 @@
             <local:ControlExample.Example>
                 <ui:FlipView
                     Height="180"
+                    Width="400"
                     MaxWidth="400"
+                    HorizontalAlignment="Left"
                     BorderBrush="Black"
                     BorderThickness="1"
-                    ItemsSource="{Binding Items, Mode=OneWay}"
-                    HorizontalAlignment="Left">
+                    ItemsSource="{Binding Items, Mode=OneWay}">
                     <ui:FlipView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
