@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
@@ -19,18 +19,18 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 
         public void UpdateExampleCode()
         {
-            Example1.Xaml = Example1Xaml;
+            //Example1.Xaml = Example1Xaml;
             Example2.Xaml = Example2Xaml;
         }
 
-        public string Example1Xaml => $@"
-<ui:RadioButtons x:Name=""Options"" Header=""Options:"">
-    <!--  A RadioButton group.  -->
-    <RadioButton x:Name=""Option1RadioButton"" Content=""Option 1"" />
-    <RadioButton x:Name=""Option2RadioButton"" Content=""Option 2"" />
-    <RadioButton x:Name=""Option3RadioButton"" Content=""Option 3"" />
-</ui:RadioButtons>
-";
+//         public string Example1Xaml => $@"
+// <ui:RadioButtons x:Name=""Options"" Header=""Options:"">
+//     <!--  A RadioButton group.  -->
+//     <RadioButton x:Name=""Option1RadioButton"" Content=""Option 1"" />
+//     <RadioButton x:Name=""Option2RadioButton"" Content=""Option 2"" />
+//     <RadioButton x:Name=""Option3RadioButton"" Content=""Option 3"" />
+// </ui:RadioButtons>
+// ";
 
         public string Example2Xaml => $@"
 <ui:RadioButtons
@@ -44,7 +44,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 </ui:RadioButtons>
 <ui:RadioButtons
     x:Name=""BorderBrushRadioButtons""
-    Header=""BorderBrush""
+    Header=""Border""
     MaxColumns=""4""
     SelectedIndex=""1"">
     <sys:String>Green</sys:String>
