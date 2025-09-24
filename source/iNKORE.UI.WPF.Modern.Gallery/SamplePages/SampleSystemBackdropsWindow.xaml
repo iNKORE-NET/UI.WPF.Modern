@@ -5,6 +5,7 @@
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     Title="SystemBackdrop sample window"
+    ui:TitleBar.IsIconVisible="True"
     ui:WindowHelper.SystemBackdropType="Mica"
     ui:WindowHelper.UseAcrylicBackdrop="True"
     ui:WindowHelper.UseAeroBackdrop="True"
