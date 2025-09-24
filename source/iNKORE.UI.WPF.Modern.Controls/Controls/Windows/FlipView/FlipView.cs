@@ -1029,12 +1029,10 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             base.OnKeyDown(e);
 
-            var isHorizontal = Orientation == Orientation.Horizontal;
-            var isVertical = Orientation == Orientation.Vertical;
-            var canGoPrev = (e.Key == Key.Left && isHorizontal && backButton != null && backButton.IsEnabled)
-                            || (e.Key == Key.Up && isVertical && upButton != null && upButton.IsEnabled);
-            var canGoNext = (e.Key == Key.Right && isHorizontal && forwardButton != null && forwardButton.IsEnabled)
-                            || (e.Key == Key.Down && isVertical && downButton != null && downButton.IsEnabled);
+            var canGoPrev = e.Key is Key.Left or Key.Up &&
+                            (backButton?.IsEnabled is true || upButton?.IsEnabled is true);
+            var canGoNext = e.Key is Key.Right or Key.Down &&
+                            (forwardButton?.IsEnabled is true || downButton?.IsEnabled is true);
 
             if (canGoPrev)
             {
