@@ -9,7 +9,7 @@
     Title="Content Dialog Sample Window"
     ui:TitleBar.IsIconVisible="True"
     ui:WindowHelper.UseModernWindowStyle="True"
-    Background="{DynamicResource ApplicationPageBackgroundThemeBrush}"
+    ui:WindowHelper.SystemBackdropType="Mica"
     mc:Ignorable="d">
     <Grid>
         <ikw:SimpleStackPanel
