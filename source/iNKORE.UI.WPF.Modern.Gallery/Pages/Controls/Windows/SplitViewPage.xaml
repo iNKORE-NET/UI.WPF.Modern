@@ -89,6 +89,7 @@
                             Toggled="PanePlacement_Toggled" />
 
                     <ComboBox x:Name="displayModeCombobox"
+                        Width="196"
                         ui:ControlHelper.Header="DisplayMode"
                         SelectionChanged="displayModeCombobox_SelectionChanged"
                         SelectedIndex="0">
