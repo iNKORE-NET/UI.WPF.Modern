@@ -1,4 +1,4 @@
-﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -48,21 +48,92 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
                 Source = RowSlider,
                 Path = new PropertyPath("Value"),
             });
-            Example1.Substitutions = new ObservableCollection<ControlExampleSubstitution> { Substitution1, Substitution2 };
+            ControlExampleSubstitution Substitution3 = new ControlExampleSubstitution
+            {
+                Key = "ColumnSpacing",
+            };
+            BindingOperations.SetBinding(Substitution3, ControlExampleSubstitution.ValueProperty, new Binding
+            {
+                Source = ColumnSpacingSlider,
+                Path = new PropertyPath("Value"),
+            });
+            ControlExampleSubstitution Substitution4 = new ControlExampleSubstitution
+            {
+                Key = "RowSpacing",
+            };
+            BindingOperations.SetBinding(Substitution4, ControlExampleSubstitution.ValueProperty, new Binding
+            {
+                Source = RowSpacingSlider,
+                Path = new PropertyPath("Value"),
+            });
+            Example1.Substitutions = new ObservableCollection<ControlExampleSubstitution> { Substitution1, Substitution2, Substitution3, Substitution4 };
 
             UpdateExampleCode();
+            UpdateGridSpacing();
         }
 
         private void ColumnSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (this.IsLoaded)
+            {
                 UpdateExampleCode();
+                UpdateGridSpacing();
+            }
         }
 
         private void RowSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (this.IsLoaded)
+            {
                 UpdateExampleCode();
+                UpdateGridSpacing();
+            }
+        }
+
+        private void ColumnSpacingSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (this.IsLoaded)
+            {
+                UpdateExampleCode();
+                UpdateGridSpacing();
+            }
+        }
+
+        private void RowSpacingSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (this.IsLoaded)
+            {
+                UpdateExampleCode();
+                UpdateGridSpacing();
+            }
+        }
+
+                private void UpdateGridSpacing()
+        {
+            if (Control1 == null) return;
+
+            int maxCol = Math.Max(0, Control1.ColumnDefinitions.Count - 1);
+            int maxRow = Math.Max(0, Control1.RowDefinitions.Count - 1);
+            double colSpace = ColumnSpacingSlider?.Value ?? 0d;
+            double rowSpace = RowSpacingSlider?.Value ?? 0d;
+
+            void Apply(FrameworkElement el)
+            {
+                if (el == null) return;
+                // For Rectangle1, ensure we use current slider values explicitly
+                int row = el == Rectangle1 ? (int)(RowSlider?.Value ?? Grid.GetRow(el)) : Grid.GetRow(el);
+                int col = el == Rectangle1 ? (int)(ColumnSlider?.Value ?? Grid.GetColumn(el)) : Grid.GetColumn(el);
+                double left = col > 0 ? colSpace / 2 : 0;
+                double right = col < maxCol ? colSpace / 2 : 0;
+                double top = row > 0 ? rowSpace / 2 : 0;
+                double bottom = row < maxRow ? rowSpace / 2 : 0;
+                el.Margin = new Thickness(left, top, right, bottom);
+            }
+
+            Apply(Rectangle1);
+            Apply(Rectangle2);
+            Apply(Rectangle3);
+            Apply(Rectangle4);
         }
 
         #region Example Code
@@ -73,41 +144,20 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         }
 
         public string Example1Xaml => $@"
-<Grid x:Name=""Control1""
-    Width=""240"" Height=""160""
-    Background=""Gray"">
-    <Grid.Resources>
-        <Style TargetType=""Rectangle"">
-            <Setter Property=""Height"" Value=""40"" />
-            <Setter Property=""Width"" Value=""40"" />
-        </Style>
-    </Grid.Resources>
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width=""50"" />
-        <ColumnDefinition Width=""Auto"" />
-        <ColumnDefinition />
-    </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-        <RowDefinition Height=""50"" />
-        <RowDefinition Height=""Auto"" />
-        <RowDefinition />
-    </Grid.RowDefinitions>
-    <Rectangle
-        x:Name=""Rectangle1""
-        Grid.Row=""{Grid.GetRow(Rectangle1)}""
-        Grid.Column=""{Grid.GetColumn(Rectangle1)}""
-        Width=""50""
-        Height=""50""
-        Fill=""Red"" />
-    <Rectangle Grid.Row=""1"" Fill=""Blue"" />
-    <Rectangle Grid.Column=""1"" Fill=""Green"" />
-    <Rectangle
-        Grid.Row=""1""
-        Grid.Column=""1""
-        Fill=""Yellow"" />
+<Grid
+    Width=""240""
+    Height=""160""
+    Background=""Gray""
+    ColumnDefinitions=""50, 50, 50""
+    RowDefinitions=""50, 50, 50""
+    ColumnSpacing=""$(ColumnSpacing)""
+    RowSpacing=""$(RowSpacing)"">
+    <Rectangle Fill=""Red"" Grid.Column=""$(Column)"" Grid.Row=""$(Row)"" Width=""50"" Height=""50"" />
+    <Rectangle Fill=""Blue"" Grid.Row=""1"" Width=""50"" Height=""50"" />
+    <Rectangle Fill=""Green"" Grid.Column=""1"" Width=""50"" Height=""50"" />
+    <Rectangle Fill=""Yellow"" Grid.Column=""1"" Grid.Row=""1"" Width=""50"" Height=""50"" />
 </Grid>
 ";
-
         #endregion
     }
 }
