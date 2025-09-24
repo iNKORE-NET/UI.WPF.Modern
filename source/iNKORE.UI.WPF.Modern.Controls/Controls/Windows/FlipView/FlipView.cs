@@ -5,12 +5,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -1038,19 +1037,32 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 GoBack();
                 e.Handled = true;
-                Focus();
+                EnsureFocusVisual();
             }
             else if (canGoNext)
             {
                 GoForward();
                 e.Handled = true;
-                Focus();
+                EnsureFocusVisual();
             }
         }
+
+        private void EnsureFocusVisual()
+        {
+            if (IsKeyboardFocused && !IsFocusVisualAdded())
+            {
+                Keyboard.ClearFocus();
+            }
+
+            Focus();
+            bool IsFocusVisualAdded() => AdornerLayer.GetAdornerLayer(this)?.GetAdorners(this)?.Length is > 0;
+        }
+
 
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
             base.OnMouseDown(e);
+            Keyboard.ClearFocus();
             Focus();
         }
 
