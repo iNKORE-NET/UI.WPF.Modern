@@ -1062,6 +1062,56 @@ namespace iNKORE.UI.WPF.Modern.Controls
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
             base.OnMouseDown(e);
+            FocusWithNoVisuals();
+        }
+
+        private int _lastScrollWheelDelta;
+        private long _lastScrollWheelTick;
+        private const long ScrollWheelDelayTicks = 2_000_000; //200ms
+
+        protected override void OnMouseWheel(MouseWheelEventArgs e)
+        {
+            base.OnMouseWheel(e);
+           
+            if (e.Handled || (Keyboard.Modifiers & ModifierKeys.Control) is ModifierKeys.Control)
+            {
+                return;
+            }
+            
+            FocusWithNoVisuals();
+
+            var canFlip = false;
+            var currentTick = DateTime.Now.Ticks;
+            var delta = e.Delta;
+
+            if ((delta < 0 && _lastScrollWheelDelta >= 0) ||
+                (delta > 0 && _lastScrollWheelDelta <= 0) || 
+                currentTick - _lastScrollWheelTick > ScrollWheelDelayTicks)
+            {
+                canFlip = true;
+            }
+
+            _lastScrollWheelTick = currentTick;
+
+            if (canFlip)
+            {
+                if (delta < 0)
+                {
+                    GoForward();
+                }
+                else
+                {
+                    GoBack();
+                }
+
+                _lastScrollWheelDelta = delta;
+            }
+
+            e.Handled = true;
+        }
+
+        private void FocusWithNoVisuals()
+        {
             Keyboard.ClearFocus();
             Focus();
         }
