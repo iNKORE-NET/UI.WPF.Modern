@@ -222,6 +222,24 @@ namespace iNKORE.UI.WPF.Modern.Controls
         static NavigationView()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(NavigationView), new FrameworkPropertyMetadata(typeof(NavigationView)));
+            EventManager.RegisterClassHandler(typeof(NavigationView), KeyDownEvent, new KeyEventHandler(OnHandleKeyDown), true);
+        }
+
+        static void OnHandleKeyDown(object sender, KeyEventArgs args)
+        {
+            //ScrollViewer && TextBox of AutoSuggestBox set Handled to true, so it doesn't bubble to KeyboardFocusManager. 
+            if (sender is not NavigationView navView)
+            {
+                return;
+            }
+
+            if (navView.NoNeedToBubbleKeyEvents)
+            {
+                navView.NoNeedToBubbleKeyEvents = false;
+                return;
+            }
+
+            args.Handled = false;
         }
 
         public NavigationView()
@@ -2863,6 +2881,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
         }
 
+        private bool NoNeedToBubbleKeyEvents { get; set; }
+
         void HandleKeyEventForNavigationViewItem(NavigationViewItem nvi, KeyEventArgs args)
         {
             var key = args.Key;
@@ -2871,14 +2891,17 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 case Key.Enter:
                 case Key.Space:
                     args.Handled = true;
+                    NoNeedToBubbleKeyEvents = true;
                     OnNavigationViewItemInvoked(nvi);
                     break;
                 case Key.Home:
                     args.Handled = true;
+                    NoNeedToBubbleKeyEvents = true;
                     KeyboardFocusFirstItemFromItem(nvi);
                     break;
                 case Key.End:
                     args.Handled = true;
+                    NoNeedToBubbleKeyEvents = true;
                     KeyboardFocusLastItemFromItem(nvi);
                     break;
                 case Key.Down:
@@ -2927,12 +2950,16 @@ namespace iNKORE.UI.WPF.Modern.Controls
                             if (childRepeater.MoveFocus(new TraversalRequest(FocusNavigationDirection.Last)))
                             {
                                 args.Handled = true;
+                                NoNeedToBubbleKeyEvents = true;
                             }
                             else
                             {
-                                args.Handled = nextFocusableNVIImpl.Focus(/*FocusState.Keyboard*/);
+                                args.Handled = nextFocusableNVIImpl.Focus( /*FocusState.Keyboard*/);
+                                if (args.Handled)
+                                {
+                                    NoNeedToBubbleKeyEvents = true;
+                                }
                             }
-
                         }
                     }
                     else
@@ -2948,7 +2975,11 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 if (GetParentNavigationViewItemForContainer(nvi) is { } parentContainer)
                 {
-                    args.Handled = parentContainer.Focus(/*FocusState.Keyboard*/);
+                    args.Handled = parentContainer.Focus( /*FocusState.Keyboard*/);
+                    if (args.Handled)
+                    {
+                        NoNeedToBubbleKeyEvents = true;
+                    }
                 }
             }
         }
@@ -2972,13 +3003,11 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     //    args.Handled = controlFirst.Focus(/*FocusState.Keyboard*/);
                     //}
                     args.Handled = childRepeater.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
+                    if (args.Handled)
+                    {
+                        NoNeedToBubbleKeyEvents = true;
+                    }
                 }
-            }
-
-            // WPF
-            if (!args.Handled)
-            {
-                args.Handled = nvi.MoveFocus(new TraversalRequest(FocusNavigationDirection.Down));
             }
         }
 
