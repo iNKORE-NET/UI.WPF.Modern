@@ -11,10 +11,12 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Native;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
@@ -1065,6 +1067,35 @@ namespace iNKORE.UI.WPF.Modern.Controls
             FocusWithNoVisuals();
         }
 
+        private void MonitorHorizontalWheel()
+        {
+            var source = PresentationSource.FromVisual(this);
+            ((HwndSource)source)?.AddHook(Hook);
+        }
+
+        private IntPtr Hook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            switch (msg)
+            {
+                case (int)User32.WM.MOUSEHWHEEL:
+                    if (handled ||
+                        !IsMouseOver ||
+                        (Keyboard.Modifiers & ModifierKeys.Control) is ModifierKeys.Control ||
+                        Orientation is not Orientation.Horizontal)
+                    {
+                        return IntPtr.Zero;
+                    }
+
+                    var tilt = (short)((wParam.ToInt64() >> 16) & 0xFFFF);
+                    HandleWheelChange(-tilt);
+                    
+                    handled = true;
+                    return (IntPtr)1;
+            }
+
+            return IntPtr.Zero;
+        }
+
         private int _lastScrollWheelDelta;
         private long _lastScrollWheelTick;
         private const long ScrollWheelDelayTicks = 2_000_000; //200ms
@@ -1073,16 +1104,26 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             base.OnMouseWheel(e);
            
-            if (e.Handled || (Keyboard.Modifiers & ModifierKeys.Control) is ModifierKeys.Control)
+            if (e.Handled || 
+                (Keyboard.Modifiers & ModifierKeys.Control) is ModifierKeys.Control || 
+                (!SourceIsMouseWheel(e.Delta) && Orientation is Orientation.Horizontal))
             {
                 return;
             }
             
+            HandleWheelChange(e.Delta);
+            e.Handled = true;
+            
+            //Mouse sends multiples of 120
+            static bool SourceIsMouseWheel(int delta) => delta % 120 is 0;
+        }
+        
+        private void HandleWheelChange(int delta)
+        {
             FocusWithNoVisuals();
 
             var canFlip = false;
             var currentTick = DateTime.Now.Ticks;
-            var delta = e.Delta;
 
             if ((delta < 0 && _lastScrollWheelDelta >= 0) ||
                 (delta > 0 && _lastScrollWheelDelta <= 0) || 
@@ -1093,21 +1134,21 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             _lastScrollWheelTick = currentTick;
 
-            if (canFlip)
+            if (!canFlip)
             {
-                if (delta < 0)
-                {
-                    GoForward();
-                }
-                else
-                {
-                    GoBack();
-                }
-
-                _lastScrollWheelDelta = delta;
+                return;
             }
 
-            e.Handled = true;
+            if (delta < 0)
+            {
+                GoForward();
+            }
+            else
+            {
+                GoBack();
+            }
+
+            _lastScrollWheelDelta = delta;
         }
 
         private void FocusWithNoVisuals()
@@ -1303,6 +1344,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             ShowBanner();
 
+            MonitorHorizontalWheel();
             loaded = true;
         }
 
