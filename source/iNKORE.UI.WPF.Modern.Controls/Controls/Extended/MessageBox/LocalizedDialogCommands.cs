@@ -8,7 +8,29 @@ namespace iNKORE.UI.WPF.Modern.Controls
     {
         public static string GetString(DialogBoxCommand command)
         {
-            return Marshal.PtrToStringAuto(MB_GetString((int)command))?.Replace("&", "")!; //return Marshal.PtrToStringAuto(MB_GetString((int)command))?.TrimStart('&')!;
+            try
+            {
+                //return Marshal.PtrToStringAuto(MB_GetString((int)command))?.TrimStart('&')!;
+                return Marshal.PtrToStringAuto(MB_GetString((int)command))?.Replace("&", "")!;
+            }
+            catch (EntryPointNotFoundException)
+            {
+                return command switch
+                {
+                    DialogBoxCommand.IDOK => "Ok",
+                    DialogBoxCommand.IDCANCEL => "Cancel",
+                    DialogBoxCommand.IDABORT => "Abort",
+                    DialogBoxCommand.IDRETRY => "Retry",
+                    DialogBoxCommand.IDIGNORE => "Ignore",
+                    DialogBoxCommand.IDYES => "Yes",
+                    DialogBoxCommand.IDNO => "No",
+                    DialogBoxCommand.IDCLOSE => "Close",
+                    DialogBoxCommand.IDHELP => "Help",
+                    DialogBoxCommand.IDTRYAGAIN => "Try Again",
+                    DialogBoxCommand.IDCONTINUE => "Continue",
+                    _ => command.ToString()
+                };
+            }
         }
 
         /// <summary>
