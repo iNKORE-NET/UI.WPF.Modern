@@ -7,6 +7,10 @@ namespace iNKORE.UI.WPF.Modern.Controls
 {
     internal static class LocalizedDialogCommands
     {
+        /// <summary>
+        /// Fallback display strings for standard dialog box commands
+        /// when localized resources are unavailable or the native API call fails.
+        /// </summary>
         internal static readonly Dictionary<DialogBoxCommand, string> FallbackStrings = new()
         {
             { DialogBoxCommand.IDOK, "OK" },
