@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace iNKORE.UI.WPF.Modern.Controls
@@ -6,6 +7,21 @@ namespace iNKORE.UI.WPF.Modern.Controls
 {
     internal static class LocalizedDialogCommands
     {
+        internal static readonly Dictionary<DialogBoxCommand, string> FallbackStrings = new()
+        {
+            { DialogBoxCommand.IDOK, "OK" },
+            { DialogBoxCommand.IDCANCEL, "Cancel" },
+            { DialogBoxCommand.IDABORT, "Abort" },
+            { DialogBoxCommand.IDRETRY, "Retry" },
+            { DialogBoxCommand.IDIGNORE, "Ignore" },
+            { DialogBoxCommand.IDYES, "Yes" },
+            { DialogBoxCommand.IDNO, "No" },
+            { DialogBoxCommand.IDCLOSE, "Close" },
+            { DialogBoxCommand.IDHELP, "Help" },
+            { DialogBoxCommand.IDTRYAGAIN, "Try Again" },
+            { DialogBoxCommand.IDCONTINUE, "Continue" }
+        };
+
         public static string GetString(DialogBoxCommand command)
         {
             try
@@ -15,21 +31,9 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
             catch (EntryPointNotFoundException)
             {
-                return command switch
-                {
-                    DialogBoxCommand.IDOK => "Ok",
-                    DialogBoxCommand.IDCANCEL => "Cancel",
-                    DialogBoxCommand.IDABORT => "Abort",
-                    DialogBoxCommand.IDRETRY => "Retry",
-                    DialogBoxCommand.IDIGNORE => "Ignore",
-                    DialogBoxCommand.IDYES => "Yes",
-                    DialogBoxCommand.IDNO => "No",
-                    DialogBoxCommand.IDCLOSE => "Close",
-                    DialogBoxCommand.IDHELP => "Help",
-                    DialogBoxCommand.IDTRYAGAIN => "Try Again",
-                    DialogBoxCommand.IDCONTINUE => "Continue",
-                    _ => command.ToString()
-                };
+                return FallbackStrings.TryGetValue(command, out var value)
+                    ? value
+                    : command.ToString();
             }
         }
 
