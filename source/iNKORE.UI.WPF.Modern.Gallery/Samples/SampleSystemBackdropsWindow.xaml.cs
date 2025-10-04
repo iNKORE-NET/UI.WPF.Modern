@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Microsoft.UI.Xaml;
 
-namespace iNKORE.UI.WPF.Modern.Gallery.SamplePages
+namespace iNKORE.UI.WPF.Modern.Gallery.Samples
 {
     /// <summary>
     /// SampleSystemBackdropsWindow.xaml 的交互逻辑
