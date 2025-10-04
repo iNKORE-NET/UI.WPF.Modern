@@ -1111,14 +1111,13 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 return;
             }
             
-            HandleWheelChange(e.Delta);
-            e.Handled = true;
+            e.Handled = HandleWheelChange(e.Delta);
             
             //Mouse sends multiples of 120
             static bool SourceIsMouseWheel(int delta) => delta % 120 is 0;
         }
         
-        private void HandleWheelChange(int delta)
+        private bool HandleWheelChange(int delta)
         {
             FocusWithNoVisuals();
 
@@ -1136,19 +1135,30 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             if (!canFlip)
             {
-                return;
+                return true;
             }
 
             if (delta < 0)
             {
+                if (SelectedIndex >= Items.Count - 1)
+                {
+                    return false;
+                }
+                
                 GoForward();
             }
             else
             {
+                if (SelectedIndex <= 0)
+                {
+                    return false;
+                }
+                
                 GoBack();
             }
 
             _lastScrollWheelDelta = delta;
+            return true;
         }
 
         private void FocusWithNoVisuals()
