@@ -4,7 +4,7 @@ using SamplesCommon;
 using System;
 using System.Windows;
 
-namespace iNKORE.UI.WPF.Modern.Gallery.SamplePages
+namespace iNKORE.UI.WPF.Modern.Gallery.Samples
 {
     public partial class SampleContentDialogWindow : Window
     {
