@@ -12,24 +12,28 @@
     Loaded="Page_Loaded"
     mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="An card-like style Expander with text in the header and content areas">
+        <local:ControlExample x:Name="Example1"
+            HeaderText="An Expander with text in the header and content areas">
             <local:ControlExample.Example>
-                <Expander
-                    x:Name="Expander1"
-                    Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}"
-                    VerticalAlignment="Top"
-                    HorizontalContentAlignment="Left"
+                <Expander x:Name="Expander1" VerticalAlignment="Top"
                     Content="This is in the content"
-                    ExpandDirection="Down"
-                    Header="This text is in the header"
-                    IsExpanded="False" />
+                    ExpandDirection="Down" IsExpanded="False">
+                    <Expander.Header>
+                        <Border>
+                            <TextBlock Text="This text is in the header" FontWeight="Bold">
+                                <TextBlock.LayoutTransform>
+                                    <RotateTransform x:Name="RotateTransform_Example1Text" Angle="0" />
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </Border>
+                    </Expander.Header>
+                </Expander>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <StackPanel>
-                    <ComboBox
-                        x:Name="ExpandDirectionComboBox"
+                    <ComboBox x:Name="Expander1DirectionComboBox"
                         ui:ControlHelper.Header="ExpandDirection"
-                        SelectedValue="Down"
+                        SelectedValue="Down" Tag="{Binding ElementName=Expander1}"
                         SelectionChanged="ExpandDirectionComboBox_SelectionChanged">
                         <sys:String>Down</sys:String>
                         <sys:String>Up</sys:String>
@@ -39,81 +43,35 @@
                 </StackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
-
-        <local:ControlExample x:Name="Example2" HeaderText="An card-like style Expander with other controls in the header and content">
+        <local:ControlExample x:Name="Example4" HeaderText="A Card-style Expander with text in the header and content">
             <local:ControlExample.Example>
-                <Expander x:Name="Expander2" Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}">
-                    <Expander.Header>
-                        <ToggleButton Content="This is a ToggleButton in the header" />
-                    </Expander.Header>
-                    <Expander.Content>
-                        <Grid>
-                            <Button Margin="15" Content="This is a Button in the content" />
-                        </Grid>
-                    </Expander.Content>
-                </Expander>
-            </local:ControlExample.Example>
-        </local:ControlExample>
-
-        <local:ControlExample x:Name="Example3" HeaderText="Modifying card-like style Expander content alignment">
-            <local:ControlExample.Example>
-                <Expander
+                <Expander x:Name="Expander4" VerticalAlignment="Top"
+                    Content="This is in the content"
                     Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}"
-                    Width="500"
-                    Padding="0"
-                    HorizontalContentAlignment="Left">
+                    ExpandDirection="Down" IsExpanded="False">
                     <Expander.Header>
-                        <ToggleButton HorizontalAlignment="Center" Content="This ToggleButton is centered" />
+                        <Border>
+                            <TextBlock Text="This text is in the header" FontWeight="Bold">
+                            </TextBlock>
+                        </Border>
                     </Expander.Header>
-                    <Expander.Content>
-                        <Button Margin="4" Content="This Button is left aligned" />
-                    </Expander.Content>
                 </Expander>
-            </local:ControlExample.Example>
-        </local:ControlExample>
-
-        <!-- <local:ControlExample x:Name="Example4" HeaderText="Expander with a card-like style">
-            <local:ControlExample.Example>
-                <Expander
-                    Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}"z
-                    Width="500"
-                    Content="This is in the content"
-                    ExpandDirection="Down"
-                    Header="This text is in the header"
-                    HorizontalContentAlignment="Left">
-                </Expander>
-            </local:ControlExample.Example>
-        </local:ControlExample> -->
-
-        <local:ControlExample x:Name="Example5" HeaderText="An Expander with text in the header and content areas">
-            <local:ControlExample.Example>
-                <Expander
-                    x:Name="Expander5"
-                    VerticalAlignment="Top"
-                    Content="This is in the content"
-                    ExpandDirection="Down"
-                    Header="This text is in the header"
-                    IsExpanded="False" />
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <StackPanel>
-                    <ComboBox
-                        x:Name="ExpandDirectionComboBox5"
+                    <ComboBox x:Name="Expander4DirectionComboBox"
                         ui:ControlHelper.Header="ExpandDirection"
-                        SelectedValue="Down"
-                        SelectionChanged="ExpandDirectionComboBox5_SelectionChanged">
-                        <sys:String>Down</sys:String>
-                        <sys:String>Up</sys:String>
-                        <sys:String>Left</sys:String>
-                        <sys:String>Right</sys:String>
+                        SelectedValue="Down" Tag="{Binding ElementName=Expander4}"
+                        SelectionChanged="ExpandDirectionComboBox_SelectionChanged"
+                        ItemsSource="{Binding ElementName=Expander1DirectionComboBox, Path=Items}">
                     </ComboBox>
                 </StackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example6" HeaderText="An Expander with other controls in the header and content">
+        <local:ControlExample x:Name="Example2" HeaderText="An Expander with other controls in the header and content">
             <local:ControlExample.Example>
-                <Expander x:Name="Expander6">
+                <Expander x:Name="Expander2">
                     <Expander.Header>
                         <ToggleButton Content="This is a ToggleButton in the header" />
                     </Expander.Header>
@@ -126,11 +84,10 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example7" HeaderText="Modifying Expander content alignment">
+        <local:ControlExample x:Name="Example3" HeaderText="Modifying Expanders content alignment">
             <local:ControlExample.Example>
-                <Expander
-                    Width="500"
-                    Padding="0"
+                <Expander Width="500" Padding="0"
+                    Background="{DynamicResource {x:Static ui:ThemeKeys.SystemControlBackgroundAltHighBrushKey}}"
                     HorizontalContentAlignment="Left">
                     <Expander.Header>
                         <ToggleButton HorizontalAlignment="Center" Content="This ToggleButton is centered" />
@@ -141,6 +98,5 @@
                 </Expander>
             </local:ControlExample.Example>
         </local:ControlExample>
-
     </StackPanel>
 </ui:Page>
