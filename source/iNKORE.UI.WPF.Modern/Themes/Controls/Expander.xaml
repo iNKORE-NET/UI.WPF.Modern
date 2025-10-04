@@ -620,6 +620,43 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource SystemControlDisabledBaseMediumLowBrush}" />
                         </Trigger>
+                         <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="true" />
+                                <Condition Property="ExpandDirection" Value="Down" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="true" />
+                                <Condition Property="ExpandDirection" Value="Right" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="true" />
+                                <Condition Property="ExpandDirection" Value="Up" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="true" />
+                                <Condition Property="ExpandDirection" Value="Left" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="ExpanderHeader" Property="chelper:ControlHelper.CornerRadius" Value="{Binding Tag, ElementName=ExpanderHeader, Converter={StaticResource RightCornerRadiusFilterConverter}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
