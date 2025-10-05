@@ -122,6 +122,14 @@
                     </ui:NavigationViewItem.Icon>
                     <ui:NavigationViewItem.MenuItems>
                         <ui:NavigationViewItem
+                            x:Name="IconographyItem"
+                            Content="Iconography"
+                            Tag="Iconography">
+                            <ui:NavigationViewItem.Icon>
+                                <ui:FontIcon Glyph="&#xED58;" />
+                            </ui:NavigationViewItem.Icon>
+                        </ui:NavigationViewItem>
+                        <ui:NavigationViewItem
                             x:Name="TypographyItem"
                             Content="Typography"
                             Tag="Typography">
