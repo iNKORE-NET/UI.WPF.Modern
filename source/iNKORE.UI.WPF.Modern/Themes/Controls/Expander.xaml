@@ -818,7 +818,7 @@
                             </Grid>
                             <ContentPresenter
                                 Grid.Row="1"
-                                Margin="0,4,0,0"
+                                Margin="0,8,0,0"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Top"
                                 RecognizesAccessKey="True"
@@ -880,9 +880,8 @@
                                     SnapsToDevicePixels="false"
                                     Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}" />
                             </Grid>
-                            <ContentPresenter
-                                Grid.Row="1"
-                                Margin="0,4,0,0"
+                            <ContentPresenter Grid.Row="1"
+                                Margin="0,8,0,0"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Top"
                                 RecognizesAccessKey="True"

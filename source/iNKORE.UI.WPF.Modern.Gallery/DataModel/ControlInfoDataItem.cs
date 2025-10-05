@@ -240,7 +240,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.DataModel
                 }
             }
 
-            var realmNames = new string[] { "Windows", "Community", "Extended" };
+            var realmNames = new string[] { "Windows", "Community", "Extended", "Foundation" };
 
             foreach (var realmName in realmNames)
             {
