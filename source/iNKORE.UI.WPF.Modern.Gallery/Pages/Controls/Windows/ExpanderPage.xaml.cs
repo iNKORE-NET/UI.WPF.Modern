@@ -147,5 +147,41 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 
         #endregion
 
+        private void Expand4DirectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string expandDirection = e.AddedItems[0].ToString();
+
+            switch (expandDirection)
+            {
+                case "Down":
+                default:
+                    Expander4.ExpandDirection = ExpandDirection.Down;
+                    Expander4.VerticalAlignment = VerticalAlignment.Top;
+                    break;
+
+                case "Up":
+                    Expander4.ExpandDirection = ExpandDirection.Up;
+                    Expander4.VerticalAlignment = VerticalAlignment.Bottom;
+                    break;
+
+                case "Left":
+                    Expander4.ExpandDirection = ExpandDirection.Left;
+                    Expander4.HorizontalAlignment = HorizontalAlignment.Right;
+                    break;
+
+                case "Right":
+                    Expander4.ExpandDirection = ExpandDirection.Right;
+                    Expander4.HorizontalAlignment = HorizontalAlignment.Left;
+                    break;
+            }
+
+            Example4.Xaml = $@" <Expander Width=""500""
+                          Style=""{{StaticResource {{x:Static ui:ThemeKeys.ExpanderCardStyleKey}}}}""
+                          Content=""This is in the content""
+                          ExpandDirection=""{expandDirection}""
+                          Header=""This text is in the header""
+                          HorizontalContentAlignment=""Left""
+                          x:Name=""Expander4"" />";
+        }
     }
 }

@@ -71,15 +71,28 @@
 
         <local:ControlExample x:Name="Example4" HeaderText="Expander with a card-like style">
             <local:ControlExample.Example>
-                <Expander
-                    Width="500"
-                    Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}"
-                    Content="This is in the content"
-                    ExpandDirection="Down"
-                    Header="This text is in the header"
-                    HorizontalContentAlignment="Left">
-                </Expander>
+                <Expander Width="500"
+                          Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}"
+                          Content="This is in the content"
+                          ExpandDirection="Down"
+                          Header="This text is in the header"
+                          HorizontalContentAlignment="Left"
+                          x:Name="Expander4" />
             </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <StackPanel>
+                    <ComboBox
+                        x:Name="Expand4DirectionComboBox"
+                        ui:ControlHelper.Header="ExpandDirection"
+                        SelectedValue="Down"
+                        SelectionChanged="Expand4DirectionComboBox_SelectionChanged">
+                        <sys:String>Down</sys:String>
+                        <sys:String>Up</sys:String>
+                        <sys:String>Left</sys:String>
+                        <sys:String>Right</sys:String>
+                    </ComboBox>
+                </StackPanel>
+            </local:ControlExample.Options>
         </local:ControlExample>
 
     </StackPanel>
