@@ -1087,9 +1087,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     }
 
                     var tilt = (short)((wParam.ToInt64() >> 16) & 0xFFFF);
-                    HandleWheelChange(-tilt);
-                    
-                    handled = true;
+                    handled = HandleWheelChange(-tilt);
                     return (IntPtr)1;
             }
 
