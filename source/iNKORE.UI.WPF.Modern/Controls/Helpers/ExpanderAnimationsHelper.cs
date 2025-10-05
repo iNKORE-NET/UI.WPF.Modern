@@ -130,10 +130,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         private static void AnimateExpand(Expander expander)
         {
             var toAnimateControl = GetToAnimateControl(expander);
-
             toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
-            toAnimateControl.Visibility = Visibility.Visible;
-
             UpdateLayout(toAnimateControl);
 
             if (toAnimateControl.RenderTransform is not TranslateTransform translateTransform)
@@ -141,9 +138,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 toAnimateControl.RenderTransform = translateTransform = new TranslateTransform();
             }
 
-            var (animationProperty, toValue) = GetToAnimatePropertyAndValue(toAnimateControl, expander.ExpandDirection);
-
-            RunTranslationAnimation(GetExpandAnimationDuration(expander), translateTransform, animationProperty, 0, toValue);
+            var (animationProperty, originValue) = GetToAnimatePropertyAndValue(toAnimateControl, expander.ExpandDirection);
+            RunTranslationAnimation(GetExpandAnimationDuration(expander), translateTransform, animationProperty, 0, originValue);
         }
 
         private static void AnimateCollapse(Expander expander)
@@ -170,9 +166,9 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 toAnimateControl.RenderTransform = translateTransform = new TranslateTransform();
             }
 
-            toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, visibilityAnimation);
-
             var (animationProperty, toValue) = GetToAnimatePropertyAndValue(toAnimateControl, expander.ExpandDirection);
+            
+            toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, visibilityAnimation);
             RunTranslationAnimation(animationDuration, translateTransform, animationProperty,
                 toValue);
         }
