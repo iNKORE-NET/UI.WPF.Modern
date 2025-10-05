@@ -2,6 +2,7 @@
 using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Helpers;
 using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,11 +13,31 @@ using System.Windows.Media;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
+    public sealed class TabItemHeaderConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is string headerString && !string.IsNullOrWhiteSpace(headerString))
+            {
+                return headerString;
+            }
+            
+            return null;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    
     /// <summary>
     /// TabViewItem Properties
     /// </summary>
     public static class TabItemHelper
     {
+        private static readonly ResourceAccessor ResourceAccessor = new(typeof(TabItemHelper));
+        
         #region IsEnabled
 
         public static bool GetIsEnabled(TabItem element)
@@ -47,6 +68,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             {
                 item.Loaded -= OnLoaded;
                 item.SizeChanged -= OnSizeChanged;
+                BindingOperations.ClearBinding(item,FrameworkElement.ToolTipProperty);
             }
         }
 
@@ -177,6 +199,9 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         {
             TabItem TabItem = sender as TabItem;
             UpdateTabGeometry(TabItem);
+            UpdateHeaderTooltip(TabItem);
+            UpdateCloseButtonTooltip(TabItem);
+
             TabControl TabControl = TabItem.FindAscendant<TabControl>();
 
             if (TabControl != null)
@@ -194,17 +219,31 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                     Path = new PropertyPath(TabControlHelper.CloseButtonOverlayModeProperty)
                 });
 
-                var CloseTabButtonCommand = new RoutedCommand();
+                var CloseTabButtonCommand = new RoutedCommand()
+                {
+                    InputGestures = { new KeyGesture(Key.F4, ModifierKeys.Control) }
+                };
 
                 void ExecutedCustomCommand(object sender, ExecutedRoutedEventArgs e)
                 {
-                    TabControlHelper.GetTabControlHelperEvents(TabControl).TabCloseRequested?.Invoke(TabControl, new TabViewTabCloseRequestedEventArgs(TabItem.Content, TabItem));
+                    var eventArgs = new TabViewTabCloseRequestedEventArgs(TabItem.Content, TabItem);
+                    TabControlHelper.GetTabControlHelperEvents(TabControl).TabCloseRequested?.Invoke(TabControl, eventArgs);
+                    if (eventArgs.Cancel)
+                    {
+                        return;
+                    }
+
                     GetTabItemHelperEvents(TabItem).CloseRequested?.Invoke(TabItem, new TabViewTabCloseRequestedEventArgs(TabItem.Content, TabItem));
                     if (TabControl.SelectedItem == TabItem)
                     {
                         TabControl.SelectedIndex--;
                     }
-                    TabControl.Items.Remove(sender);
+
+                    if (TabControl.ItemsSource is null)
+                    {
+                        TabControl.Items.Remove(sender);
+                    }
+                    
                     e.Handled = true;
                 }
 
@@ -225,6 +264,33 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 TabItem.CommandBindings.Add(CloseTabButtonCommandBinding);
                 SetCloseTabButtonCommand(TabItem, CloseTabButtonCommand);
             }
+        }
+
+        private static void UpdateHeaderTooltip(TabItem TabItem)
+        {
+            if (TabItem.ToolTip is null && TabItem.GetTemplateChild<FrameworkElement>("TabContainer") is { } headerContainer)
+            {
+                headerContainer.SetBinding(
+                    FrameworkElement.ToolTipProperty,
+                    new Binding
+                    {
+                        Path = new PropertyPath(HeaderedContentControl.HeaderProperty),
+                        RelativeSource = new RelativeSource(RelativeSourceMode.TemplatedParent),
+                        Mode = BindingMode.OneWay,
+                        Converter = TabItem.TryFindResource("TabItemHeaderConverter") as IValueConverter
+                    });
+            }
+        }
+
+        private static void UpdateCloseButtonTooltip(TabItem item)
+        {
+            if (item?.GetTemplateChild<FrameworkElement>("CloseButton") is not { } closeButton)
+            {
+                return;
+            }
+
+            closeButton.ToolTip =
+                ResourceAccessor.GetLocalizedStringResource(ResourceAccessor.SR_TabViewCloseButtonTooltipWithKA);
         }
 
         private static void OnSizeChanged(object sender, SizeChangedEventArgs e)

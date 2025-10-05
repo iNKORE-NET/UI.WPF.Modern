@@ -1,4 +1,4 @@
-﻿<ui:Page
+<ui:Page
     x:Class="iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows.TabViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    mc:Ignorable="d">
+    mc:Ignorable="d" d:DesignWidth="734.51">
 
     <Page.Resources>
         <Style BasedOn="{StaticResource DefaultTabControlStyle}" TargetType="TabControl">
@@ -50,52 +50,24 @@
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example2" HeaderText="TabControl with color tab icons">
+        <local:ControlExample x:Name="Example3" HeaderText="Custom content in TabStripHeader and TabStripFooter">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock
                         Margin="0,0,0,12"
-                        Text="Use BitmapIcon.ShowAsMonochrome=&quot;False&quot; to display full color icons in the TabItem"
-                        TextWrapping="Wrap" />
-
-                    <TabControl
-                        x:Name="TabView4"
-                        MinWidth="490"
-                        MinHeight="0"
-                        SelectedIndex="0">
-                        <TabControl.Items>
-                            <TabItem Header="CMD Prompt">
-                                <ui:TabItemHelper.Icon>
-                                    <ui:BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/TabViewIcons/cmd.png" />
-                                </ui:TabItemHelper.Icon>
-                            </TabItem>
-                            <TabItem Header="Powershell">
-                                <ui:TabItemHelper.Icon>
-                                    <ui:BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/TabViewIcons/powershell.png" />
-                                </ui:TabItemHelper.Icon>
-                            </TabItem>
-                            <TabItem Header="Windows Subsystem for Linux">
-                                <ui:TabItemHelper.Icon>
-                                    <ui:BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/TabViewIcons/linux.png" />
-                                </ui:TabItemHelper.Icon>
-                            </TabItem>
-                        </TabControl.Items>
-                    </TabControl>
-                </StackPanel>
-            </local:ControlExample.Example>
-        </local:ControlExample>
-
-        <local:ControlExample x:Name="Example3" HeaderText="You can put custom content in TabStripHeader and TabStripFooter">
-            <local:ControlExample.Example>
-                <StackPanel>
-                    <TextBlock
-                        Margin="0,0,0,24"
                         Text="You can put any content in the TabStripHeader and TabStripFooter areas"
                         TextWrapping="Wrap" />
+                    <TextBlock
+                        Margin="0,0,0,12"
+                        Text="If your TabView is used inside the app's titlebar area, use the TabStripFooter to specify a custom drag region"
+                        TextWrapping="Wrap" />
+                    <!-- <TextBlock
+                        Margin="0,0,0,24"
+                        Text="See TabViewWindowingSamplePage.xaml and *.cs files to see the complete code"
+                        TextWrapping="Wrap" /> -->
 
                     <TabControl
                         MinHeight="475"
-                        Margin="-12"
                         Loaded="TabView_Loaded"
                         SelectedIndex="0">
                         <ui:TabControlHelper.TabStripHeader>
@@ -118,6 +90,42 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
+        <local:ControlExample x:Name="Example2" HeaderText="TabControl with color tab icons">
+            <local:ControlExample.Example>
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,12"
+                        Text="Use BitmapIcon.ShowAsMonochrome=&quot;False&quot; to display full color icons in the TabItem"
+                        TextWrapping="Wrap" />
+
+                    <TabControl
+                        x:Name="TabView4"
+                        MinWidth="490"
+                        MinHeight="0"
+                        SelectedIndex="0"
+                        ui:TabControlHelper.IsAddTabButtonVisible="False">
+                        <TabControl.Items>
+                            <TabItem Header="CMD Prompt">
+                                <ui:TabItemHelper.Icon>
+                                    <ui:BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/TabViewIcons/cmd.png" />
+                                </ui:TabItemHelper.Icon>
+                            </TabItem>
+                            <TabItem Header="Powershell">
+                                <ui:TabItemHelper.Icon>
+                                    <ui:BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/TabViewIcons/powershell.png" />
+                                </ui:TabItemHelper.Icon>
+                            </TabItem>
+                            <TabItem Header="Windows Subsystem for Linux">
+                                <ui:TabItemHelper.Icon>
+                                    <ui:BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/TabViewIcons/linux.png" />
+                                </ui:TabItemHelper.Icon>
+                            </TabItem>
+                        </TabControl.Items>
+                    </TabControl>
+                </StackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
         <local:ControlExample x:Name="Example4" HeaderText="A TabControl with accent colored TabStrip background">
             <TabControl x:Name="tabControl3" ui:ThemeManager.HasThemeResources="True">
                 <TabControl.Resources>
@@ -135,6 +143,7 @@
             </TabControl>
         </local:ControlExample>
 
+        
         <local:ControlExample x:Name="Example5" HeaderText="A TabControl with customized headers">
             <TabControl x:Name="tabControl2">
                 <TabControl.Resources>
@@ -148,5 +157,44 @@
                 </TabControl.ItemContainerStyle>
             </TabControl>
         </local:ControlExample>
+
+        <local:ControlExample x:Name="Example6" HeaderText="A TabControl with customized closing handler">
+            <ikw:SimpleStackPanel>
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,12">
+                    The <Bold>TabControl</Bold> now supports intercepting tab close requests via the 
+                    <Bold>TabItemCloseRequest</Bold> event. This allows preventing the close operation 
+                    dynamically - for example, to prompt the user for confirmation or prevent closing under certain conditions. 
+                    Simply handle the event and set <Bold>e.Cancel = true</Bold> to keep the tab open.
+                </TextBlock>
+                
+                <TabControl x:Name="tabControl6" MinHeight="160">
+                    <TabItem x:Name="TabItem_Example6_Tab1" Header="Closable">
+                        <TextBlock TextWrapping="Wrap" Margin="12">
+                            This tab demonstrates the default close behavior. When the close button is clicked, the tab closes immediately 
+                            without any interception or confirmation. TabItemCloseRequest handler will not do anything for this tab.
+                        </TextBlock>
+                    </TabItem>
+                    <TabItem x:Name="TabItem_Example6_Tab2" Header="Confirm To Close" Tag="ConfirmClose">
+                        <TextBlock TextWrapping="Wrap" Margin="12">
+                            This tab intercepts the close request using the <Bold>TabItemCloseRequest</Bold> event. 
+                            When the close button is clicked, a confirmation dialog appears. If the user chooses to cancel, 
+                            the tab remains open. This is useful for preserving unsaved work or preventing accidental closure.
+                        </TextBlock>
+                    </TabItem>
+                    <TabItem x:Name="TabItem_Example6_Tab3" Header="DON'T TOUCH ME!" Tag="NiceTry">
+                        <TextBlock TextWrapping="Wrap" Margin="12">
+                            This tab is configured to reject all close requests. The <Bold>TabItemCloseRequest</Bold> event is handled 
+                            and <Bold>e.Cancel</Bold> is always set to <Bold>true</Bold>, making the tab effectively non-closable. 
+                            <LineBreak/>
+                            This is not usually recommended for user experience, but it demonstrates the flexibility of the event handling.
+                        </TextBlock>
+                    </TabItem>
+                </TabControl>
+
+                <Button x:Name="Button_Example6_ResetTabs" Content="Reset Tabs" Click="Button_Example6_ResetTabs_Click" HorizontalAlignment="Left" Margin="0,12,0,0"/>
+
+            </ikw:SimpleStackPanel>
+        </local:ControlExample>
+
     </ikw:SimpleStackPanel>
 </ui:Page>
