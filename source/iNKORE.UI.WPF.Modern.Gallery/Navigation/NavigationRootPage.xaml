@@ -122,6 +122,14 @@
                     </ui:NavigationViewItem.Icon>
                     <ui:NavigationViewItem.MenuItems>
                         <ui:NavigationViewItem
+                            x:Name="GeometryItem"
+                            Content="Geometry"
+                            Tag="Geometry">
+                            <ui:NavigationViewItem.Icon>
+                                <ui:FontIcon Glyph="&#xE743;" />
+                            </ui:NavigationViewItem.Icon>
+                        </ui:NavigationViewItem>
+                        <ui:NavigationViewItem
                             x:Name="TypographyItem"
                             Content="Typography"
                             Tag="Typography">

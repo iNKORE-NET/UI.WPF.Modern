@@ -25,6 +25,29 @@
             "Description": "Design guidance and resources",
             "Items":
             [
+                        {
+                        "UniqueId": "Geometry",
+                        "Title": "Geometry",
+                        "Subtitle": "Corner radius and geometry values",
+                        "ImagePath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
+                        "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
+                        "Description": "",
+                        "Content": "",
+                        "IncludedInBuild": true,
+                        "IsNew": false,
+                        "IsUpdated": false,
+                        "Docs": [
+                            {
+                                "Title": "Geometry in Windows 11",
+                                "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/geometry"
+                            },
+                            {
+                                "Title": "WinUI Theme Resources (GitHub)",
+                                "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/src/controls/dev/CommonStyles/Common_themeresources_any.xaml"
+                            }
+                        ],
+                        "RelatedControls": []
+                    },
                 {
                     "UniqueId": "Typography",
                     "Title": "Typography",
