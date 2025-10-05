@@ -2,6 +2,7 @@
     // Everything from Windows UI
     "$schema": "../ControlInfoData.schema.json",
 
+    "IsVisible": false,
     "Groups":
     [
         {

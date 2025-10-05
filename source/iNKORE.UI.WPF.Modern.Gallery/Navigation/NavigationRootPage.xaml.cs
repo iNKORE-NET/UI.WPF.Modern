@@ -159,15 +159,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
             foreach(var realm in ControlInfoDataSource.Instance.Realms)
             {
-                NavigationViewControl.MenuItems.Add(new NavigationViewItemHeader() { Content = realm.Title.ToUpper() });
+                var isRealmVisible = realm.IsVisible;
+
+                if (isRealmVisible) NavigationViewControl.MenuItems.Add(new NavigationViewItemHeader() { Content = realm.Title.ToUpper() });
 
                 foreach (var group in realm.Groups.OrderBy(i => i.Title))
                 {
-                    // Skip Design group since it's hardcoded in XAML
-                    if (group.UniqueId == "Design")
-                    {
-                        continue;
-                    }
+                    var isGroupVisible = realm.IsVisible && true; // Implement group-level visibility if needed
 
                     var itemGroup = new NavigationViewItem() { Content = group.Title, Tag = group.UniqueId, DataContext = group, Icon = GetIcon(group.ImageIconPath) };
 
@@ -189,7 +187,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                         AutomationProperties.SetName(itemInGroup, item.Title);
                     }
 
-                    NavigationViewControl.MenuItems.Add(itemGroup);
+                    if (isGroupVisible) NavigationViewControl.MenuItems.Add(itemGroup);
 
                     if (group.UniqueId == "AllControls")
                     {
