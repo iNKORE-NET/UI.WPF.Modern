@@ -1087,7 +1087,9 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     }
 
                     var tilt = (short)((wParam.ToInt64() >> 16) & 0xFFFF);
-                    handled = HandleWheelChange(-tilt);
+                    HandleWheelChange(-tilt);
+                    
+                    handled = true;
                     return (IntPtr)1;
             }
 
@@ -1096,31 +1098,36 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private int _lastScrollWheelDelta;
         private long _lastScrollWheelTick;
-        private const long ScrollWheelDelayTicks = 2_000_000; //200ms
+        private const long ScrollWheelDelayTicks = 200; //200ms
 
         protected override void OnMouseWheel(MouseWheelEventArgs e)
         {
             base.OnMouseWheel(e);
            
             if (e.Handled || 
+                (Environment.TickCount - _lastScrollWheelTick > ScrollWheelDelayTicks && IsTryingToGoBeyondEnd(e.Delta)) ||
                 (Keyboard.Modifiers & ModifierKeys.Control) is ModifierKeys.Control || 
                 (!SourceIsMouseWheel(e.Delta) && Orientation is Orientation.Horizontal))
             {
                 return;
             }
             
-            e.Handled = HandleWheelChange(e.Delta);
+            HandleWheelChange(e.Delta);
+            e.Handled = true;
             
             //Mouse sends multiples of 120
             static bool SourceIsMouseWheel(int delta) => delta % 120 is 0;
+
+            bool IsTryingToGoBeyondEnd(int delta) => (SelectedIndex >= Items.Count - 1 && delta < 0) ||
+                                                     (SelectedIndex is 0 && delta > 0);
         }
         
-        private bool HandleWheelChange(int delta)
+        private void HandleWheelChange(int delta)
         {
             FocusWithNoVisuals();
 
             var canFlip = false;
-            var currentTick = DateTime.Now.Ticks;
+            var currentTick = Environment.TickCount;
 
             if ((delta < 0 && _lastScrollWheelDelta >= 0) ||
                 (delta > 0 && _lastScrollWheelDelta <= 0) || 
@@ -1133,30 +1140,19 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             if (!canFlip)
             {
-                return true;
+                return;
             }
 
             if (delta < 0)
             {
-                if (SelectedIndex >= Items.Count - 1)
-                {
-                    return false;
-                }
-                
                 GoForward();
             }
             else
             {
-                if (SelectedIndex <= 0)
-                {
-                    return false;
-                }
-                
                 GoBack();
             }
 
             _lastScrollWheelDelta = delta;
-            return true;
         }
 
         private void FocusWithNoVisuals()
