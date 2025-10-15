@@ -1,4 +1,4 @@
-﻿using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Common.IconKeys;
 using iNKORE.UI.WPF.Modern.Controls.Helpers;
 using System.Linq;
@@ -249,29 +249,84 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 if (menuItem.Command is RoutedUICommand command)
                 {
+                    // Local helper to build a tooltip that centers horizontally above the mouse cursor
+                    ToolTip BuildCenteredMouseToolTip(string text)
+                    {
+                        var tt = new ToolTip
+                        {
+                            Content = text,
+                            Placement = PlacementMode.Mouse
+                        };
+                        tt.Opened += (s, e) =>
+                        {
+                            if (s is ToolTip t)
+                            {
+                                t.HorizontalOffset = 0;
+                                t.VerticalOffset = 0;
+                                void ApplyOffsets()
+                                {
+                                    const double gap = 32;
+                                    t.HorizontalOffset = -t.ActualWidth / 2.0;
+                                    t.VerticalOffset = -(t.ActualHeight + gap);
+                                }
+
+                                if (t.ActualWidth <= 0 || t.ActualHeight <= 0)
+                                {
+                                    t.Dispatcher.BeginInvoke((System.Action)(() =>
+                                    {
+                                        ApplyOffsets();
+                                    }));
+                                }
+                                else
+                                {
+                                    ApplyOffsets();
+                                }
+                            }
+                        };
+                        return tt;
+                    }
+
                     if (command == ApplicationCommands.Cut)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelCut);
+                        var cutDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionCut);
+                        menuItem.ToolTip = BuildCenteredMouseToolTip(cutDescription);
+                        ToolTipService.SetInitialShowDelay(menuItem, 700);
                     }
                     else if (command == ApplicationCommands.Copy)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelCopy);
+                        var copyDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionCopy);
+                        menuItem.ToolTip = BuildCenteredMouseToolTip(copyDescription);
+                        ToolTipService.SetInitialShowDelay(menuItem, 700);
                     }
                     else if (command == ApplicationCommands.Paste)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelPaste);
+                        var pasteDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionPaste);
+                        menuItem.ToolTip = BuildCenteredMouseToolTip(pasteDescription);
+                        ToolTipService.SetInitialShowDelay(menuItem, 700);
                     }
                     else if (command == ApplicationCommands.Undo)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelUndo);
+                        var undoDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionUndo);
+                        menuItem.ToolTip = BuildCenteredMouseToolTip(undoDescription);
+                        ToolTipService.SetInitialShowDelay(menuItem, 700);
                     }
                     else if (command == ApplicationCommands.Redo)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelRedo);
+                        var redoDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionRedo);
+                        menuItem.ToolTip = BuildCenteredMouseToolTip(redoDescription);
+                        ToolTipService.SetInitialShowDelay(menuItem, 700);
                     }
                     else if (command == ApplicationCommands.SelectAll)
                     {
                         menuItem.Header = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandLabelSelectAll);
+                        var selectAllDescription = ResourceAccessor.GetLocalizedStringResource(SR_TextCommandDescriptionSelectAll);
+                        menuItem.ToolTip = BuildCenteredMouseToolTip(selectAllDescription);
+                        ToolTipService.SetInitialShowDelay(menuItem, 700);
                     }
 
                     menuItem.CommandTarget = target;
