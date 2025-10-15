@@ -104,6 +104,32 @@ namespace iNKORE.UI.WPF.Modern.Input
 
         #endregion
 
+        #region StopRouting
+        public static readonly DependencyProperty StopRoutingProperty =
+            DependencyProperty.RegisterAttached(
+                "StopRouting",
+                typeof(bool),
+                typeof(InputHelper),
+                new PropertyMetadata(false));
+
+        public static bool GetStopRouting(UIElement element)
+        {
+            return (bool)element.GetValue(StopRoutingProperty);
+        }
+
+        public static void SetStopRouting(UIElement element, bool value)
+        {
+            if (value)
+            {
+                element.SetValue(StopRoutingProperty, value);
+            }
+            else
+            {
+                element.ClearValue(StopRoutingProperty);
+            }
+        }
+        #endregion
+
         private static void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var element = (UIElement)sender;
@@ -111,6 +137,12 @@ namespace iNKORE.UI.WPF.Modern.Input
             if (!GetIsPressed(element))
             {
                 SetIsPressed(element, true);
+                
+                if (GetStopRouting(element))
+                {
+                    element.CaptureMouse();
+                    e.Handled = true;
+                }
             }
         }
 
@@ -121,6 +153,11 @@ namespace iNKORE.UI.WPF.Modern.Input
             if (GetIsPressed(element))
             {
                 SetIsPressed((UIElement)sender, false);
+
+                if (GetStopRouting(element))
+                {
+                    element.ReleaseMouseCapture();
+                }
 
                 var lastArgs = _lastTappedArgs;
 
