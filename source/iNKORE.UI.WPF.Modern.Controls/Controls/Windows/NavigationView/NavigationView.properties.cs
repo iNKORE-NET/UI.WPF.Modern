@@ -41,7 +41,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 nameof(IsPaneOpen),
                 typeof(bool),
                 typeof(NavigationView),
-                new PropertyMetadata(true, OnIsPaneOpenPropertyChanged));
+                new PropertyMetadata(OnIsPaneOpenPropertyChanged));
 
         public bool IsPaneOpen
         {
