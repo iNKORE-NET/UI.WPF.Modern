@@ -119,14 +119,7 @@ namespace iNKORE.UI.WPF.Modern.Input
 
         public static void SetStopRouting(UIElement element, bool value)
         {
-            if (value)
-            {
-                element.SetValue(StopRoutingProperty, value);
-            }
-            else
-            {
-                element.ClearValue(StopRoutingProperty);
-            }
+            element.SetValue(StopRoutingProperty, value);
         }
         #endregion
 
