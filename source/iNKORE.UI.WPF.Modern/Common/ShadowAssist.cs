@@ -11,8 +11,21 @@ namespace iNKORE.UI.WPF.Modern.Common
         /// Whether to use BitmapCache for shadow rendering and animations.
         /// </summary>
         /// <remarks>
-        /// For applications with multiple windows, please set this property to false to avoid possible freezing issues.
-        /// <see href="https://github.com/dotnet/wpf/issues/2158"/>
+        /// <para>
+        /// For applications with multiple windows, especially when hiding/showing windows or after system lock/unlock,
+        /// please set this property to false to avoid possible freezing issues.
+        /// </para>
+        /// <para>
+        /// This property should be set before any windows are created, typically in your application startup code.
+        /// Example: <c>ShadowAssist.UseBitmapCache = false;</c>
+        /// </para>
+        /// <para>
+        /// Note: Disabling BitmapCache may result in slightly reduced animation performance but will resolve
+        /// freezing issues in multi-window scenarios.
+        /// </para>
+        /// <para>
+        /// Related WPF issue: <see href="https://github.com/dotnet/wpf/issues/2158"/>
+        /// </para>
         /// </remarks>
         public static bool UseBitmapCache { get; set; } = true;
 
