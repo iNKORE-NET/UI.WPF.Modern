@@ -2841,7 +2841,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     VisualStateManager.GoToState(this, visualStateName, false /*useTransitions*/);
                 }
 
-                // Updating the splitview 'DisplayMode' property in some diplaymodes causes children to be added to the popup root.
+                // Updating the splitview 'DisplayMode' property in some displaymodes causes children to be added to the popup root.
                 // This causes an exception if the NavigationView is in the popup root itself (as SplitView is trying to add children to the tree while it is being measured).
                 // Due to this, we want to defer updating this property for all calls coming from `OnApplyTemplate`to the OnLoaded function.
                 if (m_fromOnApplyTemplate)
