@@ -140,7 +140,7 @@
                                         ResizeBorderThickness="{TemplateBinding primitives:TitleBar.ResizeBorderThickness}"
                                         Style="{TemplateBinding primitives:TitleBar.Style}" />
 
-                                    <AdornerDecorator x:Name="AdornerDecorator" Grid.Row="1" CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}">
+                                    <AdornerDecorator x:Name="AdornerDecorator" Grid.Row="1" CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode), Converter={StaticResource CacheModeConverter}}">
                                         <local:ContentPresenterEx Foreground="{TemplateBinding Foreground}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                     </AdornerDecorator>
 
@@ -252,6 +252,7 @@
 
     <converters:BackdropUtilityConverter x:Key="BackdropIsSupportedConverter"/>
     <converters:BackdropUtilityConverter x:Key="BackdropIsManualBackgroundNeededConverter" ConverterType="ManualBackgroundNeeded"/>
+    <converters:CacheModeConverter x:Key="CacheModeConverter"/>
 
     <Style
         x:Key="TheWindowStyle"

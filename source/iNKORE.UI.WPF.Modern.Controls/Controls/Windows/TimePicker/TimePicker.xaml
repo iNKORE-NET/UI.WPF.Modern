@@ -4,7 +4,10 @@
     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common;assembly=iNKORE.UI.WPF.Modern" 
+    xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters;assembly=iNKORE.UI.WPF.Modern"
     xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <converters:CacheModeConverter x:Key="CacheModeConverter"/>
 
     <sys:Double x:Key="LoopingSelectorUpDownButtonScalePressed">0.800</sys:Double>
 
@@ -351,7 +354,7 @@
                             x:Name="PART_Popup"
                             Grid.Row="1"
                             AllowsTransparency="True"
-                            CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}"
+                            CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode), Converter={StaticResource CacheModeConverter}}"
                             Focusable="False"
                             Placement="Center"
                             PlacementTarget="{Binding ElementName=PART_Button}"

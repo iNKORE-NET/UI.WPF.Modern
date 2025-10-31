@@ -13,6 +13,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary>
             <ikw:SharedSizeGroupConverter x:Key="SharedSizeGroupConverter" />
+            <converters:CacheModeConverter x:Key="CacheModeConverter"/>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
@@ -310,7 +311,7 @@
                 <Popup
                     x:Name="PART_Popup"
                     AllowsTransparency="true"
-                    CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}"
+                    CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode), Converter={StaticResource CacheModeConverter}}"
                     Focusable="false"
                     IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
                     Placement="Right"

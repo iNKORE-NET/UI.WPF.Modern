@@ -15,6 +15,7 @@
             <primitives:BindingProxy x:Key="ComboBoxItemPillCornerRadiusProxy" Value="{DynamicResource ComboBoxItemPillCornerRadius}" />
             <ikw:CornerRadiusExtractionConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" TargetMember="TopLeft" />
             <ikw:CornerRadiusExtractionConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" TargetMember="BottomRight" />
+            <converters:CacheModeConverter x:Key="CacheModeConverter"/>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
@@ -515,7 +516,7 @@
                         <Popup
                             x:Name="PART_Popup"
                             AllowsTransparency="True"
-                            CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}"
+                            CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode), Converter={StaticResource CacheModeConverter}}"
                             IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
                             Placement="Bottom"
                             PlacementTarget="{Binding ElementName=Background}"

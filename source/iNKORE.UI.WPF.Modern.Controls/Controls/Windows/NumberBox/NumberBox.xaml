@@ -6,6 +6,7 @@
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common;assembly=iNKORE.UI.WPF.Modern"
+    xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters;assembly=iNKORE.UI.WPF.Modern"
     xmlns:sys="clr-namespace:System;assembly=netstandard">
 
     <ResourceDictionary.MergedDictionaries>
@@ -18,6 +19,7 @@
     <ikw:CornerRadiusFilterConverter x:Key="TopCornerRadiusFilterConverter" Filter="Top" />
     <ikw:CornerRadiusFilterConverter x:Key="RightCornerRadiusFilterConverter" Filter="Right" />
     <ikw:CornerRadiusFilterConverter x:Key="BottomCornerRadiusFilterConverter" Filter="Bottom" />
+    <converters:CacheModeConverter x:Key="CacheModeConverter"/>
     <ikw:CornerRadiusFilterConverter x:Key="LeftCornerRadiusFilterConverter" Filter="Left" />
 
     <sys:Double x:Key="NumberBoxMinWidth">120</sys:Double>
@@ -386,7 +388,7 @@
                             Grid.Column="1"
                             HorizontalAlignment="Left"
                             AllowsTransparency="True"
-                            CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}"
+                            CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode), Converter={StaticResource CacheModeConverter}}"
                             HorizontalOffset="{DynamicResource NumberBoxPopupHorizonalOffset}"
                             Placement="Right"
                             VerticalOffset="{DynamicResource NumberBoxPopupVerticalOffset}">

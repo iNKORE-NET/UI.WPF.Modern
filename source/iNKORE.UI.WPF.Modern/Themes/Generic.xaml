@@ -24,6 +24,7 @@
     <ikw:AddValueConverter x:Key="addValueConverter" />
     <ikw:CornerRadiusFilterConverter x:Key="cornerRadiusFilterConverter_Bottom" Filter="Bottom"/>
     <ikw:ThicknessFilterConverter x:Key="thicknessFilterConverter_ExcludeTop" Filter="ExcludeTop"/>
+    <converters:CacheModeConverter x:Key="CacheModeConverter"/>
 
     <Style TargetType="ui:ElevationBorder">
         <Setter Property="Focusable" Value="False"/>
@@ -40,7 +41,7 @@
                         </Border>
 
                         <Border BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
-                            <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}">
+                            <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode), Converter={StaticResource CacheModeConverter}}">
                                 <ContentPresenter/>
                             </AdornerDecorator>
                         </Border>

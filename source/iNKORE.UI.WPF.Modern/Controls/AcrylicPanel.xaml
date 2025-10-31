@@ -12,6 +12,7 @@
         <ResourceDictionary>
             <ikw:BrushTranslationConverter x:Key="BrushTranslationConverter" />
             <ikw:ColorToBrushConverter x:Key="ColorToSolidColorBrushConverter" />
+            <converters:CacheModeConverter x:Key="CacheModeConverter"/>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
@@ -79,14 +80,14 @@
                         <!--  main  -->
                         <ikw:ClippedContent CornerRadius="{TemplateBinding CornerRadius}">
                             <Canvas>
-                                <ContentControl chelper:ControlHelper.CornerRadius="{TemplateBinding CornerRadius}" CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}">
+                                <ContentControl chelper:ControlHelper.CornerRadius="{TemplateBinding CornerRadius}" CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode), Converter={StaticResource CacheModeConverter}}">
                                     <ContentControl.Template>
                                         <ControlTemplate TargetType="ContentControl">
                                             <Border Background="{TemplateBinding Background}"
                                                 BorderBrush="{TemplateBinding BorderBrush}"
                                                 BorderThickness="{TemplateBinding BorderThickness}"
                                                 Padding="{TemplateBinding Padding}">
-                                                <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}">
+                                                <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode), Converter={StaticResource CacheModeConverter}}">
                                                     <ContentPresenter/>
                                                 </AdornerDecorator>
                                             </Border>

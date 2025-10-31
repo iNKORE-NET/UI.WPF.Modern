@@ -6,7 +6,10 @@
     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Primitives"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common;assembly=iNKORE.UI.WPF.Modern">
+    xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common;assembly=iNKORE.UI.WPF.Modern"
+    xmlns:converters="clr-namespace:iNKORE.UI.WPF.Modern.Common.Converters;assembly=iNKORE.UI.WPF.Modern">
+
+    <converters:CacheModeConverter x:Key="CacheModeConverter"/>
 
     <Style x:Key="DefaultAutoSuggestBoxStyle" TargetType="local:AutoSuggestBox">
         <Setter Property="VerticalAlignment" Value="Top" />
@@ -65,7 +68,7 @@
                         <Popup
                             x:Name="SuggestionsPopup"
                             AllowsTransparency="True"
-                            CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}"
+                            CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode), Converter={StaticResource CacheModeConverter}}"
                             IsOpen="{Binding IsSuggestionListOpen, RelativeSource={RelativeSource TemplatedParent}}"
                             Placement="Bottom">
                             <ui:ThemeShadowChrome

@@ -10,6 +10,8 @@
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common">
 
+    <converters:CacheModeConverter x:Key="CacheModeConverter"/>
+
     <Style x:Key="DefaultDatePickerTextBoxStyle" TargetType="DatePickerTextBox">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Foreground" Value="{DynamicResource CalendarDatePickerTextForegroundSelected}" />
@@ -191,7 +193,7 @@
                             Grid.Row="1"
                             Grid.Column="2"
                             AllowsTransparency="True"
-                            CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}"
+                            CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode), Converter={StaticResource CacheModeConverter}}"
                             Placement="Bottom"
                             StaysOpen="False">
                             <Popup.PlacementRectangle>

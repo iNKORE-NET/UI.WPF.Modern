@@ -17,6 +17,7 @@
         <ResourceDictionary>
             <ikw:CornerRadiusExtractionConverter x:Key="TopLeftCornerRadiusDoubleValueConverter" TargetMember="TopLeft" />
             <ikw:CornerRadiusExtractionConverter x:Key="BottomRightCornerRadiusDoubleValueConverter" TargetMember="BottomRight" />
+            <converters:CacheModeConverter x:Key="CacheModeConverter"/>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
@@ -536,7 +537,7 @@
                                 <Popup
                                     x:Name="OverflowPopup"
                                     AllowsTransparency="True"
-                                    CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}"
+                                    CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode), Converter={StaticResource CacheModeConverter}}"
                                     Focusable="False"
                                     IsOpen="{Binding IsOverflowOpen, RelativeSource={RelativeSource TemplatedParent}}"
                                     Placement="Bottom"
