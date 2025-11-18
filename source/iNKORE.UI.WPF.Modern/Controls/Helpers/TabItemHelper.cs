@@ -177,24 +177,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         #endregion
 
-        #region TabItemHelperEvents
-
-        /// <summary>
-        /// Identifies the TabItemHelperEvents dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TabItemHelperEventsProperty = DependencyProperty.RegisterAttached(
-            "TabItemHelperEvents",
-            typeof(TabItemHelperEvents),
-            typeof(TabItemHelper),
-            new PropertyMetadata(new TabItemHelperEvents()));
-
-        public static TabItemHelperEvents GetTabItemHelperEvents(TabItem element)
-        {
-            return (TabItemHelperEvents)element.GetValue(TabItemHelperEventsProperty);
-        }
-
-        #endregion
-
         private static void OnLoaded(object sender, RoutedEventArgs e)
         {
             TabItem TabItem = sender as TabItem;
@@ -226,14 +208,14 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
                 void ExecutedCustomCommand(object sender, ExecutedRoutedEventArgs e)
                 {
-                    var eventArgs = new TabViewTabCloseRequestedEventArgs(TabItem.Content, TabItem);
-                    TabControlHelper.GetTabControlHelperEvents(TabControl).TabCloseRequested?.Invoke(TabControl, eventArgs);
-                    if (eventArgs.Cancel)
+                    var eargs = new TabViewTabCloseRequestedEventArgs(TabControlHelper.TabItemClosingEvent, TabItem.Content, TabItem);
+                    TabControl.RaiseEvent(eargs);
+        
+                    if (eargs.Cancel)
                     {
                         return;
                     }
 
-                    GetTabItemHelperEvents(TabItem).CloseRequested?.Invoke(TabItem, new TabViewTabCloseRequestedEventArgs(TabItem.Content, TabItem));
                     if (TabControl.SelectedItem == TabItem)
                     {
                         TabControl.SelectedIndex--;
@@ -325,16 +307,5 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             }
             catch { }
         }
-    }
-
-    /// <summary>
-    /// Events for TabItemHelper.
-    /// </summary>
-    public class TabItemHelperEvents
-    {
-        /// <summary>
-        /// Raised when the user attempts to close the TabViewItem via clicking the x-to-close button, CTRL+F4, or mousewheel.
-        /// </summary>
-        public TypedEventHandler<TabItem, TabViewTabCloseRequestedEventArgs> CloseRequested;
     }
 }

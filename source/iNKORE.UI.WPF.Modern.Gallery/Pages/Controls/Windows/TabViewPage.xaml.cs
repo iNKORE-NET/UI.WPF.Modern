@@ -87,29 +87,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         private void InitializeExample6()
         {
             ResetExample6Tabs();
-
-            tabControl.RegisterTabClosingEvent((menuControl, e) =>
-            {
-                if (e.Tab.Tag is "ConfirmClose")
-                {
-                    var msgResult = MessageBox.Show("Do you want to close this tab?", "Confirm", MessageBoxButton.OKCancel, MessageBoxImage.Question);
-                    if (msgResult != MessageBoxResult.OK)
-                    {
-                        e.Cancel = true;
-                        return;
-                    }
-                }
-                else if (e.Tab.Tag is "NiceTry")
-                {
-                    e.Cancel = true;
-
-                    if ((e.Tab.Header as string) != NiceTry)
-                        e.Tab.Header = NiceTry;
-                    else e.Tab.Header = "You can't close me!";
-
-                    return;
-                }
-            });
         }
 
         private void ResetExample6Tabs()
@@ -283,5 +260,29 @@ private void InitializeExample6()
 
 
         #endregion
+
+        private void tabControl6_TabItemClosing(object sender, TabViewTabCloseRequestedEventArgs e)
+        {
+            if (e.Tab.Tag is "ConfirmClose")
+            {
+                var msgResult = MessageBox.Show("Do you want to close this tab?", "Confirm", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+                if (msgResult != MessageBoxResult.OK)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+            else if (e.Tab.Tag is "NiceTry")
+            {
+                e.Cancel = true;
+
+                if ((e.Tab.Header as string) != NiceTry)
+                    e.Tab.Header = NiceTry;
+                else e.Tab.Header = "You can't close me!";
+
+                return;
+            }
+
+        }
     }
 }

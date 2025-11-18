@@ -167,7 +167,7 @@
                     Simply handle the event and set <Bold>e.Cancel = true</Bold> to keep the tab open.
                 </TextBlock>
                 
-                <TabControl x:Name="tabControl6" MinHeight="160">
+                <TabControl x:Name="tabControl6" MinHeight="160" ui:TabControlHelper.TabItemClosing="tabControl6_TabItemClosing">
                     <TabItem x:Name="TabItem_Example6_Tab1" Header="Closable">
                         <TextBlock TextWrapping="Wrap" Margin="12">
                             This tab demonstrates the default close behavior. When the close button is clicked, the tab closes immediately 
