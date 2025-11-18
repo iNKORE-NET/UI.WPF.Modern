@@ -222,28 +222,32 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 ";
 
         public string Example6Xaml => $@"
-<TabControl x:Name=""tabControl6"" ui:TabControlHelper.TabItemClosing=""tabControl6_TabItemClosing"">
-    <TabItem x:Name=""TabItem_Example6_Tab1"" Header=""Closable""/>
-    <TabItem x:Name=""TabItem_Example6_Tab2"" Header=""Confirm To Close"" Tag=""ConfirmClose""/>
-    <TabItem x:Name=""TabItem_Example6_Tab3"" Header=""DON'T TOUCH ME!"" Tag=""NiceTry""/>
+<TabControl x:Name=""tabControl6"" ui:TabControlHelper.TabCloseRequested=""tabControl6_TabCloseRequested"">
+    <TabItem x:Name=""TabItem_Example6_Tab1"" Header=""Closable 1"" />
+    <TabItem x:Name=""TabItem_Example6_Tab2"" Header=""Closable 2"" />
+    <TabItem x:Name=""TabItem_Example6_Tab3"" Header=""Confirm To Close"" Tag=""ConfirmClose"" />
+    <TabItem x:Name=""TabItem_Example6_Tab4"" Header=""DON'T TOUCH ME!"" Tag=""NiceTry"" />
+    <TabItem x:Name=""TabItem_Example6_Tab5"" Header=""Unclosable (nobutt) "" />
 </TabControl>
 ";
 
         public string Example6CS => $@"
-private void tabControl6_TabItemClosing(object sender, TabViewTabCloseRequestedEventArgs e)
+private void tabControl6_TabCloseRequested(object sender, TabViewTabCloseRequestedEventArgs e)
 {{
+    var doClose = true;
+
     if (e.Tab.Tag is ""ConfirmClose"")
     {{
         var msgResult = MessageBox.Show(""Do you want to close this tab?"", ""Confirm"", MessageBoxButton.OKCancel, MessageBoxImage.Question);
         if (msgResult != MessageBoxResult.OK)
         {{
-            e.Cancel = true;
+            doClose = false;
             return;
         }}
     }}
     else if (e.Tab.Tag is ""NiceTry"")
     {{
-        e.Cancel = true;
+        doClose = false;
 
         if ((e.Tab.Header as string) != NiceTry)
             e.Tab.Header = NiceTry;
@@ -251,7 +255,12 @@ private void tabControl6_TabItemClosing(object sender, TabViewTabCloseRequestedE
 
         return;
     }}
-
+            
+    if (doClose && sender is TabControl tabControl)
+    {{
+        // Do remove the tab in order to close it.
+        tabControl.Items.Remove(e.Tab);
+    }}
 }}
 ";
 
@@ -267,30 +276,6 @@ private void tabControl6_TabItemClosing(object sender, TabViewTabCloseRequestedE
 
 
         #endregion
-
-        private void tabControl6_TabItemClosing(object sender, TabViewTabCloseRequestedEventArgs e)
-        {
-            //if (e.Tab.Tag is "ConfirmClose")
-            //{
-            //    var msgResult = MessageBox.Show("Do you want to close this tab?", "Confirm", MessageBoxButton.OKCancel, MessageBoxImage.Question);
-            //    if (msgResult != MessageBoxResult.OK)
-            //    {
-            //        e.Cancel = true;
-            //        return;
-            //    }
-            //}
-            //else if (e.Tab.Tag is "NiceTry")
-            //{
-            //    e.Cancel = true;
-
-            //    if ((e.Tab.Header as string) != NiceTry)
-            //        e.Tab.Header = NiceTry;
-            //    else e.Tab.Header = "You can't close me!";
-
-            //    return;
-            //}
-
-        }
 
         private void tabControl_TabCloseRequested(object sender, TabViewTabCloseRequestedEventArgs e)
         {
@@ -323,8 +308,8 @@ private void tabControl6_TabItemClosing(object sender, TabViewTabCloseRequestedE
             
             if (doClose && sender is TabControl tabControl)
             {
+                // Do remove the tab in order to close it.
                 tabControl.Items.Remove(e.Tab);
-
             }
         }
     }

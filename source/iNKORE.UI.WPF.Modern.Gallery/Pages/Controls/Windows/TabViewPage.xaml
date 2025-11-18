@@ -167,46 +167,51 @@
         <local:ControlExample x:Name="Example6" HeaderText="A TabControl with closing handler">
             <ikw:SimpleStackPanel>
                 <TextBlock TextWrapping="Wrap" Margin="0,0,0,12">
-                    The <Bold>TabControl</Bold> now supports intercepting tab close requests via the 
-                    <Bold>TabItemCloseRequest</Bold> event. This allows preventing the close operation 
-                    dynamically - for example, to prompt the user for confirmation or prevent closing under certain conditions. 
-                    Simply handle the event and set <Bold>e.Cancel = true</Bold> to keep the tab open.
+                    The <Bold>TabControl</Bold> comes with a close button. To handle the close request,
+                    subscribe to the <Bold>TabCloseRequested</Bold> event. In the event handler, you should
+                    remove the tab from the TabControl's Items collection to close it if desired.
+                    Feel free to implement custom logic such as confirmation dialogs or saving states.
+                    <LineBreak/><LineBreak/>
+                    You can set <Bold>TabItem.(ui:TabItemHelper.IsClosable)</Bold> attached property to <Bold>False</Bold> to hide and disable
+                    the close button for specific tabs (or all tabs).
                 </TextBlock>
                 
                 <TabControl x:Name="tabControl6" MinHeight="160"
                     ui:TabControlHelper.TabCloseRequested="tabControl6_TabCloseRequested">
                     <TabItem x:Name="TabItem_Example6_Tab1" Header="Closable 1">
                         <TextBlock TextWrapping="Wrap" Margin="12">
-                            This tab demonstrates the default close behavior. When the close button is clicked, the tab closes immediately 
-                            without any interception or confirmation. TabItemCloseRequest handler will not do anything for this tab.
+                            This tab can be closed normally by clicking the close button. When the close button is clicked,
+                            codebehind will handle the <Bold>TabCloseRequested</Bold> event and remove this tab from the TabControl's
+                            Items collection.
                         </TextBlock>
                     </TabItem>
                     <TabItem x:Name="TabItem_Example6_Tab2" Header="Closable 2">
                         <TextBlock TextWrapping="Wrap" Margin="12">
-                            This tab demonstrates the default close behavior. When the close button is clicked, the tab closes immediately 
-                            without any interception or confirmation. TabItemCloseRequest handler will not do anything for this tab.
+                            This tab can be closed normally by clicking the close button. When the close button is clicked,
+                            codebehind will handle the <Bold>TabCloseRequested</Bold> event and remove this tab from the TabControl's
+                            Items collection.
                         </TextBlock>
                     </TabItem>
                     <TabItem x:Name="TabItem_Example6_Tab3" Header="Confirm To Close" Tag="ConfirmClose">
                         <TextBlock TextWrapping="Wrap" Margin="12">
-                            This tab intercepts the close request using the <Bold>TabItemCloseRequest</Bold> event. 
-                            When the close button is clicked, a confirmation dialog appears. If the user chooses to cancel, 
-                            the tab remains open. This is useful for preserving unsaved work or preventing accidental closure.
+                            This tab requires confirmation before closing. When the close button is clicked,
+                            the <Bold>TabItemCloseRequest</Bold> event is handled in codebehind, prompting the user
+                            with a confirmation dialog. If the user confirms, the tab is closed; otherwise, the event 
+                            handler will not do anything, leaving the tab open.
                         </TextBlock>
                     </TabItem>
                     <TabItem x:Name="TabItem_Example6_Tab4" Header="DON'T TOUCH ME!" Tag="NiceTry">
                         <TextBlock TextWrapping="Wrap" Margin="12">
-                            This tab is configured to reject all close requests. The <Bold>TabItemCloseRequest</Bold> event is handled 
-                            and <Bold>e.Cancel</Bold> is always set to <Bold>true</Bold>, making the tab effectively non-closable. 
-                            <LineBreak/>
-                            This is not usually recommended for user experience, but it demonstrates the flexibility of the event handling.
+                            This tab cannot be closed. When the close button is clicked, the <Bold>TabItemCloseRequest</Bold>
+                            handler doesn't do anything, preventing the tab from being closed.
                         </TextBlock>
                     </TabItem>
                     <TabItem x:Name="TabItem_Example6_Tab5" Header="Unclosable (nobutt) "
                         ui:TabItemHelper.IsClosable="False">
                         <TextBlock TextWrapping="Wrap" Margin="12">
-                            This tab demonstrates the default close behavior. When the close button is clicked, the tab closes immediately 
-                            without any interception or confirmation. TabItemCloseRequest handler will not do anything for this tab.
+                            This tab cannot be closed because the close button is hidden and disabled by setting
+                            <Bold>ui:TabItemHelper.IsClosable</Bold> attached property to <Bold>False</Bold>,
+                            thus, the close button is not shown.
                         </TextBlock>
                     </TabItem>
 
