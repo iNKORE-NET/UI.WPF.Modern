@@ -320,18 +320,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             }
         }
 
-        private static void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is not Button closeButton) return;
-
-            var item = closeButton.FindAscendant<TabItem>();
-            if (item.FindAscendant<TabControl>() is not { } tabControl) return;
-            if (GetIsClosable(item) == false) return;
-
-            var args = new TabViewTabCloseRequestedEventArgs(TabControlHelper.TabCloseRequestedEvent, item.Content, item);
-            tabControl.RaiseEvent(args);
-        }
-
         private static void UpdateCloseButtonTooltip(TabItem item)
         {
             if (item?.GetTemplateChild<FrameworkElement>("CloseButton") is not { } closeButton)
