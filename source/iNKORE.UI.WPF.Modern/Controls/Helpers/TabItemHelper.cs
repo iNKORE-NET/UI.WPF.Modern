@@ -225,6 +225,9 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         }
 
 
+        #endregion
+
+
         private static void OnLoaded(object sender, RoutedEventArgs e)
         {
             TabItem TabItem = sender as TabItem;
