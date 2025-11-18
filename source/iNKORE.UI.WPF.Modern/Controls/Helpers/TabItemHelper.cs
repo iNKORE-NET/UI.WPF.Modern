@@ -278,7 +278,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             SetCloseTabButtonCommand(item, CloseTabButtonCommand);
 
             // Cleanup previous bindings
-
             foreach (var binding in item.CommandBindings)
             {
                 if (binding is CommandBinding cmb && cmb.Command == CloseTabButtonCommand
@@ -296,6 +295,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
             var item = closeButton.FindAscendant<TabItem>();
             if (item.FindAscendant<TabControl>() is not { } tabControl) return;
+            if (GetIsClosable(item) == false) return;
 
             var args = new TabViewTabCloseRequestedEventArgs(TabControlHelper.TabCloseRequestedEvent, item.Content, item);
             tabControl.RaiseEvent(args);
