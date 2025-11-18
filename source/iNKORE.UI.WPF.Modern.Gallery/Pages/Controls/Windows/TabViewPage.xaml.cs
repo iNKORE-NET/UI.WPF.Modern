@@ -220,7 +220,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 ";
 
         public string Example6Xaml => $@"
-<TabControl x:Name=""tabControl6"">
+<TabControl x:Name=""tabControl6"" ui:TabControlHelper.TabItemClosing=""tabControl6_TabItemClosing"">
     <TabItem x:Name=""TabItem_Example6_Tab1"" Header=""Closable""/>
     <TabItem x:Name=""TabItem_Example6_Tab2"" Header=""Confirm To Close"" Tag=""ConfirmClose""/>
     <TabItem x:Name=""TabItem_Example6_Tab3"" Header=""DON'T TOUCH ME!"" Tag=""NiceTry""/>
@@ -228,33 +228,28 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 ";
 
         public string Example6CS => $@"
-// Invoked during the constructor after InitializeComponent or at any later time
-private void InitializeExample6()
+private void tabControl6_TabItemClosing(object sender, TabViewTabCloseRequestedEventArgs e)
 {{
-    ResetExample6Tabs();
-
-    tabControl.RegisterTabClosingEvent((menuControl, e) =>
+    if (e.Tab.Tag is ""ConfirmClose"")
     {{
-        if (e.Tab.Tag is ""ConfirmClose"")
-        {{
-            var msgResult = MessageBox.Show(""Do you want to close this tab?"", ""Confirm"", MessageBoxButton.OKCancel, MessageBoxImage.Question);
-            if (msgResult != MessageBoxResult.OK)
-            {{
-                e.Cancel = true;
-                return;
-            }}
-        }}
-        else if (e.Tab.Tag is ""NiceTry"")
+        var msgResult = MessageBox.Show(""Do you want to close this tab?"", ""Confirm"", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+        if (msgResult != MessageBoxResult.OK)
         {{
             e.Cancel = true;
-
-            if ((e.Tab.Header as string) != NiceTry)
-                e.Tab.Header = NiceTry;
-            else e.Tab.Header = ""You can't close me!"";
-
             return;
         }}
-    }});
+    }}
+    else if (e.Tab.Tag is ""NiceTry"")
+    {{
+        e.Cancel = true;
+
+        if ((e.Tab.Header as string) != NiceTry)
+            e.Tab.Header = NiceTry;
+        else e.Tab.Header = ""You can't close me!"";
+
+        return;
+    }}
+
 }}
 ";
 
