@@ -184,8 +184,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         #region IsClosable
 
         /// <summary>
-        /// Identifies the IsClosable dependency property that indicates whether the tab shows a close button.
-        /// true if the tab shows a close button; otherwise, false. The default is true.
+        /// Identifies the IsClosable dependency property that indicates whether the tab shows a close button. true if the tab shows a close button; otherwise, false. The default is true.
         /// </summary>
         public static readonly DependencyProperty IsClosableProperty = DependencyProperty.RegisterAttached(
             "IsClosable",
