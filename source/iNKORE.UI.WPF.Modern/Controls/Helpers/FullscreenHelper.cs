@@ -1,4 +1,4 @@
-﻿// Ported from https://github.com/lindexi/lindexi_gd/blob/master/KenafearcuweYemjecahee/FullScreenHelper.cs
+﻿// Ported from https://github.com/lindexi/lindexi_gd/blob/master/KenafearcuweYemjecahee/FullscreenHelper.cs
 
 using System;
 using System.Runtime.ExceptionServices;
@@ -18,15 +18,15 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         /// <summary>
         /// Attached property to store window placement before entering fullscreen.
         /// </summary>
-        private static readonly DependencyProperty BeforeFullScreenWindowPlacementProperty =
-        DependencyProperty.RegisterAttached("BeforeFullScreenWindowPlacement", typeof(WINDOWPLACEMENT?),
+        private static readonly DependencyProperty BeforeFullscreenWindowPlacementProperty =
+        DependencyProperty.RegisterAttached("BeforeFullscreenWindowPlacement", typeof(WINDOWPLACEMENT?),
         typeof(Window));
 
         /// <summary>
         /// Attached property to store window style before entering fullscreen.
         /// </summary>
-        private static readonly DependencyProperty BeforeFullScreenWindowStyleProperty =
-        DependencyProperty.RegisterAttached("BeforeFullScreenWindowStyle", typeof(WindowStyles?), typeof(Window));
+        private static readonly DependencyProperty BeforeFullscreenWindowStyleProperty =
+        DependencyProperty.RegisterAttached("BeforeFullscreenWindowStyle", typeof(WindowStyles?), typeof(Window));
 
         /// <summary>
         /// Start fullscreen mode.
@@ -35,7 +35,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         /// DWM transition animations are disabled in fullscreen mode.
         /// </summary>
         /// <param name="window"></param>
-        public static void StartFullScreen(Window window)
+        public static void StartFullscreen(Window window)
         {
             if (window == null)
             {
@@ -43,8 +43,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             }
 
             // Ensure not already in fullscreen mode
-            if (window.GetValue(BeforeFullScreenWindowPlacementProperty) == null &&
-            window.GetValue(BeforeFullScreenWindowStyleProperty) == null)
+            if (window.GetValue(BeforeFullscreenWindowPlacementProperty) == null &&
+            window.GetValue(BeforeFullscreenWindowStyleProperty) == null)
             {
                 var hwnd = new WindowInteropHelper(window).EnsureHandle();
                 var hwndSource = HwndSource.FromHwnd(hwnd);
@@ -53,11 +53,11 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 var placement = new WINDOWPLACEMENT();
                 placement.Size = (uint)Marshal.SizeOf(placement);
                 Win32.User32.GetWindowPlacement(hwnd, ref placement);
-                window.SetValue(BeforeFullScreenWindowPlacementProperty, placement);
+                window.SetValue(BeforeFullscreenWindowPlacementProperty, placement);
 
                 // Modify window style
                 var style = (WindowStyles)Win32.User32.GetWindowLongPtr(hwnd, GetWindowLongFields.GWL_STYLE);
-                window.SetValue(BeforeFullScreenWindowStyleProperty, style);
+                window.SetValue(BeforeFullscreenWindowStyleProperty, style);
                 // Restore window to normal state; cannot fullscreen with title bar in maximized mode.
                 // Use restore, do not modify title bar.
                 // On exit, original state will be restored.
@@ -72,7 +72,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 sizeof(int));
 
                 // Add hook to keep window fullscreen when position/size changes
-                hwndSource.AddHook(KeepFullScreenHook);
+                hwndSource.AddHook(KeepFullscreenHook);
 
                 if (Win32.User32.GetWindowRect(hwnd, out var rect))
                 {
@@ -91,7 +91,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         /// DWM transition animations are re-enabled after exiting fullscreen.
         /// </summary>
         /// <param name="window"></param>
-        public static void EndFullScreen(Window window)
+        public static void EndFullscreen(Window window)
         {
             if (window == null)
             {
@@ -99,8 +99,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
             }
 
             // Ensure in fullscreen mode and get previously saved state
-            if (window.GetValue(BeforeFullScreenWindowPlacementProperty) is WINDOWPLACEMENT placement
-            && window.GetValue(BeforeFullScreenWindowStyleProperty) is WindowStyles style)
+            if (window.GetValue(BeforeFullscreenWindowPlacementProperty) is WINDOWPLACEMENT placement
+            && window.GetValue(BeforeFullscreenWindowStyleProperty) is WindowStyles style)
             {
                 var hwnd = new WindowInteropHelper(window).Handle;
 
@@ -108,7 +108,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 {
                     // Handle is zero in two cases:
                     //1. Window was closed after entering fullscreen.
-                    //2. Called before window initialization and before StartFullScreen.
+                    //2. Called before window initialization and before StartFullscreen.
                     // Just return in both cases.
                     return;
                 }
@@ -117,7 +117,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 var hwndSource = HwndSource.FromHwnd(hwnd);
 
                 // Remove hook
-                hwndSource.RemoveHook(KeepFullScreenHook);
+                hwndSource.RemoveHook(KeepFullscreenHook);
 
                 // Restore saved state
                 // Do not change WS_MAXIMIZE in style, or window will maximize with incorrect size
@@ -166,8 +166,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 sizeof(int));
 
                 // Clear saved state
-                window.ClearValue(BeforeFullScreenWindowPlacementProperty);
-                window.ClearValue(BeforeFullScreenWindowStyleProperty);
+                window.ClearValue(BeforeFullscreenWindowPlacementProperty);
+                window.ClearValue(BeforeFullscreenWindowStyleProperty);
             }
         }
 
@@ -176,7 +176,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         /// Uses HandleProcessCorruptedStateExceptions to prevent crashes from fatal exceptions during memory access.
         /// </summary>
         // [HandleProcessCorruptedStateExceptions]
-        private static IntPtr KeepFullScreenHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        private static IntPtr KeepFullscreenHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             // Handle WM_WINDOWPOSCHANGING message
             const int WINDOWPOSCHANGING = 0x0046;
