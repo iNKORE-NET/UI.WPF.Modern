@@ -206,6 +206,25 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         #endregion
 
 
+        #region CloseRequestedEvent
+
+        public static readonly RoutedEvent CloseRequestedEvent = EventManager.RegisterRoutedEvent(
+            "CloseRequested",
+            RoutingStrategy.Bubble,
+            typeof(EventHandler<TabViewTabCloseRequestedEventArgs>),
+            typeof(TabItemHelper));
+
+        public static void AddCloseRequestedHandler(TabItem tabItem, EventHandler<TabViewTabCloseRequestedEventArgs> handler)
+        {
+            tabItem.AddHandler(CloseRequestedEvent, handler);
+        }
+
+        public static void RemoveCloseRequestedHandler(TabItem tabItem, EventHandler<TabViewTabCloseRequestedEventArgs> handler)
+        {
+            tabItem.RemoveHandler(CloseRequestedEvent, handler);
+        }
+
+
         private static void OnLoaded(object sender, RoutedEventArgs e)
         {
             TabItem TabItem = sender as TabItem;
@@ -256,6 +275,16 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             {
                 var eargs = new TabViewTabCloseRequestedEventArgs(TabControlHelper.TabCloseRequestedEvent, item.Content, item);
                 tabControl.RaiseEvent(eargs);
+
+                // According to WinUI 3 behavior, the TabView's CloseRequested will be fired first,
+                // then the TabItem's CloseRequested will be fired after that.
+                // Since WinUI 3 does not have a 'routed' event for TabItem CloseRequested, we may apply
+                // the same logic here, but adopting a handled check for TabItem CloseRequested event.
+                // If this is inappropriate, feel free to propose a change.
+                if (!eargs.Handled)
+                {
+                    item.RaiseEvent(new TabViewTabCloseRequestedEventArgs(CloseRequestedEvent, item.Content, item));
+                }
 
                 e.Handled = true;
             }
