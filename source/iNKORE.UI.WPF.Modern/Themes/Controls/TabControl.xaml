@@ -282,8 +282,7 @@
                             Foreground="{DynamicResource TabViewItemHeaderForeground}"
                             RecognizesAccessKey="True"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        <Button
-                            x:Name="CloseButton"
+                        <Button x:Name="CloseButton"
                             Grid.Column="2"
                             Margin="{DynamicResource TabViewItemHeaderCloseMargin}"
                             Command="{TemplateBinding chelper:TabItemHelper.CloseTabButtonCommand}"
@@ -292,8 +291,7 @@
                             Style="{StaticResource TabViewCloseButtonStyle}"
                             Visibility="Collapsed">
                             <Button.InputBindings>
-                                <KeyBinding
-                                    Key="F4"
+                                <KeyBinding Key="F4"
                                     Command="{TemplateBinding chelper:TabItemHelper.CloseTabButtonCommand}"
                                     Modifiers="Ctrl" />
                             </Button.InputBindings>
@@ -358,14 +356,14 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="chelper:TabItemHelper.IsAddTabButtonVisible" Value="True" />
+                    <Condition Property="chelper:TabItemHelper.IsClosable" Value="True" />
                     <Condition Property="chelper:TabItemHelper.CloseButtonOverlayMode" Value="Auto" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="CloseButton" Property="Visibility" Value="Visible" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="chelper:TabItemHelper.IsAddTabButtonVisible" Value="True" />
+                    <Condition Property="chelper:TabItemHelper.IsClosable" Value="True" />
                     <Condition Property="chelper:TabItemHelper.CloseButtonOverlayMode" Value="Always" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="CloseButton" Property="Visibility" Value="Visible" />
@@ -373,7 +371,7 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsMouseOver" Value="True" />
-                    <Condition Property="chelper:TabItemHelper.IsAddTabButtonVisible" Value="True" />
+                    <Condition Property="chelper:TabItemHelper.IsClosable" Value="True" />
                     <Condition Property="chelper:TabItemHelper.CloseButtonOverlayMode" Value="OnPointerOver" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="CloseButton" Property="Visibility" Value="Visible" />
@@ -381,7 +379,7 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsSelected" Value="True" />
-                    <Condition Property="chelper:TabItemHelper.IsAddTabButtonVisible" Value="True" />
+                    <Condition Property="chelper:TabItemHelper.IsClosable" Value="True" />
                     <Condition Property="chelper:TabItemHelper.CloseButtonOverlayMode" Value="OnPointerOver" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="CloseButton" Property="Visibility" Value="Visible" />
@@ -520,14 +518,14 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="chelper:TabItemHelper.IsAddTabButtonVisible" Value="True" />
+                    <Condition Property="chelper:TabItemHelper.IsClosable" Value="True" />
                     <Condition Property="chelper:TabItemHelper.CloseButtonOverlayMode" Value="Auto" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="CloseButton" Property="Visibility" Value="Visible" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="chelper:TabItemHelper.IsAddTabButtonVisible" Value="True" />
+                    <Condition Property="chelper:TabItemHelper.IsClosable" Value="True" />
                     <Condition Property="chelper:TabItemHelper.CloseButtonOverlayMode" Value="Always" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="CloseButton" Property="Visibility" Value="Visible" />
@@ -535,7 +533,7 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsMouseOver" Value="True" />
-                    <Condition Property="chelper:TabItemHelper.IsAddTabButtonVisible" Value="True" />
+                    <Condition Property="chelper:TabItemHelper.IsClosable" Value="True" />
                     <Condition Property="chelper:TabItemHelper.CloseButtonOverlayMode" Value="OnPointerOver" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="CloseButton" Property="Visibility" Value="Visible" />
@@ -543,7 +541,7 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsSelected" Value="True" />
-                    <Condition Property="chelper:TabItemHelper.IsAddTabButtonVisible" Value="True" />
+                    <Condition Property="chelper:TabItemHelper.IsClosable" Value="True" />
                     <Condition Property="chelper:TabItemHelper.CloseButtonOverlayMode" Value="OnPointerOver" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="CloseButton" Property="Visibility" Value="Visible" />

@@ -95,8 +95,10 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             tabControl6.Items.Add(TabItem_Example6_Tab1);
             tabControl6.Items.Add(TabItem_Example6_Tab2);
             tabControl6.Items.Add(TabItem_Example6_Tab3);
+            tabControl6.Items.Add(TabItem_Example6_Tab4);
+            tabControl6.Items.Add(TabItem_Example6_Tab5);
 
-            TabItem_Example6_Tab3.Header = "DON'T TOUCH ME!";
+            TabItem_Example6_Tab4.Header = "DON'T TOUCH ME!";
         }
 
         private void Button_Example6_ResetTabs_Click(object sender, RoutedEventArgs e)
@@ -253,23 +255,64 @@ private void tabControl6_TabItemClosing(object sender, TabViewTabCloseRequestedE
 }}
 ";
 
+        private void IsClosableCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            var isClosable = IsClosableCheckBox.IsChecked == true;
+
+            foreach (TabItem tab in tabControl.Items)
+            {
+                TabItemHelper.SetIsClosable(tab, isClosable);
+            }
+        }
+
 
         #endregion
 
         private void tabControl6_TabItemClosing(object sender, TabViewTabCloseRequestedEventArgs e)
         {
+            //if (e.Tab.Tag is "ConfirmClose")
+            //{
+            //    var msgResult = MessageBox.Show("Do you want to close this tab?", "Confirm", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            //    if (msgResult != MessageBoxResult.OK)
+            //    {
+            //        e.Cancel = true;
+            //        return;
+            //    }
+            //}
+            //else if (e.Tab.Tag is "NiceTry")
+            //{
+            //    e.Cancel = true;
+
+            //    if ((e.Tab.Header as string) != NiceTry)
+            //        e.Tab.Header = NiceTry;
+            //    else e.Tab.Header = "You can't close me!";
+
+            //    return;
+            //}
+
+        }
+
+        private void tabControl_TabCloseRequested(object sender, TabViewTabCloseRequestedEventArgs e)
+        {
+            MessageBox.Show($"You are closing tab: {e.Tab.Header}", "Tab Close Requested", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void tabControl6_TabCloseRequested(object sender, TabViewTabCloseRequestedEventArgs e)
+        {
+            var doClose = true;
+
             if (e.Tab.Tag is "ConfirmClose")
             {
                 var msgResult = MessageBox.Show("Do you want to close this tab?", "Confirm", MessageBoxButton.OKCancel, MessageBoxImage.Question);
                 if (msgResult != MessageBoxResult.OK)
                 {
-                    e.Cancel = true;
+                    doClose = false;
                     return;
                 }
             }
             else if (e.Tab.Tag is "NiceTry")
             {
-                e.Cancel = true;
+                doClose = false;
 
                 if ((e.Tab.Header as string) != NiceTry)
                     e.Tab.Header = NiceTry;
@@ -277,7 +320,12 @@ private void tabControl6_TabItemClosing(object sender, TabViewTabCloseRequestedE
 
                 return;
             }
+            
+            if (doClose && sender is TabControl tabControl)
+            {
+                tabControl.Items.Remove(e.Tab);
 
+            }
         }
     }
 }

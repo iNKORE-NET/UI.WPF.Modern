@@ -127,6 +127,45 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         #endregion
 
+        #region IsAddTabButtonVisible
+
+        public static readonly DependencyProperty IsAddTabButtonVisibleProperty = DependencyProperty.RegisterAttached(
+            "IsAddTabButtonVisible",
+
+
+
+
+            typeof(bool),
+            typeof(TabItemHelper),
+            new PropertyMetadata(false));
+
+        public static bool GetIsAddTabButtonVisible(TabItem element)
+        {
+            return (bool)element.GetValue(IsAddTabButtonVisibleProperty);
+        }
+
+        #endregion
+
+        #region CloseTabButtonCommand
+
+        internal static readonly DependencyProperty CloseTabButtonCommandProperty = DependencyProperty.RegisterAttached(
+            "CloseTabButtonCommand",
+            typeof(ICommand),
+            typeof(TabItemHelper),
+            null);
+
+        internal static ICommand GetCloseTabButtonCommand(TabItem element)
+        {
+            return (ICommand)element.GetValue(CloseTabButtonCommandProperty);
+        }
+
+        internal static void SetCloseTabButtonCommand(TabItem tabItem, ICommand value)
+        {
+            tabItem.SetValue(CloseTabButtonCommandProperty, value);
+        }
+
+        #endregion
+
         #region CloseButtonOverlayMode
 
         public static readonly DependencyProperty CloseButtonOverlayModeProperty = DependencyProperty.RegisterAttached(
@@ -142,40 +181,30 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         #endregion
 
-        #region IsAddTabButtonVisible
+        #region IsClosable
 
-        public static readonly DependencyProperty IsAddTabButtonVisibleProperty = DependencyProperty.RegisterAttached(
-            "IsAddTabButtonVisible",
+        /// <summary>
+        /// Identifies the IsClosable dependency property that indicates whether the tab shows a close button.
+        /// true if the tab shows a close button; otherwise, false. The default is true.
+        /// </summary>
+        public static readonly DependencyProperty IsClosableProperty = DependencyProperty.RegisterAttached(
+            "IsClosable",
             typeof(bool),
             typeof(TabItemHelper),
-            new PropertyMetadata(false));
+            new PropertyMetadata(true));
 
-        public static bool GetIsAddTabButtonVisible(TabItem element)
+        public static bool GetIsClosable(TabItem element)
         {
-            return (bool)element.GetValue(IsAddTabButtonVisibleProperty);
+            return (bool)element.GetValue(IsClosableProperty);
+        }
+
+        public static void SetIsClosable(TabItem element, bool value)
+        {
+            element.SetValue(IsClosableProperty, value);
         }
 
         #endregion
 
-        #region IsAddTabButtonVisible
-
-        public static readonly DependencyProperty CloseTabButtonCommandProperty = DependencyProperty.RegisterAttached(
-            "CloseTabButtonCommand",
-            typeof(ICommand),
-            typeof(TabItemHelper),
-            null);
-
-        public static ICommand GetCloseTabButtonCommand(TabItem element)
-        {
-            return (ICommand)element.GetValue(CloseTabButtonCommandProperty);
-        }
-
-        private static void SetCloseTabButtonCommand(TabItem tabItem, ICommand value)
-        {
-            tabItem.SetValue(CloseTabButtonCommandProperty, value);
-        }
-
-        #endregion
 
         private static void OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -183,68 +212,18 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             UpdateTabGeometry(TabItem);
             UpdateHeaderTooltip(TabItem);
             UpdateCloseButtonTooltip(TabItem);
+            UpdateCloseButtonEvents(TabItem);
 
             TabControl TabControl = TabItem.FindAscendant<TabControl>();
 
             if (TabControl != null)
             {
-                TabItem.SetBinding(IsAddTabButtonVisibleProperty, new Binding
-                {
-                    Source = TabControl,
-                    Mode = BindingMode.OneWay,
-                    Path = new PropertyPath(TabControlHelper.IsAddTabButtonVisibleProperty)
-                });
                 TabItem.SetBinding(CloseButtonOverlayModeProperty, new Binding
                 {
                     Source = TabControl,
                     Mode = BindingMode.OneWay,
                     Path = new PropertyPath(TabControlHelper.CloseButtonOverlayModeProperty)
                 });
-
-                var CloseTabButtonCommand = new RoutedCommand()
-                {
-                    InputGestures = { new KeyGesture(Key.F4, ModifierKeys.Control) }
-                };
-
-                void ExecutedCustomCommand(object sender, ExecutedRoutedEventArgs e)
-                {
-                    var eargs = new TabViewTabCloseRequestedEventArgs(TabControlHelper.TabItemClosingEvent, TabItem.Content, TabItem);
-                    TabControl.RaiseEvent(eargs);
-        
-                    if (eargs.Cancel)
-                    {
-                        return;
-                    }
-
-                    if (TabControl.SelectedItem == TabItem)
-                    {
-                        TabControl.SelectedIndex--;
-                    }
-
-                    if (TabControl.ItemsSource is null)
-                    {
-                        TabControl.Items.Remove(sender);
-                    }
-                    
-                    e.Handled = true;
-                }
-
-                void CanExecuteCustomCommand(object sender, CanExecuteRoutedEventArgs e)
-                {
-                    if (TabControl != null)
-                    {
-                        e.CanExecute = true;
-                    }
-                    else
-                    {
-                        e.CanExecute = false;
-                    }
-                    e.Handled = true;
-                }
-
-                CommandBinding CloseTabButtonCommandBinding = new CommandBinding(CloseTabButtonCommand, ExecutedCustomCommand, CanExecuteCustomCommand);
-                TabItem.CommandBindings.Add(CloseTabButtonCommandBinding);
-                SetCloseTabButtonCommand(TabItem, CloseTabButtonCommand);
             }
         }
 
@@ -262,6 +241,64 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                         Converter = TabItem.TryFindResource("TabItemHeaderConverter") as IValueConverter
                     });
             }
+        }
+
+        private static readonly RoutedCommand CloseTabButtonCommand = new RoutedCommand()
+        {
+            InputGestures = { new KeyGesture(Key.F4, ModifierKeys.Control) }
+        };
+
+        private static void UpdateCloseButtonEvents(TabItem item)
+        {
+            TabControl tabControl = item.FindAscendant<TabControl>();
+
+            void ExecutedCustomCommand(object sender, ExecutedRoutedEventArgs e)
+            {
+                var eargs = new TabViewTabCloseRequestedEventArgs(TabControlHelper.TabCloseRequestedEvent, item.Content, item);
+                tabControl.RaiseEvent(eargs);
+
+                e.Handled = true;
+            }
+
+            void CanExecuteCustomCommand(object sender, CanExecuteRoutedEventArgs e)
+            {
+                if (tabControl != null)
+                {
+                    e.CanExecute = true;
+                }
+                else
+                {
+                    e.CanExecute = false;
+                }
+                e.Handled = true;
+            }
+
+            CommandBinding closeTabButtonCommandBinding = new CommandBinding(CloseTabButtonCommand, ExecutedCustomCommand, CanExecuteCustomCommand);
+            item.CommandBindings.Add(closeTabButtonCommandBinding);
+            SetCloseTabButtonCommand(item, CloseTabButtonCommand);
+
+            // Cleanup previous bindings
+
+            foreach (var binding in item.CommandBindings)
+            {
+                if (binding is CommandBinding cmb && cmb.Command == CloseTabButtonCommand
+                    &&  cmb != closeTabButtonCommandBinding)
+                {
+                    item.CommandBindings.Remove(cmb);
+                    break;
+                }
+            }
+        }
+
+        private static void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is not Button closeButton) return;
+
+            var item = closeButton.FindAscendant<TabItem>();
+            if (item.FindAscendant<TabControl>() is not { } tabControl) return;
+
+            var args = new TabViewTabCloseRequestedEventArgs(TabControlHelper.TabCloseRequestedEvent, item.Content, item);
+            tabControl.RaiseEvent(args);
         }
 
         private static void UpdateCloseButtonTooltip(TabItem item)

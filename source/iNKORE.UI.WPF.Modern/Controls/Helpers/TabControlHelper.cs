@@ -303,21 +303,25 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         #endregion
 
 
-        #region TabItemClosingEvent
+        #region TabCloseRequestedEvent
 
-        public static readonly RoutedEvent TabItemClosingEvent = EventManager.RegisterRoutedEvent(
-            "TabItemClosing",
+        /// <summary>
+        /// The event is raised when a tab's close button is clicked.
+        /// 
+        /// </summary>
+        public static readonly RoutedEvent TabCloseRequestedEvent = EventManager.RegisterRoutedEvent(
+            "TabCloseRequested",
             RoutingStrategy.Direct,
             typeof(EventHandler<TabViewTabCloseRequestedEventArgs>),
             typeof(TabControlHelper));
 
-        public static void AddTabItemClosingHandler(TabControl tabControl, EventHandler<TabViewTabCloseRequestedEventArgs> handler)
+        public static void AddTabCloseRequestedHandler(TabControl tabControl, EventHandler<TabViewTabCloseRequestedEventArgs> handler)
         {
-            tabControl.AddHandler(TabItemClosingEvent, handler);
+            tabControl.AddHandler(TabCloseRequestedEvent, handler);
         }
-        public static void RemoveTabItemClosingHandler(TabControl tabControl, EventHandler<TabViewTabCloseRequestedEventArgs> handler)
+        public static void RemoveTabCloseRequestedHandler(TabControl tabControl, EventHandler<TabViewTabCloseRequestedEventArgs> handler)
         {
-            tabControl.RemoveHandler(TabItemClosingEvent, handler);
+            tabControl.RemoveHandler(TabCloseRequestedEvent, handler);
         }
 
         #endregion
@@ -463,6 +467,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         Always = 2,
     }
 
+
     /// <summary>
     /// Provides data for a tab close event.
     /// </summary>
@@ -477,11 +482,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         /// Gets the tab in which a close is being requested.
         /// </summary>
         public TabItem Tab { get; private set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the event should be canceled.
-        /// </summary>
-        public bool Cancel { get; set; }
 
         internal TabViewTabCloseRequestedEventArgs(RoutedEvent routedEvent, object item, TabItem tab)
             : base(routedEvent)
