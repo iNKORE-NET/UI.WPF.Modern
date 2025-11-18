@@ -312,7 +312,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             foreach (var binding in item.CommandBindings)
             {
                 if (binding is CommandBinding cmb && cmb.Command == CloseTabButtonCommand
-                    &&  cmb != closeTabButtonCommandBinding)
+                    && cmb != closeTabButtonCommandBinding)
                 {
                     item.CommandBindings.Remove(cmb);
                     break;
