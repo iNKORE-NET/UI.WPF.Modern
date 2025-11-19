@@ -89,7 +89,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
             if (expander.IsLoaded)
             {
-                RunExpanderAnimation(expander);
+                InitializeExpanderState(expander);
             }
             else
             {
@@ -98,7 +98,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
             void TriggerExpandAnimationOnLoad(object sender, RoutedEventArgs routedEventArgs)
             {
-                RunExpanderAnimation(expander);
+                InitializeExpanderState(expander);
                 expander.Loaded -= TriggerExpandAnimationOnLoad;
             }
         }
@@ -114,6 +114,25 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         }
 
         #endregion
+
+        private static void InitializeExpanderState(Expander expander)
+        {
+            // On initial load, if the expander is collapsed, we should set the content
+            // to collapsed state immediately without animation to avoid a visual flash
+            if (!expander.IsExpanded)
+            {
+                var toAnimateControl = GetToAnimateControl(expander);
+                if (toAnimateControl != null)
+                {
+                    toAnimateControl.Visibility = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                // If expanded on load, animate the expansion
+                AnimateExpand(expander);
+            }
+        }
 
         private static void RunExpanderAnimation(Expander expander)
         {
