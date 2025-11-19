@@ -117,20 +117,33 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         private static void InitializeExpanderState(Expander expander)
         {
-            // On initial load, if the expander is collapsed, we should set the content
-            // to collapsed state immediately without animation to avoid a visual flash
+            // On initial load, set the content to the appropriate state immediately
+            // without animation to avoid a visual flash
+            var toAnimateControl = GetToAnimateControl(expander);
+            if (toAnimateControl == null)
+            {
+                return;
+            }
+
             if (!expander.IsExpanded)
             {
-                var toAnimateControl = GetToAnimateControl(expander);
-                if (toAnimateControl != null)
-                {
-                    toAnimateControl.Visibility = Visibility.Collapsed;
-                }
+                // If collapsed on load, set visibility to collapsed immediately
+                toAnimateControl.Visibility = Visibility.Collapsed;
             }
             else
             {
-                // If expanded on load, animate the expansion
-                AnimateExpand(expander);
+                // If expanded on load, ensure visibility is set and clear any animations
+                toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
+                toAnimateControl.Visibility = Visibility.Visible;
+                
+                // Clear any transform animations and reset transform to identity
+                if (toAnimateControl.RenderTransform is TranslateTransform translateTransform)
+                {
+                    translateTransform.BeginAnimation(TranslateTransform.XProperty, null);
+                    translateTransform.BeginAnimation(TranslateTransform.YProperty, null);
+                    translateTransform.X = 0;
+                    translateTransform.Y = 0;
+                }
             }
         }
 
