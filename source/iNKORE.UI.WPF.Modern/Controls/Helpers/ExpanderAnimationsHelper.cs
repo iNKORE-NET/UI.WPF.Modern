@@ -120,7 +120,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         /// This method sets the expander content to the appropriate state (collapsed or expanded)
         /// immediately to prevent visual flashing during load.
         /// </summary>
-        /// <param name="expander">The expander control to initialize.</param>
         /// <remarks>
         /// This method is called during the initial load of the expander to avoid triggering
         /// layout updates and animations that would cause the content to briefly render at
@@ -128,6 +127,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         /// to Collapsed. For expanded expanders, it ensures visibility is Visible and resets
         /// any transforms to identity without animation.
         /// </remarks>
+        /// <seealso href="https://github.com/iNKORE-NET/UI.WPF.Modern/issues/402"/>
         private static void InitializeExpanderState(Expander expander)
         {
             // On initial load, set the content to the appropriate state immediately
