@@ -89,7 +89,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
             if (expander.IsLoaded)
             {
-                RunExpanderAnimation(expander);
+                InitializeExpanderState(expander);
             }
             else
             {
@@ -98,7 +98,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
             void TriggerExpandAnimationOnLoad(object sender, RoutedEventArgs routedEventArgs)
             {
-                RunExpanderAnimation(expander);
+                InitializeExpanderState(expander);
                 expander.Loaded -= TriggerExpandAnimationOnLoad;
             }
         }
@@ -114,6 +114,51 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         }
 
         #endregion
+
+        /// <summary>
+        /// Initializes the visual state of an expander on initial load without animations.
+        /// This method sets the expander content to the appropriate state (collapsed or expanded)
+        /// immediately to prevent visual flashing during load.
+        /// </summary>
+        /// <remarks>
+        /// This method is called during the initial load of the expander to avoid triggering
+        /// layout updates and animations that would cause the content to briefly render at
+        /// full size before collapsing. For collapsed expanders, it sets visibility directly
+        /// to Collapsed. For expanded expanders, it ensures visibility is Visible and resets
+        /// any transforms to identity without animation.
+        /// </remarks>
+        /// <seealso href="https://github.com/iNKORE-NET/UI.WPF.Modern/issues/402"/>
+        private static void InitializeExpanderState(Expander expander)
+        {
+            // On initial load, set the content to the appropriate state immediately
+            // without animation to avoid a visual flash
+            var toAnimateControl = GetToAnimateControl(expander);
+            if (toAnimateControl == null)
+            {
+                return;
+            }
+
+            if (!expander.IsExpanded)
+            {
+                // If collapsed on load, set visibility to collapsed immediately
+                toAnimateControl.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                // If expanded on load, ensure visibility is set and clear any animations
+                toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
+                toAnimateControl.Visibility = Visibility.Visible;
+                
+                // Clear any transform animations and reset transform to identity
+                if (toAnimateControl.RenderTransform is TranslateTransform translateTransform)
+                {
+                    translateTransform.BeginAnimation(TranslateTransform.XProperty, null);
+                    translateTransform.BeginAnimation(TranslateTransform.YProperty, null);
+                    translateTransform.X = 0;
+                    translateTransform.Y = 0;
+                }
+            }
+        }
 
         private static void RunExpanderAnimation(Expander expander)
         {
