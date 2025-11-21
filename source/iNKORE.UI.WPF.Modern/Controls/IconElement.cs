@@ -1,4 +1,4 @@
-﻿using iNKORE.UI.WPF.Modern.Common;
+using iNKORE.UI.WPF.Modern.Common;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -41,6 +41,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
             var baseValueSource = DependencyPropertyHelper.GetValueSource(this, args.Property).BaseValueSource;
             _isForegroundDefaultOrInherited = baseValueSource <= BaseValueSource.Inherited;
             UpdateShouldInheritForegroundFromVisualParent();
+            // Notify derived classes so they can push Foreground to internal visuals when not inheriting.
+            OnOwnForegroundPropertyChanged(args);
         }
 
         /// <summary>
@@ -116,11 +118,30 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private void UpdateShouldInheritForegroundFromVisualParent()
         {
+            // Legacy logic (before simplification) kept for reference:
+            // We originally required that the element had both a logical Parent and a VisualParent and that they differed.
+            // This proved too restrictive in scenarios where the logical and visual tree relationships caused FontIcon
+            // to miss theme brush updates (e.g., in the iconography gallery) leaving glyphs with a stale/dark brush.
+            //
+            // ShouldInheritForegroundFromVisualParent =
+            //     _isForegroundDefaultOrInherited &&
+            //     Parent != null &&
+            //     VisualParent != null &&
+            //     Parent != VisualParent;
+            
+            // if our Foreground is default/inherited and we have a visual parent, bind to it.
             ShouldInheritForegroundFromVisualParent =
                 _isForegroundDefaultOrInherited &&
-                Parent != null &&
-                VisualParent != null &&
-                Parent != VisualParent;
+                VisualParent != null; // Always inherit from visual parent when our Foreground is default/inherited.
+        }
+
+        /// <summary>
+        /// Called whenever this element's own Foreground property changes (after inheritance logic updated).
+        /// Allows derived classes to propagate the Foreground to visual children when not inheriting directly from visual parent.
+        /// </summary>
+        /// <param name="args">Change args.</param>
+        private protected virtual void OnOwnForegroundPropertyChanged(DependencyPropertyChangedEventArgs args)
+        {
         }
 
         private protected UIElementCollection Children
