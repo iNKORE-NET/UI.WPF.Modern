@@ -1,4 +1,4 @@
-﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Controls;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -71,6 +71,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             Example3.Xaml = Example3Xaml;
             Example4.Xaml = Example4Xaml;
             Example5.Xaml = Example5Xaml;
+            Example6.Xaml = Example6Xaml;
         }
 
         public string Example1Xaml => $@"
@@ -98,7 +99,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 ";
 
         public string Example2Xaml => $@"
-<Button x:Name=""Control2"" Content=""Options"">
+<Button Content=""Options"">
     <ui:FlyoutService.Flyout>
         <ui:MenuFlyout>
             <MenuItem Header=""Reset"" />
@@ -119,7 +120,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 ";
 
         public string Example3Xaml => $@"
-<Button x:Name=""Control3"" Content=""File Options"">
+<Button Content=""File Options"">
     <ui:FlyoutService.Flyout>
         <ui:MenuFlyout>
             <MenuItem Header=""Open"" />
@@ -138,7 +139,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 ";
 
         public string Example4Xaml => $@"
-<Button x:Name=""Control4"" Content=""Edit Options"">
+<Button Content=""Edit Options"">
     <ui:FlyoutService.Flyout>
         <ui:MenuFlyout>
             <MenuItem Header=""Share"">
@@ -165,7 +166,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 ";
 
         public string Example5Xaml => $@"
-<Button x:Name=""Control5"" Content=""Edit Options"">
+<Button Content=""Edit Options"">
     <ui:FlyoutService.Flyout>
         <ui:MenuFlyout>
             <MenuItem Header=""Share"" InputGestureText=""Ctrl+S"">
@@ -192,6 +193,21 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             <Separator />
             <MenuItem Header=""Rename"" />
             <MenuItem Header=""Select"" />
+        </ui:MenuFlyout>
+    </ui:FlyoutService.Flyout>
+</Button>
+";
+
+        public string Example6Xaml => $@"
+<Button Content=""Options"">
+    <ui:FlyoutService.Flyout>
+        <ui:MenuFlyout>
+            <ui:RadioMenuItem Header=""Landscape"" GroupName=""OrientationGroup""/>
+            <ui:RadioMenuItem Header=""Portrait"" GroupName=""OrientationGroup"" IsChecked=""True"" />
+            <Separator />
+            <ui:RadioMenuItem Header=""Small icons"" GroupName=""SizeGroup"" />
+            <ui:RadioMenuItem Header=""Medium icons"" GroupName=""SizeGroup"" IsChecked=""True"" />
+            <ui:RadioMenuItem Header=""Large icons"" GroupName=""SizeGroup"" />
         </ui:MenuFlyout>
     </ui:FlyoutService.Flyout>
 </Button>
