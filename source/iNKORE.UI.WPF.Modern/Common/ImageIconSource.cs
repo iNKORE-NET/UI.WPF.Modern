@@ -26,9 +26,9 @@ namespace iNKORE.UI.WPF.Modern.Common
             Image.SourceProperty.AddOwner(typeof(ImageIconSource));
 
         /// <summary>
-        /// Gets or sets the URI of the image file to use as the icon.
+        /// Gets or sets the System.Windows.Media.ImageSource to use as the icon.
         /// </summary>
-        /// <returns>The <see cref="Uri"/> of the image file to use as the icon. The default is <see langword="null"/>.</returns>
+        /// <returns>The <see cref="System.Windows.Media.ImageSource"/> of the image to use as the icon. The default is <see langword="null"/>.</returns>
         public ImageSource ImageSource
         {
             get => (ImageSource)GetValue(ImageSourceProperty);
