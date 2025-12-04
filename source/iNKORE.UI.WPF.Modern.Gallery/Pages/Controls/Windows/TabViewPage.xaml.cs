@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -14,10 +14,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 {
     public partial class TabViewPage
     {
+        private readonly System.Collections.Generic.HashSet<TabControl> _setupControls = new System.Collections.Generic.HashSet<TabControl>();
+
         public TabViewPage()
         {
             InitializeComponent();
 
+            // Seed the primary demo TabControls with initial tabs.
             for (int i = 0; i < 3; i++)
             {
                 tabControl.Items.Add(CreateNewTab(i));
@@ -31,10 +34,36 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 
         private void TabView_Loaded(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 3; i++)
+            if (sender is not TabControl loadedTabControl) return;
+
+            if (_setupControls.Contains(loadedTabControl))
+                return;
+
+            // Hook add button (if visible) once.
+            var events = TabControlHelper.GetTabControlHelperEvents(loadedTabControl);
+            events.AddTabButtonClick += TabControl_AddButtonClick;
+            events.TabCloseRequested += TabControl_TabCloseRequested;
+            _setupControls.Add(loadedTabControl);
+
+            // Only auto-seed for dynamically loaded examples (avoid duplicating those we seeded in ctor)
+            if (loadedTabControl != tabControl && loadedTabControl != tabControl2 && loadedTabControl != tabControl3)
             {
-                (sender as TabControl).Items.Add(CreateNewTab(i));
+                for (int i = 0; i < 3; i++)
+                {
+                    loadedTabControl.Items.Add(CreateNewTab(i));
+                }
             }
+        }
+
+        private void TabControl_AddButtonClick(TabControl sender, object args)
+        {
+            sender.Items.Add(CreateNewTab(sender.Items.Count));
+            sender.SelectedIndex = sender.Items.Count - 1;
+        }
+
+        private void TabControl_TabCloseRequested(TabControl sender, TabViewTabCloseRequestedEventArgs args)
+        {
+            sender.Items.Remove(args.Item);
         }
 
         private TabItem CreateNewTab(int index)
@@ -117,6 +146,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             if (!this.IsInitialized) return;
 
             Example1.Xaml = Example1Xaml;
+            Example1.CSharp   = Example1CS;
             Example2.Xaml = Example2Xaml;
             Example3.Xaml = Example3Xaml;
             Example4.Xaml = Example4Xaml;
@@ -147,6 +177,55 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 </TabControl>
 ";
 
+    public string Example1CS => $@"
+    private void TabView_Loaded(object sender, RoutedEventArgs e)
+    {{
+        var loadedTabControl = (TabControl)sender;
+        var events = TabControlHelper.GetTabControlHelperEvents(loadedTabControl);
+
+        // hook up add & close
+        events.AddTabButtonClick      += TabControl_AddButtonClick;
+        events.TabCloseRequested      += TabControl_TabCloseRequested;
+
+        // seed initial 3 tabs
+        for (int i = 0; i < 3; i++)
+            loadedTabControl.Items.Add(CreateNewTab(i));
+    }}
+
+    private void TabControl_AddButtonClick(TabControl sender, object args)
+    {{
+        sender.Items.Add(CreateNewTab(sender.Items.Count));
+        sender.SelectedIndex = sender.Items.Count - 1;
+    }}
+
+    private void TabControl_TabCloseRequested(TabControl sender, TabControlTabCloseRequestedEventArgs args)
+    {{
+        sender.Items.Remove(args.Item);
+    }}
+
+    private TabItem CreateNewTab(int index)
+    {{
+        var newItem = new TabItem
+        {{
+            Header = $""Document {{index}}""
+        }};
+        TabItemHelper.SetIcon(newItem, new FontIcon(SegoeFluentIcons.Document));
+
+        var frame = new Frame();
+        frame.Navigated += (s, e) =>
+        {{
+            ((FrameworkElement)frame.Content).Margin = new Thickness(-18, 0, -18, 0);
+        }};
+        switch (index % 3)
+        {{
+            case 0: frame.Navigate(typeof(SamplePage1)); break;
+            case 1: frame.Navigate(typeof(SamplePage2)); break;
+            case 2: frame.Navigate(typeof(SamplePage3)); break;
+        }}
+        newItem.Content = frame;
+        return newItem;
+    }}
+";
         public string Example2Xaml => $@"
 <TabControl x:Name=""TabView4""
     SelectedIndex=""0"">
