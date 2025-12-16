@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace iNKORE.UI.WPF.Modern.Controls
 {
@@ -40,8 +41,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             // Forward the BringIntoView request to the ItemsRepeaterScrollHost if one exists.
             // This enables BringIntoView to work properly with virtualized layouts like UniformGridLayout.
-            var targetObject = e.TargetObject;
-            if (targetObject != this && targetObject is UIElement targetElement)
+            if (e.TargetObject != this && e.TargetObject is UIElement targetElement)
             {
                 // Verify the target element is actually a descendant of this ItemsRepeater
                 if (!IsAncestorOf(targetElement))
@@ -55,7 +55,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 DependencyObject parent = this;
                 while (parent != null)
                 {
-                    parent = System.Windows.Media.VisualTreeHelper.GetParent(parent);
+                    parent = VisualTreeHelper.GetParent(parent);
                     if (parent is ItemsRepeaterScrollHost scrollHost)
                     {
                         // Found a scroll host - forward the request to it.
@@ -92,7 +92,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 if (current == this)
                     return true;
                 
-                current = System.Windows.Media.VisualTreeHelper.GetParent(current);
+                current = VisualTreeHelper.GetParent(current);
             }
             
             return false;
