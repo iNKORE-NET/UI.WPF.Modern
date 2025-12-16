@@ -34,6 +34,14 @@ namespace iNKORE.UI.WPF.Modern.Controls
             var targetObject = e.TargetObject;
             if (targetObject != this && targetObject is UIElement targetElement)
             {
+                // Verify the target element is actually a descendant of this ItemsRepeater
+                if (!IsAncestorOf(targetElement))
+                {
+                    // Not our element, let the base class handle it
+                    base.OnRequestBringIntoView(e);
+                    return;
+                }
+
                 // Walk up the visual tree to find an ItemsRepeaterScrollHost
                 DependencyObject parent = this;
                 while (parent != null)
@@ -62,6 +70,23 @@ namespace iNKORE.UI.WPF.Modern.Controls
             
             // No scroll host found, use default behavior
             base.OnRequestBringIntoView(e);
+        }
+
+        private bool IsAncestorOf(DependencyObject descendant)
+        {
+            if (descendant == null)
+                return false;
+
+            DependencyObject current = descendant;
+            while (current != null)
+            {
+                if (current == this)
+                    return true;
+                
+                current = System.Windows.Media.VisualTreeHelper.GetParent(current);
+            }
+            
+            return false;
         }
 
         protected override UIElementCollection CreateUIElementCollection(FrameworkElement logicalParent)
