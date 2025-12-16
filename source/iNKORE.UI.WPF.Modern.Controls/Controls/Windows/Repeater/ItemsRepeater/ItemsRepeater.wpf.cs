@@ -27,6 +27,15 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
         }
 
+        // Default alignment for BringIntoView: 0.0 means align to top/left edge of viewport
+        private const double DefaultBringIntoViewAlignment = 0.0;
+        
+        // Default offset for BringIntoView: no additional offset
+        private const double DefaultBringIntoViewOffset = 0.0;
+        
+        // Default animation for BringIntoView: false for immediate scrolling
+        private const bool DefaultBringIntoViewAnimate = false;
+
         protected override void OnRequestBringIntoView(RequestBringIntoViewEventArgs e)
         {
             // Forward the BringIntoView request to the ItemsRepeaterScrollHost if one exists.
@@ -55,11 +64,11 @@ namespace iNKORE.UI.WPF.Modern.Controls
                         // the element's layout bounds.
                         scrollHost.StartBringIntoView(
                             targetElement,
-                            alignmentX: 0.0,
-                            alignmentY: 0.0,
-                            offsetX: 0.0,
-                            offsetY: 0.0,
-                            animate: false);
+                            alignmentX: DefaultBringIntoViewAlignment,
+                            alignmentY: DefaultBringIntoViewAlignment,
+                            offsetX: DefaultBringIntoViewOffset,
+                            offsetY: DefaultBringIntoViewOffset,
+                            animate: DefaultBringIntoViewAnimate);
                         
                         // Mark the event as handled so it doesn't bubble up further
                         e.Handled = true;
