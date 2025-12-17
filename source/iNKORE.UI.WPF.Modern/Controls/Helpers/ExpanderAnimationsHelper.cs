@@ -7,270 +7,275 @@ using System.Windows.Media.Animation;
 
 namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 {
-    public static class ExpanderAnimationsHelper
-    {
-        #region ToAnimateControlName
+	public static class ExpanderAnimationsHelper
+	{
+		#region ToAnimateControlName
 
-        public static string GetToAnimateControlName(Expander element) =>
-            (string)element.GetValue(ToAnimateControlNameProperty);
+		public static string GetToAnimateControlName(Expander element) =>
+			(string)element.GetValue(ToAnimateControlNameProperty);
 
-        public static void SetToAnimateControlName(Expander element, string value) =>
-            element.SetValue(ToAnimateControlNameProperty, value);
+		public static void SetToAnimateControlName(Expander element, string value) =>
+			element.SetValue(ToAnimateControlNameProperty, value);
 
-        public static readonly DependencyProperty ToAnimateControlNameProperty = DependencyProperty.RegisterAttached(
-            "ToAnimateControlName",
-            typeof(string),
-            typeof(ExpanderAnimationsHelper),
-            new PropertyMetadata("ExpanderContent"));
+		public static readonly DependencyProperty ToAnimateControlNameProperty = DependencyProperty.RegisterAttached(
+			"ToAnimateControlName",
+			typeof(string),
+			typeof(ExpanderAnimationsHelper),
+			new PropertyMetadata("ExpanderContent"));
 
-        #endregion
+		#endregion
 
-        #region ExpandAnimationDuration
+		#region ExpandAnimationDuration
 
-        public static TimeSpan GetExpandAnimationDuration(Expander element) =>
-            (TimeSpan)element.GetValue(ExpandAnimationDurationProperty);
+		public static TimeSpan GetExpandAnimationDuration(Expander element) =>
+			(TimeSpan)element.GetValue(ExpandAnimationDurationProperty);
 
-        public static void SetExpandAnimationDuration(Expander element, TimeSpan value) =>
-            element.SetValue(ExpandAnimationDurationProperty, value);
+		public static void SetExpandAnimationDuration(Expander element, TimeSpan value) =>
+			element.SetValue(ExpandAnimationDurationProperty, value);
 
-        public static readonly DependencyProperty ExpandAnimationDurationProperty = DependencyProperty.RegisterAttached(
-            "ExpandAnimationDuration",
-            typeof(TimeSpan),
-            typeof(ExpanderAnimationsHelper),
-            new PropertyMetadata(TimeSpan.FromMilliseconds(333)));
+		public static readonly DependencyProperty ExpandAnimationDurationProperty = DependencyProperty.RegisterAttached(
+			"ExpandAnimationDuration",
+			typeof(TimeSpan),
+			typeof(ExpanderAnimationsHelper),
+			new PropertyMetadata(TimeSpan.FromMilliseconds(333)));
 
-        #endregion
+		#endregion
 
-        #region CollapseAnimationDuration
+		#region CollapseAnimationDuration
 
-        public static TimeSpan GetCollapseAnimationDuration(Expander element) =>
-            (TimeSpan)element.GetValue(CollapseAnimationDurationProperty);
+		public static TimeSpan GetCollapseAnimationDuration(Expander element) =>
+			(TimeSpan)element.GetValue(CollapseAnimationDurationProperty);
 
-        public static void SetCollapseAnimationDuration(Expander element, TimeSpan value) =>
-            element.SetValue(CollapseAnimationDurationProperty, value);
+		public static void SetCollapseAnimationDuration(Expander element, TimeSpan value) =>
+			element.SetValue(CollapseAnimationDurationProperty, value);
 
-        public static readonly DependencyProperty CollapseAnimationDurationProperty =
-            DependencyProperty.RegisterAttached(
-                "CollapseAnimationDuration",
-                typeof(TimeSpan),
-                typeof(ExpanderAnimationsHelper),
-                new PropertyMetadata(TimeSpan.FromMilliseconds(167)));
+		public static readonly DependencyProperty CollapseAnimationDurationProperty =
+			DependencyProperty.RegisterAttached(
+				"CollapseAnimationDuration",
+				typeof(TimeSpan),
+				typeof(ExpanderAnimationsHelper),
+				new PropertyMetadata(TimeSpan.FromMilliseconds(167)));
 
-        #endregion
+		#endregion
 
-        #region IsEnabled
+		#region IsEnabled
 
-        public static bool GetIsEnabled(Expander element) => (bool)element.GetValue(IsEnabledProperty);
+		public static bool GetIsEnabled(Expander element) => (bool)element.GetValue(IsEnabledProperty);
 
-        public static void SetIsEnabled(Expander element, bool value) => element.SetValue(IsEnabledProperty, value);
+		public static void SetIsEnabled(Expander element, bool value) => element.SetValue(IsEnabledProperty, value);
 
-        public static readonly DependencyProperty IsEnabledProperty = DependencyProperty.RegisterAttached(
-            "IsEnabled",
-            typeof(bool),
-            typeof(ExpanderAnimationsHelper),
-            new PropertyMetadata(OnIsEnabledChanged));
+		public static readonly DependencyProperty IsEnabledProperty = DependencyProperty.RegisterAttached(
+			"IsEnabled",
+			typeof(bool),
+			typeof(ExpanderAnimationsHelper),
+			new PropertyMetadata(OnIsEnabledChanged));
 
-        private static void OnIsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (d is not Expander expander)
-            {
-                return;
-            }
+		private static void OnIsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+		{
+			if (d is not Expander expander)
+			{
+				return;
+			}
 
-            if (e.NewValue is not true)
-            {
-                expander.Expanded -= OnExpanderExpandedOrCollapsed;
-                expander.Collapsed -= OnExpanderExpandedOrCollapsed;
-                return;
-            }
+			if (e.NewValue is true)
+			{
+				if (expander.IsLoaded)
+				{
+					InitializeExpanderState(expander);
+				}
+				else
+				{
+					expander.Loaded += TriggerExpandAnimationOnLoad;
+				}
+			}
 
-            expander.Expanded += OnExpanderExpandedOrCollapsed;
-            expander.Collapsed += OnExpanderExpandedOrCollapsed;
+			expander.Expanded += OnExpanderExpandedOrCollapsed;
+			expander.Collapsed += OnExpanderExpandedOrCollapsed;
 
-            if (expander.IsLoaded)
-            {
-                InitializeExpanderState(expander);
-            }
-            else
-            {
-                expander.Loaded += TriggerExpandAnimationOnLoad;
-            }
 
-            void TriggerExpandAnimationOnLoad(object sender, RoutedEventArgs routedEventArgs)
-            {
-                InitializeExpanderState(expander);
-                expander.Loaded -= TriggerExpandAnimationOnLoad;
-            }
-        }
 
-        private static void OnExpanderExpandedOrCollapsed(object sender, RoutedEventArgs e)
-        {
-            if (sender is not Expander expander)
-            {
-                return;
-            }
+			void TriggerExpandAnimationOnLoad(object sender, RoutedEventArgs routedEventArgs)
+			{
+				InitializeExpanderState(expander);
+				expander.Loaded -= TriggerExpandAnimationOnLoad;
+			}
+		}
 
-            RunExpanderAnimation(expander);
-        }
+		private static void OnExpanderExpandedOrCollapsed(object sender, RoutedEventArgs e)
+		{
+			if (sender is not Expander expander)
+			{
+				return;
+			}
 
-        #endregion
+			if (GetIsEnabled(expander))
+				RunExpanderAnimation(expander);
+			else
+			{
+				var toAnimateControl = GetToAnimateControl(expander);
+				toAnimateControl?.Visibility = expander.IsExpanded ? Visibility.Visible : Visibility.Collapsed;
+			}
+		}
 
-        /// <summary>
-        /// Initializes the visual state of an expander on initial load without animations.
-        /// This method sets the expander content to the appropriate state (collapsed or expanded)
-        /// immediately to prevent visual flashing during load.
-        /// </summary>
-        /// <remarks>
-        /// This method is called during the initial load of the expander to avoid triggering
-        /// layout updates and animations that would cause the content to briefly render at
-        /// full size before collapsing. For collapsed expanders, it sets visibility directly
-        /// to Collapsed. For expanded expanders, it ensures visibility is Visible and resets
-        /// any transforms to identity without animation.
-        /// </remarks>
-        /// <seealso href="https://github.com/iNKORE-NET/UI.WPF.Modern/issues/402"/>
-        private static void InitializeExpanderState(Expander expander)
-        {
-            // On initial load, set the content to the appropriate state immediately
-            // without animation to avoid a visual flash
-            var toAnimateControl = GetToAnimateControl(expander);
-            if (toAnimateControl == null)
-            {
-                return;
-            }
+		#endregion
 
-            if (!expander.IsExpanded)
-            {
-                // If collapsed on load, set visibility to collapsed immediately
-                toAnimateControl.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                // If expanded on load, ensure visibility is set and clear any animations
-                toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
-                toAnimateControl.Visibility = Visibility.Visible;
-                
-                // Clear any transform animations and reset transform to identity
-                if (toAnimateControl.RenderTransform is TranslateTransform translateTransform)
-                {
-                    translateTransform.BeginAnimation(TranslateTransform.XProperty, null);
-                    translateTransform.BeginAnimation(TranslateTransform.YProperty, null);
-                    translateTransform.X = 0;
-                    translateTransform.Y = 0;
-                }
-            }
-        }
+		/// <summary>
+		/// Initializes the visual state of an expander on initial load without animations.
+		/// This method sets the expander content to the appropriate state (collapsed or expanded)
+		/// immediately to prevent visual flashing during load.
+		/// </summary>
+		/// <remarks>
+		/// This method is called during the initial load of the expander to avoid triggering
+		/// layout updates and animations that would cause the content to briefly render at
+		/// full size before collapsing. For collapsed expanders, it sets visibility directly
+		/// to Collapsed. For expanded expanders, it ensures visibility is Visible and resets
+		/// any transforms to identity without animation.
+		/// </remarks>
+		/// <seealso href="https://github.com/iNKORE-NET/UI.WPF.Modern/issues/402"/>
+		private static void InitializeExpanderState(Expander expander)
+		{
+			// On initial load, set the content to the appropriate state immediately
+			// without animation to avoid a visual flash
+			var toAnimateControl = GetToAnimateControl(expander);
+			if (toAnimateControl == null)
+			{
+				return;
+			}
 
-        private static void RunExpanderAnimation(Expander expander)
-        {
-            if (expander.IsExpanded)
-            {
-                AnimateExpand(expander);
-            }
-            else
-            {
-                AnimateCollapse(expander);
-            }
-        }
+			if (!expander.IsExpanded)
+			{
+				// If collapsed on load, set visibility to collapsed immediately
+				toAnimateControl.Visibility = Visibility.Collapsed;
+			}
+			else
+			{
+				// If expanded on load, ensure visibility is set and clear any animations
+				toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
+				toAnimateControl.Visibility = Visibility.Visible;
 
-        private static void AnimateExpand(Expander expander)
-        {
-            var toAnimateControl = GetToAnimateControl(expander);
-            toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
-            UpdateLayout(toAnimateControl);
+				// Clear any transform animations and reset transform to identity
+				if (toAnimateControl.RenderTransform is TranslateTransform translateTransform)
+				{
+					translateTransform.BeginAnimation(TranslateTransform.XProperty, null);
+					translateTransform.BeginAnimation(TranslateTransform.YProperty, null);
+					translateTransform.X = 0;
+					translateTransform.Y = 0;
+				}
+			}
+		}
 
-            if (toAnimateControl.RenderTransform is not TranslateTransform translateTransform)
-            {
-                toAnimateControl.RenderTransform = translateTransform = new TranslateTransform();
-            }
+		private static void RunExpanderAnimation(Expander expander)
+		{
+			if (expander.IsExpanded)
+			{
+				AnimateExpand(expander);
+			}
+			else
+			{
+				AnimateCollapse(expander);
+			}
+		}
 
-            var (animationProperty, originValue) = GetToAnimatePropertyAndValue(toAnimateControl, expander.ExpandDirection);
-            RunTranslationAnimation(GetExpandAnimationDuration(expander), translateTransform, animationProperty, 0, originValue);
-        }
+		private static void AnimateExpand(Expander expander)
+		{
+			var toAnimateControl = GetToAnimateControl(expander);
+			toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
+			toAnimateControl.Visibility = Visibility.Visible;
+			UpdateLayout(toAnimateControl);
 
-        private static void AnimateCollapse(Expander expander)
-        {
-            var toAnimateControl = GetToAnimateControl(expander);
-            var animationDuration = GetCollapseAnimationDuration(expander);
+			if (toAnimateControl.RenderTransform is not TranslateTransform translateTransform)
+			{
+				toAnimateControl.RenderTransform = translateTransform = new TranslateTransform();
+			}
 
-            var visibilityAnimation = new ObjectAnimationUsingKeyFrames
-            {
-                KeyFrames =
-                [
-                    new DiscreteObjectKeyFrame
-                    {
-                        KeyTime = animationDuration,
-                        Value = Visibility.Collapsed
-                    }
-                ]
-            };
+			var (animationProperty, originValue) = GetToAnimatePropertyAndValue(toAnimateControl, expander.ExpandDirection);
+			RunTranslationAnimation(GetExpandAnimationDuration(expander), translateTransform, animationProperty, 0, originValue);
+		}
 
-            UpdateLayout(toAnimateControl);
+		private static void AnimateCollapse(Expander expander)
+		{
+			var toAnimateControl = GetToAnimateControl(expander);
+			var animationDuration = GetCollapseAnimationDuration(expander);
 
-            if (toAnimateControl.RenderTransform is not TranslateTransform translateTransform)
-            {
-                toAnimateControl.RenderTransform = translateTransform = new TranslateTransform();
-            }
+			var visibilityAnimation = new ObjectAnimationUsingKeyFrames
+			{
+				KeyFrames =
+				[
+					new DiscreteObjectKeyFrame
+					{
+						KeyTime = animationDuration,
+						Value = Visibility.Collapsed
+					}
+				]
+			};
 
-            var (animationProperty, toValue) = GetToAnimatePropertyAndValue(toAnimateControl, expander.ExpandDirection);
-            
-            toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, visibilityAnimation);
-            RunTranslationAnimation(animationDuration, translateTransform, animationProperty,
-                toValue);
-        }
+			UpdateLayout(toAnimateControl);
 
-        private static (DependencyProperty, double) GetToAnimatePropertyAndValue(FrameworkElement toAnimateControl,
-            ExpandDirection direction)
-        {
-            var (toAnimateProp, toResetProp, toValue) = direction switch
-            {
-                ExpandDirection.Down => (TranslateTransform.YProperty, TranslateTransform.XProperty, -toAnimateControl.ActualHeight),
-                ExpandDirection.Up => (TranslateTransform.YProperty, TranslateTransform.XProperty, toAnimateControl.ActualHeight),
-                ExpandDirection.Left => (TranslateTransform.XProperty, TranslateTransform.YProperty, toAnimateControl.ActualWidth),
-                ExpandDirection.Right => (TranslateTransform.XProperty, TranslateTransform.YProperty, -toAnimateControl.ActualWidth),
-            };
+			if (toAnimateControl.RenderTransform is not TranslateTransform translateTransform)
+			{
+				toAnimateControl.RenderTransform = translateTransform = new TranslateTransform();
+			}
 
-            toAnimateControl.RenderTransform.BeginAnimation(toResetProp, null);
-            return (toAnimateProp, toValue);
-        }
+			var (animationProperty, toValue) = GetToAnimatePropertyAndValue(toAnimateControl, expander.ExpandDirection);
 
-        private static void RunTranslationAnimation(
-            TimeSpan animationDuration,
-            TranslateTransform translateTransform,
-            DependencyProperty toAnimateProperty,
-            double targetValue,
-            double? fromValue = null)
-        {
-            var keyFrames = new DoubleKeyFrameCollection
-            {
-                new SplineDoubleKeyFrame
-                {
-                    KeySpline = new KeySpline(0, 0, 0, 1),
-                    KeyTime = animationDuration,
-                    Value = targetValue
-                },
-            };
+			toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, visibilityAnimation);
+			RunTranslationAnimation(animationDuration, translateTransform, animationProperty,
+				toValue);
+		}
 
-            if (fromValue is not null)
-            {
-                keyFrames.Add(new DiscreteDoubleKeyFrame(fromValue.Value, KeyTime.FromPercent(0)));
-            }
+		private static (DependencyProperty, double) GetToAnimatePropertyAndValue(FrameworkElement toAnimateControl,
+			ExpandDirection direction)
+		{
+			var (toAnimateProp, toResetProp, toValue) = direction switch
+			{
+				ExpandDirection.Down => (TranslateTransform.YProperty, TranslateTransform.XProperty, -toAnimateControl.ActualHeight),
+				ExpandDirection.Up => (TranslateTransform.YProperty, TranslateTransform.XProperty, toAnimateControl.ActualHeight),
+				ExpandDirection.Left => (TranslateTransform.XProperty, TranslateTransform.YProperty, toAnimateControl.ActualWidth),
+				ExpandDirection.Right => (TranslateTransform.XProperty, TranslateTransform.YProperty, -toAnimateControl.ActualWidth),
+			};
 
-            var animation = new DoubleAnimationUsingKeyFrames
-            {
-                KeyFrames = keyFrames,
-                Duration = animationDuration
-            };
+			toAnimateControl.RenderTransform.BeginAnimation(toResetProp, null);
+			return (toAnimateProp, toValue);
+		}
 
-            translateTransform.BeginAnimation(toAnimateProperty, animation);
-        }
+		private static void RunTranslationAnimation(
+			TimeSpan animationDuration,
+			TranslateTransform translateTransform,
+			DependencyProperty toAnimateProperty,
+			double targetValue,
+			double? fromValue = null)
+		{
+			var keyFrames = new DoubleKeyFrameCollection
+			{
+				new SplineDoubleKeyFrame
+				{
+					KeySpline = new KeySpline(0, 0, 0, 1),
+					KeyTime = animationDuration,
+					Value = targetValue
+				},
+			};
 
-        private static void UpdateLayout(FrameworkElement contentControl)
-        {
-            contentControl.Measure(new Size(contentControl.MaxWidth, contentControl.MaxHeight));
-            contentControl.UpdateLayout();
-        }
+			if (fromValue is not null)
+			{
+				keyFrames.Add(new DiscreteDoubleKeyFrame(fromValue.Value, KeyTime.FromPercent(0)));
+			}
 
-        private static FrameworkElement GetToAnimateControl(Expander expander) =>
-            expander.Template?.FindName(GetToAnimateControlName(expander), expander) as FrameworkElement;
-    }
+			var animation = new DoubleAnimationUsingKeyFrames
+			{
+				KeyFrames = keyFrames,
+				Duration = animationDuration
+			};
+
+			translateTransform.BeginAnimation(toAnimateProperty, animation);
+		}
+
+		private static void UpdateLayout(FrameworkElement contentControl)
+		{
+			contentControl.Measure(new Size(contentControl.MaxWidth, contentControl.MaxHeight));
+			contentControl.UpdateLayout();
+		}
+
+		private static FrameworkElement GetToAnimateControl(Expander expander) =>
+			expander.Template?.FindName(GetToAnimateControlName(expander), expander) as FrameworkElement;
+	}
 }
