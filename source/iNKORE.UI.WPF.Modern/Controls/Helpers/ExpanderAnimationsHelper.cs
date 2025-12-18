@@ -101,7 +101,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         private static void OnExpanderExpandedOrCollapsed(object sender, RoutedEventArgs e)
         {
-            if (sender is not Expander expander)
+            if (sender is not Expander expander || !expander.IsLoaded)
             {
                 return;
             }
