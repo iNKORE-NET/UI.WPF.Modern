@@ -178,8 +178,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         {
             var toAnimateControl = GetToAnimateControl(expander);
             toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
-			toAnimateControl.Visibility = Visibility.Visible;
-			UpdateLayout(toAnimateControl);
+            toAnimateControl.Visibility = Visibility.Visible;
+            UpdateLayout(toAnimateControl);
 
             if (toAnimateControl.RenderTransform is not TranslateTransform translateTransform)
             {
