@@ -23,9 +23,110 @@
     <sys:Double x:Key="NumberBoxMinWidth">120</sys:Double>
     <Thickness x:Key="NumberBoxPopupIndicatorMargin">0,0,8,0</Thickness>
 
+    <Style x:Key="NumberBoxRepeatButtonStyle"
+           TargetType="RepeatButton">
+        <Setter Property="OverridesDefaultStyle"
+                Value="True" />
+        <Setter Property="Background"
+                Value="{DynamicResource TextControlButtonBackground}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource TextControlButtonForeground}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource TextControlButtonBorderBrush}" />
+        <Setter Property="BorderThickness"
+                Value="{DynamicResource ButtonBorderThemeThickness}" />
+        <Setter Property="Padding"
+                Value="{DynamicResource ButtonPadding}" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="{DynamicResource ContentControlThemeFontFamily}" />
+        <Setter Property="FontWeight"
+                Value="Normal" />
+        <Setter Property="FontSize"
+                Value="{DynamicResource ControlContentThemeFontSize}" />
+        <Setter Property="ui:ControlHelper.CornerRadius"
+                Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
+        <Setter Property="ui:FocusVisualHelper.UseSystemFocusVisuals"
+                Value="{DynamicResource UseSystemFocusVisuals}" />
+        <Setter Property="ui:FocusVisualHelper.FocusVisualMargin"
+                Value="-3" />
+        <Setter Property="Stylus.IsPressAndHoldEnabled"
+                Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <ui:ElevationBorder x:Name="Background"
+                                           Background="{TemplateBinding Background}"
+                                           BorderBrush="{TemplateBinding BorderBrush}"
+                                           BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
+                                           SnapsToDevicePixels="True">
+                        <Border x:Name="Border"
+                                Padding="{TemplateBinding Padding}"
+                                CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}">
+                            <ui:ContentPresenterEx x:Name="ContentPresenter"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                      Focusable="False"
+                                                      RecognizesAccessKey="True"
+                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </ui:ElevationBorder>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter TargetName="Background"
+                                    Property="Background"
+                                    Value="{DynamicResource TextControlButtonBackgroundPointerOver}" />
+                            <Setter TargetName="Background"
+                                    Property="BorderBrush"
+                                    Value="{DynamicResource TextControlButtonBorderBrushPointerOver}" />
+                            <Setter TargetName="ContentPresenter"
+                                    Property="TextElement.Foreground"
+                                    Value="{DynamicResource TextControlButtonForegroundPointerOver}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter TargetName="Background"
+                                    Property="Background"
+                                    Value="{DynamicResource TextControlButtonBackgroundPressed}" />
+                            <Setter TargetName="Background"
+                                    Property="BorderBrush"
+                                    Value="{DynamicResource TextControlButtonBorderBrushPressed}" />
+                            <Setter TargetName="ContentPresenter"
+                                    Property="TextElement.Foreground"
+                                    Value="{DynamicResource TextControlButtonForegroundPressed}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter TargetName="Background"
+                                    Property="Background"
+                                    Value="{DynamicResource RepeatButtonBackgroundDisabled}" />
+                            <Setter TargetName="Background"
+                                    Property="BorderBrush"
+                                    Value="{DynamicResource TextControlButtonBorderBrushDisabled}" />
+                            <Setter TargetName="ContentPresenter"
+                                    Property="TextElement.Foreground"
+                                    Value="{DynamicResource RepeatButtonForegroundDisabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style
         x:Key="NumberBoxSpinButtonStyle"
-        BasedOn="{StaticResource DefaultRepeatButtonStyle}"
+        BasedOn="{StaticResource NumberBoxRepeatButtonStyle}"
         TargetType="RepeatButton">
         <Style.Setters>
             <Setter Property="IsTabStop" Value="False" />
@@ -289,51 +390,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:NumberBox">
                     <Grid ui:ThemeManager.HasThemeResources="True" Height="{TemplateBinding Height}">
-                        <Grid.Resources>
-                            <ui:ResourceDictionaryEx>
-                                <ui:ResourceDictionaryEx.ThemeDictionaries>
-                                    <ResourceDictionary x:Key="Light" ui:ThemeDictionary.Key="Light">
-                                        <ui:StaticResource x:Key="RepeatButtonBackground" ResourceKey="TextControlButtonBackground" />
-                                        <ui:StaticResource x:Key="RepeatButtonBackgroundPointerOver" ResourceKey="TextControlButtonBackgroundPointerOver" />
-                                        <ui:StaticResource x:Key="RepeatButtonBackgroundPressed" ResourceKey="TextControlButtonBackgroundPressed" />
-                                        <ui:StaticResource x:Key="RepeatButtonForeground" ResourceKey="TextControlButtonForeground" />
-                                        <ui:StaticResource x:Key="RepeatButtonForegroundPointerOver" ResourceKey="TextControlButtonForegroundPointerOver" />
-                                        <ui:StaticResource x:Key="RepeatButtonForegroundPressed" ResourceKey="TextControlButtonForegroundPressed" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrush" ResourceKey="TextControlButtonBorderBrush" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="TextControlButtonBorderBrushPointerOver" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="TextControlButtonBorderBrushPressed" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushDisabled" ResourceKey="TextControlButtonBorderBrush" />
-                                    </ResourceDictionary>
-
-                                    <ResourceDictionary x:Key="Dark" ui:ThemeDictionary.Key="Dark">
-                                        <ui:StaticResource x:Key="RepeatButtonBackground" ResourceKey="TextControlButtonBackground" />
-                                        <ui:StaticResource x:Key="RepeatButtonBackgroundPointerOver" ResourceKey="TextControlButtonBackgroundPointerOver" />
-                                        <ui:StaticResource x:Key="RepeatButtonBackgroundPressed" ResourceKey="TextControlButtonBackgroundPressed" />
-                                        <ui:StaticResource x:Key="RepeatButtonForeground" ResourceKey="TextControlButtonForeground" />
-                                        <ui:StaticResource x:Key="RepeatButtonForegroundPointerOver" ResourceKey="TextControlButtonForegroundPointerOver" />
-                                        <ui:StaticResource x:Key="RepeatButtonForegroundPressed" ResourceKey="TextControlButtonForegroundPressed" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrush" ResourceKey="TextControlButtonBorderBrush" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="TextControlButtonBorderBrushPointerOver" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="TextControlButtonBorderBrushPressed" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushDisabled" ResourceKey="TextControlButtonBorderBrush" />
-                                    </ResourceDictionary>
-
-                                    <ResourceDictionary x:Key="HighContrast" ui:ThemeDictionary.Key="HighContrast">
-                                        <ui:StaticResource x:Key="RepeatButtonBackground" ResourceKey="TextControlButtonBackground" />
-                                        <ui:StaticResource x:Key="RepeatButtonBackgroundPointerOver" ResourceKey="TextControlButtonBackgroundPointerOver" />
-                                        <ui:StaticResource x:Key="RepeatButtonBackgroundPressed" ResourceKey="TextControlButtonBackgroundPressed" />
-                                        <ui:StaticResource x:Key="RepeatButtonForeground" ResourceKey="TextControlButtonForeground" />
-                                        <ui:StaticResource x:Key="RepeatButtonForegroundPointerOver" ResourceKey="TextControlButtonForegroundPointerOver" />
-                                        <ui:StaticResource x:Key="RepeatButtonForegroundPressed" ResourceKey="TextControlButtonForegroundPressed" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrush" ResourceKey="TextControlButtonBorderBrush" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPointerOver" ResourceKey="TextControlButtonBorderBrushPointerOver" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushPressed" ResourceKey="TextControlButtonBorderBrushPressed" />
-                                        <ui:StaticResource x:Key="RepeatButtonBorderBrushDisabled" ResourceKey="TextControlButtonBorderBrush" />
-                                    </ResourceDictionary>
-                                </ui:ResourceDictionaryEx.ThemeDictionaries>
-                            </ui:ResourceDictionaryEx>
-                        </Grid.Resources>
-
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
