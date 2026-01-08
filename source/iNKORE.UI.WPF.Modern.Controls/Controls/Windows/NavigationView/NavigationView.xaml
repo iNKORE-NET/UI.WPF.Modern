@@ -873,7 +873,7 @@
                                 <Button
                                     x:Name="TogglePaneButton"
                                     MinWidth="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.SmallerPaneToggleButtonWidth}"
-                                    HorizontalAlignment="Left"
+                                    HorizontalAlignment="Center"
                                     VerticalAlignment="Top"
                                     ui:FocusVisualHelper.FocusVisualMargin="0"
                                     Style="{TemplateBinding PaneToggleButtonStyle}"
@@ -881,7 +881,7 @@
                                     <TextBlock
                                         x:Name="PaneTitleTextBlock"
                                         Grid.Column="0"
-                                        Margin="0,0,0,0"
+                                        Margin="0,-2,0,0"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         Style="{DynamicResource NavigationViewItemHeaderTextStyle}"
