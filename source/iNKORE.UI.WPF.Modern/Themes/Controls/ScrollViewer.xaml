@@ -203,7 +203,8 @@
                                     CanHorizontallyScroll="False"
                                     CanVerticallyScroll="False"
                                     Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    RecognizesAccessKey="False" />
                             </Border>
                             <ScrollBar
                                 x:Name="PART_VerticalScrollBar"
