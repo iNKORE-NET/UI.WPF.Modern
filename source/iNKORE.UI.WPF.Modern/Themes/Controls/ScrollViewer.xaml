@@ -239,7 +239,8 @@
             <ScrollContentPresenter
                 x:Name="ScrollContentPresenter"
                 Margin="{TemplateBinding Padding}"
-                ContentTemplate="{TemplateBinding ContentTemplate}" />
+                ContentTemplate="{TemplateBinding ContentTemplate}"
+                RecognizesAccessKey="False" />
         </Grid>
     </ControlTemplate>
 
