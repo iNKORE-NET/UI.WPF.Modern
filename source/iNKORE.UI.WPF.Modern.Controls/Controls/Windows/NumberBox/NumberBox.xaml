@@ -56,7 +56,12 @@
                                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                           Focusable="False"
                                                           Text="{TemplateBinding Content}"
+                                                          Foreground="{TemplateBinding Foreground}"
+                                                          FontSize="{TemplateBinding FontSize}"
                                                           FontFamily="{TemplateBinding FontFamily}"
+                                                          FontWeight="{TemplateBinding FontWeight}"
+                                                          FontStyle="{TemplateBinding FontStyle}"
+                                                          FontStretch="{TemplateBinding FontStretch}"
                                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             </Border>
                         </ui:ElevationBorder>
