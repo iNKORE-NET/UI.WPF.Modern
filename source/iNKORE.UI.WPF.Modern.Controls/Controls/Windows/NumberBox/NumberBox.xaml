@@ -92,7 +92,7 @@
                                         Value="{DynamicResource RepeatButtonBackgroundDisabled}" />
                                 <Setter TargetName="Background"
                                         Property="BorderBrush"
-                                        Value="{DynamicResource TextControlButtonBorderBrushDisabled}" />
+                                        Value="{DynamicResource TextControlButtonBorderBrush}" />
                                 <Setter TargetName="ContentPresenter"
                                         Property="TextElement.Foreground"
                                         Value="{DynamicResource RepeatButtonForegroundDisabled}" />
