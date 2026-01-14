@@ -4616,7 +4616,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 if (m_rootSplitView is { } splitView)
                 {
-                    double width = GetPaneToggleButtonWidth();
+                    double width = TemplateSettings.PaneToggleButtonWidth;
                     double togglePaneButtonWidth = width;
 
                     if (ShouldShowBackButton() && splitView.DisplayMode == SplitViewDisplayMode.Overlay)

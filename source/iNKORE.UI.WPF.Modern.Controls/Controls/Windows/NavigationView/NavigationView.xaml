@@ -1477,7 +1477,6 @@
                                 <Condition Property="DisplayMode" Value="Compact" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="TogglePaneButton" Property="HorizontalAlignment" Value="Center" />
-                            <Setter TargetName="TogglePaneButton" Property="Padding" Value="{DynamicResource NavigationViewItemButtonNormalMargin}" />
                         </MultiTrigger>
 
                         <MultiTrigger>
@@ -1486,7 +1485,6 @@
                                 <Condition Property="DisplayMode" Value="Expanded" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="TogglePaneButton" Property="HorizontalAlignment" Value="Center" />
-                            <Setter TargetName="TogglePaneButton" Property="Padding" Value="{DynamicResource NavigationViewItemButtonNormalMargin}" />
                         </MultiTrigger>
 
                         <MultiTrigger>
