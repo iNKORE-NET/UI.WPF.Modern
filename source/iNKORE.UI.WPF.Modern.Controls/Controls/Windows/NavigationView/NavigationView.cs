@@ -1915,18 +1915,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             var templateSettings = GetTemplateSettings();
 
-            double newButtonWidths;
-            {
-                double init()
-                {
-                    if (DisplayMode == NavigationViewDisplayMode.Minimal)
-                    {
-                        return c_paneToggleButtonWidth;
-                    }
-                    return CompactPaneLength;
-                }
-                newButtonWidths = init();
-            }
+            double newButtonWidths = CompactPaneLength;
 
             templateSettings.PaneToggleButtonWidth = newButtonWidths;
             templateSettings.SmallerPaneToggleButtonWidth = Math.Max(0, newButtonWidths-8);
