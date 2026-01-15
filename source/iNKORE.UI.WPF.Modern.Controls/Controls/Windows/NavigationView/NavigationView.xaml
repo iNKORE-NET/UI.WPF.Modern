@@ -1471,39 +1471,6 @@
                             <Setter TargetName="TopNavOverflowButton" Property="Style" Value="{DynamicResource NavigationViewOverflowButtonNoLabelStyleWhenPaneOnTop}" />
                         </Trigger>
 
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsPaneOpen" Value="False" />
-                                <Condition Property="DisplayMode" Value="Compact" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="TogglePaneButton" Property="HorizontalAlignment" Value="Center" />
-                        </MultiTrigger>
-
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsPaneOpen" Value="False" />
-                                <Condition Property="DisplayMode" Value="Expanded" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="TogglePaneButton" Property="HorizontalAlignment" Value="Center" />
-                        </MultiTrigger>
-
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="PaneTitle" Value="" />
-                                <Condition Property="DisplayMode" Value="Compact" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="TogglePaneButton" Property="Padding" Value="0" />
-                            <Setter TargetName="TogglePaneButton" Property="HorizontalAlignment" Value="Center" />
-                        </MultiTrigger>
-
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="PaneTitle" Value="" />
-                                <Condition Property="DisplayMode" Value="Expanded" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="TogglePaneButton" Property="Padding" Value="0" />
-                            <Setter TargetName="TogglePaneButton" Property="HorizontalAlignment" Value="Center" />
-                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
