@@ -1,10 +1,5 @@
 ﻿using iNKORE.UI.WPF.Controls;
 using iNKORE.UI.WPF.Modern.Common.IconKeys;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,14 +7,51 @@ namespace iNKORE.UI.WPF.Modern.Controls
 {
     public class IconAndText : ContentControl
     {
+        private FontIcon _fontIcon;
+
         static IconAndText()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(IconAndText), new FrameworkPropertyMetadata(typeof(IconAndText)));
         }
 
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            _fontIcon = GetTemplateChild("Icon") as FontIcon;
+            UpdateIconElement();
+        }
+
         #region Properties
 
-        public static readonly DependencyProperty IconProperty = FontIcon.IconProperty.AddOwner(typeof(IconAndText));
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register(
+                nameof(Icon),
+                typeof(FontIconData?),
+                typeof(IconAndText),
+                new FrameworkPropertyMetadata(
+                    null,
+                    FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure,
+                    OnIconChanged
+                )
+            );
+
+        private static void OnIconChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is IconAndText iconAndText)
+            {
+                iconAndText.UpdateIconElement();
+            }
+        }
+
+        private void UpdateIconElement()
+        {
+            if (_fontIcon != null)
+            {
+                _fontIcon.Icon = Icon;
+            }
+        }
+
         public FontIconData? Icon
         {
             get { return (FontIconData?)GetValue(IconProperty); }
