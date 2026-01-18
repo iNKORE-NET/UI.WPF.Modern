@@ -26,6 +26,11 @@
                     </Grid>
                 </Expander.Content>
             </Expander>
+            <ui:IconAndText x:Name="s1" Icon="{x:Static ui:SegoeFluentIcons.Home}" Content="Home" />
+            <ui:FontIcon x:Name="s2" Icon="{x:Static ui:SegoeFluentIcons.Home}"/>
+            <Button Click="Button_Click">
+                Update Icon
+            </Button>
         </ikw:SimpleStackPanel>
     </Canvas>
 </Window>

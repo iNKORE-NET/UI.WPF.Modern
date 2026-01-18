@@ -4,6 +4,7 @@
 using iNKORE.UI.WPF.Modern.Common.IconKeys;
 using iNKORE.UI.WPF.Modern.Controls;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
@@ -30,15 +31,7 @@ namespace iNKORE.UI.WPF.Modern.Common
                 nameof(FontFamily),
                 typeof(FontFamily),
                 typeof(FontIconSource),
-                new PropertyMetadata(new FontFamily(FontIcon.SegoeIconsFontFamilyName), FontFamilyProperty_ValueChanged));
-
-        private static void FontFamilyProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (d is IFontIconClass cls)
-            {
-                UpdateIconData(cls, false);
-            }
-        }
+                new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the font used to display the icon glyph.
@@ -46,9 +39,9 @@ namespace iNKORE.UI.WPF.Modern.Common
         /// <returns>
         /// The font used to display the icon glyph.
         /// </returns>
-        public FontFamily FontFamily
+        public FontFamily? FontFamily
         {
-            get => (FontFamily)GetValue(FontFamilyProperty);
+            get => (FontFamily?)GetValue(FontFamilyProperty);
             set => SetValue(FontFamilyProperty, value);
         }
 
@@ -128,15 +121,7 @@ namespace iNKORE.UI.WPF.Modern.Common
                 nameof(Glyph),
                 typeof(string),
                 typeof(FontIconSource),
-                new PropertyMetadata(string.Empty, GlyphProperty_ValueChanged));
-
-        private static void GlyphProperty_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if(d is IFontIconClass cls)
-            {
-                UpdateIconData(cls, false);
-            }
-        }
+                new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the character code that identifies the icon glyph.
@@ -144,9 +129,9 @@ namespace iNKORE.UI.WPF.Modern.Common
         /// <returns>
         /// The hexadecimal character code for the icon glyph.
         /// </returns>
-        public string Glyph
+        public string? Glyph
         {
-            get => (string)GetValue(GlyphProperty);
+            get => (string?)GetValue(GlyphProperty);
             set => SetValue(GlyphProperty, value);
         }
 
@@ -158,7 +143,7 @@ namespace iNKORE.UI.WPF.Modern.Common
                 nameof(Icon),
                 typeof(FontIconData?),
                 typeof(FontIconSource),
-                new PropertyMetadata(null, (d, e) => UpdateIconData(d as IFontIconClass, true)));
+                new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the wrapped icon, which includes <see cref="Glyph"/> and <see cref="FontFamily"/>. You can get these instances from <see cref="iNKORE.UI.WPF.Modern.Common.IconKeys"/> namespace.
@@ -169,44 +154,6 @@ namespace iNKORE.UI.WPF.Modern.Common
             get => (FontIconData?)GetValue(IconProperty);
             set => SetValue(IconProperty, value);
         }
-
-
-        public static bool UpdateIconData(IFontIconClass instance, bool preserveData)
-        {
-            bool isChanged = false;
-
-            if (instance.Icon.HasValue)
-            {
-                var icon = instance.Icon.Value;
-
-                if (instance.Glyph != icon.Glyph)
-                {
-                    if (preserveData)
-                        instance.Glyph = icon.Glyph;
-                    else
-                    {
-                        instance.Icon = null;
-                        return true;
-                    }
-                    isChanged = true;
-                }
-                if (icon.FontFamily != null && icon.FontFamily != instance.FontFamily)
-                {
-                    if (preserveData)
-                        instance.FontFamily = icon.FontFamily;
-                    else
-                    {
-                        instance.Icon = null;
-                        return true;
-                    }
-
-                    isChanged = true;
-                }
-            }
-
-            return isChanged;
-        }
-
 
 
         /// <inheritdoc/>
