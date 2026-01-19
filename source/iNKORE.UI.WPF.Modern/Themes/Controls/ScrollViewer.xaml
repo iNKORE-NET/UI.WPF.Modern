@@ -203,7 +203,8 @@
                                     CanHorizontallyScroll="False"
                                     CanVerticallyScroll="False"
                                     Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    RecognizesAccessKey="False" />
                             </Border>
                             <ScrollBar
                                 x:Name="PART_VerticalScrollBar"
@@ -238,7 +239,8 @@
             <ScrollContentPresenter
                 x:Name="ScrollContentPresenter"
                 Margin="{TemplateBinding Padding}"
-                ContentTemplate="{TemplateBinding ContentTemplate}" />
+                ContentTemplate="{TemplateBinding ContentTemplate}"
+                RecognizesAccessKey="False" />
         </Grid>
     </ControlTemplate>
 
