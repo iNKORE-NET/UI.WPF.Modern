@@ -298,14 +298,9 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 return target;
             }
 
-            var animationTargetName = GetToAnimateControlName(expander);
-
-            if (expander.Template?.FindName(animationTargetName, expander) is not FrameworkElement toAnimateControl)
-            {
-                expander.ApplyTemplate();
-                toAnimateControl = expander.Template?.FindName(animationTargetName, expander) as FrameworkElement ??
-                    throw new ArgumentNullException("ToAnimateControl", $"Couldn't find the part to animate either update the ExpanderAnimationsHelper.ToAnimateControlName or rename the animation target part to default: {DefaultAnimationTargetPartName}");
-            }
+            expander.ApplyTemplate();
+            var toAnimateControl = expander.Template?.FindName(GetToAnimateControlName(expander), expander) as FrameworkElement ??
+                throw new ArgumentNullException("ToAnimateControl", $"Couldn't find the part to animate either update the ExpanderAnimationsHelper.ToAnimateControlName or rename the animation target part to default: {DefaultAnimationTargetPartName}");
 
             expander.SetValue(CachedToAnimateControlProperty, toAnimateControl);
             return toAnimateControl;
