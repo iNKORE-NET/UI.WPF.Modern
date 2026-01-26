@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media;
@@ -17,11 +16,31 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         public static void SetToAnimateControlName(Expander element, string value) =>
             element.SetValue(ToAnimateControlNameProperty, value);
 
+        private const string DefaultAnimationTargetPartName = "ExpanderContent";
         public static readonly DependencyProperty ToAnimateControlNameProperty = DependencyProperty.RegisterAttached(
             "ToAnimateControlName",
             typeof(string),
             typeof(ExpanderAnimationsHelper),
-            new PropertyMetadata("ExpanderContent"));
+            new PropertyMetadata(DefaultAnimationTargetPartName, OnToAnimateControlNameChanged));
+
+        private static void OnToAnimateControlNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is Expander expander)
+            {
+                expander.SetValue(CachedToAnimateControlProperty, null);
+            }
+        }
+
+        #endregion
+
+        #region CachedToAnimateControl
+
+        private static readonly DependencyProperty CachedToAnimateControlProperty =
+            DependencyProperty.RegisterAttached(
+                "CachedToAnimateControl",
+                typeof(FrameworkElement),
+                typeof(ExpanderAnimationsHelper),
+                new PropertyMetadata(null));
 
         #endregion
 
@@ -176,6 +195,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         {
             var toAnimateControl = GetToAnimateControl(expander);
             toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
+            toAnimateControl.Visibility = Visibility.Visible;
+
             UpdateLayout(toAnimateControl);
 
             if (toAnimateControl.RenderTransform is not TranslateTransform translateTransform)
@@ -270,7 +291,24 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             contentControl.UpdateLayout();
         }
 
-        private static FrameworkElement GetToAnimateControl(Expander expander) =>
-            expander.Template?.FindName(GetToAnimateControlName(expander), expander) as FrameworkElement;
+        private static FrameworkElement GetToAnimateControl(Expander expander)
+        {
+            if (expander.GetValue(CachedToAnimateControlProperty) is FrameworkElement target)
+            {
+                return target;
+            }
+
+            var animationTargetName = GetToAnimateControlName(expander);
+
+            if (expander.Template?.FindName(animationTargetName, expander) is not FrameworkElement toAnimateControl)
+            {
+                expander.ApplyTemplate();
+                toAnimateControl = expander.Template?.FindName(animationTargetName, expander) as FrameworkElement ??
+                    throw new ArgumentNullException("ToAnimateControl", $"Couldn't find the Border part to animate either update the ExpanderAnimationsHelper.ToAnimateControlName or rename the animation target part to default: {DefaultAnimationTargetPartName}");
+            }
+
+            expander.SetValue(CachedToAnimateControlProperty, toAnimateControl);
+            return toAnimateControl;
+        }
     }
 }
