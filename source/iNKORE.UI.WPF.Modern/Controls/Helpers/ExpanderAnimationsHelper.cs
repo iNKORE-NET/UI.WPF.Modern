@@ -304,7 +304,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             {
                 expander.ApplyTemplate();
                 toAnimateControl = expander.Template?.FindName(animationTargetName, expander) as FrameworkElement ??
-                    throw new ArgumentNullException("ToAnimateControl", $"Couldn't find the Border part to animate either update the ExpanderAnimationsHelper.ToAnimateControlName or rename the animation target part to default: {DefaultAnimationTargetPartName}");
+                    throw new ArgumentNullException("ToAnimateControl", $"Couldn't find the part to animate either update the ExpanderAnimationsHelper.ToAnimateControlName or rename the animation target part to default: {DefaultAnimationTargetPartName}");
             }
 
             expander.SetValue(CachedToAnimateControlProperty, toAnimateControl);
