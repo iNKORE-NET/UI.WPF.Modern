@@ -17,30 +17,12 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             element.SetValue(ToAnimateControlNameProperty, value);
 
         private const string DefaultAnimationTargetPartName = "ExpanderContent";
+
         public static readonly DependencyProperty ToAnimateControlNameProperty = DependencyProperty.RegisterAttached(
             "ToAnimateControlName",
             typeof(string),
             typeof(ExpanderAnimationsHelper),
-            new PropertyMetadata(DefaultAnimationTargetPartName, OnToAnimateControlNameChanged));
-
-        private static void OnToAnimateControlNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (d is Expander expander)
-            {
-                expander.SetValue(CachedToAnimateControlProperty, null);
-            }
-        }
-
-        #endregion
-
-        #region CachedToAnimateControl
-
-        private static readonly DependencyProperty CachedToAnimateControlProperty =
-            DependencyProperty.RegisterAttached(
-                "CachedToAnimateControl",
-                typeof(FrameworkElement),
-                typeof(ExpanderAnimationsHelper),
-                new PropertyMetadata(null));
+            new PropertyMetadata(DefaultAnimationTargetPartName));
 
         #endregion
 
@@ -293,17 +275,9 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         private static FrameworkElement GetToAnimateControl(Expander expander)
         {
-            if (expander.GetValue(CachedToAnimateControlProperty) is FrameworkElement target)
-            {
-                return target;
-            }
-
             expander.ApplyTemplate();
-            var toAnimateControl = expander.Template?.FindName(GetToAnimateControlName(expander), expander) as FrameworkElement ??
-                throw new ArgumentNullException("ToAnimateControl", $"Couldn't find the part to animate either update the ExpanderAnimationsHelper.ToAnimateControlName or rename the animation target part to default: {DefaultAnimationTargetPartName}");
-
-            expander.SetValue(CachedToAnimateControlProperty, toAnimateControl);
-            return toAnimateControl;
+            return expander.Template?.FindName(GetToAnimateControlName(expander), expander) as FrameworkElement ??
+                   throw new InvalidOperationException($"Couldn't find the part to animate. Either update ExpanderAnimationsHelper.ToAnimateControlName, or rename the animation target part to the default: {DefaultAnimationTargetPartName}");
         }
     }
 }
