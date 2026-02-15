@@ -78,7 +78,7 @@
                             </ResourceDictionary>
 
                         </ControlTemplate.Resources>
-                        <ui:ElevationBorder x:Name="PART_RootBorder"
+                        <Border x:Name="PART_RootBorder"
                                MinWidth="{TemplateBinding MinWidth}"
                                MinHeight="{TemplateBinding MinHeight}"
                                MaxWidth="{TemplateBinding MaxWidth}"
@@ -88,7 +88,8 @@
                                Background="{TemplateBinding Background}"
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
-                               CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}">
+                               CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}"
+                               ui:FocusVisualHelper.IsTemplateFocusTarget="True">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="CommonStates">
                                     <ui:VisualStateGroupListener.Listener>
@@ -382,7 +383,7 @@
                                           ToolTipService.ToolTip="{TemplateBinding ActionIconToolTip}" />
                                 </Viewbox>
                             </Grid>
-                        </ui:ElevationBorder>
+                        </Border>
 
 
                         <ControlTemplate.Triggers>
