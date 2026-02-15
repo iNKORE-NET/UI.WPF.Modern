@@ -126,7 +126,7 @@
                                 <ItemsPresenter
                                     Grid.IsSharedSizeScope="true"
                                     KeyboardNavigation.DirectionalNavigation="Cycle"
-                                    KeyboardNavigation.TabNavigation="Cycle"
+                                    KeyboardNavigation.TabNavigation="None"
                                     RenderOptions.ClearTypeHint="Enabled"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             </local:ScrollViewerEx>
@@ -342,7 +342,7 @@
                                 <ItemsPresenter
                                     Grid.IsSharedSizeScope="true"
                                     KeyboardNavigation.DirectionalNavigation="Cycle"
-                                    KeyboardNavigation.TabNavigation="Cycle"
+                                    KeyboardNavigation.TabNavigation="None"
                                     RenderOptions.ClearTypeHint="Enabled"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             </local:ScrollViewerEx>
@@ -402,6 +402,7 @@
         <Setter Property="Padding" Value="{DynamicResource MenuFlyoutItemThemePadding}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
@@ -416,7 +417,6 @@
                 <Setter Property="BorderThickness" Value="{DynamicResource MenuBarItemBorderThickness}" />
                 <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type MenuItem}, ResourceId=TopLevelHeaderTemplateKey}}" />
                 <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                <Setter Property="IsTabStop" Value="True" />
                 <Setter Property="Header" Value="Item" />
                 <Setter Property="Height" Value="{DynamicResource MenuBarHeight}" />
             </Trigger>
@@ -426,7 +426,6 @@
                 <Setter Property="BorderThickness" Value="{DynamicResource MenuBarItemBorderThickness}" />
                 <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type MenuItem}, ResourceId=TopLevelItemTemplateKey}}" />
                 <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                <Setter Property="IsTabStop" Value="True" />
                 <Setter Property="Header" Value="Item" />
                 <Setter Property="Height" Value="{DynamicResource MenuBarHeight}" />
             </Trigger>
