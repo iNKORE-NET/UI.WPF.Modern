@@ -106,9 +106,9 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             if (GetSplitView() is { } splitView)
             {
-                splitView.IsPaneOpenChanged += OnSplitViewPropertyChanged;
-                splitView.DisplayModeChanged += OnSplitViewPropertyChanged;
-                splitView.CompactPaneLengthChanged += OnSplitViewPropertyChanged;
+                m_splitViewIsPaneOpenChangedRevoker = new(splitView, OnSplitViewPropertyChanged);
+                m_splitViewDisplayModeChangedRevoker = new(splitView, OnSplitViewPropertyChanged);
+                m_splitViewCompactPaneLengthChangedRevoker = new(splitView, OnSplitViewPropertyChanged);
 
                 UpdateCompactPaneLength();
                 UpdateIsClosedCompact();
