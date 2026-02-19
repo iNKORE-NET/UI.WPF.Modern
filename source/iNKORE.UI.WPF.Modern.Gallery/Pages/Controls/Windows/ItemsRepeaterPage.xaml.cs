@@ -1,4 +1,4 @@
-﻿using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Controls;
 using iNKORE.UI.WPF.Modern.Gallery.Helpers;
 using System;
 using System.Collections.Generic;
@@ -38,6 +38,19 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             // UpdateExampleCode();
             VStackBtn.RaiseEvent(new RoutedEventArgs(RadioButton.ClickEvent));
             Ex2_CustomLayout.RaiseEvent(new RoutedEventArgs(RadioButton.ClickEvent));
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FocusSelectedTabHeader();
+        }
+
+        private void FocusSelectedTabHeader()
+        {
+            if (tabControl.ItemContainerGenerator.ContainerFromIndex(tabControl.SelectedIndex) is TabItem tabItem)
+            {
+                tabItem.Focus();
+            }
         }
 
         ~ItemsRepeaterPage()
