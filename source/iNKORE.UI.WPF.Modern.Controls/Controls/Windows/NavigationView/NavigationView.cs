@@ -1915,18 +1915,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             var templateSettings = GetTemplateSettings();
 
-            double newButtonWidths;
-            {
-                double init()
-                {
-                    if (DisplayMode == NavigationViewDisplayMode.Minimal)
-                    {
-                        return c_paneToggleButtonWidth;
-                    }
-                    return CompactPaneLength;
-                }
-                newButtonWidths = init();
-            }
+            double newButtonWidths = CompactPaneLength;
 
             templateSettings.PaneToggleButtonWidth = newButtonWidths;
             templateSettings.SmallerPaneToggleButtonWidth = Math.Max(0, newButtonWidths-8);
@@ -4616,7 +4605,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 if (m_rootSplitView is { } splitView)
                 {
-                    double width = GetPaneToggleButtonWidth();
+                    double width = TemplateSettings.PaneToggleButtonWidth;
                     double togglePaneButtonWidth = width;
 
                     if (ShouldShowBackButton() && splitView.DisplayMode == SplitViewDisplayMode.Overlay)
@@ -4956,25 +4945,21 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 if (setPaneTitleHolderFrameworkElementMargin || setPaneToggleButtonMargin)
                 {
                     var thickness = ThicknessHelper.FromLengths(0, 0, 0, 0);
-                    var thicknessToggleButton = ThicknessHelper.FromLengths(4, 2, 4, 2);
 
                     if (ShouldShowBackButton())
                     {
                         if (IsOverlay())
                         {
                             thickness = ThicknessHelper.FromLengths(c_backButtonWidth, 0, 0, 0);
-                            thicknessToggleButton = thickness;
                         }
                         else
                         {
                             thickness = ThicknessHelper.FromLengths(0, c_backButtonHeight, 0, 0);
-                            thicknessToggleButton = thickness;
                         }
                     }
                     else if (ShouldShowCloseButton() && IsOverlay())
                     {
                         thickness = ThicknessHelper.FromLengths(c_backButtonWidth, 0, 0, 0);
-                        thicknessToggleButton = thickness;
                     }
 
                     if (setPaneTitleHolderFrameworkElementMargin)
@@ -4985,7 +4970,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     else
                     {
                         // The PaneHeader is hosted by PaneToggleButton
-                        paneToggleButton.Margin = thicknessToggleButton;
+                        paneToggleButton.Margin = thickness;
                     }
                 }
             }
