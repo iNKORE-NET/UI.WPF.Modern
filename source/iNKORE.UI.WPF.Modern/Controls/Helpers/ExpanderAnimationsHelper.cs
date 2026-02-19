@@ -77,26 +77,22 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
                 return;
             }
 
-            if (e.NewValue is not true)
-            {
-                expander.Expanded -= OnExpanderExpandedOrCollapsed;
-                expander.Collapsed -= OnExpanderExpandedOrCollapsed;
-                return;
-            }
+			if (e.NewValue is true)
+			{
+				if (expander.IsLoaded)
+				{
+					InitializeExpanderState(expander);
+				}
+				else
+				{
+					expander.Loaded += TriggerExpandAnimationOnLoad;
+				}
+			}
 
-            expander.Expanded += OnExpanderExpandedOrCollapsed;
-            expander.Collapsed += OnExpanderExpandedOrCollapsed;
+			expander.Expanded += OnExpanderExpandedOrCollapsed;
+			expander.Collapsed += OnExpanderExpandedOrCollapsed;
 
-            if (expander.IsLoaded)
-            {
-                InitializeExpanderState(expander);
-            }
-            else
-            {
-                expander.Loaded += TriggerExpandAnimationOnLoad;
-            }
-
-            void TriggerExpandAnimationOnLoad(object sender, RoutedEventArgs routedEventArgs)
+			void TriggerExpandAnimationOnLoad(object sender, RoutedEventArgs routedEventArgs)
             {
                 InitializeExpanderState(expander);
                 expander.Loaded -= TriggerExpandAnimationOnLoad;
@@ -105,13 +101,19 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
 
         private static void OnExpanderExpandedOrCollapsed(object sender, RoutedEventArgs e)
         {
-            if (sender is not Expander expander)
+            if (sender is not Expander expander || !expander.IsLoaded)
             {
                 return;
             }
 
-            RunExpanderAnimation(expander);
-        }
+			if (GetIsEnabled(expander))
+				RunExpanderAnimation(expander);
+			else
+			{
+				var toAnimateControl = GetToAnimateControl(expander);
+				toAnimateControl?.Visibility = expander.IsExpanded ? Visibility.Visible : Visibility.Collapsed;
+			}
+		}
 
         #endregion
 
@@ -176,6 +178,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         {
             var toAnimateControl = GetToAnimateControl(expander);
             toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
+            toAnimateControl.Visibility = Visibility.Visible;
             UpdateLayout(toAnimateControl);
 
             if (toAnimateControl.RenderTransform is not TranslateTransform translateTransform)
