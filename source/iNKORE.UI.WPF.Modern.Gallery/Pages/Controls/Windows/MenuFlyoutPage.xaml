@@ -1,4 +1,4 @@
-﻿<ui:Page
+<ui:Page
     x:Class="iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows.MenuFlyoutPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -133,6 +133,30 @@
                         <Separator />
                         <MenuItem Header="Rename" />
                         <MenuItem Header="Select" />
+                    </ui:MenuFlyout>
+                </ui:FlyoutService.Flyout>
+            </Button>
+        </local:ControlExample>
+        <local:ControlExample
+            x:Name="Example6"
+            FontFamily="Segoe UI"
+            HeaderText="A MenuFlyout with RadioMenuFlyoutItems"
+            >
+            <Button x:Name="Control6" Content="Options">
+                <ui:FlyoutService.Flyout>
+                    <ui:MenuFlyout>
+                        <ui:RadioMenuItem Header="Landscape" GroupName="OrientationGroup"/>
+                        <ui:RadioMenuItem
+                            Header="Portrait"
+                             IsChecked="True"
+                            GroupName="OrientationGroup" />
+                        <Separator />
+                        <ui:RadioMenuItem Header="Small icons" GroupName="SizeGroup" />
+                        <ui:RadioMenuItem
+                            Header="Medium icons"
+                             IsChecked="True"
+                            GroupName="SizeGroup" />
+                        <ui:RadioMenuItem Header="Large icons" GroupName="SizeGroup" />
                     </ui:MenuFlyout>
                 </ui:FlyoutService.Flyout>
             </Button>
