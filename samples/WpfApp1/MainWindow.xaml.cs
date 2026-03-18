@@ -148,5 +148,12 @@ namespace WpfApp1
         {
             MessageBox.Show("clicked");
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            s1.Icon = s1.Icon.Value.Glyph == SegoeFluentIcons.Home.Glyph
+                   ? SegoeFluentIcons.Delete : SegoeFluentIcons.Home;
+            s2.Icon = s1.Icon;
+        }
     }
 }

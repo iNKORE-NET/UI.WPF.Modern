@@ -1,8 +1,11 @@
 ﻿using iNKORE.UI.WPF.Modern.Common;
 using iNKORE.UI.WPF.Modern.Common.IconKeys;
+using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 
 namespace iNKORE.UI.WPF.Modern.Controls
@@ -46,7 +49,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 typeof(FontFamily),
                 typeof(FontIcon),
                 new FrameworkPropertyMetadata(
-                    new FontFamily(SegoeIconsFontFamilyName),
+                    null,
                     OnFontFamilyChanged));
 
         /// <summary>
@@ -55,21 +58,31 @@ namespace iNKORE.UI.WPF.Modern.Controls
         /// <returns>The font used to display the icon glyph.</returns>
         [Bindable(true), Category("Appearance")]
         [Localizability(LocalizationCategory.Font)]
-        public FontFamily FontFamily
+        public FontFamily? FontFamily
         {
-            get { return (FontFamily)GetValue(FontFamilyProperty); }
+            get { return (FontFamily?)GetValue(FontFamilyProperty); }
             set { SetValue(FontFamilyProperty, value); }
         }
 
+        protected static readonly DependencyPropertyKey ActualFontFamilyPropertyKey =
+            DependencyProperty.RegisterReadOnly(
+                nameof(ActualFontFamily),
+                typeof(FontFamily),
+                typeof(FontIcon),
+                new FrameworkPropertyMetadata(new FontFamily(SegoeIconsFontFamilyName)));
+
+        public static readonly DependencyProperty ActualFontFamilyProperty = ActualFontFamilyPropertyKey.DependencyProperty;
+
+        public FontFamily ActualFontFamily
+        {
+            get { return (FontFamily)GetValue(ActualFontFamilyProperty); }
+            private set { SetValue(ActualFontFamilyPropertyKey, value); }
+        }
+
+
         private static void OnFontFamilyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var fontIcon = (FontIcon)d;
-            if (fontIcon._textBlock != null)
-            {
-                fontIcon._textBlock.FontFamily = (FontFamily)e.NewValue;
-            }
-
-            FontIconSource.UpdateIconData(fontIcon, false);
+            (d as FontIcon)?.UpdateIconData();
         }
 
         /// <summary>
@@ -177,16 +190,31 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 nameof(Glyph),
                 typeof(string),
                 typeof(FontIcon),
-                new FrameworkPropertyMetadata(string.Empty, OnGlyphChanged));
+                new FrameworkPropertyMetadata(null, OnGlyphChanged));
 
         /// <summary>
         /// Gets or sets the character code that identifies the icon glyph.
         /// </summary>
         /// <returns>The hexadecimal character code for the icon glyph.</returns>
-        public string Glyph
+        public string? Glyph
         {
-            get => (string)GetValue(GlyphProperty);
+            get => (string?)GetValue(GlyphProperty);
             set => SetValue(GlyphProperty, value);
+        }
+
+        protected static readonly DependencyPropertyKey ActualGlyphPropertyKey =
+            DependencyProperty.RegisterReadOnly(
+                nameof(ActualGlyph),
+                typeof(string),
+                typeof(FontIcon),
+                new FrameworkPropertyMetadata(string.Empty));
+
+        public static readonly DependencyProperty ActualGlyphProperty = ActualGlyphPropertyKey.DependencyProperty;
+
+        public string ActualGlyph
+        {
+            get => (string)GetValue(ActualGlyphProperty);
+            private set => SetValue(ActualGlyphPropertyKey, value);
         }
 
         /// <summary>
@@ -197,7 +225,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 nameof(Icon),
                 typeof(FontIconData?),
                 typeof(FontIcon),
-                new PropertyMetadata(null, (d, e) => FontIconSource.UpdateIconData(d as IFontIconClass, true)));
+                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure, OnIconChanged));
 
         /// <summary>
         /// Gets or sets the wrapped icon, which includes <see cref="Glyph"/> and <see cref="FontFamily"/>. You can get these instances from <see cref="iNKORE.UI.WPF.Modern.Common.IconKeys"/> namespace.
@@ -218,8 +246,20 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 fontIcon._textBlock.Text = (string)e.NewValue;
             }
 
-            FontIconSource.UpdateIconData(fontIcon, false);
+            (d as FontIcon)?.UpdateIconData();
         }
+
+        private static void OnIconChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as FontIcon)?.UpdateIconData();
+        }
+
+        private void UpdateIconData()
+        {
+            this.ActualGlyph = this.Glyph ?? this.Icon?.Glyph ?? null;
+            this.ActualFontFamily = this.FontFamily ?? this.Icon?.FontFamily ?? new FontFamily(SegoeIconsFontFamilyName);
+        }
+
 
         private protected override void InitializeChildren()
         {
@@ -229,12 +269,14 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
                 TextAlignment = TextAlignment.Center,
-                FontFamily = FontFamily,
-                FontSize = FontSize,
-                FontStyle = FontStyle,
-                FontWeight = FontWeight,
-                Text = Glyph
             };
+
+            // Setup bindings
+            _textBlock.SetBinding(TextBlock.FontFamilyProperty, new Binding { Path = new PropertyPath(nameof(ActualFontFamily)), Source = this });
+            _textBlock.SetBinding(TextBlock.FontSizeProperty, new Binding { Path = new PropertyPath(nameof(FontSize)), Source = this });
+            _textBlock.SetBinding(TextBlock.FontStyleProperty, new Binding { Path = new PropertyPath(nameof(FontStyle)), Source = this });
+            _textBlock.SetBinding(TextBlock.FontWeightProperty, new Binding { Path = new PropertyPath(nameof(FontWeight)), Source = this });
+            _textBlock.SetBinding(TextBlock.TextProperty, new Binding { Path = new PropertyPath(nameof(ActualGlyph)), Source = this });
 
             if (ShouldInheritForegroundFromVisualParent)
             {
@@ -287,12 +329,12 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 FontFamily = new FontFamily(SegoeIconsFontFamilyName);
             }
             iconSource.FontFamily = FontFamily;
+            iconSource.Icon = Icon;
 
             iconSource.FontWeight = FontWeight;
             iconSource.FontStyle = FontStyle;
 
             return iconSource;
-
         }
     }
 }

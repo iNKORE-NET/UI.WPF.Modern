@@ -9,7 +9,7 @@
 </h1>
 
 <p align="center">
-    <strong>AKA. iUWM</strong>.
+    <strong>a.k.a. iUWM</strong>.
     Give us a star if you like this!
 </p>
 
@@ -39,7 +39,7 @@
 
 <br align="center">
 
-# ✨ Features
+## ✨ Features
 
 - Modern styles and new features for the majority of the stock WPF controls.
 
@@ -51,7 +51,7 @@
 
 - Targets .NET Framework, .NET 6.0 or higher. Runs on Windows 7 or higher (Windows 10 or higher recommended). *(We will never leave Windows 7 users behind until the market **FULLY** says goodbye to it)*
 
-# 🤔 How to use
+## 🤔 How to use
 
 - Check out the [Getting Started](https://docs.inkore.net/ui-wpf-modern/onboarding) guide on our documentation site.
 
@@ -82,7 +82,7 @@ welcome your help!
 
 - This project is named `iNKORE.UI.WPF.Modern`. You can call it as `iUWM` for short if convenient. FYI, iNKORE is the name of the studio (company) that maintains this project. THIS PROJECT is **NOT** called ~~iNKORE~~, ~~iNKORE UI~~, or anything else.
 
-# 🙋🏻‍♂️ Contribution
+## 🙋🏻‍♂️ Contribution
 
 - Want to contribute? The team encourages community feedback and contributions. If the project is not working properly, please file a report. We welcome any issues and pull requests submitted on GitHub following our contribution guidelines.
   
@@ -92,21 +92,26 @@ welcome your help!
 
 - Sponsor us at https://www.inkore.net/donate to help us keep the project alive and well. Your support is greatly appreciated!
 
-> [!WARNING]
->
-> ## 以下留言致以来自中国大陆的开发者：
->
-> For English speakers, please ignore this message.
->
-> **请不要继续在 issues 板块下发表任何无意义且无法促进此项目持续发展的内容**。在提交 issue 之前，请仔细思考你要发布的内容**是否合理**，如果不能，请不要浪费其他人的时间；同时请考虑**开发者能否修复/实现**，如果不能，请自己提交 PR 而不是 issue。
-> 在交流时请尊重他人，不要使用不文明用语。请不要催促或强求开发者和其他贡献者，他们是一群热爱开源的志愿者，不是你的私人雇员！
->
-> 如果你是 WPF 或 C# 的**初学者**，我们**不建议**你使用本项目。使用 iUWM 通常要求开发者有较强的知识体系和开发经验，对于新手，提升自己的能力更重要。
-> 你可以寻找一些入门教程学习初步知识。对于 UI，我们更建议使用一些更加容易入手的库。提升个人能力也有助于在将来更好地让 iUWM 服务于你，完成更高质量的项目。
->
-> 现在我们已经不再接受使用新的任何使用除英语 (美国) 之外的任何语言提交的任何议题 (包括但不限于 Issue，PR 和 Discussion)！**对于使用中文或其它语言的议题和讨论将被关闭或删除！如果不会说英语，请使用 Google Translator 等翻译工具自行翻译！**
 
-# 🙏🏻 Special Thanks to
+## 🌐 Community
+
+Join our community to chat instantly with the developers, keep up with the news and develop together!
+Every hive thrives on harmony. Before you join, make sure to skim our [Community Guidelines](https://www.inkore.net/about/community#rules-common).
+
+Follow us across our social media platforms to stay updated on our latest news, products, and behind-the-scenes content!
+
+https://www.inkore.net/about/socials
+
+Open [an issue](https://github.com/iNKORE-NET/UI.WPF.Modern/issues/new) or [discussion](https://github.com/iNKORE-NET/UI.WPF.Modern/discussions) to deal with bugs and suggest new features.
+
+
+## 🕹️ Donate & Support
+
+Your support is crucial for us to keep creating amazing free products and open-source projects. This isn't charity - it's a partnership. Your LOVE and money goes directly into our FREE and OPEN-SOURCE projects. Let's build a better creative future, together. By supporting us with a voluntary donation. Even a small amount makes us jumping happy through our apartment. Just donate as much as you value our work.
+
+Sponsor us here: <https://www.inkore.net/donate>
+
+## 🙏🏻 Special Thanks to
 
 - All contributors of projects listed in the credits
 
@@ -118,7 +123,7 @@ welcome your help!
 
   More info: https://docs.inkore.net/blog/2024/09/17/reflection-interest-in-opensource-community)
 
-# ⚽ Credits
+## ⚽ Credits
 
 The project is maintained by Yoojun Zhou from iNKORE Studios and other contributors.
 Please check LICENSE.md for more information about the license.
