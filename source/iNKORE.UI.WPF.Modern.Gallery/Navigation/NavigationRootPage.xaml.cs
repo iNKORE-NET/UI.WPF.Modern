@@ -368,7 +368,11 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             // Update the selected NavigationViewItem based on the page type
             NavigationViewItem newItem = null;
 
-            if (rootFrame.SourcePageType == typeof(AllControlsPage))
+            if (rootFrame.SourcePageType == typeof(SettingsPage))
+            {
+                _lastItem = typeof(SettingsPage);
+            }
+            else if (rootFrame.SourcePageType == typeof(AllControlsPage))
             {
                 _lastItem = rootFrame.SourcePageType;
                 newItem = _allControlsMenuItem;
@@ -377,6 +381,10 @@ namespace iNKORE.UI.WPF.Modern.Gallery
             {
                 _lastItem = rootFrame.SourcePageType;
                 newItem = _newControlsMenuItem;
+            }
+            else if (rootFrame.SourcePageType == typeof(SearchResultsPage))
+            {
+                _lastItem = typeof(SearchResultsPage);
             }
             else if (rootFrame.SourcePageType == typeof(SectionPage))
             {
