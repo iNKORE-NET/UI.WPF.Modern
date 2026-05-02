@@ -16,6 +16,8 @@
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
+    <TextAlignment x:Key="DefaultMenuFlyoutItemTextAlignment">Left</TextAlignment>
+    
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement}, ResourceId=MenuScrollViewer}" TargetType="ScrollViewer">
         <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
         <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
@@ -202,6 +204,7 @@
                 <local:ContentPresenterEx
                     x:Name="ContentPresenter"
                     Grid.Column="2"
+                    TextBlock.TextAlignment="{DynamicResource DefaultMenuFlyoutItemTextAlignment}"
                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                     ContentSource="Header"
@@ -293,6 +296,7 @@
                 <local:ContentPresenterEx
                     x:Name="ContentPresenter"
                     Grid.Column="2"
+                    TextBlock.TextAlignment="{DynamicResource DefaultMenuFlyoutItemTextAlignment}"
                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                     ContentSource="Header"
