@@ -549,6 +549,7 @@
     <!--  Resources for LoopingSelector  -->
     <sys:Double x:Key="LoopingSelectorUpDownButtonHeight">34</sys:Double>
     <sys:Double x:Key="LoopingSelectorUpDownButtonScalePressed">0.875</sys:Double>
+    <sys:Double x:Key="LoopingSelectorMaxHeight">354</sys:Double>
 
     <Thickness x:Key="LoopingSelectorItemMargin">4,2,4,2</Thickness>
     <Thickness x:Key="LoopingSelectorUpDownButtonMargin">0</Thickness>

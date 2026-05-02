@@ -168,6 +168,7 @@
             BorderBrush="{TemplateBinding BorderBrush}"
             BorderThickness="{TemplateBinding BorderThickness}"
             CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+            chelper:FocusVisualHelper.IsTemplateFocusTarget="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=IsVisible, Mode=OneWay, TargetNullValue=False}"
             SnapsToDevicePixels="true">
             <Grid x:Name="AnimationRoot">
                 <Grid.ColumnDefinitions>
