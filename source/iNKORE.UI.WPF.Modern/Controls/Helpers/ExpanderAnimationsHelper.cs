@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media;
@@ -17,11 +16,13 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         public static void SetToAnimateControlName(Expander element, string value) =>
             element.SetValue(ToAnimateControlNameProperty, value);
 
+        private const string DefaultAnimationTargetPartName = "ExpanderContent";
+
         public static readonly DependencyProperty ToAnimateControlNameProperty = DependencyProperty.RegisterAttached(
             "ToAnimateControlName",
             typeof(string),
             typeof(ExpanderAnimationsHelper),
-            new PropertyMetadata("ExpanderContent"));
+            new PropertyMetadata(DefaultAnimationTargetPartName));
 
         #endregion
 
@@ -176,6 +177,8 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
         {
             var toAnimateControl = GetToAnimateControl(expander);
             toAnimateControl.BeginAnimation(UIElement.VisibilityProperty, null);
+            toAnimateControl.Visibility = Visibility.Visible;
+
             UpdateLayout(toAnimateControl);
 
             if (toAnimateControl.RenderTransform is not TranslateTransform translateTransform)
@@ -270,7 +273,11 @@ namespace iNKORE.UI.WPF.Modern.Controls.Helpers
             contentControl.UpdateLayout();
         }
 
-        private static FrameworkElement GetToAnimateControl(Expander expander) =>
-            expander.Template?.FindName(GetToAnimateControlName(expander), expander) as FrameworkElement;
+        private static FrameworkElement GetToAnimateControl(Expander expander)
+        {
+            expander.ApplyTemplate();
+            return expander.Template?.FindName(GetToAnimateControlName(expander), expander) as FrameworkElement ??
+                   throw new InvalidOperationException($"Couldn't find the part to animate. Either update ExpanderAnimationsHelper.ToAnimateControlName, or rename the animation target part to the default: {DefaultAnimationTargetPartName}");
+        }
     }
 }
