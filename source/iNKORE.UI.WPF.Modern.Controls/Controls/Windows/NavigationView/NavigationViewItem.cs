@@ -78,6 +78,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             // Stop UpdateVisualState before template is applied. Otherwise the visuals may be unexpected
             m_appliedTemplate = false;
+            m_restoreToExpandedState = false;
 
             UnhookEventsAndClearFields();
 
@@ -203,6 +204,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
             {
                 UpdateIsClosedCompact();
                 ReparentRepeater();
+                HandleExpansionStateMemory();
             }
         }
 
@@ -233,6 +235,25 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 if (GetPresenter() is { } presenter)
                 {
                     presenter.UpdateClosedCompactVisualState(IsTopLevelItem, m_isClosedCompact);
+                }
+            }
+        }
+
+        private void HandleExpansionStateMemory()
+        {
+            if (IsTopLevelItem)
+            {
+                var splitView = GetSplitView();
+                if (splitView != null)
+                {
+                    if (splitView.IsPaneOpen)
+                    {
+                        RestoreExpandedState();
+                    }
+                    else
+                    {
+                        ForceCollapse();
+                    }
                 }
             }
         }
@@ -283,6 +304,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         void OnIsExpandedPropertyChanged(DependencyPropertyChangedEventArgs args)
         {
+            m_restoreToExpandedState = false;
+
             if (FrameworkElementAutomationPeer.FromElement(this) is AutomationPeer peer)
             {
                 var navViewItemPeer = (NavigationViewItemAutomationPeer)peer;
@@ -292,6 +315,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
                         ExpandCollapseState.Collapsed
                 );
             }
+
+            UpdateVisualState(true);
         }
 
         void OnIconPropertyChanged(DependencyPropertyChangedEventArgs args)
@@ -342,7 +367,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             if (m_navigationViewItemPresenter is { } presenter)
             {
-                var stateName = ShouldShowInfoBadge() ?  "InfoBadgeVisible" : "InfoBadgeCollapsed";
+                var stateName = ShouldShowInfoBadge() ? "InfoBadgeVisible" : "InfoBadgeCollapsed";
                 VisualStateManager.GoToState(presenter, stateName, false /*useTransitions*/);
             }
         }
@@ -370,6 +395,8 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     break;
                 case NavigationViewRepeaterPosition.TopPrimary:
                 case NavigationViewRepeaterPosition.TopFooter:
+                    m_restoreToExpandedState = false;
+                    
                     if (SharedHelpers.IsRS4OrHigher() && false /*Application.Current.FocusVisualKind == FocusVisualKind.Reveal*/)
                     {
                         stateName = c_OnTopNavigationPrimaryReveal;
@@ -381,6 +408,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     break;
                 case NavigationViewRepeaterPosition.TopOverflow:
                     stateName = c_OnTopNavigationOverflow;
+                    m_restoreToExpandedState = false;
                     break;
             }
 
@@ -626,6 +654,24 @@ namespace iNKORE.UI.WPF.Modern.Controls
                         }
                     }
                 }
+            }
+        }
+
+        void ForceCollapse()
+        {
+            if (IsExpanded)
+            {
+                IsExpanded = false;
+                m_restoreToExpandedState = true;
+            }
+        }
+
+        void RestoreExpandedState()
+        {
+            if (m_restoreToExpandedState)
+            {
+                IsExpanded = true;
+                m_restoreToExpandedState = false;
             }
         }
 
@@ -966,5 +1012,9 @@ namespace iNKORE.UI.WPF.Modern.Controls
         bool m_isPointerOver = false;
 
         bool m_isRepeaterParentedToFlyout = false;
+
+        // NavigationView needs to force collapse top level items when the pane closes.
+        // This bool is used to remember which items need to be restored to expanded state when the pane is opened again.
+        bool m_restoreToExpandedState = false;
     }
 }
