@@ -17,7 +17,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
 
         private async void GoToHyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationRootPage.RootFrame.Navigate(ItemPage.Create(await ControlInfoDataSource.Instance.GetItemAsync(await ControlInfoDataSource.Instance.GetRealmAsync("Windows"), "ToggleButton")));
+            //NavigationRootPage.RootFrame.Navigate(ItemPage.Create(await ControlInfoDataSource.Instance.GetItemAsync(await ControlInfoDataSource.Instance.GetRealmAsync("Windows"), "ToggleButton")));
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -61,7 +61,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
         public string Example2Xaml => $@"
 <ui:HyperlinkButton x:Name=""Control2""
     Click=""GoToHyperlinkButton_Click""
-    RaiseHyperlinkClicks=""False""
     Content=""Go to ToggleButton"" />
 ";
 

@@ -36,6 +36,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 TargetName = TargetName
             };
             m_hyperlink.RequestNavigate += OnRequestNavigate;
+            m_hyperlink.Click += OnHyperlinkClick;
             AddLogicalChild(m_hyperlink);
         }
 
@@ -49,15 +50,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
             get => (Uri)GetValue(NavigateUriProperty);
             set => SetValue(NavigateUriProperty, value);
         }
-
-        public static readonly DependencyProperty RaiseHyperlinkClicksProperty = DependencyProperty.Register(nameof(RaiseHyperlinkClicks), typeof(bool), typeof(HyperlinkButton), new PropertyMetadata(true));
-
-        public bool RaiseHyperlinkClicks
-        {
-            get => (bool)GetValue(RaiseHyperlinkClicksProperty);
-            set => SetValue(RaiseHyperlinkClicksProperty, value);
-        }
-
 
         private static void OnNavigateUriChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -112,11 +104,20 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     peer.RaiseAutomationEvent(AutomationEvents.InvokePatternOnInvoked);
             }
 
-            if (RaiseHyperlinkClicks)
+            if (NavigateUri != null)
             {
                 m_hyperlink.DoClick();
             }
             base.OnClick();
+        }
+
+        private static void OnHyperlinkClick(object sender, RoutedEventArgs e)
+        {
+            // Hyperlink.ClickEvent is registered as ButtonBase.ClickEvent.AddOwner(typeof(Hyperlink)),
+            // so it is the very same routed event as this button's Click. Because the inner Hyperlink is
+            // a logical child, the Click raised by DoClick() would bubble up and fire the button's own
+            // Click handler an extra time. Mark it handled so navigation still runs but Click fires once.
+            e.Handled = true;
         }
 
         internal void AutomationButtonBaseClick()

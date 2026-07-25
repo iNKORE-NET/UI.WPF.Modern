@@ -31,7 +31,6 @@
                 <ui:HyperlinkButton
                     x:Name="Control2"
                     Click="GoToHyperlinkButton_Click"
-                    RaiseHyperlinkClicks="False"
                     Content="Go to ToggleButton" />
             </local:ControlExample.Example>
         </local:ControlExample>
