@@ -124,7 +124,6 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 {
                     m_expandCollapseChevron = expandCollapseChevron;
                     InputHelper.SetIsTapEnabled(expandCollapseChevron, true);
-                    InputHelper.SetStopRouting(expandCollapseChevron, true);
                     InputHelper.AddTappedHandler(expandCollapseChevron, navigationViewItem.OnExpandCollapseChevronTapped);
                 }
                 navigationViewItem.UpdateVisualStateNoTransition();

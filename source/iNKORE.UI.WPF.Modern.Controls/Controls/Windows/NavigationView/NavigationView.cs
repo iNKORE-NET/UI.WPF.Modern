@@ -1032,14 +1032,19 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             if (sender is NavigationViewItem nvi)
             {
-                if (nvi.IsExpanded)
+                // A collapse/restore driven by the pane opening or closing is programmatic, not a
+                // user action, so it must not surface as an Expanding/Collapsed event. The visual
+                // update (ShowHideChildrenItemsRepeater) still runs so children hide/show correctly.
+                bool suppressEvents = nvi.ShouldSuppressExpandCollapseEventsForPaneToggle;
+
+                if (nvi.IsExpanded && !suppressEvents)
                 {
                     RaiseExpandingEvent(nvi);
                 }
 
                 ShowHideChildrenItemsRepeater(nvi);
 
-                if (!nvi.IsExpanded)
+                if (!nvi.IsExpanded && !suppressEvents)
                 {
                     RaiseCollapsedEvent(nvi);
                 }

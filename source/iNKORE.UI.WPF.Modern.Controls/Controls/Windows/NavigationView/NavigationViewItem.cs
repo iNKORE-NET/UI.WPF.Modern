@@ -304,7 +304,13 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         void OnIsExpandedPropertyChanged(DependencyPropertyChangedEventArgs args)
         {
-            m_restoreToExpandedState = false;
+            // Only a user-driven expand/collapse clears the pending restore intent. A
+            // programmatic change caused by the pane opening/closing sets the suppression flag,
+            // so it must not wipe the state we are trying to remember for the next pane open.
+            if (!m_suppressExpandCollapseEventsForPaneToggle)
+            {
+                m_restoreToExpandedState = false;
+            }
 
             if (FrameworkElementAutomationPeer.FromElement(this) is AutomationPeer peer)
             {
@@ -316,7 +322,9 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 );
             }
 
-            UpdateVisualState(true);
+            // The chevron (open/closed) is the only visual affected by an expansion change here,
+            // so update just that state instead of running a full UpdateVisualState pass.
+            UpdateVisualStateForChevron();
         }
 
         void OnIconPropertyChanged(DependencyPropertyChangedEventArgs args)
@@ -395,8 +403,10 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     break;
                 case NavigationViewRepeaterPosition.TopPrimary:
                 case NavigationViewRepeaterPosition.TopFooter:
+                    // Expansion-state memory only applies to the left pane (which opens/closes).
+                    // Top nav has no pane toggle, so drop any pending restore intent here.
                     m_restoreToExpandedState = false;
-                    
+
                     if (SharedHelpers.IsRS4OrHigher() && false /*Application.Current.FocusVisualKind == FocusVisualKind.Reveal*/)
                     {
                         stateName = c_OnTopNavigationPrimaryReveal;
@@ -408,6 +418,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
                     break;
                 case NavigationViewRepeaterPosition.TopOverflow:
                     stateName = c_OnTopNavigationOverflow;
+                    // Not in the left pane, so no expansion state to restore (see above).
                     m_restoreToExpandedState = false;
                     break;
             }
@@ -661,7 +672,12 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             if (IsExpanded)
             {
+                // Suppress user-facing Expanding/Collapsed events for this programmatic change,
+                // and keep it from clearing m_restoreToExpandedState (see OnIsExpandedPropertyChanged).
+                m_suppressExpandCollapseEventsForPaneToggle = true;
                 IsExpanded = false;
+                m_suppressExpandCollapseEventsForPaneToggle = false;
+
                 m_restoreToExpandedState = true;
             }
         }
@@ -670,7 +686,10 @@ namespace iNKORE.UI.WPF.Modern.Controls
         {
             if (m_restoreToExpandedState)
             {
+                m_suppressExpandCollapseEventsForPaneToggle = true;
                 IsExpanded = true;
+                m_suppressExpandCollapseEventsForPaneToggle = false;
+
                 m_restoreToExpandedState = false;
             }
         }
@@ -823,7 +842,13 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             Debug.Assert(presenter != null);
 
-            if (presenter.CaptureMouse())
+            // Capture in SubTree mode rather than the default Element mode. With Element-mode
+            // capture the presenter swallows the pointer up of interactive descendants — notably
+            // the expand/collapse chevron — so the chevron never raises its Tapped handler and
+            // never marks the event Handled. That let a chevron click fall through to item
+            // selection (#83). SubTree mode keeps delivering events to descendants inside the
+            // captured subtree, so the chevron's Handled Tapped suppresses selection as intended.
+            if (Mouse.Capture(presenter, CaptureMode.SubTree))
             {
                 m_isMouseCaptured = true;
             }
@@ -1016,5 +1041,13 @@ namespace iNKORE.UI.WPF.Modern.Controls
         // NavigationView needs to force collapse top level items when the pane closes.
         // This bool is used to remember which items need to be restored to expanded state when the pane is opened again.
         bool m_restoreToExpandedState = false;
+
+        // True only while the pane open/close is programmatically collapsing/restoring this item.
+        // While set, the user-facing Expanding/Collapsed events are suppressed and the restore
+        // intent (m_restoreToExpandedState) is preserved, so a pane toggle is not mistaken for a
+        // user expand/collapse.
+        bool m_suppressExpandCollapseEventsForPaneToggle = false;
+
+        internal bool ShouldSuppressExpandCollapseEventsForPaneToggle => m_suppressExpandCollapseEventsForPaneToggle;
     }
 }
