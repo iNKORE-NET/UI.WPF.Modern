@@ -522,14 +522,7 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
         {
             if (_parentWindow != null)
             {
-                descriptor_ResizeMode.RemoveValueChanged(_parentWindow, _window_ButtonAvailabilityShouldUpdate);
-                descriptor_WindowStyle.RemoveValueChanged(_parentWindow, _window_ButtonAvailabilityShouldUpdate);
-
-                if (_altLeftBinding != null)
-                {
-                    _parentWindow.InputBindings.Remove(_altLeftBinding);
-                    _altLeftBinding = null;
-                }
+                DetachFromParentWindow();
             }
 
             base.OnVisualParentChanged(oldParent);
@@ -543,7 +536,32 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
                 descriptor_ResizeMode.AddValueChanged(_parentWindow, _window_ButtonAvailabilityShouldUpdate);
                 descriptor_WindowStyle.AddValueChanged(_parentWindow, _window_ButtonAvailabilityShouldUpdate);
 
+                // The descriptors above are cached for the lifetime of the process and keep a strong reference
+                // to the window, so they have to be released when it closes
+                _parentWindow.Closed += _window_Closed;
+
                 UpdateButtonActualAvailabilities();
+            }
+        }
+
+        private void DetachFromParentWindow()
+        {
+            descriptor_ResizeMode.RemoveValueChanged(_parentWindow, _window_ButtonAvailabilityShouldUpdate);
+            descriptor_WindowStyle.RemoveValueChanged(_parentWindow, _window_ButtonAvailabilityShouldUpdate);
+            _parentWindow.Closed -= _window_Closed;
+
+            if (_altLeftBinding != null)
+            {
+                _parentWindow.InputBindings.Remove(_altLeftBinding);
+                _altLeftBinding = null;
+            }
+        }
+
+        private void _window_Closed(object sender, EventArgs e)
+        {
+            if (sender == _parentWindow)
+            {
+                DetachFromParentWindow();
             }
         }
 
@@ -576,6 +594,10 @@ namespace iNKORE.UI.WPF.Modern.Controls.Primitives
 
         public void UpdateButtonActualAvailabilities()
         {
+            if (_parentWindow == null)
+            {
+                return;
+            }
 
             // Close button
             if (CloseButtonAvailability != TitleBarButtonAvailability.Auto)

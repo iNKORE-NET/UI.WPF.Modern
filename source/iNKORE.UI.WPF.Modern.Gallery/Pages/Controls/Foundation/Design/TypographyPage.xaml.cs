@@ -29,16 +29,25 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
             
             ThemeManager.Current.ActualApplicationThemeChanged += OnThemeChanged;
             ThemeManager.AddActualThemeChangedHandler(this, OnElementThemeChanged);
-            
-            DependencyPropertyDescriptor.FromProperty(ThemeManager.RequestedThemeProperty, typeof(FrameworkElement))
-                ?.AddValueChanged(this, OnRequestedThemeChanged);
-            
-            _themeMonitorTimer = new DispatcherTimer 
+
+            _themeMonitorTimer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(200)
             };
             _themeMonitorTimer.Tick += ThemeMonitorTimer_Tick;
             _themeMonitorTimer.Start();
+        }
+
+        // ThemeManager.RequestedTheme is watched by overriding OnPropertyChanged rather than through
+        // DependencyPropertyDescriptor.AddValueChanged, which would have kept this page alive forever.
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
+
+            if (e.Property == ThemeManager.RequestedThemeProperty)
+            {
+                OnRequestedThemeChanged(this, EventArgs.Empty);
+            }
         }
 
         private void TypographyPage_Loaded(object sender, RoutedEventArgs e)
