@@ -26,8 +26,8 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
         {
             this.InitializeComponent();
             Loaded += TypographyPage_Loaded;
-            
-            ThemeManager.Current.ActualApplicationThemeChanged += OnThemeChanged;
+            Unloaded += TypographyPage_Unloaded;
+
             ThemeManager.AddActualThemeChangedHandler(this, OnElementThemeChanged);
 
             _themeMonitorTimer = new DispatcherTimer
@@ -35,7 +35,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
                 Interval = TimeSpan.FromMilliseconds(200)
             };
             _themeMonitorTimer.Tick += ThemeMonitorTimer_Tick;
-            _themeMonitorTimer.Start();
         }
 
         // ThemeManager.RequestedTheme is watched by overriding OnPropertyChanged rather than through
@@ -52,14 +51,26 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
 
         private void TypographyPage_Loaded(object sender, RoutedEventArgs e)
         {
+            // Both of these keep the page alive while they are active: the event belongs to a singleton, and a
+            // running DispatcherTimer is held by the dispatcher. They are only hooked up while loaded
+            ThemeManager.Current.ActualApplicationThemeChanged -= OnThemeChanged;
+            ThemeManager.Current.ActualApplicationThemeChanged += OnThemeChanged;
+            _themeMonitorTimer.Start();
+
             if (NavigationRootPage.Current?.NavigationView != null)
             {
                 NavigationRootPage.Current.NavigationView.Header = "Typography";
             }
-            
+
             UpdateTypographyImage();
-            
+
             UpdateExampleCode();
+        }
+
+        private void TypographyPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            ThemeManager.Current.ActualApplicationThemeChanged -= OnThemeChanged;
+            _themeMonitorTimer.Stop();
         }
 
         //FAILED TRIALS but keeping for reference - The image should switch when toggle theme clicked
