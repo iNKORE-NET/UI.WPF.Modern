@@ -3,12 +3,10 @@
 
 using iNKORE.UI.WPF.Modern.Controls;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Navigation;
 using System.Windows.Media.Imaging;
-using System.Windows.Threading;
 using iNKORE.UI.WPF.Modern.Gallery.Helpers;
 using iNKORE.UI.WPF.Modern;
 
@@ -19,44 +17,20 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
     /// </summary>
     public sealed partial class TypographyPage : Page
     {
-        private DispatcherTimer _themeMonitorTimer;
-        private ElementTheme _lastKnownTheme = ElementTheme.Default;
-
         public TypographyPage()
         {
             this.InitializeComponent();
             Loaded += TypographyPage_Loaded;
-            Unloaded += TypographyPage_Unloaded;
 
-            ThemeManager.AddActualThemeChangedHandler(this, OnElementThemeChanged);
-
-            _themeMonitorTimer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromMilliseconds(200)
-            };
-            _themeMonitorTimer.Tick += ThemeMonitorTimer_Tick;
-        }
-
-        // ThemeManager.RequestedTheme is watched by overriding OnPropertyChanged rather than through
-        // DependencyPropertyDescriptor.AddValueChanged, which would have kept this page alive forever.
-        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
-        {
-            base.OnPropertyChanged(e);
-
-            if (e.Property == ThemeManager.RequestedThemeProperty)
-            {
-                OnRequestedThemeChanged(this, EventArgs.Empty);
-            }
+            // The header image sits inside the ControlExample, whose theme the gallery's toggle theme button
+            // flips on its own, so watching the theme of the page is not enough. ActualTheme is kept in sync on
+            // every element of the tree, so watching the image itself catches the toggle and application level
+            // theme changes alike. No need to detach: the handler belongs to the page the image is part of
+            ThemeManager.AddActualThemeChangedHandler(TypographyHeaderImage, OnImageActualThemeChanged);
         }
 
         private void TypographyPage_Loaded(object sender, RoutedEventArgs e)
         {
-            // Both of these keep the page alive while they are active: the event belongs to a singleton, and a
-            // running DispatcherTimer is held by the dispatcher. They are only hooked up while loaded
-            ThemeManager.Current.ActualApplicationThemeChanged -= OnThemeChanged;
-            ThemeManager.Current.ActualApplicationThemeChanged += OnThemeChanged;
-            _themeMonitorTimer.Start();
-
             if (NavigationRootPage.Current?.NavigationView != null)
             {
                 NavigationRootPage.Current.NavigationView.Header = "Typography";
@@ -67,67 +41,17 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
             UpdateExampleCode();
         }
 
-        private void TypographyPage_Unloaded(object sender, RoutedEventArgs e)
+        private void OnImageActualThemeChanged(object sender, RoutedEventArgs e)
         {
-            ThemeManager.Current.ActualApplicationThemeChanged -= OnThemeChanged;
-            _themeMonitorTimer.Stop();
+            UpdateTypographyImage();
         }
 
-        //FAILED TRIALS but keeping for reference - The image should switch when toggle theme clicked
         private void UpdateTypographyImage()
         {
             if (TypographyHeaderImage == null) return;
 
-            // Multi-level theme detection to catch both application and element-level changes
-            var pageTheme = ThemeManager.GetActualTheme(this);
-            var parentTheme = ElementTheme.Default;
-            var controlExampleTheme = ElementTheme.Default;
-            
-            // Check parent elements for theme overrides (catches toggle theme changes)
-            var parentElement = this.Parent as FrameworkElement;
-            while (parentElement != null)
-            {
-                var currentParentTheme = ThemeManager.GetActualTheme(parentElement);
-                if (currentParentTheme != ElementTheme.Default)
-                {
-                    parentTheme = currentParentTheme;
-                    break;
-                }
-                parentElement = parentElement.Parent as FrameworkElement;
-            }
-            
-            // Check ControlExample elements for theme changes (this is where toggle theme applies changes)
-            if (Example1 != null)
-            {
-                try
-                {
-                    var exampleTheme = ThemeManager.GetActualTheme(Example1);
-                    if (exampleTheme != ElementTheme.Default)
-                    {
-                        controlExampleTheme = exampleTheme;
-                    }
-                    else if (Example1.ExampleContainer != null)
-                    {
-                        var containerTheme = ThemeManager.GetActualTheme(Example1.ExampleContainer);
-                        if (containerTheme != ElementTheme.Default)
-                        {
-                            controlExampleTheme = containerTheme;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Handle potential issues with theme detection during control initialization
-                    System.Diagnostics.Debug.WriteLine($"Theme detection error: {ex.Message}");
-                }
-            }
-            
-            // Use the most specific theme available (ControlExample > Page > Parent > Application)
-            var effectiveTheme = controlExampleTheme != ElementTheme.Default ? controlExampleTheme :
-                                 pageTheme != ElementTheme.Default ? pageTheme : parentTheme;
-            var isDarkTheme = effectiveTheme == ElementTheme.Dark || 
-                             (effectiveTheme == ElementTheme.Default && ThemeHelper.IsDarkTheme());
-            
+            var isDarkTheme = ThemeManager.GetActualTheme(TypographyHeaderImage) == ElementTheme.Dark;
+
             var imageName = isDarkTheme ? "Typography.dark.png" : "Typography.light.png";
             var uri = new System.Uri($"pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/{imageName}");
             
@@ -142,8 +66,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
                 bitmapImage.EndInit();
                 bitmapImage.Freeze();
                 TypographyHeaderImage.Source = bitmapImage;
-                
-                System.Diagnostics.Debug.WriteLine($"Typography image updated to: {imageName} (Page: {pageTheme}, Parent: {parentTheme}, ControlExample: {controlExampleTheme}, Effective: {effectiveTheme}, IsDark: {isDarkTheme})");
             }
             catch (Exception ex)
             {
@@ -152,85 +74,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Foundation
                 var fallbackUri = new System.Uri("pack://application:,,,/iNKORE.UI.WPF.Modern.Gallery;component/Assets/Design/Typography.dark.png");
                 TypographyHeaderImage.Source = new BitmapImage(fallbackUri);
             }
-        }
-
-        private void OnThemeChanged(ThemeManager sender, object args)
-        {
-            // Update the image when theme changes
-            UpdateTypographyImage();
-        }
-
-        private void OnElementThemeChanged(object sender, RoutedEventArgs e)
-        {
-            // Update the image when element theme changes (for theme toggle)
-            UpdateTypographyImage();
-        }
-
-        private void ThemeMonitorTimer_Tick(object sender, EventArgs e)
-        {
-            // Check if the theme has changed by monitoring our current actual theme
-            var currentTheme = ThemeManager.GetActualTheme(this);
-            if (currentTheme != _lastKnownTheme)
-            {
-                _lastKnownTheme = currentTheme;
-                UpdateTypographyImage();
-                System.Diagnostics.Debug.WriteLine($"Theme change detected: {currentTheme}");
-            }
-            
-            // Also check for element-level theme changes by examining parent elements
-            // This catches toggle theme changes that affect control examples
-            var parentElement = this.Parent as FrameworkElement;
-            while (parentElement != null)
-            {
-                var parentTheme = ThemeManager.GetActualTheme(parentElement);
-                if (parentTheme != currentTheme)
-                {
-                    // Found a parent with different theme - this indicates element-level theme change
-                    UpdateTypographyImage();
-                    System.Diagnostics.Debug.WriteLine($"Element-level theme change detected: Parent={parentTheme}, Current={currentTheme}");
-                    break;
-                }
-                parentElement = parentElement.Parent as FrameworkElement;
-            }
-            
-            if (Example1 != null)
-            {
-                try
-                {
-                    var controlExampleTheme = ThemeManager.GetActualTheme(Example1);
-                    var containerTheme = ElementTheme.Default;
-                    
-                    if (Example1.ExampleContainer != null)
-                    {
-                        containerTheme = ThemeManager.GetActualTheme(Example1.ExampleContainer);
-                    }
-                    
-                    if (controlExampleTheme != currentTheme || containerTheme != currentTheme)
-                    {
-                        UpdateTypographyImage();
-                        System.Diagnostics.Debug.WriteLine($"ControlExample theme change detected: ControlExample={controlExampleTheme}, Container={containerTheme}, Page={currentTheme}");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Handle potential issues with theme detection during control initialization
-                    System.Diagnostics.Debug.WriteLine($"Theme monitor error: {ex.Message}");
-                }
-            }
-        }
-
-        private void OnRequestedThemeChanged(object sender, EventArgs e)
-        {
-            Dispatcher.BeginInvoke(new System.Action(() => {
-                UpdateTypographyImage();
-            }), System.Windows.Threading.DispatcherPriority.ApplicationIdle);
-            
-            var timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
-            timer.Tick += (s, args) => {
-                timer.Stop();
-                UpdateTypographyImage();
-            };
-            timer.Start();
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
