@@ -48,8 +48,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MessageBox), new FrameworkPropertyMetadata(typeof(MessageBox)));
         }
 
-        public static readonly DependencyPropertyDescriptor SystemBackdropTypeProperty_Descriptor = DependencyPropertyDescriptor.FromProperty(WindowHelper.SystemBackdropTypeProperty, typeof(MessageBox));
-
         public MessageBox()
         {
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Copy, new ExecutedRoutedEventHandler(ExecuteCopy)));
@@ -60,8 +58,16 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
             Loaded += On_Loaded;
 
-            SystemBackdropTypeProperty_Descriptor.AddValueChanged(this, SystemBackdropTypeProperty_ValueChanged);
             ThemeManager.AddActualThemeChangedHandler(this, ThemeManager_AddActualThemeChanged);
+        }
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
+
+            if (e.Property == WindowHelper.SystemBackdropTypeProperty)
+            {
+                SystemBackdropTypeProperty_ValueChanged(this, EventArgs.Empty);
+            }
         }
 
         private void ExecuteCopy(object sender, ExecutedRoutedEventArgs e)

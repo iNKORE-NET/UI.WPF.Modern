@@ -51,21 +51,21 @@ namespace iNKORE.UI.WPF.Modern.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SettingsCard), new FrameworkPropertyMetadata(typeof(SettingsCard)));
         }
 
-        internal static readonly DependencyPropertyDescriptor IsPressedPropertyDescriptior = DependencyPropertyDescriptor.FromProperty(IsPressedProperty, typeof(SettingsCard));
-        internal static readonly DependencyPropertyDescriptor IsMouseOverPropertyDescriptior = DependencyPropertyDescriptor.FromProperty(IsMouseOverProperty, typeof(SettingsCard));
-
         /// <summary>
         /// Creates a new instance of the <see cref="SettingsCard"/> class.
         /// </summary>
         public SettingsCard()
         {
-            IsPressedPropertyDescriptior.AddValueChanged(this, PointerStateProperties_ValueChanged);
-            IsMouseOverPropertyDescriptior.AddValueChanged(this, PointerStateProperties_ValueChanged);
         }
 
-        private void PointerStateProperties_ValueChanged(object sender, EventArgs e)
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
-            this.UpdatePointerState();
+            base.OnPropertyChanged(e);
+
+            if (e.Property == IsPressedProperty || e.Property == IsMouseOverProperty)
+            {
+                this.UpdatePointerState();
+            }
         }
 
         /// <inheritdoc />

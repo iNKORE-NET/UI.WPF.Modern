@@ -24,6 +24,7 @@ namespace iNKORE.UI.WPF.Modern.Controls
         public AnimatedIcon()
         {
             Loaded += OnLoaded;
+            Unloaded += OnUnloaded;
         }
 
         #region FallbackIconSource
@@ -229,6 +230,9 @@ namespace iNKORE.UI.WPF.Modern.Controls
             }
         }
 
+        private DependencyObject _ancestorWithState;
+        private EventHandler _ancestorStateChangedHandler;
+
         private void OnLoaded(object UnnamedParameter, RoutedEventArgs UnnamedParameter2)
         {
             // AnimatedIcon might get added to a UI which has already set the State property on an ancestor.
@@ -259,16 +263,39 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 SetValue(property, stateValue);
             }
 
-            if (ancestorWithState != null)
+            DetachFromAncestorWithState();
+
+            if (ancestorWithState is DependencyObject ancestor)
             {
-                DependencyPropertyDescriptor descriptor = DependencyPropertyDescriptor.FromProperty(property, typeof(AnimatedIcon));
-                descriptor.AddValueChanged(ancestorWithState, (sender, e) => OnAncestorAnimatedIconStatePropertyChanged(ancestorWithState, property));
+                // The descriptor is cached for the lifetime of the process and keeps a strong reference to the
+                // ancestor, so the handler has to be removed again when this icon is unloaded
+                _ancestorWithState = ancestor;
+                _ancestorStateChangedHandler = (sender, e) => OnAncestorAnimatedIconStatePropertyChanged(ancestor, property);
+                DependencyPropertyDescriptor.FromProperty(property, typeof(AnimatedIcon))
+                    .AddValueChanged(ancestor, _ancestorStateChangedHandler);
             }
 
             // Wait until loaded to apply the fallback icon source property because we need the icon source
             // properties to be set before we create the icon element from it.  If those poperties are bound in,
             // they will not have been set during OnApplyTemplate.
             OnFallbackIconSourcePropertyChanged(new DependencyPropertyChangedEventArgs());
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            DetachFromAncestorWithState();
+        }
+
+        private void DetachFromAncestorWithState()
+        {
+            if (_ancestorWithState != null)
+            {
+                DependencyPropertyDescriptor.FromProperty(StateProperty, typeof(AnimatedIcon))
+                    .RemoveValueChanged(_ancestorWithState, _ancestorStateChangedHandler);
+
+                _ancestorWithState = null;
+                _ancestorStateChangedHandler = null;
+            }
         }
 
         private void OnAncestorAnimatedIconStatePropertyChanged(object sender, DependencyProperty args)
