@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -56,21 +56,19 @@ namespace SamplesCommon
             if (this.IsCompact)
             {
                 RadioButton_Compact.IsChecked = true;
-
-                if (_compactResources != null)
+                if (_compactResources == null)
                 {
-                    TargetElement?.Resources.MergedDictionaries.Remove(_compactResources);
-                    _compactResources = null;
+                    _compactResources = new ResourceDictionary { Source = new Uri("/iNKORE.UI.WPF.Modern;component/Themes/DensityStyles/Compact.xaml", UriKind.Relative) };
+                    TargetElement?.Resources.MergedDictionaries.Add(_compactResources);
                 }
             }
             else
             {
                 RadioButton_Standard.IsChecked = true;
-
-                if (_compactResources == null)
+                if (_compactResources != null)
                 {
-                    _compactResources = new ResourceDictionary { Source = new Uri("/iNKORE.UI.WPF.Modern;component/Themes/DensityStyles/Compact.xaml", UriKind.Relative) };
-                    TargetElement?.Resources.MergedDictionaries.Add(_compactResources);
+                    TargetElement?.Resources.MergedDictionaries.Remove(_compactResources);
+                    _compactResources = null;
                 }
             }
         }
