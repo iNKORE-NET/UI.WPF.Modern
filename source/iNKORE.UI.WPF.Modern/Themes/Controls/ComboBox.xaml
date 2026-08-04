@@ -396,7 +396,7 @@
                             Background="{DynamicResource ComboBoxBackgroundFocused}"
                             BorderBrush="{DynamicResource ComboBoxBackgroundBorderBrushFocused}"
                             BorderThickness="{DynamicResource ComboBoxBackgroundBorderThicknessFocused}"
-                            CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+                            CornerRadius="{DynamicResource ComboBoxHiglightBorderCornerRadius}"
                             Opacity="0" />
                         <local:ElevationBorder
                             x:Name="Background"
