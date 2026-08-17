@@ -1,0 +1,454 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Controls"
+    xmlns:chelper="clr-namespace:iNKORE.UI.WPF.Modern.Controls.Helpers;assembly=iNKORE.UI.WPF.Modern"
+    xmlns:common="clr-namespace:iNKORE.UI.WPF.Modern.Common;assembly=iNKORE.UI.WPF.Modern"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
+
+    <!--  Kept in sync with DefaultComboBoxStyle in iNKORE.UI.WPF.Modern/Themes/Controls/ComboBox.xaml:
+          the closed control has to be indistinguishable from a plain ComboBox. Only the contents of
+          the drop-down differ, where a search box and a "no results" message are added.  -->
+    <!--  OverridesDefaultStyle is deliberately not set: this style *is* the theme style of the
+          control, and WPF refuses that setter there.  -->
+    <Style x:Key="DefaultSearchableComboBoxStyle" TargetType="local:SearchableComboBox">
+        <Setter Property="Padding" Value="{DynamicResource ComboBoxPadding}" />
+        <Setter Property="MaxDropDownHeight" Value="504" />
+        <Setter Property="Foreground" Value="{DynamicResource ComboBoxForeground}" />
+        <Setter Property="Background" Value="{DynamicResource ComboBoxBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ComboBoxBorderThemeThickness}" />
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="Once" />
+        <Setter Property="chelper:ComboBoxHelper.TextBoxStyle" Value="{DynamicResource ComboBoxTextBoxStyle}" />
+        <Setter Property="SearchBoxStyle" Value="{DynamicResource DefaultTextBoxStyle}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <!--  Without this the drop-down falls back to ItemsControl's plain StackPanel and realises
+              every single item, which a control meant for long lists cannot afford.  -->
+        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
+        <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+        <Setter Property="chelper:ControlHelper.PlaceholderForeground" Value="{DynamicResource ComboBoxPlaceHolderForeground}" />
+        <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource IsApplicationFocusVisualKindReveal}" />
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
+        <Setter Property="chelper:ComboBoxHelper.KeepInteriorCornersSquare" Value="True" />
+        <Setter Property="chelper:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource TextControlValidationErrorTemplate}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:SearchableComboBox">
+                    <Grid x:Name="LayoutRoot" SnapsToDevicePixels="True">
+                        <Grid.Resources>
+                            <Storyboard x:Key="OverlayOpeningAnimation">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Shdw" Storyboard.TargetProperty="Opacity">
+                                    <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="0.0" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="{DynamicResource ControlFastOutSlowInKeySpline}"
+                                        KeyTime="{DynamicResource ControlNormalAnimationDuration}"
+                                        Value="1.0" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </Grid.Resources>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="38" />
+                        </Grid.ColumnDefinitions>
+
+                        <ui:ContentPresenterEx
+                            x:Name="HeaderContentPresenter"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="{DynamicResource ComboBoxTopHeaderMargin}"
+                            VerticalAlignment="Top"
+                            Content="{TemplateBinding chelper:ControlHelper.Header}"
+                            ContentTemplate="{TemplateBinding chelper:ControlHelper.HeaderTemplate}"
+                            FlowDirection="{TemplateBinding FlowDirection}"
+                            FontWeight="{DynamicResource ComboBoxHeaderThemeFontWeight}"
+                            Foreground="{DynamicResource ComboBoxHeaderForeground}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            TextWrapping="Wrap"
+                            Visibility="{TemplateBinding chelper:ControlHelper.HeaderVisibility}" />
+                        <Border
+                            x:Name="HighlightBackground"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="-4"
+                            Background="{DynamicResource ComboBoxBackgroundFocused}"
+                            BorderBrush="{DynamicResource ComboBoxBackgroundBorderBrushFocused}"
+                            BorderThickness="{DynamicResource ComboBoxBackgroundBorderThicknessFocused}"
+                            CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+                            Opacity="0" />
+                        <ui:ElevationBorder
+                            x:Name="Background"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            MinWidth="{DynamicResource ComboBoxThemeMinWidth}"
+                            chelper:ValidationHelper.IsTemplateValidationAdornerSite="True"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}" />
+                        <Rectangle
+                            x:Name="Pill"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="1,0,0,0"
+                            Opacity="0"
+                            Style="{DynamicResource ComboBoxItemPill}">
+                            <Rectangle.RenderTransform>
+                                <TranslateTransform x:Name="PillTransform" Y="1" />
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                        <ui:ContentPresenterEx
+                            x:Name="ContentPresenter"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding SelectionBoxItem}"
+                            ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <TextBlock
+                            x:Name="PlaceholderTextBlock"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="{TemplateBinding Padding}"
+                            Padding="0,0,38,0"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Foreground="{TemplateBinding chelper:ControlHelper.PlaceholderForeground}"
+                            IsHitTestVisible="False"
+                            Text="{TemplateBinding chelper:ControlHelper.PlaceholderText}"
+                            Visibility="Collapsed" />
+                        <ToggleButton
+                            x:Name="ToggleButton"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            chelper:ControlHelper.CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+                            Background="Transparent"
+                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            Style="{DynamicResource ComboBoxToggleButton}" />
+                        <TextBox
+                            x:Name="PART_EditableTextBox"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="0,0,0,0"
+                            Padding="{DynamicResource ComboBoxEditableTextPadding}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Foreground="{TemplateBinding Foreground}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
+                            FontWeight="{TemplateBinding FontWeight}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            chelper:ControlHelper.CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+                            chelper:ControlHelper.PlaceholderForeground="{TemplateBinding chelper:ControlHelper.PlaceholderForeground}"
+                            chelper:ControlHelper.PlaceholderText="{TemplateBinding chelper:ControlHelper.PlaceholderText}"
+                            AutomationProperties.Name="{TemplateBinding AutomationProperties.Name}"
+                            BorderBrush="Transparent"
+                            IsReadOnly="{TemplateBinding IsReadOnly}"
+                            Style="{TemplateBinding chelper:ComboBoxHelper.TextBoxStyle}"
+                            Visibility="Collapsed" />
+                        <ToggleButton
+                            x:Name="DropDownOverlay"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="30"
+                            Margin="4,4,4,4"
+                            HorizontalAlignment="Right"
+                            chelper:ControlHelper.CornerRadius="{DynamicResource ComboBoxDropDownButtonBackgroundCornerRadius}"
+                            Background="Transparent"
+                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            Style="{DynamicResource ComboBoxToggleButton}"
+                            Visibility="Collapsed" />
+                        <ui:FontIcon
+                            x:Name="DropDownGlyph"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="12"
+                            Height="12"
+                            MinHeight="{DynamicResource ComboBoxMinHeight}"
+                            Margin="0,0,14,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            FontFamily="{DynamicResource FluentSystemIcons}"
+                            FontSize="12"
+                            Foreground="{DynamicResource ComboBoxDropDownGlyphForeground}"
+                            Glyph="&#xF2A3;"
+                            IsHitTestVisible="False" />
+                        <ui:ContentPresenterEx
+                            x:Name="DescriptionPresenter"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Content="{TemplateBinding chelper:ControlHelper.Description}"
+                            Foreground="{DynamicResource SystemControlDescriptionTextForegroundBrush}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            Visibility="{TemplateBinding chelper:ControlHelper.DescriptionVisibility}" />
+                        <Popup
+                            x:Name="PART_Popup"
+                            AllowsTransparency="True"
+                            CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(common:ShadowAssist.CacheMode)}"
+                            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                            Placement="Bottom"
+                            PlacementTarget="{Binding ElementName=Background}"
+                            PopupAnimation="None">
+                            <Popup.PlacementRectangle>
+                                <MultiBinding>
+                                    <MultiBinding.Converter>
+                                        <ikw:PlacementRectangleConverter Margin="0,1,0,1" />
+                                    </MultiBinding.Converter>
+                                    <Binding ElementName="Background" Path="ActualWidth" />
+                                    <Binding ElementName="Background" Path="ActualHeight" />
+                                </MultiBinding>
+                            </Popup.PlacementRectangle>
+                            <ui:ThemeShadowChrome
+                                x:Name="Shdw"
+                                MinWidth="{Binding ActualWidth, ElementName=LayoutRoot}"
+                                MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                chelper:OpeningAnimationHelper.Storyboard="{StaticResource OverlayOpeningAnimation}"
+                                CornerRadius="{Binding ElementName=PopupBorder, Path=CornerRadius}"
+                                IsShadowEnabled="{DynamicResource {x:Static SystemParameters.DropShadowKey}}">
+                                <Border
+                                    x:Name="PopupBorder"
+                                    Margin="0,-0.5,0,-1"
+                                    HorizontalAlignment="Stretch"
+                                    Background="{DynamicResource ComboBoxDropDownBackground}"
+                                    BorderBrush="{DynamicResource ComboBoxDropDownBorderBrush}"
+                                    BorderThickness="{DynamicResource ComboBoxDropdownBorderThickness}"
+                                    CornerRadius="{DynamicResource OverlayCornerRadius}">
+                                    <!--  The inset goes here, on the element wrapping both the search box
+                                          and the list, so the two can never drift out of line. It is a
+                                          literal rather than a resource key on purpose: a key declared in
+                                          Generic.xaml does not resolve through DynamicResource from inside
+                                          the popup, which silently left the padding at zero.  -->
+                                    <Border Padding="6" CornerRadius="{Binding ElementName=PopupBorder, Path=CornerRadius}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+
+                                            <!--  2 here plus the 4 that ComboBoxDropdownContentMargin puts
+                                                  on top of the list makes the gap below match the 6 on the
+                                                  other three sides.  -->
+                                            <Grid x:Name="SearchBoxHost" Grid.Row="0" Margin="0,0,0,2">
+                                                <TextBox
+                                                    x:Name="PART_SearchBox"
+                                                    Padding="34,5,6,6"
+                                                    chelper:ControlHelper.PlaceholderText="{TemplateBinding SearchBoxPlaceholderText}"
+                                                    chelper:TextBoxHelper.IsEnabled="True"
+                                                    FontSize="{TemplateBinding FontSize}"
+                                                    Style="{TemplateBinding SearchBoxStyle}" />
+                                                <ui:FontIcon
+                                                    Margin="12,0,0,0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="14"
+                                                    Foreground="{DynamicResource TextControlPlaceholderForeground}"
+                                                    Icon="{x:Static ui:FluentSystemIcons.Search_20_Regular}"
+                                                    IsHitTestVisible="False" />
+                                            </Grid>
+
+                                            <ui:ScrollViewerEx
+                                                x:Name="PART_ScrollViewer"
+                                                Grid.Row="1"
+                                                Foreground="{DynamicResource ComboBoxDropDownForeground}"
+                                                ForceUseSmoothScroll="False"
+                                                HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                                IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                                RewriteWheelChange="True"
+                                                VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                                <ItemsPresenter
+                                                    Margin="{DynamicResource ComboBoxDropdownContentMargin}"
+                                                    KeyboardNavigation.DirectionalNavigation="Contained"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                            </ui:ScrollViewerEx>
+
+                                            <!--  Says why the list is empty instead of showing a blank drop-down  -->
+                                            <TextBlock
+                                                x:Name="NoResultsTextBlock"
+                                                Grid.Row="1"
+                                                Margin="8,12,8,12"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                                Text="{TemplateBinding NoResultsText}"
+                                                TextWrapping="Wrap"
+                                                Visibility="Collapsed" />
+                                        </Grid>
+                                    </Border>
+                                </Border>
+                            </ui:ThemeShadowChrome>
+                        </Popup>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSearchEnabled" Value="False">
+                            <Setter TargetName="SearchBoxHost" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="HasNoResults" Value="True">
+                            <Setter TargetName="PART_ScrollViewer" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="NoResultsTextBlock" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <!--  PointerOver  -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Background" Property="Background" Value="{DynamicResource ComboBoxBackgroundPointerOver}" />
+                            <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ComboBoxBorderBrushPointerOver}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ComboBoxForegroundPointerOver}" />
+                            <Setter TargetName="PlaceholderTextBlock" Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundPointerOver}" />
+                        </Trigger>
+                        <!--  Pressed  -->
+                        <Trigger SourceName="ToggleButton" Property="IsPressed" Value="True">
+                            <Setter TargetName="Background" Property="Background" Value="{DynamicResource ComboBoxBackgroundPressed}" />
+                            <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ComboBoxBorderBrushPressed}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ComboBoxForegroundPressed}" />
+                            <Setter TargetName="PlaceholderTextBlock" Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundPressed}" />
+                        </Trigger>
+                        <!--  Disabled  -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Background" Property="Background" Value="{DynamicResource ComboBoxBackgroundDisabled}" />
+                            <Setter TargetName="Background" Property="BorderBrush" Value="{DynamicResource ComboBoxBorderBrushDisabled}" />
+                            <Setter TargetName="HeaderContentPresenter" Property="Foreground" Value="{DynamicResource ComboBoxHeaderForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ComboBoxForegroundDisabled}" />
+                            <Setter TargetName="PlaceholderTextBlock" Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundDisabled}" />
+                            <Setter TargetName="DropDownGlyph" Property="Foreground" Value="{DynamicResource ComboBoxDropDownGlyphForegroundDisabled}" />
+                        </Trigger>
+
+                        <!--  Focused  -->
+                        <Trigger Property="chelper:FocusVisualHelper.ShowFocusVisual" Value="True">
+                            <Setter TargetName="HighlightBackground" Property="Opacity" Value="1" />
+                            <Setter TargetName="Pill" Property="Opacity" Value="1" />
+                            <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource ComboBoxForegroundFocused}" />
+                            <Setter TargetName="PlaceholderTextBlock" Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundFocused}" />
+                            <Setter TargetName="DropDownGlyph" Property="Foreground" Value="{DynamicResource ComboBoxDropDownGlyphForegroundFocused}" />
+                        </Trigger>
+                        <!--  FocusedPressed  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="chelper:FocusVisualHelper.ShowFocusVisual" Value="True" />
+                                <Condition SourceName="ToggleButton" Property="IsPressed" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="HighlightBackground" Property="Opacity" Value="1" />
+                            <Setter TargetName="Pill" Property="Opacity" Value="1" />
+                            <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource ComboBoxForegroundFocusedPressed}" />
+                            <Setter TargetName="PlaceholderTextBlock" Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundFocusedPressed}" />
+                            <Setter TargetName="DropDownGlyph" Property="Foreground" Value="{DynamicResource ComboBoxDropDownGlyphForegroundFocusedPressed}" />
+                        </MultiTrigger>
+                        <!--  FocusedDropDown  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="chelper:FocusVisualHelper.ShowFocusVisual" Value="True" />
+                                <Condition Property="IsDropDownOpen" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PopupBorder" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+
+                        <Trigger Property="IsEditable" Value="true">
+                            <Setter TargetName="ContentPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="ToggleButton" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="DropDownOverlay" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEditable" Value="False" />
+                                <Condition Property="SelectedIndex" Value="-1" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PlaceholderTextBlock" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+
+                        <!--  TextBoxFocused  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="PART_EditableTextBox" Property="IsSelectionActive" Value="True" />
+                                <Condition SourceName="DropDownOverlay" Property="IsMouseOver" Value="False" />
+                                <Condition SourceName="DropDownOverlay" Property="IsPressed" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="DropDownGlyph" Property="Foreground" Value="{DynamicResource ComboBoxEditableDropDownGlyphForeground}" />
+                        </MultiTrigger>
+                        <!--  TextBoxFocusedOverlayPointerOver  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="PART_EditableTextBox" Property="IsSelectionActive" Value="True" />
+                                <Condition SourceName="DropDownOverlay" Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="DropDownGlyph" Property="Foreground" Value="{DynamicResource ComboBoxEditableDropDownGlyphForeground}" />
+                            <Setter TargetName="DropDownOverlay" Property="Background" Value="{DynamicResource ComboBoxDropDownBackgroundPointerOver}" />
+                        </MultiTrigger>
+                        <!--  TextBoxFocusedOverlayPressed  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="PART_EditableTextBox" Property="IsSelectionActive" Value="True" />
+                                <Condition SourceName="DropDownOverlay" Property="IsPressed" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="DropDownGlyph" Property="Foreground" Value="{DynamicResource ComboBoxEditableDropDownGlyphForeground}" />
+                            <Setter TargetName="DropDownOverlay" Property="Background" Value="{DynamicResource ComboBoxFocusedDropDownBackgroundPointerPressed}" />
+                        </MultiTrigger>
+                        <!--  TextBoxOverlayPointerOver  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="PART_EditableTextBox" Property="IsSelectionActive" Value="False" />
+                                <Condition SourceName="DropDownOverlay" Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="DropDownOverlay" Property="Background" Value="{DynamicResource ComboBoxDropDownBackgroundPointerOver}" />
+                        </MultiTrigger>
+                        <!--  TextBoxOverlayPressed  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="PART_EditableTextBox" Property="IsSelectionActive" Value="False" />
+                                <Condition SourceName="DropDownOverlay" Property="IsPressed" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="DropDownOverlay" Property="Background" Value="{DynamicResource ComboBoxDropDownBackgroundPointerPressed}" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsGrouping" Value="true" />
+                                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource DefaultSearchableComboBoxStyle}" TargetType="local:SearchableComboBox" />
+
+</ResourceDictionary>

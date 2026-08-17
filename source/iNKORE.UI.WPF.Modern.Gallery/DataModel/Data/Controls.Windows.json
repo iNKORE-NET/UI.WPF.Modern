@@ -1065,6 +1065,30 @@
                     ]
                 },
                 {
+                    "UniqueId": "SearchableComboBox",
+                    "Title": "SearchableComboBox",
+                    "Subtitle": "A ComboBox with a search box in its drop-down.",
+                    "ImagePath": "ms-appx:///Assets/ControlImages/ComboBox.png",
+                    "ImageIconPath": "ms-appx:///Assets/ControlIcons/ComboBoxIcon.png",
+                    "Description": "SearchableComboBox is a ComboBox that shows a search box at the top of its drop-down, so a long list can be narrowed down by typing. An item matches when its text contains the search text, ignoring case. Filtering runs on a view private to the control, which means other controls bound to the same collection are left untouched, and the selected item is never filtered away. It inherits everything from ComboBox, including SelectedValuePath, ItemTemplate and data binding.",
+                    "Content": "",
+                    "IsNew": true,
+                    "IsUpdated": false,
+                    "Docs":
+                    [
+                        {
+                            "Title": "ComboBox - API",
+                            "Uri": "https://learn.microsoft.com/dotnet/api/system.windows.controls.combobox"
+                        }
+                    ],
+                    "RelatedControls":
+                    [
+                        "ComboBox",
+                        "AutoSuggestBox",
+                        "ListView"
+                    ]
+                },
+                {
                     "UniqueId": "RadioButton",
                     "Title": "RadioButton",
                     "Subtitle": "A control that allows a user to select a single option from a group of options.",

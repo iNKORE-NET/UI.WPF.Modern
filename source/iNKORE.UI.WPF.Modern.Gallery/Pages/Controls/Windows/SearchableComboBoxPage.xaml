@@ -1,0 +1,94 @@
+<ui:Page
+    x:Class="iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows.SearchableComboBoxPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    Title="SearchableComboBox"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ui:Page}}}">
+
+        <local:ControlExample x:Name="Example1" HeaderText="A SearchableComboBox with items defined inline.">
+            <local:ControlExample.Example>
+                <StackPanel>
+                    <ui:SearchableComboBox
+                        x:Name="Combo1"
+                        Width="260"
+                        ui:ControlHelper.Header="Colors"
+                        ui:ControlHelper.PlaceholderText="Pick a color"
+                        SearchBoxPlaceholderText="Type to filter colors">
+                        <sys:String>Blue</sys:String>
+                        <sys:String>Green</sys:String>
+                        <sys:String>Orange</sys:String>
+                        <sys:String>Red</sys:String>
+                        <sys:String>Violet</sys:String>
+                        <sys:String>Yellow</sys:String>
+                    </ui:SearchableComboBox>
+                    <TextBlock
+                        Margin="0,8,0,0"
+                        Style="{DynamicResource OutputTextBlockStyle}"
+                        Text="{Binding SelectedItem, ElementName=Combo1, TargetNullValue='Nothing selected'}" />
+                </StackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
+        <local:ControlExample x:Name="Example2" HeaderText="A SearchableComboBox bound with ItemsSource, with every option exposed.">
+            <local:ControlExample.Example>
+                <ui:SearchableComboBox
+                    x:Name="Combo2"
+                    MinWidth="300"
+                    ui:ControlHelper.Header="{Binding Text, ElementName=HeaderTextBox, UpdateSourceTrigger=PropertyChanged}"
+                    ui:ControlHelper.PlaceholderText="{Binding Text, ElementName=PlaceholderTextBox, UpdateSourceTrigger=PropertyChanged}"
+                    ClearSearchTextOnClose="{Binding IsChecked, ElementName=ClearSearchTextOnCloseCheckBox}"
+                    DisplayMemberPath="Summary"
+                    IsSearchEnabled="{Binding IsChecked, ElementName=IsSearchEnabledCheckBox}"
+                    ItemsSource="{Binding Employees}"
+                    MaxDropDownHeight="{Binding Value, ElementName=MaxDropDownHeightBox}"
+                    NoResultsText="{Binding Text, ElementName=NoResultsTextBox, UpdateSourceTrigger=PropertyChanged}"
+                    SearchBoxPlaceholderText="{Binding Text, ElementName=SearchBoxPlaceholderTextBox, UpdateSourceTrigger=PropertyChanged}" />
+            </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <ikw:SimpleStackPanel Style="{StaticResource OptionsPanelStyle}">
+                    <TextBox
+                        x:Name="HeaderTextBox"
+                        ui:ControlHelper.Header="ControlHelper.Header"
+                        Text="Employee" />
+                    <TextBox
+                        x:Name="PlaceholderTextBox"
+                        ui:ControlHelper.Header="ControlHelper.PlaceholderText"
+                        Text="Pick an employee" />
+                    <TextBox
+                        x:Name="SearchBoxPlaceholderTextBox"
+                        ui:ControlHelper.Header="SearchBoxPlaceholderText"
+                        Text="Type to search..." />
+                    <TextBox
+                        x:Name="NoResultsTextBox"
+                        ui:ControlHelper.Header="NoResultsText"
+                        Text="Nobody matches that" />
+                    <ui:NumberBox
+                        x:Name="MaxDropDownHeightBox"
+                        ui:ControlHelper.Header="MaxDropDownHeight"
+                        Maximum="504"
+                        Minimum="80"
+                        SmallChange="20"
+                        SpinButtonPlacementMode="Compact"
+                        Value="240" />
+                    <CheckBox
+                        x:Name="ClearSearchTextOnCloseCheckBox"
+                        Content="ClearSearchTextOnClose"
+                        IsChecked="True" />
+                    <CheckBox
+                        x:Name="IsSearchEnabledCheckBox"
+                        Content="IsSearchEnabled"
+                        IsChecked="True" />
+                </ikw:SimpleStackPanel>
+            </local:ControlExample.Options>
+        </local:ControlExample>
+
+    </StackPanel>
+</ui:Page>
