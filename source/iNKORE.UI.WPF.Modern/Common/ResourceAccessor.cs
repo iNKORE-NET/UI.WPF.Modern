@@ -158,6 +158,10 @@ namespace iNKORE.UI.WPF.Modern.Common
         public const string SR_NumberBoxDownSpinButtonName = "NumberBoxDownSpinButtonName";
         public const string SR_ExpanderDefaultControlName = "ExpanderDefaultControlName";
 
+        public const string SR_SearchableComboBoxSearchPlaceholder = "SearchableComboBoxSearchPlaceholder";
+        public const string SR_SearchableComboBoxNoResults = "SearchableComboBoxNoResults";
+        public const string SR_SearchableComboBoxSearchBoxName = "SearchableComboBoxSearchBoxName";
+
         public const string SR_InfoBarCloseButtonName = "InfoBarCloseButtonName";
         public const string SR_InfoBarOpenedNotification = "InfoBarOpenedNotification";
         public const string SR_InfoBarClosedNotification = "InfoBarClosedNotification";
