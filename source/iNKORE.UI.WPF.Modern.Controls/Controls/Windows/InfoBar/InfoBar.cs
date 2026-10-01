@@ -45,8 +45,16 @@ namespace iNKORE.UI.WPF.Modern.Controls
         public InfoBar()
         {
             SetValue(TemplateSettingsPropertyKey, new InfoBarTemplateSettings());
-            DependencyPropertyDescriptor descriptor = DependencyPropertyDescriptor.FromProperty(ForegroundProperty, typeof(InfoBar));
-            descriptor.AddValueChanged(this, (sender, e) => UpdateForeground());
+        }
+
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
+
+            if (e.Property == ForegroundProperty)
+            {
+                UpdateForeground();
+            }
         }
 
         protected override AutomationPeer OnCreateAutomationPeer()
