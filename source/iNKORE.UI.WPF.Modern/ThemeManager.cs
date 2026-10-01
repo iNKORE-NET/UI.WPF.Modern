@@ -42,7 +42,6 @@ namespace iNKORE.UI.WPF.Modern
         }
 
         private static readonly Binding _highContrastBinding = new Binding("(SystemParameters.HighContrast)");
-        private static readonly RoutedEventArgs _actualThemeChangedEventArgs;
 
         private static readonly Dictionary<string, ResourceDictionary> _defaultThemeDictionaries = new Dictionary<string, ResourceDictionary>();
 
@@ -54,7 +53,6 @@ namespace iNKORE.UI.WPF.Modern
         {
             ThemeProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(OnThemeChanged));
 
-            _actualThemeChangedEventArgs = new RoutedEventArgs(ActualThemeChangedEvent);
             MenuDropAlignmentHelper.EnsureStandardPopupAlignment();
 
             if (DesignMode.DesignModeEnabled)
@@ -460,7 +458,10 @@ namespace iNKORE.UI.WPF.Modern
 
         private static void RaiseActualThemeChanged(FrameworkElement element)
         {
-            element.RaiseEvent(_actualThemeChangedEventArgs);
+            // A fresh instance each time on purpose: RoutedEventArgs records the first element it is raised on
+            // as OriginalSource and never clears it, and never resets Handled, so a shared instance would keep
+            // that element (and its window) alive forever and let one handler's Handled leak into every later raise.
+            element.RaiseEvent(new RoutedEventArgs(ActualThemeChangedEvent, element));
         }
 
         #endregion

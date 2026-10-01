@@ -98,8 +98,12 @@ namespace iNKORE.UI.WPF.Modern.Input
         private static void RaiseTapped(UIElement element, int timestamp)
         {
             var e = new TappedRoutedEventArgs { RoutedEvent = TappedEvent, Source = element, Timestamp = timestamp };
-            _lastTappedArgs = e;
             element.RaiseEvent(e);
+
+            // Keep the values rather than the args: the args hold the tapped element as Source,
+            // which would keep it (and its window) alive until the next tap.
+            _lastTappedTimestamp = timestamp;
+            _lastTappedHandled = e.Handled;
         }
 
         #endregion
@@ -122,9 +126,7 @@ namespace iNKORE.UI.WPF.Modern.Input
             {
                 SetIsPressed((UIElement)sender, false);
 
-                var lastArgs = _lastTappedArgs;
-
-                if (lastArgs != null && lastArgs.Handled && lastArgs.Timestamp == e.Timestamp)
+                if (_lastTappedHandled && _lastTappedTimestamp == e.Timestamp)
                 {
                     // Handled by a child element, don't raise
                 }
@@ -149,6 +151,7 @@ namespace iNKORE.UI.WPF.Modern.Input
             SetIsPressed((UIElement)sender, false);
         }
 
-        private static TappedRoutedEventArgs _lastTappedArgs;
+        private static int _lastTappedTimestamp;
+        private static bool _lastTappedHandled;
     }
 }
