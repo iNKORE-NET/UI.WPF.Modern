@@ -2666,7 +2666,7 @@
 
     <Thickness x:Key="TreeViewItemBorderThemeThickness">0</Thickness>
     <Thickness x:Key="TreeViewItemPresenterMargin">4,2</Thickness>
-    <Thickness x:Key="TreeViewItemPresenterPadding">0,3,0,3</Thickness>
+    <Thickness x:Key="TreeViewItemPresenterPadding">0,5,0,5</Thickness>
     <Thickness x:Key="TreeViewItemMultiSelectSelectedItemBorderMargin">0</Thickness>
     <sys:Double x:Key="TreeViewItemMinHeight">28</sys:Double>
     <sys:Double x:Key="TreeViewItemMultiSelectCheckBoxMinHeight">28</sys:Double>
@@ -2702,15 +2702,18 @@
                     <Border
                         BorderBrush="{TemplateBinding chelper:FocusVisualHelper.FocusVisualPrimaryBrush}"
                         BorderThickness="{TemplateBinding chelper:FocusVisualHelper.FocusVisualPrimaryThickness}"
-                        SnapsToDevicePixels="True">
-                        <Border BorderBrush="{TemplateBinding chelper:FocusVisualHelper.FocusVisualSecondaryBrush}" BorderThickness="{TemplateBinding chelper:FocusVisualHelper.FocusVisualSecondaryThickness}" />
+                        SnapsToDevicePixels="True"
+                        CornerRadius="{TemplateBinding chelper:FocusVisualHelper.FocusVisualPrimaryCornerRadius}">
+                        <Border CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
+                                BorderBrush="{TemplateBinding chelper:FocusVisualHelper.FocusVisualSecondaryBrush}" 
+                                BorderThickness="{TemplateBinding chelper:FocusVisualHelper.FocusVisualSecondaryThickness}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}" BasedOn="{m:StaticColor HighVisibilityFocusVisual}" />
+    <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}" BasedOn="{StaticResource HighVisibilityFocusVisual}" />
 
     
     <!--Resources for SettingsCard-->

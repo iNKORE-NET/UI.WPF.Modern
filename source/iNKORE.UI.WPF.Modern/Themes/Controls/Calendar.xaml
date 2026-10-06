@@ -17,6 +17,33 @@
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
+    <Style x:Key="EllipticalFocusStyle" BasedOn="{StaticResource {x:Static SystemParameters.FocusVisualStyleKey}}">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.Width>
+                            <MultiBinding Converter="{StaticResource RoundMathConverter}">
+                                <Binding Path="ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                            </MultiBinding>
+                        </Grid.Width>
+                        <Grid.Height>
+                            <MultiBinding Converter="{StaticResource RoundMathConverter}">
+                                <Binding Path="ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                            </MultiBinding>
+                        </Grid.Height>
+                        <Ellipse Stroke="{TemplateBinding chelper:FocusVisualHelper.FocusVisualSecondaryBrush}"
+                                 StrokeThickness="1" />
+                        <Ellipse Stroke="{TemplateBinding chelper:FocusVisualHelper.FocusVisualPrimaryBrush}"
+                                 StrokeThickness="2" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <Style x:Key="DefaultCalendarItemStyle" TargetType="CalendarItem">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -38,7 +65,7 @@
                             <TextBlock Style="{StaticResource WeekDayNameStyle}" Text="{Binding}" />
                         </DataTemplate>
                     </ControlTemplate.Resources>
-                    <Grid x:Name="PART_Root" SnapsToDevicePixels="True">
+                    <Grid x:Name="PART_Root" SnapsToDevicePixels="True" KeyboardNavigation.TabNavigation="Local">
                         <Grid.Resources>
                             <Style
                                 x:Key="HeaderNavigationButtonStyle"
@@ -168,25 +195,25 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Button
+                                        KeyboardNavigation.TabIndex="0"
                                         x:Name="PART_HeaderButton"
                                         HorizontalContentAlignment="Left"
-                                        Focusable="False"
                                         Style="{StaticResource HeaderNavigationButtonStyle}" />
                                     <Button
                                         x:Name="PART_PreviousButton"
+                                        KeyboardNavigation.TabIndex="1"
                                         Grid.Column="1"
                                         Margin="{DynamicResource CalendarViewNavigationPreviousButtonMargin}"
                                         HorizontalContentAlignment="Center"
                                         Content="&#xE2BC;"
-                                        Focusable="False"
                                         Style="{StaticResource NavigationButtonStyle}" />
                                     <Button
                                         x:Name="PART_NextButton"
+                                        KeyboardNavigation.TabIndex="2"
                                         Grid.Column="2"
                                         Margin="{DynamicResource CalendarViewNavigationNextButtonMargin}"
                                         HorizontalContentAlignment="Center"
                                         Content="&#xF260;"
-                                        Focusable="False"
                                         Style="{StaticResource NavigationButtonStyle}" />
                                 </Grid>
                                 <Border
@@ -207,7 +234,10 @@
                                         x:Name="PART_MonthView"
                                         RenderTransformOrigin="0.5,0.5"
                                         TextElement.Foreground="{DynamicResource CalendarViewCalendarItemForeground}"
-                                        Visibility="Visible">
+                                        Visibility="Visible"
+                                        KeyboardNavigation.TabNavigation="Once"
+                                        KeyboardNavigation.TabIndex="3"
+                                        Margin="3,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
@@ -233,7 +263,9 @@
                                     <Grid
                                         x:Name="PART_YearView"
                                         RenderTransformOrigin="0.5,0.5"
-                                        Visibility="Hidden">
+                                        Visibility="Collapsed"
+                                        KeyboardNavigation.TabNavigation="Once"
+                                        KeyboardNavigation.TabIndex="3">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
@@ -273,6 +305,9 @@
                                         <BooleanAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="IsEnabled">
                                             <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="False" />
                                         </BooleanAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Hidden}" />
+                                        </ObjectAnimationUsingKeyFrames>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="Opacity">
                                             <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="0" />
                                         </DoubleAnimationUsingKeyFrames>
@@ -293,6 +328,9 @@
                                                     KeyTime="0:0:0.150"
                                                     Value="0" />
                                             </DoubleAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.150" Value="{x:Static Visibility.Hidden}" />
+                                            </ObjectAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_YearView" Storyboard.TargetProperty="Opacity">
                                                 <DiscreteDoubleKeyFrame KeyTime="0" Value="0" />
                                                 <DiscreteDoubleKeyFrame KeyTime="0:0:0.150" Value="0" />
@@ -348,7 +386,7 @@
                                             <BooleanAnimationUsingKeyFrames Storyboard.TargetName="PART_YearView" Storyboard.TargetProperty="IsHitTestVisible">
                                                 <DiscreteBooleanKeyFrame KeyTime="0" Value="False" />
                                             </BooleanAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_YearView" Storyboard.TargetProperty="Visibility">
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="Visibility">
                                                 <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}" />
                                             </ObjectAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_YearView" Storyboard.TargetProperty="Opacity">
@@ -426,6 +464,9 @@
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="Opacity">
                                                 <DiscreteDoubleKeyFrame KeyTime="0" Value="0" />
                                             </DoubleAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Hidden}" />
+                                            </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_YearView" Storyboard.TargetProperty="Visibility">
                                                 <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}" />
                                             </ObjectAnimationUsingKeyFrames>
@@ -498,6 +539,9 @@
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="Opacity">
                                                 <DiscreteDoubleKeyFrame KeyTime="0" Value="0" />
                                             </DoubleAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_MonthView" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Hidden}" />
+                                            </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_YearView" Storyboard.TargetProperty="Visibility">
                                                 <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}" />
                                             </ObjectAnimationUsingKeyFrames>
@@ -588,9 +632,9 @@
         <Setter Property="FontSize" Value="{DynamicResource CalendarViewDayItemFontSize}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource EllipticalFocusStyle}"/>
         <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="True" />
-        <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-2" />
+        <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-4,-3.5,-3.5,-3" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarDayButton">
@@ -649,6 +693,8 @@
                         </Trigger>
                         <!--  Selected  -->
                         <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="IsTabStop" Value="True" />
+                            <Setter Property="TabIndex" Value="4" />
                             <Setter TargetName="NormalText" Property="Foreground" Value="{DynamicResource CalendarViewSelectedForeground}" />
                             <Setter TargetName="HighlightBorder" Property="Stroke" Value="{DynamicResource CalendarViewSelectedBorderBrush}" />
                         </Trigger>
@@ -700,6 +746,10 @@
                             <Setter TargetName="Background" Property="Fill" Value="{DynamicResource CalendarViewTodayBackground}" />
                             <Setter TargetName="NormalText" Property="FontWeight" Value="{DynamicResource CalendarViewTodayFontWeight}" />
                             <Setter TargetName="NormalText" Property="Foreground" Value="{DynamicResource CalendarViewTodayForeground}" />
+                        </Trigger>
+                        <Trigger Property="IsToday" Value="True">
+                            <Setter Property="IsTabStop" Value="True" />
+                            <Setter Property="TabIndex" Value="5" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -767,9 +817,12 @@
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource EllipticalFocusStyle}"/>
+        <Setter Property="chelper:CalendarHelper.CalendarDisplayMode" Value="{Binding RelativeSource={RelativeSource AncestorType=Calendar}, Path=DisplayMode, Mode=OneWay}" />
+        <Setter Property="chelper:CalendarHelper.IsContainsTodayActive" Value="{Binding RelativeSource={RelativeSource AncestorType=Calendar}, Path=IsTodayHighlighted, Mode=OneWay}" />
+        <Setter Property="chelper:CalendarHelper.ContextDate" Value="{Binding }" />
         <Setter Property="chelper:FocusVisualHelper.UseSystemFocusVisuals" Value="True" />
-        <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-2" />
+        <Setter Property="chelper:FocusVisualHelper.FocusVisualMargin" Value="-4,-3.5,-3.5,-3" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarButton">
@@ -818,28 +871,39 @@
                             <Setter TargetName="NormalText" Property="Foreground" Value="{DynamicResource CalendarViewDisabledForeground}" />
                         </Trigger>
                         <!--  Selected  -->
-                        <Trigger Property="HasSelectedDays" Value="True">
+                        <Trigger Property="chelper:CalendarHelper.ContainsToday" Value="True">
+                            <Setter Property="IsTabStop" Value="True" />
+                            <Setter Property="TabIndex" Value="4" />
+                        </Trigger>
+                        <MultiTrigger >
+                            <MultiTrigger.Conditions>
+                                <Condition Property="chelper:CalendarHelper.ContainsToday" Value="True"/>
+                                <Condition Property="chelper:CalendarHelper.IsContainsTodayActive" Value="True"/>
+                            </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Fill" Value="{DynamicResource CalendarViewTodayBackground}" />
                             <Setter TargetName="NormalText" Property="FontWeight" Value="{DynamicResource CalendarViewTodayFontWeight}" />
                             <Setter TargetName="NormalText" Property="Foreground" Value="{DynamicResource CalendarViewTodayForeground}" />
-                        </Trigger>
+                        </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="HasSelectedDays" Value="True" />
+                                <Condition Property="chelper:CalendarHelper.ContainsToday" Value="True"/>
+                                <Condition Property="chelper:CalendarHelper.IsContainsTodayActive" Value="True"/>
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Fill" Value="{DynamicResource CalendarViewTodayHoverBackground}" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="HasSelectedDays" Value="True" />
+                                <Condition Property="chelper:CalendarHelper.ContainsToday" Value="True"/>
+                                <Condition Property="chelper:CalendarHelper.IsContainsTodayActive" Value="True"/>
                                 <Condition Property="IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Fill" Value="{DynamicResource CalendarViewTodayPressedBackground}" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="HasSelectedDays" Value="True" />
+                                <Condition Property="chelper:CalendarHelper.ContainsToday" Value="True"/>
+                                <Condition Property="chelper:CalendarHelper.IsContainsTodayActive" Value="True"/>
                                 <Condition Property="IsEnabled" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Background" Property="Fill" Value="{DynamicResource CalendarViewTodayDisabledBackground}" />
@@ -885,6 +949,7 @@
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="chelper:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="chelper:CalendarHelper.AutoReleaseMouseCapture" Value="True" />
+        <Setter Property="chelper:CalendarHelper.KeyboardBehaviorOverride" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Calendar">

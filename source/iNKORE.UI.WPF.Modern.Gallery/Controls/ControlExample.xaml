@@ -13,6 +13,7 @@
     <sys:Double x:Key="ExampleMaxWidth">1000</sys:Double>
 
     <Style TargetType="local:ControlExample">
+        <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:ControlExample">
@@ -37,7 +38,6 @@
                             <Run>
                                 This sample requires a later version of Windows to be fully functional. Learn more about version adaptive apps:
                             </Run>
-                            <Hyperlink NavigateUri="https://docs.microsoft.com/windows/uwp/debug-test-perf/version-adaptive-apps">https://docs.microsoft.com/windows/uwp/debug-test-perf/version-adaptive-apps</Hyperlink>
                         </TextBlock>
 
                         <Border Grid.Row="2" CornerRadius="8">

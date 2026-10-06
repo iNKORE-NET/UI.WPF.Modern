@@ -61,7 +61,8 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding chelper:ControlHelper.CornerRadius}"
-                        SnapsToDevicePixels="True">
+                        SnapsToDevicePixels="True"
+                        ui:FocusVisualHelper.IsTemplateFocusTarget="True">
                         <Border
                             x:Name="Border"
                             Padding="{TemplateBinding Padding}"
