@@ -1,49 +1,48 @@
-name: Build Controls & Gallery
+name: Build
 
-# This workflow builds the iNKORE.UI.WPF.Modern.Controls and iNKORE.UI.WPF.Modern.Gallery projects and uploads the artifacts for use in other workflows or releases.
-
+# Builds the solution and the NuGet package for every PR and push to main; nothing is published.
 on:
   push:
-    branches: [  ]
+    branches: [main]
   pull_request:
-    branches: [  ]
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
     runs-on: windows-latest
-    
+    env:
+      VERSION_SUFFIX: ci.${{ github.run_number }}
+
     steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
+      - uses: actions/checkout@v4
 
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.1
+      - uses: microsoft/setup-msbuild@v2
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: |
-          6.0.x
-          7.0.x
+      - name: Build solution
+        shell: pwsh
+        run: >-
+          msbuild iNKORE.UI.WPF.Modern.sln -restore
+          -p:Configuration=Release "-p:Platform=Any CPU" "-p:VersionSuffix=$env:VERSION_SUFFIX"
 
-    - name: Restore NuGet packages
-      run: |
-        nuget restore iNKORE.UI.WPF.Modern.sln
+      - name: Pack
+        shell: pwsh
+        run: >-
+          msbuild source/iNKORE.UI.WPF.Modern.Controls/iNKORE.UI.WPF.Modern.Controls.csproj -t:Pack -p:NoBuild=true
+          -p:Configuration=Release "-p:VersionSuffix=$env:VERSION_SUFFIX"
 
-    - name: Build solution
-      run: |
-        msbuild iNKORE.UI.WPF.Modern.sln /p:Configuration=Release /p:Platform="Any CPU"
+      - name: Upload package
+        uses: actions/upload-artifact@v4
+        with:
+          name: nupkg
+          path: .nuget/*.nupkg
+          include-hidden-files: true  # .nuget/ is a dot folder, which upload-artifact skips by default
+          if-no-files-found: error
 
-    - name: Upload Controls artifact (.NET 6.0)
-      uses: actions/upload-artifact@v4
-      with:
-        name: iNKORE.UI.WPF.Modern.Controls  
-        path: source\iNKORE.UI.WPF.Modern.Controls\bin\Release\net6.0-windows10.0.18362.0
-
-    - name: Upload Gallery artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: iNKORE.UI.WPF.Modern.Gallery
-        path: source\iNKORE.UI.WPF.Modern.Gallery\bin\Release\net6.0-windows10.0.18362.0
+      - name: Upload Gallery
+        uses: actions/upload-artifact@v4
+        with:
+          name: iNKORE.UI.WPF.Modern.Gallery
+          path: source/iNKORE.UI.WPF.Modern.Gallery/bin/Release/net6.0-windows10.0.18362.0

@@ -1,0 +1,64 @@
+name: Release
+
+# Pushing a tag such as v0.10.3 packs that version and publishes it to NuGet.org.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  pack:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: microsoft/setup-msbuild@v2
+
+      - name: Pack
+        shell: pwsh
+        env:
+          TAG: ${{ github.ref_name }}
+        run: >-
+          msbuild source/iNKORE.UI.WPF.Modern.Controls/iNKORE.UI.WPF.Modern.Controls.csproj -restore -t:Pack
+          -p:Configuration=Release "-p:Version=$($env:TAG.Substring(1))" -p:ContinuousIntegrationBuild=true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nupkg
+          path: .nuget/*.nupkg
+          include-hidden-files: true  # .nuget/ is a dot folder, which upload-artifact skips by default
+          if-no-files-found: error
+
+  publish:
+    needs: pack
+    runs-on: ubuntu-latest
+    environment: nuget
+    permissions:
+      contents: write  # gh release create
+      id-token: write  # NuGet trusted publishing
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: nupkg
+
+      - name: NuGet login
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Push to NuGet.org
+        run: >-
+          dotnet nuget push "*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
+          --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          prerelease=""
+          if [[ "$TAG" == *-* ]]; then prerelease="--prerelease"; fi
+          gh release create "$TAG" *.nupkg --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes $prerelease
