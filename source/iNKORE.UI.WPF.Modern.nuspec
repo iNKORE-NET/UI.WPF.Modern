@@ -52,9 +52,11 @@
         <file src="iNKORE.UI.WPF.Modern.Controls\bin\$configuration$\net452\iNKORE.UI.WPF.Modern*" target="lib\net452"/>
 
         <!-- The same binaries go in twice. Projects targeting plain net*-windows (no Windows SDK version) can't use
-            the 10.0.18362 folder and resolve to net6.0-windows7.0; CsWinRT is embedded, so it runs there too.
-            ** brings along the satellite assemblies in the culture subfolders. -->
-        <file src="iNKORE.UI.WPF.Modern.Controls\bin\$configuration$\net6.0-windows10.0.18362.0\**\iNKORE.UI.WPF.Modern*" target="lib\net6.0-windows10.0.18362" exclude="**\*.deps.json"/>
-        <file src="iNKORE.UI.WPF.Modern.Controls\bin\$configuration$\net6.0-windows10.0.18362.0\**\iNKORE.UI.WPF.Modern*" target="lib\net6.0-windows7.0" exclude="**\*.deps.json"/>
+            the 10.0.18362 folder and resolve to net6.0-windows7.0. The binaries still reference Microsoft.Windows.SDK.NET,
+            which those projects don't get, so system accent and theme detection don't work there yet.
+            ** brings along the satellite assemblies in the culture subfolders, except ca-ES-valencia: VS and the dotnet CLI
+            disagree on its casing, so any spelling raises NETSDK1187 for consumers. It falls back to ca-ES. -->
+        <file src="iNKORE.UI.WPF.Modern.Controls\bin\$configuration$\net6.0-windows10.0.18362.0\**\iNKORE.UI.WPF.Modern*" target="lib\net6.0-windows10.0.18362" exclude="**\*.deps.json;**\ca-ES-valencia\**"/>
+        <file src="iNKORE.UI.WPF.Modern.Controls\bin\$configuration$\net6.0-windows10.0.18362.0\**\iNKORE.UI.WPF.Modern*" target="lib\net6.0-windows7.0" exclude="**\*.deps.json;**\ca-ES-valencia\**"/>
     </files>
 </package>
