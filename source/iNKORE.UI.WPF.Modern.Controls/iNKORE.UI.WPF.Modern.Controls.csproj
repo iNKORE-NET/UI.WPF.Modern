@@ -1,80 +1,80 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
-	<PropertyGroup>
-		<TargetFrameworks>net6.0-windows10.0.18362.0;net452</TargetFrameworks>
-		<UseWPF>true</UseWPF>
-		<NeutralLanguage>en-US</NeutralLanguage>
-		<IsPackable>true</IsPackable>
-		<NuspecFile>$(MSBuildThisFileDirectory)..\iNKORE.UI.WPF.Modern.nuspec</NuspecFile>
-		<NuspecBasePath>$(MSBuildThisFileDirectory)..\</NuspecBasePath>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<GenerateVersionAttributes>true</GenerateVersionAttributes>
-		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<!--<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>-->
-		<ApplicationIcon>..\..\assets\icons\WpfLibrary.ico</ApplicationIcon>
-		<SignAssembly>True</SignAssembly>
-		<AssemblyOriginatorKeyFile>..\..\assets\others\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
-		<RootNamespace>iNKORE.UI.WPF.Modern</RootNamespace>
+    <PropertyGroup>
+        <TargetFrameworks>net6.0-windows10.0.18362.0;net452</TargetFrameworks>
+        <UseWPF>true</UseWPF>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <IsPackable>true</IsPackable>
+        <NuspecFile>$(MSBuildThisFileDirectory)..\iNKORE.UI.WPF.Modern.nuspec</NuspecFile>
+        <NuspecBasePath>$(MSBuildThisFileDirectory)..\</NuspecBasePath>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateVersionAttributes>true</GenerateVersionAttributes>
+        <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+        <!--<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>-->
+        <ApplicationIcon>..\..\assets\icons\WpfLibrary.ico</ApplicationIcon>
+        <SignAssembly>True</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\..\assets\others\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
+        <RootNamespace>iNKORE.UI.WPF.Modern</RootNamespace>
         <!--<GenerateDocumentationFile>true</GenerateDocumentationFile>-->
-		<NoWarn>$(NoWarn);CS1591;1701;1702;CA1416;CS1573</NoWarn>
-	</PropertyGroup>
+        <NoWarn>$(NoWarn);CS1591;1701;1702;CA1416;CS1573</NoWarn>
+    </PropertyGroup>
 
-	<!--<PropertyGroup>
-		<CsWinRTEmbedded>true</CsWinRTEmbedded>
-		<CsWinRTWindowsMetadata>10.0.18362.0</CsWinRTWindowsMetadata>
-		<CsWinRTIncludes>
-			Windows.Foundation;
-			Windows.UI.Color;
-			Windows.UI.IColors;
-			Windows.UI.ViewManagement.HandPreference;
-			Windows.UI.ViewManagement.IUISettings;
-			Windows.UI.ViewManagement.UIColorType;
-			Windows.UI.ViewManagement.UIElementType;
-			Windows.UI.ViewManagement.UISettings;
-		</CsWinRTIncludes>
-		<CsWinRTExcludes>
-			Windows.Foundation.Diagnostics;
-			Windows.Foundation.PropertyType;
-		</CsWinRTExcludes>
-	</PropertyGroup>-->
+    <!--<PropertyGroup>
+        <CsWinRTEmbedded>true</CsWinRTEmbedded>
+        <CsWinRTWindowsMetadata>10.0.18362.0</CsWinRTWindowsMetadata>
+        <CsWinRTIncludes>
+            Windows.Foundation;
+            Windows.UI.Color;
+            Windows.UI.IColors;
+            Windows.UI.ViewManagement.HandPreference;
+            Windows.UI.ViewManagement.IUISettings;
+            Windows.UI.ViewManagement.UIColorType;
+            Windows.UI.ViewManagement.UIElementType;
+            Windows.UI.ViewManagement.UISettings;
+        </CsWinRTIncludes>
+        <CsWinRTExcludes>
+            Windows.Foundation.Diagnostics;
+            Windows.Foundation.PropertyType;
+        </CsWinRTExcludes>
+    </PropertyGroup>-->
 
-	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'">
-		<PackageReference Include="Resource.Embedder" Version="2.2.0" PrivateAssets="all" />
-	</ItemGroup>
+    <ItemGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'">
+        <PackageReference Include="Resource.Embedder" Version="2.2.0" PrivateAssets="all" />
+    </ItemGroup>
 
-	<ItemGroup Condition="!$(DefineConstants.Contains('NET47_OR_NEWER'))">
-		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
-	</ItemGroup>
+    <ItemGroup Condition="!$(DefineConstants.Contains('NET47_OR_NEWER'))">
+        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    </ItemGroup>
 
-	<ItemGroup>
-	  <Compile Include="..\iNKORE.UI.WPF.Modern\Properties\AssemblyInfoCommon.cs" Link="Properties\AssemblyInfoCommon.cs" />
-	</ItemGroup>
+    <ItemGroup>
+        <Compile Include="..\iNKORE.UI.WPF.Modern\Properties\AssemblyInfoCommon.cs" Link="Properties\AssemblyInfoCommon.cs" />
+    </ItemGroup>
 
-	<ItemGroup>
-	  <PackageReference Include="iNKORE.UI.WPF" />
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="iNKORE.UI.WPF" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\iNKORE.UI.WPF.Modern\iNKORE.UI.WPF.Modern.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\iNKORE.UI.WPF.Modern\iNKORE.UI.WPF.Modern.csproj" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<None Update="iNKORE.UI.WPF.Modern.Controls.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
+    <ItemGroup>
+        <None Update="iNKORE.UI.WPF.Modern.Controls.xml">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Resources\Strings\" />
-	</ItemGroup>
+    <ItemGroup>
+        <Folder Include="Resources\Strings\" />
+    </ItemGroup>
 
-	<!-- Set in a target because PackageVersion isn't defined yet when this file is evaluated. -->
-	<Target Name="SetNuspecProperties" BeforeTargets="GenerateNuspec">
-		<PropertyGroup>
-			<NuspecProperties>$(NuspecProperties);version=$(PackageVersion)</NuspecProperties>
-			<NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>
-			<NuspecProperties>$(NuspecProperties);uiwpfVersion=@(PackageReference->WithMetadataValue('Identity', 'iNKORE.UI.WPF')->'%(Version)')</NuspecProperties>
-		</PropertyGroup>
-	</Target>
+    <!-- Set in a target because PackageVersion isn't defined yet when this file is evaluated. -->
+    <Target Name="SetNuspecProperties" BeforeTargets="GenerateNuspec">
+        <PropertyGroup>
+            <NuspecProperties>$(NuspecProperties);version=$(PackageVersion)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);uiwpfVersion=@(PackageReference->WithMetadataValue('Identity', 'iNKORE.UI.WPF')->'%(Version)')</NuspecProperties>
+        </PropertyGroup>
+    </Target>
 
 </Project>

@@ -9,7 +9,7 @@
         <Version>0.10.2</Version>
 
         <!-- The NuGet package is defined by source/iNKORE.UI.WPF.Modern.nuspec and packed from
-         iNKORE.UI.WPF.Modern.Controls only; packing any other project would produce a clashing package. -->
+            iNKORE.UI.WPF.Modern.Controls only; packing any other project would produce a clashing package. -->
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 </Project>
