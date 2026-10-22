@@ -28,17 +28,23 @@ jobs:
     needs: approve
     if: ${{ !cancelled() && (needs.approve.result == 'success' || needs.approve.result == 'skipped') }}
     runs-on: windows-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     steps:
       - uses: actions/checkout@v4
 
       - uses: microsoft/setup-msbuild@v2
 
       - name: Choose version
+        id: version
         shell: pwsh
         run: |
           if ($env:GITHUB_REF_TYPE -eq 'tag' -and $env:GITHUB_REF_NAME -like 'v*') { $arg = "-p:Version=$($env:GITHUB_REF_NAME.Substring(1))" }
           else { $arg = "-p:VersionSuffix=ci.$env:GITHUB_RUN_NUMBER" }
           "VERSION_ARG=$arg" >> $env:GITHUB_ENV
+          # The version the package should come out with; test-package checks it against this.
+          $version = msbuild source/iNKORE.UI.WPF.Modern.Controls/iNKORE.UI.WPF.Modern.Controls.csproj -getProperty:Version $arg
+          "version=$version" >> $env:GITHUB_OUTPUT
 
       - name: Build solution
         shell: pwsh
@@ -77,3 +83,34 @@ jobs:
           path: artifacts/*.zip
           compression-level: 0  # already zipped
           if-no-files-found: error
+
+  # Checks the package's layout and versions, then builds small WPF apps against it and runs them (tests/Package).
+  # A failure here fails the run, and release.yml only releases a tag whose Build run succeeded.
+  test-package:
+    needs: build
+    # Without this the job is skipped on tag builds (approve is skipped there), and the run would still succeed.
+    if: ${{ !cancelled() && needs.build.result == 'success' }}
+    runs-on: windows-latest
+    env:
+      VERSION: ${{ needs.build.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: microsoft/setup-msbuild@v2
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x  # the net8.0 consumer runs on it
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: nupkg
+          path: nupkg
+
+      - name: Check package structure
+        shell: pwsh
+        run: tests/Package/Test-PackageStructure.ps1 -Package (Get-Item nupkg/*.nupkg).FullName -Version $env:VERSION
+
+      - name: Build and run consumers
+        shell: pwsh
+        run: tests/Package/Test-Consumers.ps1 -Package (Get-Item nupkg/*.nupkg).FullName -Version $env:VERSION
