@@ -209,6 +209,7 @@ PublishScripts/
 
 # Nuget personal access tokens and Credentials
 nuget.config
+!tests/Package/Consumers/nuget.config
 
 # Microsoft Azure Build Output
 csx/

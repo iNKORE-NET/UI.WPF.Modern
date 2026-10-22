@@ -1,0 +1,27 @@
+<!--
+    A WPF app that uses iNKORE.UI.WPF.Modern the way consumers do: from the package, at the version passed in
+    -p:ModernPackageVersion. Built and run by ../../Test-Consumers.ps1; it is not part of the solution.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <!-- net8.0-windows resolves lib/net6.0-windows7.0, the Windows SDK one lib/net6.0-windows10.0.18362. -->
+        <TargetFrameworks>net8.0-windows;net8.0-windows10.0.19041.0;net48</TargetFrameworks>
+        <UseWPF>true</UseWPF>
+        <LangVersion>latest</LangVersion>
+        <!-- NETSDK1138 once net8.0 is out of support (November 2026) would fail the warning check. -->
+        <CheckEolTargetFramework>false</CheckEolTargetFramework>
+        <!-- The audit is fetched from nuget.org; a failed lookup (NU1900) shouldn't fail the package test. -->
+        <NuGetAudit>false</NuGetAudit>
+    </PropertyGroup>
+
+    <!-- System colours don't work on lib/net6.0-windows7.0 yet: it can't load Microsoft.Windows.SDK.NET. -->
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+        <DefineConstants>$(DefineConstants);NO_SYSTEM_COLORS</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="iNKORE.UI.WPF.Modern" Version="$(ModernPackageVersion)" />
+        <AssemblyMetadata Include="ModernPackageVersion" Value="$(ModernPackageVersion)" />
+    </ItemGroup>
+</Project>
