@@ -1,31 +1,48 @@
 name: Release
 
-# Pushing a tag such as v0.10.3 builds that version right away (build.yml);
-# publishing it waits for approval on the nuget environment.
+# Publishing a GitHub release for a v* tag (written by hand on the Releases page) starts this.
+# After approval on the nuget environment, the tag's Build outputs are pushed to NuGet.org and attached to the release.
+# To retry, run it by hand on the tag (Use workflow from -> Tags); both steps are safe to repeat.
 on:
-  push:
-    tags: ['v*']
+  release:
+    types: [published]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
-jobs:
-  build:
-    uses: ./.github/workflows/build.yml
-    with:
-      tag: ${{ github.ref_name }}
+concurrency:
+  group: release-${{ github.ref_name }}
 
+jobs:
   publish:
-    needs: build
+    if: github.ref_type == 'tag' && startsWith(github.ref_name, 'v')
     runs-on: ubuntu-latest
     environment: nuget  # the required reviewers on this environment approve every release
     permissions:
-      contents: write  # gh release create
+      actions: read    # download the tag build's artifacts
+      contents: write  # attach files to the release
       id-token: write  # NuGet trusted publishing
+    env:
+      TAG: ${{ github.ref_name }}
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
     steps:
+      - name: Find the tag's build
+        run: |
+          run_id=$(gh run list --workflow build.yml --branch "$TAG" --event push --status success --limit 1 --json databaseId --jq '.[0].databaseId')
+          if [ -z "$run_id" ]; then
+            echo "::error::No successful Build run for $TAG yet. Wait for it to finish (or re-run it), then re-run this workflow."
+            exit 1
+          fi
+          echo "BUILD_RUN_ID=$run_id" >> "$GITHUB_ENV"
+
       - uses: actions/download-artifact@v4
         with:
-          name: nupkg
+          run-id: ${{ env.BUILD_RUN_ID }}
+          github-token: ${{ github.token }}
+          path: dist
+          merge-multiple: true
 
       - name: NuGet login
         uses: NuGet/login@v1
@@ -35,14 +52,8 @@ jobs:
 
       - name: Push to NuGet.org
         run: >-
-          dotnet nuget push "*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
+          dotnet nuget push "dist/*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
           --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-      - name: Create GitHub release
-        env:
-          GH_TOKEN: ${{ github.token }}
-          TAG: ${{ github.ref_name }}
-        run: |
-          prerelease=""
-          if [[ "$TAG" == *-* ]]; then prerelease="--prerelease"; fi
-          gh release create "$TAG" *.nupkg --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes $prerelease
+      - name: Attach files to the release
+        run: gh release upload "$TAG" dist/* --clobber

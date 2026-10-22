@@ -1,17 +1,12 @@
 name: Build
 
-# Builds the solution, the NuGet package and the Gallery; nothing is published.
-# Pull requests wait for a maintainer to approve the pr-build environment first.
-# release.yml calls this for tags, which build right away.
+# Builds the NuGet package and the Gallery and keeps them as run artifacts; nothing is published (see release.yml).
+# Pull requests wait for a maintainer to approve the pr-build environment first; v* tags build right away.
 on:
   pull_request:
+  push:
+    tags: ['v*']
   workflow_dispatch:
-  workflow_call:
-    inputs:
-      tag:
-        description: Release tag (vX.Y.Z) to build as that version.
-        type: string
-        default: ''
 
 permissions:
   contents: read
@@ -40,10 +35,9 @@ jobs:
 
       - name: Choose version
         shell: pwsh
-        env:
-          TAG: ${{ inputs.tag }}
         run: |
-          if ($env:TAG) { $arg = "-p:Version=$($env:TAG.Substring(1))" } else { $arg = "-p:VersionSuffix=ci.$env:GITHUB_RUN_NUMBER" }
+          if ($env:GITHUB_REF_TYPE -eq 'tag' -and $env:GITHUB_REF_NAME -like 'v*') { $arg = "-p:Version=$($env:GITHUB_REF_NAME.Substring(1))" }
+          else { $arg = "-p:VersionSuffix=ci.$env:GITHUB_RUN_NUMBER" }
           "VERSION_ARG=$arg" >> $env:GITHUB_ENV
 
       - name: Build solution
@@ -58,6 +52,14 @@ jobs:
           msbuild source/iNKORE.UI.WPF.Modern.Controls/iNKORE.UI.WPF.Modern.Controls.csproj -t:Pack -p:NoBuild=true
           -p:Configuration=Release -p:ContinuousIntegrationBuild=true $env:VERSION_ARG
 
+      - name: Zip Gallery
+        shell: pwsh
+        run: |
+          $version = (Get-Item .nuget/iNKORE.UI.WPF.Modern.*.nupkg).BaseName.Substring('iNKORE.UI.WPF.Modern.'.Length)
+          New-Item -ItemType Directory -Force artifacts | Out-Null
+          Compress-Archive -Path source/iNKORE.UI.WPF.Modern.Gallery/bin/Release/net6.0-windows10.0.18362.0/* `
+            -DestinationPath "artifacts/iNKORE.UI.WPF.Modern.Gallery@$version.zip"
+
       - name: Upload package
         uses: actions/upload-artifact@v4
         with:
@@ -69,6 +71,7 @@ jobs:
       - name: Upload Gallery
         uses: actions/upload-artifact@v4
         with:
-          name: iNKORE.UI.WPF.Modern.Gallery
-          path: source/iNKORE.UI.WPF.Modern.Gallery/bin/Release/net6.0-windows10.0.18362.0
+          name: gallery
+          path: artifacts/*.zip
+          compression-level: 0  # already zipped
           if-no-files-found: error
