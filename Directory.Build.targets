@@ -1,10 +1,40 @@
 ﻿<Project>
-  <PropertyGroup Condition="'$(PackageId)' != ''">
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/InkoreStudios/UI.WPF.Modern</PackageProjectUrl>
-    <PackageTags>WPF XAML UI Theme Controls Fluent Modern Metro WinUI</PackageTags>
-    <PackageOutputPath>$(MSBuildThisFileDirectory)artifacts</PackageOutputPath>
+  <PropertyGroup>
+    <PackageOutputPath>$(MSBuildThisFileDirectory).nuget</PackageOutputPath>
   </PropertyGroup>
+
+  <!--
+    Version for every iNKORE.UI.WPF PackageReference that doesn't state one; the nuspec dependencies follow it too.
+    Bump it here, not through the NuGet UI: a Version written into a csproj takes precedence over this one.
+    Has to live here rather than in Directory.Build.props: Update only sees items the project has already included.
+  -->
+  <ItemGroup>
+    <PackageReference Update="iNKORE.UI.WPF">
+      <Version Condition="'%(Version)' == ''">1.2.8</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <!--
+    Projects that hand-write their assembly attributes (GenerateAssemblyInfo=false) opt in with
+    GenerateVersionAttributes=true to get the version attributes from $(Version) instead.
+  -->
+  <Target Name="_GenerateVersionAttributes" BeforeTargets="CoreCompile" DependsOnTargets="GetAssemblyVersion"
+          Condition="'$(GenerateVersionAttributes)' == 'true'">
+    <PropertyGroup>
+      <_VersionAttributesFile>$(IntermediateOutputPath)$(AssemblyName).VersionInfo.g.cs</_VersionAttributesFile>
+    </PropertyGroup>
+    <ItemGroup>
+      <_VersionAttributesLine Include="[assembly: System.Reflection.AssemblyVersion(&quot;$(AssemblyVersion)&quot;)]" />
+      <_VersionAttributesLine Include="[assembly: System.Reflection.AssemblyFileVersion(&quot;$(AssemblyVersion)&quot;)]" />
+      <_VersionAttributesLine Include="[assembly: System.Reflection.AssemblyInformationalVersion(&quot;$(Version)&quot;)]" />
+    </ItemGroup>
+    <!-- WriteOnlyWhenDifferent keeps the timestamp, so an unchanged version doesn't force a recompile. -->
+    <WriteLinesToFile File="$(_VersionAttributesFile)" Lines="@(_VersionAttributesLine)" Overwrite="true" WriteOnlyWhenDifferent="true" />
+    <ItemGroup>
+      <Compile Include="$(_VersionAttributesFile)" />
+      <FileWrites Include="$(_VersionAttributesFile)" />
+    </ItemGroup>
+  </Target>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <Optimize>True</Optimize>

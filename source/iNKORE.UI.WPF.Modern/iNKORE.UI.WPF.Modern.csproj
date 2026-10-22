@@ -7,6 +7,7 @@
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<NoWarn>1701;1702;1573;1591;CA1416</NoWarn>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<GenerateVersionAttributes>true</GenerateVersionAttributes>
 		<ApplicationIcon>..\..\assets\icons\WpfLibrary.ico</ApplicationIcon>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\..\assets\others\iNKORE.Pulic.snk</AssemblyOriginatorKeyFile>
@@ -86,7 +87,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="iNKORE.UI.WPF" Version="1.2.8" />
+	  <PackageReference Include="iNKORE.UI.WPF" />
 	</ItemGroup>
 
 	<ItemGroup>

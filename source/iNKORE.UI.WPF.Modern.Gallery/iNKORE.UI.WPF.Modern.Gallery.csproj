@@ -6,6 +6,7 @@
     <UseWPF>true</UseWPF>
 	  <ApplicationIcon>..\..\assets\icons\WpfLibrary.ico</ApplicationIcon>
 	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	  <GenerateVersionAttributes>true</GenerateVersionAttributes>
 
   </PropertyGroup>
     
@@ -112,7 +113,7 @@
   <ItemGroup>
     <PackageReference Include="AvalonEdit" Version="6.3.0.90" />
     <PackageReference Include="ColorCodeStandard" Version="1.0.0" />
-    <PackageReference Include="iNKORE.UI.WPF" Version="1.2.8" />
+    <PackageReference Include="iNKORE.UI.WPF" />
   </ItemGroup>
 
   <ItemGroup>

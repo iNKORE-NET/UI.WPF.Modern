@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Packed through iNKORE.UI.WPF.Modern.Controls, which supplies $version$, $configuration$ and $uiwpfVersion$:
+    msbuild source/iNKORE.UI.WPF.Modern.Controls/iNKORE.UI.WPF.Modern.Controls.csproj -restore -t:Pack -p:Configuration=Release -p:Version=x.y.z
+  File paths are relative to this directory.
+-->
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+    <metadata>
+        <id>iNKORE.UI.WPF.Modern</id>
+        <version>$version$</version>
+        <title>iNKORE.UI.WPF.Modern</title>
+        <authors>Yoojun Zhou</authors>
+        <owners>iNKORE Studios</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <licenseUrl>https://github.com/iNKORE-NET/UI.WPF.Modern/blob/main/LICENSE.md</licenseUrl>
+        <icon>icon.png</icon>
+        <readme>README.md</readme>
+        <projectUrl>https://docs.inkore.net/ui-wpf-modern</projectUrl>
+        <description>Modern (Fluent 2) styles and controls for your WPF applications.</description>
+        <copyright>Copyright © iNKORE! (iNKORE Studios) 2025. All rights reserved.</copyright>
+        <language>en-US</language>
+        <tags>WPF;C#;Modern;Fluent;UI;iNKORE;XAML;Metro;CSharp;dotNET;Controls;Style;UI;WinUI</tags>
+        <repository type="git" url="https://github.com/iNKORE-NET/UI.WPF.Modern.git"/>
+
+        <dependencies>
+            <group targetFramework="net452">
+                <dependency id="iNKORE.UI.WPF" version="$uiwpfVersion$"/>
+                <dependency id="System.ValueTuple" version="4.5.0" exclude="Build,Analyzers"/>
+            </group>
+            <group targetFramework="net6.0-windows7.0">
+                <dependency id="iNKORE.UI.WPF" version="$uiwpfVersion$"/>
+            </group>
+            <group targetFramework="net6.0-windows10.0.18362">
+                <dependency id="iNKORE.UI.WPF" version="$uiwpfVersion$"/>
+            </group>
+        </dependencies>
+        <frameworkReferences>
+            <group targetFramework="net6.0-windows7.0">
+                <frameworkReference name="Microsoft.WindowsDesktop.App.WPF"/>
+            </group>
+            <group targetFramework="net6.0-windows10.0.18362">
+                <frameworkReference name="Microsoft.WindowsDesktop.App.WPF"/>
+            </group>
+        </frameworkReferences>
+    </metadata>
+    <files>
+        <file src="..\assets\nuget\README.md" target=""/>
+        <file src="..\assets\nuget\icon.png" target=""/>
+
+        <!-- The Controls output also holds iNKORE.UI.WPF.Modern.*; iNKORE.UI.WPF.dll and System.ValueTuple.dll
+            are left out on purpose since they come in through the dependencies above. -->
+        <file src="iNKORE.UI.WPF.Modern.Controls\bin\$configuration$\net452\iNKORE.UI.WPF.Modern*" target="lib\net452"/>
+
+        <!-- The same binaries go in twice. Projects targeting plain net*-windows (no Windows SDK version) can't use
+            the 10.0.18362 folder and resolve to net6.0-windows7.0; CsWinRT is embedded, so it runs there too.
+            ** brings along the satellite assemblies in the culture subfolders. -->
+        <file src="iNKORE.UI.WPF.Modern.Controls\bin\$configuration$\net6.0-windows10.0.18362.0\**\iNKORE.UI.WPF.Modern*" target="lib\net6.0-windows10.0.18362" exclude="**\*.deps.json"/>
+        <file src="iNKORE.UI.WPF.Modern.Controls\bin\$configuration$\net6.0-windows10.0.18362.0\**\iNKORE.UI.WPF.Modern*" target="lib\net6.0-windows7.0" exclude="**\*.deps.json"/>
+    </files>
+</package>

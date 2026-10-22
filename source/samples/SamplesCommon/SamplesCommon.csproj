@@ -23,7 +23,7 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="iNKORE.UI.WPF" Version="1.2.8" />
+    <PackageReference Include="iNKORE.UI.WPF" />
   </ItemGroup>
 
 </Project>
