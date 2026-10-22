@@ -30,6 +30,7 @@ jobs:
     runs-on: windows-latest
     outputs:
       version: ${{ steps.version.outputs.version }}
+      package: ${{ steps.files.outputs.package }}
     steps:
       - uses: actions/checkout@v4
 
@@ -61,27 +62,32 @@ jobs:
       # name@version keeps the boundary between name and version clear. The nupkg keeps NuGet's id.version.nupkg
       # name on purpose: local folder feeds find packages by that file name, so renaming it breaks restore (NU1102).
       - name: Zip Gallery
+        id: files
         shell: pwsh
         run: |
-          $version = (Get-Item .nuget/iNKORE.UI.WPF.Modern.*.nupkg).BaseName.Substring('iNKORE.UI.WPF.Modern.'.Length)
+          $package = Get-Item .nuget/iNKORE.UI.WPF.Modern.*.nupkg
+          $gallery = "iNKORE.UI.WPF.Modern.Gallery@$($package.BaseName.Substring('iNKORE.UI.WPF.Modern.'.Length)).zip"
           New-Item -ItemType Directory -Force artifacts | Out-Null
           Compress-Archive -Path source/iNKORE.UI.WPF.Modern.Gallery/bin/Release/net6.0-windows10.0.18362.0/* `
-            -DestinationPath "artifacts/iNKORE.UI.WPF.Modern.Gallery@$version.zip"
+            -DestinationPath "artifacts/$gallery"
+          "package=$($package.Name)" >> $env:GITHUB_OUTPUT
+          "gallery=$gallery" >> $env:GITHUB_OUTPUT
 
+      # archive: false uploads each file as is, so the artifact is the file itself, named after it,
+      # instead of a zip wrapped around it. Download them with download-artifact@v8 by that name.
       - name: Upload package
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: nupkg
-          path: .nuget/*.nupkg
+          path: .nuget/${{ steps.files.outputs.package }}
+          archive: false
           include-hidden-files: true  # .nuget/ is a dot folder, which upload-artifact skips by default
           if-no-files-found: error
 
       - name: Upload Gallery
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: gallery
-          path: artifacts/*.zip
-          compression-level: 0  # already zipped
+          path: artifacts/${{ steps.files.outputs.gallery }}
+          archive: false
           if-no-files-found: error
 
   # Checks the package's layout and versions, then builds small WPF apps against it and runs them (tests/Package).
@@ -102,9 +108,9 @@ jobs:
         with:
           dotnet-version: 8.0.x  # the net8.0 consumer runs on it
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
-          name: nupkg
+          name: ${{ needs.build.outputs.package }}
           path: nupkg
 
       - name: Check package structure

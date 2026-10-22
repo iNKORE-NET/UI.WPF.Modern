@@ -28,21 +28,39 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
     steps:
+      # Build uploads the nupkg and the Gallery zip unwrapped (archive: false): each artifact is named after its file.
       - name: Find the tag's build
+        id: build
         run: |
           run_id=$(gh run list --workflow build.yml --branch "$TAG" --event push --status success --limit 1 --json databaseId --jq '.[0].databaseId')
           if [ -z "$run_id" ]; then
             echo "::error::No successful Build run for $TAG yet. Wait for it to finish (or re-run it), then re-run this workflow."
             exit 1
           fi
-          echo "BUILD_RUN_ID=$run_id" >> "$GITHUB_ENV"
+          artifacts=$(gh api "repos/$GH_REPO/actions/runs/$run_id/artifacts" --jq '.artifacts[] | select(.expired | not) | .name')
+          package=$(grep -E '\.nupkg$' <<< "$artifacts" || true)
+          gallery=$(grep -E '^iNKORE\.UI\.WPF\.Modern\.Gallery@.*\.zip$' <<< "$artifacts" || true)
+          if [ -z "$package" ] || [ -z "$gallery" ]; then
+            echo "::error::Build run $run_id for $TAG has no package or Gallery artifact (expired?). Re-run that build, then this workflow."
+            exit 1
+          fi
+          echo "run-id=$run_id" >> "$GITHUB_OUTPUT"
+          echo "package=$package" >> "$GITHUB_OUTPUT"
+          echo "gallery=$gallery" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
-          run-id: ${{ env.BUILD_RUN_ID }}
+          name: ${{ steps.build.outputs.package }}
+          run-id: ${{ steps.build.outputs.run-id }}
           github-token: ${{ github.token }}
           path: dist
-          merge-multiple: true
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: ${{ steps.build.outputs.gallery }}
+          run-id: ${{ steps.build.outputs.run-id }}
+          github-token: ${{ github.token }}
+          path: dist
 
       - name: NuGet login
         uses: NuGet/login@v1
