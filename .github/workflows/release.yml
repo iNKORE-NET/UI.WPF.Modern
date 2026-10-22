@@ -1,6 +1,7 @@
 name: Release
 
-# Pushing a tag such as v0.10.3 packs that version and publishes it to NuGet.org.
+# Pushing a tag such as v0.10.3 builds that version right away (build.yml);
+# publishing it waits for approval on the nuget environment.
 on:
   push:
     tags: ['v*']
@@ -9,32 +10,15 @@ permissions:
   contents: read
 
 jobs:
-  pack:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: microsoft/setup-msbuild@v2
-
-      - name: Pack
-        shell: pwsh
-        env:
-          TAG: ${{ github.ref_name }}
-        run: >-
-          msbuild source/iNKORE.UI.WPF.Modern.Controls/iNKORE.UI.WPF.Modern.Controls.csproj -restore -t:Pack
-          -p:Configuration=Release "-p:Version=$($env:TAG.Substring(1))" -p:ContinuousIntegrationBuild=true
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: nupkg
-          path: .nuget/*.nupkg
-          include-hidden-files: true  # .nuget/ is a dot folder, which upload-artifact skips by default
-          if-no-files-found: error
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      tag: ${{ github.ref_name }}
 
   publish:
-    needs: pack
+    needs: build
     runs-on: ubuntu-latest
-    environment: nuget
+    environment: nuget  # the required reviewers on this environment approve every release
     permissions:
       contents: write  # gh release create
       id-token: write  # NuGet trusted publishing

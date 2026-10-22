@@ -1,37 +1,62 @@
 name: Build
 
-# Builds the solution and the NuGet package for every PR and push to main; nothing is published.
+# Builds the solution, the NuGet package and the Gallery; nothing is published.
+# Pull requests wait for a maintainer to approve the pr-build environment first.
+# release.yml calls this for tags, which build right away.
 on:
-  push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      tag:
+        description: Release tag (vX.Y.Z) to build as that version.
+        type: string
+        default: ''
 
 permissions:
   contents: read
 
-jobs:
-  build:
-    runs-on: windows-latest
-    env:
-      VERSION_SUFFIX: ci.${{ github.run_number }}
+# A new push to a PR cancels the older run that is still waiting for approval.
+concurrency:
+  group: build-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
 
+jobs:
+  approve:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    environment: pr-build  # the required reviewers on this environment are the approval gate
+    steps:
+      - run: echo "Approved"
+
+  build:
+    needs: approve
+    if: ${{ !cancelled() && (needs.approve.result == 'success' || needs.approve.result == 'skipped') }}
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: microsoft/setup-msbuild@v2
 
+      - name: Choose version
+        shell: pwsh
+        env:
+          TAG: ${{ inputs.tag }}
+        run: |
+          if ($env:TAG) { $arg = "-p:Version=$($env:TAG.Substring(1))" } else { $arg = "-p:VersionSuffix=ci.$env:GITHUB_RUN_NUMBER" }
+          "VERSION_ARG=$arg" >> $env:GITHUB_ENV
+
       - name: Build solution
         shell: pwsh
         run: >-
           msbuild iNKORE.UI.WPF.Modern.sln -restore
-          -p:Configuration=Release "-p:Platform=Any CPU" "-p:VersionSuffix=$env:VERSION_SUFFIX"
+          -p:Configuration=Release "-p:Platform=Any CPU" -p:ContinuousIntegrationBuild=true $env:VERSION_ARG
 
       - name: Pack
         shell: pwsh
         run: >-
           msbuild source/iNKORE.UI.WPF.Modern.Controls/iNKORE.UI.WPF.Modern.Controls.csproj -t:Pack -p:NoBuild=true
-          -p:Configuration=Release "-p:VersionSuffix=$env:VERSION_SUFFIX"
+          -p:Configuration=Release -p:ContinuousIntegrationBuild=true $env:VERSION_ARG
 
       - name: Upload package
         uses: actions/upload-artifact@v4
@@ -46,3 +71,4 @@ jobs:
         with:
           name: iNKORE.UI.WPF.Modern.Gallery
           path: source/iNKORE.UI.WPF.Modern.Gallery/bin/Release/net6.0-windows10.0.18362.0
+          if-no-files-found: error
