@@ -52,6 +52,8 @@ jobs:
           msbuild source/iNKORE.UI.WPF.Modern.Controls/iNKORE.UI.WPF.Modern.Controls.csproj -t:Pack -p:NoBuild=true
           -p:Configuration=Release -p:ContinuousIntegrationBuild=true $env:VERSION_ARG
 
+      # name@version keeps the boundary between name and version clear. The nupkg keeps NuGet's id.version.nupkg
+      # name on purpose: local folder feeds find packages by that file name, so renaming it breaks restore (NU1102).
       - name: Zip Gallery
         shell: pwsh
         run: |
