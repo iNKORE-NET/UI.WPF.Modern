@@ -1,0 +1,3 @@
+<Project>
+    <!-- Empty on purpose: keeps the repository's own file out, so the consumer builds as if it lived outside this repository. -->
+</Project>
