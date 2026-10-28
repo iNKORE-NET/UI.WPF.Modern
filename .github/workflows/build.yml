@@ -1,49 +1,122 @@
-name: Build Controls & Gallery
+name: Build
 
-# This workflow builds the iNKORE.UI.WPF.Modern.Controls and iNKORE.UI.WPF.Modern.Gallery projects and uploads the artifacts for use in other workflows or releases.
-
+# Builds the NuGet package and the Gallery and keeps them as run artifacts; nothing is published (see release.yml).
+# Pull requests wait for a maintainer to approve the pr-build environment first; v* tags build right away.
 on:
-  push:
-    branches: [  ]
   pull_request:
-    branches: [  ]
+  push:
+    tags: ['v*']
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+# A new push to a PR cancels the older run that is still waiting for approval.
+concurrency:
+  group: build-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
-  build:
-    runs-on: windows-latest
-    
+  approve:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    environment: pr-build  # the required reviewers on this environment are the approval gate
     steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
+      - run: echo "Approved"
 
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.1
+  build:
+    needs: approve
+    if: ${{ !cancelled() && (needs.approve.result == 'success' || needs.approve.result == 'skipped') }}
+    runs-on: windows-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      package: ${{ steps.files.outputs.package }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: |
-          6.0.x
-          7.0.x
+      - uses: microsoft/setup-msbuild@30375c66a4eea26614e0d39710365f22f8b0af57 # v3.0.0
 
-    - name: Restore NuGet packages
-      run: |
-        nuget restore iNKORE.UI.WPF.Modern.sln
+      - name: Choose version
+        id: version
+        shell: pwsh
+        run: |
+          if ($env:GITHUB_REF_TYPE -eq 'tag' -and $env:GITHUB_REF_NAME -like 'v*') { $arg = "-p:Version=$($env:GITHUB_REF_NAME.Substring(1))" }
+          else { $arg = "-p:VersionSuffix=ci.$env:GITHUB_RUN_NUMBER" }
+          "VERSION_ARG=$arg" >> $env:GITHUB_ENV
+          # The version the package should come out with; test-package checks it against this.
+          $version = msbuild source/iNKORE.UI.WPF.Modern.Controls/iNKORE.UI.WPF.Modern.Controls.csproj -getProperty:Version $arg
+          "version=$version" >> $env:GITHUB_OUTPUT
 
-    - name: Build solution
-      run: |
-        msbuild iNKORE.UI.WPF.Modern.sln /p:Configuration=Release /p:Platform="Any CPU"
+      - name: Build solution
+        shell: pwsh
+        run: >-
+          msbuild iNKORE.UI.WPF.Modern.sln -restore
+          -p:Configuration=Release "-p:Platform=Any CPU" -p:ContinuousIntegrationBuild=true $env:VERSION_ARG
 
-    - name: Upload Controls artifact (.NET 6.0)
-      uses: actions/upload-artifact@v4
-      with:
-        name: iNKORE.UI.WPF.Modern.Controls  
-        path: source\iNKORE.UI.WPF.Modern.Controls\bin\Release\net6.0-windows10.0.18362.0
+      - name: Pack
+        shell: pwsh
+        run: >-
+          msbuild source/iNKORE.UI.WPF.Modern.Controls/iNKORE.UI.WPF.Modern.Controls.csproj -t:Pack -p:NoBuild=true
+          -p:Configuration=Release -p:ContinuousIntegrationBuild=true $env:VERSION_ARG
 
-    - name: Upload Gallery artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: iNKORE.UI.WPF.Modern.Gallery
-        path: source\iNKORE.UI.WPF.Modern.Gallery\bin\Release\net6.0-windows10.0.18362.0
+      # name@version keeps the boundary between name and version clear. The nupkg keeps NuGet's id.version.nupkg
+      # name on purpose: local folder feeds find packages by that file name, so renaming it breaks restore (NU1102).
+      - name: Zip Gallery
+        id: files
+        shell: pwsh
+        run: |
+          $package = Get-Item .nuget/iNKORE.UI.WPF.Modern.*.nupkg
+          $gallery = "iNKORE.UI.WPF.Modern.Gallery@$($package.BaseName.Substring('iNKORE.UI.WPF.Modern.'.Length)).zip"
+          New-Item -ItemType Directory -Force artifacts | Out-Null
+          Compress-Archive -Path source/iNKORE.UI.WPF.Modern.Gallery/bin/Release/net6.0-windows10.0.18362.0/* `
+            -DestinationPath "artifacts/$gallery"
+          "package=$($package.Name)" >> $env:GITHUB_OUTPUT
+          "gallery=$gallery" >> $env:GITHUB_OUTPUT
+
+      # archive: false uploads each file as is, so the artifact is the file itself, named after it,
+      # instead of a zip wrapped around it. Download them with download-artifact@v8 by that name.
+      - name: Upload package
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          path: .nuget/${{ steps.files.outputs.package }}
+          archive: false
+          include-hidden-files: true  # .nuget/ is a dot folder, which upload-artifact skips by default
+          if-no-files-found: error
+
+      - name: Upload Gallery
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          path: artifacts/${{ steps.files.outputs.gallery }}
+          archive: false
+          if-no-files-found: error
+
+  # Checks the package's layout and versions, then builds small WPF apps against it and runs them (tests/Package).
+  # A failure here fails the run, and release.yml only releases a tag whose Build run succeeded.
+  test-package:
+    needs: build
+    # Without this the job is skipped on tag builds (approve is skipped there), and the run would still succeed.
+    if: ${{ !cancelled() && needs.build.result == 'success' }}
+    runs-on: windows-latest
+    env:
+      VERSION: ${{ needs.build.outputs.version }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: microsoft/setup-msbuild@30375c66a4eea26614e0d39710365f22f8b0af57 # v3.0.0
+
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: 8.0.x  # the net8.0 consumer runs on it
+
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: ${{ needs.build.outputs.package }}
+          path: nupkg
+
+      - name: Check package structure
+        shell: pwsh
+        run: tests/Package/Test-PackageStructure.ps1 -Package (Get-Item nupkg/*.nupkg).FullName -Version $env:VERSION
+
+      - name: Build and run consumers
+        shell: pwsh
+        run: tests/Package/Test-Consumers.ps1 -Package (Get-Item nupkg/*.nupkg).FullName -Version $env:VERSION

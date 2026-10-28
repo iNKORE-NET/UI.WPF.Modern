@@ -1,6 +1,15 @@
 ﻿<Project>
-  <PropertyGroup>
-    <Product>iNKORE.UI.WPF.Modern</Product>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
+    <PropertyGroup>
+        <Product>iNKORE.UI.WPF.Modern</Product>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <!-- Default for local builds. CI builds append -p:VersionSuffix=ci.<run>; releases pass -p:Version=<tag>. -->
+        <VersionPrefix>0.10.2</VersionPrefix>
+
+        <!-- The NuGet package is defined by source/iNKORE.UI.WPF.Modern.nuspec and packed from
+            iNKORE.UI.WPF.Modern.Controls only; packing any other project would produce a clashing package. -->
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
 </Project>

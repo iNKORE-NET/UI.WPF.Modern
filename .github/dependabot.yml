@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # The workflows pin every action to a commit SHA with its version in a comment; Dependabot bumps both.
+  # All action updates come in one PR, since each PR's Build run needs approval on the pr-build environment.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ['*']
+    commit-message:
+      prefix: ci
