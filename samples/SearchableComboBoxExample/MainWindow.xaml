@@ -1,0 +1,72 @@
+<Window x:Class="SearchableComboBoxExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
+        xmlns:local="clr-namespace:SearchableComboBoxExample"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+        Title="SearchableComboBox example"
+        Width="760"
+        Height="560"
+        ui:TitleBar.IsIconVisible="True"
+        ui:WindowHelper.SystemBackdropType="Mica"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        mc:Ignorable="d">
+
+    <Window.Resources>
+        <Style x:Key="Note" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Margin" Value="0,2,0,10" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+        </Style>
+    </Window.Resources>
+
+    <ui:ScrollViewerEx Padding="24">
+        <ikw:SimpleStackPanel Spacing="28">
+
+            <!--  Approach 1: everything comes from the view model, no code-behind at all.  -->
+            <ikw:SimpleStackPanel Spacing="2">
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="1 · MVVM" />
+                <TextBlock Style="{StaticResource Note}"
+                           Text="Bound entirely to the view model - items, selection and the custom matching rule. There is no code-behind for this one." />
+
+                <ui:SearchableComboBox MinWidth="320"
+                                       HorizontalAlignment="Left"
+                                       ui:ControlHelper.Header="Country"
+                                       ui:ControlHelper.PlaceholderText="Pick a country"
+                                       DataContext="{Binding Countries}"
+                                       DisplayMemberPath="Name"
+                                       ItemFilter="{Binding Filter}"
+                                       ItemsSource="{Binding Items}"
+                                       NoResultsText="No country matches that"
+                                       SearchBoxPlaceholderText="Type a name or a dialling code"
+                                       SelectedItem="{Binding Selected, Mode=TwoWay}" />
+
+                <TextBlock Margin="0,10,0,0"
+                           DataContext="{Binding Countries}"
+                           Text="{Binding Selected, TargetNullValue='The view model sees nothing selected.', StringFormat='The view model holds: {0}'}" />
+            </ikw:SimpleStackPanel>
+
+            <!--  Approach 2: declared bare here, wired up in MainWindow.xaml.cs.  -->
+            <ikw:SimpleStackPanel Spacing="2">
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="2 · Code-behind, 5,000 items" />
+                <TextBlock Style="{StaticResource Note}"
+                           Text="Declared empty in XAML and filled from code. 5,000 items: the drop-down virtualises, so only the rows you can see are ever built." />
+
+                <ui:SearchableComboBox x:Name="ProductCombo"
+                                       MinWidth="320"
+                                       HorizontalAlignment="Left"
+                                       ui:ControlHelper.Header="Product"
+                                       ui:ControlHelper.PlaceholderText="Pick a product"
+                                       DisplayMemberPath="Name"
+                                       NoResultsText="No product matches that"
+                                       SearchBoxPlaceholderText="Type a name or a code"
+                                       SelectionChanged="ProductCombo_SelectionChanged" />
+
+                <TextBlock x:Name="ProductOutput" Margin="0,10,0,0" Text="Nothing selected." />
+            </ikw:SimpleStackPanel>
+
+        </ikw:SimpleStackPanel>
+    </ui:ScrollViewerEx>
+</Window>
