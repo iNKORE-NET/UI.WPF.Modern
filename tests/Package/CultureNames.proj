@@ -1,9 +1,0 @@
-<!--
-    Lists how the MSBuild running it spells each culture name in the PACKAGE_CULTURES environment variable, the way
-    NETSDK1187 does: dotnet msbuild -getItem:Culture CultureNames.proj. Used by Test-PackageStructure.ps1.
--->
-<Project>
-    <ItemGroup>
-        <Culture Include="$(PACKAGE_CULTURES)" Canonical="$([System.Globalization.CultureInfo]::GetCultureInfo('%(Identity)').Name)" />
-    </ItemGroup>
-</Project>

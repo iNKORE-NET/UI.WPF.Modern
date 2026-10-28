@@ -2,24 +2,17 @@
 .SYNOPSIS
     Checks the layout, dependencies and versions of an iNKORE.UI.WPF.Modern package.
 .DESCRIPTION
-    Lists every problem it finds and exits with 1 if there is any. Needs the .NET SDK and Visual Studio's MSBuild:
-    culture folder names are checked against both, since they spell some cultures differently.
+    Lists every problem it finds and exits with 1 if there is any.
 .EXAMPLE
     tests/Package/Test-PackageStructure.ps1 -Package .nuget/iNKORE.UI.WPF.Modern.0.10.3-test1.nupkg -Version 0.10.3-test1
 #>
 param(
     [Parameter(Mandatory = $true)] [string] $Package,
     # The version the package and its assemblies should carry.
-    [Parameter(Mandatory = $true)] [string] $Version,
-    # Satellite assemblies in each .NET lib folder. Update it when a translation is added or removed.
-    [int] $SatelliteCount = 118,
-    # Visual Studio's MSBuild.exe; found with vswhere when left out.
-    [string] $MSBuild
+    [Parameter(Mandatory = $true)] [string] $Version
 )
 
 $ErrorActionPreference = 'Stop'
-. (Join-Path $PSScriptRoot 'Common.ps1')
-if (-not $MSBuild) { $MSBuild = Find-MSBuild }
 
 $Package = (Resolve-Path $Package).Path
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
@@ -30,17 +23,14 @@ $assemblies = 'iNKORE.UI.WPF.Modern', 'iNKORE.UI.WPF.Modern.Controls'
 # As packed today: the Controls project doesn't generate an XML documentation file.
 $libFiles = 'iNKORE.UI.WPF.Modern.dll', 'iNKORE.UI.WPF.Modern.pdb', 'iNKORE.UI.WPF.Modern.xml',
             'iNKORE.UI.WPF.Modern.Controls.dll', 'iNKORE.UI.WPF.Modern.Controls.pdb'
-$satelliteFiles = 'iNKORE.UI.WPF.Modern.resources.dll', 'iNKORE.UI.WPF.Modern.Controls.resources.dll'
 
 $problems = New-Object System.Collections.Generic.List[string]
 
 function Join-Sorted($items) { (@($items) | Sort-Object -CaseSensitive) -join ', ' }
 
-# Why a file or folder must stay out of the package, or $null if it may be packed.
+# Why a file must stay out of the package, or $null if it may be packed.
 function Get-ForbiddenReason($item) {
-    if ($item.PSIsContainer) {
-        if ($item.Name -eq 'ca-ES-valencia') { return 'VS and the dotnet CLI disagree on its casing (NETSDK1187)' }
-    }
+    if ($item.PSIsContainer) { return $null }
     elseif ($item.Name -eq 'iNKORE.UI.WPF.dll') { return 'it comes in through the iNKORE.UI.WPF dependency' }
     elseif ($item.Name -eq 'System.ValueTuple.dll') { return 'it comes in through the System.ValueTuple dependency' }
     elseif ($item.Name -like '*.deps.json') { return 'it is build output, not part of the library' }
@@ -80,52 +70,16 @@ try {
         }
     }
 
-    # Satellite assemblies: embedded in the DLLs on .NET Framework, in culture folders on .NET.
-    if (Get-ChildItem (Join-Path $lib 'net452') -Directory -ErrorAction SilentlyContinue) {
-        $problems.Add('lib\net452 has subfolders, but its satellite assemblies are embedded in the DLLs.')
-    }
-    $cultures = New-Object System.Collections.Generic.HashSet[string]
-    foreach ($tfm in $netFolders) {
-        $dir = Join-Path $lib $tfm
-        if (-not (Test-Path $dir)) { continue }
-        $count = @(Get-ChildItem $dir -Recurse -File -Filter *.resources.dll).Count
-        if ($count -ne $SatelliteCount) { $problems.Add("lib\$tfm has $count satellite assemblies, expected $SatelliteCount.") }
-        foreach ($culture in Get-ChildItem $dir -Directory) {
-            [void]$cultures.Add($culture.Name)
-            foreach ($item in Get-ChildItem $culture.FullName -Recurse) {
-                if ($item.PSIsContainer -or $satelliteFiles -cnotcontains $item.Name) {
-                    $problems.Add("lib\$tfm\$($culture.Name) holds $($item.FullName.Substring($culture.FullName.Length + 1)), which isn't a satellite assembly.")
-                }
-            }
+    # The satellite assemblies (translations) are embedded in the DLLs on every target, so no culture folders.
+    foreach ($tfm in $libFolders) {
+        $subfolders = @(Get-ChildItem (Join-Path $lib $tfm) -Directory -ErrorAction SilentlyContinue | ForEach-Object Name)
+        if ($subfolders.Count -gt 0) {
+            $problems.Add("lib\$tfm has subfolders [$(Join-Sorted $subfolders)], but the translations should be embedded in the DLLs.")
         }
     }
     $netDirs = @($netFolders | ForEach-Object { Join-Path $lib $_ } | Where-Object { Test-Path $_ })
     if ($netDirs.Count -eq 2 -and ((Get-FolderHashes $netDirs[0]) -join "`n") -cne ((Get-FolderHashes $netDirs[1]) -join "`n")) {
         $problems.Add("lib\$($netFolders[0]) and lib\$($netFolders[1]) should hold the same files.")
-    }
-
-    # Culture folder names, spelled the way each build host spells them. dotnet build runs on .NET (ICU) and
-    # Visual Studio on .NET Framework (NLS); any difference shows up as NETSDK1187 in consumer builds.
-    if ($cultures.Count -gt 0) {
-        $env:PACKAGE_CULTURES = @($cultures) -join ';'
-        $proj = Join-Path $PSScriptRoot 'CultureNames.proj'
-        $hosts = @(
-            @{ Name = '.NET (dotnet msbuild)'; Command = 'dotnet'; Arguments = @('msbuild') },
-            @{ Name = '.NET Framework (MSBuild.exe)'; Command = $MSBuild; Arguments = @() }
-        )
-        foreach ($buildHost in $hosts) {
-            $output = & $buildHost.Command @($buildHost.Arguments) $proj -getItem:Culture -nologo | Out-String
-            if ($LASTEXITCODE -ne 0) {
-                $problems.Add("$($buildHost.Name) couldn't read the culture folder names:`n$output")
-                continue
-            }
-            foreach ($culture in (ConvertFrom-Json $output).Items.Culture) {
-                if ($culture.Canonical -cne $culture.Identity) {
-                    $problems.Add("The culture folder $($culture.Identity) is spelled $($culture.Canonical) on $($buildHost.Name).")
-                }
-            }
-        }
-        Remove-Item env:PACKAGE_CULTURES
     }
 
     # Dependencies
@@ -176,4 +130,4 @@ if ($problems.Count -gt 0) {
     Write-Host "$name has $($problems.Count) problem(s)."
     exit 1
 }
-Write-Host "OK   $name`: lib folders, files, $SatelliteCount satellites in $($cultures.Count) cultures, dependencies and versions."
+Write-Host "OK   $name`: lib folders, files, no culture folders, dependencies and versions."

@@ -3,8 +3,9 @@
     Builds the app in Consumers/ against an iNKORE.UI.WPF.Modern package and runs it on each target framework.
 .DESCRIPTION
     The app is built twice, with dotnet build and with Visual Studio's MSBuild, since the two spell some culture
-    names differently (NETSDK1187). A failed build or any NU*, NETSDK* or MSB3277 warning fails the test. Each build
-    is then run on every target framework; the app checks itself and exits non-zero on any failure.
+    names differently (NETSDK1187). A failed build or any NU*, NETSDK* or MSB3277 warning fails the test, and so does
+    a culture folder from the package in the output: its translations are embedded in its DLLs. Each build is then
+    run on every target framework; the app checks itself and exits non-zero on any failure.
 .EXAMPLE
     tests/Package/Test-Consumers.ps1 -Package .nuget/iNKORE.UI.WPF.Modern.0.10.3-test1.nupkg -Version 0.10.3-test1
 #>
@@ -77,7 +78,13 @@ foreach ($build in $builds) {
 
     foreach ($tfm in $frameworks) {
         Write-Host "-- $($build.Name), $tfm"
-        $problem = Invoke-Consumer (Join-Path $project "bin\Release\$tfm\PackageConsumer.exe")
+        $output = Join-Path $project "bin\Release\$tfm"
+        $cultures = @(Get-ChildItem $output -Directory |
+            Where-Object { Get-ChildItem $_.FullName -Filter 'iNKORE.UI.WPF.Modern*.resources.dll' } | ForEach-Object Name)
+        if ($cultures.Count -gt 0) {
+            $failures.Add("$($build.Name), $($tfm): the output has $($cultures.Count) culture folders from the package ($(($cultures | Select-Object -First 5) -join ', '), ...).")
+        }
+        $problem = Invoke-Consumer (Join-Path $output 'PackageConsumer.exe')
         if ($problem) { $failures.Add("$($build.Name), $($tfm): the app $problem.") }
     }
 }
@@ -86,4 +93,4 @@ if ($failures.Count -gt 0) {
     foreach ($failure in $failures) { Write-Host "FAIL $failure" }
     exit 1
 }
-Write-Host "OK   Built with dotnet build and MSBuild, ran on $($frameworks -join ', ')."
+Write-Host "OK   Built with dotnet build and MSBuild without culture folders, ran on $($frameworks -join ', ')."

@@ -36,7 +36,9 @@
         <Nullable>disable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'">
+    <!-- Embeds the satellite assemblies (translations) into the DLL on every target, so consumers don't get a culture
+        folder per language in their output. -->
+    <ItemGroup>
         <PackageReference Include="Resource.Embedder" Version="2.2.0" PrivateAssets="all" />
     </ItemGroup>
 

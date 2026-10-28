@@ -45,7 +45,7 @@ namespace PackageConsumer
                     $"{control.GetType().Name} is templated and rendered");
             }
 
-            // Strings from the Controls satellite assemblies: 設定 is "Settings", 關閉 is "Close".
+            // Strings from the Controls translations, embedded in its DLL: 設定 is "Settings", 關閉 is "Close".
             Expect(CultureInfo.CurrentUICulture.Name == "zh-TW", "the UI culture is zh-TW");
             var settings = (Navigation.SettingsItem as NavigationViewItem)?.Content as string;
             Expect(settings == "設定", $"the NavigationView settings item reads \"{settings}\", expected \"設定\"");
