@@ -3,6 +3,7 @@ name: Release
 # Publishing a GitHub release for a v* tag (written by hand on the Releases page) starts this.
 # After approval on the nuget environment, the tag's Build outputs are pushed to NuGet.org and attached to the release.
 # To retry, run it by hand on the tag (Use workflow from -> Tags); both steps are safe to repeat.
+# Either way it runs this file as it was at the tag, so fixes here only apply to later tags.
 on:
   release:
     types: [published]
@@ -48,12 +49,14 @@ jobs:
           echo "package=$package" >> "$GITHUB_OUTPUT"
           echo "gallery=$gallery" >> "$GITHUB_OUTPUT"
 
+      # download-artifact unzips anything served as a zip, which would unpack the Gallery zip into dist/.
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: ${{ steps.build.outputs.package }}
           run-id: ${{ steps.build.outputs.run-id }}
           github-token: ${{ github.token }}
           path: dist
+          skip-decompress: true
 
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
@@ -61,6 +64,7 @@ jobs:
           run-id: ${{ steps.build.outputs.run-id }}
           github-token: ${{ github.token }}
           path: dist
+          skip-decompress: true
 
       # dotnet nuget push needs an SDK; install one rather than rely on what the runner image happens to ship.
       - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
@@ -79,4 +83,7 @@ jobs:
           --source https://api.nuget.org/v3/index.json --skip-duplicate
 
       - name: Attach files to the release
-        run: gh release upload "$TAG" dist/* --clobber
+        run: gh release upload "$TAG" "dist/$PACKAGE" "dist/$GALLERY" --clobber
+        env:
+          PACKAGE: ${{ steps.build.outputs.package }}
+          GALLERY: ${{ steps.build.outputs.gallery }}
