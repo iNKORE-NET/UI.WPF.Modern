@@ -169,11 +169,8 @@ namespace iNKORE.UI.WPF.Modern.Common
                 fontIcon.Foreground = newForeground;
             }
 
-            if (FontFamily == null)
-            {
-                FontFamily = new FontFamily(FontIcon.SegoeIconsFontFamilyName);
-            }
             fontIcon.FontFamily = FontFamily;
+            fontIcon.Icon = Icon;
 
             fontIcon.FontWeight = FontWeight;
             fontIcon.FontStyle = FontStyle;

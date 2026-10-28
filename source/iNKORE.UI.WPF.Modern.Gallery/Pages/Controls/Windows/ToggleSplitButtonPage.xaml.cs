@@ -36,13 +36,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Pages.Controls.Windows
             Button clickedBullet = (Button)sender;
             var symbol = (FontIcon)clickedBullet.Content;
 
-            if (symbol.Glyph == SegoeFluentIcons.List.Glyph)
+            if (symbol.ActualGlyph == SegoeFluentIcons.List.Glyph)
             {
                 _type = "•";
                 mySymbolIcon.Icon = SegoeFluentIcons.List;
                 myListButton.SetValue(AutomationProperties.NameProperty, "Bullets");
             }
-            else if (symbol.Glyph == SegoeFluentIcons.BulletedList.Glyph)
+            else if (symbol.ActualGlyph == SegoeFluentIcons.BulletedList.Glyph)
             {
                 _type = "I)";
                 mySymbolIcon.Icon = SegoeFluentIcons.BulletedList;
@@ -117,13 +117,13 @@ private void BulletButton_Click(object sender, RoutedEventArgs e)
     Button clickedBullet = (Button)sender;
     var symbol = (FontIcon)clickedBullet.Content;
 
-    if (symbol.Glyph == SegoeFluentIcons.List.Glyph)
+    if (symbol.ActualGlyph == SegoeFluentIcons.List.Glyph)
     {{
         _type = ""•"";
         mySymbolIcon.Icon = SegoeFluentIcons.List;
         myListButton.SetValue(AutomationProperties.NameProperty, ""Bullets"");
     }}
-    else if (symbol.Glyph == SegoeFluentIcons.BulletedList.Glyph)
+    else if (symbol.ActualGlyph == SegoeFluentIcons.BulletedList.Glyph)
     {{
         _type = ""I)"";
         mySymbolIcon.Icon = SegoeFluentIcons.BulletedList;

@@ -240,12 +240,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
 
         private static void OnGlyphChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var fontIcon = (FontIcon)d;
-            if (fontIcon._textBlock != null)
-            {
-                fontIcon._textBlock.Text = (string)e.NewValue;
-            }
-
             (d as FontIcon)?.UpdateIconData();
         }
 
@@ -324,10 +318,6 @@ namespace iNKORE.UI.WPF.Modern.Controls
                 iconSource.Foreground = newForeground;
             }
 
-            if (FontFamily == null)
-            {
-                FontFamily = new FontFamily(SegoeIconsFontFamilyName);
-            }
             iconSource.FontFamily = FontFamily;
             iconSource.Icon = Icon;
 
