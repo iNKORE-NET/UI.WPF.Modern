@@ -146,7 +146,61 @@ namespace iNKORE.UI.WPF.Modern.Gallery.Controls
             {
                 if (CodePresenter?.ContextMenu != null)
                 {
-                    // Adjust context menu to only show 'Copy' if there is a selection
+                    // Local function to build centered tooltip similar to library TextContextMenu style.
+                    ToolTip BuildCenteredMouseToolTip(string text)
+                    {
+                        var tt = new ToolTip
+                        {
+                            Content = text,
+                            Placement = System.Windows.Controls.Primitives.PlacementMode.Mouse
+                        };
+                        tt.Opened += (s2, e2) =>
+                        {
+                            if (s2 is ToolTip t)
+                            {
+                                t.HorizontalOffset = 0;
+                                t.VerticalOffset = 0;
+                                void ApplyOffsets()
+                                {
+                                    const double gap = 32;
+                                    t.HorizontalOffset = -t.ActualWidth / 2.0;
+                                    t.VerticalOffset = -(t.ActualHeight + gap);
+                                }
+
+                                if (t.ActualWidth <= 0 || t.ActualHeight <= 0)
+                                {
+                                    t.Dispatcher.BeginInvoke((Action)(() =>
+                                    {
+                                        ApplyOffsets();
+                                    }));
+                                }
+                                else
+                                {
+                                    ApplyOffsets();
+                                }
+                            }
+                        };
+                        return tt;
+                    }
+
+                    // Apply tooltip/header customization.
+                    foreach (var item in CodePresenter.ContextMenu.Items.OfType<MenuItem>())
+                    {
+                        if (item.Command == ApplicationCommands.Copy)
+                        {
+                            item.Header = "Copy";
+                            item.ToolTip = BuildCenteredMouseToolTip("Copy the selected content to the clipboard");
+                            ToolTipService.SetInitialShowDelay(item, 700);
+                        }
+                        else if (item.Command == ApplicationCommands.SelectAll)
+                        {
+                            item.Header = "Select All";
+                            item.ToolTip = BuildCenteredMouseToolTip("Select all content");
+                            ToolTipService.SetInitialShowDelay(item, 700);
+                        }
+                    }
+
+                     // Adjust context menu to only show 'Copy' if there is a selection
                     CodePresenter.ContextMenu.Opened += (s, args) =>
                     {
                         var hasSelection = CodePresenter?.SelectionLength > 0;
