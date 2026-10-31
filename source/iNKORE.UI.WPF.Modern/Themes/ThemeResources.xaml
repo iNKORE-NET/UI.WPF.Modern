@@ -68,13 +68,13 @@
     <Thickness x:Key="ComboBoxDropdownBorderThickness">1</Thickness>
     <Thickness x:Key="ComboBoxHeaderThemeMargin">0,0,0,4</Thickness>
     <Thickness x:Key="ComboBoxPopupBorderThemeThickness">2</Thickness>
-    <Thickness x:Key="ComboBoxItemThemePadding">11,5,11,5</Thickness>
+    <Thickness x:Key="ComboBoxItemThemePadding">11,7,11,7</Thickness>
     <Thickness x:Key="ComboBoxItemThemeTouchPadding">11,11,11,13</Thickness>
-    <Thickness x:Key="ComboBoxItemThemeGameControllerPadding">11,11,11,11</Thickness>
+    <Thickness x:Key="ComboBoxItemThemeGameControllerPadding">11,11,11,13</Thickness>
     <Thickness x:Key="ComboBoxBackgroundBorderThicknessFocused">2</Thickness>
     <Thickness x:Key="ComboBoxDropdownContentMargin">0,4</Thickness>
     <Thickness x:Key="ComboBoxTopHeaderMargin">0,0,0,8</Thickness>
-    <Thickness x:Key="ComboBoxPadding">12,5,0,5</Thickness>
+    <Thickness x:Key="ComboBoxPadding">12,5,0,7</Thickness>
     <Thickness x:Key="ComboBoxEditableTextPadding">11,5,38,6</Thickness>
 
     <CornerRadius x:Key="ComboBoxHiglightBorderCornerRadius">7</CornerRadius>
